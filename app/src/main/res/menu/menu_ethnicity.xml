@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+<item
+    android:id="@+id/sinhala"
+    android:title="Sinhala"
+    android:visible="true" />
+<item
+    android:id="@+id/islam"
+    android:title="Islam"
+    android:visible="true" />
+<item
+    android:id="@+id/hindu"
+    android:title="Hindu"
+    android:visible="true" />
+<item
+    android:id="@+id/catholic"
+    android:title="Catholic"
+    android:visible="true" />
+</menu>

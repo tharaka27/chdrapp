@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_bg">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Weight for age"/>
+        <TextView
+            android:layout_weight="1"
+            android:id="@+id/weightforageLabel"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="more than +3SD"
+            android:background="@color/colorRed"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Height for age"/>
+        <TextView
+            android:layout_weight="1"
+            android:id="@+id/heightforageLabel"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="more than +3SD"
+            android:background="@color/colorRed"/>
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Weight for age"
+        android:textAlignment="center"
+        />
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/weightforage"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Height for age"
+        android:textAlignment="center"
+        />
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/heightforage"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Weight for Height"
+        android:textAlignment="center"
+        />
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/weightforheight"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        />
+
+</LinearLayout>

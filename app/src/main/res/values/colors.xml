@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorRed">#FF0000</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorEmpty">#ffeeeeee</color>
+    <color name="colorPrimary">#2a7fd4</color>
+    <color name="colorPrimaryDark">#276696</color>
+    <color name="colorAccent">#43cacb</color>
+    <color name="colorAccentLight">#d8f7f7</color>
+    <color name="colorAccentDark">#393d4d</color>
+    <color name="colorAccentAlt">#f78f05</color>
+    <color name="colorWarn">#e91e63</color>
+    <color name="colorShadow">#88393d4d</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="pink">#FCDACA</color>
+    <color name="blue">#F3F4F9</color>
+    <color name="title">#391922</color>
+    <color name="desc">#A59399</color>
+    <color name="stroke">#EAEAEA</color>
+    <color name="button">#65B643</color>
+    <color name="supp">#DEF5FE</color>
+    <color name="thera">#DEF8E9</color>
+    <color name="overw">#FFF7E4</color>
+    <color name="stunt">#FFEBEA</color>
+    <color name="all_reg">#E3F2DD</color>
+    <color name="other">#F8E4C6</color>
+    <color name="blue_title_text">#00B2F2</color>
+    <color name="blue_title_bg">#00B2F2</color>
+    <color name="back_btn_bg">#FB6861</color>
+    <color name="cream_color">#F8F0C6</color>
+</resources>

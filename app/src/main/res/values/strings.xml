@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dhis2 Skeleton App</string>
+    <!-- Strings related to login -->
+    <string name="title_activity_login">Log in</string>
+    <string name="prompt_server_url">Server url</string>
+    <string name="prompt_username">Username</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="invalid_server_url">Not a valid server url</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must have more than 5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <!-- Strings related to list item -->
+    <string name="sync_icon">Sync icon</string>
+    <string name="item_icon">Icon</string>
+    <string name="item_bitmap">Bitmap</string>
+    <string name="item_title">Item title</string>
+    <string name="item_right_text">12/03 23:05:12</string>
+    <string name="item_subtitle_1">Item subtitle 1</string>
+    <string name="item_subtitle_2">Item subtitle 2</string>
+    <string name="sync">SYNC</string>
+    <!-- Strings related to main -->
+    <string name="title_activity_main">Home</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="lorem_ipsum">"Lorem ipsum dolor sit amet"</string>
+    <string name="syncing_metadata">Syncing metadata…</string>
+    <string name="syncing_data">Syncing data…</string>
+    <string name="sync_metadata">Sync metadata</string>
+    <string name="sync_data">Sync data</string>
+    <string name="upload_data">Upload data</string>
+    <string name="uploading_data">Uploading data…</string>
+    <string name="wiping_data">Wiping data…</string>
+    <string name="log_out">Log out</string>
+    <string name="wipe_data">Wipe data</string>
+    <string name="programs">Programs</string>
+    <string name="data_sets">Data sets</string>
+    <string name="tracked_entity_instances">Tracked entity instances</string>
+    <string name="events_without_registration">Events without registration</string>
+    <string name="data_values">Data values</string>
+    <string name="zero">0</string>
+    <!-- Strings related to programs -->
+    <string name="title_activity_programs">Your programs</string>
+    <string name="program_name">Program Name</string>
+    <string name="program_icon">Program Icon</string>
+    <string name="program_stages">2 Program stages</string>
+    <string name="no_programs_found">No programs found</string>
+    <!-- Strings related to tracked entity instances search -->
+    <string name="title_activity_tracked_entity_search">Tracked entities search</string>
+    <string name="search_data">Search data</string>
+    <string name="searching">Searching data…</string>
+    <!-- Strings related to tracked entity instances -->
+    <string name="title_activity_tracked_entity_instances">Your tracked entity instances</string>
+    <string name="tracked_entity_instance_name">Tracked Entity Instance Name</string>
+    <string name="unique_id">1234</string>
+    <string name="no_tracked_entity_instances_found">No tracked entity instances found</string>
+    <!--Strings related to events-->
+    <string name="title_activity_events">Events</string>
+    <string name="no_events_found">No events found</string>
+    <!-- Strings related to navigation -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">User name</string>
+    <string name="nav_header_subtitle">user@email.com</string>
+    <string name="data_management">Data management</string>
+    <string name="session">Session</string>
+    <!-- Strings related to errors -->
+    <string name="title_activity_d2_errors">Your errors</string>
+    <string name="no_d2_errors_found">No errors found</string>
+    <!-- Strings related to errors -->
+    <string name="title_activity_fk_violations">Foreign key violations</string>
+    <string name="no_fk_violations_found">No foreign key violations found</string>
+    <!-- Strings related to data sets -->
+    <string name="title_activity_data_sets">Your data sets</string>
+    <string name="no_data_sets_found">No data sets found</string>
+    <!-- Strings related to data set instances -->
+    <string name="title_activity_data_set_instances">Your data set instances</string>
+    <string name="no_data_set_instances_found">No data set instances found</string>
+    <!-- Strings related to the code executor-->
+    <string name="executing">Executing…</string>
+    <string name="code_executed">Code executed</string>
+    <string name="waiting_for_execution">Waiting for execution…</string>
+    <string name="execute_code">Execute</string>
+    <string name="code_executor">Code executor</string>
+    <!-- Strings related to enrollment forms -->
+    <string name="title_activity_enrollment_form">Enrollment form</string>
+    <string name="title_activity_event_form">Event form</string>
+    <string name="date_button_text">Click to select date</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="filter_background">filterBackground</string>
+
+    <!--<string name="app_name">Yashodhara</string> -->
+    <string name="login_title">CHDR Data Extraction</string>
+    <string name="login_description">Log in to your CHDR Data Extraction Account</string>
+    <string name="username"><font size="14">Username</font></string>
+    <string name="password"><font size="14">Password</font></string>
+    <string name="login">Login</string>
+
+    <!--    home-->
+    <string name="title_activity_home">home</string>
+    <string name="wish">Hello,</string>
+    <string name="sup_prog">Supplementary \nFeeding Programme</string>
+    <string name="thera_prog">Therapeutic Feeding \nProgramme</string>
+    <string name="overw_prog">Overweight/Obesity \nProgramme</string>
+    <string name="stunt_prog">Stunting \nProgramme</string>
+    <string name="other_prog">Other Health/ \nNon-health</string>
+    <string name="area_details">View my area details</string>
+    <string name="area_details_desc">Click here to view all the child list in your area</string>
+    <string name="new_child">Add new child</string>
+    <string name="new_child_desc">Click here to add a new child to programme</string>
+    <string name="all_reg">All registrations</string>
+
+    <!--    demographic info-->
+    <string name="demo_info_title">Demographic information</string>
+    <string name="date_of_reg"><font size="14">Date of registration</font></string>
+    <string name="gn_area"><font size="14">GN area</font></string>
+    <string name="birth_num"><font size="12">Birth and immunization \nRegistration number</font></string>
+    <string name="name"><font size="12">Name of the child</font></string>
+    <string name="sex"><font size="12">Sex</font></string>
+    <string name="date_of_birth"><font size="12">Date of birth</font></string>
+    <string name="ethnicity"><font size="12">Ethnicity</font></string>
+    <string name="addr"><font size="12">Address</font></string>
+    <string name="sector"><font size="12">Sector</font></string>
+    <string name="ll_num"><font size="12">Land line number</font></string>
+    <string name="mob_num"><font size="12">Mobile number</font></string>
+
+    <!--    mother info-->
+    <string name="mother_info_title">Mother\'s information</string>
+    <string name="occup_mother"><font size="12">Occupation</font></string>
+    <string name="name_mother"><font size="12">Name of the mother</font></string>
+    <string name="date_of_birth_mother"><font size="12">Mother\'s date of birth</font></string>
+    <string name="no_of_children"><font size="12">Number of living children including this child</font></string>
+    <string name="edu_level_mother"><font size="12">Highest education level</font></string>
+    <string name="nic_mother"><font size="12">NIC number</font></string>
+
+    <!--    caregiver's info-->
+    <string name="caregiver_title">Care giver\'s information</string>
+    <string name="cg_rel"><font size="12">Caregiver\'s relationship to child</font></string>
+    <string name="cg_name"><font size="12">If caregiver is not the mother, caregiver\'s mame</font></string>
+    <string name="newborn_title">Newborn\'s information</string>
+    <string name="birth_len"><font size="12">Length at birth (cm)</font></string>
+    <string name="birth_weight"><font size="12">Birth weight (grams)</font></string>
+    <string name="submit">Submit</string>
+
+    <!--    anthropometry programme-->
+    <string name="an_title">Anthropometry Programme</string>
+    <string name="an_stage">Stage 1 : Anthropometry</string>
+    <string name="an_date_enrol"><font size="12">ate of enrollment</font></string>
+    <string name="an_date"><font size="12">Date</font></string>
+    <string name="an_weight"><font size="12">Weight (grams)</font></string>
+    <string name="an_length"><font size="12">Length/ Height (cm)</font></string>
+    <string name="an_measures_title">Anthropometric measures</string>
+    <string name="save">Save</string>
+
+    <!--    child details-->
+    <string name="cd_title">Child details</string>
+    <string name="cd_name"><font size="12">Child name</font></string>
+    <string name="cd_no"><font size="12">Birth and immunization \nRegistration number</font></string>
+    <string name="cd_dob"><font size="12">Date of birth</font></string>
+    <string name="cd_gender"><font size="12">Gender</font></string>
+    <string name="cd_aep">Already enrolled programmes</string>
+    <string name="cd_nep">Not enrolled programmes</string>
+
+    <!--    history-->
+    <string name="search"><font size="14">Search here</font></string>
+    <string name="search_btn"><font size="14">Search</font></string>
+
+    <!--    area details-->
+    <string name="ad_title">View my area details</string>
+    <string name="ad_area"><font size="12">Midwife area</font></string>
+    <string name="ad_search"><font size="12">Midwife area</font></string>
+    <string name="ad_sort"><font size="13">Sort by</font></string>
+    <string name="ad_search_result">Search here</string>
+
+    <string name="anthropometry">Anthropometry</string>
+    <string name="supplementary">Supplementary</string>
+    <string name="overweight">Overweight</string>
+    <string name="therapeutic">Therapeutic feeding</string>
+    <string name="stunt">Stunting</string>
+    <string name="other">Other health/ Non-health</string>
+
+
+</resources>
