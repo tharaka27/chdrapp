@@ -17,6 +17,7 @@ import com.echdr.android.echdrapp.data.service.ActivityStarter;
 import com.echdr.android.echdrapp.ui.base.ListActivity;
 import com.echdr.android.echdrapp.ui.event_form.AnthropometryActivity;
 import com.echdr.android.echdrapp.ui.event_form.EventFormActivity;
+import com.echdr.android.echdrapp.ui.event_form.SupplementaryIndicationActivity;
 
 import org.hisp.dhis.android.core.event.EventCollectionRepository;
 import org.hisp.dhis.android.core.event.EventCreateProjection;
@@ -148,6 +149,7 @@ public class EventsActivity extends ListActivity {
                                             .map(eventUid ->
                                                     {
                                                         System.out.println("Valencia Came here");
+                                                        System.out.println(selectedProgram);
                                                         if(selectedProgram.equals("hM6Yt9FQL0n"))
                                                         {
                                                             return AnthropometryActivity.getFormActivityIntent(
@@ -157,6 +159,16 @@ public class EventsActivity extends ListActivity {
                                                                     Sdk.d2().organisationUnitModule().organisationUnits()
                                                                             .one().blockingGet().uid(),
                                                                     AnthropometryActivity.FormType.CREATE,
+                                                                    selectedChild);
+                                                        }else if(stageSelected.equals("KN0o3H6x8IH"))
+                                                        {
+                                                            return SupplementaryIndicationActivity.getFormActivityIntent(
+                                                                    EventsActivity.this,
+                                                                    eventUid,
+                                                                    selectedProgram,
+                                                                    Sdk.d2().organisationUnitModule().organisationUnits()
+                                                                            .one().blockingGet().uid(),
+                                                                    SupplementaryIndicationActivity.FormType.CREATE,
                                                                     selectedChild);
                                                         }
                                                         else{

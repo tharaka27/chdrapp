@@ -17,6 +17,7 @@ import com.echdr.android.echdrapp.ui.base.DiffByIdItemCallback;
 import com.echdr.android.echdrapp.ui.base.ListItemWithSyncHolder;
 import com.echdr.android.echdrapp.ui.event_form.AnthropometryActivity;
 import com.echdr.android.echdrapp.ui.event_form.EventFormActivity;
+import com.echdr.android.echdrapp.ui.event_form.SupplementaryIndicationActivity;
 import com.echdr.android.echdrapp.ui.tracker_import_conflicts.TrackerImportConflictsAdapter;
 
 import org.hisp.dhis.android.core.category.CategoryOptionCombo;
@@ -85,6 +86,18 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
                                 event.program(),
                                 event.organisationUnit(),
                                 AnthropometryActivity.FormType.CHECK,
+                                selectedChild
+                        ), false
+                );
+            }else if(event.programStage().equals("KN0o3H6x8IH"))
+            {
+                ActivityStarter.startActivity(activity,
+                        SupplementaryIndicationActivity.getFormActivityIntent(
+                                activity,
+                                event.uid(),
+                                event.program(),
+                                event.organisationUnit(),
+                                SupplementaryIndicationActivity.FormType.CHECK,
                                 selectedChild
                         ), false
                 );

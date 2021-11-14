@@ -180,5 +180,11 @@
     <string name="stunt">Stunting</string>
     <string name="other">Other health/ Non-health</string>
 
+    <!--    Supplementary intervention spinner-->
+    <string-array name="supp_intervention_type">
+        <item>1st time enrollment to this programme</item>
+        <item>Relapse</item>
+    </string-array>
+
 
 </resources>
