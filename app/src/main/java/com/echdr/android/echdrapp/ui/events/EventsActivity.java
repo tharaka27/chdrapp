@@ -20,6 +20,7 @@ import com.echdr.android.echdrapp.ui.event_form.EventFormActivity;
 import com.echdr.android.echdrapp.ui.event_form.OtherEvaluationActivity;
 import com.echdr.android.echdrapp.ui.event_form.OverweightManagementActivity;
 import com.echdr.android.echdrapp.ui.event_form.OverweightOutcomeActivity;
+import com.echdr.android.echdrapp.ui.event_form.StuntingInterventionActivity;
 import com.echdr.android.echdrapp.ui.event_form.SupplementaryIndicationActivity;
 
 import org.hisp.dhis.android.core.event.EventCollectionRepository;
@@ -208,7 +209,17 @@ public class EventsActivity extends ListActivity {
                                                                     OverweightOutcomeActivity.FormType.CREATE,
                                                                     selectedChild);
                                                         }
-
+                                                        else if(stageSelected.equals("mjjxR9aGJ4P")) // stunting - intervention
+                                                        {
+                                                            return StuntingInterventionActivity.getFormActivityIntent(
+                                                                    EventsActivity.this,
+                                                                    eventUid,
+                                                                    selectedProgram,
+                                                                    Sdk.d2().organisationUnitModule().organisationUnits()
+                                                                            .one().blockingGet().uid(),
+                                                                    StuntingInterventionActivity.FormType.CREATE,
+                                                                    selectedChild);
+                                                        }
                                                         else{
                                                             return EventFormActivity.getFormActivityIntent(EventsActivity.this,
                                                                     eventUid,

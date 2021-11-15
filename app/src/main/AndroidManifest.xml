@@ -31,6 +31,9 @@
         <activity
             android:name=".ui.event_form.OverweightOutcomeActivity"
             android:exported="true" />
+        <activity
+            android:name=".ui.event_form.StuntingInterventionActivity"
+            android:exported="true" />
 
         <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
