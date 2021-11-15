@@ -17,6 +17,7 @@ import com.echdr.android.echdrapp.data.service.ActivityStarter;
 import com.echdr.android.echdrapp.ui.base.ListActivity;
 import com.echdr.android.echdrapp.ui.event_form.AnthropometryActivity;
 import com.echdr.android.echdrapp.ui.event_form.EventFormActivity;
+import com.echdr.android.echdrapp.ui.event_form.OtherEvaluationActivity;
 import com.echdr.android.echdrapp.ui.event_form.SupplementaryIndicationActivity;
 
 import org.hisp.dhis.android.core.event.EventCollectionRepository;
@@ -171,6 +172,18 @@ public class EventsActivity extends ListActivity {
                                                                     SupplementaryIndicationActivity.FormType.CREATE,
                                                                     selectedChild);
                                                         }
+                                                        else if(stageSelected.equals("O9FEeIYqGRH")) // other - evaluation
+                                                        {
+                                                            return OtherEvaluationActivity.getFormActivityIntent(
+                                                                    EventsActivity.this,
+                                                                    eventUid,
+                                                                    selectedProgram,
+                                                                    Sdk.d2().organisationUnitModule().organisationUnits()
+                                                                            .one().blockingGet().uid(),
+                                                                    OtherEvaluationActivity.FormType.CREATE,
+                                                                    selectedChild);
+                                                        }
+
                                                         else{
                                                             return EventFormActivity.getFormActivityIntent(EventsActivity.this,
                                                                     eventUid,

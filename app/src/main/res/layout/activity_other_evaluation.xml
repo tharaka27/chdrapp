@@ -54,11 +54,11 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.4"
                             android:background="@null"
-                            android:text="Indication for thriposha date"
+                            android:text="Evaluation date"
                             android:textColorHint="@color/desc" />
 
                         <TextView
-                            android:id="@+id/editTextDate"
+                            android:id="@+id/otherEvaluationDate"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
@@ -68,7 +68,7 @@
                             android:textColorHint="@color/desc" />
 
                         <ImageView
-                            android:id="@+id/supp_date_pick"
+                            android:id="@+id/risk_factor_date_pick"
                             android:layout_width="0dp"
                             android:layout_height="20dp"
                             android:layout_gravity="center_vertical"
@@ -95,11 +95,11 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="MAM"
+                            android:text="Poverty and poor income management"
                             android:textColorHint="@color/desc" />
 
                         <CheckBox
-                            android:id="@+id/MAM_Checkbox"
+                            android:id="@+id/Poor_income_Checkbox"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
@@ -128,11 +128,11 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Long standing growth filtering in green zone"
+                            android:text="Food insecurity"
                             android:textColorHint="@color/desc" />
 
                         <CheckBox
-                            android:id="@+id/Green_Checkbox"
+                            android:id="@+id/Food_insecurity_Checkbox"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
@@ -142,6 +142,7 @@
                             android:textColorHint="@color/desc" />
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
@@ -160,20 +161,86 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Enrollment type"
+                            android:text="Inadequate water sanitation"
                             android:textColorHint="@color/desc" />
 
-                        <Spinner
-                            android:id="@+id/Enrollment_spinner"
+                        <CheckBox
+                            android:id="@+id/Inadequate_water_Checkbox"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.5">
-
-                        </Spinner>
-
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:text ="Yes"
+                            android:textColorHint="@color/desc" />
 
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_popup_card"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:text="Inadequate child care"
+                            android:textColorHint="@color/desc" />
+
+                        <CheckBox
+                            android:id="@+id/Inadequate_child_Checkbox"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:text ="Yes"
+                            android:textColorHint="@color/desc" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_popup_card"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:text="High prevalence of communicable diseases"
+                            android:textColorHint="@color/desc" />
+
+                        <CheckBox
+                            android:id="@+id/Communicable_diseases_Checkbox"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:text ="Yes"
+                            android:textColorHint="@color/desc" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -183,7 +250,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/supplementaryIndicationSave"
+        android:id="@+id/otherEvaluationSave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -232,7 +299,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@+id/back_btn"
-                    android:text="Indication for Thriposha"
+                    android:text="Risk Factor Evaluation"
                     android:textAlignment="center"
                     android:textColor="@color/title"
                     android:textSize="20sp"

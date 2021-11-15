@@ -17,6 +17,7 @@ import com.echdr.android.echdrapp.ui.base.DiffByIdItemCallback;
 import com.echdr.android.echdrapp.ui.base.ListItemWithSyncHolder;
 import com.echdr.android.echdrapp.ui.event_form.AnthropometryActivity;
 import com.echdr.android.echdrapp.ui.event_form.EventFormActivity;
+import com.echdr.android.echdrapp.ui.event_form.OtherEvaluationActivity;
 import com.echdr.android.echdrapp.ui.event_form.SupplementaryIndicationActivity;
 import com.echdr.android.echdrapp.ui.tracker_import_conflicts.TrackerImportConflictsAdapter;
 
@@ -89,7 +90,7 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
                                 selectedChild
                         ), false
                 );
-            }else if(event.programStage().equals("KN0o3H6x8IH"))
+            }else if(event.programStage().equals("KN0o3H6x8IH")) // supplementary - indication for thriposha
             {
                 ActivityStarter.startActivity(activity,
                         SupplementaryIndicationActivity.getFormActivityIntent(
@@ -98,6 +99,19 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
                                 event.program(),
                                 event.organisationUnit(),
                                 SupplementaryIndicationActivity.FormType.CHECK,
+                                selectedChild
+                        ), false
+                );
+            }
+            else if(event.programStage().equals("O9FEeIYqGRH")) // other - evaluation
+            {
+                ActivityStarter.startActivity(activity,
+                        OtherEvaluationActivity.getFormActivityIntent(
+                                activity,
+                                event.uid(),
+                                event.program(),
+                                event.organisationUnit(),
+                                OtherEvaluationActivity.FormType.CHECK,
                                 selectedChild
                         ), false
                 );
