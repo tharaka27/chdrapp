@@ -185,6 +185,9 @@
         <item>1st time enrollment to this programme</item>
         <item>Relapse</item>
     </string-array>
-
+    <string-array name="other_management_type">
+        <item>1st time enrollment to this programme</item>
+        <item>Relapse</item>
+    </string-array>
 
 </resources>

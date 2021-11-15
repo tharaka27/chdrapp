@@ -18,6 +18,7 @@ import com.echdr.android.echdrapp.ui.base.ListActivity;
 import com.echdr.android.echdrapp.ui.event_form.AnthropometryActivity;
 import com.echdr.android.echdrapp.ui.event_form.EventFormActivity;
 import com.echdr.android.echdrapp.ui.event_form.OtherEvaluationActivity;
+import com.echdr.android.echdrapp.ui.event_form.OverweightManagementActivity;
 import com.echdr.android.echdrapp.ui.event_form.SupplementaryIndicationActivity;
 
 import org.hisp.dhis.android.core.event.EventCollectionRepository;
@@ -181,6 +182,18 @@ public class EventsActivity extends ListActivity {
                                                                     Sdk.d2().organisationUnitModule().organisationUnits()
                                                                             .one().blockingGet().uid(),
                                                                     OtherEvaluationActivity.FormType.CREATE,
+                                                                    selectedChild);
+                                                        }
+
+                                                        else if(stageSelected.equals("TC7YSoNEUag")) // overweight - management
+                                                        {
+                                                            return OverweightManagementActivity.getFormActivityIntent(
+                                                                    EventsActivity.this,
+                                                                    eventUid,
+                                                                    selectedProgram,
+                                                                    Sdk.d2().organisationUnitModule().organisationUnits()
+                                                                            .one().blockingGet().uid(),
+                                                                    OverweightManagementActivity.FormType.CREATE,
                                                                     selectedChild);
                                                         }
 
