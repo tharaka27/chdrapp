@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.Main_Yash">
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -417,7 +417,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="15dp"
                     android:layout_weight="1"
-                    android:text="Upload Data" />
+                    android:text="Upload Data"
+                    android:visibility="gone"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

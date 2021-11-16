@@ -177,8 +177,14 @@ public class MainActivity extends AppCompatActivity{
         syncBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                // First Upload any data
+                uploadData();
+
+                // Download Metadata and User data
+                // Downloading data happens after metadata download automatically
                 syncMetadata();
-                // Downloading data happens after this automatically
+
             }
         });
 
