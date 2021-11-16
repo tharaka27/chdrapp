@@ -22,6 +22,7 @@ import com.echdr.android.echdrapp.ui.event_form.OverweightManagementActivity;
 import com.echdr.android.echdrapp.ui.event_form.OverweightOutcomeActivity;
 import com.echdr.android.echdrapp.ui.event_form.StuntingInterventionActivity;
 import com.echdr.android.echdrapp.ui.event_form.SupplementaryIndicationActivity;
+import com.echdr.android.echdrapp.ui.event_form.SupplementaryOutcomeActivity;
 import com.echdr.android.echdrapp.ui.tracker_import_conflicts.TrackerImportConflictsAdapter;
 
 import org.hisp.dhis.android.core.category.CategoryOptionCombo;
@@ -154,6 +155,19 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
                                 event.program(),
                                 event.organisationUnit(),
                                 StuntingInterventionActivity.FormType.CHECK,
+                                selectedChild
+                        ), false
+                );
+            }
+            else if(event.programStage().equals("QKsx9TfOJ3m")) // supplementary - outcome
+            {
+                ActivityStarter.startActivity(activity,
+                        SupplementaryOutcomeActivity.getFormActivityIntent(
+                                activity,
+                                event.uid(),
+                                event.program(),
+                                event.organisationUnit(),
+                                SupplementaryOutcomeActivity.FormType.CHECK,
                                 selectedChild
                         ), false
                 );

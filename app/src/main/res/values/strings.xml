@@ -196,5 +196,13 @@
         <item>Left due to completion of age 5</item>
         <item>Died</item>
     </string-array>
+    <string-array name="supp_outcome_type">
+        <item>Recovered</item>
+        <item>Sent to therapeutic feeding Programme</item>
+        <item>Defaulted</item>
+        <item>Left the area</item>
+        <item>Left due to completion of age 5</item>
+        <item>Died</item>
+    </string-array>
 
 </resources>

@@ -34,7 +34,9 @@
         <activity
             android:name=".ui.event_form.StuntingInterventionActivity"
             android:exported="true" />
-
+        <activity
+            android:name=".ui.event_form.SupplementaryOutcomeActivity"
+            android:exported="true" />
         <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -22,6 +22,7 @@ import com.echdr.android.echdrapp.ui.event_form.OverweightManagementActivity;
 import com.echdr.android.echdrapp.ui.event_form.OverweightOutcomeActivity;
 import com.echdr.android.echdrapp.ui.event_form.StuntingInterventionActivity;
 import com.echdr.android.echdrapp.ui.event_form.SupplementaryIndicationActivity;
+import com.echdr.android.echdrapp.ui.event_form.SupplementaryOutcomeActivity;
 
 import org.hisp.dhis.android.core.event.EventCollectionRepository;
 import org.hisp.dhis.android.core.event.EventCreateProjection;
@@ -218,6 +219,17 @@ public class EventsActivity extends ListActivity {
                                                                     Sdk.d2().organisationUnitModule().organisationUnits()
                                                                             .one().blockingGet().uid(),
                                                                     StuntingInterventionActivity.FormType.CREATE,
+                                                                    selectedChild);
+                                                        }
+                                                        else if(stageSelected.equals("QKsx9TfOJ3m")) // supplementary - outcome
+                                                        {
+                                                            return SupplementaryOutcomeActivity.getFormActivityIntent(
+                                                                    EventsActivity.this,
+                                                                    eventUid,
+                                                                    selectedProgram,
+                                                                    Sdk.d2().organisationUnitModule().organisationUnits()
+                                                                            .one().blockingGet().uid(),
+                                                                    SupplementaryOutcomeActivity.FormType.CREATE,
                                                                     selectedChild);
                                                         }
                                                         else{
