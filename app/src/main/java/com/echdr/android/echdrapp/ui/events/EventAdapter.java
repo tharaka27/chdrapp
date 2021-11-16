@@ -23,6 +23,7 @@ import com.echdr.android.echdrapp.ui.event_form.OverweightOutcomeActivity;
 import com.echdr.android.echdrapp.ui.event_form.StuntingInterventionActivity;
 import com.echdr.android.echdrapp.ui.event_form.SupplementaryIndicationActivity;
 import com.echdr.android.echdrapp.ui.event_form.SupplementaryOutcomeActivity;
+import com.echdr.android.echdrapp.ui.event_form.TherapeuticInterventionActivity;
 import com.echdr.android.echdrapp.ui.tracker_import_conflicts.TrackerImportConflictsAdapter;
 
 import org.hisp.dhis.android.core.category.CategoryOptionCombo;
@@ -168,6 +169,19 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
                                 event.program(),
                                 event.organisationUnit(),
                                 SupplementaryOutcomeActivity.FormType.CHECK,
+                                selectedChild
+                        ), false
+                );
+            }
+            else if(event.programStage().equals("YweAFncBjUm")) // therapeutic - intervention
+            {
+                ActivityStarter.startActivity(activity,
+                        TherapeuticInterventionActivity.getFormActivityIntent(
+                                activity,
+                                event.uid(),
+                                event.program(),
+                                event.organisationUnit(),
+                                TherapeuticInterventionActivity.FormType.CHECK,
                                 selectedChild
                         ), false
                 );
