@@ -18,6 +18,7 @@ import com.echdr.android.echdrapp.ui.base.ListItemWithSyncHolder;
 import com.echdr.android.echdrapp.ui.event_form.AnthropometryActivity;
 import com.echdr.android.echdrapp.ui.event_form.EventFormActivity;
 import com.echdr.android.echdrapp.ui.event_form.OtherEvaluationActivity;
+import com.echdr.android.echdrapp.ui.event_form.OtherReasonForActivity;
 import com.echdr.android.echdrapp.ui.event_form.OverweightManagementActivity;
 import com.echdr.android.echdrapp.ui.event_form.OverweightOutcomeActivity;
 import com.echdr.android.echdrapp.ui.event_form.StuntingInterventionActivity;
@@ -117,6 +118,19 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
                                 event.program(),
                                 event.organisationUnit(),
                                 OtherEvaluationActivity.FormType.CHECK,
+                                selectedChild
+                        ), false
+                );
+            }
+            else if(event.programStage().equals("iWycCg6C2gd")) // other - reason
+            {
+                ActivityStarter.startActivity(activity,
+                        OtherReasonForActivity.getFormActivityIntent(
+                                activity,
+                                event.uid(),
+                                event.program(),
+                                event.organisationUnit(),
+                                OtherReasonForActivity.FormType.CHECK,
                                 selectedChild
                         ), false
                 );

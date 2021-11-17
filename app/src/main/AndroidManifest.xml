@@ -29,6 +29,9 @@
             android:name=".ui.event_form.OverweightManagementActivity"
             android:exported="true" />
         <activity
+            android:name=".ui.event_form.OtherReasonForActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.event_form.OverweightOutcomeActivity"
             android:exported="true" />
         <activity
