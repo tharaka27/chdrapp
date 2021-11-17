@@ -189,6 +189,10 @@
         <item>1st time enrollment to this programme</item>
         <item>Relapse</item>
     </string-array>
+    <string-array name="stunting_management_type">
+        <item>1st time enrollment to this programme</item>
+        <item>Relapse</item>
+    </string-array>
     <string-array name="overweight_outcome_type">
         <item>Recovered</item>
         <item>Defaulted</item>

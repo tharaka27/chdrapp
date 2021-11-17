@@ -41,6 +41,9 @@
             android:name=".ui.event_form.StuntingInterventionActivity"
             android:exported="true" />
         <activity
+            android:name=".ui.event_form.StuntingManagementActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.event_form.SupplementaryOutcomeActivity"
             android:exported="true" />
         <activity

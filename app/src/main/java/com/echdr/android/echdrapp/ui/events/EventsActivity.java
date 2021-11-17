@@ -23,6 +23,7 @@ import com.echdr.android.echdrapp.ui.event_form.OverweightIntervensionActivity;
 import com.echdr.android.echdrapp.ui.event_form.OverweightManagementActivity;
 import com.echdr.android.echdrapp.ui.event_form.OverweightOutcomeActivity;
 import com.echdr.android.echdrapp.ui.event_form.StuntingInterventionActivity;
+import com.echdr.android.echdrapp.ui.event_form.StuntingManagementActivity;
 import com.echdr.android.echdrapp.ui.event_form.SupplementaryIndicationActivity;
 import com.echdr.android.echdrapp.ui.event_form.SupplementaryOutcomeActivity;
 import com.echdr.android.echdrapp.ui.event_form.TherapeuticInterventionActivity;
@@ -244,6 +245,17 @@ public class EventsActivity extends ListActivity {
                                                                     Sdk.d2().organisationUnitModule().organisationUnits()
                                                                             .one().blockingGet().uid(),
                                                                     StuntingInterventionActivity.FormType.CREATE,
+                                                                    selectedChild);
+                                                        }
+                                                        else if(stageSelected.equals("iEylwjAa5Cq")) // stunting - management
+                                                        {
+                                                            return StuntingManagementActivity.getFormActivityIntent(
+                                                                    EventsActivity.this,
+                                                                    eventUid,
+                                                                    selectedProgram,
+                                                                    Sdk.d2().organisationUnitModule().organisationUnits()
+                                                                            .one().blockingGet().uid(),
+                                                                    StuntingManagementActivity.FormType.CREATE,
                                                                     selectedChild);
                                                         }
                                                         else if(stageSelected.equals("QKsx9TfOJ3m")) // supplementary - outcome
