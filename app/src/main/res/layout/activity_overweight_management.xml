@@ -141,23 +141,23 @@
                             android:textColorHint="@color/desc">
 
                             <RadioButton
-                                android:layout_width="0dp"
-                                android:layout_weight="0.5"
-                                android:layout_height="55dp"
-                                android:text="Yes"
                                 android:id="@+id/radioButtonHospitalYes"
-                                android:checked="false"
+                                android:layout_width="0dp"
+                                android:layout_height="55dp"
                                 android:layout_gravity="center_horizontal"
+                                android:layout_weight="0.5"
+                                android:checked="false"
+                                android:text="Yes"
                                 android:textSize="15sp" />
 
                             <RadioButton
-                                android:layout_width="0dp"
-                                android:layout_weight="0.5"
-                                android:layout_height="55dp"
-                                android:text="No"
                                 android:id="@+id/radioButtonHospitalNo"
+                                android:layout_width="0dp"
+                                android:layout_height="55dp"
                                 android:layout_gravity="center_horizontal"
+                                android:layout_weight="0.5"
                                 android:checked="false"
+                                android:text="No"
                                 android:textSize="15sp" />
 
                         </RadioGroup>
@@ -197,30 +197,29 @@
                             android:textColorHint="@color/desc">
 
                             <RadioButton
-                                android:layout_width="0dp"
-                                android:layout_weight="0.5"
-                                android:layout_height="55dp"
-                                android:text="Yes"
                                 android:id="@+id/radioButtonPaediatricianYes"
-                                android:checked="false"
+                                android:layout_width="0dp"
+                                android:layout_height="55dp"
                                 android:layout_gravity="center_horizontal"
+                                android:layout_weight="0.5"
+                                android:checked="false"
+                                android:text="Yes"
                                 android:textSize="15sp" />
 
                             <RadioButton
-                                android:layout_width="0dp"
-                                android:layout_weight="0.5"
-                                android:layout_height="55dp"
-                                android:text="No"
                                 android:id="@+id/radioButtonPaediatricianNo"
+                                android:layout_width="0dp"
+                                android:layout_height="55dp"
                                 android:layout_gravity="center_horizontal"
+                                android:layout_weight="0.5"
                                 android:checked="false"
+                                android:text="No"
                                 android:textSize="15sp" />
 
                         </RadioGroup>
 
 
                     </LinearLayout>
-
 
 
                 </LinearLayout>

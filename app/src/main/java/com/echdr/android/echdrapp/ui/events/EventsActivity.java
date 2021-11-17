@@ -19,6 +19,7 @@ import com.echdr.android.echdrapp.ui.event_form.AnthropometryActivity;
 import com.echdr.android.echdrapp.ui.event_form.EventFormActivity;
 import com.echdr.android.echdrapp.ui.event_form.OtherEvaluationActivity;
 import com.echdr.android.echdrapp.ui.event_form.OtherReasonForActivity;
+import com.echdr.android.echdrapp.ui.event_form.OverweightIntervensionActivity;
 import com.echdr.android.echdrapp.ui.event_form.OverweightManagementActivity;
 import com.echdr.android.echdrapp.ui.event_form.OverweightOutcomeActivity;
 import com.echdr.android.echdrapp.ui.event_form.StuntingInterventionActivity;
@@ -210,6 +211,17 @@ public class EventsActivity extends ListActivity {
                                                                     Sdk.d2().organisationUnitModule().organisationUnits()
                                                                             .one().blockingGet().uid(),
                                                                     OverweightManagementActivity.FormType.CREATE,
+                                                                    selectedChild);
+                                                        }
+                                                        else if(stageSelected.equals("S4DegY3OjJv")) // overweight - intervention
+                                                        {
+                                                            return OverweightIntervensionActivity.getFormActivityIntent(
+                                                                    EventsActivity.this,
+                                                                    eventUid,
+                                                                    selectedProgram,
+                                                                    Sdk.d2().organisationUnitModule().organisationUnits()
+                                                                            .one().blockingGet().uid(),
+                                                                    OverweightIntervensionActivity.FormType.CREATE,
                                                                     selectedChild);
                                                         }
                                                         else if(stageSelected.equals("ctwLm9rn8gr")) // overweight - outcome
