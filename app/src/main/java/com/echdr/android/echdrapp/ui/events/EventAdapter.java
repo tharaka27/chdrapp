@@ -24,6 +24,7 @@ import com.echdr.android.echdrapp.ui.event_form.OverweightManagementActivity;
 import com.echdr.android.echdrapp.ui.event_form.OverweightOutcomeActivity;
 import com.echdr.android.echdrapp.ui.event_form.StuntingInterventionActivity;
 import com.echdr.android.echdrapp.ui.event_form.StuntingManagementActivity;
+import com.echdr.android.echdrapp.ui.event_form.StuntingOutcomeActivity;
 import com.echdr.android.echdrapp.ui.event_form.SupplementaryIndicationActivity;
 import com.echdr.android.echdrapp.ui.event_form.SupplementaryOutcomeActivity;
 import com.echdr.android.echdrapp.ui.event_form.TherapeuticInterventionActivity;
@@ -198,6 +199,19 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
                                 event.program(),
                                 event.organisationUnit(),
                                 StuntingManagementActivity.FormType.CHECK,
+                                selectedChild
+                        ), false
+                );
+            }
+            else if(event.programStage().equals("L4MJKSCcUof")) // stunting - management
+            {
+                ActivityStarter.startActivity(activity,
+                        StuntingOutcomeActivity.getFormActivityIntent(
+                                activity,
+                                event.uid(),
+                                event.program(),
+                                event.organisationUnit(),
+                                StuntingOutcomeActivity.FormType.CHECK,
                                 selectedChild
                         ), false
                 );
