@@ -24,7 +24,6 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 import org.hisp.dhis.android.core.event.Event;
-import org.hisp.dhis.android.core.event.EventCollectionRepository;
 import org.hisp.dhis.android.core.maintenance.D2Error;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValue;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityDataValue;
@@ -83,7 +82,7 @@ public class AnthropometryActivity extends AppCompatActivity {
         FloatingActionButton saveButton = findViewById(R.id.anthropometrySave);
         heightGraph = findViewById(R.id.heightforageAnthropometry);
         weightGraph = findViewById(R.id.weightforageAnthropometry);
-        AgeInWeeksTxt  = findViewById(R.id.ageInWeeks);
+        AgeInWeeksTxt = findViewById(R.id.ageInWeeks);
         Button plotGraphButton = findViewById(R.id.plotGraph);
 
 
@@ -111,18 +110,15 @@ public class AnthropometryActivity extends AppCompatActivity {
             Date dob = formatter.parse(birthday.value());
 
 
-
             long diffInMillies = date.getTime() - dob.getTime();
 
             currentAge1 = (int) TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS) / 10;
 
             System.out.println("Current age in weeks is " + currentAge1);
 
-        }
-        catch (Exception error)
-        {
+        } catch (Exception error) {
             currentAge1 = 0;
-            System.out.print( "Error in parsing date field: " +  error.toString());
+            System.out.print("Error in parsing date field: " + error.toString());
         }
 
 
@@ -131,50 +127,47 @@ public class AnthropometryActivity extends AppCompatActivity {
 
         saveButton.setOnClickListener(v -> {
             String heightTextValue = heightTxt.getText().toString();
-            String weightTextValue = weightTxt.getText().toString() ;
+            String weightTextValue = weightTxt.getText().toString();
 
 
             saveDataElement("cDXlUgg1WiZ", heightTextValue); // save height value
             saveDataElement("rBRI27lvfY5", weightTextValue); // save weight value
-            System.out.println( formatter.format(new Date()).toString());
+            System.out.println(formatter.format(new Date()).toString());
             saveDataElement("YB21tVtxZ0z", formatter.format(new Date()).toString());
             //String ageString = String.valueOf((int)Math.ceil(currentAge/4));
             saveDataElement("b4Gpl5ayBe3", "");
 
         });
 
-        dataValuesWHO d =  dataValuesWHO.getInstance();
+        DataValuesWHO d = DataValuesWHO.getInstance();
         Map<Integer, double[]> heightDataWHO;
         Map<Integer, double[]> weightDataWHO;
 
         setupCharts(d);
         fillChart();
 
-        if(sex.equals("Male"))
-        {
+        if (sex.equals("Male")) {
             d.initializeweightForAgeBoys();
             d.initializeheightForAgeBoys();
             heightDataWHO = d.getHeightForAgeBoys();
             weightDataWHO = d.getWeightForAgeBoys();
 
-        }else{
+        } else {
             d.initializeheightForAgeGirls();
             d.initializeweightForAgeGirls();
             heightDataWHO = d.getHeightForAgeGirls();
             weightDataWHO = d.getWeightForAgeGirls();
         }
 
-        if(formType == FormType.CHECK)
-        {
+        if (formType == FormType.CHECK) {
             heightTxt.setText(getDataElement("cDXlUgg1WiZ"));
             weightTxt.setText(getDataElement("rBRI27lvfY5"));
 
             float currentWeightInt = 0;
-            if(weightTxt.getText().toString().isEmpty()){
+            if (weightTxt.getText().toString().isEmpty()) {
                 currentWeightInt = 0;
-            }else
-            {
-                currentWeightInt = Float.parseFloat(weightTxt.getText().toString())/1000f;
+            } else {
+                currentWeightInt = Float.parseFloat(weightTxt.getText().toString()) / 1000f;
             }
 
             String Currentweight = String.valueOf(currentWeightInt);
@@ -221,7 +214,7 @@ public class AnthropometryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 saveDataElement("cDXlUgg1WiZ", heightTxt.getText().toString()); // save height value
-                saveDataElement("rBRI27lvfY5",  weightTxt.getText().toString()); // save height value
+                saveDataElement("rBRI27lvfY5", weightTxt.getText().toString()); // save height value
                 weightGraph.removeAllSeries();
                 heightGraph.removeAllSeries();
                 setupCharts(d);
@@ -232,7 +225,7 @@ public class AnthropometryActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
     }
 
@@ -255,7 +248,7 @@ public class AnthropometryActivity extends AppCompatActivity {
         finish();
     }
 
-    private String getDataElement(String dataElement){
+    private String getDataElement(String dataElement) {
         TrackedEntityDataValueObjectRepository valueRepository =
                 Sdk.d2().trackedEntityModule().trackedEntityDataValues()
                         .value(
@@ -269,7 +262,7 @@ public class AnthropometryActivity extends AppCompatActivity {
         return currentValue;
     }
 
-    private void saveDataElement(String dataElement, String value){
+    private void saveDataElement(String dataElement, String value) {
         TrackedEntityDataValueObjectRepository valueRepository;
         try {
             valueRepository = Sdk.d2().trackedEntityModule().trackedEntityDataValues()
@@ -277,8 +270,7 @@ public class AnthropometryActivity extends AppCompatActivity {
                             EventFormService.getInstance().getEventUid(),
                             dataElement
                     );
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             EventFormService.getInstance().init(
                     Sdk.d2(),
                     eventUid,
@@ -297,93 +289,97 @@ public class AnthropometryActivity extends AppCompatActivity {
         if (currentValue == null)
             currentValue = "";
 
-        try{
-            if(!isEmpty(value))
-            {
+        try {
+            if (!isEmpty(value)) {
                 valueRepository.blockingSet(value);
-            }else
-            {
+            } else {
                 valueRepository.blockingDeleteIfExist();
             }
         } catch (D2Error d2Error) {
             d2Error.printStackTrace();
-        }finally {
+        } finally {
             if (!value.equals(currentValue)) {
                 engineInitialization.onNext(true);
             }
         }
     }
 
-    private void setupCharts(dataValuesWHO e)
-    {
-        if(sex.equals("Male"))
-        {
+    private void setupCharts(DataValuesWHO e) {
+        if (sex.equals("Male")) {
             e.initializeheightForAgeBoys();
             e.initializeweightForAgeBoys();
 
-            for(int i=6; i > -1; i--)
-            {
+            for (int i = 3; i > -1; i--) {
                 heightGraph.addSeries(e.heightForAgeBoysValues(i, 60));
                 weightGraph.addSeries(e.weightForAgeBoys(i, 60));
             }
 
-        }else {
+        } else {
             e.initializeheightForAgeGirls();
             e.initializeweightForAgeGirls();
 
-            for(int i=6; i > -1; i--)
-            {
+            for (int i = 3; i > -1; i--) {
                 heightGraph.addSeries(e.heightForAgeGirlsValues(i, 60));
                 weightGraph.addSeries(e.weightForAgeGirlsValues(i, 60));
             }
 
         }
 
+        heightGraph.getViewport().setBackgroundColor(Color.rgb(215, 31, 226));
+        weightGraph.getViewport().setBackgroundColor(Color.rgb(215, 31, 226));
+
         heightGraph.getViewport().setMaxX(60);
+        heightGraph.getViewport().setMaxY(130);
+
         weightGraph.getViewport().setMaxX(60);
+        weightGraph.getViewport().setMaxY(30);
+
+        // don't show anomalies ( might be redundant when zooming is enabled)
+        weightGraph.getViewport().setYAxisBoundsManual(true);
+        heightGraph.getViewport().setYAxisBoundsManual(true);
+        weightGraph.getViewport().setXAxisBoundsManual(true);
+        heightGraph.getViewport().setXAxisBoundsManual(true);
+
+        // enable zooming
+        weightGraph.getViewport().setScalable(true);
+        heightGraph.getViewport().setScalable(true);
+        weightGraph.getViewport().setScalableY(true);
+        heightGraph.getViewport().setScalableY(true);
     }
 
     private void ChangeColor(EditText text, String s, int currentAge,
-                             Map<Integer, double[]> data , boolean height)
-    {
+                             Map<Integer, double[]> data, boolean height) {
         float currentValue;
-        if(s.isEmpty())
-        {
+        if (s.isEmpty()) {
             currentValue = 0;
-        }else{
-            if(height)
-            {
-                currentValue = Float.parseFloat(s) ;
-            }else
-            {
+        } else {
+            if (height) {
+                currentValue = Float.parseFloat(s);
+            } else {
                 currentValue = Float.parseFloat(s) / 1000f;
             }
         }
 
         int category = 0;
-        try{
-            double [] array = data.get(currentAge);
-            for(category=0; category< 7;)
-            {
+        try {
+            double[] array = data.get(currentAge);
+            for (category = 0; category < 7; ) {
 
                 assert array != null;
-                if (array[category] < currentValue)
-                {
+                if (array[category] < currentValue) {
                     category++;
-                }else
-                {
+                } else {
                     break;
                 }
             }
-            category = category-1;
-        }catch (Exception e)
-        {
+            category = category - 1;
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         System.out.println("Suitable Category is " + category);
 
-        switch (category){
+        switch (category) {
             case -1:
             case 5:
                 text.setBackgroundColor(Color.RED);
@@ -404,8 +400,7 @@ public class AnthropometryActivity extends AppCompatActivity {
 
     }
 
-    public void fillChart()
-    {
+    public void fillChart() {
         List<String> j = new ArrayList<>();
         j.add(selectedChild);
 
@@ -422,29 +417,26 @@ public class AnthropometryActivity extends AppCompatActivity {
                 .one().blockingGet();
 
         // height graph
-        heightGraph.addSeries(getData(eventRepository, "cDXlUgg1WiZ", dob , 1));
+        heightGraph.addSeries(getData(eventRepository, "cDXlUgg1WiZ", dob, 1));
 
         // weight graph
-        weightGraph.addSeries(getData(eventRepository, "rBRI27lvfY5", dob , 1000));
+        weightGraph.addSeries(getData(eventRepository, "rBRI27lvfY5", dob, 1000));
 
     }
 
 
-
     public LineGraphSeries getData(List<Event> eventRepository, String dataElement,
-                                   TrackedEntityAttributeValue data, float factor ){
+                                   TrackedEntityAttributeValue data, float factor) {
         float[] data_list = new float[60];
         List<TrackedEntityDataValue> event_Array = new ArrayList<>();
 
-        for(int i =0; i < eventRepository.size();i++)
-        {
+        for (int i = 0; i < eventRepository.size(); i++) {
             TrackedEntityDataValue d = Sdk.d2().trackedEntityModule()
                     .trackedEntityDataValues()
                     .byDataElement().eq(dataElement)
                     .byEvent().eq(eventRepository.get(i).uid())
                     .one().blockingGet();
-            if(d != null)
-            {
+            if (d != null) {
                 event_Array.add(d);
             }
         }
@@ -464,18 +456,15 @@ public class AnthropometryActivity extends AppCompatActivity {
                 System.out.println("Week number is " + diff);
                 data_list[diff] = Float.parseFloat(event_Array.get(i).value());
             }
-        }
-        catch (Exception error)
-        {
-            System.out.print( "Error in parsing date field: " +  error.toString());
+        } catch (Exception error) {
+            System.out.print("Error in parsing date field: " + error.toString());
         }
 
-        LineGraphSeries<DataPoint> line_series  = new LineGraphSeries<DataPoint>();
+        LineGraphSeries<DataPoint> line_series = new LineGraphSeries<DataPoint>();
 
-        for(int i=0; i< 60; i++)
-        {
+        for (int i = 0; i < 60; i++) {
             line_series.appendData(
-                    new DataPoint(i, data_list[i]/factor ), true, 60);
+                    new DataPoint(i, data_list[i] / factor), true, 60);
         }
 
         line_series.setColor(Color.BLACK);

@@ -1,24 +1,20 @@
 package com.echdr.android.echdrapp.ui.enrollment_form;
 
-import android.graphics.Color;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.echdr.android.echdrapp.R;
 import com.echdr.android.echdrapp.data.Sdk;
 import com.echdr.android.echdrapp.data.service.forms.FormField;
-import com.echdr.android.echdrapp.ui.event_form.dataValuesWHO;
 
 import org.hisp.dhis.android.core.option.Option;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 class OptionSetFieldHolder extends FieldHolder {
