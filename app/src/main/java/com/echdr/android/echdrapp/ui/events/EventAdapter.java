@@ -26,6 +26,7 @@ import com.echdr.android.echdrapp.ui.event_form.StuntingInterventionActivity;
 import com.echdr.android.echdrapp.ui.event_form.StuntingManagementActivity;
 import com.echdr.android.echdrapp.ui.event_form.StuntingOutcomeActivity;
 import com.echdr.android.echdrapp.ui.event_form.SupplementaryIndicationActivity;
+import com.echdr.android.echdrapp.ui.event_form.SupplementaryInterventionActivity;
 import com.echdr.android.echdrapp.ui.event_form.SupplementaryOutcomeActivity;
 import com.echdr.android.echdrapp.ui.event_form.TherapeuticInterventionActivity;
 import com.echdr.android.echdrapp.ui.tracker_import_conflicts.TrackerImportConflictsAdapter;
@@ -225,6 +226,19 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
                                 event.program(),
                                 event.organisationUnit(),
                                 SupplementaryOutcomeActivity.FormType.CHECK,
+                                selectedChild
+                        ), false
+                );
+            }
+            else if(event.programStage().equals("du2KnwyeL32")) // supplementary - intervention
+            {
+                ActivityStarter.startActivity(activity,
+                        SupplementaryInterventionActivity.getFormActivityIntent(
+                                activity,
+                                event.uid(),
+                                event.program(),
+                                event.organisationUnit(),
+                                SupplementaryInterventionActivity.FormType.CHECK,
                                 selectedChild
                         ), false
                 );

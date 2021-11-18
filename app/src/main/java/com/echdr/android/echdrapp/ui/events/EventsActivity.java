@@ -26,6 +26,7 @@ import com.echdr.android.echdrapp.ui.event_form.StuntingInterventionActivity;
 import com.echdr.android.echdrapp.ui.event_form.StuntingManagementActivity;
 import com.echdr.android.echdrapp.ui.event_form.StuntingOutcomeActivity;
 import com.echdr.android.echdrapp.ui.event_form.SupplementaryIndicationActivity;
+import com.echdr.android.echdrapp.ui.event_form.SupplementaryInterventionActivity;
 import com.echdr.android.echdrapp.ui.event_form.SupplementaryOutcomeActivity;
 import com.echdr.android.echdrapp.ui.event_form.TherapeuticInterventionActivity;
 
@@ -172,7 +173,7 @@ public class EventsActivity extends ListActivity {
                                                                     selectedChild);
                                                         }else if(stageSelected.equals("KN0o3H6x8IH"))
                                                         {
-                                                            return SupplementaryIndicationActivity.getFormActivityIntent(
+                                                            return SupplementaryIndicationActivity.getFormActivityIntent( // supplementary - indication for thriposha
                                                                     EventsActivity.this,
                                                                     eventUid,
                                                                     selectedProgram,
@@ -279,6 +280,17 @@ public class EventsActivity extends ListActivity {
                                                                     Sdk.d2().organisationUnitModule().organisationUnits()
                                                                             .one().blockingGet().uid(),
                                                                     SupplementaryOutcomeActivity.FormType.CREATE,
+                                                                    selectedChild);
+                                                        }
+                                                        else if(stageSelected.equals("du2KnwyeL32")) // supplementary - intervention
+                                                        {
+                                                            return SupplementaryInterventionActivity.getFormActivityIntent(
+                                                                    EventsActivity.this,
+                                                                    eventUid,
+                                                                    selectedProgram,
+                                                                    Sdk.d2().organisationUnitModule().organisationUnits()
+                                                                            .one().blockingGet().uid(),
+                                                                    SupplementaryInterventionActivity.FormType.CREATE,
                                                                     selectedChild);
                                                         }
                                                         else if(stageSelected.equals("YweAFncBjUm")) // therapeutic - intervention
