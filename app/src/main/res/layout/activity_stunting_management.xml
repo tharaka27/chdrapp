@@ -58,7 +58,7 @@
                             android:textColorHint="@color/desc" />
 
                         <TextView
-                            android:id="@+id/editTextDateOverweightManagement"
+                            android:id="@+id/editTextDateStuntingManagement"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
@@ -68,7 +68,7 @@
                             android:textColorHint="@color/desc" />
 
                         <ImageView
-                            android:id="@+id/over_date_pick"
+                            android:id="@+id/stunting_date_pick"
                             android:layout_width="0dp"
                             android:layout_height="20dp"
                             android:layout_gravity="center_vertical"
@@ -99,7 +99,7 @@
                             android:textColorHint="@color/desc" />
 
                         <Spinner
-                            android:id="@+id/overweight_management_Enrollment_spinner"
+                            android:id="@+id/stunting_management_Enrollment_spinner"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="0.5">
@@ -131,7 +131,7 @@
                             android:textColorHint="@color/desc" />
 
                         <RadioGroup
-                            android:id="@+id/radioGroupHospital"
+                            android:id="@+id/radioGroupHospitalStunting"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
@@ -141,7 +141,7 @@
                             android:textColorHint="@color/desc">
 
                             <RadioButton
-                                android:id="@+id/radioButtonHospitalYes"
+                                android:id="@+id/radioButtonHospitalYesStunting"
                                 android:layout_width="0dp"
                                 android:layout_height="55dp"
                                 android:layout_gravity="center_horizontal"
@@ -151,7 +151,7 @@
                                 android:textSize="15sp" />
 
                             <RadioButton
-                                android:id="@+id/radioButtonHospitalNo"
+                                android:id="@+id/radioButtonHospitalNoStunting"
                                 android:layout_width="0dp"
                                 android:layout_height="55dp"
                                 android:layout_gravity="center_horizontal"
@@ -187,7 +187,7 @@
                             android:textColorHint="@color/desc" />
 
                         <RadioGroup
-                            android:id="@+id/radioGroupPaediatrician"
+                            android:id="@+id/radioGroupPaediatricianStunting"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
@@ -197,7 +197,7 @@
                             android:textColorHint="@color/desc">
 
                             <RadioButton
-                                android:id="@+id/radioButtonPaediatricianYes"
+                                android:id="@+id/radioButtonPaediatricianYesStunting"
                                 android:layout_width="0dp"
                                 android:layout_height="55dp"
                                 android:layout_gravity="center_horizontal"
@@ -207,7 +207,7 @@
                                 android:textSize="15sp" />
 
                             <RadioButton
-                                android:id="@+id/radioButtonPaediatricianNo"
+                                android:id="@+id/radioButtonPaediatricianNoStunting"
                                 android:layout_width="0dp"
                                 android:layout_height="55dp"
                                 android:layout_gravity="center_horizontal"
@@ -230,7 +230,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/overweightManagementSave"
+        android:id="@+id/stuntingManagementSave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -279,7 +279,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@+id/back_btn"
-                    android:text="Overweight Management Programme"
+                    android:text="Stunting Management Programme"
                     android:textAlignment="center"
                     android:textColor="@color/title"
                     android:textSize="20sp"

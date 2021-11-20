@@ -54,11 +54,11 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.4"
                             android:background="@null"
-                            android:text="Date"
+                            android:text="Intervention date"
                             android:textColorHint="@color/desc" />
 
                         <TextView
-                            android:id="@+id/editTextDateOverweightManagement"
+                            android:id="@+id/supp_intervensionDate"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
@@ -68,7 +68,7 @@
                             android:textColorHint="@color/desc" />
 
                         <ImageView
-                            android:id="@+id/over_date_pick"
+                            android:id="@+id/supp_intervension_date_pick"
                             android:layout_width="0dp"
                             android:layout_height="20dp"
                             android:layout_gravity="center_vertical"
@@ -95,43 +95,11 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Enrollment type"
-                            android:textColorHint="@color/desc" />
-
-                        <Spinner
-                            android:id="@+id/overweight_management_Enrollment_spinner"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.5">
-
-                        </Spinner>
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginHorizontal="5dp"
-                        android:layout_marginVertical="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/background_popup_card"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="8dp"
-                        android:weightSum="1">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_weight="0.5"
-                            android:background="@null"
-                            android:text="Referred to Hospital"
+                            android:text="On Triposha"
                             android:textColorHint="@color/desc" />
 
                         <RadioGroup
-                            android:id="@+id/radioGroupHospital"
+                            android:id="@+id/radioGroupTriposha"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
@@ -141,23 +109,23 @@
                             android:textColorHint="@color/desc">
 
                             <RadioButton
-                                android:id="@+id/radioButtonHospitalYes"
                                 android:layout_width="0dp"
-                                android:layout_height="55dp"
-                                android:layout_gravity="center_horizontal"
                                 android:layout_weight="0.5"
-                                android:checked="false"
+                                android:layout_height="55dp"
                                 android:text="Yes"
+                                android:id="@+id/radioButtonTriposhaYes"
+                                android:checked="false"
+                                android:layout_gravity="center_horizontal"
                                 android:textSize="15sp" />
 
                             <RadioButton
-                                android:id="@+id/radioButtonHospitalNo"
                                 android:layout_width="0dp"
-                                android:layout_height="55dp"
-                                android:layout_gravity="center_horizontal"
                                 android:layout_weight="0.5"
-                                android:checked="false"
+                                android:layout_height="55dp"
                                 android:text="No"
+                                android:id="@+id/radioButtonTriposhaNo"
+                                android:layout_gravity="center_horizontal"
+                                android:checked="false"
                                 android:textSize="15sp" />
 
                         </RadioGroup>
@@ -183,11 +151,46 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Paediatrician MO/Nutrition seen"
+                            android:text="Number of thriposha packets given"
+                            android:textColorHint="@color/desc" />
+
+                        <EditText
+                            android:id="@+id/supp_NumberOfTriposha"
+                            android:inputType="number"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+
+                            android:textColorHint="@color/desc" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_popup_card"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:text="IYCF/Nutrtion counselling given"
                             android:textColorHint="@color/desc" />
 
                         <RadioGroup
-                            android:id="@+id/radioGroupPaediatrician"
+                            android:id="@+id/radioGroupCounselling"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
@@ -197,29 +200,31 @@
                             android:textColorHint="@color/desc">
 
                             <RadioButton
-                                android:id="@+id/radioButtonPaediatricianYes"
                                 android:layout_width="0dp"
-                                android:layout_height="55dp"
-                                android:layout_gravity="center_horizontal"
                                 android:layout_weight="0.5"
-                                android:checked="false"
+                                android:layout_height="55dp"
                                 android:text="Yes"
+                                android:id="@+id/radioButtonCounsellingYes"
+                                android:checked="false"
+                                android:layout_gravity="center_horizontal"
                                 android:textSize="15sp" />
 
                             <RadioButton
-                                android:id="@+id/radioButtonPaediatricianNo"
                                 android:layout_width="0dp"
-                                android:layout_height="55dp"
-                                android:layout_gravity="center_horizontal"
                                 android:layout_weight="0.5"
-                                android:checked="false"
+                                android:layout_height="55dp"
                                 android:text="No"
+                                android:id="@+id/radioButtonCounsellingNo"
+                                android:layout_gravity="center_horizontal"
+                                android:checked="false"
                                 android:textSize="15sp" />
 
                         </RadioGroup>
 
 
                     </LinearLayout>
+
+
 
 
                 </LinearLayout>
@@ -230,7 +235,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/overweightManagementSave"
+        android:id="@+id/SupplementarySave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -279,7 +284,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@+id/back_btn"
-                    android:text="Overweight Management Programme"
+                    android:text="Supplementary Feeding Interventions"
                     android:textAlignment="center"
                     android:textColor="@color/title"
                     android:textSize="20sp"

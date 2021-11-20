@@ -227,6 +227,8 @@ public class ChildDetailsActivity extends ListActivity {
             saveDataElement("cpcMXDhQouL", landNumber);
             saveDataElement("LYRf4eIUVuN", mobileNumber);
 
+            finish();
+
 
         });
 
@@ -342,6 +344,7 @@ public class ChildDetailsActivity extends ListActivity {
         }
 
 
+        //
         overweightNotEnrolled.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

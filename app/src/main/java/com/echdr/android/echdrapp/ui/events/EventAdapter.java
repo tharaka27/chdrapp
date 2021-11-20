@@ -18,10 +18,15 @@ import com.echdr.android.echdrapp.ui.base.ListItemWithSyncHolder;
 import com.echdr.android.echdrapp.ui.event_form.AnthropometryActivity;
 import com.echdr.android.echdrapp.ui.event_form.EventFormActivity;
 import com.echdr.android.echdrapp.ui.event_form.OtherEvaluationActivity;
+import com.echdr.android.echdrapp.ui.event_form.OtherReasonForActivity;
+import com.echdr.android.echdrapp.ui.event_form.OverweightIntervensionActivity;
 import com.echdr.android.echdrapp.ui.event_form.OverweightManagementActivity;
 import com.echdr.android.echdrapp.ui.event_form.OverweightOutcomeActivity;
 import com.echdr.android.echdrapp.ui.event_form.StuntingInterventionActivity;
+import com.echdr.android.echdrapp.ui.event_form.StuntingManagementActivity;
+import com.echdr.android.echdrapp.ui.event_form.StuntingOutcomeActivity;
 import com.echdr.android.echdrapp.ui.event_form.SupplementaryIndicationActivity;
+import com.echdr.android.echdrapp.ui.event_form.SupplementaryInterventionActivity;
 import com.echdr.android.echdrapp.ui.event_form.SupplementaryOutcomeActivity;
 import com.echdr.android.echdrapp.ui.event_form.TherapeuticInterventionActivity;
 import com.echdr.android.echdrapp.ui.tracker_import_conflicts.TrackerImportConflictsAdapter;
@@ -121,6 +126,19 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
                         ), false
                 );
             }
+            else if(event.programStage().equals("iWycCg6C2gd")) // other - reason
+            {
+                ActivityStarter.startActivity(activity,
+                        OtherReasonForActivity.getFormActivityIntent(
+                                activity,
+                                event.uid(),
+                                event.program(),
+                                event.organisationUnit(),
+                                OtherReasonForActivity.FormType.CHECK,
+                                selectedChild
+                        ), false
+                );
+            }
             else if(event.programStage().equals("TC7YSoNEUag")) // overweight - management
             {
                 ActivityStarter.startActivity(activity,
@@ -130,6 +148,19 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
                                 event.program(),
                                 event.organisationUnit(),
                                 OverweightManagementActivity.FormType.CHECK,
+                                selectedChild
+                        ), false
+                );
+            }
+            else if(event.programStage().equals("S4DegY3OjJv")) // overweight - intervention
+            {
+                ActivityStarter.startActivity(activity,
+                        OverweightIntervensionActivity.getFormActivityIntent(
+                                activity,
+                                event.uid(),
+                                event.program(),
+                                event.organisationUnit(),
+                                OverweightIntervensionActivity.FormType.CHECK,
                                 selectedChild
                         ), false
                 );
@@ -160,6 +191,32 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
                         ), false
                 );
             }
+            else if(event.programStage().equals("iEylwjAa5Cq")) // stunting - management
+            {
+                ActivityStarter.startActivity(activity,
+                        StuntingManagementActivity.getFormActivityIntent(
+                                activity,
+                                event.uid(),
+                                event.program(),
+                                event.organisationUnit(),
+                                StuntingManagementActivity.FormType.CHECK,
+                                selectedChild
+                        ), false
+                );
+            }
+            else if(event.programStage().equals("L4MJKSCcUof")) // stunting - management
+            {
+                ActivityStarter.startActivity(activity,
+                        StuntingOutcomeActivity.getFormActivityIntent(
+                                activity,
+                                event.uid(),
+                                event.program(),
+                                event.organisationUnit(),
+                                StuntingOutcomeActivity.FormType.CHECK,
+                                selectedChild
+                        ), false
+                );
+            }
             else if(event.programStage().equals("QKsx9TfOJ3m")) // supplementary - outcome
             {
                 ActivityStarter.startActivity(activity,
@@ -169,6 +226,19 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
                                 event.program(),
                                 event.organisationUnit(),
                                 SupplementaryOutcomeActivity.FormType.CHECK,
+                                selectedChild
+                        ), false
+                );
+            }
+            else if(event.programStage().equals("du2KnwyeL32")) // supplementary - intervention
+            {
+                ActivityStarter.startActivity(activity,
+                        SupplementaryInterventionActivity.getFormActivityIntent(
+                                activity,
+                                event.uid(),
+                                event.program(),
+                                event.organisationUnit(),
+                                SupplementaryInterventionActivity.FormType.CHECK,
                                 selectedChild
                         ), false
                 );

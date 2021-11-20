@@ -29,10 +29,25 @@
             android:name=".ui.event_form.OverweightManagementActivity"
             android:exported="true" />
         <activity
+            android:name=".ui.event_form.OtherReasonForActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.event_form.OverweightIntervensionActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.event_form.OverweightOutcomeActivity"
             android:exported="true" />
         <activity
             android:name=".ui.event_form.StuntingInterventionActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.event_form.StuntingOutcomeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.event_form.SupplementaryInterventionActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.event_form.StuntingManagementActivity"
             android:exported="true" />
         <activity
             android:name=".ui.event_form.SupplementaryOutcomeActivity"
