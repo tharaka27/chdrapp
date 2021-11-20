@@ -91,7 +91,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
 
     public static Intent getModifiedFormActivityIntent(Context context, String teiUid, String programUid,
                                                        String orgUnitUid) {
-        Intent intent = new Intent(context, EnrollmentFormActivity.class);
+        Intent intent = new Intent(context, EnrollmentFormModified.class);
         intent.putExtra(EnrollmentFormModified.IntentExtra.TEI_UID.name(), teiUid);
         intent.putExtra(EnrollmentFormModified.IntentExtra.PROGRAM_UID.name(), programUid);
         intent.putExtra(EnrollmentFormModified.IntentExtra.OU_UID.name(), orgUnitUid);

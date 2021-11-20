@@ -12,6 +12,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -43,7 +45,12 @@ import org.hisp.dhis.android.core.trackedentity.TrackedEntityInstanceCreateProje
 import org.hisp.dhis.android.core.user.User;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -140,6 +147,8 @@ public class MainActivity extends AppCompatActivity{
                 t.show();
 
                 int ENROLLMENT_RQ = 1210;
+                List<String> j = new ArrayList<>();
+                j.add("hM6Yt9FQL0n");
                 compositeDisposable.add(
                         Sdk.d2().programModule().programs().uid("hM6Yt9FQL0n").get()
                                 .map(program -> Sdk.d2().trackedEntityModule().trackedEntityInstances()
@@ -160,7 +169,8 @@ public class MainActivity extends AppCompatActivity{
                                         teiUid,
                                         "hM6Yt9FQL0n",
                                         Sdk.d2().organisationUnitModule().organisationUnits()
-                                                .byProgramUids(Collections.singletonList("hM6Yt9FQL0n"))
+                                                //.byProgramUids(Collections.singletonList("hM6Yt9FQL0n"))
+                                                .byProgramUids( j)
                                                 .byOrganisationUnitScope(OrganisationUnit.Scope.SCOPE_DATA_CAPTURE)
                                                 .one().blockingGet().uid()
                                 ))
