@@ -185,6 +185,57 @@
         <item>1st time enrollment to this programme</item>
         <item>Relapse</item>
     </string-array>
+
+    <!--    Child registration arrays starts here-->
+
+    <string-array name="sex">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Unspecified</item>
+    </string-array>
+
+    <string-array name="ethnicity">
+        <item>Sinhalese</item>
+        <item>Tamil</item>
+        <item>Muslim</item>
+        <item>Burgher</item>
+        <item>Others</item>
+    </string-array>
+
+    <string-array name="highestEdu">
+        <item>No formal schooling</item>
+        <item>Grade 1 to 5 (Not completed Grade 5/Some Primary education)</item>
+        <item>Completed grade 5 (Completed Primary)</item>
+        <item>Grade 6 to 10 (Not completed Grade 10/Some Secondary education)</item>
+        <item>Completed grade 10 (Completed Secondary education)</item>
+        <item>Grade 11 or higher (Higher than Secondary education)</item>
+    </string-array>
+
+    <string-array name="sector">
+        <item>Rural</item>
+        <item>Urban</item>
+        <item>Estate</item>
+    </string-array>
+
+    <string-array name="occupation">
+        <item>Student</item>
+        <item>Home maker</item>
+        <item>Retired</item>
+        <item>Unemployed</item>
+        <item>Paid employment</item>
+    </string-array>
+
+    <string-array name="relationship">
+        <item>Mother</item>
+        <item>Father</item>
+        <item>Grand parents</item>
+        <item>other close relatives</item>
+        <item>others</item>
+    </string-array>
+
+
+    <!--    Child registration arrays ends here-->
+
     <string-array name="other_management_type">
         <item>1st time enrollment to this programme</item>
         <item>Relapse</item>

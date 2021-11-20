@@ -27,6 +27,7 @@ import com.echdr.android.echdrapp.ui.d2_errors.D2ErrorActivity;
 import com.echdr.android.echdrapp.ui.data_sets.DataSetsActivity;
 import com.echdr.android.echdrapp.ui.data_sets.instances.DataSetInstancesActivity;
 import com.echdr.android.echdrapp.ui.enrollment_form.EnrollmentFormActivity;
+import com.echdr.android.echdrapp.ui.enrollment_form.EnrollmentFormModified;
 import com.echdr.android.echdrapp.ui.events.EventsActivity;
 import com.echdr.android.echdrapp.ui.foreign_key_violations.ForeignKeyViolationsActivity;
 import com.echdr.android.echdrapp.ui.programs.ProgramsActivity;
@@ -153,7 +154,8 @@ public class MainActivity extends AppCompatActivity{
                                                         .trackedEntityType(program.trackedEntityType().uid())
                                                         .build()
                                         ))
-                                .map(teiUid -> EnrollmentFormActivity.getFormActivityIntent(
+                                //.map(teiUid -> EnrollmentFormActivity.getFormActivityIntent(
+                                .map(teiUid -> EnrollmentFormModified.getModifiedFormActivityIntent(
                                         MainActivity.this,
                                         teiUid,
                                         "hM6Yt9FQL0n",

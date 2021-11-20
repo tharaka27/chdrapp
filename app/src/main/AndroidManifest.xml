@@ -87,6 +87,9 @@
             android:label="@string/title_activity_enrollment_form"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".ui.enrollment_form.EnrollmentFormModified"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".ui.data_sets.DataSetsActivity"
             android:label="@string/title_activity_data_sets"
             android:theme="@style/AppTheme.NoActionBar" />
