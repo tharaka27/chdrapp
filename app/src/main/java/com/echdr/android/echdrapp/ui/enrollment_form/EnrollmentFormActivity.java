@@ -54,7 +54,7 @@ public class EnrollmentFormActivity extends AppCompatActivity {
     private final int CAMERA_RQ = 0;
     private final int CAMERA_PERMISSION = 0;
 
-    //private ActivityEnrollementFormThreeBinding binding;
+    private ActivityEnrollementFormThreeBinding binding;
     private FormAdapter adapter;
     private CompositeDisposable disposable;
     private PublishProcessor<Boolean> engineInitialization;
@@ -80,14 +80,14 @@ public class EnrollmentFormActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //binding = DataBindingUtil.setContentView(this, R.layout.activity_enrollement_form_three);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_enrollement_form_three);
 
 
         teiUid = getIntent().getStringExtra(IntentExtra.TEI_UID.name());
 
-        //adapter = new FormAdapter(getValueListener(), getImageListener());
-        //binding.buttonEndThree.setOnClickListener(this::finishEnrollment);
-        //binding.formRecycler.setAdapter(adapter);
+        adapter = new FormAdapter(getValueListener(), getImageListener());
+        binding.buttonEndThree.setOnClickListener(this::finishEnrollment);
+        binding.formRecycler.setAdapter(adapter);
 
         engineInitialization = PublishProcessor.create();
 

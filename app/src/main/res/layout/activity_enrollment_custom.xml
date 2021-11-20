@@ -675,7 +675,6 @@
                             android:layout_weight="0.5"
                             android:background="@null"
                             android:hint="Enter here"
-                            android:inputType="number"
                             android:textColorHint="@color/desc" />
 
                     </LinearLayout>

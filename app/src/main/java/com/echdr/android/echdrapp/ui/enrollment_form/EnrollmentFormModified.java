@@ -4,6 +4,7 @@ import static android.text.TextUtils.isEmpty;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -20,24 +21,37 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.echdr.android.echdrapp.R;
 import com.echdr.android.echdrapp.data.Sdk;
 import com.echdr.android.echdrapp.data.service.forms.EnrollmentFormService;
+import com.echdr.android.echdrapp.data.service.forms.EventFormService;
+import com.echdr.android.echdrapp.data.service.forms.FormField;
 import com.echdr.android.echdrapp.data.service.forms.RuleEngineService;
 import com.echdr.android.echdrapp.ui.event_form.SupplementaryIndicationActivity;
 
+import org.hisp.dhis.android.core.enrollment.Enrollment;
 import org.hisp.dhis.android.core.maintenance.D2Error;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValueObjectRepository;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityDataValueObjectRepository;
 import org.hisp.dhis.rules.RuleEngine;
+import org.hisp.dhis.rules.models.RuleAction;
+import org.hisp.dhis.rules.models.RuleActionHideField;
+import org.hisp.dhis.rules.models.RuleEffect;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
+import io.reactivex.Flowable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.processors.PublishProcessor;
+import io.reactivex.schedulers.Schedulers;
 
 public class EnrollmentFormModified extends AppCompatActivity {
 
@@ -47,7 +61,10 @@ public class EnrollmentFormModified extends AppCompatActivity {
     private RuleEngineService engineService;
     private RuleEngine ruleEngine;
 
-    private DatePickerDialog.OnDateSetListener setListener;
+    private DatePickerDialog.OnDateSetListener setListenerRegistration;
+    private DatePickerDialog.OnDateSetListener setListenerDob;
+    private DatePickerDialog.OnDateSetListener setListenerMotherDob;
+
     private Context context;
     protected String[] sexArray;
     protected String[] ethinicityArray;
@@ -169,7 +186,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
             public void onClick(View v) {
                 System.out.println("Clicked et date");
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        context, android.R.style.Theme_Holo_Light_Dialog, setListener, year, month, day);
+                        context, android.R.style.Theme_Holo_Light_Dialog, setListenerRegistration, year, month, day);
                 datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 datePickerDialog.show();
             }
@@ -182,7 +199,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
             }
         });
 
-        setListener = new DatePickerDialog.OnDateSetListener() {
+        setListenerRegistration = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 month = month + 1;
@@ -191,6 +208,66 @@ public class EnrollmentFormModified extends AppCompatActivity {
             }
         };
 
+        textView_dob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("Clicked et date");
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        context, android.R.style.Theme_Holo_Light_Dialog, setListenerDob, year, month, day);
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datePickerDialog.show();
+            }
+        });
+
+        datePicker_dob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectDate(year, month, day);
+            }
+        });
+
+
+        setListenerDob = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month = month + 1;
+                String date = year + "-" + String.format("%02d", month) + "-" + String.format("%02d", dayOfMonth);
+                textView_dob.setText(date);
+            }
+        };
+
+
+
+        textView_mother_dob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("Clicked et date");
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        context, android.R.style.Theme_Holo_Light_Dialog, setListenerMotherDob, year, month, day);
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datePickerDialog.show();
+            }
+        });
+
+        datePicker_mother_dob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectDate(year, month, day);
+            }
+        });
+
+
+        setListenerMotherDob = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month = month + 1;
+                String date = year + "-" + String.format("%02d", month) + "-" + String.format("%02d", dayOfMonth);
+                textView_mother_dob.setText(date);
+            }
+        };
+
+
+
         //setting spinners
 
         ArrayAdapter<CharSequence> sexadapter = ArrayAdapter.createFromResource(context,
@@ -198,42 +275,42 @@ public class EnrollmentFormModified extends AppCompatActivity {
                 android.R.layout.simple_spinner_item);
         sexadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sex.setAdapter(sexadapter);
-        sex.setOnItemSelectedListener(new EnrollmentFormModified.EnrollmentTypeSpinnerClass());
+        sex.setOnItemSelectedListener(new EnrollmentTypeSpinnerClass());
 
         ArrayAdapter<CharSequence> ethinicityadapter = ArrayAdapter.createFromResource(context,
                 R.array.ethnicity,
                 android.R.layout.simple_spinner_item);
         ethinicityadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         ethnicity.setAdapter(ethinicityadapter);
-        ethnicity.setOnItemSelectedListener(new EnrollmentFormModified.EnrollmentTypeSpinnerClass());
+        ethnicity.setOnItemSelectedListener(new EnrollmentTypeSpinnerClass());
 
         ArrayAdapter<CharSequence> eduadapter = ArrayAdapter.createFromResource(context,
                 R.array.highestEdu,
                 android.R.layout.simple_spinner_item);
         eduadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         eduLevel.setAdapter(eduadapter);
-        eduLevel.setOnItemSelectedListener(new EnrollmentFormModified.EnrollmentTypeSpinnerClass());
+        eduLevel.setOnItemSelectedListener(new EnrollmentTypeSpinnerClass());
 
         ArrayAdapter<CharSequence> sectoradapter = ArrayAdapter.createFromResource(context,
                 R.array.sector,
                 android.R.layout.simple_spinner_item);
         sectoradapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sector.setAdapter(sectoradapter);
-        sector.setOnItemSelectedListener(new EnrollmentFormModified.EnrollmentTypeSpinnerClass());
+        sector.setOnItemSelectedListener(new EnrollmentTypeSpinnerClass());
 
         ArrayAdapter<CharSequence> occuadapter = ArrayAdapter.createFromResource(context,
                 R.array.occupation,
                 android.R.layout.simple_spinner_item);
         occuadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         occupation.setAdapter(occuadapter);
-        occupation.setOnItemSelectedListener(new EnrollmentFormModified.EnrollmentTypeSpinnerClass());
+        occupation.setOnItemSelectedListener(new EnrollmentTypeSpinnerClass());
 
         ArrayAdapter<CharSequence> relationadapter = ArrayAdapter.createFromResource(context,
                 R.array.relationship,
                 android.R.layout.simple_spinner_item);
         relationadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         relationship.setAdapter(relationadapter);
-        relationship.setOnItemSelectedListener(new EnrollmentFormModified.EnrollmentTypeSpinnerClass());
+        relationship.setOnItemSelectedListener(new EnrollmentTypeSpinnerClass());
 
 
         // setting registration date
@@ -276,6 +353,10 @@ public class EnrollmentFormModified extends AppCompatActivity {
             name.setText("");
         }
 
+        //select sex
+        sex.setSelection(
+                getSpinnerSelection("lmtzQrlHMYF", sexArray));
+
         // setting child dob
         try {
             String prev_child_dob = getDataElement("qNH202ChkV3");
@@ -286,6 +367,10 @@ public class EnrollmentFormModified extends AppCompatActivity {
             textView_dob.setText("");
         }
 
+        //select ethnicity
+        ethnicity.setSelection(
+                getSpinnerSelection("b9CoAneYYys", ethinicityArray));
+
         // setting address
         try {
             String prev_address = getDataElement("D9aC5K6C6ne");
@@ -295,6 +380,10 @@ public class EnrollmentFormModified extends AppCompatActivity {
         } catch (Exception e) {
             address.setText("");
         }
+
+        //select sector
+        sector.setSelection(
+                getSpinnerSelection("igjlkmMF81X", sectorArray));
 
         // setting land number
         try {
@@ -336,7 +425,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
             nic.setText("");
         }
 
-        // setting number of childrean
+        // setting number of children
         try {
             String prev_number_of_children = getDataElement("Gy4bCBxNuo4");
             if (!prev_number_of_children.isEmpty()) {
@@ -345,6 +434,18 @@ public class EnrollmentFormModified extends AppCompatActivity {
         } catch (Exception e) {
             numberOfChildren.setText("");
         }
+
+        //select education
+        eduLevel.setSelection(
+                getSpinnerSelection("GMNSaaq4xST", eduLevelArray));
+
+        //select occupation
+        occupation.setSelection(
+                getSpinnerSelection("Srxv0vniOnf", occupationArray));
+
+        //select relationship
+        relationship.setSelection(
+                getSpinnerSelection("ghN8XfnlU5V", relationshipArray));
 
         // setting birth weight
         try {
@@ -366,13 +467,21 @@ public class EnrollmentFormModified extends AppCompatActivity {
             length.setText("");
         }
 
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                saveElements();
+            }
+        });
+
     }
 
     class EnrollmentTypeSpinnerClass implements AdapterView.OnItemSelectedListener {
         @Override
         public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
-            Toast.makeText(v.getContext(), "Your choose :" +
-                    sexArray[position], Toast.LENGTH_SHORT).show();
+            //Toast.makeText(v.getContext(), "Your choose :" +
+                    //sexArray[position], Toast.LENGTH_SHORT).show();
         }
 
         @Override
@@ -396,11 +505,253 @@ public class EnrollmentFormModified extends AppCompatActivity {
         return currentValue;
     }
 
+    private void saveDataElement(String dataElement, String value){
+        TrackedEntityAttributeValueObjectRepository valueRepository;
+        try {
+            valueRepository = Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
+                    .value(
+                            dataElement,
+                            teiUid
+                    );
+        }catch (Exception e)
+        {
+            //EnrollmentFormService.getInstance().init(
+                    //Sdk.d2(),
+                    //teiUid,
+                    //"hM6Yt9FQL0n",
+                    //getIntent().getStringExtra(EnrollmentFormModified.IntentExtra.OU_UID.name()));
+            valueRepository = Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
+                    .value(
+                            teiUid,
+                            //EnrollmentFormService.getInstance().getEnrollmentUid(),
+                            dataElement
+                    );
+        }
+
+        String currentValue = valueRepository.blockingExists() ?
+                valueRepository.blockingGet().value() : "";
+
+        if (currentValue == null)
+            currentValue = "";
+
+        try{
+            if(!isEmpty(value))
+            {
+                valueRepository.blockingSet(value);
+            }else
+            {
+                valueRepository.blockingDeleteIfExist();
+            }
+        } catch (D2Error d2Error) {
+            d2Error.printStackTrace();
+        }finally {
+            if (!value.equals(currentValue)) {
+                engineInitialization.onNext(true);
+            }
+        }
+    }
+
+    private void saveElements()
+    {
+        if(GNArea.getText().toString().isEmpty())
+        {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+            builder1.setMessage("GN Area is not filled");
+            builder1.setCancelable(true);
+
+            builder1.setNegativeButton(
+                    "Close",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+            return;
+        }
+        if(immuneNum.getText().toString().isEmpty())
+        {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+            builder1.setMessage("Birth and Immunization Number is not filled");
+            builder1.setCancelable(true);
+
+            builder1.setNegativeButton(
+                    "Close",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+            return;
+        }
+        if(name.getText().toString().isEmpty())
+        {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+            builder1.setMessage("Name of the child is not filled");
+            builder1.setCancelable(true);
+
+            builder1.setNegativeButton(
+                    "Close",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+            return;
+        }
+        if(textView_dob.getText().toString().isEmpty())
+        {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+            builder1.setMessage("Date of Birth is not filled");
+            builder1.setCancelable(true);
+
+            builder1.setNegativeButton(
+                    "Close",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+            return;
+        }
+        if(address.getText().toString().isEmpty())
+        {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+            builder1.setMessage("Address is not filled");
+            builder1.setCancelable(true);
+
+            builder1.setNegativeButton(
+                    "Close",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+            return;
+        }
+        if(motherName.getText().toString().isEmpty())
+        {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+            builder1.setMessage("Name of Mother is not filled");
+            builder1.setCancelable(true);
+
+            builder1.setNegativeButton(
+                    "Close",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+            return;
+        }
+        if(textView_mother_dob.getText().toString().isEmpty())
+        {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+            builder1.setMessage("Mother's date of birth is not filled");
+            builder1.setCancelable(true);
+
+            builder1.setNegativeButton(
+                    "Close",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+            return;
+        }
+        if(weight.getText().toString().isEmpty())
+        {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+            builder1.setMessage("Birth weight (in grams) is not filled");
+            builder1.setCancelable(true);
+
+            builder1.setNegativeButton(
+                    "Close",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+            return;
+        }
+        if(length.getText().toString().isEmpty())
+        {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+            builder1.setMessage("Length at birth (in cm) is not filled");
+            builder1.setCancelable(true);
+
+            builder1.setNegativeButton(
+                    "Close",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+            return;
+        }
+        //saveDataElement("KuMTUOY6X3L", textView_date_of_registration.getText().toString());
+        saveDataElement("upQGjAHBjzu", GNArea.getText().toString());
+        saveDataElement("h2ATdtJguMq", immuneNum.getText().toString());
+        saveDataElement("zh4hiarsSD5", name.getText().toString());
+        saveDataElement("lmtzQrlHMYF",
+                sexArray[sex.getSelectedItemPosition()]);
+        saveDataElement("qNH202ChkV3", textView_dob.getText().toString());
+        saveDataElement("b9CoAneYYys",
+                ethinicityArray[ethnicity.getSelectedItemPosition()]);
+        saveDataElement("D9aC5K6C6ne", address.getText().toString());
+        saveDataElement("igjlkmMF81X",
+                sectorArray[sector.getSelectedItemPosition()]);
+        saveDataElement("cpcMXDhQouL", landNumber.getText().toString());
+        saveDataElement("LYRf4eIUVuN", mobileNumber.getText().toString());
+        saveDataElement("K7Fxa2wv2Rx", motherName.getText().toString());
+        saveDataElement("Gzjb3fp9FSe", nic.getText().toString());
+        saveDataElement("kYfIkz2M6En", textView_mother_dob.getText().toString());
+        saveDataElement("Gy4bCBxNuo4", numberOfChildren.getText().toString());
+        saveDataElement("GMNSaaq4xST",
+                eduLevelArray[eduLevel.getSelectedItemPosition()]);
+        saveDataElement("Srxv0vniOnf",
+                occupationArray[occupation.getSelectedItemPosition()]);
+        saveDataElement("ghN8XfnlU5V",
+                relationshipArray[relationship.getSelectedItemPosition()]);
+        saveDataElement("hxCXbI5J2YS", caregiver.getText().toString());
+        saveDataElement("Fs89NLB2FrA", weight.getText().toString());
+        saveDataElement("LpvdWM4YuRq", length.getText().toString());
+
+
+        finishEnrollment();
+    }
+
     private void selectDate(int year, int month, int day)
     {
         System.out.println("Clicked et date");
         DatePickerDialog datePickerDialog = new DatePickerDialog(
-                context, android.R.style.Theme_Holo_Light_Dialog, setListener, year, month, day);
+                context, android.R.style.Theme_Holo_Light_Dialog, setListenerDob, year, month, day);
         datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         datePickerDialog.show();
     }
@@ -409,4 +760,70 @@ public class EnrollmentFormModified extends AppCompatActivity {
     {
         return DayofMonth + "/" + month + "/" + year;
     }
+
+    private int getSpinnerSelection(String dataElement, String [] array)
+    {
+        int itemPosition = -1;
+        String stringElement = getDataElement(dataElement);
+        for(int i =0; i<array.length; i++)
+        {
+            if(array[i].equals(stringElement))
+            {
+                itemPosition = i;
+            }
+        }
+        return itemPosition;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        disposable = new CompositeDisposable();
+
+        disposable.add(
+                engineService.configure(Sdk.d2(),
+                        getIntent().getStringExtra(EnrollmentFormModified.IntentExtra.PROGRAM_UID.name()),
+                        EnrollmentFormService.getInstance().getEnrollmentUid(),
+                        null
+                )
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(
+                                ruleEngine -> {
+                                    this.ruleEngine = ruleEngine;
+                                    engineInitialization.onNext(true);
+                                },
+                                Throwable::printStackTrace
+                        )
+        );
+
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        disposable.clear();
+    }
+
+    @Override
+    protected void onDestroy() {
+        EnrollmentFormService.clear();
+        super.onDestroy();
+    }
+
+    @Override
+    public void onBackPressed() {
+        EnrollmentFormService.getInstance().delete();
+        setResult(RESULT_CANCELED);
+        finish();
+    }
+
+    private void finishEnrollment() {
+        setResult(RESULT_OK);
+        finish();
+    }
+
+
+
 }
