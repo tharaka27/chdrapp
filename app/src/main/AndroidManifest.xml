@@ -55,6 +55,12 @@
         <activity
             android:name=".ui.event_form.TherapeuticInterventionActivity"
             android:exported="true" />
+        <activity
+            android:name=".ui.event_form.TherapeuticManagementActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.event_form.TherapeuticOutcomeActivity"
+            android:exported="true" />
 
         <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>

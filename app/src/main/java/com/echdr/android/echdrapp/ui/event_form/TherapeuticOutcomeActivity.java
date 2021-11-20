@@ -11,13 +11,14 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,15 +35,16 @@ import java.util.Date;
 
 import io.reactivex.processors.PublishProcessor;
 
-public class OverweightIntervensionActivity extends AppCompatActivity {
+public class TherapeuticOutcomeActivity extends AppCompatActivity {
+
     private String eventUid;
     private String programUid;
     private String selectedChild;
-    private OverweightIntervensionActivity.FormType formType;
+    private TherapeuticOutcomeActivity.FormType formType;
     private String orgUnit;
 
-
     private TextView textView_Date;
+    private Spinner spinner_Enrollment;
     private Button saveButton;
     private ImageView datePicker;
 
@@ -50,9 +52,7 @@ public class OverweightIntervensionActivity extends AppCompatActivity {
     private RuleEngineService engineService;
     private DatePickerDialog.OnDateSetListener setListener;
     private Context context;
-    private RadioGroup radioGroupCounselling;
-    private RadioButton radioButtonCounsellingYes;
-    private RadioButton radioButtonCounsellingNo;
+    protected String[] other_type_array;
 
     private enum IntentExtra {
         EVENT_UID, PROGRAM_UID, OU_UID, TYPE, TEI_ID
@@ -64,44 +64,43 @@ public class OverweightIntervensionActivity extends AppCompatActivity {
 
     public static Intent getFormActivityIntent(Context context, String eventUid,
                                                String programUid, String orgUnitUid,
-                                               OverweightIntervensionActivity.FormType type, String teiID) {
-        Intent intent = new Intent(context, OverweightIntervensionActivity.class);
-        intent.putExtra(OverweightIntervensionActivity.IntentExtra.EVENT_UID.name(), eventUid);
-        intent.putExtra(OverweightIntervensionActivity.IntentExtra.PROGRAM_UID.name(), programUid);
-        intent.putExtra(OverweightIntervensionActivity.IntentExtra.OU_UID.name(), orgUnitUid);
-        intent.putExtra(OverweightIntervensionActivity.IntentExtra.TYPE.name(), type.name());
-        intent.putExtra(OverweightIntervensionActivity.IntentExtra.TEI_ID.name(), teiID);
+                                               TherapeuticOutcomeActivity.FormType type, String teiID) {
+        Intent intent = new Intent(context, TherapeuticOutcomeActivity.class);
+        intent.putExtra(TherapeuticOutcomeActivity.IntentExtra.EVENT_UID.name(), eventUid);
+        intent.putExtra(TherapeuticOutcomeActivity.IntentExtra.PROGRAM_UID.name(), programUid);
+        intent.putExtra(TherapeuticOutcomeActivity.IntentExtra.OU_UID.name(), orgUnitUid);
+        intent.putExtra(TherapeuticOutcomeActivity.IntentExtra.TYPE.name(), type.name());
+        intent.putExtra(TherapeuticOutcomeActivity.IntentExtra.TEI_ID.name(), teiID);
         return intent;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_overweight_intervention);
+        setContentView(R.layout.activity_theraputic_outcome);
 
-        textView_Date = findViewById(R.id.intervensionDate);
-        saveButton         = findViewById(R.id.IntervensionSave);
-        datePicker         = findViewById(R.id.intervension_date_pick);
-        radioGroupCounselling = findViewById(R.id.radioGroupCounselling);
-        radioButtonCounsellingYes = findViewById(R.id.radioButtonCounsellingYes);
-        radioButtonCounsellingNo = findViewById(R.id.radioButtonCounsellingNo);
-
+        textView_Date = findViewById(R.id.editTextDateTeraOutcome);
+        spinner_Enrollment = findViewById(R.id.tera_outcome_Enrollment_spinner);
+        saveButton = findViewById(R.id.teraOutcomeSave);
+        datePicker = findViewById(R.id.TeraOutcome_date_pick);
 
         context = this;
 
-        eventUid = getIntent().getStringExtra(OverweightIntervensionActivity.IntentExtra.EVENT_UID.name());
-        programUid = getIntent().getStringExtra(OverweightIntervensionActivity.IntentExtra.PROGRAM_UID.name());
-        selectedChild = getIntent().getStringExtra(OverweightIntervensionActivity.IntentExtra.TEI_ID.name());
-        formType = OverweightIntervensionActivity.FormType.valueOf(getIntent().getStringExtra(OverweightIntervensionActivity.IntentExtra.TYPE.name()));
-        orgUnit = getIntent().getStringExtra(OverweightIntervensionActivity.IntentExtra.OU_UID.name());
+        eventUid = getIntent().getStringExtra(TherapeuticOutcomeActivity.IntentExtra.EVENT_UID.name());
+        programUid = getIntent().getStringExtra(TherapeuticOutcomeActivity.IntentExtra.PROGRAM_UID.name());
+        selectedChild = getIntent().getStringExtra(TherapeuticOutcomeActivity.IntentExtra.TEI_ID.name());
+        formType = TherapeuticOutcomeActivity.FormType.valueOf(getIntent().getStringExtra(TherapeuticOutcomeActivity.IntentExtra.TYPE.name()));
+        orgUnit = getIntent().getStringExtra(TherapeuticOutcomeActivity.IntentExtra.OU_UID.name());
+
+        other_type_array = getResources().getStringArray(R.array.tera_outcome_type);
 
         engineInitialization = PublishProcessor.create();
 
         //Calendar calendar = Calendar.getInstance();
         Date date = new Date();
-        String s_day          = (String) DateFormat.format("dd",   date); // 20
-        String s_monthNumber  = (String) DateFormat.format("MM",   date); // 06
-        String s_year         = (String) DateFormat.format("yyyy", date); // 2013
+        String s_day = (String) DateFormat.format("dd", date); // 20
+        String s_monthNumber = (String) DateFormat.format("MM", date); // 06
+        String s_year = (String) DateFormat.format("yyyy", date); // 2013
 
         final int year = Integer.parseInt(s_year);
         final int month = Integer.parseInt(s_monthNumber);
@@ -128,49 +127,41 @@ public class OverweightIntervensionActivity extends AppCompatActivity {
         setListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                month = month+1;
-                String date = year + "-" + String.format("%02d", month) + "-" + String.format("%02d", dayOfMonth) ;
+                month = month + 1;
+                String date = year + "-" + String.format("%02d", month) + "-" + String.format("%02d", dayOfMonth);
                 textView_Date.setText(date);
             }
         };
 
-        if(formType == OverweightIntervensionActivity.FormType.CHECK)
-        {
-            System.out.println(getDataElement("kCYwMXTkeAE")); // intervension date
-            System.out.println(getDataElement("J8qFRBqjDfE")); // counselling given
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context,
+                R.array.tera_outcome_type,
+                android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_Enrollment.setAdapter(adapter);
+        spinner_Enrollment.setOnItemSelectedListener(new TherapeuticOutcomeActivity.EnrollmentTypeSpinnerClass());
 
+
+        // Load the existing values - form.CHECK
+        if (formType == TherapeuticOutcomeActivity.FormType.CHECK) {
+            System.out.println(getDataElement("xi20olIPIsb")); // type
+            System.out.println(getDataElement("HXin8cvKgVq")); // date
 
             // set date
-            try{
-                String prev_date = getDataElement("kCYwMXTkeAE");
-                if(!prev_date.isEmpty())
-                {
+            try {
+                String prev_date = getDataElement("HXin8cvKgVq");
+                if (!prev_date.isEmpty()) {
                     textView_Date.setText(prev_date);
                 }
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 textView_Date.setText("");
             }
 
-            // set counselling give
-            try{
-                if(getDataElement("J8qFRBqjDfE").equals("true"))
-                {
-                    radioButtonCounsellingYes.setChecked(true);
-                    radioButtonCounsellingNo.setChecked(false);
-                }else if(getDataElement("J8qFRBqjDfE").equals("false"))
-                {
-                    radioButtonCounsellingYes.setChecked(false);
-                    radioButtonCounsellingNo.setChecked(true);
-                }
-            }
-            catch (Exception e)
-            {
-                radioGroupCounselling.clearCheck();
-            }
 
-        }else{
+            // set enrollment type
+            spinner_Enrollment.setSelection(
+                    getSpinnerSelection("xi20olIPIsb", other_type_array));
+
+        } else {
             textView_Date.setText("Click here to set Date");
         }
 
@@ -187,12 +178,28 @@ public class OverweightIntervensionActivity extends AppCompatActivity {
                 Sdk.d2(),
                 eventUid,
                 programUid,
-                getIntent().getStringExtra(OverweightIntervensionActivity.IntentExtra.OU_UID.name())))
+                getIntent().getStringExtra(TherapeuticOutcomeActivity.IntentExtra.OU_UID.name())))
             this.engineService = new RuleEngineService();
+
+
     }
 
+    class EnrollmentTypeSpinnerClass implements AdapterView.OnItemSelectedListener {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
+            Toast.makeText(v.getContext(), "Your choose :" +
+                    other_type_array[position], Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+    }
+
+
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
     }
 
@@ -215,13 +222,13 @@ public class OverweightIntervensionActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (formType == OverweightIntervensionActivity.FormType.CREATE)
+        if (formType == TherapeuticOutcomeActivity.FormType.CREATE)
             EventFormService.getInstance().delete();
         setResult(RESULT_CANCELED);
         finish();
     }
 
-    private String getDataElement(String dataElement){
+    private String getDataElement(String dataElement) {
         TrackedEntityDataValueObjectRepository valueRepository =
                 Sdk.d2().trackedEntityModule().trackedEntityDataValues()
                         .value(
@@ -235,7 +242,7 @@ public class OverweightIntervensionActivity extends AppCompatActivity {
         return currentValue;
     }
 
-    private void saveDataElement(String dataElement, String value){
+    private void saveDataElement(String dataElement, String value) {
         TrackedEntityDataValueObjectRepository valueRepository;
         try {
             valueRepository = Sdk.d2().trackedEntityModule().trackedEntityDataValues()
@@ -243,13 +250,12 @@ public class OverweightIntervensionActivity extends AppCompatActivity {
                             EventFormService.getInstance().getEventUid(),
                             dataElement
                     );
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             EventFormService.getInstance().init(
                     Sdk.d2(),
                     eventUid,
                     programUid,
-                    getIntent().getStringExtra(OverweightIntervensionActivity.IntentExtra.OU_UID.name()));
+                    getIntent().getStringExtra(TherapeuticOutcomeActivity.IntentExtra.OU_UID.name()));
             valueRepository = Sdk.d2().trackedEntityModule().trackedEntityDataValues()
                     .value(
                             EventFormService.getInstance().getEventUid(),
@@ -260,32 +266,27 @@ public class OverweightIntervensionActivity extends AppCompatActivity {
         String currentValue = valueRepository.blockingExists() ?
                 valueRepository.blockingGet().value() : "";
 
-
         if (currentValue == null)
             currentValue = "";
 
-        try{
-            if(!isEmpty(value))
-            {
+        try {
+            if (!isEmpty(value)) {
                 valueRepository.blockingSet(value);
-            }else
-            {
+            } else {
                 valueRepository.blockingDeleteIfExist();
             }
         } catch (D2Error d2Error) {
             d2Error.printStackTrace();
-        }finally {
+        } finally {
             if (!value.equals(currentValue)) {
                 engineInitialization.onNext(true);
             }
         }
     }
 
-    private void saveElements()
-    {
-        if(textView_Date.getText().toString().equals("Click here to set Date")||
-                textView_Date.getText().toString().isEmpty())
-        {
+    private void saveElements() {
+        if (textView_Date.getText().toString().equals("Click here to set Date") ||
+                textView_Date.getText().toString().isEmpty()) {
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
             builder1.setMessage("Date Not Selected");
             builder1.setCancelable(true);
@@ -303,27 +304,14 @@ public class OverweightIntervensionActivity extends AppCompatActivity {
             return;
         }
 
-
-        saveDataElement("kCYwMXTkeAE", textView_Date.getText().toString());
-
-        String counsellingGiven = "";
-        if(radioButtonCounsellingYes.isChecked())
-        {
-            counsellingGiven = "true";
-        }else if(radioButtonCounsellingNo.isChecked())
-        {
-            counsellingGiven = "false";
-        }
-
-
-        saveDataElement("J8qFRBqjDfE", counsellingGiven);
-
+        saveDataElement("HXin8cvKgVq", textView_Date.getText().toString());
+        saveDataElement("xi20olIPIsb",
+                other_type_array[spinner_Enrollment.getSelectedItemPosition()]);
 
         finishEnrollment();
     }
 
-    private void selectDate(int year, int month, int day)
-    {
+    private void selectDate(int year, int month, int day) {
         System.out.println("Clicked et date");
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 context, android.R.style.Theme_Holo_Light_Dialog, setListener, year, month, day);
@@ -331,6 +319,16 @@ public class OverweightIntervensionActivity extends AppCompatActivity {
         datePickerDialog.show();
     }
 
-
-
+    private int getSpinnerSelection(String dataElement, String[] array) {
+        int itemPosition = -1;
+        String stringElement = getDataElement(dataElement);
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].equals(stringElement)) {
+                itemPosition = i;
+            }
+        }
+        return itemPosition;
+    }
 }
+
+

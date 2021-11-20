@@ -29,6 +29,8 @@ import com.echdr.android.echdrapp.ui.event_form.SupplementaryIndicationActivity;
 import com.echdr.android.echdrapp.ui.event_form.SupplementaryInterventionActivity;
 import com.echdr.android.echdrapp.ui.event_form.SupplementaryOutcomeActivity;
 import com.echdr.android.echdrapp.ui.event_form.TherapeuticInterventionActivity;
+import com.echdr.android.echdrapp.ui.event_form.TherapeuticManagementActivity;
+import com.echdr.android.echdrapp.ui.event_form.TherapeuticOutcomeActivity;
 
 import org.hisp.dhis.android.core.event.EventCollectionRepository;
 import org.hisp.dhis.android.core.event.EventCreateProjection;
@@ -302,6 +304,28 @@ public class EventsActivity extends ListActivity {
                                                                     Sdk.d2().organisationUnitModule().organisationUnits()
                                                                             .one().blockingGet().uid(),
                                                                     TherapeuticInterventionActivity.FormType.CREATE,
+                                                                    selectedChild);
+                                                        }
+                                                        else if(stageSelected.equals("B8Jbdgg7Ut1")) // therapeutic - management
+                                                        {
+                                                            return TherapeuticManagementActivity.getFormActivityIntent(
+                                                                    EventsActivity.this,
+                                                                    eventUid,
+                                                                    selectedProgram,
+                                                                    Sdk.d2().organisationUnitModule().organisationUnits()
+                                                                            .one().blockingGet().uid(),
+                                                                    TherapeuticManagementActivity.FormType.CREATE,
+                                                                    selectedChild);
+                                                        }
+                                                        else if(stageSelected.equals("RtC4CcoEs4J")) // therapeutic - outcome
+                                                        {
+                                                            return TherapeuticOutcomeActivity.getFormActivityIntent(
+                                                                    EventsActivity.this,
+                                                                    eventUid,
+                                                                    selectedProgram,
+                                                                    Sdk.d2().organisationUnitModule().organisationUnits()
+                                                                            .one().blockingGet().uid(),
+                                                                    TherapeuticOutcomeActivity.FormType.CREATE,
                                                                     selectedChild);
                                                         }
                                                         else{

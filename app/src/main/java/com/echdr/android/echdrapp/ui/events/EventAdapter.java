@@ -29,6 +29,8 @@ import com.echdr.android.echdrapp.ui.event_form.SupplementaryIndicationActivity;
 import com.echdr.android.echdrapp.ui.event_form.SupplementaryInterventionActivity;
 import com.echdr.android.echdrapp.ui.event_form.SupplementaryOutcomeActivity;
 import com.echdr.android.echdrapp.ui.event_form.TherapeuticInterventionActivity;
+import com.echdr.android.echdrapp.ui.event_form.TherapeuticManagementActivity;
+import com.echdr.android.echdrapp.ui.event_form.TherapeuticOutcomeActivity;
 import com.echdr.android.echdrapp.ui.tracker_import_conflicts.TrackerImportConflictsAdapter;
 
 import org.hisp.dhis.android.core.category.CategoryOptionCombo;
@@ -252,6 +254,32 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
                                 event.program(),
                                 event.organisationUnit(),
                                 TherapeuticInterventionActivity.FormType.CHECK,
+                                selectedChild
+                        ), false
+                );
+            }
+            else if(event.programStage().equals("B8Jbdgg7Ut1")) // therapeutic - management
+            {
+                ActivityStarter.startActivity(activity,
+                        TherapeuticManagementActivity.getFormActivityIntent(
+                                activity,
+                                event.uid(),
+                                event.program(),
+                                event.organisationUnit(),
+                                TherapeuticManagementActivity.FormType.CHECK,
+                                selectedChild
+                        ), false
+                );
+            }
+            else if(event.programStage().equals("RtC4CcoEs4J")) // therapeutic - outcome
+            {
+                ActivityStarter.startActivity(activity,
+                        TherapeuticOutcomeActivity.getFormActivityIntent(
+                                activity,
+                                event.uid(),
+                                event.program(),
+                                event.organisationUnit(),
+                                TherapeuticOutcomeActivity.FormType.CHECK,
                                 selectedChild
                         ), false
                 );
