@@ -59,7 +59,7 @@
                         android:layout_marginEnd="16dp"
                         android:hint="enter height here"
                         android:layout_weight="1"
-                        android:inputType="text" />
+                        android:inputType="number" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -83,7 +83,7 @@
                         android:layout_marginEnd="16dp"
                         android:layout_weight="1"
                         android:hint="enter weight here"
-                        android:inputType="text" />
+                        android:inputType="number" />
                 </LinearLayout>
 
                 <LinearLayout

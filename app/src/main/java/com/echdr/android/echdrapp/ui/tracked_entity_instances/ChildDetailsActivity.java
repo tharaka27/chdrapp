@@ -25,6 +25,7 @@ import com.echdr.android.echdrapp.data.service.forms.EnrollmentFormService;
 import com.echdr.android.echdrapp.data.service.forms.RuleEngineService;
 import com.echdr.android.echdrapp.ui.base.ListActivity;
 import com.echdr.android.echdrapp.ui.enrollment_form.EnrollmentFormActivity;
+import com.echdr.android.echdrapp.ui.enrollment_form.EnrollmentFormModified;
 import com.echdr.android.echdrapp.ui.events.EventsActivity;
 
 import org.hisp.dhis.android.core.enrollment.Enrollment;
@@ -46,9 +47,10 @@ public class ChildDetailsActivity extends ListActivity {
     private String trackedEntityInstanceUid;
     private Disposable disposable;
     private EditText name;
+    private String teiUid;
     private TextView cd_no;
     private TextView cd_dob;
-    private TextView cd_gender;
+    private Spinner cd_gender;
     private EditText address;
     private EditText birthWeight;
     private EditText birthHeight;
@@ -88,6 +90,13 @@ public class ChildDetailsActivity extends ListActivity {
     private ImageView stuntingEnrolled;
     private ImageView stuntingNotEnrolled;
     private String orgUnit;
+    private Context context;
+    protected String[] sexArray;
+    protected String[] ethinicityArray;
+    protected String[] sectorArray;
+    protected String[] eduLevelArray;
+    protected String[] occupationArray;
+    protected String[] relationshipArray;
 
 
     private enum IntentExtra {
@@ -105,9 +114,11 @@ public class ChildDetailsActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_child_details);
 
+        teiUid = getIntent().getStringExtra(IntentExtra.TRACKED_ENTITY_INSTANCE_UID.name());
+
         cd_no = findViewById(R.id.cd_no);
         cd_dob = findViewById(R.id.cd_dob);
-        cd_gender = findViewById(R.id.cd_gender);
+        cd_gender = findViewById(R.id.sex);
         name = findViewById(R.id.name);
         address = findViewById(R.id.address);
         birthWeight = findViewById(R.id.birthWeight);
@@ -128,6 +139,7 @@ public class ChildDetailsActivity extends ListActivity {
         edit_button = findViewById(R.id.edit_btn);
         submitButton = findViewById(R.id.submit);
 
+        context = this;
 
         overweightNotEnrolled = findViewById(R.id.NotEnOverWeight);
         overweightEnrolled = findViewById(R.id.EnOverWeight);
@@ -145,27 +157,99 @@ public class ChildDetailsActivity extends ListActivity {
 
         trackedEntityInstanceUid = getIntent().getStringExtra(IntentExtra.TRACKED_ENTITY_INSTANCE_UID.name());
 
+        //setting spinners
+
+        ArrayAdapter<CharSequence> sexadapter = ArrayAdapter.createFromResource(context,
+                R.array.sex,
+                android.R.layout.simple_spinner_item);
+        sexadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        cd_gender.setAdapter(sexadapter);
+        cd_gender.setOnItemSelectedListener(new EnrollmentTypeSpinnerClass());
+
+        ArrayAdapter<CharSequence> ethinicityadapter = ArrayAdapter.createFromResource(context,
+                R.array.ethnicity,
+                android.R.layout.simple_spinner_item);
+        ethinicityadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ethnicity.setAdapter(ethinicityadapter);
+        ethnicity.setOnItemSelectedListener(new EnrollmentTypeSpinnerClass());
+
+        ArrayAdapter<CharSequence> eduadapter = ArrayAdapter.createFromResource(context,
+                R.array.highestEdu,
+                android.R.layout.simple_spinner_item);
+        eduadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        highestEduLevel.setAdapter(eduadapter);
+        highestEduLevel.setOnItemSelectedListener(new EnrollmentTypeSpinnerClass());
+
+        ArrayAdapter<CharSequence> sectoradapter = ArrayAdapter.createFromResource(context,
+                R.array.sector,
+                android.R.layout.simple_spinner_item);
+        sectoradapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sector.setAdapter(sectoradapter);
+        sector.setOnItemSelectedListener(new EnrollmentTypeSpinnerClass());
+
+        ArrayAdapter<CharSequence> occuadapter = ArrayAdapter.createFromResource(context,
+                R.array.occupation,
+                android.R.layout.simple_spinner_item);
+        occuadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        occupation.setAdapter(occuadapter);
+        occupation.setOnItemSelectedListener(new EnrollmentTypeSpinnerClass());
+
+        ArrayAdapter<CharSequence> relationadapter = ArrayAdapter.createFromResource(context,
+                R.array.relationship,
+                android.R.layout.simple_spinner_item);
+        relationadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        relationship.setAdapter(relationadapter);
+        relationship.setOnItemSelectedListener(new EnrollmentTypeSpinnerClass());
+
+        sexArray = getResources().getStringArray(R.array.sex);
+        ethinicityArray = getResources().getStringArray(R.array.ethnicity);
+        sectorArray = getResources().getStringArray(R.array.sector);
+        eduLevelArray = getResources().getStringArray(R.array.highestEdu);
+        occupationArray = getResources().getStringArray(R.array.occupation);
+        relationshipArray = getResources().getStringArray(R.array.relationship);
+
         try{
             cd_no.setText(getValueListener("h2ATdtJguMq"));
             cd_dob.setText(getValueListener("qNH202ChkV3"));
-            cd_gender.setText(getValueListener("lmtzQrlHMYF"));
+            //cd_gender.setText(getValueListener("lmtzQrlHMYF"));
+            //setSpinner("lmtzQrlHMYF", cd_gender);
             name.setText(getValueListener("zh4hiarsSD5"));
             address.setText(getValueListener("D9aC5K6C6ne"));
             birthWeight.setText(getValueListener("Fs89NLB2FrA"));
             birthHeight.setText(getValueListener("LpvdWM4YuRq"));
-            setSpinner("NsoirMjYF2C", ethnicity);
+            //setSpinner("NsoirMjYF2C", ethnicity);
             GN_Area.setText(getValueListener("upQGjAHBjzu"));
-            setSpinner("PmA6WejlEg8", relationship);
+            //etSpinner("PmA6WejlEg8", relationship);
             nic.setText(getValueListener("Gzjb3fp9FSe"));
-            setSpinner("LOPHzLXYAgC", occupation);
-            setSpinner("Y0TxeTJlnjn", sector);
-            setSpinner("gigmQXuSnNy", highestEduLevel);
+            //setSpinner("LOPHzLXYAgC", occupation);
+            //setSpinner("Y0TxeTJlnjn", sector);
+            //setSpinner("gigmQXuSnNy", highestEduLevel);
             mother_name.setText(getValueListener("K7Fxa2wv2Rx"));
             mother_dob.setText(getValueListener("kYfIkz2M6En"));
             numberOfChildren.setText(getValueListener("Gy4bCBxNuo4"));
             caregiver_name.setText(getValueListener("hxCXbI5J2YS"));
             lPhone.setText(getValueListener("cpcMXDhQouL"));
             mNumber.setText(getValueListener("LYRf4eIUVuN"));
+            cd_gender.setSelection(
+                    getSpinnerSelection("lmtzQrlHMYF", sexArray));
+            //select ethnicity
+            ethnicity.setSelection(
+                    getSpinnerSelection("b9CoAneYYys", ethinicityArray));
+            //select sector
+            sector.setSelection(
+                    getSpinnerSelection("igjlkmMF81X", sectorArray));
+            //select education
+            highestEduLevel.setSelection(
+                    getSpinnerSelection("GMNSaaq4xST", eduLevelArray));
+
+            //select occupation
+            occupation.setSelection(
+                    getSpinnerSelection("Srxv0vniOnf", occupationArray));
+
+            //select relationship
+            relationship.setSelection(
+                    getSpinnerSelection("ghN8XfnlU5V", relationshipArray));
+
 
         }catch (Exception e){
             e.printStackTrace();
@@ -237,6 +321,19 @@ public class ChildDetailsActivity extends ListActivity {
 
     }
 
+    class EnrollmentTypeSpinnerClass implements AdapterView.OnItemSelectedListener {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
+            //Toast.makeText(v.getContext(), "Your choose :" +
+            //sexArray[position], Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+    }
+
     private String getValueListener(String dataElement) {
 
         String currentValue = Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
@@ -247,12 +344,43 @@ public class ChildDetailsActivity extends ListActivity {
             return currentValue;
     }
 
+    /*
     private void setSpinner(String optionSetUid, Spinner spinnerName) {
         optionList = Sdk.d2().optionModule().options().byOptionSetUid().eq(optionSetUid).blockingGet();
         List<String> optionListNames = new ArrayList<>();
         for (Option option : optionList) optionListNames.add(option.displayName());
         spinnerName.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, android.R.id.text1, optionListNames));
 
+    }
+     */
+
+    private int getSpinnerSelection(String dataElement, String [] array)
+    {
+        int itemPosition = -1;
+        String stringElement = getDataElement(dataElement);
+        for(int i =0; i<array.length; i++)
+        {
+            if(array[i].equals(stringElement))
+            {
+                itemPosition = i;
+            }
+        }
+        return itemPosition;
+    }
+
+    private String getDataElement(String dataElement) {
+        TrackedEntityAttributeValueObjectRepository valueRepository =
+                Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
+                        .value(
+                                teiUid,
+                                dataElement
+                                //getIntent().getStringExtra(EnrollmentFormModified.IntentExtra.TEI_UID.name()
+                                //)
+                        );
+        String currentValue = valueRepository.blockingExists() ?
+                valueRepository.blockingGet().value() : "";
+
+        return currentValue;
     }
 
 
