@@ -293,6 +293,8 @@ public class ChildDetailsActivity extends ListActivity {
             String landNumber = lPhone.getText().toString();
             String mobileNumber = mNumber.getText().toString();
 
+            String gender = cd_gender.getSelectedItem().toString();
+
             saveDataElement("zh4hiarsSD5", nameChild);
             saveDataElement("D9aC5K6C6ne", addressChild);
             saveDataElement("LpvdWM4YuRq", birthHeightChild);
@@ -310,6 +312,7 @@ public class ChildDetailsActivity extends ListActivity {
             saveDataElement("hxCXbI5J2YS", careName);
             saveDataElement("cpcMXDhQouL", landNumber);
             saveDataElement("LYRf4eIUVuN", mobileNumber);
+            saveDataElement("lmtzQrlHMYF", gender);
 
             finish();
 
