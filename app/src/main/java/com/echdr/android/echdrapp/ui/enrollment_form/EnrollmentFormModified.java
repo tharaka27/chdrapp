@@ -195,7 +195,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
         datePicker_registration.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectDate(year, month, day);
+                selectDateRegistration(year, month, day);
             }
         });
 
@@ -252,7 +252,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
         datePicker_mother_dob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectDate(year, month, day);
+                selectDateMotherDOB(year, month, day);
             }
         });
 
@@ -313,14 +313,14 @@ public class EnrollmentFormModified extends AppCompatActivity {
         relationship.setOnItemSelectedListener(new EnrollmentTypeSpinnerClass());
 
 
-        // setting registration date
+        // setting mother DOB date
         try {
             String prev_date = getDataElement("kYfIkz2M6En");
             if (!prev_date.isEmpty()) {
-                textView_date_of_registration.setText(prev_date);
+                textView_mother_dob.setText(prev_date);
             }
         } catch (Exception e) {
-            textView_date_of_registration.setText("");
+            textView_mother_dob.setText("");
         }
 
         // setting GN area
@@ -417,7 +417,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
 
         // setting nic
         try {
-            String prev_nic = getDataElement("K7Fxa2wv2Rx");
+            String prev_nic = getDataElement("Gzjb3fp9FSe");
             if (!prev_nic.isEmpty()) {
                 nic.setText(prev_nic);
             }
@@ -433,6 +433,16 @@ public class EnrollmentFormModified extends AppCompatActivity {
             }
         } catch (Exception e) {
             numberOfChildren.setText("");
+        }
+
+        // setting caregiver name
+        try {
+            String caregiverName = getDataElement("hxCXbI5J2YS");
+            if (!caregiverName.isEmpty()) {
+                caregiver.setText(caregiverName);
+            }
+        } catch (Exception e) {
+            caregiver.setText("");
         }
 
         //select education
@@ -747,11 +757,29 @@ public class EnrollmentFormModified extends AppCompatActivity {
         finishEnrollment();
     }
 
+    private void selectDateRegistration(int year, int month, int day)
+    {
+        System.out.println("Clicked et date");
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                context, android.R.style.Theme_Holo_Light_Dialog, setListenerRegistration, year, month, day);
+        datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        datePickerDialog.show();
+    }
+
     private void selectDate(int year, int month, int day)
     {
         System.out.println("Clicked et date");
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 context, android.R.style.Theme_Holo_Light_Dialog, setListenerDob, year, month, day);
+        datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        datePickerDialog.show();
+    }
+
+    private void selectDateMotherDOB(int year, int month, int day)
+    {
+        System.out.println("Clicked et date");
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                context, android.R.style.Theme_Holo_Light_Dialog, setListenerMotherDob, year, month, day);
         datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         datePickerDialog.show();
     }
