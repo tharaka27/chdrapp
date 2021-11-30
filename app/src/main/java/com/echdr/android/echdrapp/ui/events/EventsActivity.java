@@ -16,6 +16,7 @@ import com.echdr.android.echdrapp.data.Sdk;
 import com.echdr.android.echdrapp.data.service.ActivityStarter;
 import com.echdr.android.echdrapp.ui.base.ListActivity;
 import com.echdr.android.echdrapp.ui.event_form.AnthropometryActivity;
+import com.echdr.android.echdrapp.ui.event_form.AnthropometryActivityNew;
 import com.echdr.android.echdrapp.ui.event_form.EventFormActivity;
 import com.echdr.android.echdrapp.ui.event_form.OtherEvaluationActivity;
 import com.echdr.android.echdrapp.ui.event_form.OtherReasonForActivity;
@@ -165,13 +166,13 @@ public class EventsActivity extends ListActivity {
                                                         System.out.println(selectedProgram);
                                                         if(selectedProgram.equals("hM6Yt9FQL0n"))
                                                         {
-                                                            return AnthropometryActivity.getFormActivityIntent(
+                                                            return AnthropometryActivityNew.getFormActivityIntent(
                                                                     EventsActivity.this,
                                                                     eventUid,
                                                                     selectedProgram,
                                                                     Sdk.d2().organisationUnitModule().organisationUnits()
                                                                             .one().blockingGet().uid(),
-                                                                    AnthropometryActivity.FormType.CREATE,
+                                                                    AnthropometryActivityNew.FormType.CREATE,
                                                                     selectedChild);
                                                         }else if(stageSelected.equals("KN0o3H6x8IH"))
                                                         {

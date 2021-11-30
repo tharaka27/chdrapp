@@ -16,6 +16,7 @@ import com.echdr.android.echdrapp.data.service.DateFormatHelper;
 import com.echdr.android.echdrapp.ui.base.DiffByIdItemCallback;
 import com.echdr.android.echdrapp.ui.base.ListItemWithSyncHolder;
 import com.echdr.android.echdrapp.ui.event_form.AnthropometryActivity;
+import com.echdr.android.echdrapp.ui.event_form.AnthropometryActivityNew;
 import com.echdr.android.echdrapp.ui.event_form.EventFormActivity;
 import com.echdr.android.echdrapp.ui.event_form.OtherEvaluationActivity;
 import com.echdr.android.echdrapp.ui.event_form.OtherReasonForActivity;
@@ -92,13 +93,13 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
 
             if(event.program().equals("hM6Yt9FQL0n"))
             {
-                ActivityStarter.startActivity(activity,
-                        AnthropometryActivity.getFormActivityIntent(
+                ActivityStarter.startActivity(activity,  // anthropometry
+                        AnthropometryActivityNew.getFormActivityIntent(
                                 activity,
                                 event.uid(),
                                 event.program(),
                                 event.organisationUnit(),
-                                AnthropometryActivity.FormType.CHECK,
+                                AnthropometryActivityNew.FormType.CHECK,
                                 selectedChild
                         ), false
                 );
