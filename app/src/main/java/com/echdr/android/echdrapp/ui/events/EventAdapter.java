@@ -94,12 +94,12 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
             if(event.program().equals("hM6Yt9FQL0n"))
             {
                 ActivityStarter.startActivity(activity,  // anthropometry
-                        AnthropometryActivityNew.getFormActivityIntent(
+                        AnthropometryActivity.getFormActivityIntent(
                                 activity,
                                 event.uid(),
                                 event.program(),
                                 event.organisationUnit(),
-                                AnthropometryActivityNew.FormType.CHECK,
+                                AnthropometryActivity.FormType.CHECK,
                                 selectedChild
                         ), false
                 );
