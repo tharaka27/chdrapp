@@ -566,7 +566,32 @@ public class AnthropometryActivityNew extends AppCompatActivity {
         LineGraphSeries<DataPoint> height_series = new LineGraphSeries<DataPoint>();
         LineGraphSeries<DataPoint> weight_series = new LineGraphSeries<DataPoint>();
 
+        height_series.appendData(
+                new DataPoint(0,0), true, 60
+        );
+        weight_series.appendData(
+                new DataPoint(0,0), true, 60
+        );
 
+        for(int i=0; i< 60; i++)
+        {
+            if(heightValues.containsKey(i))
+            {
+                height_series.appendData(
+                        new DataPoint(i, heightValues.get(i)), true, 61);
+            }
+        }
+
+        for(int i=0; i< 60; i++)
+        {
+            if(weightValues.containsKey(i))
+            {
+                weight_series.appendData(
+                        new DataPoint(i, weightValues.get(i)/1000f), true, 61);
+            }
+        }
+
+        /*
         Iterator heightIterator = heightValues.entrySet().iterator();
         while(heightIterator.hasNext())
         {
@@ -576,7 +601,7 @@ public class AnthropometryActivityNew extends AppCompatActivity {
 
             height_series.appendData(
                     new DataPoint((int)mapElement.getKey(),
-                            (int)mapElement.getValue()), true, 60);
+                            (int)mapElement.getValue()), true, 61);
         }
         Iterator weightIterator = weightValues.entrySet().iterator();
         while(weightIterator.hasNext())
@@ -587,8 +612,10 @@ public class AnthropometryActivityNew extends AppCompatActivity {
 
             weight_series.appendData(
                     new DataPoint((int)mapElement.getKey(),
-                            ((int)mapElement.getValue())/1000f), true, 60);
+                            ((int)mapElement.getValue())/1000f), true, 61);
         }
+
+         */
 
         height_series.setColor(Color.BLACK);
         height_series.setThickness(5);
