@@ -327,6 +327,7 @@ public class AnthropometryActivityNew extends AppCompatActivity {
             return;
         }
 
+        /*
         System.out.println(getDataElement("YB21tVtxZ0z")); // Date
         System.out.println(getDataElement("cDXlUgg1WiZ")); // height
         //System.out.println(getDataElement("SOAtQfInRoy")); // length for age
@@ -334,7 +335,7 @@ public class AnthropometryActivityNew extends AppCompatActivity {
         System.out.println(getDataElement("rBRI27lvfY5")); // weight
         //System.out.println(getDataElement("bJHCnjX02PN")); // weight for age
         //System.out.println(getDataElement("jnzg5BvOj5T")); // weight for lenght
-
+        */
         saveDataElement("YB21tVtxZ0z", textView_Date.getText().toString());
         saveDataElement("cDXlUgg1WiZ", heightTxt.getText().toString());
         saveDataElement("rBRI27lvfY5", weightTxt.getText().toString());
@@ -501,6 +502,7 @@ public class AnthropometryActivityNew extends AppCompatActivity {
 
         for(int i=0; i < eventRepository.size(); i++)
         {
+            /*
             System.out.println("Event ID" + eventRepository.get(i).uid());
             System.out.println("Event date : " + getDataElementFromEvent(
                     "YB21tVtxZ0z", eventRepository.get(i).uid()));
@@ -508,7 +510,7 @@ public class AnthropometryActivityNew extends AppCompatActivity {
                     "cDXlUgg1WiZ", eventRepository.get(i).uid()));
             System.out.println("Event weight : " + getDataElementFromEvent(
                     "rBRI27lvfY5", eventRepository.get(i).uid()));
-
+            */
 
             prepareDataPoints(
                     getDataElementFromEvent(
@@ -549,9 +551,6 @@ public class AnthropometryActivityNew extends AppCompatActivity {
             long diffInMillies = Math.abs(eventDate.getTime() - dob.getTime());
             int diff = (int) TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS) / 7;
 
-            System.out.print("Week number is " + diff);
-            System.out.println( " height : " + height + " weight:" + weight);
-
             // Enter to the data values
             heightValues.put(diff, Integer.parseInt(height));
             weightValues.put(diff, Integer.parseInt(weight));
@@ -567,10 +566,10 @@ public class AnthropometryActivityNew extends AppCompatActivity {
         LineGraphSeries<DataPoint> weight_series = new LineGraphSeries<DataPoint>();
 
         height_series.appendData(
-                new DataPoint(0,0), true, 60
+                new DataPoint(0,0), true, 61
         );
         weight_series.appendData(
-                new DataPoint(0,0), true, 60
+                new DataPoint(0,0), true, 61
         );
 
         for(int i=0; i< 60; i++)
@@ -591,31 +590,6 @@ public class AnthropometryActivityNew extends AppCompatActivity {
             }
         }
 
-        /*
-        Iterator heightIterator = heightValues.entrySet().iterator();
-        while(heightIterator.hasNext())
-        {
-            Map.Entry mapElement = (Map.Entry)heightIterator.next();
-            int marks = ((int)mapElement.getValue());
-            System.out.println(mapElement.getKey() + " : " + marks);
-
-            height_series.appendData(
-                    new DataPoint((int)mapElement.getKey(),
-                            (int)mapElement.getValue()), true, 61);
-        }
-        Iterator weightIterator = weightValues.entrySet().iterator();
-        while(weightIterator.hasNext())
-        {
-            Map.Entry mapElement = (Map.Entry)weightIterator.next();
-            int marks = ((int)mapElement.getValue());
-            System.out.println(mapElement.getKey() + " : " + marks);
-
-            weight_series.appendData(
-                    new DataPoint((int)mapElement.getKey(),
-                            ((int)mapElement.getValue())/1000f), true, 61);
-        }
-
-         */
 
         height_series.setColor(Color.BLACK);
         height_series.setThickness(5);
