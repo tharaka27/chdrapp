@@ -166,13 +166,13 @@ public class EventsActivity extends ListActivity {
                                                         System.out.println(selectedProgram);
                                                         if(selectedProgram.equals("hM6Yt9FQL0n"))
                                                         {
-                                                            return AnthropometryActivity.getFormActivityIntent(
+                                                            return AnthropometryActivityNew.getFormActivityIntent(
                                                                     EventsActivity.this,
                                                                     eventUid,
                                                                     selectedProgram,
                                                                     Sdk.d2().organisationUnitModule().organisationUnits()
                                                                             .one().blockingGet().uid(),
-                                                                    AnthropometryActivity.FormType.CREATE,
+                                                                    AnthropometryActivityNew.FormType.CREATE,
                                                                     selectedChild);
                                                         }else if(stageSelected.equals("KN0o3H6x8IH"))
                                                         {
