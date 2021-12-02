@@ -142,6 +142,7 @@ public class AnthropometryActivityNew extends AppCompatActivity {
 
         heightValues = new HashMap<>();
         weightValues = new HashMap<>();
+        selectDataSets();
 
 
         Date date = new Date();
@@ -212,12 +213,13 @@ public class AnthropometryActivityNew extends AppCompatActivity {
                         Float.parseFloat(weightTxt.getText().toString()) / 1000f);
             }
 
-            //String Currentweight = String.valueOf(currentWeightInt);
+            // First set age in weeks because change color uses its value
+            setAgeInWeeks();
 
             ChangeColor(heightTxt, heightTxt.getText().toString(), heightDataWHO, true);
-            ChangeColor(weightTxt, Currentweight, weightDataWHO, false);
+            ChangeColor(weightTxt, Currentweight, weightDataWHO, true);
 
-            setAgeInWeeks();
+
 
         }else{
             textView_Date.setText("Click here to set Date");
@@ -255,10 +257,23 @@ public class AnthropometryActivityNew extends AppCompatActivity {
 
         saveButton.setOnClickListener(v -> {
             saveElements();
+            finishEnrollment();
+        });
+
+        plotGraphButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveElements();
+                weightGraph.removeAllSeries();
+                heightGraph.removeAllSeries();
+                plotGraph();
+                plotDataElements();
+                drawLineGraph();
+            }
         });
 
 
-        selectDataSets();
+
         plotGraph();
         plotDataElements();
         drawLineGraph();
@@ -287,6 +302,8 @@ public class AnthropometryActivityNew extends AppCompatActivity {
         setResult(RESULT_OK);
         finish();
     }
+
+
 
     private void saveElements()
     {
@@ -322,7 +339,6 @@ public class AnthropometryActivityNew extends AppCompatActivity {
         saveDataElement("cDXlUgg1WiZ", heightTxt.getText().toString());
         saveDataElement("rBRI27lvfY5", weightTxt.getText().toString());
 
-        finishEnrollment();
     }
 
     private void ChangeColor(EditText text, String s,
@@ -331,7 +347,7 @@ public class AnthropometryActivityNew extends AppCompatActivity {
         if(!AgeInWeeksTxt.getText().toString().isEmpty() &&
                 !AgeInWeeksTxt.getText().toString().equals("Age in weeks"))
             currentAge = Integer.parseInt(AgeInWeeksTxt.getText().toString());
-        //int currentAge = Integer.parseInt(AgeInWeeksTxt.getText().toString());
+
         float currentValue;
         if (s.isEmpty()) {
             currentValue = 0;
@@ -575,7 +591,7 @@ public class AnthropometryActivityNew extends AppCompatActivity {
         }
 
         height_series.setColor(Color.BLACK);
-        height_series.setThickness(2);
+        height_series.setThickness(5);
         weight_series.setColor(Color.BLACK);
         weight_series.setThickness(5);
 
