@@ -20,6 +20,7 @@ import com.echdr.android.echdrapp.ui.event_form.AnthropometryActivityNew;
 import com.echdr.android.echdrapp.ui.event_form.EventFormActivity;
 import com.echdr.android.echdrapp.ui.event_form.OtherEvaluationActivity;
 import com.echdr.android.echdrapp.ui.event_form.OtherReasonForActivity;
+import com.echdr.android.echdrapp.ui.event_form.OtherReferredForInterventionActivity;
 import com.echdr.android.echdrapp.ui.event_form.OverweightIntervensionActivity;
 import com.echdr.android.echdrapp.ui.event_form.OverweightManagementActivity;
 import com.echdr.android.echdrapp.ui.event_form.OverweightOutcomeActivity;
@@ -205,6 +206,18 @@ public class EventsActivity extends ListActivity {
                                                                     Sdk.d2().organisationUnitModule().organisationUnits()
                                                                             .one().blockingGet().uid(),
                                                                     OtherReasonForActivity.FormType.CREATE,
+                                                                    selectedChild);
+                                                        }
+
+                                                        else if(stageSelected.equals("y2imfIjE4zt")) // other - referred for intervention
+                                                        {
+                                                            return OtherReferredForInterventionActivity.getFormActivityIntent(
+                                                                    EventsActivity.this,
+                                                                    eventUid,
+                                                                    selectedProgram,
+                                                                    Sdk.d2().organisationUnitModule().organisationUnits()
+                                                                            .one().blockingGet().uid(),
+                                                                    OtherReferredForInterventionActivity.FormType.CREATE,
                                                                     selectedChild);
                                                         }
 

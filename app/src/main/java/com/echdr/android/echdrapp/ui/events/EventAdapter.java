@@ -20,6 +20,7 @@ import com.echdr.android.echdrapp.ui.event_form.AnthropometryActivityNew;
 import com.echdr.android.echdrapp.ui.event_form.EventFormActivity;
 import com.echdr.android.echdrapp.ui.event_form.OtherEvaluationActivity;
 import com.echdr.android.echdrapp.ui.event_form.OtherReasonForActivity;
+import com.echdr.android.echdrapp.ui.event_form.OtherReferredForInterventionActivity;
 import com.echdr.android.echdrapp.ui.event_form.OverweightIntervensionActivity;
 import com.echdr.android.echdrapp.ui.event_form.OverweightManagementActivity;
 import com.echdr.android.echdrapp.ui.event_form.OverweightOutcomeActivity;
@@ -54,11 +55,20 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
     private DataSource<?, Event> source;
     private String selectedChild;
     private HashMap<String, String> programStageNames;
+    private HashMap<String, String> anthropometryElements;
+    private HashMap<String, String> otherHealth_reasonForEnrollment;
+    private HashMap<String, String> otherHealth_riskFactorEvaluation;
+    private HashMap<String, String> otherHealth_referredForIntervention;
+
+
+
 
     public EventAdapter(AppCompatActivity activity, String selectedChild) {
         super(new DiffByIdItemCallback<>());
         this.activity = activity;
         this.selectedChild = selectedChild;
+
+
         programStageNames = new HashMap<>();
         programStageNames.put("pI5JAmTcjE4", "Intervention");
         programStageNames.put("iWycCg6C2gd", "Reason for enrollment");
@@ -76,6 +86,36 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
         programStageNames.put("B8Jbdgg7Ut1", "Management");
         programStageNames.put("YweAFncBjUm", "Intervention");
         programStageNames.put("RtC4CcoEs4J", "Outcome");
+
+        anthropometryElements = new HashMap<>();
+        anthropometryElements.put("YB21tVtxZ0z", "Anthropometry date");
+        anthropometryElements.put("cDXlUgg1WiZ", "Length/Height");
+        anthropometryElements.put("SOAtQfInRoy", "Length/Height for Age");
+        anthropometryElements.put("b4Gpl5ayBe3", "Age in months");
+        anthropometryElements.put("rBRI27lvfY5", "Weight");
+        anthropometryElements.put("bJHCnjX02PN", "Weight for Age");
+        anthropometryElements.put("jnzg5BvOj5T", "Weight for Length/Height");
+
+        otherHealth_reasonForEnrollment = new HashMap<>();
+        otherHealth_reasonForEnrollment.put("Sw98c8KAEmr", "Reason Long-standing Growth faltering in green zone date");
+        otherHealth_reasonForEnrollment.put("Dpw5YPM1CFj", "Reason for enrollment date");
+        otherHealth_reasonForEnrollment.put("QNV3Qb2kjx8", "Reason MAM");
+        otherHealth_reasonForEnrollment.put("dnLak5wmEzT", "Reason Overweight_Obesity");
+        otherHealth_reasonForEnrollment.put("AOKp3oQPyYP", "Reason SAM");
+        otherHealth_reasonForEnrollment.put("paM0QZaZMTO", "Reason Stunting");
+        otherHealth_reasonForEnrollment.put("xkhQxmJ8X24", "Reason Underweight");
+
+        otherHealth_riskFactorEvaluation = new HashMap<>();
+        otherHealth_riskFactorEvaluation.put("cLNSXKlqjqA", "Food insecurity");
+        otherHealth_riskFactorEvaluation.put("Zr5SvpMT2y0", "High prevalence of communicable diseases");
+        otherHealth_riskFactorEvaluation.put("nXJSGsaPznl", "Inadequate child care");
+        otherHealth_riskFactorEvaluation.put("r1YtZtTBbKZ", "Inadequate water sanitation");
+        otherHealth_riskFactorEvaluation.put("riZnnab24ef", "Poverty and poor income management");
+        otherHealth_riskFactorEvaluation.put("cmqwQ5zk66F", "Risk factor evaluation date");
+
+
+
+
 
 
     }
@@ -169,6 +209,19 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
                                 event.program(),
                                 event.organisationUnit(),
                                 OtherReasonForActivity.FormType.CHECK,
+                                selectedChild
+                        ), false
+                );
+            }
+            else if(event.programStage().equals("y2imfIjE4zt")) // other - intervention
+            {
+                ActivityStarter.startActivity(activity,
+                        OtherReferredForInterventionActivity.getFormActivityIntent(
+                                activity,
+                                event.uid(),
+                                event.program(),
+                                event.organisationUnit(),
+                                OtherReferredForInterventionActivity.FormType.CHECK,
                                 selectedChild
                         ), false
                 );

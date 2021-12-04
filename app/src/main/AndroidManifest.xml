@@ -35,6 +35,9 @@
             android:name=".ui.event_form.OtherReasonForActivity"
             android:exported="true" />
         <activity
+            android:name=".ui.event_form.OtherReferredForInterventionActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.event_form.OverweightIntervensionActivity"
             android:exported="true" />
         <activity
