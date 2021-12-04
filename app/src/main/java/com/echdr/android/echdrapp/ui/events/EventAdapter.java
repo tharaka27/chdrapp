@@ -42,6 +42,7 @@ import org.hisp.dhis.android.core.program.ProgramStageDataElement;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityDataValue;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static com.echdr.android.echdrapp.data.service.StyleBinderHelper.setBackgroundColor;
@@ -52,11 +53,31 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
     private final AppCompatActivity activity;
     private DataSource<?, Event> source;
     private String selectedChild;
+    private HashMap<String, String> programStageNames;
 
     public EventAdapter(AppCompatActivity activity, String selectedChild) {
         super(new DiffByIdItemCallback<>());
         this.activity = activity;
         this.selectedChild = selectedChild;
+        programStageNames = new HashMap<>();
+        programStageNames.put("pI5JAmTcjE4", "Intervention");
+        programStageNames.put("iWycCg6C2gd", "Reason for enrollment");
+        programStageNames.put("O9FEeIYqGRH", "Risk factor evaluation");
+        programStageNames.put("y2imfIjE4zt", "Referred for intervention");
+        programStageNames.put("TC7YSoNEUag", "Management");
+        programStageNames.put("S4DegY3OjJv", "Intervention");
+        programStageNames.put("ctwLm9rn8gr", "Outcome");
+        programStageNames.put("iEylwjAa5Cq", "Management");
+        programStageNames.put("mjjxR9aGJ4P", "Intervention");
+        programStageNames.put("L4MJKSCcUof", "Out come");
+        programStageNames.put("KN0o3H6x8IH", "Indication for Thriposha");
+        programStageNames.put("du2KnwyeL32", "Interventions");
+        programStageNames.put("QKsx9TfOJ3m", "Outcome");
+        programStageNames.put("B8Jbdgg7Ut1", "Management");
+        programStageNames.put("YweAFncBjUm", "Intervention");
+        programStageNames.put("RtC4CcoEs4J", "Outcome");
+
+
     }
 
     @NonNull
@@ -70,12 +91,22 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
     public void onBindViewHolder(@NonNull ListItemWithSyncHolder holder, int position) {
         Event event = getItem(position);
         List<TrackedEntityDataValue> values = new ArrayList<>(event.trackedEntityDataValues());
+
+        /*
         holder.title.setText(orgUnit(event.organisationUnit()).displayName());
         holder.subtitle1.setText(valueAt(values, event.programStage()));
         holder.subtitle2.setText(optionCombo(event.attributeOptionCombo()).displayName());
         holder.rightText.setText(DateFormatHelper.formatDate(event.eventDate()));
         holder.icon.setImageResource(R.drawable.ic_programs_black_24dp);
         holder.delete.setVisibility(View.VISIBLE);
+         */
+        holder.title.setText(programStageNames.get(event.programStage()));
+        holder.subtitle1.setText(valueAt(values, event.programStage()));
+        holder.subtitle2.setText(optionCombo(event.attributeOptionCombo()).displayName());
+        holder.rightText.setText(DateFormatHelper.formatDate(event.eventDate()));
+        holder.icon.setImageResource(R.drawable.ic_programs_black_24dp);
+        holder.delete.setVisibility(View.VISIBLE);
+
         holder.delete.setOnClickListener(view -> {
             try {
                 Sdk.d2().eventModule().events().uid(event.uid()).blockingDelete();
@@ -341,5 +372,8 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
     public void invalidateSource() {
         source.invalidate();
     }
+
+
+
 
 }
