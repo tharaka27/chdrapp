@@ -64,8 +64,15 @@ public class TrackedEntityInstanceAdapter extends PagedListAdapter<TrackedEntity
         TrackedEntityInstance trackedEntityInstance = getItem(position);
         List<TrackedEntityAttributeValue> values = trackedEntityInstance.trackedEntityAttributeValues();
         holder.title.setText(valueAt(values, "zh4hiarsSD5"));
-        holder.subtitle1.setText(valueAt(values, teiSubtitle1(trackedEntityInstance)));
-        holder.subtitle2.setText(setSubtitle2(values, trackedEntityInstance));
+        //holder.subtitle1.setText(valueAt(values, teiSubtitle1(trackedEntityInstance)));
+        //holder.subtitle2.setText(setSubtitle2(values, trackedEntityInstance));
+
+        // show gender
+        holder.subtitle1.setText(valueAt(values, "lmtzQrlHMYF"));
+
+        // show date of birth
+        holder.subtitle2.setText(valueAt(values, "qNH202ChkV3"));
+
         holder.rightText.setText(DateFormatHelper.formatDate(trackedEntityInstance.created()));
         //holder.title.setText();
         setImage(trackedEntityInstance, holder);
@@ -111,7 +118,9 @@ public class TrackedEntityInstanceAdapter extends PagedListAdapter<TrackedEntity
         setBackgroundColor(R.color.colorAccentDark, holder.icon);
 
         setState(trackedEntityInstance.state(), holder.syncIcon);
-        setConflicts(trackedEntityInstance.uid(), holder);
+
+        //remove conflicts showing
+        //setConflicts(trackedEntityInstance.uid(), holder);
 
         holder.itemView.setOnClickListener(view -> {
             ActivityStarter.startActivity(

@@ -98,9 +98,21 @@ public class EventsActivity extends ListActivity {
 
                     ArrayAdapter<String> stages_names = new ArrayAdapter<String>
                             (this, android.R.layout.select_dialog_singlechoice);
-                    for (ProgramStage stageItem : stages) {
-                        stages_names.add(stageItem.name());
+
+                    if(selectedProgram.equals("JsfNVX0hdq9") || selectedProgram.equals("lSSNwBMiwrK")
+                            || selectedProgram.equals("CoGsKgEG4O0") ) // overweight or stunting or therapeutic
+                    {
+                        stages_names.add("Management");
+                        stages_names.add("Intervention");
+                        stages_names.add("Outcome");
+                    }else
+                    {
+                        for (ProgramStage stageItem : stages) {
+                            stages_names.add(stageItem.name());
+                        }
                     }
+
+
 
                     AlertDialog.Builder builderSingle = new AlertDialog.Builder(this);
                     builderSingle.setIcon(R.drawable.baby_girl);
@@ -117,7 +129,17 @@ public class EventsActivity extends ListActivity {
                     builderSingle.setAdapter(stages_names, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            stageSelected = stages.get(which).uid();
+                            for(int i=0; i<stages.size();i++)
+                            {
+                                if(stages.get(i).name().equals(stages_names.getItem(which)))
+                                {
+                                    stageSelected = stages.get(i).uid();
+                                }else if(stages.get(which).name().equals("Out come"))
+                                {
+                                    stageSelected = "L4MJKSCcUof";
+                                }
+                            }
+                            //stageSelected = stages.get(which).uid();
 
                             List<String> j = new ArrayList<>();
                             System.out.println("Came here");
