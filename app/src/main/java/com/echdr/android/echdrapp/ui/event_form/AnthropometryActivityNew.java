@@ -365,7 +365,9 @@ public class AnthropometryActivityNew extends AppCompatActivity {
         int category = 0;
         try {
             System.out.println("Change color : " + currentAge +" currentValue" + currentValue);
-            double[] array = data.get(currentAge);
+
+            // divide by 4 to covert to months
+            double[] array = data.get( currentAge/4 );
             for (category = 0; category < 4; ) {
 
                 assert array != null;
@@ -416,7 +418,15 @@ public class AnthropometryActivityNew extends AppCompatActivity {
             long diffInMillies = Math.abs(eventDate.getTime() - dob.getTime());
             int diff = (int) TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS) / 7;
 
-            AgeInWeeksTxt.setText(String.valueOf(diff));
+            int yrs = diff/52;
+            //if(yrs==0){
+                AgeInWeeksTxt.setText(String.valueOf(diff));
+            //}else
+            //{
+            //    String display = String.valueOf(yrs) +"yrs " + String.valueOf(diff%52);
+            //    AgeInWeeksTxt.setText(display);
+            //}
+
 
         } catch (Exception error) {
             System.out.print("Error in parsing date field: " + error.toString());
@@ -547,9 +557,9 @@ public class AnthropometryActivityNew extends AppCompatActivity {
             Date dob = formatter.parse(birthday.value());
             Date eventDate = formatter.parse(date);
 
-            // Calculate age in weeks
+            // Calculate age in months
             long diffInMillies = Math.abs(eventDate.getTime() - dob.getTime());
-            int diff = (int) TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS) / 7;
+            int diff = (int) TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS) / 30;
 
             // Enter to the data values
             heightValues.put(diff, Integer.parseInt(height));
