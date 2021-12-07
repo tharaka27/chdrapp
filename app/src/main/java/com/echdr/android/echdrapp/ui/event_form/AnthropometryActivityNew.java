@@ -574,12 +574,13 @@ public class AnthropometryActivityNew extends AppCompatActivity {
     {
         LineGraphSeries<DataPoint> height_series = new LineGraphSeries<DataPoint>();
         LineGraphSeries<DataPoint> weight_series = new LineGraphSeries<DataPoint>();
-
+        int birthWeight = Integer.parseInt(getValueListener("Fs89NLB2FrA"));
+        int birthHeight = Integer.parseInt(getValueListener("LpvdWM4YuRq"));
         height_series.appendData(
-                new DataPoint(0,0), true, 61
+                new DataPoint(0,birthHeight), true, 61
         );
         weight_series.appendData(
-                new DataPoint(0,0), true, 61
+                new DataPoint(0,birthWeight/1000), true, 61
         );
 
         for(int i=0; i< 60; i++)
@@ -678,6 +679,16 @@ public class AnthropometryActivityNew extends AppCompatActivity {
     private void finishEnrollment() {
         setResult(RESULT_OK);
         finish();
+    }
+
+    private String getValueListener(String dataElement) {
+
+        String currentValue = Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
+                .byTrackedEntityInstance().eq(selectedChild)
+                .byTrackedEntityAttribute().eq(dataElement)
+                .one().blockingGet().value();
+
+        return currentValue;
     }
 
 
