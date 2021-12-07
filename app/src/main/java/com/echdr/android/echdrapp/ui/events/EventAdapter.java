@@ -41,6 +41,7 @@ import org.hisp.dhis.android.core.maintenance.D2Error;
 import org.hisp.dhis.android.core.organisationunit.OrganisationUnit;
 import org.hisp.dhis.android.core.program.ProgramStageDataElement;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityDataValue;
+import org.hisp.dhis.android.core.trackedentity.TrackedEntityDataValueObjectRepository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -54,13 +55,7 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
     private final AppCompatActivity activity;
     private DataSource<?, Event> source;
     private String selectedChild;
-    private HashMap<String, String> programStageNames;
-    private HashMap<String, String> anthropometryElements;
-    private HashMap<String, String> otherHealth_reasonForEnrollment;
-    private HashMap<String, String> otherHealth_riskFactorEvaluation;
-    private HashMap<String, String> otherHealth_referredForIntervention;
-
-
+    private HashMap<String, String[]> programStageNames;
 
 
     public EventAdapter(AppCompatActivity activity, String selectedChild) {
@@ -70,53 +65,22 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
 
 
         programStageNames = new HashMap<>();
-        programStageNames.put("pI5JAmTcjE4", "Intervention");
-        programStageNames.put("iWycCg6C2gd", "Reason for enrollment");
-        programStageNames.put("O9FEeIYqGRH", "Risk factor evaluation");
-        programStageNames.put("y2imfIjE4zt", "Referred for intervention");
-        programStageNames.put("TC7YSoNEUag", "Management");
-        programStageNames.put("S4DegY3OjJv", "Intervention");
-        programStageNames.put("ctwLm9rn8gr", "Outcome");
-        programStageNames.put("iEylwjAa5Cq", "Management");
-        programStageNames.put("mjjxR9aGJ4P", "Intervention");
-        programStageNames.put("L4MJKSCcUof", "Out come");
-        programStageNames.put("KN0o3H6x8IH", "Indication for Thriposha");
-        programStageNames.put("du2KnwyeL32", "Interventions");
-        programStageNames.put("QKsx9TfOJ3m", "Outcome");
-        programStageNames.put("B8Jbdgg7Ut1", "Management");
-        programStageNames.put("YweAFncBjUm", "Intervention");
-        programStageNames.put("RtC4CcoEs4J", "Outcome");
-
-        anthropometryElements = new HashMap<>();
-        anthropometryElements.put("YB21tVtxZ0z", "Anthropometry date");
-        anthropometryElements.put("cDXlUgg1WiZ", "Length/Height");
-        anthropometryElements.put("SOAtQfInRoy", "Length/Height for Age");
-        anthropometryElements.put("b4Gpl5ayBe3", "Age in months");
-        anthropometryElements.put("rBRI27lvfY5", "Weight");
-        anthropometryElements.put("bJHCnjX02PN", "Weight for Age");
-        anthropometryElements.put("jnzg5BvOj5T", "Weight for Length/Height");
-
-        otherHealth_reasonForEnrollment = new HashMap<>();
-        otherHealth_reasonForEnrollment.put("Sw98c8KAEmr", "Reason Long-standing Growth faltering in green zone date");
-        otherHealth_reasonForEnrollment.put("Dpw5YPM1CFj", "Reason for enrollment date");
-        otherHealth_reasonForEnrollment.put("QNV3Qb2kjx8", "Reason MAM");
-        otherHealth_reasonForEnrollment.put("dnLak5wmEzT", "Reason Overweight_Obesity");
-        otherHealth_reasonForEnrollment.put("AOKp3oQPyYP", "Reason SAM");
-        otherHealth_reasonForEnrollment.put("paM0QZaZMTO", "Reason Stunting");
-        otherHealth_reasonForEnrollment.put("xkhQxmJ8X24", "Reason Underweight");
-
-        otherHealth_riskFactorEvaluation = new HashMap<>();
-        otherHealth_riskFactorEvaluation.put("cLNSXKlqjqA", "Food insecurity");
-        otherHealth_riskFactorEvaluation.put("Zr5SvpMT2y0", "High prevalence of communicable diseases");
-        otherHealth_riskFactorEvaluation.put("nXJSGsaPznl", "Inadequate child care");
-        otherHealth_riskFactorEvaluation.put("r1YtZtTBbKZ", "Inadequate water sanitation");
-        otherHealth_riskFactorEvaluation.put("riZnnab24ef", "Poverty and poor income management");
-        otherHealth_riskFactorEvaluation.put("cmqwQ5zk66F", "Risk factor evaluation date");
-
-
-
-
-
+        programStageNames.put("pI5JAmTcjE4", new String[]{"Intervention"}); // age in months
+        programStageNames.put("iWycCg6C2gd", new String[]{"Reason for enrollment"}); //
+        programStageNames.put("O9FEeIYqGRH", new String[]{"Risk factor evaluation"});
+        programStageNames.put("y2imfIjE4zt", new String[]{"Referred for intervention"});
+        programStageNames.put("TC7YSoNEUag", new String[]{"Management"});
+        programStageNames.put("S4DegY3OjJv", new String[]{"Intervention"});
+        programStageNames.put("ctwLm9rn8gr", new String[]{"Outcome"});
+        programStageNames.put("iEylwjAa5Cq", new String[]{"Management"});
+        programStageNames.put("mjjxR9aGJ4P", new String[]{"Intervention"});
+        programStageNames.put("L4MJKSCcUof", new String[]{"Outcome"});
+        programStageNames.put("KN0o3H6x8IH", new String[]{"Indication for Thriposha"});
+        programStageNames.put("du2KnwyeL32", new String[]{"Interventions"}); // number of thriposha packets given
+        programStageNames.put("QKsx9TfOJ3m", new String[]{"Outcome"});
+        programStageNames.put("B8Jbdgg7Ut1", new String[]{"Management"});
+        programStageNames.put("YweAFncBjUm", new String[]{"Intervention"});
+        programStageNames.put("RtC4CcoEs4J", new String[]{"Outcome"});
 
     }
 
@@ -140,10 +104,51 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
         holder.icon.setImageResource(R.drawable.ic_programs_black_24dp);
         holder.delete.setVisibility(View.VISIBLE);
          */
-        holder.title.setText(programStageNames.get(event.programStage()));
-        holder.subtitle1.setText(valueAt(values, event.programStage()));
-        holder.subtitle2.setText(optionCombo(event.attributeOptionCombo()).displayName());
-        holder.rightText.setText(DateFormatHelper.formatDate(event.eventDate()));
+        holder.title.setText(programStageNames.get(event.programStage())[0]);
+
+        /* selecting subtitle two */
+        String sub_two_data = "";
+        if(event.programStage().equals("pI5JAmTcjE4")) // anthropometry
+        {
+            sub_two_data = "Height :" + getDataElementFromEvent( "cDXlUgg1WiZ", event.uid())
+                    + "cm Weight " + String.valueOf(Float.parseFloat(
+                            getDataElementFromEvent("rBRI27lvfY5", event.uid() ))/1000)
+            + "kg";
+        }
+        else if(event.programStage().equals("iWycCg6C2gd")) //other - reason for enrollment
+        {
+            sub_two_data = "MAM: " + getDataElementFromEvent( "QNV3Qb2kjx8", event.uid())
+                           + " SAM: " + getDataElementFromEvent( "AOKp3oQPyYP", event.uid());
+        }
+        else if(event.programStage().equals("TC7YSoNEUag")) //obesity - management
+        {
+            sub_two_data = "Nutrition seen: "
+                    + getDataElementFromEvent( "FMJdAftRK7q", event.uid());
+        }
+        else if(event.programStage().equals("S4DegY3OjJv")) //obesity - Intervention
+        {
+            sub_two_data = "Nutrition councelling given: "
+                    + getDataElementFromEvent( "FMJdAftRK7q", event.uid());
+        }
+        else if(event.programStage().equals("du2KnwyeL32")) //supplementary - intervention
+        {
+            sub_two_data = "Num thriposha packets given: " +
+                    getDataElementFromEvent( "h9Sv7i87Ks1", event.uid());
+        }
+        else if(event.programStage().equals("iEylwjAa5Cq")) //stunting - Management
+        {
+            sub_two_data = "Paediatrician/ MO/Nutrition seen: " +
+                    getDataElementFromEvent( "KdN0rkDaYLD", event.uid());
+        }
+        else if(event.programStage().equals("mjjxR9aGJ4P")) //stunting - Intervention
+        {
+            sub_two_data = "IYCF/Nutrition counselling: " +
+                    getDataElementFromEvent( "Xpf2G3fhTUb", event.uid());
+        }
+        holder.subtitle2.setText(sub_two_data);
+
+        holder.subtitle1.setText(DateFormatHelper.formatDate(event.eventDate()));
+        //holder.rightText.setText(DateFormatHelper.formatDate(event.eventDate()));
         holder.icon.setImageResource(R.drawable.ic_programs_black_24dp);
         holder.delete.setVisibility(View.VISIBLE);
 
@@ -426,7 +431,20 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
         source.invalidate();
     }
 
+    private String getDataElementFromEvent(String dataElement, String captureEvent)
+    {
+        TrackedEntityDataValueObjectRepository valueRepository =
+                Sdk.d2().trackedEntityModule().trackedEntityDataValues()
+                        .value(
+                                captureEvent,
+                                dataElement
+                        );
 
+        String currentValue = valueRepository.blockingExists() ?
+                valueRepository.blockingGet().value() : "";
+
+        return currentValue;
+    }
 
 
 }
