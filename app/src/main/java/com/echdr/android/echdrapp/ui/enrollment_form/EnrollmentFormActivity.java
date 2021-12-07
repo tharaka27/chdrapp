@@ -21,11 +21,13 @@ import androidx.databinding.DataBindingUtil;
 import com.echdr.android.echdrapp.BuildConfig;
 import com.echdr.android.echdrapp.R;
 import com.echdr.android.echdrapp.data.Sdk;
+import com.echdr.android.echdrapp.data.service.ActivityStarter;
 import com.echdr.android.echdrapp.data.service.forms.EnrollmentFormService;
 import com.echdr.android.echdrapp.data.service.forms.FormField;
 import com.echdr.android.echdrapp.data.service.forms.RuleEngineService;
 import com.echdr.android.echdrapp.databinding.ActivityEnrollmentFormBinding;
 import com.echdr.android.echdrapp.databinding.ActivityEnrollementFormThreeBinding;
+import com.echdr.android.echdrapp.ui.tracked_entity_instances.ChildDetailsActivity;
 
 import org.hisp.dhis.android.core.arch.helpers.FileResizerHelper;
 import org.hisp.dhis.android.core.arch.helpers.FileResourceDirectoryHelper;
@@ -229,7 +231,12 @@ public class EnrollmentFormActivity extends AppCompatActivity {
 
     private void finishEnrollment(View view) {
         setResult(RESULT_OK);
+        //finish();
+
+        Intent i =  ChildDetailsActivity.getTrackedEntityInstancesActivityIntent(this, teiUid);
         finish();
+        startActivity(i);
+
     }
 
     @Override
