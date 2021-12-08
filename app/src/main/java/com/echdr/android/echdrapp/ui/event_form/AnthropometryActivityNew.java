@@ -386,19 +386,24 @@ public class AnthropometryActivityNew extends AppCompatActivity {
 
         switch (category) {
             case -1:
-                text.setBackgroundColor(Color.RED);
+                //text.setBackgroundColor(Color.RED);
+                text.setBackgroundColor(Color.parseColor("#e6653b"));
                 break;
             case 0:
-                text.setBackgroundColor(Color.rgb(255, 165, 0)); // orange
+                //text.setBackgroundColor(Color.rgb(255, 165, 0)); // orange
+                text.setBackgroundColor(Color.parseColor("#ccc971"));
                 break;
             case 1:
-                text.setBackgroundColor(Color.YELLOW);
+                //text.setBackgroundColor(Color.YELLOW);
+                text.setBackgroundColor(Color.parseColor("#afe1bb"));
                 break;
             case 2:
-                text.setBackgroundColor(Color.GREEN);
+                //text.setBackgroundColor(Color.GREEN);
+                text.setBackgroundColor(Color.parseColor("#a3ccae"));
                 break;
             case 3:
-                text.setBackgroundColor(Color.rgb(215, 31, 226)); // purple color
+                //text.setBackgroundColor(Color.rgb(215, 31, 226)); // purple color
+                text.setBackgroundColor(Color.parseColor("#f3e5f6"));
                 break;
 
         }
@@ -475,8 +480,8 @@ public class AnthropometryActivityNew extends AppCompatActivity {
 
         }
 
-        heightGraph.getViewport().setBackgroundColor(Color.rgb(215, 31, 226));
-        weightGraph.getViewport().setBackgroundColor(Color.rgb(215, 31, 226));
+        heightGraph.getViewport().setBackgroundColor(Color.parseColor("#f3e5f6"));
+        weightGraph.getViewport().setBackgroundColor(Color.parseColor("#f3e5f6"));
 
         heightGraph.getViewport().setMaxX(60);
         heightGraph.getViewport().setMaxY(130);

@@ -362,6 +362,7 @@ public class DataValuesWHO {
     private int getColor(int pos) {
         int color = Color.RED;
 
+        /*
         switch (pos) {
             case 0:
             case 6:
@@ -379,24 +380,26 @@ public class DataValuesWHO {
                 color = Color.GREEN;
                 break;
         }
+         */
 
-         /*
         switch (pos) {
             case 0:
-                color = Color.RED;
+            case 6:
+                color = Color.parseColor("#e6653b");
                 break;
             case 1:
-                color = Color.rgb(255, 165, 0);
+            case 5:
+                color = Color.parseColor("#ccc971");
                 break;
             case 2:
-                color = Color.YELLOW;
+            case 4:
+                color = Color.parseColor("#afe1bb");
                 break;
             case 3:
-                color = Color.GREEN;
+                color = Color.parseColor("#a3ccae");
                 break;
         }
 
-         */
 
         return color;
     }
