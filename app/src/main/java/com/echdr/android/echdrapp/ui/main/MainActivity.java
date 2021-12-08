@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity{
     private Button UploadBtn;
     private LinearLayout myAreaDetailsBtn;
     private LinearLayout createNewChild;
+    private ProgressBar progressBar;
     private boolean isSyncing = false;
 
     public static Intent getMainActivityIntent(Context context) {
@@ -109,6 +110,9 @@ public class MainActivity extends AppCompatActivity{
         UploadBtn = findViewById(R.id.uploadBtn);
         myAreaDetailsBtn = findViewById(R.id.area);
         createNewChild = findViewById(R.id.new_child);
+        progressBar = findViewById(R.id.progressBar);
+
+        //progressBar.setVisibility(View.VISIBLE);
 
         numAllregistrations = findViewById(R.id.numAll);
         numTherapeutic = findViewById(R.id.numTherapeutical);
@@ -190,6 +194,10 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
 
+                progressBar.setVisibility(View.VISIBLE);
+                syncBtn.setClickable(false);
+                syncBtn.setText("Syncing...");
+
                 // First Upload any data
                 uploadData();
 
@@ -233,6 +241,11 @@ public class MainActivity extends AppCompatActivity{
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .doOnComplete(() -> {
+
+                            // set progress bar gone
+                            progressBar.setVisibility(View.GONE);
+                            syncBtn.setClickable(true);
+                            //syncBtn.setText("SYNC DATA");
                             ActivityStarter.startActivity(this, MainActivity.getMainActivityIntent(this),
                                     true);
                         })
