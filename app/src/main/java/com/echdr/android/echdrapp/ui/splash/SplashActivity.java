@@ -29,7 +29,10 @@ public class SplashActivity extends AppCompatActivity {
                 .flatMap(d2 -> d2.userModule().isLogged())
                 .doOnSuccess(isLogged -> {
                     if (isLogged) {
-                        ActivityStarter.startActivity(this, MainActivity.getMainActivityIntent(this),true);
+                        //ActivityStarter.startActivity(this, MainActivity.getMainActivityIntent(this),true);
+
+                        // direct to the language selection window
+                        ActivityStarter.startActivity(this, LanguageSelection.getLanguageSelectionActivityIntent(this),true);
                     } else {
                         ActivityStarter.startActivity(this, LoginActivity.getLoginActivityIntent(this),true);
                     }

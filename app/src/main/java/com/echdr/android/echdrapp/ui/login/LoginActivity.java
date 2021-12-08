@@ -20,6 +20,7 @@ import com.echdr.android.echdrapp.data.Sdk;
 import com.echdr.android.echdrapp.data.service.ActivityStarter;
 import com.echdr.android.echdrapp.ui.main.MainActivity;
 import com.echdr.android.echdrapp.ui.programs.ProgramsActivity;
+import com.echdr.android.echdrapp.ui.splash.LanguageSelection;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -77,7 +78,8 @@ public class LoginActivity extends AppCompatActivity {
                 if (Sdk.d2().programModule().programs().blockingCount() > 0) {
                     ActivityStarter.startActivity(this, ProgramsActivity.getProgramActivityIntent(this),true);
                 } else {
-                    ActivityStarter.startActivity(this, MainActivity.getMainActivityIntent(this),true);
+                    //ActivityStarter.startActivity(this, MainActivity.getMainActivityIntent(this),true);
+                    ActivityStarter.startActivity(this, LanguageSelection.getLanguageSelectionActivityIntent(this),true);
                 }
             }
             setResult(Activity.RESULT_OK);

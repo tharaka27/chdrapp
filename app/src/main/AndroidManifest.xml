@@ -14,20 +14,20 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.splash.LanguageSelection"
+            android:exported="true" />
+        <activity
             android:name=".ui.event_form.AnthropometryActivity"
             android:exported="true" />
         <activity
             android:name=".ui.event_form.AnthropometryActivityNew"
             android:exported="true" />
-
         <activity
             android:name=".ui.event_form.SupplementaryIndicationActivity"
             android:exported="true" />
-
         <activity
             android:name=".ui.event_form.OtherEvaluationActivity"
             android:exported="true" />
-
         <activity
             android:name=".ui.event_form.OverweightManagementActivity"
             android:exported="true" />
@@ -67,7 +67,6 @@
         <activity
             android:name=".ui.event_form.TherapeuticOutcomeActivity"
             android:exported="true" />
-
         <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -317,7 +317,6 @@ public class ChildDetailsActivity extends ListActivity {
             finish();
 
 
-
         });
 
 
