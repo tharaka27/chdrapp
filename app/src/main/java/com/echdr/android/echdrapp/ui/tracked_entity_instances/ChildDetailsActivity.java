@@ -344,6 +344,7 @@ public class ChildDetailsActivity extends ListActivity {
                 .byTrackedEntityAttribute().eq(dataElement)
                 .one().blockingGet().value();
 
+
             return currentValue;
     }
 

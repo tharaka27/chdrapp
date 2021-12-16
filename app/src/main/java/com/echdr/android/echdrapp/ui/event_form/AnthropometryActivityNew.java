@@ -135,6 +135,9 @@ public class AnthropometryActivityNew extends AppCompatActivity {
                 .byTrackedEntityInstance().eq(selectedChild)
                 .byTrackedEntityAttribute().eq("lmtzQrlHMYF")
                 .one().blockingGet();
+
+        if (sex_d == null)
+            System.out.println("Sex is null");
         
         sex = sex_d.value();
 
@@ -277,6 +280,14 @@ public class AnthropometryActivityNew extends AppCompatActivity {
         plotGraph();
         plotDataElements();
         drawLineGraph();
+
+
+        if (EventFormService.getInstance().init(
+                Sdk.d2(),
+                eventUid,
+                programUid,
+                getIntent().getStringExtra(IntentExtra.OU_UID.name())))
+            this.engineService = new RuleEngineService();
     }
 
     @Override
@@ -298,9 +309,15 @@ public class AnthropometryActivityNew extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        EventFormService.clear();
-        setResult(RESULT_OK);
+
+        if (formType == FormType.CREATE)
+            EventFormService.getInstance().delete();
+        setResult(RESULT_CANCELED);
         finish();
+
+        //EventFormService.clear();
+        //setResult(RESULT_OK);
+        //finish();
     }
 
 

@@ -108,6 +108,7 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
 
         /* selecting subtitle two */
         String sub_two_data = "";
+
         if(event.programStage().equals("pI5JAmTcjE4")) // anthropometry
         {
             sub_two_data = "Height :" + getDataElementFromEvent( "cDXlUgg1WiZ", event.uid())
