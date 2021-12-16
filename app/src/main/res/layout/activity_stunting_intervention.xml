@@ -172,11 +172,11 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginVertical="10dp"
                 android:orientation="horizontal">
-
+<!--
                 <ImageButton
                     android:id="@+id/back_btn"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
+                    android:layout_width="23dp"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_marginStart="10dp"
                     android:background="@drawable/background_back_btn"
@@ -184,13 +184,13 @@
                     android:focusable="true"
                     android:padding="10dp"
                     android:src="@drawable/back" />
+                    -->
 
                 <TextView
                     android:id="@+id/title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/back_btn"
-                    android:text="Stunting Programme\n Intervention"
+                    android:text="Stunting Intervention"
                     android:textAlignment="center"
                     android:textColor="@color/title"
                     android:textSize="20sp"

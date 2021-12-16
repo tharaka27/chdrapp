@@ -326,7 +326,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginVertical="10dp"
                 android:orientation="horizontal">
-
+<!--
                 <ImageButton
                     android:id="@+id/back_btn"
                     android:layout_width="36dp"
@@ -338,13 +338,13 @@
                     android:focusable="true"
                     android:padding="10dp"
                     android:src="@drawable/back" />
+                    -->
 
                 <TextView
                     android:id="@+id/title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/back_btn"
-                    android:text="Anthropometry Programme"
+                    android:text="Anthropometry Activity"
                     android:textAlignment="center"
                     android:textColor="@color/title"
                     android:textSize="20sp"

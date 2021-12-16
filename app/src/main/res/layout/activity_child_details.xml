@@ -748,7 +748,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.2"
-                    android:background="@drawable/registration"
                     android:src="@drawable/registration" />
 
                 <ImageView
@@ -758,8 +757,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.2"
-                    android:background="@drawable/supplementary"
-                    android:src="@drawable/supplementary" />
+                    android:src="@drawable/supplements" />
 
                 <ImageView
                     android:visibility="gone"
@@ -777,7 +775,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.2"
-                    android:background="@drawable/weighingscale"
                     android:src="@drawable/weighingscale" />
 
 
@@ -788,7 +785,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.2"
-                    android:background="@drawable/stunting"
                     android:src="@drawable/stunting" />
 
                 <ImageView
@@ -798,7 +794,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.2"
-                    android:background="@drawable/other_health"
                     android:src="@drawable/other_health" />
 
             </LinearLayout>
@@ -827,7 +822,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.2"
-                    android:background="@drawable/registration"
                     android:src="@drawable/registration" />
 
                 <ImageView
@@ -837,8 +831,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.2"
-                    android:background="@drawable/supplementary"
-                    android:src="@drawable/supplementary" />
+                    android:src="@drawable/supplements" />
 
                 <ImageView
                     android:visibility="visible"
@@ -856,7 +849,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.2"
-                    android:background="@drawable/weighingscale"
                     android:src="@drawable/weighingscale" />
 
 
@@ -867,7 +859,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.2"
-                    android:background="@drawable/stunting"
                     android:src="@drawable/stunting" />
 
                 <ImageView
@@ -877,7 +868,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.2"
-                    android:background="@drawable/other_health"
                     android:src="@drawable/other_health" />
 
             </LinearLayout>
@@ -922,7 +912,7 @@
                 android:orientation="horizontal">
 
                 <ImageButton
-                    android:id="@+id/back_btn"
+                    android:id="@+id/edit_btn"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:layout_alignParentStart="true"
@@ -931,19 +921,19 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:padding="10dp"
-                    android:src="@drawable/back" />
+                    android:src="@drawable/edit" />
+
 
                 <TextView
                     android:id="@+id/title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/back_btn"
                     android:text="@string/cd_title"
                     android:textAlignment="center"
                     android:textColor="@color/title"
                     android:textSize="20sp"
                     android:textStyle="bold" />
-
+<!--
                 <ImageButton
                     android:id="@+id/edit_btn"
                     android:layout_width="36dp"
@@ -955,7 +945,7 @@
                     android:focusable="true"
                     android:padding="10dp"
                     android:src="@drawable/edit" />
-
+-->
             </RelativeLayout>
         </LinearLayout>
     </RelativeLayout>

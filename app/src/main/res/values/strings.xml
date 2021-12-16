@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">CHDR Data Extraction</string>
+    <string name="app_name">MSGP/U5 Monitoring System for Growth Problems in Under 5 Children</string>
     <!-- Strings related to login -->
     <string name="title_activity_login">Log in</string>
     <string name="prompt_server_url">Server url</string>
@@ -91,8 +91,8 @@
     <string name="filter_background">filterBackground</string>
 
     <!--<string name="app_name">Yashodhara</string> -->
-    <string name="login_title">CHDR Data Extraction</string>
-    <string name="login_description">Log in to your CHDR Data Extraction Account</string>
+    <string name="login_title">MSGP/U5 Monitoring System for Growth Problems in Under 5 Children</string>
+    <string name="login_description">Log in to your Account</string>
     <string name="language_selection">Please select the language</string>
     <string name="username"><font size="14">Username</font></string>
     <string name="password"><font size="14">Password</font></string>
