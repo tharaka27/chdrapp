@@ -69,6 +69,7 @@ public class AnthropometryActivityNew extends AppCompatActivity {
 
     private String orgUnit;
     private TextView AgeInWeeksTxt;
+    private TextView AgeInMonthsTxt;
     private Context context;
     private DatePickerDialog.OnDateSetListener setListener;
     private EditText heightTxt;
@@ -118,6 +119,7 @@ public class AnthropometryActivityNew extends AppCompatActivity {
         weightGraph = findViewById(R.id.weightforageAnthropometry);
         weightHeightGraph = findViewById(R.id.weightforheightAnthropometry);
         AgeInWeeksTxt = findViewById(R.id.ageInWeeks);
+        AgeInMonthsTxt  =  findViewById(R.id.ageInMonths);
         plotGraphButton = findViewById(R.id.plotGraph);
 
         eventUid = getIntent().getStringExtra(IntentExtra.EVENT_UID.name());
@@ -445,14 +447,20 @@ public class AnthropometryActivityNew extends AppCompatActivity {
             int diff = (int) TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS) / 7;
 
             int yrs = diff/52;
-            //if(yrs==0){
-                AgeInWeeksTxt.setText(String.valueOf(diff));
-            //}else
-            //{
-            //    String display = String.valueOf(yrs) +"yrs " + String.valueOf(diff%52);
-            //    AgeInWeeksTxt.setText(display);
-            //}
 
+            AgeInWeeksTxt.setText(String.valueOf(diff));
+
+            if(yrs==0){
+                AgeInMonthsTxt.setText(String.valueOf(diff));
+            }else if(yrs==1)
+            {
+                String display = String.valueOf(yrs) +"yr " + String.valueOf(diff%52) + "w";
+                AgeInMonthsTxt.setText(display);
+            }else
+            {
+                String display = String.valueOf(yrs) +"yrs " + String.valueOf(diff%52)+ "w";
+                AgeInMonthsTxt.setText(display);
+            }
 
         } catch (Exception error) {
             System.out.print("Error in parsing date field: " + error.toString());
