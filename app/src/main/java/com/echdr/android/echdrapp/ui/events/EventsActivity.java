@@ -113,7 +113,6 @@ public class EventsActivity extends ListActivity {
                     }
 
 
-
                     AlertDialog.Builder builderSingle = new AlertDialog.Builder(this);
                     builderSingle.setIcon(R.drawable.baby_girl);
                     builderSingle.setTitle("Select program stage");

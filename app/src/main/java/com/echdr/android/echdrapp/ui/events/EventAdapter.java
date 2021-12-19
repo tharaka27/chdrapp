@@ -65,7 +65,7 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
 
 
         programStageNames = new HashMap<>();
-        programStageNames.put("pI5JAmTcjE4", new String[]{"Intervention"}); // age in months
+        programStageNames.put("pI5JAmTcjE4", new String[]{"Anthropometry"}); // age in months
         programStageNames.put("iWycCg6C2gd", new String[]{"Reason for enrollment"}); //
         programStageNames.put("O9FEeIYqGRH", new String[]{"Risk factor evaluation"});
         programStageNames.put("y2imfIjE4zt", new String[]{"Referred for intervention"});
