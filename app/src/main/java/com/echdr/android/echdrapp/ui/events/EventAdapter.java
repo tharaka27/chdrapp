@@ -109,42 +109,42 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
         /* selecting subtitle two */
         String sub_two_data = "";
 
-        if(event.programStage().equals("pI5JAmTcjE4")) // anthropometry
+        try {
+
+            if (event.programStage().equals("pI5JAmTcjE4")) // anthropometry
+            {
+                sub_two_data = "Height :" + getDataElementFromEvent("cDXlUgg1WiZ", event.uid())
+                        + "cm Weight " + String.valueOf(Float.parseFloat(
+                        getDataElementFromEvent("rBRI27lvfY5", event.uid())) / 1000)
+                        + "kg";
+            } else if (event.programStage().equals("iWycCg6C2gd")) //other - reason for enrollment
+            {
+                sub_two_data = "MAM: " + getDataElementFromEvent("QNV3Qb2kjx8", event.uid())
+                        + " SAM: " + getDataElementFromEvent("AOKp3oQPyYP", event.uid());
+            } else if (event.programStage().equals("TC7YSoNEUag")) //obesity - management
+            {
+                sub_two_data = "Nutrition seen: "
+                        + getDataElementFromEvent("FMJdAftRK7q", event.uid());
+            } else if (event.programStage().equals("S4DegY3OjJv")) //obesity - Intervention
+            {
+                sub_two_data = "Nutrition councelling given: "
+                        + getDataElementFromEvent("FMJdAftRK7q", event.uid());
+            } else if (event.programStage().equals("du2KnwyeL32")) //supplementary - intervention
+            {
+                sub_two_data = "Num thriposha packets given: " +
+                        getDataElementFromEvent("h9Sv7i87Ks1", event.uid());
+            } else if (event.programStage().equals("iEylwjAa5Cq")) //stunting - Management
+            {
+                sub_two_data = "Paediatrician/ MO/Nutrition seen: " +
+                        getDataElementFromEvent("KdN0rkDaYLD", event.uid());
+            } else if (event.programStage().equals("mjjxR9aGJ4P")) //stunting - Intervention
+            {
+                sub_two_data = "IYCF/Nutrition counselling: " +
+                        getDataElementFromEvent("Xpf2G3fhTUb", event.uid());
+            }
+        }catch (Exception e)
         {
-            sub_two_data = "Height :" + getDataElementFromEvent( "cDXlUgg1WiZ", event.uid())
-                    + "cm Weight " + String.valueOf(Float.parseFloat(
-                            getDataElementFromEvent("rBRI27lvfY5", event.uid() ))/1000)
-            + "kg";
-        }
-        else if(event.programStage().equals("iWycCg6C2gd")) //other - reason for enrollment
-        {
-            sub_two_data = "MAM: " + getDataElementFromEvent( "QNV3Qb2kjx8", event.uid())
-                           + " SAM: " + getDataElementFromEvent( "AOKp3oQPyYP", event.uid());
-        }
-        else if(event.programStage().equals("TC7YSoNEUag")) //obesity - management
-        {
-            sub_two_data = "Nutrition seen: "
-                    + getDataElementFromEvent( "FMJdAftRK7q", event.uid());
-        }
-        else if(event.programStage().equals("S4DegY3OjJv")) //obesity - Intervention
-        {
-            sub_two_data = "Nutrition councelling given: "
-                    + getDataElementFromEvent( "FMJdAftRK7q", event.uid());
-        }
-        else if(event.programStage().equals("du2KnwyeL32")) //supplementary - intervention
-        {
-            sub_two_data = "Num thriposha packets given: " +
-                    getDataElementFromEvent( "h9Sv7i87Ks1", event.uid());
-        }
-        else if(event.programStage().equals("iEylwjAa5Cq")) //stunting - Management
-        {
-            sub_two_data = "Paediatrician/ MO/Nutrition seen: " +
-                    getDataElementFromEvent( "KdN0rkDaYLD", event.uid());
-        }
-        else if(event.programStage().equals("mjjxR9aGJ4P")) //stunting - Intervention
-        {
-            sub_two_data = "IYCF/Nutrition counselling: " +
-                    getDataElementFromEvent( "Xpf2G3fhTUb", event.uid());
+            sub_two_data = "partially filled data";
         }
         holder.subtitle2.setText(sub_two_data);
 
