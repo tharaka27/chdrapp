@@ -16,12 +16,17 @@ public class DataValuesWHO {
     Map<Integer, double[]> heightForAgeBoys;
     Map<Integer, double[]> weightForAgeGirls;
     Map<Integer, double[]> weightForAgeBoys;
+    Map<Double, double[]> weightForHeightGirls;
+    Map<Double, double[]> weightForHeightBoys;
 
     private DataValuesWHO() {
         heightForAgeGirls = new HashMap<Integer, double[]>();
         heightForAgeBoys = new HashMap<Integer, double[]>();
         weightForAgeGirls = new HashMap<Integer, double[]>();
         weightForAgeBoys = new HashMap<Integer, double[]>();
+        weightForHeightGirls = new HashMap<Double, double[]>();
+        weightForHeightBoys = new HashMap<Double, double[]>();
+
     }
 
     public static DataValuesWHO getInstance() {
@@ -188,6 +193,8 @@ public class DataValuesWHO {
     }
 
     public void initializeweightForAgeGirls() {
+
+        System.out.println(" Initialized ");
         weightForAgeGirls.put(0, new double[]{2, 2.4, 2.8, 4.2});
         weightForAgeGirls.put(1, new double[]{2.7, 3.2, 3.6, 5.5});
         weightForAgeGirls.put(2, new double[]{3.4, 3.9, 4.5, 6.6});
@@ -266,6 +273,7 @@ public class DataValuesWHO {
     }
 
     public void initializeweightForAgeBoys() {
+
         weightForAgeBoys.put(0, new double[]{2.1, 2.5, 2.9, 4.4});
         weightForAgeBoys.put(1, new double[]{2.9, 3.4, 3.9, 5.8});
         weightForAgeBoys.put(2, new double[]{3.8, 4.3, 4.9, 7.1});
@@ -343,6 +351,348 @@ public class DataValuesWHO {
         return weightforage_series;
     }
 
+    public void initializeweightForHeightBoys()
+    {
+        System.out.println(" Initialized boys ");
+        weightForHeightBoys.put(45.0, new double[] {1.9,2,2.2,3.3});
+        weightForHeightBoys.put(45.5, new double[] {1.9,2.1,2.3,3.4});
+        weightForHeightBoys.put(46.0, new double[] {2,2.2,2.4,3.5});
+        weightForHeightBoys.put(46.5, new double[] {2.1,2.3,2.5,3.6});
+        weightForHeightBoys.put(47.0, new double[] {2.1,2.3,2.5,3.7});
+        weightForHeightBoys.put(47.5, new double[] {2.2,2.4,2.6,3.8});
+        weightForHeightBoys.put(48.0, new double[] {2.3,2.5,2.7,3.9});
+        weightForHeightBoys.put(48.5, new double[] {2.3,2.6,2.8,4});
+        weightForHeightBoys.put(49.0, new double[] {2.4,2.6,2.9,4.2});
+        weightForHeightBoys.put(49.5, new double[] {2.5,2.7,3,4.3});
+        weightForHeightBoys.put(50.0, new double[] {2.6,2.8,3,4.4});
+        weightForHeightBoys.put(50.5, new double[] {2.7,2.9,3.1,4.5});
+        weightForHeightBoys.put(51.0, new double[] {2.7,3,3.2,4.7});
+        weightForHeightBoys.put(51.5, new double[] {2.8,3.1,3.3,4.8});
+        weightForHeightBoys.put(52.0, new double[] {2.9,3.2,3.5,5});
+        weightForHeightBoys.put(52.5, new double[] {3,3.3,3.6,5.1});
+        weightForHeightBoys.put(53.0, new double[] {3.1,3.4,3.7,5.3});
+        weightForHeightBoys.put(53.5, new double[] {3.2,3.5,3.8,5.4});
+        weightForHeightBoys.put(54.0, new double[] {3.3,3.6,3.9,5.6});
+        weightForHeightBoys.put(54.5, new double[] {3.4,3.7,4,5.8});
+        weightForHeightBoys.put(55.0, new double[] {3.6,3.8,4.2,6});
+        weightForHeightBoys.put(55.5, new double[] {3.7,4,4.3,6.1});
+        weightForHeightBoys.put(56.0, new double[] {3.8,4.1,4.4,6.3});
+        weightForHeightBoys.put(56.5, new double[] {3.9,4.2,4.6,6.5});
+        weightForHeightBoys.put(57.0, new double[] {4,4.3,4.7,6.7});
+        weightForHeightBoys.put(57.5, new double[] {4.1,4.5,4.9,6.9});
+        weightForHeightBoys.put(58.0, new double[] {4.3,4.6,5,7.1});
+        weightForHeightBoys.put(58.5, new double[] {4.4,4.7,5.1,7.2});
+        weightForHeightBoys.put(59.0, new double[] {4.5,4.8,5.3,7.4});
+        weightForHeightBoys.put(59.5, new double[] {4.6,5,5.4,7.6});
+        weightForHeightBoys.put(60.0, new double[] {4.7,5.1,5.5,7.8});
+        weightForHeightBoys.put(60.5, new double[] {4.8,5.2,5.6,8});
+        weightForHeightBoys.put(61.0, new double[] {4.9,5.3,5.8,8.1});
+        weightForHeightBoys.put(61.5, new double[] {5,5.4,5.9,8.3});
+        weightForHeightBoys.put(62.0, new double[] {5.1,5.6,6,8.5});
+        weightForHeightBoys.put(62.5, new double[] {5.2,5.7,6.1,8.6});
+        weightForHeightBoys.put(63.0, new double[] {5.3,5.8,6.2,8.8});
+        weightForHeightBoys.put(63.5, new double[] {5.4,5.9,6.4,8.9});
+        weightForHeightBoys.put(64.0, new double[] {5.5,6,6.5,9.1});
+        weightForHeightBoys.put(64.5, new double[] {5.6,6.1,6.6,9.3});
+        weightForHeightBoys.put(65.0, new double[] {5.7,6.2,6.7,9.4});
+        weightForHeightBoys.put(65.5, new double[] {5.8,6.3,6.8,9.6});
+        weightForHeightBoys.put(66.0, new double[] {5.9,6.4,6.9,9.7});
+        weightForHeightBoys.put(66.5, new double[] {6,6.5,7,9.9});
+        weightForHeightBoys.put(67.0, new double[] {6.1,6.6,7.1,10});
+        weightForHeightBoys.put(67.5, new double[] {6.2,6.7,7.2,10.2});
+        weightForHeightBoys.put(68.0, new double[] {6.3,6.8,7.3,10.3});
+        weightForHeightBoys.put(68.5, new double[] {6.4,6.9,7.5,10.5});
+        weightForHeightBoys.put(69.0, new double[] {6.5,7,7.6,10.6});
+        weightForHeightBoys.put(69.5, new double[] {6.6,7.1,7.7,10.8});
+        weightForHeightBoys.put(70.0, new double[] {6.6,7.2,7.8,10.9});
+        weightForHeightBoys.put(70.5, new double[] {6.7,7.3,7.9,11.1});
+        weightForHeightBoys.put(71.0, new double[] {6.8,7.4,8,11.2});
+        weightForHeightBoys.put(71.5, new double[] {6.9,7.5,8.1,11.3});
+        weightForHeightBoys.put(72.0, new double[] {7,7.6,8.2,11.5});
+        weightForHeightBoys.put(72.5, new double[] {7.1,7.6,8.3,11.6});
+        weightForHeightBoys.put(73.0, new double[] {7.2,7.7,8.4,11.8});
+        weightForHeightBoys.put(73.5, new double[] {7.2,7.8,8.5,11.9});
+        weightForHeightBoys.put(74.0, new double[] {7.3,7.9,8.6,12.1});
+        weightForHeightBoys.put(74.5, new double[] {7.4,8,8.7,12.2});
+        weightForHeightBoys.put(75.0, new double[] {7.5,8.1,8.8,12.3});
+        weightForHeightBoys.put(75.5, new double[] {7.6,8.2,8.8,12.5});
+        weightForHeightBoys.put(76.0, new double[] {7.6,8.3,8.9,12.6});
+        weightForHeightBoys.put(76.5, new double[] {7.7,8.3,9,12.7});
+        weightForHeightBoys.put(77.0, new double[] {7.8,8.4,9.1,12.8});
+        weightForHeightBoys.put(77.5, new double[] {7.9,8.5,9.2,13});
+        weightForHeightBoys.put(78.0, new double[] {7.9,8.6,9.3,13.1});
+        weightForHeightBoys.put(78.5, new double[] {8,8.7,9.4,13.2});
+        weightForHeightBoys.put(79.0, new double[] {8.1,8.7,9.5,13.3});
+        weightForHeightBoys.put(79.5, new double[] {8.2,8.8,9.5,13.4});
+        weightForHeightBoys.put(80.0, new double[] {8.2,8.9,9.6,13.6});
+        weightForHeightBoys.put(80.5, new double[] {8.3,9,9.7,13.7});
+        weightForHeightBoys.put(81.0, new double[] {8.4,9.1,9.8,13.8});
+        weightForHeightBoys.put(81.5, new double[] {8.5,9.1,9.9,13.9});
+        weightForHeightBoys.put(82.0, new double[] {8.5,9.2,10,14});
+        weightForHeightBoys.put(82.5, new double[] {8.6,9.3,10.1,14.2});
+        weightForHeightBoys.put(83.0, new double[] {8.7,9.4,10.2,14.3});
+        weightForHeightBoys.put(83.5, new double[] {8.8,9.5,10.3,14.4});
+        weightForHeightBoys.put(84.0, new double[] {8.9,9.6,10.4,14.6});
+        weightForHeightBoys.put(84.5, new double[] {9,9.7,10.5,14.7});
+        weightForHeightBoys.put(85.0, new double[] {9.1,9.8,10.6,14.9});
+        weightForHeightBoys.put(85.5, new double[] {9.2,9.9,10.7,15});
+        weightForHeightBoys.put(86.0, new double[] {9.3,10,10.8,15.2});
+        weightForHeightBoys.put(86.5, new double[] {9.4,10.1,11,15.3});
+        weightForHeightBoys.put(87.0, new double[] {9.5,10.2,11.1,15.5});
+        weightForHeightBoys.put(87.5, new double[] {9.6,10.4,11.2,15.6});
+        weightForHeightBoys.put(88.0, new double[] {9.7,10.5,11.3,15.8});
+        weightForHeightBoys.put(88.5, new double[] {9.8,10.6,11.4,15.9});
+        weightForHeightBoys.put(89.0, new double[] {9.9,10.7,11.5,16.1});
+        weightForHeightBoys.put(89.5, new double[] {10,10.8,11.6,16.2});
+        weightForHeightBoys.put(90.0, new double[] {10.1,10.9,11.8,16.4});
+        weightForHeightBoys.put(90.5, new double[] {10.2,11,11.9,16.5});
+        weightForHeightBoys.put(91.0, new double[] {10.3,11.1,12,16.7});
+        weightForHeightBoys.put(91.5, new double[] {10.4,11.2,12.1,16.8});
+        weightForHeightBoys.put(92.0, new double[] {10.5,11.3,12.2,17});
+        weightForHeightBoys.put(92.5, new double[] {10.6,11.4,12.3,17.1});
+        weightForHeightBoys.put(93.0, new double[] {10.7,11.5,12.4,17.3});
+        weightForHeightBoys.put(93.5, new double[] {10.7,11.6,12.5,17.4});
+        weightForHeightBoys.put(94.0, new double[] {10.8,11.7,12.6,17.6});
+        weightForHeightBoys.put(94.5, new double[] {10.9,11.8,12.7,17.7});
+        weightForHeightBoys.put(95.0, new double[] {11,11.9,12.8,17.9});
+        weightForHeightBoys.put(95.5, new double[] {11.1,12,12.9,18});
+        weightForHeightBoys.put(96.0, new double[] {11.2,12.1,13.1,18.2});
+        weightForHeightBoys.put(96.5, new double[] {11.3,12.2,13.2,18.4});
+        weightForHeightBoys.put(97.0, new double[] {11.4,12.3,13.3,18.5});
+        weightForHeightBoys.put(97.5, new double[] {11.5,12.4,13.4,18.7});
+        weightForHeightBoys.put(98.0, new double[] {11.6,12.5,13.5,18.9});
+        weightForHeightBoys.put(98.5, new double[] {11.7,12.6,13.6,19.1});
+        weightForHeightBoys.put(99.0, new double[] {11.8,12.7,13.7,19.2});
+        weightForHeightBoys.put(99.5, new double[] {11.9,12.8,13.9,19.4});
+        weightForHeightBoys.put(100.0, new double[] {12,12.9,14,19.6});
+        weightForHeightBoys.put(100.5, new double[] {12.1,13,14.1,19.8});
+        weightForHeightBoys.put(101.0, new double[] {12.2,13.2,14.2,20});
+        weightForHeightBoys.put(101.5, new double[] {12.3,13.3,14.4,20.2});
+        weightForHeightBoys.put(102.0, new double[] {12.4,13.4,14.5,20.4});
+        weightForHeightBoys.put(102.5, new double[] {12.5,13.5,14.6,20.6});
+        weightForHeightBoys.put(103.0, new double[] {12.6,13.6,14.8,20.8});
+        weightForHeightBoys.put(103.5, new double[] {12.7,13.7,14.9,21});
+        weightForHeightBoys.put(104.0, new double[] {12.8,13.9,15,21.2});
+        weightForHeightBoys.put(104.5, new double[] {12.9,14,15.2,21.5});
+        weightForHeightBoys.put(105.0, new double[] {13,14.1,15.3,21.7});
+        weightForHeightBoys.put(105.5, new double[] {13.2,14.2,15.4,21.9});
+        weightForHeightBoys.put(106.0, new double[] {13.3,14.4,15.6,22.1});
+        weightForHeightBoys.put(106.5, new double[] {13.4,14.5,15.7,22.4});
+        weightForHeightBoys.put(107.0, new double[] {13.5,14.6,15.9,22.6});
+        weightForHeightBoys.put(107.5, new double[] {13.6,14.7,16,22.8});
+        weightForHeightBoys.put(108.0, new double[] {13.7,14.9,16.2,23.1});
+        weightForHeightBoys.put(108.5, new double[] {13.8,15,16.3,23.3});
+        weightForHeightBoys.put(109.0, new double[] {14,15.1,16.5,23.6});
+        weightForHeightBoys.put(109.5, new double[] {14.1,15.3,16.6,23.8});
+        weightForHeightBoys.put(110.0, new double[] {14.2,15.4,16.8,24.1});
+        weightForHeightBoys.put(110.5, new double[] {14.5,15.8,17.1,24.7});
+        weightForHeightBoys.put(111.0, new double[] {14.6,15.9,17.3,25});
+        weightForHeightBoys.put(111.5, new double[] {14.8,16,17.5,25.2});
+        weightForHeightBoys.put(112.0, new double[] {14.9,16.2,17.6,25.5});
+        weightForHeightBoys.put(112.5, new double[] {15,16.3,17.8,25.8});
+        weightForHeightBoys.put(113.0, new double[] {15.2,16.5,18,26});
+        weightForHeightBoys.put(113.5, new double[] {15.3,16.6,18.1,26.3});
+        weightForHeightBoys.put(114.0, new double[] {15.4,16.8,18.3,26.6});
+        weightForHeightBoys.put(114.5, new double[] {15.6,16.9,18.5,26.9});
+        weightForHeightBoys.put(115.0, new double[] {15.7,17.1,18.6,27.2});
+        weightForHeightBoys.put(115.5, new double[] {15.8,17.2,18.8,27.5});
+        weightForHeightBoys.put(116.0, new double[] {16,17.4,19,27.8});
+        weightForHeightBoys.put(116.5, new double[] {16.1,17.5,19.2,28});
+        weightForHeightBoys.put(117.0, new double[] {16.2,17.7,19.3,28.3});
+        weightForHeightBoys.put(117.5, new double[] {16.4,17.9,19.5,28.6});
+        weightForHeightBoys.put(118.0, new double[] {16.5,18,19.7,28.9});
+        weightForHeightBoys.put(118.5, new double[] {16.7,18.2,19.9,29.2});
+        weightForHeightBoys.put(119.0, new double[] {16.8,18.3,20,29.5});
+        weightForHeightBoys.put(119.5, new double[] {16.9,18.5,20.2,29.8});
+        weightForHeightBoys.put(120.0, new double[] {17.1,18.6,20.4,30.1});
+        System.out.println(" Initialized boys completed");
+
+    }
+
+    public LineGraphSeries<DataPoint> weightForHeightBoys(int pos, int maxMonth) {
+        LineGraphSeries<DataPoint> weightforage_series = new LineGraphSeries<DataPoint>();
+        for (double i = 45.0; i <= 120.0; i=i+0.5) {
+            weightforage_series.appendData(
+                    new DataPoint(i, weightForHeightBoys.get(i)[pos]), true, 150);
+        }
+
+        weightforage_series.setColor(getColor(pos));
+        weightforage_series.setThickness(1);
+        weightforage_series.setBackgroundColor(getColor(pos));
+        weightforage_series.setDrawBackground(true);
+        return weightforage_series;
+    }
+
+    public void initializeweightForHeightGirls()
+    {
+        weightForHeightGirls.put(45.0, new double[] {1.9,2.1,2.3,3});
+        weightForHeightGirls.put(45.5, new double[] {2,2.1,2.3,3.1});
+        weightForHeightGirls.put(46.0, new double[] {2,2.2,2.4,3.2});
+        weightForHeightGirls.put(46.5, new double[] {2.1,2.3,2.5,3.3});
+        weightForHeightGirls.put(47.0, new double[] {2.2,2.4,2.6,3.4});
+        weightForHeightGirls.put(47.5, new double[] {2.2,2.4,2.6,3.5});
+        weightForHeightGirls.put(48.0, new double[] {2.3,2.5,2.7,3.6});
+        weightForHeightGirls.put(48.5, new double[] {2.4,2.6,2.8,3.7});
+        weightForHeightGirls.put(49.0, new double[] {2.4,2.6,2.9,3.8});
+        weightForHeightGirls.put(49.5, new double[] {2.5,2.7,3,3.9});
+        weightForHeightGirls.put(50.0, new double[] {2.6,2.8,3.1,4});
+        weightForHeightGirls.put(50.5, new double[] {2.7,2.9,3.2,4.2});
+        weightForHeightGirls.put(51.0, new double[] {2.8,3,3.3,4.3});
+        weightForHeightGirls.put(51.5, new double[] {2.8,3.1,3.4,4.4});
+        weightForHeightGirls.put(52.0, new double[] {2.9,3.2,3.5,4.6});
+        weightForHeightGirls.put(52.5, new double[] {3,3.3,3.6,4.7});
+        weightForHeightGirls.put(53.0, new double[] {3.1,3.4,3.7,4.9});
+        weightForHeightGirls.put(53.5, new double[] {3.2,3.5,3.8,5});
+        weightForHeightGirls.put(54.0, new double[] {3.3,3.6,3.9,5.2});
+        weightForHeightGirls.put(54.5, new double[] {3.4,3.7,4,5.3});
+        weightForHeightGirls.put(55.0, new double[] {3.5,3.8,4.2,5.5});
+        weightForHeightGirls.put(55.5, new double[] {3.6,3.9,4.3,5.7});
+        weightForHeightGirls.put(56.0, new double[] {3.7,4,4.4,5.8});
+        weightForHeightGirls.put(56.5, new double[] {3.8,4.1,4.5,6});
+        weightForHeightGirls.put(57.0, new double[] {3.9,4.3,4.6,6.1});
+        weightForHeightGirls.put(57.5, new double[] {4,4.4,4.8,6.3});
+        weightForHeightGirls.put(58.0, new double[] {4.1,4.5,4.9,6.5});
+        weightForHeightGirls.put(58.5, new double[] {4.2,4.6,5,6.6});
+        weightForHeightGirls.put(59.0, new double[] {4.3,4.7,5.1,6.8});
+        weightForHeightGirls.put(59.5, new double[] {4.4,4.8,5.3,6.9});
+        weightForHeightGirls.put(60.0, new double[] {4.5,4.9,5.4,7.1});
+        weightForHeightGirls.put(60.5, new double[] {4.6,5,5.5,7.3});
+        weightForHeightGirls.put(61.0, new double[] {4.7,5.1,5.6,7.4});
+        weightForHeightGirls.put(61.5, new double[] {4.8,5.2,5.7,7.6});
+        weightForHeightGirls.put(62.0, new double[] {4.9,5.3,5.8,7.7});
+        weightForHeightGirls.put(62.5, new double[] {5,5.4,5.9,7.8});
+        weightForHeightGirls.put(63.0, new double[] {5.1,5.5,6,8});
+        weightForHeightGirls.put(63.5, new double[] {5.2,5.6,6.2,8.1});
+        weightForHeightGirls.put(64.0, new double[] {5.3,5.7,6.3,8.3});
+        weightForHeightGirls.put(64.5, new double[] {5.4,5.8,6.4,8.4});
+        weightForHeightGirls.put(65.0, new double[] {5.5,5.9,6.5,8.6});
+        weightForHeightGirls.put(65.5, new double[] {5.5,6,6.6,8.7});
+        weightForHeightGirls.put(66.0, new double[] {5.6,6.1,6.7,8.8});
+        weightForHeightGirls.put(66.5, new double[] {5.7,6.2,6.8,9});
+        weightForHeightGirls.put(67.0, new double[] {5.8,6.3,6.9,9.1});
+        weightForHeightGirls.put(67.5, new double[] {5.9,6.4,7,9.2});
+        weightForHeightGirls.put(68.0, new double[] {6,6.5,7.1,9.4});
+        weightForHeightGirls.put(68.5, new double[] {6.1,6.6,7.2,9.5});
+        weightForHeightGirls.put(69.0, new double[] {6.1,6.7,7.3,9.6});
+        weightForHeightGirls.put(69.5, new double[] {6.2,6.8,7.4,9.7});
+        weightForHeightGirls.put(70.0, new double[] {6.3,6.9,7.5,9.9});
+        weightForHeightGirls.put(70.5, new double[] {6.4,6.9,7.6,10});
+        weightForHeightGirls.put(71.0, new double[] {6.5,7,7.7,10.1});
+        weightForHeightGirls.put(71.5, new double[] {6.5,7.1,7.7,10.2});
+        weightForHeightGirls.put(72.0, new double[] {6.6,7.2,7.8,10.3});
+        weightForHeightGirls.put(72.5, new double[] {6.7,7.3,7.9,10.5});
+        weightForHeightGirls.put(73.0, new double[] {6.8,7.4,8,10.6});
+        weightForHeightGirls.put(73.5, new double[] {6.9,7.4,8.1,10.7});
+        weightForHeightGirls.put(74.0, new double[] {6.9,7.5,8.2,10.8});
+        weightForHeightGirls.put(74.5, new double[] {7,7.6,8.3,10.9});
+        weightForHeightGirls.put(75.0, new double[] {7.1,7.7,8.4,11});
+        weightForHeightGirls.put(75.5, new double[] {7.1,7.8,8.5,11.1});
+        weightForHeightGirls.put(76.0, new double[] {7.2,7.8,8.5,11.2});
+        weightForHeightGirls.put(76.5, new double[] {7.3,7.9,8.6,11.4});
+        weightForHeightGirls.put(77.0, new double[] {7.4,8,8.7,11.5});
+        weightForHeightGirls.put(77.5, new double[] {7.4,8.1,8.8,11.6});
+        weightForHeightGirls.put(78.0, new double[] {7.5,8.2,8.9,11.7});
+        weightForHeightGirls.put(78.5, new double[] {7.6,8.2,9,11.8});
+        weightForHeightGirls.put(79.0, new double[] {7.7,8.3,9.1,11.9});
+        weightForHeightGirls.put(79.5, new double[] {7.7,8.4,9.1,12});
+        weightForHeightGirls.put(80.0, new double[] {7.8,8.5,9.2,12.1});
+        weightForHeightGirls.put(80.5, new double[] {7.9,8.6,9.3,12.3});
+        weightForHeightGirls.put(81.0, new double[] {8.1,8.8,9.6,13.9});
+        weightForHeightGirls.put(81.5, new double[] {8.2,8.9,9.7,14});
+        weightForHeightGirls.put(82.0, new double[] {8.3,9,9.8,14.1});
+        weightForHeightGirls.put(82.5, new double[] {8.4,9.1,9.9,14.3});
+        weightForHeightGirls.put(83.0, new double[] {8.5,9.2,10,14.5});
+        weightForHeightGirls.put(83.5, new double[] {8.5,9.3,10.1,14.6});
+        weightForHeightGirls.put(84.0, new double[] {8.6,9.4,10.2,14.8});
+        weightForHeightGirls.put(84.5, new double[] {8.7,9.5,10.3,14.9});
+        weightForHeightGirls.put(85.0, new double[] {8.8,9.6,10.4,15.1});
+        weightForHeightGirls.put(85.5, new double[] {8.9,9.7,10.6,15.3});
+        weightForHeightGirls.put(86.0, new double[] {9,9.8,10.7,15.4});
+        weightForHeightGirls.put(86.5, new double[] {9.1,9.9,10.8,15.6});
+        weightForHeightGirls.put(87.0, new double[] {9.2,10,10.9,15.8});
+        weightForHeightGirls.put(87.5, new double[] {9.3,10.1,11,15.9});
+        weightForHeightGirls.put(88.0, new double[] {9.4,10.2,11.1,16.1});
+        weightForHeightGirls.put(88.5, new double[] {9.5,10.3,11.2,16.3});
+        weightForHeightGirls.put(89.0, new double[] {9.6,10.4,11.4,16.4});
+        weightForHeightGirls.put(89.5, new double[] {9.7,10.5,11.5,16.6});
+        weightForHeightGirls.put(90.0, new double[] {9.8,10.6,11.6,16.8});
+        weightForHeightGirls.put(90.5, new double[] {9.9,10.7,11.7,16.9});
+        weightForHeightGirls.put(91.0, new double[] {10,10.9,11.8,17.1});
+        weightForHeightGirls.put(91.5, new double[] {10.1,11,11.9,17.3});
+        weightForHeightGirls.put(92.0, new double[] {10.2,11.1,12,17.4});
+        weightForHeightGirls.put(92.5, new double[] {10.3,11.2,12.1,17.6});
+        weightForHeightGirls.put(93.0, new double[] {10.4,11.3,12.3,17.8});
+        weightForHeightGirls.put(93.5, new double[] {10.5,11.4,12.4,17.9});
+        weightForHeightGirls.put(94.0, new double[] {10.6,11.5,12.5,18.1});
+        weightForHeightGirls.put(94.5, new double[] {10.7,11.6,12.6,18.3});
+        weightForHeightGirls.put(95.0, new double[] {10.8,11.7,12.7,18.5});
+        weightForHeightGirls.put(95.5, new double[] {10.8,11.8,12.8,18.6});
+        weightForHeightGirls.put(96.0, new double[] {10.9,11.9,12.9,18.8});
+        weightForHeightGirls.put(96.5, new double[] {11,12,13.1,19});
+        weightForHeightGirls.put(97.0, new double[] {11.1,12.1,13.2,19.2});
+        weightForHeightGirls.put(97.5, new double[] {11.2,12.2,13.3,19.3});
+        weightForHeightGirls.put(98.0, new double[] {11.3,12.3,13.4,19.5});
+        weightForHeightGirls.put(98.5, new double[] {11.4,12.4,13.5,19.7});
+        weightForHeightGirls.put(99.0, new double[] {11.5,12.5,13.7,19.9});
+        weightForHeightGirls.put(99.5, new double[] {11.6,12.7,13.8,20.1});
+        weightForHeightGirls.put(100.0, new double[] {11.7,12.8,13.9,20.3});
+        weightForHeightGirls.put(100.5, new double[] {11.9,12.9,14.1,20.5});
+        weightForHeightGirls.put(101.0, new double[] {12,13,14.2,20.7});
+        weightForHeightGirls.put(101.5, new double[] {12.1,13.1,14.3,20.9});
+        weightForHeightGirls.put(102.0, new double[] {12.2,13.3,14.5,21.1});
+        weightForHeightGirls.put(102.5, new double[] {12.3,13.4,14.6,21.4});
+        weightForHeightGirls.put(103.0, new double[] {12.4,13.5,14.7,21.6});
+        weightForHeightGirls.put(103.5, new double[] {12.5,13.6,14.9,21.8});
+        weightForHeightGirls.put(104.0, new double[] {12.6,13.8,15,22});
+        weightForHeightGirls.put(104.5, new double[] {12.8,13.9,15.2,22.3});
+        weightForHeightGirls.put(105.0, new double[] {12.9,14,15.3,22.5});
+        weightForHeightGirls.put(105.5, new double[] {13,14.2,15.5,22.7});
+        weightForHeightGirls.put(106.0, new double[] {13.1,14.3,15.6,23});
+        weightForHeightGirls.put(106.5, new double[] {13.3,14.5,15.8,23.2});
+        weightForHeightGirls.put(107.0, new double[] {13.4,14.6,15.9,23.5});
+        weightForHeightGirls.put(107.5, new double[] {13.5,14.7,16.1,23.7});
+        weightForHeightGirls.put(108.0, new double[] {13.7,14.9,16.3,24});
+        weightForHeightGirls.put(108.5, new double[] {13.8,15,16.4,24.3});
+        weightForHeightGirls.put(109.0, new double[] {13.9,15.2,16.6,24.5});
+        weightForHeightGirls.put(109.5, new double[] {14.1,15.4,16.8,24.8});
+        weightForHeightGirls.put(110.0, new double[] {14.2,15.5,17,25.1});
+        weightForHeightGirls.put(110.5, new double[] {14.4,15.7,17.1,25.4});
+        weightForHeightGirls.put(111.0, new double[] {14.5,15.8,17.3,25.7});
+        weightForHeightGirls.put(111.5, new double[] {14.7,16,17.5,26});
+        weightForHeightGirls.put(112.0, new double[] {14.8,16.2,17.7,26.2});
+        weightForHeightGirls.put(112.5, new double[] {15,16.3,17.9,26.5});
+        weightForHeightGirls.put(113.0, new double[] {15.1,16.5,18,26.8});
+        weightForHeightGirls.put(113.5, new double[] {15.3,16.7,18.2,27.1});
+        weightForHeightGirls.put(114.0, new double[] {15.4,16.8,18.4,27.4});
+        weightForHeightGirls.put(114.5, new double[] {15.6,17,18.6,27.8});
+        weightForHeightGirls.put(115.0, new double[] {15.7,17.2,18.8,28.1});
+        weightForHeightGirls.put(115.5, new double[] {15.9,17.3,19,28.4});
+        weightForHeightGirls.put(116.0, new double[] {16,17.5,19.2,28.7});
+        weightForHeightGirls.put(116.5, new double[] {16.2,17.7,19.4,29});
+        weightForHeightGirls.put(117.0, new double[] {16.3,17.8,19.6,29.3});
+        weightForHeightGirls.put(117.5, new double[] {16.5,18,19.8,29.6});
+        weightForHeightGirls.put(118.0, new double[] {16.6,18.2,19.9,29.9});
+        weightForHeightGirls.put(118.5, new double[] {16.8,18.4,20.1,30.3});
+        weightForHeightGirls.put(119.0, new double[] {16.9,18.5,20.3,30.6});
+        weightForHeightGirls.put(119.5, new double[] {17.1,18.7,20.5,30.9});
+        weightForHeightGirls.put(120.0, new double[] {17.3,18.9,20.7,31.2});
+
+    }
+
+    public LineGraphSeries<DataPoint> weightForHeightGirls(int pos, int maxMonth) {
+        LineGraphSeries<DataPoint> weightforage_series = new LineGraphSeries<DataPoint>();
+        for (double i = 45.0; i <= 120.0; i=i+0.5){
+            weightforage_series.appendData(
+                    new DataPoint(i, weightForHeightGirls.get(i)[pos]), true, 60);
+        }
+
+        weightforage_series.setColor(getColor(pos));
+        weightforage_series.setThickness(1);
+        weightforage_series.setBackgroundColor(getColor(pos));
+        weightforage_series.setDrawBackground(true);
+        return weightforage_series;
+    }
+
     public Map<Integer, double[]> getHeightForAgeGirls() {
         return heightForAgeGirls;
     }
@@ -357,6 +707,14 @@ public class DataValuesWHO {
 
     public Map<Integer, double[]> getWeightForAgeBoys() {
         return weightForAgeBoys;
+    }
+
+    public Map<Double, double[]> getWeightForHeightGirls() {
+        return weightForHeightGirls;
+    }
+
+    public Map<Double, double[]> getWeightForHeightBoys() {
+        return weightForHeightBoys;
     }
 
     private int getColor(int pos) {
