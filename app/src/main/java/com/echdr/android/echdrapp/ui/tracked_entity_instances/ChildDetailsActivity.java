@@ -29,6 +29,7 @@ import com.echdr.android.echdrapp.ui.enrollment_form.EnrollmentFormModified;
 import com.echdr.android.echdrapp.ui.events.EventsActivity;
 
 import org.hisp.dhis.android.core.enrollment.Enrollment;
+import org.hisp.dhis.android.core.enrollment.EnrollmentStatus;
 import org.hisp.dhis.android.core.maintenance.D2Error;
 import org.hisp.dhis.android.core.option.Option;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValue;
@@ -430,34 +431,35 @@ public class ChildDetailsActivity extends ListActivity {
             System.out.println(v.program());
         }
 
+        /* Only show the enrolled if the enrollment status is active*/
         for (Enrollment v: enrollments) {
 
-            if (v.program().equals("hM6Yt9FQL0n")) {
+            if (v.program().equals("hM6Yt9FQL0n") && v.status().equals(EnrollmentStatus.ACTIVE)) {
                 antopoEnrolled.setVisibility(View.VISIBLE);
                 antopoNotEnrolled.setVisibility(View.GONE);
             }
 
-            if(v.program().equals("iUgzznPsePB")){
+            if(v.program().equals("iUgzznPsePB") && v.status().equals(EnrollmentStatus.ACTIVE)){
                 otherHealthEnrolled.setVisibility(View.VISIBLE);
                 otherHealthNotEnrolled.setVisibility(View.GONE);
             }
 
-            if(v.program().equals("JsfNVX0hdq9")){
+            if(v.program().equals("JsfNVX0hdq9") && v.status().equals(EnrollmentStatus.ACTIVE)){
                 overweightEnrolled.setVisibility(View.VISIBLE);
                 overweightNotEnrolled.setVisibility(View.GONE);
             }
 
-            if(v.program().equals("lSSNwBMiwrK")){
+            if(v.program().equals("lSSNwBMiwrK") && v.status().equals(EnrollmentStatus.ACTIVE)){
                 stuntingEnrolled.setVisibility(View.VISIBLE);
                 stuntingNotEnrolled.setVisibility(View.GONE);
             }
 
-            if(v.program().equals("tc6RsYbgGzm")){
+            if(v.program().equals("tc6RsYbgGzm") && v.status().equals(EnrollmentStatus.ACTIVE)){
                 supplementaryEnrolled.setVisibility(View.VISIBLE);
                 supplementaryNotEnrolled.setVisibility(View.GONE);
             }
 
-            if(v.program().equals("CoGsKgEG4O0")){
+            if(v.program().equals("CoGsKgEG4O0") && v.status().equals(EnrollmentStatus.ACTIVE)){
                 therapeuticEnrolled.setVisibility(View.VISIBLE);
                 therapeuticNotEnrolled.setVisibility(View.GONE);
             }
@@ -468,7 +470,8 @@ public class ChildDetailsActivity extends ListActivity {
 
     private void EnrollToPrograms(){
 
-        List<TrackedEntityInstance> s = Sdk.d2().trackedEntityModule().trackedEntityInstances().byUid().eq(trackedEntityInstanceUid).blockingGet();
+        List<TrackedEntityInstance> s = Sdk.d2().trackedEntityModule()
+                .trackedEntityInstances().byUid().eq(trackedEntityInstanceUid).blockingGet();
 
         for (TrackedEntityInstance v: s) {
             orgUnit = v.organisationUnit();

@@ -22,6 +22,7 @@ import com.echdr.android.echdrapp.ui.tracker_import_conflicts.TrackerImportConfl
 
 import org.hisp.dhis.android.core.arch.call.D2Progress;
 import org.hisp.dhis.android.core.common.State;
+import org.hisp.dhis.android.core.enrollment.Enrollment;
 import org.hisp.dhis.android.core.maintenance.D2Error;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValue;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityInstance;
@@ -119,8 +120,15 @@ public class TrackedEntityInstanceAdapter extends PagedListAdapter<TrackedEntity
 
         setState(trackedEntityInstance.state(), holder.syncIcon);
 
+        Enrollment enroll = Sdk.d2().enrollmentModule().enrollments()
+                .byTrackedEntityInstance().eq(trackedEntityInstance.uid())
+                .byProgram().eq("hM6Yt9FQL0n")
+                .one().blockingGet();
+        if (enroll != null)
+            holder.subtitle1.setText(enroll.status().toString());
+
         //remove conflicts showing
-        //setConflicts(trackedEntityInstance.uid(), holder);
+        setConflicts(trackedEntityInstance.uid(), holder);
 
         holder.itemView.setOnClickListener(view -> {
             ActivityStarter.startActivity(

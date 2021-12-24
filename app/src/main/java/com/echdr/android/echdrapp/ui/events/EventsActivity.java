@@ -160,7 +160,7 @@ public class EventsActivity extends ListActivity {
                                                 String enrollmentID = Sdk.d2().enrollmentModule().enrollments()
                                                         .byProgram().eq(selectedProgram)
                                                         .byTrackedEntityInstance().eq(selectedChild)
-                                                        .byOrganisationUnit().eq(orgUnit)
+                                                        //.byOrganisationUnit().eq(orgUnit)
                                                         .one().blockingGet().uid();
                                                 //System.out.println("OrgUnit: " + orgUnit + " EnrollementID " + enrollmentID);
                                                 //String stage = Sdk.d2().programModule().programStages()
