@@ -323,7 +323,8 @@ public class OverweightOutcomeActivity extends AppCompatActivity {
         // un-enroll from the program
         AlertDialog.Builder builderSingle = new AlertDialog.Builder(context);
         builderSingle.setIcon(R.drawable.baby_girl);
-        builderSingle.setTitle("This action will un-enroll the child \n" +
+        builderSingle.setTitle("Proceed to un-enroll ?");
+        builderSingle.setMessage("This action will un-enroll the child \n" +
                 "from the overweight program");
 
         builderSingle.setNegativeButton("un-enroll", new DialogInterface.OnClickListener() {

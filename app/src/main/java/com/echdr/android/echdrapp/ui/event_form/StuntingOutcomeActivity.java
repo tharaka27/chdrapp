@@ -28,10 +28,15 @@ import com.echdr.android.echdrapp.data.Sdk;
 import com.echdr.android.echdrapp.data.service.forms.EventFormService;
 import com.echdr.android.echdrapp.data.service.forms.RuleEngineService;
 
+import org.hisp.dhis.android.core.arch.repositories.scope.RepositoryScope;
+import org.hisp.dhis.android.core.enrollment.Enrollment;
+import org.hisp.dhis.android.core.enrollment.EnrollmentObjectRepository;
+import org.hisp.dhis.android.core.enrollment.EnrollmentStatus;
 import org.hisp.dhis.android.core.maintenance.D2Error;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityDataValueObjectRepository;
 
 import java.util.Date;
+import java.util.List;
 
 import io.reactivex.processors.PublishProcessor;
 
@@ -314,11 +319,54 @@ public class StuntingOutcomeActivity extends AppCompatActivity {
             return;
         }
 
-        saveDataElement("SgPDQhOWB7f", textView_Date.getText().toString());
-        saveDataElement("BIeXJ9fThq6",
-                other_type_array[spinner_Enrollment.getSelectedItemPosition()]);
+        // un-enroll from the program
+        AlertDialog.Builder builderSingle = new AlertDialog.Builder(context);
+        builderSingle.setIcon(R.drawable.baby_girl);
+        builderSingle.setTitle("Proceed to un-enroll ?");
+        builderSingle.setMessage("This action will un-enroll the child \n" +
+                "from the stunting program");
 
-        finishEnrollment();
+        builderSingle.setNegativeButton("un-enroll", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+
+                // get latest enrollment
+                List<Enrollment> enrollmentStatus = Sdk.d2().enrollmentModule().enrollments()
+                        .byTrackedEntityInstance().eq(selectedChild)
+                        .byProgram().eq("lSSNwBMiwrK")
+                        .orderByCreated(RepositoryScope.OrderByDirection.DESC)
+                        .blockingGet();
+
+                String enrollmentID = "";
+
+                if(!enrollmentStatus.isEmpty())
+                {
+                    enrollmentID = enrollmentStatus.get(0).uid();
+                }
+
+                EnrollmentObjectRepository rep = Sdk.d2().enrollmentModule().enrollments()
+                        .uid(enrollmentID);
+                try {
+                    rep.setStatus(EnrollmentStatus.COMPLETED);
+                    saveDataElement("SgPDQhOWB7f", textView_Date.getText().toString());
+                    saveDataElement("BIeXJ9fThq6",
+                            other_type_array[spinner_Enrollment.getSelectedItemPosition()]);
+
+                    finishEnrollment();
+
+                } catch (D2Error d2Error) {
+                    d2Error.printStackTrace();
+                    Toast.makeText(context, "Un-enrolling unsuccessful",
+                            Toast.LENGTH_LONG).show();
+                }
+
+                dialog.dismiss();
+                return;
+            }
+        });
+
+        builderSingle.show();
     }
 
     private void selectDate(int year, int month, int day)

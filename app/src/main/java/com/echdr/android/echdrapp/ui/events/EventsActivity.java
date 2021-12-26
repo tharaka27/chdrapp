@@ -500,8 +500,8 @@ public class EventsActivity extends ListActivity {
                 .withTrackedEntityDataValues().byTrackedEntityInstanceUids(j);
 
         if (!isEmpty(selectedProgram)) {
-            return eventRepository.byProgramUid().eq(selectedProgram);
-                    //.byEnrollmentUid().eq(programEnrollmentID);
+            return eventRepository.byProgramUid().eq(selectedProgram)
+                    .byEnrollmentUid().eq(programEnrollmentID);
         } else {
             return eventRepository;
         }
