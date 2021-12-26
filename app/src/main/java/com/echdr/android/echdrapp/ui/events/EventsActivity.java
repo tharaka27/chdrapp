@@ -105,59 +105,40 @@ public class EventsActivity extends ListActivity {
                 public void onClick(View v) {
                     AlertDialog.Builder builderSingle = new AlertDialog.Builder(context);
                     builderSingle.setIcon(R.drawable.baby_girl);
-                    builderSingle.setTitle("Are you sure to unenroll from Anthropometry Program");
+                    builderSingle.setTitle("Are you sure to un-enroll from Anthropometry Program");
 
-                    builderSingle.setNegativeButton("unenroll", new DialogInterface.OnClickListener() {
+                    builderSingle.setNegativeButton("un-enroll", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 
 
-                            List<Enrollment> enroll = Sdk.d2().enrollmentModule().enrollments()
+                            // get anthropometry latest enrollment
+                            List<Enrollment> AnthropometryStatus = Sdk.d2().enrollmentModule().enrollments()
                                     .byTrackedEntityInstance().eq(selectedChild)
                                     .byProgram().eq("hM6Yt9FQL0n")
-                                    .orderByLastUpdated(RepositoryScope.OrderByDirection.ASC)
+                                    .orderByCreated(RepositoryScope.OrderByDirection.DESC)
                                     .blockingGet();
 
-                            if(!enroll.isEmpty())
+                            String anthropometryEnrollmentID = "";
+
+                            if(!AnthropometryStatus.isEmpty())
                             {
-                                System.out.print("Newest Enrollment date ");
-                                System.out.print(enroll.get(0).created());
-                                System.out.print(" id ");
-                                System.out.println(enroll.get(0).uid());
+                                anthropometryEnrollmentID = AnthropometryStatus.get(0).uid();
                             }
-
-                            for(int i=0; i<enroll.size();i++)
-                            {
-                                System.out.print("Enrollment date ");
-                                System.out.print(enroll.get(i).created());
-                                System.out.print(" id ");
-                                System.out.println(enroll.get(i).uid());
-                            }
-
-
-                            /*
-                            Enrollment enroll = Sdk.d2().enrollmentModule().enrollments()
-                                    .byTrackedEntityInstance().eq(selectedChild)
-                                    .byProgram().eq("hM6Yt9FQL0n")
-                                    .orderByLastUpdated(RepositoryScope.OrderByDirection.DESC)
-                                    .one().blockingGet();
-
-
 
                             EnrollmentObjectRepository rep = Sdk.d2().enrollmentModule().enrollments()
-                                    .uid(enroll.uid());
+                                    .uid(anthropometryEnrollmentID);
                             try {
                                 rep.setStatus(EnrollmentStatus.COMPLETED);
                             } catch (D2Error d2Error) {
                                 d2Error.printStackTrace();
-                                Toast.makeText(context, "Unenrolling unsuccessful",
+                                Toast.makeText(context, "Un-enrolling unsuccessful",
                                         Toast.LENGTH_LONG).show();
                             }
 
                             dialog.dismiss();
+                            finish();
                             return;
-
-                             */
                         }
                     });
 
