@@ -530,7 +530,7 @@ public class ChildDetailsActivity extends ListActivity {
         // get therapeutic latest enrollment
         List<Enrollment> therapeuticStatus = Sdk.d2().enrollmentModule().enrollments()
                 .byTrackedEntityInstance().eq(trackedEntityInstanceUid)
-                .byProgram().eq("tc6RsYbgGzm")
+                .byProgram().eq("CoGsKgEG4O0")
                 .orderByCreated(RepositoryScope.OrderByDirection.DESC)
                 .blockingGet();
 
