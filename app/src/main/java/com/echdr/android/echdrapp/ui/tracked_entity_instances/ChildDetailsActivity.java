@@ -28,16 +28,19 @@ import com.echdr.android.echdrapp.ui.enrollment_form.EnrollmentFormActivity;
 import com.echdr.android.echdrapp.ui.enrollment_form.EnrollmentFormModified;
 import com.echdr.android.echdrapp.ui.events.EventsActivity;
 
+import org.hisp.dhis.android.core.arch.repositories.scope.RepositoryScope;
 import org.hisp.dhis.android.core.enrollment.Enrollment;
 import org.hisp.dhis.android.core.enrollment.EnrollmentStatus;
 import org.hisp.dhis.android.core.maintenance.D2Error;
 import org.hisp.dhis.android.core.option.Option;
+import org.hisp.dhis.android.core.organisationunit.OrganisationUnit;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValue;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValueObjectRepository;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityDataValueObjectRepository;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityInstance;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import io.reactivex.disposables.Disposable;
@@ -98,6 +101,13 @@ public class ChildDetailsActivity extends ListActivity {
     protected String[] eduLevelArray;
     protected String[] occupationArray;
     protected String[] relationshipArray;
+
+    private String anthropometryEnrollmentID;
+    private String otherEnrollmentID;
+    private String overweightEnrollmentID;
+    private String stuntingEnrollmentID;
+    private String supplementaryEnrollmentID;
+    private String therapeuticEnrollmentID;
 
 
     private enum IntentExtra {
@@ -423,15 +433,141 @@ public class ChildDetailsActivity extends ListActivity {
 
     private void getEnrollment(){
 
+        // get anthropometry latest enrollment
+        List<Enrollment> AnthropometryStatus = Sdk.d2().enrollmentModule().enrollments()
+                .byTrackedEntityInstance().eq(trackedEntityInstanceUid)
+                .byProgram().eq("hM6Yt9FQL0n")
+                //.orderByLastUpdated(RepositoryScope.OrderByDirection.DESC)
+                .orderByCreated(RepositoryScope.OrderByDirection.DESC)
+                .blockingGet();
+
+        for(int i=0;i<AnthropometryStatus.size(); i++)
+        {
+            System.out.print("Date :");
+            System.out.print(AnthropometryStatus.get(i).created());
+            System.out.print(" uid :");
+            System.out.print(AnthropometryStatus.get(i).uid());
+            System.out.print(" status :");
+            System.out.println(AnthropometryStatus.get(i).status().toString());
+        }
+
+        System.out.println("Anthropometry size " + String.valueOf(AnthropometryStatus.size()) );
+
+        if(!AnthropometryStatus.isEmpty())
+        {
+            System.out.println("Anthropometry is " + AnthropometryStatus.get(0).status().toString() );
+            anthropometryEnrollmentID = AnthropometryStatus.get(0).uid();
+            if ( AnthropometryStatus.get(0).status().equals(EnrollmentStatus.ACTIVE)) {
+                antopoEnrolled.setVisibility(View.VISIBLE);
+                antopoNotEnrolled.setVisibility(View.GONE);
+            }
+        }
+
+        // get other health/non health latest enrollment
+        List<Enrollment> otherStatus = Sdk.d2().enrollmentModule().enrollments()
+                .byTrackedEntityInstance().eq(trackedEntityInstanceUid)
+                .byProgram().eq("iUgzznPsePB")
+                .orderByCreated(RepositoryScope.OrderByDirection.DESC)
+                .blockingGet();
+
+        if(!otherStatus.isEmpty())
+        {
+            otherEnrollmentID =  otherStatus.get(0).uid();
+            if ( otherStatus.get(0).status().equals(EnrollmentStatus.ACTIVE)) {
+                otherHealthEnrolled.setVisibility(View.VISIBLE);
+                otherHealthNotEnrolled.setVisibility(View.GONE);
+            }
+        }
+
+        // get other overweight/obesity latest enrollment
+        List<Enrollment> overweightStatus = Sdk.d2().enrollmentModule().enrollments()
+                .byTrackedEntityInstance().eq(trackedEntityInstanceUid)
+                .byProgram().eq("JsfNVX0hdq9")
+                .orderByCreated(RepositoryScope.OrderByDirection.DESC)
+                .blockingGet();
+
+        if(!overweightStatus.isEmpty())
+        {
+            overweightEnrollmentID =  overweightStatus.get(0).uid();
+            if ( overweightStatus.get(0).status().equals(EnrollmentStatus.ACTIVE)) {
+                overweightEnrolled.setVisibility(View.VISIBLE);
+                overweightNotEnrolled.setVisibility(View.GONE);
+            }
+        }
+
+        // get other stunting latest enrollment
+        List<Enrollment> stuntingStatus = Sdk.d2().enrollmentModule().enrollments()
+                .byTrackedEntityInstance().eq(trackedEntityInstanceUid)
+                .byProgram().eq("lSSNwBMiwrK")
+                .orderByCreated(RepositoryScope.OrderByDirection.DESC)
+                .blockingGet();
+
+        if(!stuntingStatus.isEmpty())
+        {
+            stuntingEnrollmentID = stuntingStatus.get(0).uid();
+            if ( stuntingStatus.get(0).status().equals(EnrollmentStatus.ACTIVE)) {
+                stuntingEnrolled.setVisibility(View.VISIBLE);
+                stuntingNotEnrolled.setVisibility(View.GONE);
+            }
+        }
+
+        // get supplementary latest enrollment
+        List<Enrollment> supplementaryStatus = Sdk.d2().enrollmentModule().enrollments()
+                .byTrackedEntityInstance().eq(trackedEntityInstanceUid)
+                .byProgram().eq("tc6RsYbgGzm")
+                .orderByCreated(RepositoryScope.OrderByDirection.DESC)
+                .blockingGet();
+
+        if(!supplementaryStatus.isEmpty())
+        {
+            supplementaryEnrollmentID = supplementaryStatus.get(0).uid();
+            if ( supplementaryStatus.get(0).status().equals(EnrollmentStatus.ACTIVE)) {
+                supplementaryEnrolled.setVisibility(View.VISIBLE);
+                supplementaryNotEnrolled.setVisibility(View.GONE);
+            }
+        }
+
+        // get therapeutic latest enrollment
+        List<Enrollment> therapeuticStatus = Sdk.d2().enrollmentModule().enrollments()
+                .byTrackedEntityInstance().eq(trackedEntityInstanceUid)
+                .byProgram().eq("tc6RsYbgGzm")
+                .orderByCreated(RepositoryScope.OrderByDirection.DESC)
+                .blockingGet();
+
+        if(!therapeuticStatus.isEmpty())
+        {
+            therapeuticEnrollmentID = therapeuticStatus.get(0).uid();
+            if ( therapeuticStatus.get(0).status().equals(EnrollmentStatus.ACTIVE)) {
+                therapeuticEnrolled.setVisibility(View.VISIBLE);
+                therapeuticNotEnrolled.setVisibility(View.GONE);
+            }
+        }
+
+        /*
+
         List<Enrollment> enrollments = Sdk.d2().enrollmentModule().enrollments()
                 .byTrackedEntityInstance().eq(trackedEntityInstanceUid)
                 .blockingGet();
+
+        List<Enrollment> enroll = Sdk.d2().enrollmentModule().enrollments()
+                .byTrackedEntityInstance().eq(trackedEntityInstanceUid)
+                .byProgram().eq("hM6Yt9FQL0n")
+                .orderByLastUpdated(RepositoryScope.OrderByDirection.ASC)
+                .blockingGet();
+
+        if(!enroll.isEmpty())
+        {
+            System.out.print("Newest Enrollment date ");
+            System.out.print(enroll.get(0).created());
+            System.out.print(" id ");
+            System.out.println(enroll.get(0).uid());
+        }
 
         for (Enrollment v: enrollments) {
             System.out.println(v.program());
         }
 
-        /* Only show the enrolled if the enrollment status is active*/
+        // Only show the enrolled if the enrollment status is active
         for (Enrollment v: enrollments) {
 
             if (v.program().equals("hM6Yt9FQL0n") && v.status().equals(EnrollmentStatus.ACTIVE)) {
@@ -465,6 +601,7 @@ public class ChildDetailsActivity extends ListActivity {
             }
 
         }
+        */
 
     }
 
@@ -478,8 +615,15 @@ public class ChildDetailsActivity extends ListActivity {
             System.out.println("Organization Unit: " + orgUnit);
         }
 
+        String orgUnit2 = Sdk.d2().organisationUnitModule().organisationUnits()
+                .byProgramUids(Collections.singletonList("hM6Yt9FQL0n"))
+                .byOrganisationUnitScope(OrganisationUnit.Scope.SCOPE_DATA_CAPTURE)
+                .one().blockingGet().uid();
+        System.out.println("Organization Unit 2 : " + orgUnit2);
 
-        //
+        orgUnit = orgUnit2;
+
+
         overweightNotEnrolled.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -492,7 +636,8 @@ public class ChildDetailsActivity extends ListActivity {
         overweightEnrolled.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = EventsActivity.getIntent(getApplicationContext(), "JsfNVX0hdq9", trackedEntityInstanceUid);
+                Intent intent = EventsActivity.getIntent(getApplicationContext(), "JsfNVX0hdq9",
+                        trackedEntityInstanceUid, overweightEnrollmentID);
                 startActivity(intent);
             }
         });
@@ -509,7 +654,8 @@ public class ChildDetailsActivity extends ListActivity {
         antopoEnrolled.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = EventsActivity.getIntent(getApplicationContext(), "hM6Yt9FQL0n", trackedEntityInstanceUid);
+                Intent intent = EventsActivity.getIntent(getApplicationContext(), "hM6Yt9FQL0n",
+                        trackedEntityInstanceUid, anthropometryEnrollmentID);
                 startActivity(intent);
 
             }
@@ -527,7 +673,8 @@ public class ChildDetailsActivity extends ListActivity {
         otherHealthEnrolled.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = EventsActivity.getIntent(getApplicationContext(), "iUgzznPsePB", trackedEntityInstanceUid);
+                Intent intent = EventsActivity.getIntent(getApplicationContext(), "iUgzznPsePB",
+                        trackedEntityInstanceUid, otherEnrollmentID);
                 startActivity(intent);
 
             }
@@ -545,7 +692,8 @@ public class ChildDetailsActivity extends ListActivity {
         stuntingEnrolled.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = EventsActivity.getIntent(getApplicationContext(), "lSSNwBMiwrK", trackedEntityInstanceUid);
+                Intent intent = EventsActivity.getIntent(getApplicationContext(), "lSSNwBMiwrK",
+                        trackedEntityInstanceUid, stuntingEnrollmentID);
                 startActivity(intent);
 
             }
@@ -563,7 +711,8 @@ public class ChildDetailsActivity extends ListActivity {
         supplementaryEnrolled.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = EventsActivity.getIntent(getApplicationContext(), "tc6RsYbgGzm", trackedEntityInstanceUid);
+                Intent intent = EventsActivity.getIntent(getApplicationContext(), "tc6RsYbgGzm",
+                        trackedEntityInstanceUid, supplementaryEnrollmentID);
                 startActivity(intent);
 
             }
@@ -581,7 +730,8 @@ public class ChildDetailsActivity extends ListActivity {
         therapeuticEnrolled.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = EventsActivity.getIntent(getApplicationContext(), "CoGsKgEG4O0", trackedEntityInstanceUid);
+                Intent intent = EventsActivity.getIntent(getApplicationContext(), "CoGsKgEG4O0",
+                        trackedEntityInstanceUid, therapeuticEnrollmentID);
                 startActivity(intent);
 
             }

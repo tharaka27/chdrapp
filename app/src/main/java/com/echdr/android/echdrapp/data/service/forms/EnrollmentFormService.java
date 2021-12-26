@@ -6,6 +6,7 @@ import org.hisp.dhis.android.core.D2;
 import org.hisp.dhis.android.core.arch.helpers.GeometryHelper;
 import org.hisp.dhis.android.core.enrollment.EnrollmentCreateProjection;
 import org.hisp.dhis.android.core.enrollment.EnrollmentObjectRepository;
+import org.hisp.dhis.android.core.enrollment.EnrollmentStatus;
 import org.hisp.dhis.android.core.maintenance.D2Error;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttribute;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValueObjectRepository;
@@ -49,6 +50,7 @@ public class EnrollmentFormService {
             enrollmentRepository = d2.enrollmentModule().enrollments().uid(enrollmentUid);
             enrollmentRepository.setEnrollmentDate(getNowWithoutTime());
             enrollmentRepository.setIncidentDate(getNowWithoutTime());
+            enrollmentRepository.setStatus(EnrollmentStatus.ACTIVE);
             return true;
         } catch (D2Error d2Error) {
             d2Error.printStackTrace();

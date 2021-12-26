@@ -33,9 +33,15 @@ import com.echdr.android.echdrapp.ui.event_form.SupplementaryOutcomeActivity;
 import com.echdr.android.echdrapp.ui.event_form.TherapeuticInterventionActivity;
 import com.echdr.android.echdrapp.ui.event_form.TherapeuticManagementActivity;
 import com.echdr.android.echdrapp.ui.event_form.TherapeuticOutcomeActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.hisp.dhis.android.core.arch.repositories.scope.RepositoryScope;
+import org.hisp.dhis.android.core.enrollment.Enrollment;
+import org.hisp.dhis.android.core.enrollment.EnrollmentObjectRepository;
+import org.hisp.dhis.android.core.enrollment.EnrollmentStatus;
 import org.hisp.dhis.android.core.event.EventCollectionRepository;
 import org.hisp.dhis.android.core.event.EventCreateProjection;
+import org.hisp.dhis.android.core.maintenance.D2Error;
 import org.hisp.dhis.android.core.organisationunit.OrganisationUnit;
 import org.hisp.dhis.android.core.program.ProgramStage;
 
@@ -57,17 +63,21 @@ public class EventsActivity extends ListActivity {
     private final int EVENT_RQ = 1210;
     private Context context;
     private String stageSelected;
+    private FloatingActionButton anthUnenroll;
+    private String programEnrollmentID;
 
     private enum IntentExtra {
-        PROGRAM, TEI_ID
+        PROGRAM, TEI_ID, ENROLLMENT_ID
     }
 
-    public static Intent getIntent(Context context, String programUid, String teiUid) {
+    public static Intent getIntent(Context context, String programUid, String teiUid, String enrollmentID) {
         Bundle bundle = new Bundle();
         if (!isEmpty(programUid))
             bundle.putString(IntentExtra.PROGRAM.name(), programUid);
         if(!isEmpty(teiUid))
             bundle.putString(IntentExtra.TEI_ID.name(), teiUid);
+        if(!isEmpty(enrollmentID))
+            bundle.putString(IntentExtra.ENROLLMENT_ID.name(), enrollmentID);
         Intent intent = new Intent(context, EventsActivity.class);
         intent.putExtras(bundle);
         return intent;
@@ -80,11 +90,82 @@ public class EventsActivity extends ListActivity {
         setUp(R.layout.activity_events_new, R.id.eventsRecyclerView);
         selectedProgram = getIntent().getStringExtra(IntentExtra.PROGRAM.name());
         selectedChild = getIntent().getStringExtra(IntentExtra.TEI_ID.name());
+        programEnrollmentID = getIntent().getStringExtra(IntentExtra.ENROLLMENT_ID.name());
+
         compositeDisposable = new CompositeDisposable();
         observeEvents();
         context = this;
         //Sdk.d2().programModule().programs().byTrackedEntityTypeUid().eq(selectedChild)
         System.out.println("Selected child is @ eventActivity " + selectedChild);
+        anthUnenroll = findViewById(R.id.unenrollAnthropometry);
+        if (selectedProgram.equals("hM6Yt9FQL0n")) {
+            anthUnenroll.setVisibility(View.VISIBLE);
+            anthUnenroll.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder builderSingle = new AlertDialog.Builder(context);
+                    builderSingle.setIcon(R.drawable.baby_girl);
+                    builderSingle.setTitle("Are you sure to unenroll from Anthropometry Program");
+
+                    builderSingle.setNegativeButton("unenroll", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+
+                            List<Enrollment> enroll = Sdk.d2().enrollmentModule().enrollments()
+                                    .byTrackedEntityInstance().eq(selectedChild)
+                                    .byProgram().eq("hM6Yt9FQL0n")
+                                    .orderByLastUpdated(RepositoryScope.OrderByDirection.ASC)
+                                    .blockingGet();
+
+                            if(!enroll.isEmpty())
+                            {
+                                System.out.print("Newest Enrollment date ");
+                                System.out.print(enroll.get(0).created());
+                                System.out.print(" id ");
+                                System.out.println(enroll.get(0).uid());
+                            }
+
+                            for(int i=0; i<enroll.size();i++)
+                            {
+                                System.out.print("Enrollment date ");
+                                System.out.print(enroll.get(i).created());
+                                System.out.print(" id ");
+                                System.out.println(enroll.get(i).uid());
+                            }
+
+
+                            /*
+                            Enrollment enroll = Sdk.d2().enrollmentModule().enrollments()
+                                    .byTrackedEntityInstance().eq(selectedChild)
+                                    .byProgram().eq("hM6Yt9FQL0n")
+                                    .orderByLastUpdated(RepositoryScope.OrderByDirection.DESC)
+                                    .one().blockingGet();
+
+
+
+                            EnrollmentObjectRepository rep = Sdk.d2().enrollmentModule().enrollments()
+                                    .uid(enroll.uid());
+                            try {
+                                rep.setStatus(EnrollmentStatus.COMPLETED);
+                            } catch (D2Error d2Error) {
+                                d2Error.printStackTrace();
+                                Toast.makeText(context, "Unenrolling unsuccessful",
+                                        Toast.LENGTH_LONG).show();
+                            }
+
+                            dialog.dismiss();
+                            return;
+
+                             */
+                        }
+                    });
+
+                    builderSingle.show();
+
+                }
+            });
+        }
 
         if (isEmpty(selectedProgram))
             findViewById(R.id.eventButton).setVisibility(View.GONE);
@@ -157,11 +238,26 @@ public class EventsActivity extends ListActivity {
                                                         .byOrganisationUnitScope(OrganisationUnit.Scope.SCOPE_DATA_CAPTURE)
                                                         .one().blockingGet().uid();
                                                 //System.out.println("org" + orgUnit);
+                                                /*
                                                 String enrollmentID = Sdk.d2().enrollmentModule().enrollments()
                                                         .byProgram().eq(selectedProgram)
                                                         .byTrackedEntityInstance().eq(selectedChild)
                                                         //.byOrganisationUnit().eq(orgUnit)
                                                         .one().blockingGet().uid();
+
+                                                 */
+                                                String enrollmentID = "";
+                                                List<Enrollment> enrollmentList = Sdk.d2().enrollmentModule().enrollments()
+                                                        .byTrackedEntityInstance().eq(selectedChild)
+                                                        .byProgram().eq(selectedProgram)
+                                                        //.orderByLastUpdated(RepositoryScope.OrderByDirection.DESC)
+                                                        .orderByCreated(RepositoryScope.OrderByDirection.DESC)
+                                                        .blockingGet();
+
+                                                if(!enrollmentList.isEmpty())
+                                                {
+                                                    enrollmentID =  enrollmentList.get(0).uid();
+                                                }
                                                 //System.out.println("OrgUnit: " + orgUnit + " EnrollementID " + enrollmentID);
                                                 //String stage = Sdk.d2().programModule().programStages()
                                                 //        .byProgramUid().eq(program.uid())
@@ -424,6 +520,7 @@ public class EventsActivity extends ListActivity {
 
         if (!isEmpty(selectedProgram)) {
             return eventRepository.byProgramUid().eq(selectedProgram);
+                    //.byEnrollmentUid().eq(programEnrollmentID);
         } else {
             return eventRepository;
         }
