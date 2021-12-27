@@ -95,7 +95,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="On Triposha"
+                            android:text="On Thriposha"
                             android:textColorHint="@color/desc" />
 
                         <RadioGroup
