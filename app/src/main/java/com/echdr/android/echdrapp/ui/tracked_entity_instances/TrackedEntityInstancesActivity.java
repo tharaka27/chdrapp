@@ -2,6 +2,7 @@ package com.echdr.android.echdrapp.ui.tracked_entity_instances;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -107,10 +108,17 @@ public class TrackedEntityInstancesActivity extends ListActivity {
             }
         });
 
+        allBtn.setBackgroundColor(Color.CYAN);
+        completeBtn.setBackgroundColor(Color.WHITE);
+        activeBtn.setBackgroundColor(Color.WHITE);
+
         allBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 observeTrackedEntityInstances();
+                allBtn.setBackgroundColor(Color.CYAN);
+                completeBtn.setBackgroundColor(Color.WHITE);
+                activeBtn.setBackgroundColor(Color.WHITE);
             }
         });
 
@@ -118,6 +126,9 @@ public class TrackedEntityInstancesActivity extends ListActivity {
             @Override
             public void onClick(View v) {
                 selectActiveOrComplete(Status.COMPLETE);
+                allBtn.setBackgroundColor(Color.WHITE);
+                completeBtn.setBackgroundColor(Color.CYAN);
+                activeBtn.setBackgroundColor(Color.WHITE);
             }
         });
 
@@ -125,6 +136,9 @@ public class TrackedEntityInstancesActivity extends ListActivity {
             @Override
             public void onClick(View v) {
                 selectActiveOrComplete(Status.ACTIVE);
+                allBtn.setBackgroundColor(Color.WHITE);
+                completeBtn.setBackgroundColor(Color.WHITE);
+                activeBtn.setBackgroundColor(Color.CYAN);
             }
         });
 

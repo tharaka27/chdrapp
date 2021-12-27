@@ -187,7 +187,7 @@ public class SupplementaryInterventionActivity extends AppCompatActivity {
                 radioGroupTriposha.clearCheck();
             }
 
-            // counsilling given
+            // counselling given
             try{
                 if(getDataElement("FoAmHt6CnGU").equals("true"))
                 {

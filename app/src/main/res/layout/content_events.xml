@@ -39,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@drawable/ic_alert_negative" />
 
