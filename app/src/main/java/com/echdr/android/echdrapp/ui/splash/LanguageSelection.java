@@ -2,6 +2,7 @@ package com.echdr.android.echdrapp.ui.splash;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.echdr.android.echdrapp.LocaleHelper;
 import com.echdr.android.echdrapp.R;
 import com.echdr.android.echdrapp.data.service.ActivityStarter;
 import com.echdr.android.echdrapp.ui.main.MainActivity;
@@ -10,12 +11,14 @@ import com.echdr.android.echdrapp.ui.tracked_entity_instances.ChildDetailsActivi
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class LanguageSelection extends AppCompatActivity {
     private Spinner languageSpinner;
@@ -24,6 +27,9 @@ public class LanguageSelection extends AppCompatActivity {
     private Button languageButton;
 
 
+    TextView messageView;
+    Button btnHindi, btnEnglish;
+    Resources resources;
 
     public static Intent getLanguageSelectionActivityIntent(Context context) {
         Intent intent = new Intent(context, LanguageSelection.class);
@@ -35,11 +41,37 @@ public class LanguageSelection extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language_selection);
 
-        languageSpinner = findViewById(R.id.language_selection_spinner);
-        languageButton = findViewById(R.id.saveLanguage);
+        messageView = (TextView) findViewById(R.id.textView);
+        btnHindi = findViewById(R.id.btnHindi);
+        btnEnglish = findViewById(R.id.btnEnglish);
+
+        //languageSpinner = findViewById(R.id.language_selection_spinner);
+        //languageButton = findViewById(R.id.saveLanguage);
         context = this;
 
 
+        btnEnglish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context = LocaleHelper.setLocale(LanguageSelection.this, "en");
+                resources = context.getResources();
+                messageView.setText(resources.getString(R.string.language));
+                ActivityStarter.startActivity(LanguageSelection.this, MainActivity.getMainActivityIntent(context),true);
+
+            }
+        });
+
+        btnHindi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context = LocaleHelper.setLocale(LanguageSelection.this, "si");
+                resources = context.getResources();
+                messageView.setText(resources.getString(R.string.language));
+                ActivityStarter.startActivity(LanguageSelection.this, MainActivity.getMainActivityIntent(context),true);
+
+            }
+        });
+        /*
         ArrayAdapter<CharSequence> languageAdapter = ArrayAdapter.createFromResource(context,
                 R.array.language,
                 android.R.layout.simple_spinner_item);
@@ -53,7 +85,11 @@ public class LanguageSelection extends AppCompatActivity {
                 ActivityStarter.startActivity(LanguageSelection.this, MainActivity.getMainActivityIntent(context),true);
             }
         });
+
+         */
     }
+
+
 
     class LanguageTypeSpinnerClass implements AdapterView.OnItemSelectedListener {
         @Override
@@ -68,8 +104,12 @@ public class LanguageSelection extends AppCompatActivity {
         }
     }
 
+
+
     private void EnglishSelected()
     {
         System.out.println("Language selected");
     }
+
+
 }

@@ -8,32 +8,60 @@ android:layout_height="match_parent">
         android:layout_height="match_parent"
         android:background="@color/pink" />
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="1">
-
-    <ImageView
-        android:id="@+id/group16676"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="0dp"
-        android:layout_weight="0.8"
-        android:scaleType="fitXY"
-        android:src="@drawable/maskgroup62" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="MSGP/U5 Monitoring System\nfor Growth Problems in Under 5 Children"
-        android:textAlignment="center"
-        android:textColor="@color/title"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/group16676"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="0dp"
+            android:layout_weight="0.8"
+            android:scaleType="fitXY"
+            android:src="@drawable/maskgroup62" />
 
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MSGP/U5 Monitoring System\nfor Growth Problems in Under 5 Children"
+            android:textAlignment="center"
+            android:textColor="@color/title"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="48dp"
+            android:text="Welcome To GeeksForGeeks"
+            android:textAlignment="center" />
+
+        <!--button view for hindi language-->
+        <Button
+            android:id="@+id/btnHindi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@color/colorPrimary"
+            android:text="Hindi"
+            android:textColor="#ffffff" />
+
+        <!--button view for english language-->
+        <Button
+            android:id="@+id/btnEnglish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@color/colorPrimary"
+            android:text="English"
+            android:textColor="#ffffff" />
+
+        <!--
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -80,5 +108,7 @@ android:layout_height="match_parent">
         android:textAllCaps="false"
         android:textSize="18dp" />
 
-</LinearLayout>
+        -->
+
+    </LinearLayout>
 </RelativeLayout>

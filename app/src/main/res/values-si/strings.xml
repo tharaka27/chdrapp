@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="selected_language">English</string>
-    <string name="language">English</string>
-
     <string name="app_name">MSGP/U5 Monitoring System for Growth Problems in Under 5 Children</string>
+    <string name="selected_language">Sinhala</string>
+    <string name="language">Sinhala</string>
+
     <!-- Strings related to login -->
     <string name="title_activity_login">Log in</string>
     <string name="prompt_server_url">Server url</string>
@@ -105,12 +104,12 @@
 
     <!--    home-->
     <string name="title_activity_home">home</string>
-    <string name="wish">Hello,</string>
-    <string name="sup_prog">Supplementary \nFeeding Programme</string>
-    <string name="thera_prog">Therapeutic \nProgramme</string>
-    <string name="overw_prog">Overweight/Obesity \nProgramme</string>
-    <string name="stunt_prog">Stunting \nProgramme</string>
-    <string name="other_prog">Other Health/ \nNon-health</string>
+    <string name="wish">ආයුබෝවන්,</string>
+    <string name="sup_prog">පරිපූරක \nපෝෂණ වැඩසටහන</string>
+    <string name="thera_prog">චිකිත්සක \nවැඩසටහන</string>
+    <string name="overw_prog">අධික බර/තරබාරුකම \nවැඩසටහන</string>
+    <string name="stunt_prog">අඩාල වීම \nවැඩසටහන</string>
+    <string name="other_prog">වෙනත් සෞඛ්‍ය/ \nසෞඛ්‍ය නොවන</string>
     <string name="area_details">View my area details</string>
     <string name="area_details_desc">Click here to view all the child list in your area</string>
     <string name="new_child">Add new child</string>
@@ -289,5 +288,4 @@
         <item>Left due to completion of age 5</item>
         <item>Died</item>
     </string-array>
-
 </resources>
