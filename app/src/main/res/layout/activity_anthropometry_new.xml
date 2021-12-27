@@ -201,7 +201,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Age in months"
+                            android:text="Age in years, months and weeks"
                             android:textColorHint="@color/desc" />
 
                         <TextView
@@ -264,7 +264,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Weight for age"
+                        android:text="Weight for Age"
                         android:textAlignment="center" />
                     </LinearLayout>
 
@@ -300,7 +300,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Height for age"
+                            android:text="Length/Height for Age"
                             android:textAlignment="center" />
                     </LinearLayout>
 
@@ -337,7 +337,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Weight for Height"
+                            android:text="Weight for Length/Height"
                             android:textAlignment="center" />
                     </LinearLayout>
 
@@ -415,7 +415,7 @@
                     android:id="@+id/title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Anthropometry Activity"
+                    android:text="Anthropometry"
                     android:textAlignment="center"
                     android:textColor="@color/title"
                     android:textSize="20sp"
