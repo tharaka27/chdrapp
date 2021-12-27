@@ -39,9 +39,11 @@ import org.hisp.dhis.android.core.trackedentity.TrackedEntityDataValue;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityDataValueObjectRepository;
 import org.hisp.dhis.rules.parser.expression.function.ScalarFunctionToEvaluate;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.AbstractMap;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -170,6 +172,21 @@ public class AnthropometryActivityNew extends AppCompatActivity {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
                         context, android.R.style.Theme_Holo_Light_Dialog, setListener, year, month, day);
                 datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                Date dob = null;
+                try {
+                    dob = formatter.parse(birthday.value());
+                    datePickerDialog.getDatePicker().setMinDate(dob.getTime());
+
+                    Calendar c = Calendar.getInstance();
+                    c.setTime(dob);
+                    c.add(Calendar.DATE, 365*5+2);
+
+                    datePickerDialog.getDatePicker().setMaxDate(c.getTimeInMillis());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 datePickerDialog.show();
 
             }
@@ -178,6 +195,7 @@ public class AnthropometryActivityNew extends AppCompatActivity {
         datePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 selectDate(year, month, day);
             }
         });
