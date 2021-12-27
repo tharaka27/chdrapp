@@ -352,6 +352,28 @@ public class SupplementaryInterventionActivity extends AppCompatActivity {
             return;
         }
 
+        if( numberOfTriposha.getText().toString().isEmpty() ||
+                Integer.parseInt(numberOfTriposha.getText().toString()) < 0
+                || Integer.parseInt(numberOfTriposha.getText().toString()) > 5)
+        {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+            builder1.setMessage("Number of thriposha packets given should be between 0-5");
+            builder1.setCancelable(true);
+
+            builder1.setNegativeButton(
+                    "Close",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                            //return;
+                        }
+                    });
+
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+            return;
+        }
+
         saveDataElement("WRjdfCRNhnU", textView_Date.getText().toString());
 
         String onTriposha = "";
