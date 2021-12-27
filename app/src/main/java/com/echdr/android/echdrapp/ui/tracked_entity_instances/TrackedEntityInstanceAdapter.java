@@ -1,6 +1,7 @@
 package com.echdr.android.echdrapp.ui.tracked_entity_instances;
 
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ import com.echdr.android.echdrapp.ui.tracker_import_conflicts.TrackerImportConfl
 import org.hisp.dhis.android.core.arch.call.D2Progress;
 import org.hisp.dhis.android.core.common.State;
 import org.hisp.dhis.android.core.enrollment.Enrollment;
+import org.hisp.dhis.android.core.enrollment.EnrollmentStatus;
 import org.hisp.dhis.android.core.maintenance.D2Error;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValue;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityInstance;
@@ -73,6 +75,7 @@ public class TrackedEntityInstanceAdapter extends PagedListAdapter<TrackedEntity
 
         // show date of birth
         holder.subtitle2.setText(valueAt(values, "qNH202ChkV3"));
+
 
         holder.rightText.setText(DateFormatHelper.formatDate(trackedEntityInstance.created()));
         //holder.title.setText();
@@ -125,10 +128,22 @@ public class TrackedEntityInstanceAdapter extends PagedListAdapter<TrackedEntity
                 .byProgram().eq("hM6Yt9FQL0n")
                 .one().blockingGet();
         if (enroll != null)
-            holder.subtitle1.setText(enroll.status().toString());
+        {
+            if(enroll.status().equals(EnrollmentStatus.ACTIVE))
+            {
+                holder.subtitle1.setText(enroll.status().toString());
+                holder.subtitle1.setTextColor(Color.rgb(34,139, 34));
+            }else
+            {
+                holder.subtitle1.setText(enroll.status().toString());
+                holder.subtitle1.setTextColor(Color.RED);
+            }
+        }
+            //holder.subtitle1.setText(enroll.status().toString());
+
 
         //remove conflicts showing
-        setConflicts(trackedEntityInstance.uid(), holder);
+        //setConflicts(trackedEntityInstance.uid(), holder);
 
         holder.itemView.setOnClickListener(view -> {
             ActivityStarter.startActivity(

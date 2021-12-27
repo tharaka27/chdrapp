@@ -5,13 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.LiveData;
 import androidx.paging.PagedList;
 
@@ -19,15 +17,10 @@ import com.echdr.android.echdrapp.R;
 import com.echdr.android.echdrapp.data.Sdk;
 import com.echdr.android.echdrapp.databinding.ActivityTrackedEntityInstanceSearchBinding;
 import com.echdr.android.echdrapp.ui.base.ListActivity;
-import com.echdr.android.echdrapp.ui.tracked_entity_instances.search.SearchFormAdapter;
-import com.google.android.material.internal.TextWatcherAdapter;
-import com.google.android.material.textfield.TextInputEditText;
 
 import org.hisp.dhis.android.core.arch.helpers.UidsHelper;
 import org.hisp.dhis.android.core.enrollment.EnrollmentStatus;
-import org.hisp.dhis.android.core.event.EventStatus;
 import org.hisp.dhis.android.core.organisationunit.OrganisationUnit;
-import org.hisp.dhis.android.core.organisationunit.OrganisationUnitMode;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityInstance;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityInstanceCollectionRepository;
 
@@ -36,9 +29,10 @@ import java.util.List;
 
 import io.reactivex.disposables.CompositeDisposable;
 
-public class TrackedEntityInstancesActivity extends ListActivity {
+public class TrackedEntityInstancesActivityBackup extends ListActivity {
 
     private ActivityTrackedEntityInstanceSearchBinding binding;
+
     private CompositeDisposable compositeDisposable;
     private String selectedProgram;
     private final int ENROLLMENT_RQ = 1210;
@@ -49,21 +43,13 @@ public class TrackedEntityInstancesActivity extends ListActivity {
     private String savedProgram;
     private EditText searchText;
 
-    private Button allBtn;
-    private Button activeBtn;
-    private Button completeBtn;
-
 
     private enum IntentExtra {
         TRACKED_ENTITY_INSTANCE
     }
 
-    private enum Status{
-        ACTIVE ,COMPLETE
-    }
-
     public static Intent getTrackedEntityInstancesActivityIntent(Context context, String trackedEntityInstanceUid) {
-        Intent intent = new Intent(context, TrackedEntityInstancesActivity.class);
+        Intent intent = new Intent(context, TrackedEntityInstancesActivityBackup.class);
         intent.putExtra(IntentExtra.TRACKED_ENTITY_INSTANCE.name(), trackedEntityInstanceUid);
         return intent;
     }
@@ -78,14 +64,15 @@ public class TrackedEntityInstancesActivity extends ListActivity {
         savedAttribute = "zh4hiarsSD5";
         savedProgram = "hM6Yt9FQL0n";
 
-        allBtn = findViewById(R.id.all);
-        activeBtn = findViewById(R.id.active);
-        completeBtn = findViewById(R.id.complete);
-
         observeTrackedEntityInstances();
         searchText = findViewById(R.id.searchTextTEI);
         Button submitButton = findViewById(R.id.downloadDataButton);
 
+        //submitButton.setOnClickListener(view -> {
+
+        //    System.out.println("Button clicked");
+        //    search();
+        //});
 
         searchText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -107,26 +94,6 @@ public class TrackedEntityInstancesActivity extends ListActivity {
             }
         });
 
-        allBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                observeTrackedEntityInstances();
-            }
-        });
-
-        completeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectActiveOrComplete(Status.COMPLETE);
-            }
-        });
-
-        activeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectActiveOrComplete(Status.ACTIVE);
-            }
-        });
 
     }
 
@@ -141,17 +108,6 @@ public class TrackedEntityInstancesActivity extends ListActivity {
         });
 
         System.out.println("Came here after setting");
-    }
-
-    private void selectActiveOrComplete(Status status) {
-        adapter = new TrackedEntityInstanceAdapter(this);
-        recyclerView.setAdapter(adapter);
-
-        getActiveOrComplete(status).observe(this, trackedEntityInstancePagedList -> {
-            adapter.setSource(trackedEntityInstancePagedList.getDataSource());
-            adapter.submitList(trackedEntityInstancePagedList);
-        });
-
     }
 
 
@@ -187,26 +143,6 @@ public class TrackedEntityInstancesActivity extends ListActivity {
                 .onlineFirst().getPaged(15);
 
          */
-    }
-
-    private LiveData<PagedList<TrackedEntityInstance>> getActiveOrComplete(Status status)
-    {
-
-        if(status == Status.ACTIVE)
-        {
-            return Sdk.d2().trackedEntityModule()
-                    .trackedEntityInstanceQuery()
-                    .byProgram().eq(savedProgram)
-                    .byEnrollmentStatus().eq(EnrollmentStatus.ACTIVE)
-                    .getPaged(100);
-        }else
-        {
-            return Sdk.d2().trackedEntityModule()
-                    .trackedEntityInstanceQuery()
-                    .byProgram().eq(savedProgram)
-                    .byEnrollmentStatus().eq(EnrollmentStatus.COMPLETED)
-                    .getPaged(100);
-        }
     }
 
 
