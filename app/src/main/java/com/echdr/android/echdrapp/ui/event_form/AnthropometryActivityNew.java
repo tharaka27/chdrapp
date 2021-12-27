@@ -284,7 +284,7 @@ public class AnthropometryActivityNew extends AppCompatActivity {
 
         saveButton.setOnClickListener(v -> {
             saveElements();
-            finishEnrollment();
+            //finishEnrollment();
         });
 
         plotGraphButton.setOnClickListener(new View.OnClickListener() {
@@ -360,6 +360,51 @@ public class AnthropometryActivityNew extends AppCompatActivity {
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.cancel();
+                            //return;
+                        }
+                    });
+
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+            return;
+        }
+
+        if( heightTxt.getText().toString().isEmpty() ||
+                Integer.parseInt(heightTxt.getText().toString()) < 15
+                || Integer.parseInt(heightTxt.getText().toString()) > 150)
+        {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+            builder1.setMessage("Height value should be between 15-150cm");
+            builder1.setCancelable(true);
+
+            builder1.setNegativeButton(
+                    "Close",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                            //return;
+                        }
+                    });
+
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+            return;
+        }
+
+        if( weightTxt.getText().toString().isEmpty() ||
+                Integer.parseInt(weightTxt.getText().toString()) < 100
+                || Integer.parseInt(weightTxt.getText().toString()) > 50000)
+        {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+            builder1.setMessage("Weight value should be between 100-50000gram");
+            builder1.setCancelable(true);
+
+            builder1.setNegativeButton(
+                    "Close",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                            //return;
                         }
                     });
 
@@ -380,6 +425,8 @@ public class AnthropometryActivityNew extends AppCompatActivity {
         saveDataElement("YB21tVtxZ0z", textView_Date.getText().toString());
         saveDataElement("cDXlUgg1WiZ", heightTxt.getText().toString());
         saveDataElement("rBRI27lvfY5", weightTxt.getText().toString());
+
+        finishEnrollment();
 
     }
 
