@@ -70,6 +70,16 @@ public class EventsActivity extends ListActivity {
         PROGRAM, TEI_ID, ENROLLMENT_ID
     }
 
+
+    /**
+     * This method can be used with startActivity() to start the intent.
+     * @param context context of the calling intent
+     * @param programUid The program ID from DHIS2 side
+     * @param teiUid Tracked Entity Instance ID of the child
+     * @param enrollmentID Enrollment ID of the particular TEI and program
+     * @return intent
+     *
+     */
     public static Intent getIntent(Context context, String programUid, String teiUid, String enrollmentID) {
         Bundle bundle = new Bundle();
         if (!isEmpty(programUid))
@@ -88,15 +98,25 @@ public class EventsActivity extends ListActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setUp(R.layout.activity_events_new, R.id.eventsRecyclerView);
+
+        // Extract string from the passed intent parameters
         selectedProgram = getIntent().getStringExtra(IntentExtra.PROGRAM.name());
         selectedChild = getIntent().getStringExtra(IntentExtra.TEI_ID.name());
         programEnrollmentID = getIntent().getStringExtra(IntentExtra.ENROLLMENT_ID.name());
 
+        // Composite Disposable instance is required for creating new events in the
+        // background
         compositeDisposable = new CompositeDisposable();
+
+        // populate the list view
         observeEvents();
+
         context = this;
-        //Sdk.d2().programModule().programs().byTrackedEntityTypeUid().eq(selectedChild)
-        System.out.println("Selected child is @ eventActivity " + selectedChild);
+
+        // All the programs except the Anthropometry has a outcome section. Hence program
+        // un-enrollment happens in the outcome section. For the anthropometry program we
+        // have created a un-enroll button in the event list activity.
+        // This button is only visible for the Anthropometry program
         anthUnenroll = findViewById(R.id.unenrollAnthropometry);
         if (selectedProgram.equals("hM6Yt9FQL0n")) {
             anthUnenroll.setVisibility(View.VISIBLE);
@@ -111,8 +131,10 @@ public class EventsActivity extends ListActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 
+                            // ToDo: Remove following enrollment ID section
+                            //  pass the value from the previous intent.
 
-                            // get anthropometry latest enrollment
+                            // get anthropometry latest enrollment (descending order)
                             List<Enrollment> AnthropometryStatus = Sdk.d2().enrollmentModule().enrollments()
                                     .byTrackedEntityInstance().eq(selectedChild)
                                     .byProgram().eq("hM6Yt9FQL0n")
@@ -121,11 +143,17 @@ public class EventsActivity extends ListActivity {
 
                             String anthropometryEnrollmentID = "";
 
+                            // The child should have at least one enrollment
                             if(!AnthropometryStatus.isEmpty())
                             {
                                 anthropometryEnrollmentID = AnthropometryStatus.get(0).uid();
                             }
+                            else
+                            {
+                                return;
+                            }
 
+                            // set the enrollment status based on the enrollment ID
                             EnrollmentObjectRepository rep = Sdk.d2().enrollmentModule().enrollments()
                                     .uid(anthropometryEnrollmentID);
                             try {
@@ -137,6 +165,8 @@ public class EventsActivity extends ListActivity {
                             }
 
                             dialog.dismiss();
+
+                            // once the enrollment is completed close the activity.
                             finish();
                             return;
                         }
@@ -148,6 +178,7 @@ public class EventsActivity extends ListActivity {
             });
         }
 
+        // as a backup remove add new event button if program is not selected properly
         if (isEmpty(selectedProgram))
             findViewById(R.id.eventButton).setVisibility(View.GONE);
 
@@ -161,9 +192,11 @@ public class EventsActivity extends ListActivity {
                     ArrayAdapter<String> stages_names = new ArrayAdapter<String>
                             (this, android.R.layout.select_dialog_singlechoice);
 
+                    // The order of the overweight or stunting or therapeutic programs should be
+                    // in following order. Other programs are shown in the sane order as in
+                    // the database.
                     if(selectedProgram.equals("JsfNVX0hdq9") || selectedProgram.equals("lSSNwBMiwrK")
-                            || selectedProgram.equals("CoGsKgEG4O0") ) // overweight or stunting or therapeutic
-                    {
+                            || selectedProgram.equals("CoGsKgEG4O0") ) {
                         stages_names.add("Management");
                         stages_names.add("Intervention");
                         stages_names.add("Outcome");
@@ -175,6 +208,9 @@ public class EventsActivity extends ListActivity {
                     }
 
 
+                    // Show a dialog box to select the program stage. Once the program is
+                    // launched we will call the activity corresponding to the selected
+                    // program
                     AlertDialog.Builder builderSingle = new AlertDialog.Builder(this);
                     builderSingle.setIcon(R.drawable.baby_girl);
                     builderSingle.setTitle("Select program stage");
@@ -475,10 +511,12 @@ public class EventsActivity extends ListActivity {
         );
     }
 
+    /**
+     * This method will set adapter for the list view using the event repository data
+     */
     private void observeEvents() {
         adapter = new EventAdapter(this, selectedChild);
         recyclerView.setAdapter(adapter);
-
 
         getEventRepository().getPaged(20).observe(this, eventsPagedList -> {
             adapter.setSource(eventsPagedList.getDataSource());
@@ -488,6 +526,10 @@ public class EventsActivity extends ListActivity {
         });
     }
 
+    /**
+     *
+     * @return
+     */
     private EventCollectionRepository getEventRepository() {
         List<String> j = new ArrayList<>();
         j.add(selectedChild);
