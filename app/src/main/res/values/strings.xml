@@ -113,7 +113,7 @@
     <string name="other_prog">Other Health/ \nNon-health</string>
     <string name="area_details">View my area details</string>
     <string name="area_details_desc">Click here to view all the child list in your area</string>
-    <string name="new_child">Add new child</string>
+    <string name="new_child">Child Registration</string>
     <string name="new_child_desc">Click here to add a new child to programme</string>
     <string name="all_reg">All registrations</string>
 
@@ -146,17 +146,27 @@
     <string name="cg_name"><font size="12">If caregiver is not the mother, caregiver\'s mame</font></string>
     <string name="newborn_title">Newborn\'s information</string>
     <string name="birth_len"><font size="12">Length at birth (cm)</font></string>
-    <string name="birth_weight"><font size="12">Birth weight (grams)</font></string>
+    <string name="birth_weight"><font size="12">Weight at birth (grams)</font></string>
     <string name="submit">Submit</string>
 
+
+
     <!--    anthropometry programme-->
-    <string name="an_title">Anthropometry Programme</string>
+    <string name="an_title">Anthropometry</string>
     <string name="an_stage">Stage 1 : Anthropometry</string>
-    <string name="an_date_enrol"><font size="12">ate of enrollment</font></string>
+    <string name="an_date_enrol"><font size="12">Date of enrollment</font></string>
     <string name="an_date"><font size="12">Date</font></string>
     <string name="an_weight"><font size="12">Weight (grams)</font></string>
     <string name="an_length"><font size="12">Length/ Height (cm)</font></string>
     <string name="an_measures_title">Anthropometric measures</string>
+    <string name="an_age_weeks">Age in Weeks</string>
+    <string name="an_age_years_months_years">Age in Years, Months and Weeks</string>
+    <string name="an_plot_graph">Plot Graphs</string>
+    <string name="an_weight_for_age">Weight for Age</string>
+    <string name="an_height_for_age">Length/Height for Age</string>
+    <string name="an_weight_for_height">Weight for Length/Height</string>
+
+
     <string name="save">Save</string>
 
     <!--    child details-->

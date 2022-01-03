@@ -1,194 +1,204 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MSGP/U5 Monitoring System for Growth Problems in Under 5 Children</string>
-    <string name="selected_language">Sinhala</string>
-    <string name="language">Sinhala</string>
+    <string name="selected_language">සිංහල</string>
+    <string name="language">සිංහල</string>
 
     <!-- Strings related to login -->
-    <string name="title_activity_login">Log in</string>
-    <string name="prompt_server_url">Server url</string>
-    <string name="prompt_username">Username</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="invalid_server_url">Not a valid server url</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must have more than 5 characters</string>
-    <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_login">ඇතුල් වන්න</string>
+    <string name="prompt_server_url">සේවාදායක ලිංකුව</string>
+    <string name="prompt_username">පරිශීලක නාමය</string>
+    <string name="prompt_password">රහස් පදය</string>
+    <string name="action_sign_in_short">ලියාපදිංචි කරන්න</string>
+    <string name="invalid_server_url">වලංගු සේවාදායක ලිංකුවක් එකක් නොවේ</string>
+    <string name="invalid_username">වලංගු පරිශීලක නාමයක් නොවේ</string>
+    <string name="invalid_password">මුරපදයේ අක්ෂර 5කට වඩා තිබිය යුතුය</string>
+    <string name="login_failed">"ඇතුළු වීම අසාර්ථක විය"</string>
     <!-- Strings related to list item -->
-    <string name="sync_icon">Sync icon</string>
-    <string name="item_icon">Icon</string>
-    <string name="item_bitmap">Bitmap</string>
-    <string name="item_title">Item title</string>
+    <string name="sync_icon">සමමුහුර්ත නිරූපකය</string>
+    <string name="item_icon">නිරූපකය</string>
+    <string name="item_bitmap">බිට්මැප්</string>
+    <string name="item_title">අයිතමයේ මාතෘකාව</string>
     <string name="item_right_text">12/03 23:05:12</string>
     <string name="item_subtitle_1">Item subtitle 1</string>
     <string name="item_subtitle_2">Item subtitle 2</string>
-    <string name="sync">SYNC</string>
+    <string name="sync">සමමුහුර්ත කරන්න</string>
     <!-- Strings related to main -->
-    <string name="title_activity_main">Home</string>
-    <string name="welcome">"Welcome!"</string>
+    <string name="title_activity_main">ප්‍රධාන පේජය</string>
+    <string name="welcome">"සාදරයෙන් පිළිගනිමු!"</string>
     <string name="lorem_ipsum">"Lorem ipsum dolor sit amet"</string>
-    <string name="syncing_metadata">Syncing metadata…</string>
-    <string name="syncing_data">Syncing data…</string>
-    <string name="sync_metadata">Sync metadata</string>
-    <string name="sync_data">Sync data</string>
-    <string name="upload_data">Upload data</string>
-    <string name="uploading_data">Uploading data…</string>
-    <string name="wiping_data">Wiping data…</string>
-    <string name="log_out">Log out</string>
-    <string name="wipe_data">Wipe data</string>
-    <string name="programs">Programs</string>
-    <string name="data_sets">Data sets</string>
-    <string name="tracked_entity_instances">Tracked entity instances</string>
-    <string name="events_without_registration">Events without registration</string>
-    <string name="data_values">Data values</string>
+    <string name="syncing_metadata">පාරදත්ත සමමුහුර්ත කිරීම…</string>
+    <string name="syncing_data">දත්ත සමමුහුර්ත කිරීම…</string>
+    <string name="sync_metadata">පාරදත්ත සමමුහුර්ත කරන්න</string>
+    <string name="sync_data">දත්ත සමමුහුර්ත කරන්න</string>
+    <string name="upload_data">දත්ත උඩුගත කරන්න</string>
+    <string name="uploading_data">දත්ත උඩුගත කිරීම…</string>
+    <string name="wiping_data">දත්ත අතුගා දැමීම…</string>
+    <string name="log_out">ලොග් අවුට් වෙන්න</string>
+    <string name="wipe_data">දත්ත මකන්න</string>
+    <string name="programs">වැඩසටහන්</string>
+    <string name="data_sets">දත්ත කාණ්ඩ</string>
+    <string name="tracked_entity_instances">නිරීක්ෂණය කරන ලද ආයතන අවස්ථා</string>
+    <string name="events_without_registration">ලියාපදිංචියකින් තොරව සිදුවීම්</string>
+    <string name="data_values">දත්ත අගයන්</string>
     <string name="zero">0</string>
     <!-- Strings related to programs -->
-    <string name="title_activity_programs">Your programs</string>
-    <string name="program_name">Program Name</string>
-    <string name="program_icon">Program Icon</string>
-    <string name="program_stages">2 Program stages</string>
-    <string name="no_programs_found">No programs found</string>
+    <string name="title_activity_programs">ඔබේ වැඩසටහන්</string>
+    <string name="program_name">ඔබේ වැඩසටහන්</string>
+    <string name="program_icon">වැඩසටහන් නිරූපකය</string>
+    <string name="program_stages">2 වැඩසටහන් අදියර</string>
+    <string name="no_programs_found">වැඩසටහන් කිසිවක් හමු නොවීය</string>
     <!-- Strings related to tracked entity instances search -->
-    <string name="title_activity_tracked_entity_search">Tracked entities search</string>
-    <string name="search_data">Search data</string>
-    <string name="searching">Searching data…</string>
+    <string name="title_activity_tracked_entity_search">නිරීක්ෂණය කරන ලද ආයතන සෙවීම</string>
+    <string name="search_data">දත්ත සොයන්න</string>
+    <string name="searching">දත්ත සෙවීම…</string>
     <!-- Strings related to tracked entity instances -->
-    <string name="title_activity_tracked_entity_instances">Your tracked entity instances</string>
-    <string name="tracked_entity_instance_name">Tracked Entity Instance Name</string>
+    <string name="title_activity_tracked_entity_instances">ඔබගේ නිරීක්ෂණය කළ ආයතන අවස්ථා</string>
+    <string name="tracked_entity_instance_name">නිරීක්ෂණය කළ ආයතන අවස්ථා</string>
     <string name="unique_id">1234</string>
-    <string name="no_tracked_entity_instances_found">No tracked entity instances found</string>
+    <string name="no_tracked_entity_instances_found">ලුහුබැඳ ගිය ආයතන අවස්ථා හමු නොවිණි</string>
     <!--Strings related to events-->
-    <string name="title_activity_events">Events</string>
-    <string name="no_events_found">No events found</string>
+    <string name="title_activity_events">සිද්ධීන්</string>
+    <string name="no_events_found">සිදුවීම් කිසිවක් හමු නොවීය</string>
     <!-- Strings related to navigation -->
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">User name</string>
+    <string name="navigation_drawer_open">සංචාලන ලාච්චුව විවෘත කරන්න</string>
+    <string name="navigation_drawer_close">සංචාලන ලාච්චුව වසන්න</string>
+    <string name="nav_header_title">පරිශීලක නාමය</string>
     <string name="nav_header_subtitle">user@email.com</string>
-    <string name="data_management">Data management</string>
+    <string name="data_management">දත්ත කළමනාකරණය</string>
     <string name="session">Session</string>
     <!-- Strings related to errors -->
-    <string name="title_activity_d2_errors">Your errors</string>
-    <string name="no_d2_errors_found">No errors found</string>
+    <string name="title_activity_d2_errors">ඔබේ වැරදි</string>
+    <string name="no_d2_errors_found">දෝෂ හමු නොවීය</string>
     <!-- Strings related to errors -->
-    <string name="title_activity_fk_violations">Foreign key violations</string>
-    <string name="no_fk_violations_found">No foreign key violations found</string>
+    <string name="title_activity_fk_violations">විදේශීය ප්රධාන උල්ලංඝනය කිරීම්</string>
+    <string name="no_fk_violations_found">විදේශීය ප්රධාන උල්ලංඝනයන් හමු නොවීය</string>
     <!-- Strings related to data sets -->
-    <string name="title_activity_data_sets">Your data sets</string>
-    <string name="no_data_sets_found">No data sets found</string>
+    <string name="title_activity_data_sets">ඔබගේ දත්ත කට්ටල</string>
+    <string name="no_data_sets_found">දත්ත කට්ටල හමු නොවීය</string>
     <!-- Strings related to data set instances -->
-    <string name="title_activity_data_set_instances">Your data set instances</string>
-    <string name="no_data_set_instances_found">No data set instances found</string>
+    <string name="title_activity_data_set_instances">ඔබගේ දත්ත කට්ටල අවස්ථා</string>
+    <string name="no_data_set_instances_found">දත්ත කට්ටල අවස්ථා හමු නොවිණි</string>
     <!-- Strings related to the code executor-->
-    <string name="executing">Executing…</string>
-    <string name="code_executed">Code executed</string>
-    <string name="waiting_for_execution">Waiting for execution…</string>
-    <string name="execute_code">Execute</string>
-    <string name="code_executor">Code executor</string>
+    <string name="executing">ක්රියාත්මක කිරීම…</string>
+    <string name="code_executed">කේතය ක්රියාත්මක කරන ලදී</string>
+    <string name="waiting_for_execution">ක්රියාත්මක කිරීම සඳහා රැඳී සිටීම…</string>
+    <string name="execute_code">ක්රියාත්මක කරන්න</string>
+    <string name="code_executor">කේතය ක්රියාත්මක කරන්නා</string>
     <!-- Strings related to enrollment forms -->
-    <string name="title_activity_enrollment_form">Enrollment form</string>
-    <string name="title_activity_event_form">Event form</string>
-    <string name="date_button_text">Click to select date</string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
-    <string name="filter_background">filterBackground</string>
+    <string name="title_activity_enrollment_form">ලියාපදිංචි කිරීමේ පෝරමය</string>
+    <string name="title_activity_event_form">සිදුවීම් ආකෘතිය</string>
+    <string name="date_button_text">දිනය තේරීමට ක්ලික් කරන්න</string>
+    <string name="yes">ඔව්</string>
+    <string name="no">නැත</string>
+    <string name="filter_background">පෙරහන පසුබිම</string>
 
     <!--<string name="app_name">Yashodhara</string> -->
     <string name="login_title">MSGP/U5 Monitoring System for Growth Problems in Under 5 Children</string>
-    <string name="login_description">Log in to your Account</string>
-    <string name="language_selection">Please select the language</string>
-    <string name="username"><font size="14">Username</font></string>
-    <string name="password"><font size="14">Password</font></string>
-    <string name="login">Login</string>
-    <string name="select">Select</string>
+    <string name="login_description">ඔබගේ ගිණුමට ලොග් වන්න</string>
+    <string name="language_selection">කරුණාකර භාෂාව තෝරන්න</string>
+    <string name="username"><font size="14">පරිශීලක නාමය</font></string>
+    <string name="password"><font size="14">රහස් පදය</font></string>
+    <string name="login">ඇතුල් වන්න</string>
+    <string name="select">තෝරන්න</string>
 
     <!--    home-->
     <string name="title_activity_home">home</string>
     <string name="wish">ආයුබෝවන්,</string>
-    <string name="sup_prog">පරිපූරක \nපෝෂණ වැඩසටහන</string>
-    <string name="thera_prog">චිකිත්සක \nවැඩසටහන</string>
-    <string name="overw_prog">අධික බර/තරබාරුකම \nවැඩසටහන</string>
-    <string name="stunt_prog">අඩාල වීම \nවැඩසටහන</string>
+    <string name="sup_prog">ඔ‍ය්ෂධීය ආහාර ලබාදීම</string>
+    <string name="thera_prog">අතිරේක ආහාර ලබාදීම</string>
+    <string name="overw_prog">අධික බර/ස්ථුලතාය</string>
+    <string name="stunt_prog">මිටි බව \nසදහා මැදිහත්වීම</string>
     <string name="other_prog">වෙනත් සෞඛ්‍ය/ \nසෞඛ්‍ය නොවන</string>
-    <string name="area_details">View my area details</string>
-    <string name="area_details_desc">Click here to view all the child list in your area</string>
-    <string name="new_child">Add new child</string>
-    <string name="new_child_desc">Click here to add a new child to programme</string>
-    <string name="all_reg">All registrations</string>
+    <string name="area_details">මගේ ප්‍රදේශයේ විස්තර බලන්න</string>
+    <string name="area_details_desc">ඔබේ ප්‍රදේශයේ සියලුම ළමා ලැයිස්තුව බැලීමට මෙතැන ක්ලික් කරන්න</string>
+    <string name="new_child">ළමා ලියාපදිංචිය</string>
+    <string name="new_child_desc">වැඩසටහනට නව දරුවෙකු එක් කිරීමට මෙතන ක්ලික් කරන්න</string>
+    <string name="all_reg">සියලුම ලියාපදිංචි කිරීම්</string>
 
     <!--    demographic info-->
-    <string name="demo_info_title">Demographic information</string>
-    <string name="date_of_reg"><font size="14">Date of registration</font></string>
-    <string name="gn_area"><font size="14">GN area</font></string>
-    <string name="birth_num"><font size="12">Birth and immunization \nRegistration number</font></string>
-    <string name="name"><font size="12">Name of the child</font></string>
-    <string name="sex"><font size="12">Sex</font></string>
-    <string name="date_of_birth"><font size="12">Date of birth</font></string>
-    <string name="ethnicity"><font size="12">Ethnicity</font></string>
-    <string name="addr"><font size="12">Address</font></string>
-    <string name="sector"><font size="12">Sector</font></string>
-    <string name="ll_num"><font size="12">Land line number</font></string>
-    <string name="mob_num"><font size="12">Mobile number</font></string>
+    <string name="demo_info_title">ජනවිකාස තොරතුරු</string>
+    <string name="date_of_reg"><font size="14">ලියාපදිංචි දිනය</font></string>
+    <string name="gn_area"><font size="14">ග්‍රාම නිලධාරී වසම</font></string>
+    <string name="birth_num"><font size="12">උපත් සහ ප්‍රතිශක්තිකරණය \nලියාපදිංච් අංකය</font></string>
+    <string name="name"><font size="12">දරුවාගේ නම</font></string>
+    <string name="sex"><font size="12">ලිංගිකත්වය</font></string>
+    <string name="date_of_birth"><font size="12">උපන්දිනය</font></string>
+    <string name="ethnicity"><font size="12">වාර්ගිකත්වය</font></string>
+    <string name="addr"><font size="12">ලිපිනය</font></string>
+    <string name="sector"><font size="12">අංශය</font></string>
+    <string name="ll_num"><font size="12">ස්ථාවර දුරකතන අංකය</font></string>
+    <string name="mob_num"><font size="12">ජංගම දුරකතන අංකය</font></string>
 
     <!--    mother info-->
-    <string name="mother_info_title">Mother\'s information</string>
-    <string name="occup_mother"><font size="12">Occupation</font></string>
-    <string name="name_mother"><font size="12">Name of the mother</font></string>
-    <string name="date_of_birth_mother"><font size="12">Mother\'s date of birth</font></string>
-    <string name="no_of_children"><font size="12">Number of living children including this child</font></string>
-    <string name="edu_level_mother"><font size="12">Highest education level</font></string>
-    <string name="nic_mother"><font size="12">NIC number</font></string>
+    <string name="mother_info_title">මවගේ තොරතුරු</string>
+    <string name="occup_mother"><font size="12">රැකියාව</font></string>
+    <string name="name_mother"><font size="12">මවගේ නම</font></string>
+    <string name="date_of_birth_mother"><font size="12">මවගේ උපන් දිනය</font></string>
+    <string name="no_of_children"><font size="12">මෙම දරුවා ඇතුළුව ජීවමාන දරුවන් සංඛ්‍යාව</font></string>
+    <string name="edu_level_mother"><font size="12">ඉහළම අධ්‍යාපන මට්ටම</font></string>
+    <string name="nic_mother"><font size="12">ජාතික හැඳුනුම්පත් අංකය</font></string>
 
     <!--    caregiver's info-->
-    <string name="caregiver_title">Care giver\'s information</string>
-    <string name="cg_rel"><font size="12">Caregiver\'s relationship to child</font></string>
-    <string name="cg_name"><font size="12">If caregiver is not the mother, caregiver\'s mame</font></string>
-    <string name="newborn_title">Newborn\'s information</string>
-    <string name="birth_len"><font size="12">Length at birth (cm)</font></string>
-    <string name="birth_weight"><font size="12">Birth weight (grams)</font></string>
-    <string name="submit">Submit</string>
+    <string name="caregiver_title">රැකවරණය සපයන්නාගේ තොරතුරු</string>
+    <string name="cg_rel"><font size="12">දරුවා සමඟ රැකබලා ගන්නාගේ සම්බන්ධතාවය</font></string>
+    <string name="cg_name"><font size="12">භාරකරු මව නොවේ නම්, භාරකරුගේ නම</font></string>
+    <string name="newborn_title">අලුත උපන් බිළිඳුන්ගේ තොරතුරු</string>
+    <string name="birth_len"><font size="12">උපතේදී දිග (සෙ.මී.)</font></string>
+    <string name="birth_weight"><font size="12">උපත් බර (ග්රෑම්)</font></string>
+    <string name="submit">තහවුරු කරන්න</string>
+
+
 
     <!--    anthropometry programme-->
-    <string name="an_title">Anthropometry Programme</string>
-    <string name="an_stage">Stage 1 : Anthropometry</string>
-    <string name="an_date_enrol"><font size="12">ate of enrollment</font></string>
-    <string name="an_date"><font size="12">Date</font></string>
-    <string name="an_weight"><font size="12">Weight (grams)</font></string>
-    <string name="an_length"><font size="12">Length/ Height (cm)</font></string>
-    <string name="an_measures_title">Anthropometric measures</string>
-    <string name="save">Save</string>
+    <string name="an_title">වර්ධන තත්වය මැනීම</string>
+    <string name="an_stage">අදියර 1 : වර්ධන තත්වය මැනීම</string>
+    <string name="an_date_enrol"><font size="12">ලියාපදිංචි වූ දිනය</font></string>
+    <string name="an_date"><font size="12">දිනය</font></string>
+    <string name="an_weight"><font size="12">බර (ග්‍රෑම්)</font></string>
+    <string name="an_length"><font size="12">දිග/උස (සෙ.මී.)</font></string>
+    <string name="an_measures_title">වර්ධන තත්වය මිනුම්</string>
+    <string name="save">සුරකින්න</string>
+    <string name="an_age_weeks">සති වලින් වයස</string>
+    <string name="an_age_years_months_years">වයස අවුරුදු, මාස සහ සති</string>
+    <string name="an_plot_graph">ප්‍රස්ථාරකිරීම</string>
+    <string name="an_weight_for_age">වයසට එදිරිව බර</string>
+    <string name="an_height_for_age">වයසට එදිරිව දිග/උස</string>
+    <string name="an_weight_for_height">දිග/උසට එදිරිව බර</string>
+
+
 
     <!--    child details-->
-    <string name="cd_title">Child details</string>
-    <string name="cd_name"><font size="12">Child name</font></string>
-    <string name="cd_no"><font size="12">Birth and immunization \nRegistration number</font></string>
-    <string name="cd_dob"><font size="12">Date of birth</font></string>
-    <string name="cd_gender"><font size="12">Gender</font></string>
-    <string name="cd_aep">Already enrolled programmes</string>
-    <string name="cd_nep">Not enrolled programmes</string>
+    <string name="cd_title">දරුවාගේ විස්තර</string>
+    <string name="cd_name"><font size="12">දරුවාගේ නම</font></string>
+    <string name="cd_no"><font size="12">උපත් සහ ප්‍රතිශක්තිකරණය \nලියාපදිංච් අංකය</font></string>
+    <string name="cd_dob"><font size="12">උපන්දිනය</font></string>
+    <string name="cd_gender"><font size="12">ස්ත්රී පුරුෂ භාවය</font></string>
+    <string name="cd_aep">දැනටමත් ලියාපදිංචි කර ඇති වැඩසටහන්</string>
+    <string name="cd_nep">ලියාපදිංචි නොවූ වැඩසටහන්</string>
 
     <!--    history-->
-    <string name="search"><font size="14">Search here</font></string>
-    <string name="search_btn"><font size="14">Search</font></string>
+    <string name="search"><font size="14">මෙහි සොයන්න</font></string>
+    <string name="search_btn"><font size="14">සොයන්න</font></string>
 
     <!--    area details-->
-    <string name="ad_title">View my area details</string>
-    <string name="ad_area"><font size="12">Midwife area</font></string>
-    <string name="ad_search"><font size="12">Midwife area</font></string>
-    <string name="ad_sort"><font size="13">Sort by</font></string>
-    <string name="ad_search_result">Search here</string>
+    <string name="ad_title">මගේ ප්‍රදේශයේ විස්තර බලන්න</string>
+    <string name="ad_area"><font size="12">වින්නඹු මාතාව ප්රදේශය</font></string>
+    <string name="ad_search"><font size="12">වින්නඹු මාතාව ප්රදේශය</font></string>
+    <string name="ad_sort"><font size="13">අනුව තෝරන්න</font></string>
+    <string name="ad_search_result">මෙහි සොයන්න</string>
 
-    <string name="anthropometry">Anthropometry</string>
-    <string name="supplementary">Supplementary</string>
-    <string name="overweight">Overweight</string>
-    <string name="therapeutic">Therapeutic feeding</string>
-    <string name="stunt">Stunting</string>
-    <string name="other">Other health/ Non-health</string>
+    <string name="anthropometry">වර්ධන තත්වය මැනීම</string>
+    <string name="supplementary">ඔ‍ය්ෂධීය ආහාර ලබාදීම</string>
+    <string name="overweight">අධික බර/ ස්ථුලතාය සදහා මැදිහත්වීම</string>
+    <string name="therapeutic">අතිරේක ආහාර ලබාදීම</string>
+    <string name="stunt">මිටි බව සදහා මැදිහත්වීම</string>
+    <string name="other">වෙනත් සෞඛ්‍ය/ සෞඛ්‍ය නොවන</string>
 
     <!--    Supplementary intervention spinner-->
     <string-array name="supp_intervention_type">
-        <item>1st time enrollment to this programme</item>
-        <item>Relapse</item>
+        <item>මෙම වැඩසටහනට පළමු වරට ලියාපදිංචි වීම</item>
+        <item>නැවත ඇතිවීම</item>
     </string-array>
 
     <!--    Child registration arrays starts here-->
@@ -199,93 +209,93 @@
     </string-array>
 
     <string-array name="sex">
-        <item>Male</item>
-        <item>Female</item>
-        <item>Unspecified</item>
+        <item>පිරිමි</item>
+        <item>ගැහැණු</item>
+        <item>නිශ්චිතව දක්වා නැත</item>
     </string-array>
 
     <string-array name="ethnicity">
-        <item>Sinhalese</item>
-        <item>Tamil</item>
-        <item>Muslim</item>
-        <item>Burgher</item>
-        <item>Others</item>
+        <item>සිංහල</item>
+        <item>දෙමළ</item>
+        <item>මුස්ලිම්</item>
+        <item>බර්ගර්</item>
+        <item>අන් අය</item>
     </string-array>
 
     <string-array name="highestEdu">
-        <item>No formal schooling</item>
-        <item>Grade 1 to 5 (Not completed Grade 5/Some Primary education)</item>
-        <item>Completed grade 5 (Completed Primary)</item>
-        <item>Grade 6 to 10 (Not completed Grade 10/Some Secondary education)</item>
-        <item>Completed grade 10 (Completed Secondary education)</item>
-        <item>Grade 11 or higher (Higher than Secondary education)</item>
+        <item>විධිමත් පාසල් අධ්‍යාපනයක් නැත</item>
+        <item>1 සිට 5 ශ්‍රේණිය (5 ශ්‍රේණිය/සමහර ප්‍රාථමික අධ්‍යාපනය සම්පූර්ණ කර නැත)</item>
+        <item>5 ශ්‍රේණිය සම්පූර්ණ කරන ලදී (සම්පූර්ණ ප්‍රාථමික)</item>
+        <item>6 සිට 10 ශ්‍රේණිය (10 ශ්‍රේණිය/සමහර ද්විතීයික අධ්‍යාපනය සම්පූර්ණ කර නැත)</item>
+        <item>10 ශ්‍රේණිය සම්පූර්ණ කර ඇත (ද්විතියික අධ්‍යාපනය සම්පූර්ණ කර ඇත)</item>
+        <item>11 ශ්‍රේණිය හෝ ඉහළ (ද්විතියික අධ්‍යාපනයට වඩා ඉහළ)</item>
     </string-array>
 
     <string-array name="sector">
-        <item>Rural</item>
-        <item>Urban</item>
-        <item>Estate</item>
+        <item>ගම්බද</item>
+        <item>නාගරික</item>
+        <item>වතු</item>
     </string-array>
 
     <string-array name="occupation">
-        <item>Student</item>
-        <item>Home maker</item>
-        <item>Retired</item>
-        <item>Unemployed</item>
-        <item>Paid employment</item>
+        <item>ශිෂ‍ය</item>
+        <item>ගෘහනිය</item>
+        <item>විශ්‍රාමික</item>
+        <item>රැකියා විරහිත</item>
+        <item>වැටුප් සහිත රැකියාව</item>
     </string-array>
 
     <string-array name="relationship">
-        <item>Mother</item>
-        <item>Father</item>
-        <item>Grand parents</item>
-        <item>other close relatives</item>
-        <item>others</item>
+        <item>මව</item>
+        <item>පියා</item>
+        <item>ආච්චි/සීයා</item>
+        <item>වෙනත් සමීප ඥාතීන්</item>
+        <item>වෙනත්</item>
     </string-array>
 
 
     <!--    Child registration arrays ends here-->
 
     <string-array name="other_management_type">
-        <item>1st time enrollment to this programme</item>
-        <item>Relapse</item>
+        <item>මෙම වැඩසටහනට පළමු වරට ලියාපදිංචි වීම</item>
+        <item>නැවත ඇතිවීම</item>
     </string-array>
     <string-array name="therapeutical_management_type">
-        <item>1st time enrollment to this programme</item>
-        <item>Relapse</item>
+        <item>මෙම වැඩසටහනට පළමු වරට ලියාපදිංචි වීම</item>
+        <item>නැවත ඇතිවීම</item>
     </string-array>
     <string-array name="stunting_management_type">
-        <item>1st time enrollment to this programme</item>
-        <item>Relapse</item>
+        <item>මෙම වැඩසටහනට පළමු වරට ලියාපදිංචි වීම</item>
+        <item>නැවත ඇතිවීම</item>
     </string-array>
     <string-array name="overweight_outcome_type">
-        <item>Recovered</item>
-        <item>Defaulted</item>
-        <item>Left the area</item>
-        <item>Left due to completion of age 5</item>
-        <item>Died</item>
+        <item>යථා තත්ත්වයට පත් විය</item>
+        <item>ප්‍රතිකාරය පැහැරහරින ලදී</item>
+        <item>ප්රදේශය හැරගිය ලදී</item>
+        <item>වයස අවුරුදු 5 සම්පූර්ණ වීම නිසා අත්හැරියා</item>
+        <item>මිය ගියා</item>
     </string-array>
     <string-array name="stunting_outcome_type">
-        <item>Recovered</item>
-        <item>Defaulted</item>
-        <item>Left the area</item>
-        <item>Left due to completion of age 5</item>
-        <item>Died</item>
+        <item>යථා තත්ත්වයට පත් විය</item>
+        <item>ප්‍රතිකාරය පැහැරහරින ලදී</item>
+        <item>ප්රදේශය හැරගිය ලදී</item>
+        <item>වයස අවුරුදු 5 සම්පූර්ණ වීම නිසා අත්හැරියා</item>
+        <item>මිය ගියා</item>
     </string-array>
     <string-array name="supp_outcome_type">
-        <item>Recovered</item>
-        <item>Sent to therapeutic feeding Programme</item>
-        <item>Defaulted</item>
-        <item>Left the area</item>
-        <item>Left due to completion of age 5</item>
-        <item>Died</item>
+        <item>යථා තත්ත්වයට පත් විය</item>
+        <item>අතිරේක ආහාර ලබාදීම වැඩසටහනට යවා ඇත</item>
+        <item>ප්‍රතිකාරය පැහැරහරින ලදී</item>
+        <item>ප්රදේශය හැරගිය ලදී</item>
+        <item>වයස අවුරුදු 5 සම්පූර්ණ වීම නිසා අත්හැරියා</item>
+        <item>මිය ගියා</item>
     </string-array>
     <string-array name="tera_outcome_type">
-        <item>Recovered</item>
-        <item>Sent to supplementary feeding Programme</item>
-        <item>Defaulted</item>
-        <item>Left the area</item>
-        <item>Left due to completion of age 5</item>
-        <item>Died</item>
+        <item>යථා තත්ත්වයට පත් විය</item>
+        <item>ඔ‍ය්ෂධීය ආහාර ලබාදීම වැඩසටහනට යවා ඇත</item>
+        <item>ප්‍රතිකාරය පැහැරහරින ලදී</item>
+        <item>ප්රදේශය හැරගිය ලදී</item>
+        <item>වයස අවුරුදු 5 සම්පූර්ණ වීම නිසා අත්හැරියා</item>
+        <item>මිය ගියා</item>
     </string-array>
 </resources>

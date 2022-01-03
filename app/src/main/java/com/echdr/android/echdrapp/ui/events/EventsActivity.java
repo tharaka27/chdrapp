@@ -56,6 +56,7 @@ import io.reactivex.schedulers.Schedulers;
 import static android.text.TextUtils.isEmpty;
 
 public class EventsActivity extends ListActivity {
+
     private String selectedProgram;
     private String selectedChild;
     private CompositeDisposable compositeDisposable;

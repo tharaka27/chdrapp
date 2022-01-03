@@ -18,7 +18,10 @@ android:layout_height="match_parent">
             android:id="@+id/group16676"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="0dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
             android:layout_weight="0.8"
             android:scaleType="fitXY"
             android:src="@drawable/maskgroup62" />
@@ -37,78 +40,60 @@ android:layout_height="match_parent">
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="48dp"
-            android:text="Welcome To GeeksForGeeks"
-            android:textAlignment="center" />
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:text="Please Select your Language to Continue"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
 
         <!--button view for hindi language-->
-        <Button
-            android:id="@+id/btnHindi"
+
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:background="@color/colorPrimary"
-            android:text="Hindi"
-            android:textColor="#ffffff" />
+            android:orientation="horizontal"
 
-        <!--button view for english language-->
-        <Button
-            android:id="@+id/btnEnglish"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:background="@color/colorPrimary"
-            android:text="English"
-            android:textColor="#ffffff" />
+            android:layout_gravity="center_horizontal"
+            android:weightSum="1">
 
-        <!--
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="5dp"
-        android:layout_marginVertical="5dp"
-        android:background="@drawable/background_popup_card"
-        android:orientation="horizontal"
-        android:paddingHorizontal="8dp"
-        android:paddingVertical="8dp"
-        android:layout_gravity="center_horizontal"
-        android:weightSum="1">
+            <Button
+                android:id="@+id/btnHindi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:background="@color/colorPrimary"
+                android:text="සිංහල"
+                android:textColor="#ffffff" />
 
-        <TextView
-            android:id="@+id/language_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="0.5"
-            android:background="@null"
-            android:text="@string/language_selection"
-            android:textColorHint="@color/desc" />
+            <!--button view for english language-->
+            <Button
+                android:id="@+id/btnEnglish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:background="@color/colorPrimary"
+                android:text="English"
+                android:textColor="#ffffff" />
 
-        <Spinner
-            android:id="@+id/language_selection_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5">
+            <Button
+                android:id="@+id/btnTamil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:background="@color/colorPrimary"
+                android:text="தமிழ்"
+                android:textColor="#ffffff" />
 
-        </Spinner>
+
+        </LinearLayout>
+
+
 
     </LinearLayout>
 
-
-    <Button
-        android:id="@+id/saveLanguage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginHorizontal="60dp"
-        android:layout_marginVertical="0dp"
-        android:background="@drawable/background_button"
-
-        android:text="@string/select"
-        android:textAllCaps="false"
-        android:textSize="18dp" />
-
-        -->
-
-    </LinearLayout>
 </RelativeLayout>

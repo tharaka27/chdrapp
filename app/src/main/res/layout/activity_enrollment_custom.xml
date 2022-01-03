@@ -54,7 +54,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.4"
                             android:background="@null"
-                            android:text="Date of Registration"
+                            android:text="@string/date_of_reg"
                             android:textColorHint="@color/desc" />
 
                         <TextView
@@ -95,7 +95,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="GN Area *"
+                            android:text="@string/gn_area"
                             android:textColorHint="@color/desc" />
 
                         <EditText
@@ -128,7 +128,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Birth and Immunization Number *"
+                            android:text="@string/birth_num"
                             android:textColorHint="@color/desc" />
 
                         <EditText
@@ -161,7 +161,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Name of the child *"
+                            android:text="@string/name"
                             android:textColorHint="@color/desc" />
 
                         <EditText
@@ -194,7 +194,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Sex *"
+                            android:text="@string/sex"
                             android:textColorHint="@color/desc" />
 
                         <Spinner
@@ -225,7 +225,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.4"
                             android:background="@null"
-                            android:text="Date of Birth *"
+                            android:text="@string/date_of_birth"
                             android:textColorHint="@color/desc" />
 
                         <TextView
@@ -266,7 +266,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Ethnicity *"
+                            android:text="@string/ethnicity"
                             android:textColorHint="@color/desc" />
 
                         <Spinner
@@ -297,7 +297,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Address *"
+                            android:text="@string/addr"
                             android:textColorHint="@color/desc" />
 
                         <EditText
@@ -330,7 +330,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Sector *"
+                            android:text="@string/sector"
                             android:textColorHint="@color/desc" />
 
                         <Spinner
@@ -361,7 +361,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Land Number"
+                            android:text="@string/ll_num"
                             android:textColorHint="@color/desc" />
 
                         <EditText
@@ -396,7 +396,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Mobile Number"
+                            android:text="@string/mob_num"
                             android:textColorHint="@color/desc" />
 
                         <EditText
@@ -430,7 +430,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Name of Mother *"
+                            android:text="@string/name_mother"
                             android:textColorHint="@color/desc" />
 
                         <EditText
@@ -463,7 +463,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="NIC Number"
+                            android:text="@string/nic_mother"
                             android:textColorHint="@color/desc" />
 
                         <EditText
@@ -496,7 +496,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.4"
                             android:background="@null"
-                            android:text="Mother's date of birth *"
+                            android:text="@string/date_of_birth_mother"
                             android:textColorHint="@color/desc" />
 
                         <TextView
@@ -537,7 +537,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Number of living children including this child"
+                            android:text="@string/no_of_children"
                             android:textColorHint="@color/desc" />
 
                         <EditText
@@ -571,7 +571,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Highest education level *"
+                            android:text="@string/edu_level_mother"
                             android:textColorHint="@color/desc" />
 
                         <Spinner
@@ -602,7 +602,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Occupation *"
+                            android:text="@string/occup_mother"
                             android:textColorHint="@color/desc" />
 
                         <Spinner
@@ -633,7 +633,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Principal caregiver's relationship to child  *"
+                            android:text="@string/cg_rel"
                             android:textColorHint="@color/desc" />
 
                         <Spinner
@@ -664,7 +664,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="If the caregiver is not the mother, caregiver's name"
+                            android:text="@string/cg_name"
                             android:textColorHint="@color/desc" />
 
                         <EditText
@@ -697,7 +697,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Birth weight (in grams) *"
+                            android:text="@string/birth_weight"
                             android:textColorHint="@color/desc" />
 
                         <EditText
@@ -732,7 +732,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Length at birth (in cm) *"
+                            android:text="@string/birth_len"
                             android:textColorHint="@color/desc" />
 
                         <EditText
@@ -788,7 +788,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginVertical="10dp"
                 android:orientation="horizontal">
-<!--
+                <!--
                 <ImageButton
                     android:id="@+id/back_btn"
                     android:layout_width="36dp"
@@ -806,7 +806,7 @@
                     android:id="@+id/title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Child Registration"
+                    android:text="@string/new_child"
                     android:textAlignment="center"
                     android:textColor="@color/title"
                     android:textSize="20sp"

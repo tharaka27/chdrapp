@@ -1,5 +1,7 @@
 package com.echdr.android.echdrapp.ui.events;
 
+import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,16 +58,18 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
     private DataSource<?, Event> source;
     private String selectedChild;
     private HashMap<String, String[]> programStageNames;
+    private Context context;
+
 
 
     public EventAdapter(AppCompatActivity activity, String selectedChild) {
         super(new DiffByIdItemCallback<>());
         this.activity = activity;
         this.selectedChild = selectedChild;
-
+        this.context = activity.getApplicationContext();
 
         programStageNames = new HashMap<>();
-        programStageNames.put("pI5JAmTcjE4", new String[]{"Anthropometry"}); // age in months
+        programStageNames.put("pI5JAmTcjE4", new String[]{context.getResources().getString(R.string.an_stage)}); // age in months
         programStageNames.put("iWycCg6C2gd", new String[]{"Reason for enrollment"}); //
         programStageNames.put("O9FEeIYqGRH", new String[]{"Risk factor evaluation"});
         programStageNames.put("y2imfIjE4zt", new String[]{"Referred for intervention"});
@@ -83,6 +87,8 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
         programStageNames.put("RtC4CcoEs4J", new String[]{"Outcome"});
 
     }
+
+
 
     @NonNull
     @Override

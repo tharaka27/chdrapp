@@ -89,7 +89,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Birth and Immunization Register number"
+                            android:text="@string/birth_num"
                             android:textColorHint="@color/desc" />
 
                         <TextView
@@ -124,7 +124,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.4"
                             android:background="@null"
-                            android:text="Date of Birth"
+                            android:text="@string/date_of_birth"
                             android:textColorHint="@color/desc" />
 
                         <TextView
@@ -166,7 +166,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Gender"
+                            android:text="@string/sex"
                             android:textColorHint="@color/desc" />
 
                         <Spinner
@@ -198,7 +198,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Address"
+                            android:text="@string/addr"
                             android:textColorHint="@color/desc" />
 
                         <EditText
@@ -231,7 +231,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Weight at Birth"
+                            android:text="@string/birth_weight"
                             android:textColorHint="@color/desc" />
 
                         <EditText
@@ -265,7 +265,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Height at Birth"
+                            android:text="@string/birth_len"
                             android:textColorHint="@color/desc" />
 
                         <EditText
@@ -299,7 +299,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Etnnicity"
+                            android:text="@string/ethnicity"
                             android:textColorHint="@color/desc" />
 
                         <Spinner
@@ -332,7 +332,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="GN Area"
+                            android:text="@string/gn_area"
                             android:textColorHint="@color/desc" />
 
                         <EditText
@@ -364,7 +364,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Caregiver relationship to child"
+                            android:text="@string/cg_rel"
                             android:textColorHint="@color/desc" />
 
                         <Spinner
@@ -396,7 +396,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="NIC Number"
+                            android:text="@string/nic_mother"
                             android:textColorHint="@color/desc" />
 
                         <EditText
@@ -428,7 +428,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Occupation"
+                            android:text="@string/occup_mother"
                             android:textColorHint="@color/desc" />
 
                         <Spinner
@@ -460,7 +460,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Sector"
+                            android:text="@string/sector"
                             android:textColorHint="@color/desc" />
 
                         <Spinner
@@ -492,7 +492,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Highest education level"
+                            android:text="@string/edu_level_mother"
                             android:textColorHint="@color/desc" />
 
                         <Spinner
@@ -524,7 +524,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Name of mother"
+                            android:text="@string/name_mother"
                             android:textColorHint="@color/desc" />
 
                         <EditText
@@ -556,7 +556,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.4"
                             android:background="@null"
-                            android:text="Mother Date of Birth"
+                            android:text="@string/date_of_birth_mother"
                             android:textColorHint="@color/desc" />
 
                         <EditText
@@ -567,7 +567,7 @@
                             android:layout_weight="0.4"
                             android:background="@null"
                             android:enabled="false"
-                            android:hint="@string/cd_dob"
+                            android:hint="Mother DOB"
                             android:inputType="date"
                             android:textColorHint="@color/desc" />
 
@@ -599,7 +599,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Number of living children including this child"
+                            android:text="@string/no_of_children"
                             android:textColorHint="@color/desc" />
 
                         <EditText
@@ -632,7 +632,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="If caregiver not mother, caregiver name"
+                            android:text="@string/cg_name"
                             android:textColorHint="@color/desc" />
 
                         <EditText
@@ -664,7 +664,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Landline number"
+                            android:text="@string/ll_num"
                             android:textColorHint="@color/desc" />
 
                         <EditText
@@ -697,7 +697,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Mobile number"
+                            android:text="@string/mob_num"
                             android:textColorHint="@color/desc" />
 
                         <EditText
