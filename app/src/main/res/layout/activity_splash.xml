@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
-        android:text="MSGP/U5 Monitoring System\nfor Growth Problems in Under 5 Children"
+        android:text="MSGP/U5 Monitoring System\nfor Growth Problems \nin Under 5 Children"
         android:textSize="24sp"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"

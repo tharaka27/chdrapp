@@ -101,13 +101,12 @@
 
                             <ImageView
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_marginEnd="5dp"
                                 android:layout_weight="0.4"
-                                android:background="@drawable/background_supp"
+                                android:background="@drawable/supplements"
                                 android:paddingHorizontal="16dp"
-                                android:paddingVertical="20dp"
-                                android:src="@drawable/supplements" />
+                                android:paddingVertical="20dp"/>
 
                             <LinearLayout
                                 android:layout_width="0dp"
@@ -149,14 +148,14 @@
                             android:weightSum="1">
 
                             <ImageView
+                                android:scaleType="fitXY"
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_marginEnd="5dp"
                                 android:layout_weight="0.4"
-                                android:background="@drawable/background_therap"
+                                android:background="@drawable/feeding"
                                 android:paddingHorizontal="16dp"
-                                android:paddingVertical="20dp"
-                                android:src="@drawable/feeding" />
+                                android:paddingVertical="20dp"/>
 
                             <LinearLayout
                                 android:layout_width="0dp"
@@ -192,13 +191,12 @@
 
                             <ImageView
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_marginEnd="5dp"
                                 android:layout_weight="0.4"
-                                android:background="@drawable/background_overweight"
+                                android:background="@drawable/weighingscale"
                                 android:paddingHorizontal="16dp"
-                                android:paddingVertical="20dp"
-                                android:src="@drawable/weighingscale" />
+                                android:paddingVertical="20dp"/>
 
                             <LinearLayout
                                 android:layout_width="0dp"
@@ -240,13 +238,12 @@
 
                             <ImageView
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_marginEnd="5dp"
                                 android:layout_weight="0.4"
-                                android:background="@drawable/background_stunt"
+                                android:background="@drawable/kidscouple"
                                 android:paddingHorizontal="16dp"
-                                android:paddingVertical="20dp"
-                                android:src="@drawable/kidscouple" />
+                                android:paddingVertical="20dp" />
 
                             <LinearLayout
                                 android:layout_width="0dp"
@@ -283,13 +280,12 @@
 
                             <ImageView
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_marginEnd="5dp"
                                 android:layout_weight="0.4"
-                                android:background="@drawable/background_other"
+                                android:background="@drawable/other_health"
                                 android:paddingHorizontal="16dp"
-                                android:paddingVertical="20dp"
-                                android:src="@drawable/other_health" />
+                                android:paddingVertical="20dp" />
 
                             <LinearLayout
                                 android:layout_width="0dp"
@@ -325,6 +321,7 @@
                         android:orientation="horizontal">
 
                         <ImageView
+                            android:paddingHorizontal="13dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:clickable="true"
