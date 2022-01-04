@@ -54,7 +54,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.4"
                             android:background="@null"
-                            android:text="Evaluation date"
+                            android:text="@string/oth_risk_date"
                             android:textColorHint="@color/desc" />
 
                         <TextView
@@ -95,7 +95,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Poverty and poor income management"
+                            android:text="@string/oth_risk_poverty"
                             android:textColorHint="@color/desc" />
 
                         <CheckBox
@@ -105,7 +105,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Yes"
+                            android:text="@string/yes"
                             android:textColorHint="@color/desc" />
 
                     </LinearLayout>
@@ -128,7 +128,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Food insecurity"
+                            android:text="@string/oth_risk_food"
                             android:textColorHint="@color/desc" />
 
                         <CheckBox
@@ -138,7 +138,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Yes"
+                            android:text="@string/yes"
                             android:textColorHint="@color/desc" />
 
                     </LinearLayout>
@@ -161,7 +161,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Inadequate water sanitation"
+                            android:text="@string/oth_risk_water"
                             android:textColorHint="@color/desc" />
 
                         <CheckBox
@@ -171,7 +171,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Yes"
+                            android:text="@string/yes"
                             android:textColorHint="@color/desc" />
 
                     </LinearLayout>
@@ -194,7 +194,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Inadequate child care"
+                            android:text="@string/oth_risk_child"
                             android:textColorHint="@color/desc" />
 
                         <CheckBox
@@ -204,7 +204,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Yes"
+                            android:text="@string/yes"
                             android:textColorHint="@color/desc" />
 
                     </LinearLayout>
@@ -227,7 +227,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="High prevalence of communicable diseases"
+                            android:text="@string/oth_risk_commun"
                             android:textColorHint="@color/desc" />
 
                         <CheckBox
@@ -237,7 +237,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="Yes"
+                            android:text="@string/yes"
                             android:textColorHint="@color/desc" />
 
                     </LinearLayout>
@@ -299,7 +299,7 @@
                     android:id="@+id/title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Risk Factor Evaluation"
+                    android:text="@string/oth_risk_title"
                     android:textAlignment="center"
                     android:textColor="@color/title"
                     android:textSize="20sp"

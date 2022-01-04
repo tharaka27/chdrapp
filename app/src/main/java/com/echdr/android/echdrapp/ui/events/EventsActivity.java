@@ -308,6 +308,7 @@ public class EventsActivity extends ListActivity {
                                                                     selectedChild);
                                                         }
 
+                                                        /*
                                                         else if(stageSelected.equals("y2imfIjE4zt")) // other - referred for intervention
                                                         {
                                                             return OtherReferredForInterventionActivity.getFormActivityIntent(
@@ -319,6 +320,8 @@ public class EventsActivity extends ListActivity {
                                                                     OtherReferredForInterventionActivity.FormType.CREATE,
                                                                     selectedChild);
                                                         }
+
+                                                         */
 
                                                         else if(stageSelected.equals("TC7YSoNEUag")) // overweight - management
                                                         {

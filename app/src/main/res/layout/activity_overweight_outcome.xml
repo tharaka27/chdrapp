@@ -54,7 +54,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.4"
                             android:background="@null"
-                            android:text="Date"
+                            android:text="@string/over_out_date"
                             android:textColorHint="@color/desc" />
 
                         <TextView
@@ -95,7 +95,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.4"
                             android:background="@null"
-                            android:text="Outcome"
+                            android:text="@string/over_out_outcome"
                             android:textColorHint="@color/desc" />
 
                         <Spinner
@@ -167,7 +167,7 @@
                     android:id="@+id/title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Overweight Outcome"
+                    android:text="@string/over_out_title"
                     android:textAlignment="center"
                     android:textColor="@color/title"
                     android:textSize="20sp"

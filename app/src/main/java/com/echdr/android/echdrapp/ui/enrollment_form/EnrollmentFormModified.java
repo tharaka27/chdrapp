@@ -67,11 +67,24 @@ public class EnrollmentFormModified extends AppCompatActivity {
 
     private Context context;
     protected String[] sexArray;
+    protected String[] sex_english_only;
+
     protected String[] ethinicityArray;
+    protected String[] ethinicity_english_only;
+
     protected String[] sectorArray;
+    protected String[] sector_english_only;
+
     protected String[] eduLevelArray;
+    protected String[] eduLevel_english_only;
+
     protected String[] occupationArray;
+    protected String[] occupation_english_only;
+
+
     protected String[] relationshipArray;
+    protected String[] relationship_english_only;
+
 
     private String teiUid;
 
@@ -154,12 +167,22 @@ public class EnrollmentFormModified extends AppCompatActivity {
         teiUid = getIntent().getStringExtra(IntentExtra.TEI_UID.name());
 
         sexArray = getResources().getStringArray(R.array.sex);
-        ethinicityArray = getResources().getStringArray(R.array.ethnicity);
-        sectorArray = getResources().getStringArray(R.array.sector);
-        eduLevelArray = getResources().getStringArray(R.array.highestEdu);
-        occupationArray = getResources().getStringArray(R.array.occupation);
-        relationshipArray = getResources().getStringArray(R.array.relationship);
+        sex_english_only = getResources().getStringArray(R.array.sex_english_only);
 
+        ethinicityArray = getResources().getStringArray(R.array.ethnicity);
+        ethinicity_english_only = getResources().getStringArray(R.array.ethinicity_english_only);
+
+        sectorArray = getResources().getStringArray(R.array.sector);
+        sector_english_only = getResources().getStringArray(R.array.sector_english_only);
+
+        eduLevelArray = getResources().getStringArray(R.array.highestEdu);
+        eduLevel_english_only = getResources().getStringArray(R.array.eduLevel_english_only);
+
+        occupationArray = getResources().getStringArray(R.array.occupation);
+        occupation_english_only = getResources().getStringArray(R.array.occupation_english_only);
+
+        relationshipArray = getResources().getStringArray(R.array.relationship);
+        relationship_english_only = getResources().getStringArray(R.array.relationship_english_only);
 
         engineInitialization = PublishProcessor.create();
 
@@ -730,13 +753,13 @@ public class EnrollmentFormModified extends AppCompatActivity {
         saveDataElement("h2ATdtJguMq", immuneNum.getText().toString());
         saveDataElement("zh4hiarsSD5", name.getText().toString());
         saveDataElement("lmtzQrlHMYF",
-                sexArray[sex.getSelectedItemPosition()]);
+                sex_english_only[sex.getSelectedItemPosition()]);
         saveDataElement("qNH202ChkV3", textView_dob.getText().toString());
         saveDataElement("b9CoAneYYys",
-                ethinicityArray[ethnicity.getSelectedItemPosition()]);
+                ethinicity_english_only[ethnicity.getSelectedItemPosition()]);
         saveDataElement("D9aC5K6C6ne", address.getText().toString());
         saveDataElement("igjlkmMF81X",
-                sectorArray[sector.getSelectedItemPosition()]);
+                sector_english_only[sector.getSelectedItemPosition()]);
         saveDataElement("cpcMXDhQouL", landNumber.getText().toString());
         saveDataElement("LYRf4eIUVuN", mobileNumber.getText().toString());
         saveDataElement("K7Fxa2wv2Rx", motherName.getText().toString());
@@ -744,11 +767,11 @@ public class EnrollmentFormModified extends AppCompatActivity {
         saveDataElement("kYfIkz2M6En", textView_mother_dob.getText().toString());
         saveDataElement("Gy4bCBxNuo4", numberOfChildren.getText().toString());
         saveDataElement("GMNSaaq4xST",
-                eduLevelArray[eduLevel.getSelectedItemPosition()]);
+                eduLevel_english_only[eduLevel.getSelectedItemPosition()]);
         saveDataElement("Srxv0vniOnf",
-                occupationArray[occupation.getSelectedItemPosition()]);
+                occupation_english_only[occupation.getSelectedItemPosition()]);
         saveDataElement("ghN8XfnlU5V",
-                relationshipArray[relationship.getSelectedItemPosition()]);
+                relationship_english_only[relationship.getSelectedItemPosition()]);
         saveDataElement("hxCXbI5J2YS", caregiver.getText().toString());
         saveDataElement("Fs89NLB2FrA", weight.getText().toString());
         saveDataElement("LpvdWM4YuRq", length.getText().toString());

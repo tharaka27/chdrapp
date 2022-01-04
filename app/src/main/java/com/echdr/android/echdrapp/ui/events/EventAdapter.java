@@ -72,7 +72,7 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
         programStageNames.put("pI5JAmTcjE4", new String[]{context.getResources().getString(R.string.an_stage)}); // age in months
         programStageNames.put("iWycCg6C2gd", new String[]{"Reason for enrollment"}); //
         programStageNames.put("O9FEeIYqGRH", new String[]{"Risk factor evaluation"});
-        programStageNames.put("y2imfIjE4zt", new String[]{"Referred for intervention"});
+        //programStageNames.put("y2imfIjE4zt", new String[]{"Referred for intervention"});
         programStageNames.put("TC7YSoNEUag", new String[]{"Management"});
         programStageNames.put("S4DegY3OjJv", new String[]{"Intervention"});
         programStageNames.put("ctwLm9rn8gr", new String[]{"Outcome"});
@@ -225,6 +225,7 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
                         ), false
                 );
             }
+            /*
             else if(event.programStage().equals("y2imfIjE4zt")) // other - intervention
             {
                 ActivityStarter.startActivity(activity,
@@ -238,6 +239,8 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
                         ), false
                 );
             }
+
+             */
             else if(event.programStage().equals("TC7YSoNEUag")) // overweight - management
             {
                 ActivityStarter.startActivity(activity,
