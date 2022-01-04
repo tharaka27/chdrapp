@@ -54,7 +54,10 @@ public class StuntingManagementActivity extends AppCompatActivity {
     private RuleEngineService engineService;
     private DatePickerDialog.OnDateSetListener setListener;
     private Context context;
+
     protected String[] other_type_array ;
+    protected String[] english_other_type_array ;
+
     private RadioGroup radioGroupHospitalStunting;
     private RadioButton radioButtonHospitalYesStunting;
     private RadioButton radioButtonHospitalNoStunting;
@@ -107,6 +110,7 @@ public class StuntingManagementActivity extends AppCompatActivity {
         orgUnit = getIntent().getStringExtra(StuntingManagementActivity.IntentExtra.OU_UID.name());
 
         other_type_array = getResources().getStringArray(R.array.other_management_type);
+        english_other_type_array = getResources().getStringArray(R.array.other_management_type_english);
 
         engineInitialization = PublishProcessor.create();
 
@@ -385,7 +389,7 @@ public class StuntingManagementActivity extends AppCompatActivity {
         saveDataElement("KdN0rkDaYLD", paediatricianSelection);
         saveDataElement("Pvi4qR3ZmOy", hospitalSelection);
         saveDataElement("kynpSFSeQZa",
-                other_type_array[stunting_management_Enrollment_spinner.getSelectedItemPosition()]);
+                english_other_type_array[stunting_management_Enrollment_spinner.getSelectedItemPosition()]);
 
         finishEnrollment();
     }

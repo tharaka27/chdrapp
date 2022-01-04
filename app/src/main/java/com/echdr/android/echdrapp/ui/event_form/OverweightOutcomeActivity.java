@@ -59,6 +59,8 @@ public class OverweightOutcomeActivity extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener setListener;
     private Context context;
     protected String[] other_type_array ;
+    protected String[] english_other_type_array ;
+
 
     private enum IntentExtra {
         EVENT_UID, PROGRAM_UID, OU_UID, TYPE, TEI_ID
@@ -99,6 +101,8 @@ public class OverweightOutcomeActivity extends AppCompatActivity {
         orgUnit = getIntent().getStringExtra(OverweightOutcomeActivity.IntentExtra.OU_UID.name());
 
         other_type_array = getResources().getStringArray(R.array.overweight_outcome_type);
+        english_other_type_array = getResources().getStringArray(R.array.overweight_outcome_type_english);
+
 
         engineInitialization = PublishProcessor.create();
 
@@ -352,7 +356,7 @@ public class OverweightOutcomeActivity extends AppCompatActivity {
                     rep.setStatus(EnrollmentStatus.COMPLETED);
                     saveDataElement("E5rWDjnuN6M", textView_Date.getText().toString());
                     saveDataElement("x9iPS2RiOKO",
-                            other_type_array[spinner_Enrollment.getSelectedItemPosition()]);
+                            english_other_type_array[spinner_Enrollment.getSelectedItemPosition()]);
 
                     finishEnrollment();
 

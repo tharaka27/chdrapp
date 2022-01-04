@@ -62,6 +62,8 @@ public class SupplementaryIndicationActivity extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener setListener;
     private Context context;
     protected String[] supp_type_array ;
+    protected String[] supp_type_array_english ;
+
 
     private enum IntentExtra {
         EVENT_UID, PROGRAM_UID, OU_UID, TYPE, TEI_ID
@@ -94,6 +96,7 @@ public class SupplementaryIndicationActivity extends AppCompatActivity {
         spinner_Enrollment = findViewById(R.id.Enrollment_spinner);
         saveButton         = findViewById(R.id.supplementaryIndicationSave);
         datePicker         = findViewById(R.id.supp_date_pick);
+        checkbox_Underweight = findViewById(R.id.underweight_Checkbox);
 
         context = this;
 
@@ -104,6 +107,7 @@ public class SupplementaryIndicationActivity extends AppCompatActivity {
         orgUnit = getIntent().getStringExtra(SupplementaryIndicationActivity.IntentExtra.OU_UID.name());
 
         supp_type_array = getResources().getStringArray(R.array.supp_intervention_type);
+        supp_type_array_english = getResources().getStringArray(R.array.supp_intervention_type_english);
 
         engineInitialization = PublishProcessor.create();
 
@@ -182,6 +186,18 @@ public class SupplementaryIndicationActivity extends AppCompatActivity {
             catch (Exception e)
             {
                 checkbox_MAM.setChecked(false);
+            }
+
+            // set underweight
+            try{
+                if(getDataElement("B0RrjNXLZ6z").equals("true"))
+                {
+                    checkbox_Underweight.setChecked(true);
+                }
+            }
+            catch (Exception e)
+            {
+                checkbox_Underweight.setChecked(false);
             }
 
             // set Green zone
@@ -350,8 +366,10 @@ public class SupplementaryIndicationActivity extends AppCompatActivity {
         saveDataElement("KuMTUOY6X3L", textView_Date.getText().toString());
         saveDataElement("o4ltT56H9QV", checkbox_MAM.isChecked() ? "true" : "");
         saveDataElement("tSnrbDU0cJA", checkbox_Green.isChecked() ? "true" : "");
+        saveDataElement("B0RrjNXLZ6z", checkbox_Underweight.isChecked() ? "true" : "");
+
         saveDataElement("Fzl8qpcjcwV",
-                supp_type_array[spinner_Enrollment.getSelectedItemPosition()]);
+                supp_type_array_english[spinner_Enrollment.getSelectedItemPosition()]);
 
         finishEnrollment();
     }

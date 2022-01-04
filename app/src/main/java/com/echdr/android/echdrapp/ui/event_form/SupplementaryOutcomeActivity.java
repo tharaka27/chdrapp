@@ -57,6 +57,8 @@ public class SupplementaryOutcomeActivity extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener setListener;
     private Context context;
     protected String[] other_type_array ;
+    protected String[] english_other_type_array ;
+
 
     private enum IntentExtra {
         EVENT_UID, PROGRAM_UID, OU_UID, TYPE, TEI_ID
@@ -97,6 +99,8 @@ public class SupplementaryOutcomeActivity extends AppCompatActivity {
         orgUnit = getIntent().getStringExtra(SupplementaryOutcomeActivity.IntentExtra.OU_UID.name());
 
         other_type_array = getResources().getStringArray(R.array.supp_outcome_type);
+        english_other_type_array = getResources().getStringArray(R.array.supp_outcome_type_english);
+
 
         engineInitialization = PublishProcessor.create();
 
@@ -350,7 +354,7 @@ public class SupplementaryOutcomeActivity extends AppCompatActivity {
 
                     saveDataElement("lSy6bC6y3UD", textView_Date.getText().toString());
                     saveDataElement("rTHNOXde3wr",
-                            other_type_array[spinner_Enrollment.getSelectedItemPosition()]);
+                            english_other_type_array[spinner_Enrollment.getSelectedItemPosition()]);
 
                     finishEnrollment();
 

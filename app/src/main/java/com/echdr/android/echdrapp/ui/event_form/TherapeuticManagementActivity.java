@@ -57,6 +57,8 @@ public class TherapeuticManagementActivity extends AppCompatActivity {
     private Context context;
 
     protected String[] other_type_therapeutic_array ;
+    protected String[] other_type_therapeutic_array_english ;
+
     private RadioGroup radioGroupTherapeuticHospital;
     private RadioButton radioButtonTherapeuticHospitalYes;
     private RadioButton radioButtonTherapeuticHospitalNo;
@@ -116,6 +118,7 @@ public class TherapeuticManagementActivity extends AppCompatActivity {
         orgUnit = getIntent().getStringExtra(TherapeuticManagementActivity.IntentExtra.OU_UID.name());
 
         other_type_therapeutic_array = getResources().getStringArray(R.array.therapeutical_management_type);
+        other_type_therapeutic_array_english = getResources().getStringArray(R.array.therapeutical_management_type_english);
 
         engineInitialization = PublishProcessor.create();
 
@@ -422,7 +425,7 @@ public class TherapeuticManagementActivity extends AppCompatActivity {
         saveDataElement("sYmcJNBVsXA", bp100);
         saveDataElement("U266Gc85oQr", ReferredToHostital);
         saveDataElement("ZUcO0D98xSN",
-                other_type_therapeutic_array[spinner_Enrollment.getSelectedItemPosition()]);
+                other_type_therapeutic_array_english[spinner_Enrollment.getSelectedItemPosition()]);
 
         finishEnrollment();
     }

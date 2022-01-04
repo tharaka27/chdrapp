@@ -226,6 +226,7 @@
     <string name="supp_indication_title">ත්‍රිපෝෂ සඳහා ඇඟවීම</string>
     <string name="supp_indication_date">ත්‍රිපෝෂ සඳහා ඇඟවීම දිනය</string>
     <string name="supp_indication_mam">MAM</string>
+    <string name="supp_indication_underweight">අඩු බර</string>
     <string name="supp_indication_growth">හරිත කලාපයේ දිගුකාලීන වර්ධනය අඩාල වේ</string>
     <string name="supp_indication_entollment">ඇතුළත් වීමේ වර්ගය</string>
 

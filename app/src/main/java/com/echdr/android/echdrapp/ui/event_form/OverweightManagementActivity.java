@@ -55,6 +55,8 @@ public class OverweightManagementActivity extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener setListener;
     private Context context;
     protected String[] other_type_array ;
+    protected String[] english_other_type_array ;
+
     private RadioGroup paediatricianGroup;
     private RadioButton paediatricianButtonYes;
     private RadioButton paediatricianButtonNo;
@@ -107,6 +109,8 @@ public class OverweightManagementActivity extends AppCompatActivity {
         orgUnit = getIntent().getStringExtra(OverweightManagementActivity.IntentExtra.OU_UID.name());
 
         other_type_array = getResources().getStringArray(R.array.other_management_type);
+        english_other_type_array = getResources().getStringArray(R.array.other_management_type_english);
+
 
         engineInitialization = PublishProcessor.create();
 
@@ -212,7 +216,6 @@ public class OverweightManagementActivity extends AppCompatActivity {
             // set enrollment type
             spinner_Enrollment.setSelection(
                     getSpinnerSelection("toqNcEeTFBF", other_type_array));
-
         }
         else{
             textView_Date.setText("Click here to set Date");
@@ -241,7 +244,7 @@ public class OverweightManagementActivity extends AppCompatActivity {
         public void onItemSelected(AdapterView<?> parent, View v, int position, long id)
         {
             Toast.makeText(v.getContext(), "Your choose :" +
-                    other_type_array[position],Toast.LENGTH_SHORT).show();
+                    english_other_type_array[position],Toast.LENGTH_SHORT).show();
         }
 
         @Override
@@ -386,7 +389,7 @@ public class OverweightManagementActivity extends AppCompatActivity {
         saveDataElement("FMJdAftRK7q", paediatricianSelection);
         saveDataElement("DgSQCQQvjxN", hospitalSelection);
         saveDataElement("toqNcEeTFBF",
-                other_type_array[spinner_Enrollment.getSelectedItemPosition()]);
+                english_other_type_array[spinner_Enrollment.getSelectedItemPosition()]);
 
         finishEnrollment();
     }

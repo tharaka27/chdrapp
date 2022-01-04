@@ -232,6 +232,7 @@
     <string name="supp_indication_title">Indication for Thriposha</string>
     <string name="supp_indication_date">Indication for thriposha date</string>
     <string name="supp_indication_mam">MAM</string>
+    <string name="supp_indication_underweight">Underweight</string>
     <string name="supp_indication_growth">Long standing growth faltering in green zone</string>
     <string name="supp_indication_entollment">Enrollment type</string>
 
@@ -302,6 +303,11 @@
 
     <!--    Supplementary intervention spinner-->
     <string-array name="supp_intervention_type">
+        <item>1st time enrollment to this programme</item>
+        <item>Relapse</item>
+    </string-array>
+
+    <string-array name="supp_intervention_type_english">
         <item>1st time enrollment to this programme</item>
         <item>Relapse</item>
     </string-array>
@@ -414,14 +420,27 @@
         <item>1st time enrollment to this programme</item>
         <item>Relapse</item>
     </string-array>
+
+    <string-array name="other_management_type_english">
+        <item>1st time enrollment to this programme</item>
+        <item>Relapse</item>
+    </string-array>
+
     <string-array name="therapeutical_management_type">
         <item>1st time enrollment to this programme</item>
         <item>Relapse</item>
     </string-array>
+
+    <string-array name="therapeutical_management_type_english">
+        <item>1st time enrollment to this programme</item>
+        <item>Relapse</item>
+    </string-array>
+
     <string-array name="stunting_management_type">
         <item>1st time enrollment to this programme</item>
         <item>Relapse</item>
     </string-array>
+
     <string-array name="overweight_outcome_type">
         <item>Recovered</item>
         <item>Defaulted</item>
@@ -429,6 +448,14 @@
         <item>Left due to completion of age 5</item>
         <item>Died</item>
     </string-array>
+    <string-array name="overweight_outcome_type_english">
+        <item>Recovered</item>
+        <item>Defaulted</item>
+        <item>Left the area</item>
+        <item>Left due to completion of age 5</item>
+        <item>Died</item>
+    </string-array>
+
     <string-array name="stunting_outcome_type">
         <item>Recovered</item>
         <item>Defaulted</item>
@@ -444,7 +471,25 @@
         <item>Left due to completion of age 5</item>
         <item>Died</item>
     </string-array>
+
+    <string-array name="supp_outcome_type_english">
+        <item>Recovered</item>
+        <item>Sent to therapeutic feeding Programme</item>
+        <item>Defaulted</item>
+        <item>Left the area</item>
+        <item>Left due to completion of age 5</item>
+        <item>Died</item>
+    </string-array>
+
     <string-array name="tera_outcome_type">
+        <item>Recovered</item>
+        <item>Sent to supplementary feeding Programme</item>
+        <item>Defaulted</item>
+        <item>Left the area</item>
+        <item>Left due to completion of age 5</item>
+        <item>Died</item>
+    </string-array>
+    <string-array name="tera_outcome_type_english">
         <item>Recovered</item>
         <item>Sent to supplementary feeding Programme</item>
         <item>Defaulted</item>

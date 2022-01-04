@@ -58,6 +58,8 @@ public class TherapeuticOutcomeActivity extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener setListener;
     private Context context;
     protected String[] other_type_array;
+    protected String[] other_type_array_english;
+
 
     private enum IntentExtra {
         EVENT_UID, PROGRAM_UID, OU_UID, TYPE, TEI_ID
@@ -98,6 +100,7 @@ public class TherapeuticOutcomeActivity extends AppCompatActivity {
         orgUnit = getIntent().getStringExtra(TherapeuticOutcomeActivity.IntentExtra.OU_UID.name());
 
         other_type_array = getResources().getStringArray(R.array.tera_outcome_type);
+        other_type_array_english = getResources().getStringArray(R.array.tera_outcome_type_english);
 
         engineInitialization = PublishProcessor.create();
 
@@ -342,7 +345,7 @@ public class TherapeuticOutcomeActivity extends AppCompatActivity {
 
                     saveDataElement("HXin8cvKgVq", textView_Date.getText().toString());
                     saveDataElement("xi20olIPIsb",
-                            other_type_array[spinner_Enrollment.getSelectedItemPosition()]);
+                            other_type_array_english[spinner_Enrollment.getSelectedItemPosition()]);
 
                     finishEnrollment();
 
