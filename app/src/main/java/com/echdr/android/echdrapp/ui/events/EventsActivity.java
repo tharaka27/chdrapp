@@ -182,6 +182,7 @@ public class EventsActivity extends ListActivity {
         if (isEmpty(selectedProgram))
             findViewById(R.id.eventButton).setVisibility(View.GONE);
 
+        // add new button for the program stage under the new enrollment.
         findViewById(R.id.eventButton).setOnClickListener(view ->
                 {
                     // first create a alert dialog box to select program stage
@@ -226,6 +227,12 @@ public class EventsActivity extends ListActivity {
                     builderSingle.setAdapter(stages_names, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+
+                            // first we retrieve the program stage ID from the onClickListener
+                            // here the stunting-outcome has misspelled the outcome string in
+                            // the database hence we have corrected it separately
+
+                            // ToDo: Correct the database stunting outcome
                             for(int i=0; i<stages.size();i++)
                             {
                                 if(stages.get(i).name().equals(stages_names.getItem(which)))
@@ -236,10 +243,9 @@ public class EventsActivity extends ListActivity {
                                     stageSelected = "L4MJKSCcUof";
                                 }
                             }
-                            //stageSelected = stages.get(which).uid();
 
                             List<String> j = new ArrayList<>();
-                            System.out.println("Came here");
+
                             compositeDisposable.add(
                                     Sdk.d2().programModule().programs()
                                             .uid(selectedProgram).get()
