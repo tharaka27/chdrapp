@@ -213,13 +213,19 @@ public class TrackedEntityInstancesActivity extends ListActivity {
                     .byProgram().eq(savedProgram)
                     .byEnrollmentStatus().eq(EnrollmentStatus.ACTIVE)
                     .getPaged(100);
-        }else
+        }else if(status == Status.COMPLETE)
         {
             return Sdk.d2().trackedEntityModule()
                     .trackedEntityInstanceQuery()
                     .byProgram().eq(savedProgram)
                     .byEnrollmentStatus().eq(EnrollmentStatus.COMPLETED)
                     .getPaged(100);
+        }else
+            {
+                Toast.makeText(this, "Else", Toast.LENGTH_LONG).show();
+                return Sdk.d2().trackedEntityModule()
+                        .trackedEntityInstanceQuery()
+                        .getPaged(100);
         }
     }
 

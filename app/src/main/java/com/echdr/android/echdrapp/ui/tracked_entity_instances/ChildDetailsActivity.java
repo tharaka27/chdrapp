@@ -125,7 +125,7 @@ public class ChildDetailsActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_child_details);
 
-        teiUid = getIntent().getStringExtra(IntentExtra.TRACKED_ENTITY_INSTANCE_UID.name());
+
 
         cd_no = findViewById(R.id.cd_no);
         cd_dob = findViewById(R.id.cd_dob);
@@ -165,8 +165,8 @@ public class ChildDetailsActivity extends ListActivity {
         stuntingEnrolled = findViewById(R.id.EnStunting);
         stuntingNotEnrolled = findViewById(R.id.NotEnStunting);
 
-
-        trackedEntityInstanceUid = getIntent().getStringExtra(IntentExtra.TRACKED_ENTITY_INSTANCE_UID.name());
+        teiUid = getIntent().getStringExtra(IntentExtra.TRACKED_ENTITY_INSTANCE_UID.name());
+        //trackedEntityInstanceUid = getIntent().getStringExtra(IntentExtra.TRACKED_ENTITY_INSTANCE_UID.name());
 
         //setting spinners
 
@@ -221,50 +221,125 @@ public class ChildDetailsActivity extends ListActivity {
 
         try{
             cd_no.setText(getValueListener("h2ATdtJguMq"));
-            cd_dob.setText(getValueListener("qNH202ChkV3"));
-            //cd_gender.setText(getValueListener("lmtzQrlHMYF"));
-            //setSpinner("lmtzQrlHMYF", cd_gender);
-            name.setText(getValueListener("zh4hiarsSD5"));
-            address.setText(getValueListener("D9aC5K6C6ne"));
-            birthWeight.setText(getValueListener("Fs89NLB2FrA"));
-            birthHeight.setText(getValueListener("LpvdWM4YuRq"));
-            //setSpinner("NsoirMjYF2C", ethnicity);
-            GN_Area.setText(getValueListener("upQGjAHBjzu"));
-            //etSpinner("PmA6WejlEg8", relationship);
-            nic.setText(getValueListener("Gzjb3fp9FSe"));
-            //setSpinner("LOPHzLXYAgC", occupation);
-            //setSpinner("Y0TxeTJlnjn", sector);
-            //setSpinner("gigmQXuSnNy", highestEduLevel);
-            mother_name.setText(getValueListener("K7Fxa2wv2Rx"));
-            mother_dob.setText(getValueListener("kYfIkz2M6En"));
-            numberOfChildren.setText(getValueListener("Gy4bCBxNuo4"));
-            caregiver_name.setText(getValueListener("hxCXbI5J2YS"));
-            lPhone.setText(getValueListener("cpcMXDhQouL"));
-            mNumber.setText(getValueListener("LYRf4eIUVuN"));
-            cd_gender.setSelection(
-                    getSpinnerSelection("lmtzQrlHMYF", sexArray));
-            //select ethnicity
-            ethnicity.setSelection(
-                    getSpinnerSelection("b9CoAneYYys", ethinicityArray));
-            //select sector
-            sector.setSelection(
-                    getSpinnerSelection("igjlkmMF81X", sectorArray));
-            //select education
-            highestEduLevel.setSelection(
-                    getSpinnerSelection("GMNSaaq4xST", eduLevelArray));
-
-            //select occupation
-            occupation.setSelection(
-                    getSpinnerSelection("Srxv0vniOnf", occupationArray));
-
-            //select relationship
-            relationship.setSelection(
-                    getSpinnerSelection("ghN8XfnlU5V", relationshipArray));
-
 
         }catch (Exception e){
             e.printStackTrace();
         }
+        try{
+            cd_dob.setText(getValueListener("qNH202ChkV3"));
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try{
+            name.setText(getValueListener("zh4hiarsSD5"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try{
+            address.setText(getValueListener("D9aC5K6C6ne"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try{
+            birthWeight.setText(getValueListener("Fs89NLB2FrA"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try{
+            birthHeight.setText(getValueListener("LpvdWM4YuRq"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try{
+            GN_Area.setText(getValueListener("upQGjAHBjzu"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try{
+            nic.setText(getValueListener("Gzjb3fp9FSe"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try{
+            mother_name.setText(getValueListener("K7Fxa2wv2Rx"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try{
+            mother_dob.setText(getValueListener("kYfIkz2M6En"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try{
+            numberOfChildren.setText(getValueListener("Gy4bCBxNuo4"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try{
+            caregiver_name.setText(getValueListener("hxCXbI5J2YS"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try{
+            lPhone.setText(getValueListener("cpcMXDhQouL"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try{
+            mNumber.setText(getValueListener("LYRf4eIUVuN"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try{
+            cd_gender.setSelection(
+                    getSpinnerSelection("lmtzQrlHMYF", sexArray));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try{
+            //select ethnicity
+            ethnicity.setSelection(
+                    getSpinnerSelection("b9CoAneYYys", ethinicityArray));
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try{
+            //select sector
+            sector.setSelection(
+                    getSpinnerSelection("igjlkmMF81X", sectorArray));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try{
+            //select education
+            highestEduLevel.setSelection(
+                    getSpinnerSelection("GMNSaaq4xST", eduLevelArray));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try{
+            //select occupation
+            occupation.setSelection(
+                    getSpinnerSelection("Srxv0vniOnf", occupationArray));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try{
+            //select relationship
+            relationship.setSelection(
+                    getSpinnerSelection("ghN8XfnlU5V", relationshipArray));
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        System.out.println("tei is " + teiUid );
+        System.out.println("Spinner is 1" + getDataElement("b9CoAneYYys") );
+        System.out.println("Spinner is 2" + getDataElement("igjlkmMF81X") );
+        System.out.println("Spinner is 3" + getDataElement("GMNSaaq4xST") );
+        System.out.println("Spinner is 4" + getDataElement("Srxv0vniOnf") );
+        System.out.println("Spinner is 5" + getDataElement("ghN8XfnlU5V") );
 
         getEnrollment();
         EnrollToPrograms();
@@ -351,9 +426,10 @@ public class ChildDetailsActivity extends ListActivity {
     private String getValueListener(String dataElement) {
 
         String currentValue = Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
-                .byTrackedEntityInstance().eq(trackedEntityInstanceUid)
+                .byTrackedEntityInstance().eq(teiUid)
                 .byTrackedEntityAttribute().eq(dataElement)
                 .one().blockingGet().value();
+
 
 
             return currentValue;
@@ -380,6 +456,7 @@ public class ChildDetailsActivity extends ListActivity {
                 itemPosition = i;
             }
         }
+        System.out.println("Selected item is " + String.valueOf(itemPosition));
         return itemPosition;
     }
 
@@ -387,8 +464,9 @@ public class ChildDetailsActivity extends ListActivity {
         TrackedEntityAttributeValueObjectRepository valueRepository =
                 Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
                         .value(
-                                teiUid,
-                                dataElement
+                                dataElement,
+                                teiUid
+                                //dataElement
                                 //getIntent().getStringExtra(EnrollmentFormModified.IntentExtra.TEI_UID.name()
                                 //)
                         );
@@ -405,7 +483,7 @@ public class ChildDetailsActivity extends ListActivity {
             valueRepository = Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
                     .value(
                             dataElement,
-                            trackedEntityInstanceUid
+                            teiUid
 
                     );
         }catch (Exception e)
@@ -435,7 +513,7 @@ public class ChildDetailsActivity extends ListActivity {
 
         // get anthropometry latest enrollment
         List<Enrollment> AnthropometryStatus = Sdk.d2().enrollmentModule().enrollments()
-                .byTrackedEntityInstance().eq(trackedEntityInstanceUid)
+                .byTrackedEntityInstance().eq(teiUid)
                 .byProgram().eq("hM6Yt9FQL0n")
                 //.orderByLastUpdated(RepositoryScope.OrderByDirection.DESC)
                 .orderByCreated(RepositoryScope.OrderByDirection.DESC)
@@ -465,7 +543,7 @@ public class ChildDetailsActivity extends ListActivity {
 
         // get other health/non health latest enrollment
         List<Enrollment> otherStatus = Sdk.d2().enrollmentModule().enrollments()
-                .byTrackedEntityInstance().eq(trackedEntityInstanceUid)
+                .byTrackedEntityInstance().eq(teiUid)
                 .byProgram().eq("iUgzznPsePB")
                 .orderByCreated(RepositoryScope.OrderByDirection.DESC)
                 .blockingGet();
@@ -481,7 +559,7 @@ public class ChildDetailsActivity extends ListActivity {
 
         // get other overweight/obesity latest enrollment
         List<Enrollment> overweightStatus = Sdk.d2().enrollmentModule().enrollments()
-                .byTrackedEntityInstance().eq(trackedEntityInstanceUid)
+                .byTrackedEntityInstance().eq(teiUid)
                 .byProgram().eq("JsfNVX0hdq9")
                 .orderByCreated(RepositoryScope.OrderByDirection.DESC)
                 .blockingGet();
@@ -497,7 +575,7 @@ public class ChildDetailsActivity extends ListActivity {
 
         // get other stunting latest enrollment
         List<Enrollment> stuntingStatus = Sdk.d2().enrollmentModule().enrollments()
-                .byTrackedEntityInstance().eq(trackedEntityInstanceUid)
+                .byTrackedEntityInstance().eq(teiUid)
                 .byProgram().eq("lSSNwBMiwrK")
                 .orderByCreated(RepositoryScope.OrderByDirection.DESC)
                 .blockingGet();
@@ -513,7 +591,7 @@ public class ChildDetailsActivity extends ListActivity {
 
         // get supplementary latest enrollment
         List<Enrollment> supplementaryStatus = Sdk.d2().enrollmentModule().enrollments()
-                .byTrackedEntityInstance().eq(trackedEntityInstanceUid)
+                .byTrackedEntityInstance().eq(teiUid)
                 .byProgram().eq("tc6RsYbgGzm")
                 .orderByCreated(RepositoryScope.OrderByDirection.DESC)
                 .blockingGet();
@@ -529,7 +607,7 @@ public class ChildDetailsActivity extends ListActivity {
 
         // get therapeutic latest enrollment
         List<Enrollment> therapeuticStatus = Sdk.d2().enrollmentModule().enrollments()
-                .byTrackedEntityInstance().eq(trackedEntityInstanceUid)
+                .byTrackedEntityInstance().eq(teiUid)
                 .byProgram().eq("CoGsKgEG4O0")
                 .orderByCreated(RepositoryScope.OrderByDirection.DESC)
                 .blockingGet();
@@ -608,7 +686,7 @@ public class ChildDetailsActivity extends ListActivity {
     private void EnrollToPrograms(){
 
         List<TrackedEntityInstance> s = Sdk.d2().trackedEntityModule()
-                .trackedEntityInstances().byUid().eq(trackedEntityInstanceUid).blockingGet();
+                .trackedEntityInstances().byUid().eq(teiUid).blockingGet();
 
         for (TrackedEntityInstance v: s) {
             orgUnit = v.organisationUnit();
@@ -637,7 +715,7 @@ public class ChildDetailsActivity extends ListActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = EventsActivity.getIntent(getApplicationContext(), "JsfNVX0hdq9",
-                        trackedEntityInstanceUid, overweightEnrollmentID);
+                        teiUid, overweightEnrollmentID);
                 startActivity(intent);
             }
         });
@@ -655,7 +733,7 @@ public class ChildDetailsActivity extends ListActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = EventsActivity.getIntent(getApplicationContext(), "hM6Yt9FQL0n",
-                        trackedEntityInstanceUid, anthropometryEnrollmentID);
+                        teiUid, anthropometryEnrollmentID);
                 startActivity(intent);
 
             }
@@ -674,7 +752,7 @@ public class ChildDetailsActivity extends ListActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = EventsActivity.getIntent(getApplicationContext(), "iUgzznPsePB",
-                        trackedEntityInstanceUid, otherEnrollmentID);
+                        teiUid, otherEnrollmentID);
                 startActivity(intent);
 
             }
@@ -693,7 +771,7 @@ public class ChildDetailsActivity extends ListActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = EventsActivity.getIntent(getApplicationContext(), "lSSNwBMiwrK",
-                        trackedEntityInstanceUid, stuntingEnrollmentID);
+                        teiUid, stuntingEnrollmentID);
                 startActivity(intent);
 
             }
@@ -712,7 +790,7 @@ public class ChildDetailsActivity extends ListActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = EventsActivity.getIntent(getApplicationContext(), "tc6RsYbgGzm",
-                        trackedEntityInstanceUid, supplementaryEnrollmentID);
+                        teiUid, supplementaryEnrollmentID);
                 startActivity(intent);
 
             }
@@ -731,7 +809,7 @@ public class ChildDetailsActivity extends ListActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = EventsActivity.getIntent(getApplicationContext(), "CoGsKgEG4O0",
-                        trackedEntityInstanceUid, therapeuticEnrollmentID);
+                        teiUid, therapeuticEnrollmentID);
                 startActivity(intent);
 
             }
