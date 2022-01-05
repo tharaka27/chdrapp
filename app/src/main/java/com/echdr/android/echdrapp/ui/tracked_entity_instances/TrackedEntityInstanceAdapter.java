@@ -143,7 +143,7 @@ public class TrackedEntityInstanceAdapter extends PagedListAdapter<TrackedEntity
 
 
         //remove conflicts showing
-        setConflicts(trackedEntityInstance.uid(), holder);
+        //setConflicts(trackedEntityInstance.uid(), holder);
 
         holder.itemView.setOnClickListener(view -> {
             ActivityStarter.startActivity(
