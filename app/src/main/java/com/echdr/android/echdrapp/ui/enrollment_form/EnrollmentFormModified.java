@@ -548,8 +548,9 @@ public class EnrollmentFormModified extends AppCompatActivity {
         TrackedEntityAttributeValueObjectRepository valueRepository =
                 Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
                         .value(
-                                teiUid,
-                                dataElement
+
+                                dataElement,
+                                teiUid
                                 //getIntent().getStringExtra(EnrollmentFormModified.IntentExtra.TEI_UID.name()
                                 //)
                         );
