@@ -66,25 +66,25 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
         super(new DiffByIdItemCallback<>());
         this.activity = activity;
         this.selectedChild = selectedChild;
-        this.context = activity.getApplicationContext();
+        this.context = activity.getBaseContext();
 
         programStageNames = new HashMap<>();
         programStageNames.put("pI5JAmTcjE4", new String[]{context.getResources().getString(R.string.an_stage)}); // age in months
-        programStageNames.put("iWycCg6C2gd", new String[]{"Reason for enrollment"}); //
-        programStageNames.put("O9FEeIYqGRH", new String[]{"Risk factor evaluation"});
-        //programStageNames.put("y2imfIjE4zt", new String[]{"Referred for intervention"});
-        programStageNames.put("TC7YSoNEUag", new String[]{"Management"});
-        programStageNames.put("S4DegY3OjJv", new String[]{"Intervention"});
-        programStageNames.put("ctwLm9rn8gr", new String[]{"Outcome"});
-        programStageNames.put("iEylwjAa5Cq", new String[]{"Management"});
-        programStageNames.put("mjjxR9aGJ4P", new String[]{"Intervention"});
-        programStageNames.put("L4MJKSCcUof", new String[]{"Outcome"});
-        programStageNames.put("KN0o3H6x8IH", new String[]{"Indication for Thriposha"});
-        programStageNames.put("du2KnwyeL32", new String[]{"Interventions"}); // number of thriposha packets given
-        programStageNames.put("QKsx9TfOJ3m", new String[]{"Outcome"});
-        programStageNames.put("B8Jbdgg7Ut1", new String[]{"Management"});
-        programStageNames.put("YweAFncBjUm", new String[]{"Intervention"});
-        programStageNames.put("RtC4CcoEs4J", new String[]{"Outcome"});
+        programStageNames.put("iWycCg6C2gd", new String[]{context.getResources().getString(R.string.st_reason)}); //
+        programStageNames.put("O9FEeIYqGRH", new String[]{context.getResources().getString(R.string.st_risk)});
+        programStageNames.put("y2imfIjE4zt", new String[]{context.getResources().getString(R.string.st_reff)});
+        programStageNames.put("TC7YSoNEUag", new String[]{context.getResources().getString(R.string.st_mana)});
+        programStageNames.put("S4DegY3OjJv", new String[]{context.getResources().getString(R.string.st_inter)});
+        programStageNames.put("ctwLm9rn8gr", new String[]{context.getResources().getString(R.string.st_out)});
+        programStageNames.put("iEylwjAa5Cq", new String[]{context.getResources().getString(R.string.st_mana)});
+        programStageNames.put("mjjxR9aGJ4P", new String[]{context.getResources().getString(R.string.st_inter)});
+        programStageNames.put("L4MJKSCcUof", new String[]{context.getResources().getString(R.string.st_out)});
+        programStageNames.put("KN0o3H6x8IH", new String[]{context.getResources().getString(R.string.st_indication)});
+        programStageNames.put("du2KnwyeL32", new String[]{context.getResources().getString(R.string.st_inter)}); // number of thriposha packets given
+        programStageNames.put("QKsx9TfOJ3m", new String[]{context.getResources().getString(R.string.st_out)});
+        programStageNames.put("B8Jbdgg7Ut1", new String[]{context.getResources().getString(R.string.st_mana)});
+        programStageNames.put("YweAFncBjUm", new String[]{context.getResources().getString(R.string.st_inter)});
+        programStageNames.put("RtC4CcoEs4J", new String[]{context.getResources().getString(R.string.st_out)});
 
     }
 

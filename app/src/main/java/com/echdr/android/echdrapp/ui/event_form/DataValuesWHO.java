@@ -743,18 +743,26 @@ public class DataValuesWHO {
         switch (pos) {
             case 0:
             case 6:
-                color = Color.parseColor("#e6653b");
+                //color = Color.parseColor("#e6653b");
+                color = Color.parseColor("#a60c0c");
+
                 break;
             case 1:
             case 5:
-                color = Color.parseColor("#ccc971");
+                //color = Color.parseColor("#ccc971");
+                color = Color.parseColor("#F6A21E");
+
                 break;
             case 2:
             case 4:
+                //color = Color.parseColor("#afe1bb");
                 color = Color.parseColor("#afe1bb");
+
                 break;
             case 3:
+                //color = Color.parseColor("#a3ccae");
                 color = Color.parseColor("#a3ccae");
+
                 break;
         }
 

@@ -28,7 +28,7 @@ public class LanguageSelection extends AppCompatActivity {
 
 
     TextView messageView;
-    Button btnHindi, btnEnglish;
+    Button btnHindi, btnEnglish, btnTamil;
     Resources resources;
 
     public static Intent getLanguageSelectionActivityIntent(Context context) {
@@ -44,6 +44,7 @@ public class LanguageSelection extends AppCompatActivity {
         messageView = (TextView) findViewById(R.id.textView);
         btnHindi = findViewById(R.id.btnHindi);
         btnEnglish = findViewById(R.id.btnEnglish);
+        btnTamil = findViewById(R.id.btnTamil);
 
         //languageSpinner = findViewById(R.id.language_selection_spinner);
         //languageButton = findViewById(R.id.saveLanguage);
@@ -65,6 +66,17 @@ public class LanguageSelection extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 context = LocaleHelper.setLocale(LanguageSelection.this, "si");
+                resources = context.getResources();
+                messageView.setText(resources.getString(R.string.language));
+                ActivityStarter.startActivity(LanguageSelection.this, MainActivity.getMainActivityIntent(context),true);
+
+            }
+        });
+
+        btnTamil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context = LocaleHelper.setLocale(LanguageSelection.this, "ta");
                 resources = context.getResources();
                 messageView.setText(resources.getString(R.string.language));
                 ActivityStarter.startActivity(LanguageSelection.this, MainActivity.getMainActivityIntent(context),true);

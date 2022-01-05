@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="selected_language">தமிழ்</string>
+    <string name="language">தமிழ்</string>
+
+    <string name="app_name">MSGP/U5 Monitoring System for Growth Problems in Under 5 Children</string>
+    <!-- Strings related to login -->
+    <string name="title_activity_login">உள்நுழைய</string>
+    <string name="prompt_server_url">சர்வர் url</string>
+    <string name="prompt_username">பயனர் பெயர்</string>
+    <string name="prompt_password">கடவுச்சொல்</string>
+    <string name="action_sign_in_short">உள்நுழைக</string>
+    <string name="invalid_server_url">சரியான சர்வர் url இல்லை</string>
+    <string name="invalid_username">சரியான பயனர்பெயர் இல்லை</string>
+    <string name="invalid_password">கடவுச்சொல் 5 எழுத்துகளுக்கு மேல் இருக்க வேண்டும்</string>
+    <string name="login_failed">உள்நுழைவு தோல்வியடைந்தது</string>
+    <!-- Strings related to list item -->
+    <string name="sync_icon">ஒத்திசைவு ஐகான்</string>
+    <string name="item_icon">ஐகான்</string>
+    <string name="item_bitmap">பிட்மேப்</string>
+    <string name="item_title">பொருளின் தலைப்பு</string>
+    <string name="item_right_text">12/03 23:05:12</string>
+    <string name="item_subtitle_1">Item subtitle 1</string>
+    <string name="item_subtitle_2">Item subtitle 2</string>
+    <string name="sync">ஒத்திசைவு</string>
+    <!-- Strings related to main -->
+    <string name="title_activity_main">வீடு</string>
+    <string name="welcome">வரவேற்பு!</string>
+    <string name="lorem_ipsum">"Lorem ipsum dolor sit amet"</string>
+    <string name="syncing_metadata">மெட்டாடேட்டாவை ஒத்திசைக்கிறது…</string>
+    <string name="syncing_data">தரவு ஒத்திசைவு…</string>
+    <string name="sync_metadata">மெட்டாடேட்டாவை ஒத்திசைக்கவும்</string>
+    <string name="sync_data">தரவு ஒத்திசைவு</string>
+    <string name="upload_data">தரவைப் பதிவேற்றவும்</string>
+    <string name="uploading_data">தரவைப் பதிவேற்றுகிறது…</string>
+    <string name="wiping_data">தரவு துடைத்தல்…</string>
+    <string name="log_out">வெளியேறு</string>
+    <string name="wipe_data">தரவுகளை துடைத்தழி</string>
+    <string name="programs">நிகழ்ச்சிகள்</string>
+    <string name="data_sets">தரவு தொகுப்புகள்</string>
+    <string name="tracked_entity_instances">ட்ராக் செய்யப்பட்ட நிறுவன நிகழ்வுகள்</string>
+    <string name="events_without_registration">பதிவு இல்லாத நிகழ்வுகள்</string>
+    <string name="data_values">தரவு மதிப்புகள்</string>
+    <string name="zero">0</string>
+    <!-- Strings related to programs -->
+    <string name="title_activity_programs">உங்கள் திட்டங்கள்</string>
+    <string name="program_name">திட்டத்தின் பெயர்</string>
+    <string name="program_icon">நிரல் ஐகான்</string>
+    <string name="program_stages">2 நிரல் நிலைகள்</string>
+    <string name="no_programs_found">திட்டங்கள் எதுவும் இல்லை</string>
+    <!-- Strings related to tracked entity instances search -->
+    <string name="title_activity_tracked_entity_search">ட்ராக் செய்யப்பட்ட நிறுவனங்களின் தேடல்</string>
+    <string name="search_data">தேடல் தரவு</string>
+    <string name="searching">தரவுகளைத் தேடுகிறது…</string>
+    <!-- Strings related to tracked entity instances -->
+    <string name="title_activity_tracked_entity_instances">நீங்கள் கண்காணிக்கப்பட்ட நிறுவன நிகழ்வுகள்</string>
+    <string name="tracked_entity_instance_name">கண்காணிக்கப்பட்ட நிறுவன நிகழ்வு பெயர்</string>
+    <string name="unique_id">1234</string>
+    <string name="no_tracked_entity_instances_found">கண்காணிக்கப்பட்ட நிறுவன நிகழ்வுகள் எதுவும் இல்லை</string>
+    <!--Strings related to events-->
+    <string name="title_activity_events">நிகழ்வுகள்</string>
+    <string name="no_events_found">நிகழ்வுகள் எதுவும் இல்லை</string>
+    <!-- Strings related to navigation -->
+    <string name="navigation_drawer_open">வழிசெலுத்தல் அலமாரியைத் திறக்கவும்</string>
+    <string name="navigation_drawer_close">வழிசெலுத்தல் டிராயரை மூடு</string>
+    <string name="nav_header_title">பயனர் பெயர்</string>
+    <string name="nav_header_subtitle">user@email.com</string>
+    <string name="data_management">தரவு மேலாண்மை</string>
+    <string name="session">அமர்வு</string>
+    <!-- Strings related to errors -->
+    <string name="title_activity_d2_errors">உங்கள் தவறுகள்</string>
+    <string name="no_d2_errors_found">பிழைகள் எதுவும் இல்லை</string>
+    <!-- Strings related to errors -->
+    <string name="title_activity_fk_violations">வெளிநாட்டு முக்கிய மீறல்கள்</string>
+    <string name="no_fk_violations_found">வெளிநாட்டு முக்கிய மீறல்கள் எதுவும் கண்டறியப்படவில்லை</string>
+    <!-- Strings related to data sets -->
+    <string name="title_activity_data_sets">உங்கள் தரவுத் தொகுப்புகள்</string>
+    <string name="no_data_sets_found">தரவுத் தொகுப்புகள் எதுவும் இல்லை</string>
+    <!-- Strings related to data set instances -->
+    <string name="title_activity_data_set_instances">உங்கள் தரவு தொகுப்பு நிகழ்வுகள்</string>
+    <string name="no_data_set_instances_found">தரவு தொகுப்பு நிகழ்வுகள் எதுவும் இல்லை</string>
+    <!-- Strings related to the code executor-->
+    <string name="executing">செயல்படுத்துகிறது…</string>
+    <string name="code_executed">குறியீடு செயல்படுத்தப்பட்டது</string>
+    <string name="waiting_for_execution">மரணதண்டனைக்காக காத்திருக்கிறது…</string>
+    <string name="execute_code">செயல்படுத்த</string>
+    <string name="code_executor">குறியீடு செயல்படுத்துபவர்</string>
+    <!-- Strings related to enrollment forms -->
+    <string name="title_activity_enrollment_form">பதிவு படிவம்</string>
+    <string name="title_activity_event_form">நிகழ்வு வடிவம்</string>
+    <string name="date_button_text">தேதியைத் தேர்ந்தெடுக்க கிளிக் செய்யவும்</string>
+    <string name="yes">ஆம்</string>
+    <string name="no">இல்லை</string>
+    <string name="filter_background">வடிகட்டி பின்னணி</string>
+
+    <!--<string name="app_name">Yashodhara</string> -->
+    <string name="login_title">MSGP/U5 Monitoring System for Growth Problems in Under 5 Children</string>
+    <string name="login_description">உங்கள் கணக்கில் உள்நுழையவும்</string>
+    <string name="language_selection">மொழியைத் தேர்ந்தெடுக்கவும்</string>
+    <string name="username"><font size="14">பயனர் பெயர்</font></string>
+    <string name="password"><font size="14">கடவுச்சொல்</font></string>
+    <string name="login">உள்நுழைய</string>
+    <string name="select">தேர்ந்தெடு</string>
+
+    <!--    home-->
+    <string name="title_activity_home">வீடு</string>
+    <string name="wish">வணக்கம்,</string>
+    <string name="sup_prog">துணை \nஉணவுத் திட்டம்</string>
+    <string name="thera_prog">சிகிச்சை \nதிட்டம்</string>
+    <string name="overw_prog">அதிக எடை/உடல் பருமன் \nதிட்டம்</string>
+    <string name="stunt_prog">ஸ்டண்டிங் \nநிரல்</string>
+    <string name="other_prog">பிற உடல்நலம்/ \nஆரோக்கியமற்றது</string>
+    <string name="area_details">எனது பகுதி விவரங்களைப் பார்க்கவும்</string>
+    <string name="area_details_desc">உங்கள் பகுதியில் உள்ள அனைத்து குழந்தை பட்டியலையும் பார்க்க இங்கே கிளிக் செய்யவும்</string>
+    <string name="new_child">குழந்தை பதிவு</string>
+    <string name="new_child_desc">புதிய குழந்தையை நிரலில் சேர்க்க இங்கே கிளிக் செய்யவும்</string>
+    <string name="all_reg">அனைத்து பதிவுகளும்</string>
+
+    <!--    demographic info-->
+    <string name="demo_info_title">மக்கள்தொகை தகவல்</string>
+    <string name="date_of_reg"><font size="14">பதிவு செய்யப்பட்ட தேதி</font></string>
+    <string name="gn_area"><font size="14">GN பகுதி</font></string>
+    <string name="birth_num"><font size="12">பிறப்பு மற்றும் தடுப்பூசி \nபதிவு எண்</font></string>
+    <string name="name"><font size="12">குழந்தையின் பெயர்</font></string>
+    <string name="sex"><font size="12">செக்ஸ்</font></string>
+    <string name="date_of_birth"><font size="12">பிறந்த தேதி</font></string>
+    <string name="ethnicity"><font size="12">இனம்</font></string>
+    <string name="addr"><font size="12">முகவரி</font></string>
+    <string name="sector"><font size="12">துறை</font></string>
+    <string name="ll_num"><font size="12">தொலைபேசி எண்</font></string>
+    <string name="mob_num"><font size="12">கைபேசி எண்</font></string>
+
+    <!--    mother info-->
+    <string name="mother_info_title">தாயின் தகவல்</string>
+    <string name="occup_mother"><font size="12">தொழில்</font></string>
+    <string name="name_mother"><font size="12">தாயின் பெயர்</font></string>
+    <string name="date_of_birth_mother"><font size="12">தாயின் பிறந்த தேதி</font></string>
+    <string name="no_of_children"><font size="12">இந்தக் குழந்தை உட்பட வாழும் குழந்தைகளின் எண்ணிக்கை</font></string>
+    <string name="edu_level_mother"><font size="12">உயர் கல்வி மட்டம்</font></string>
+    <string name="nic_mother"><font size="12">NIC எண்</font></string>
+
+    <!--    caregiver's info-->
+    <string name="caregiver_title">கவனிப்பு தகவல்களை வழங்குகிறது</string>
+    <string name="cg_rel"><font size="12">குழந்தையுடன் பராமரிப்பாளரின் உறவு</font></string>
+    <string name="cg_name"><font size="12">பராமரிப்பாளர் தாய் இல்லையென்றால், பராமரிப்பாளரின் பெயர்</font></string>
+    <string name="newborn_title">புதிதாகப் பிறந்தவரின் தகவல்</string>
+    <string name="birth_len"><font size="12">பிறக்கும் போது நீளம் (செ.மீ.)</font></string>
+    <string name="birth_weight"><font size="12">பிறக்கும் போது எடை (கிராம்)</font></string>
+    <string name="submit">சமர்ப்பிக்கவும்</string>
+
+    <!--    program stages-->
+    <string name="an_stage">நிலை 1 : ஆந்த்ரோபோமெட்ரி</string>
+    <string name="st_reason">சேர்க்கைக்கான காரணம்</string>
+    <string name="st_risk">ஆபத்து காரணி மதிப்பீடு</string>
+    <string name="st_reff">தலையீட்டிற்கு பரிந்துரைக்கப்பட்டது</string>
+    <string name="st_mana">நிலை 1: மேலாண்மை நிலை</string>
+    <string name="st_inter">தலையீடு</string>
+    <string name="st_out">விளைவு</string>
+    <string name="st_indication">திரிபோஷத்திற்கான அறிகுறி</string>
+
+
+
+    <!--    anthropometry programme-->
+    <string name="an_title">ஆந்த்ரோபோமெட்ரி</string>
+    <string name="an_date_enrol"><font size="12">பதிவு செய்த தேதி</font></string>
+    <string name="an_date"><font size="12">தேதி</font></string>
+    <string name="an_weight"><font size="12">எடை (கிராம்)</font></string>
+    <string name="an_length"><font size="12">நீளம்/உயரம் (செ.மீ.)</font></string>
+    <string name="an_measures_title">ஆந்த்ரோபோமெட்ரிக் நடவடிக்கைகள்</string>
+    <string name="an_age_weeks">வாரங்களில் வயது</string>
+    <string name="an_age_years_months_years">ஆண்டுகள், மாதங்கள் மற்றும் வாரங்களில் வயது</string>
+    <string name="an_plot_graph">சதி வரைபடங்கள்</string>
+    <string name="an_weight_for_age">வயதுக்கு ஏற்ற எடை</string>
+    <string name="an_height_for_age">வயதுக்கான நீளம்/உயரம்</string>
+    <string name="an_weight_for_height">நீளம்/உயரத்திற்கான எடை</string>
+    <string name="save">சேமிக்கவும்</string>
+
+
+    <!-- other - reason for enrollment -->
+    <string name="oth_reason_title">சேர்க்கைக்கான காரணம்</string>
+    <string name="oth_reason_date">பதிவு தேதிக்கான காரணம்</string>
+    <string name="oth_reason_sam">கடுமையான ஊட்டச்சத்து குறைபாடு</string>
+    <string name="oth_reason_mam">மிதமான கடுமையான ஊட்டச்சத்து குறைபாடு</string>
+    <string name="oth_reason_faltering">பசுமை மண்டலத்தில் நீண்டகால வளர்ச்சி வீழ்ச்சியடைந்து வருகிறது</string>
+    <string name="oth_reason_under">எடை குறைவு</string>
+    <string name="oth_reason_overweight">அதிக எடை / உடல் பருமன்</string>
+    <string name="oth_reason_stuning">ஸ்டண்டிங்</string>
+
+
+
+    <!-- other - risk factor evaluation -->
+    <string name="oth_risk_title">ஆபத்து காரணி மதிப்பீடு</string>
+    <string name="oth_risk_date">மதிப்பீட்டு தேதி</string>
+    <string name="oth_risk_poverty">வறுமை மற்றும் மோசமான வருமான மேலாண்மை</string>
+    <string name="oth_risk_food">உணவுப் பாதுகாப்பின்மை</string>
+    <string name="oth_risk_water">போதிய தண்ணீர் சுகாதாரமின்மை</string>
+    <string name="oth_risk_child">குழந்தை பராமரிப்பு போதுமானதாக இல்லை</string>
+    <string name="oth_risk_commun">தொற்று நோய்களின் அதிக பாதிப்பு</string>
+
+
+    <!-- overweight - intervention -->
+    <string name="over_inter_title">அதிக எடை / உடல் பருமன் தலையீடு</string>
+    <string name="over_inter_date">தலையீடு தேதி</string>
+    <string name="over_inter_counselling">IYCF/Nutrtion ஆலோசனை வழங்கப்பட்டது</string>
+
+    <!-- overweight - management -->
+    <string name="over_mana_title">அதிக எடை மேலாண்மை</string>
+    <string name="over_mana_date">மேலாண்மை தேதி</string>
+    <string name="over_mana_enrol_type">பதிவு வகை</string>
+    <string name="over_mana_hospital">மருத்துவமனைக்கு பரிந்துரைக்கப்பட்டது</string>
+    <string name="over_mana_seen">குழந்தை மருத்துவர்/எம்ஓ ஊட்டச்சத்து மூலம் பார்க்கப்பட்டது</string>
+
+    <!-- overweight - outcome -->
+    <string name="over_out_title">அதிக எடை விளைவு</string>
+    <string name="over_out_date">முடிவு தேதி</string>
+    <string name="over_out_outcome">விளைவு</string>
+
+
+    <!-- stunting - intervention -->
+    <string name="stunt_inter_title">ஸ்டண்டிங் தலையீடு</string>
+    <string name="stunt_inter_date">தலையீடு தேதி</string>
+    <string name="stunt_inter_counselling">IYCF/Nutrtion ஆலோசனை வழங்கப்பட்டது</string>
+
+
+    <!-- stunting - management -->
+    <string name="stunt_mana_title">ஸ்டண்டிங் மேலாண்மை</string>
+    <string name="stunt_mana_date">மேலாண்மை தேதி</string>
+    <string name="stunt_mana_enrol_type">பதிவு வகை</string>
+    <string name="stunt_mana_hospital">மருத்துவமனைக்கு பரிந்துரைக்கப்பட்டது</string>
+    <string name="stunt_mana_seen">குழந்தை மருத்துவர்/எம்ஓ ஊட்டச்சத்து மூலம் பார்க்கப்பட்டது</string>
+
+
+    <!-- stunting - outcome -->
+    <string name="stunt_out_title">ஸ்டண்டிங் விளைவு</string>
+    <string name="stunt_out_date">முடிவு தேதி</string>
+    <string name="stunt_out_outcome">விளைவு</string>
+
+
+    <!-- supplementory - indication -->
+    <string name="supp_indication_title">திரிபோஷத்திற்கான அறிகுறி</string>
+    <string name="supp_indication_date">திரிபோஷ தேதிக்கான அறிகுறி</string>
+    <string name="supp_indication_mam">MAM</string>
+    <string name="supp_indication_underweight">எடை குறைவு</string>
+    <string name="supp_indication_growth">பச்சை மண்டலத்தில் நீண்ட கால வளர்ச்சி குறைகிறது</string>
+    <string name="supp_indication_entollment">பதிவு வகை</string>
+
+
+    <!-- supplementory - intervention -->
+    <string name="supp_intervention_title">துணை உணவு இடையீடுகள்</string>
+    <string name="supp_intervention_date">தலையீடு தேதி</string>
+    <string name="supp_intervention_on_triposha">அன்று திரிபோஷா</string>
+    <string name="supp_intervention_packets">கொடுக்கப்பட்ட திரிபோஷா பாக்கெட்டுகளின் எண்ணிக்கை</string>
+    <string name="supp_intervention_counselling">IYCF/Nutrtion ஆலோசனை வழங்கப்பட்டது</string>
+
+
+    <!-- supplementory - outcome -->
+    <string name="supp_out_title">துணை உணவு விளைவு</string>
+    <string name="supp_out_date">முடிவு தேதி</string>
+    <string name="supp_out_outcome">விளைவு</string>
+
+
+    <!-- tera - intervention -->
+    <string name="tera_intervention_title">சிகிச்சை உணவு இடையீடுகள்</string>
+    <string name="tera_intervention_date">தலையீடு தேதி</string>
+    <string name="tera_intervention_bp100">பிபி 100 இல்</string>
+    <string name="tera_intervention_counselling">IYCF/Nutrtion ஆலோசனை வழங்கப்பட்டது</string>
+
+
+    <!-- tera - management -->
+    <string name="tera_management_title">சிகிச்சை உணவு மேலாண்மை</string>
+    <string name="tera_management_date">மேலாண்மை தேதி</string>
+    <string name="tera_management_enrollment">பதிவு வகை</string>
+    <string name="tera_management_hospital">மருத்துவமனைக்கு பரிந்துரைக்கப்பட்டது</string>
+    <string name="tera_management_seen">குழந்தை மருத்துவர்/எம்ஓ ஊட்டச்சத்து மூலம் பார்க்கப்பட்டது</string>
+    <string name="tera_management_bp100">BP100 இல் தொடங்கப்பட்டது</string>
+
+
+    <!-- tera - outcome -->
+    <string name="tera_out_title">சிகிச்சை உணவு விளைவு</string>
+    <string name="tera_out_date">முடிவு தேதி</string>
+    <string name="tera_out_outcome">விளைவு</string>
+
+
+
+    <!--    child details-->
+    <string name="cd_title">குழந்தை விவரங்கள்</string>
+    <string name="cd_name"><font size="12">குழந்தையின் பெயர்</font></string>
+    <string name="cd_no"><font size="12">பிறப்பு மற்றும் தடுப்பூசி \nபதிவு எண்</font></string>
+    <string name="cd_dob"><font size="12">பிறந்த தேதி</font></string>
+    <string name="cd_gender"><font size="12">பாலினம்</font></string>
+    <string name="cd_aep">ஏற்கனவே பதிவுசெய்யப்பட்ட திட்டங்கள்</string>
+    <string name="cd_nep">நிரல்கள் பதிவு செய்யப்படவில்லை</string>
+
+    <!--    history-->
+    <string name="search"><font size="14">இங்கே தேடவும்</font></string>
+    <string name="search_btn"><font size="14">தேடு</font></string>
+
+    <!--    area details-->
+    <string name="ad_title">எனது பகுதி விவரங்களைப் பார்க்கவும்</string>
+    <string name="ad_area"><font size="12">மருத்துவச்சி பகுதி</font></string>
+    <string name="ad_search"><font size="12">மருத்துவச்சி பகுதி</font></string>
+    <string name="ad_sort"><font size="13">வரிசைப்படுத்து</font></string>
+    <string name="ad_search_result">இங்கே தேடவும்</string>
+
+    <string name="anthropometry">ஆந்த்ரோபோமெட்ரி</string>
+    <string name="supplementary">துணை</string>
+    <string name="overweight">அதிக எடை</string>
+    <string name="therapeutic">சிகிச்சை உணவு</string>
+    <string name="stunt">ஸ்டண்டிங்</string>
+    <string name="other">பிற உடல்நலம்/ ஆரோக்கியமற்றது</string>
+
+
+    <!--    Supplementary intervention spinner-->
+    <string-array name="supp_intervention_type">
+        <item>இந்த திட்டத்தில் முதல் முறையாக பதிவு செய்தல்</item>
+        <item>மறுபிறப்பு</item>
+    </string-array>
+
+    <string-array name="supp_intervention_type_english">
+        <item>1st time enrollment to this programme</item>
+        <item>Relapse</item>
+    </string-array>
+
+    <!--    Child registration arrays starts here-->
+
+    <string-array name="language">
+        <item>ஆங்கிலம்</item>
+        <item>சிங்களம்</item>
+    </string-array>
+
+    <string-array name="sex">
+        <item>ஆண்</item>
+        <item>பெண்</item>
+        <item>குறிப்பிடப்படாதது</item>
+    </string-array>
+
+    <string-array name="sex_english_only">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Unspecified</item>
+    </string-array>
+
+    <string-array name="ethnicity">
+        <item>சிங்களவர்கள்</item>
+        <item>தமிழ்</item>
+        <item>முஸ்லிம்</item>
+        <item>பர்கர்</item>
+        <item>மற்றவைகள்</item>
+    </string-array>
+
+    <string-array name="ethinicity_english_only">
+        <item>Sinhalese</item>
+        <item>Tamil</item>
+        <item>Muslim</item>
+        <item>Burgher</item>
+        <item>Others</item>
+    </string-array>
+
+
+    <string-array name="highestEdu">
+        <item>முறையான பள்ளிப்படிப்பு இல்லை</item>
+        <item>தரம் 1 முதல் 5 வரை (கிரேடு 5-ஐ முடிக்கவில்லை/சில முதன்மைக் கல்வி)</item>
+        <item>தரம் 5 முடித்தது (முதன்மை நிறைவு)</item>
+        <item>தரம் 6 முதல் 10 வரை (கிரேடு 10/சில இடைநிலைக் கல்வியை முடிக்கவில்லை)</item>
+        <item>10 ஆம் வகுப்பு முடித்தார் (இரண்டாம் நிலைக் கல்வி முடித்தார்)</item>
+        <item>தரம் 11 அல்லது அதற்கு மேல் (இரண்டாம் நிலைக் கல்வியை விட உயர்வானது)</item>
+    </string-array>
+
+    <string-array name="eduLevel_english_only">
+        <item>No formal schooling</item>
+        <item>Grade 1 to 5 (Not completed Grade 5/Some Primary education)</item>
+        <item>Completed grade 5 (Completed Primary)</item>
+        <item>Grade 6 to 10 (Not completed Grade 10/Some Secondary education)</item>
+        <item>Completed grade 10 (Completed Secondary education)</item>
+        <item>Grade 11 or higher (Higher than Secondary education)</item>
+    </string-array>
+
+
+    <string-array name="sector">
+        <item>கிராமப்புறம்</item>
+        <item>நகர்ப்புறம்</item>
+        <item>எஸ்டேட்</item>
+    </string-array>
+
+    <string-array name="sector_english_only">
+        <item>Rural</item>
+        <item>Urban</item>
+        <item>Estate</item>
+    </string-array>
+
+
+    <string-array name="occupation">
+        <item>மாணவர்</item>
+        <item>இல்லத்தரசி</item>
+        <item>ஓய்வு பெற்றவர்</item>
+        <item>வேலையில்லாதவர்</item>
+        <item>Paid employment</item>
+    </string-array>
+
+    <string-array name="occupation_english_only">
+        <item>Student</item>
+        <item>Home maker</item>
+        <item>Retired</item>
+        <item>Unemployed</item>
+        <item>Paid employment</item>
+    </string-array>
+
+
+    <string-array name="relationship">
+        <item>அம்மா</item>
+        <item>அப்பா</item>
+        <item>தாத்தா பாட்டி</item>
+        <item>மற்ற நெருங்கிய உறவினர்கள்</item>
+        <item>மற்றவைகள்</item>
+    </string-array>
+
+    <string-array name="relationship_english_only">
+        <item>Mother</item>
+        <item>Father</item>
+        <item>Grand parents</item>
+        <item>other close relatives</item>
+        <item>others</item>
+    </string-array>
+
+
+    <!--    Child registration arrays ends here-->
+
+    <string-array name="other_management_type">
+        <item>இந்த திட்டத்தில் முதல் முறையாக பதிவு செய்தல்</item>
+        <item>மறுபிறப்பு</item>
+    </string-array>
+
+    <string-array name="other_management_type_english">
+        <item>1st time enrollment to this programme</item>
+        <item>Relapse</item>
+    </string-array>
+
+    <string-array name="therapeutical_management_type">
+        <item>இந்த திட்டத்தில் முதல் முறையாக பதிவு செய்தல்</item>
+        <item>மறுபிறப்பு</item>
+    </string-array>
+
+    <string-array name="therapeutical_management_type_english">
+        <item>1st time enrollment to this programme</item>
+        <item>Relapse</item>
+    </string-array>
+
+    <string-array name="stunting_management_type">
+        <item>இந்த திட்டத்தில் முதல் முறையாக பதிவு செய்தல்</item>
+        <item>மறுபிறப்பு</item>
+    </string-array>
+
+    <string-array name="overweight_outcome_type">
+        <item>மீட்கப்பட்டது</item>
+        <item>இயல்புநிலை</item>
+        <item>பகுதியை விட்டு வெளியேறினார்</item>
+        <item>5 வயது முடிந்ததால் வெளியேறினார்</item>
+        <item>இறந்தார்</item>
+    </string-array>
+    <string-array name="overweight_outcome_type_english">
+        <item>Recovered</item>
+        <item>Defaulted</item>
+        <item>Left the area</item>
+        <item>Left due to completion of age 5</item>
+        <item>Died</item>
+    </string-array>
+
+    <string-array name="stunting_outcome_type">
+        <item>மீட்கப்பட்டது</item>
+        <item>இயல்புநிலை</item>
+        <item>பகுதியை விட்டு வெளியேறினார்</item>
+        <item>5 வயது முடிந்ததால் வெளியேறினார்</item>
+        <item>இறந்தார்</item>
+    </string-array>
+    <string-array name="supp_outcome_type">
+        <item>மீட்கப்பட்டது</item>
+        <item>சிகிச்சை உணவு திட்டத்திற்கு அனுப்பப்பட்டது</item>
+        <item>இயல்புநிலை</item>
+        <item>பகுதியை விட்டு வெளியேறினார்</item>
+        <item>5 வயது முடிந்ததால் வெளியேறினார்</item>
+        <item>இறந்தார்</item>
+    </string-array>
+
+    <string-array name="supp_outcome_type_english">
+        <item>Recovered</item>
+        <item>Sent to therapeutic feeding Programme</item>
+        <item>Defaulted</item>
+        <item>Left the area</item>
+        <item>Left due to completion of age 5</item>
+        <item>Died</item>
+    </string-array>
+
+    <string-array name="tera_outcome_type">
+        <item>மீட்கப்பட்டது</item>
+        <item>துணை உணவு திட்டத்திற்கு அனுப்பப்பட்டது</item>
+        <item>இயல்புநிலை</item>
+        <item>பகுதியை விட்டு வெளியேறினார்</item>
+        <item>5 வயது முடிந்ததால் வெளியேறினார்</item>
+        <item>இறந்தார்</item>
+    </string-array>
+    <string-array name="tera_outcome_type_english">
+        <item>Recovered</item>
+        <item>Sent to supplementary feeding Programme</item>
+        <item>Defaulted</item>
+        <item>Left the area</item>
+        <item>Left due to completion of age 5</item>
+        <item>Died</item>
+    </string-array>
+
+</resources>

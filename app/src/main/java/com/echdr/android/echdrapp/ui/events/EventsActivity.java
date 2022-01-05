@@ -166,8 +166,11 @@ public class EventsActivity extends ListActivity {
                             || selectedProgram.equals("CoGsKgEG4O0") ) // overweight or stunting or therapeutic
                     {
                         stages_names.add("Management");
+                        //stages_names.add(context.getResources().getString(R.string.st_mana));
                         stages_names.add("Intervention");
+                        //stages_names.add(context.getResources().getString(R.string.st_inter));
                         stages_names.add("Outcome");
+                        //stages_names.add(context.getResources().getString(R.string.st_out));
                     }else
                     {
                         for (ProgramStage stageItem : stages) {
@@ -196,6 +199,7 @@ public class EventsActivity extends ListActivity {
                                 if(stages.get(i).name().equals(stages_names.getItem(which)))
                                 {
                                     stageSelected = stages.get(i).uid();
+                                    //stageSelected = stages_names.getItem(i);
                                 }else if(stages.get(which).name().equals("Out come"))
                                 {
                                     stageSelected = "L4MJKSCcUof";

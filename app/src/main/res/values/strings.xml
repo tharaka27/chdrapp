@@ -149,11 +149,20 @@
     <string name="birth_weight"><font size="12">Weight at birth (grams)</font></string>
     <string name="submit">Submit</string>
 
+    <!--    program stages-->
+    <string name="an_stage">Stage 1 : Anthropometry</string>
+    <string name="st_reason">Reason for enrollment</string>
+    <string name="st_risk">Risk factor evaluation</string>
+    <string name="st_reff">Referred for intervention</string>
+    <string name="st_mana">Stage 1: Management Status</string>
+    <string name="st_inter">Intervention</string>
+    <string name="st_out">Outcome</string>
+    <string name="st_indication">Indication for Thriposha</string>
+
 
 
     <!--    anthropometry programme-->
     <string name="an_title">Anthropometry</string>
-    <string name="an_stage">Stage 1 : Anthropometry</string>
     <string name="an_date_enrol"><font size="12">Date of enrollment</font></string>
     <string name="an_date"><font size="12">Date</font></string>
     <string name="an_weight"><font size="12">Weight (grams)</font></string>
@@ -300,6 +309,7 @@
     <string name="therapeutic">Therapeutic feeding</string>
     <string name="stunt">Stunting</string>
     <string name="other">Other health/ Non-health</string>
+
 
     <!--    Supplementary intervention spinner-->
     <string-array name="supp_intervention_type">

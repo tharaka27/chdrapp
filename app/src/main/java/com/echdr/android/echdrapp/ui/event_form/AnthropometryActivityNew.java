@@ -396,7 +396,7 @@ public class AnthropometryActivityNew extends AppCompatActivity {
                 || Integer.parseInt(weightTxt.getText().toString()) > 50000)
         {
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("Weight value should be between 100-50000gram");
+            builder1.setMessage("Weight value should be between 100-50000grams");
             builder1.setCancelable(true);
 
             builder1.setNegativeButton(
@@ -475,11 +475,11 @@ public class AnthropometryActivityNew extends AppCompatActivity {
         switch (category) {
             case -1:
                 //text.setBackgroundColor(Color.RED);
-                text.setBackgroundColor(Color.parseColor("#e6653b"));
+                text.setBackgroundColor(Color.parseColor("#a60c0c"));
                 break;
             case 0:
                 //text.setBackgroundColor(Color.rgb(255, 165, 0)); // orange
-                text.setBackgroundColor(Color.parseColor("#ccc971"));
+                text.setBackgroundColor(Color.parseColor("#F6A21E"));
                 break;
             case 1:
                 //text.setBackgroundColor(Color.YELLOW);
