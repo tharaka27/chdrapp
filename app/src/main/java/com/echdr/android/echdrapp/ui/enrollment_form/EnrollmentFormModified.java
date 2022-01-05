@@ -32,6 +32,7 @@ import com.echdr.android.echdrapp.data.service.forms.FormField;
 import com.echdr.android.echdrapp.data.service.forms.RuleEngineService;
 import com.echdr.android.echdrapp.ui.event_form.SupplementaryIndicationActivity;
 
+import org.apache.commons.lang3.StringUtils;
 import org.hisp.dhis.android.core.enrollment.Enrollment;
 import org.hisp.dhis.android.core.maintenance.D2Error;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValueObjectRepository;
@@ -254,7 +255,9 @@ public class EnrollmentFormModified extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 month = month + 1;
-                String date = year + "-" + String.format("%02d", month) + "-" + String.format("%02d", dayOfMonth);
+                year = year%100; //get only last two digits
+                //String date = year + "-" + String.format("%02d", month) + "-" + String.format("%02d", dayOfMonth);
+                String date = String.format("%02d", dayOfMonth) + "/" + String.format("%02d", month) + "/" + year ;
                 textView_dob.setText(date);
             }
         };
@@ -504,6 +507,47 @@ public class EnrollmentFormModified extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                // Date and immunization number validation
+                if(immuneNum.getText().toString().isEmpty() ||
+                        !StringUtils.isNumeric(immuneNum.getText().toString()))
+                {
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+                    builder1.setMessage("Birthday not given");
+                    builder1.setCancelable(true);
+
+                    builder1.setNegativeButton(
+                            "Close",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                    //return;
+                                }
+                            });
+
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
+                    return;
+                }
+                if(textView_dob.getText().toString().isEmpty())
+                {
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+                    builder1.setMessage("Birthday not given");
+                    builder1.setCancelable(true);
+
+                    builder1.setNegativeButton(
+                            "Close",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                    //return;
+                                }
+                            });
+
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
+                    return;
+                }
+
                 saveElements();
             }
         });
@@ -527,8 +571,9 @@ public class EnrollmentFormModified extends AppCompatActivity {
         TrackedEntityAttributeValueObjectRepository valueRepository =
                 Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
                         .value(
-                                teiUid,
-                                dataElement
+
+                                dataElement,
+                                teiUid
                                 //getIntent().getStringExtra(EnrollmentFormModified.IntentExtra.TEI_UID.name()
                                 //)
                         );

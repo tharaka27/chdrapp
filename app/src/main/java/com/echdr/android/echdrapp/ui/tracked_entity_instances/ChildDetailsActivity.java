@@ -95,25 +95,12 @@ public class ChildDetailsActivity extends ListActivity {
     private ImageView stuntingNotEnrolled;
     private String orgUnit;
     private Context context;
-
     protected String[] sexArray;
-    protected String[] sex_english;
-
     protected String[] ethinicityArray;
-    protected String[] ethinicity_english;
-
     protected String[] sectorArray;
-    protected String[] sector_english;
-
     protected String[] eduLevelArray;
-    protected String[] eduLevel_english;
-
     protected String[] occupationArray;
-    protected String[] occupation_english;
-
     protected String[] relationshipArray;
-    protected String[] relationship_english;
-
 
     private String anthropometryEnrollmentID;
     private String otherEnrollmentID;
@@ -181,24 +168,6 @@ public class ChildDetailsActivity extends ListActivity {
 
         trackedEntityInstanceUid = getIntent().getStringExtra(IntentExtra.TRACKED_ENTITY_INSTANCE_UID.name());
 
-        sexArray = getResources().getStringArray(R.array.sex);
-        sex_english = getResources().getStringArray(R.array.sex_english_only);
-
-        ethinicityArray = getResources().getStringArray(R.array.ethnicity);
-        ethinicity_english = getResources().getStringArray(R.array.ethinicity_english_only);
-
-        sectorArray = getResources().getStringArray(R.array.sector);
-        sector_english = getResources().getStringArray(R.array.sector_english_only);
-
-        eduLevelArray = getResources().getStringArray(R.array.highestEdu);
-        eduLevel_english = getResources().getStringArray(R.array.eduLevel_english_only);
-
-        occupationArray = getResources().getStringArray(R.array.occupation);
-        occupation_english = getResources().getStringArray(R.array.occupation_english_only);
-
-        relationshipArray = getResources().getStringArray(R.array.relationship);
-        relationship_english = getResources().getStringArray(R.array.relationship_english_only);
-
         //setting spinners
 
         ArrayAdapter<CharSequence> sexadapter = ArrayAdapter.createFromResource(context,
@@ -243,8 +212,12 @@ public class ChildDetailsActivity extends ListActivity {
         relationship.setAdapter(relationadapter);
         relationship.setOnItemSelectedListener(new EnrollmentTypeSpinnerClass());
 
-
-
+        sexArray = getResources().getStringArray(R.array.sex);
+        ethinicityArray = getResources().getStringArray(R.array.ethnicity);
+        sectorArray = getResources().getStringArray(R.array.sector);
+        eduLevelArray = getResources().getStringArray(R.array.highestEdu);
+        occupationArray = getResources().getStringArray(R.array.occupation);
+        relationshipArray = getResources().getStringArray(R.array.relationship);
 
         try{
             cd_no.setText(getValueListener("h2ATdtJguMq"));
@@ -268,7 +241,6 @@ public class ChildDetailsActivity extends ListActivity {
             caregiver_name.setText(getValueListener("hxCXbI5J2YS"));
             lPhone.setText(getValueListener("cpcMXDhQouL"));
             mNumber.setText(getValueListener("LYRf4eIUVuN"));
-
             cd_gender.setSelection(
                     getSpinnerSelection("lmtzQrlHMYF", sexArray));
             //select ethnicity
@@ -318,56 +290,47 @@ public class ChildDetailsActivity extends ListActivity {
             String addressChild = address.getText().toString();
             String birthHeightChild = birthHeight.getText().toString();
             String birthWeightChild = birthWeight.getText().toString();
-            //String ethnicityChild = ethnicity.getSelectedItem().toString();
+            String ethnicityChild = ethnicity.getSelectedItem().toString();
             String gnAreaChild = GN_Area.getText().toString();
-            //String relationChild = relationship.getSelectedItem().toString();
+            String relationChild = relationship.getSelectedItem().toString();
             String nationalId = nic.getText().toString();
-            //String occupationChild = occupation.getSelectedItem().toString();
-            //String sectorChild = sector.getSelectedItem().toString();
-            //String highestEdu = highestEduLevel.getSelectedItem().toString();
+            String occupationChild = occupation.getSelectedItem().toString();
+            String sectorChild = sector.getSelectedItem().toString();
+            String highestEdu = highestEduLevel.getSelectedItem().toString();
             String momName = mother_name.getText().toString();
             String momDob = mother_dob.getText().toString();
             String numberOfChil = numberOfChildren.getText().toString();
             String careName = caregiver_name.getText().toString();
             String landNumber = lPhone.getText().toString();
             String mobileNumber = mNumber.getText().toString();
-            //String gender = cd_gender.getSelectedItem().toString();
+
+            String gender = cd_gender.getSelectedItem().toString();
 
             saveDataElement("zh4hiarsSD5", nameChild);
             saveDataElement("D9aC5K6C6ne", addressChild);
             saveDataElement("LpvdWM4YuRq", birthHeightChild);
             saveDataElement("Fs89NLB2FrA", birthWeightChild);
-            //saveDataElement("b9CoAneYYys", ethnicityChild);
-            saveDataElement("b9CoAneYYys",
-                    ethinicity_english[ethnicity.getSelectedItemPosition()]);
+            saveDataElement("b9CoAneYYys", ethnicityChild);
             saveDataElement("upQGjAHBjzu", gnAreaChild);
-            //saveDataElement("ghN8XfnlU5V", relationChild);
-            saveDataElement("ghN8XfnlU5V",
-                    relationship_english[relationship.getSelectedItemPosition()]);
+            saveDataElement("ghN8XfnlU5V", relationChild);
             saveDataElement("Gzjb3fp9FSe", nationalId);
-            //saveDataElement("Srxv0vniOnf", occupationChild);
-            saveDataElement("Srxv0vniOnf",
-                    occupation_english[occupation.getSelectedItemPosition()]);
-            //saveDataElement("igjlkmMF81X", sectorChild);
-            saveDataElement("igjlkmMF81X",
-                    sector_english[sector.getSelectedItemPosition()]);
-            //saveDataElement("GMNSaaq4xST", highestEdu);
-            saveDataElement("GMNSaaq4xST",
-                    eduLevel_english[highestEduLevel.getSelectedItemPosition()]);
+            saveDataElement("Srxv0vniOnf", occupationChild);
+            saveDataElement("igjlkmMF81X", sectorChild);
+            saveDataElement("GMNSaaq4xST", highestEdu);
             saveDataElement("K7Fxa2wv2Rx", momName);
             saveDataElement("kYfIkz2M6En", momDob);
             saveDataElement("Gy4bCBxNuo4", numberOfChil);
             saveDataElement("hxCXbI5J2YS", careName);
             saveDataElement("cpcMXDhQouL", landNumber);
             saveDataElement("LYRf4eIUVuN", mobileNumber);
-            //saveDataElement("lmtzQrlHMYF", gender);
-            saveDataElement("lmtzQrlHMYF",
-                    sex_english[cd_gender.getSelectedItemPosition()]);
+            saveDataElement("lmtzQrlHMYF", gender);
 
             finish();
 
 
         });
+
+
 
 
     }
