@@ -109,6 +109,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
     private EditText numberOfChildren;
     private Spinner eduLevel;
     private Spinner occupation;
+    private EditText occu_specification;
     private Spinner relationship;
     private EditText caregiver;
     private EditText weight;
@@ -155,6 +156,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
         numberOfChildren = findViewById(R.id.number_of_children);
         eduLevel = findViewById(R.id.edu_level);
         occupation = findViewById(R.id.occupation);
+        occu_specification = findViewById(R.id.occu_specifcation);
         relationship = findViewById(R.id.relationship);
         caregiver = findViewById(R.id.caregiverName);
         weight = findViewById(R.id.weight);
@@ -254,11 +256,14 @@ public class EnrollmentFormModified extends AppCompatActivity {
         setListenerDob = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                month = month + 1;
-                year = year%100; //get only last two digits
+                //month = month + 1;
+                //year = year%100; //get only last two digits
                 //String date = year + "-" + String.format("%02d", month) + "-" + String.format("%02d", dayOfMonth);
-                String date = String.format("%02d", dayOfMonth) + "/" + String.format("%02d", month) + "/" + year ;
-                textView_dob.setText(date);
+                //String date = String.format("%02d", dayOfMonth) + "/" + String.format("%02d", month) + "/" + year ;
+                    month = month + 1;
+                    String date = year + "-" + String.format("%02d", month) + "-" + String.format("%02d", dayOfMonth);
+                    textView_dob.setText(date);
+
             }
         };
 
@@ -461,6 +466,16 @@ public class EnrollmentFormModified extends AppCompatActivity {
             numberOfChildren.setText("");
         }
 
+        // setting occupation specification
+        try {
+            String o_specification = getDataElement("s7Rde0kFOFb");
+            if (!o_specification.isEmpty()) {
+                occu_specification.setText(o_specification);
+            }
+        } catch (Exception e) {
+            occu_specification.setText("");
+        }
+
         // setting caregiver name
         try {
             String caregiverName = getDataElement("hxCXbI5J2YS");
@@ -508,8 +523,28 @@ public class EnrollmentFormModified extends AppCompatActivity {
             public void onClick(View v) {
 
                 // Date and immunization number validation
-                if(immuneNum.getText().toString().isEmpty() ||
-                        !StringUtils.isNumeric(immuneNum.getText().toString()))
+                if(immuneNum.getText().toString().isEmpty()) //|| immuneNum.getText().toString().matches())
+
+                ///!StringUtils.isNumeric(immuneNum.getText().toString()))
+                {
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+                    builder1.setMessage("Immune Number not given");
+                    builder1.setCancelable(true);
+
+                    builder1.setNegativeButton(
+                            "Close",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                    //return;
+                                }
+                            });
+
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
+                    return;
+                }
+                /*if(textView_dob.getText().toString().isEmpty())
                 {
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
                     builder1.setMessage("Birthday not given");
@@ -528,25 +563,8 @@ public class EnrollmentFormModified extends AppCompatActivity {
                     alert11.show();
                     return;
                 }
-                if(textView_dob.getText().toString().isEmpty())
-                {
-                    AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                    builder1.setMessage("Birthday not given");
-                    builder1.setCancelable(true);
 
-                    builder1.setNegativeButton(
-                            "Close",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                    //return;
-                                }
-                            });
-
-                    AlertDialog alert11 = builder1.create();
-                    alert11.show();
-                    return;
-                }
+                 */
 
                 saveElements();
             }
@@ -815,6 +833,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
                 eduLevel_english_only[eduLevel.getSelectedItemPosition()]);
         saveDataElement("Srxv0vniOnf",
                 occupation_english_only[occupation.getSelectedItemPosition()]);
+        saveDataElement("s7Rde0kFOFb", occu_specification.getText().toString());
         saveDataElement("ghN8XfnlU5V",
                 relationship_english_only[relationship.getSelectedItemPosition()]);
         saveDataElement("hxCXbI5J2YS", caregiver.getText().toString());

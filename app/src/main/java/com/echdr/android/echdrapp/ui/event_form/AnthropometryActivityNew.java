@@ -2,6 +2,7 @@ package com.echdr.android.echdrapp.ui.event_form;
 
 import static android.text.TextUtils.isEmpty;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -56,362 +57,362 @@ import io.reactivex.processors.PublishProcessor;
 
 public class AnthropometryActivityNew extends AppCompatActivity {
 
-    private String eventUid;
-    private String programUid;
-    private PublishProcessor<Boolean> engineInitialization;
-    private RuleEngineService engineService;
-    private FormType formType;
-    private GraphView heightGraph;
-    private GraphView weightGraph;
-    private GraphView weightHeightGraph;
-    private String selectedChild;
-    private String sex;
-    private TextView textView_Date;
-    private ImageView datePicker;
+        private String eventUid;
+        private String programUid;
+        private PublishProcessor<Boolean> engineInitialization;
+        private RuleEngineService engineService;
+        private FormType formType;
+        private GraphView heightGraph;
+        private GraphView weightGraph;
+        private GraphView weightHeightGraph;
+        private String selectedChild;
+        private String sex;
+        private TextView textView_Date;
+        private ImageView datePicker;
 
-    private String orgUnit;
-    private TextView AgeInWeeksTxt;
-    private TextView AgeInMonthsTxt;
-    private Context context;
-    private DatePickerDialog.OnDateSetListener setListener;
-    private EditText heightTxt;
-    private EditText weightTxt;
-    private Button saveButton;
-    private Button plotGraphButton;
-    private TrackedEntityAttributeValue birthday;
+        private String orgUnit;
+        private TextView AgeInWeeksTxt;
+        private TextView AgeInMonthsTxt;
+        private Context context;
+        private DatePickerDialog.OnDateSetListener setListener;
+        private EditText heightTxt;
+        private EditText weightTxt;
+        private Button saveButton;
+        private Button plotGraphButton;
+        private TrackedEntityAttributeValue birthday;
 
-    Map<Integer, Integer> heightValues;
-    Map<Integer, Integer> weightValues;
+        Map<Integer, Integer> heightValues;
+        Map<Integer, Integer> weightValues;
 
-    Map<Integer, double[]> heightDataWHO;
-    Map<Integer, double[]> weightDataWHO;
-    Map<Double, double[]> weightForHeightDataWHO;
+        Map<Integer, double[]> heightDataWHO;
+        Map<Integer, double[]> weightDataWHO;
+        Map<Double, double[]> weightForHeightDataWHO;
 
-    private enum IntentExtra {
-        EVENT_UID, PROGRAM_UID, OU_UID, TYPE, TEI_ID
-    }
+        private enum IntentExtra {
+            EVENT_UID, PROGRAM_UID, OU_UID, TYPE, TEI_ID
+        }
 
-    public enum FormType {
-        CREATE, CHECK
-    }
+        public enum FormType {
+            CREATE, CHECK
+        }
 
-    public static Intent getFormActivityIntent(Context context, String eventUid,
-                                               String programUid, String orgUnitUid,
-                                               FormType type, String teiID) {
-        Intent intent = new Intent(context, AnthropometryActivityNew.class);
-        intent.putExtra(IntentExtra.EVENT_UID.name(), eventUid);
-        intent.putExtra(IntentExtra.PROGRAM_UID.name(), programUid);
-        intent.putExtra(IntentExtra.OU_UID.name(), orgUnitUid);
-        intent.putExtra(IntentExtra.TYPE.name(), type.name());
-        intent.putExtra(IntentExtra.TEI_ID.name(), teiID);
-        return intent;
-    }
+        public static Intent getFormActivityIntent(Context context, String eventUid,
+                                                   String programUid, String orgUnitUid,
+                                                   FormType type, String teiID) {
+            Intent intent = new Intent(context, AnthropometryActivityNew.class);
+            intent.putExtra(IntentExtra.EVENT_UID.name(), eventUid);
+            intent.putExtra(IntentExtra.PROGRAM_UID.name(), programUid);
+            intent.putExtra(IntentExtra.OU_UID.name(), orgUnitUid);
+            intent.putExtra(IntentExtra.TYPE.name(), type.name());
+            intent.putExtra(IntentExtra.TEI_ID.name(), teiID);
+            return intent;
+        }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_anthropometry_new);
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_anthropometry_new);
 
-        textView_Date = findViewById(R.id.anthropometryDate);
-        datePicker = findViewById(R.id.anthropometry_date_pick);
-        heightTxt = findViewById(R.id.anthropometryHeight);
-        weightTxt = findViewById(R.id.anthropometryWeight);
-        saveButton = findViewById(R.id.anthropometrySave);
-        heightGraph = findViewById(R.id.heightforageAnthropometry);
-        weightGraph = findViewById(R.id.weightforageAnthropometry);
-        weightHeightGraph = findViewById(R.id.weightforheightAnthropometry);
-        AgeInWeeksTxt = findViewById(R.id.ageInWeeks);
-        AgeInMonthsTxt  =  findViewById(R.id.ageInMonths);
-        plotGraphButton = findViewById(R.id.plotGraph);
+            textView_Date = findViewById(R.id.anthropometryDate);
+            datePicker = findViewById(R.id.anthropometry_date_pick);
+            heightTxt = findViewById(R.id.anthropometryHeight);
+            weightTxt = findViewById(R.id.anthropometryWeight);
+            saveButton = findViewById(R.id.anthropometrySave);
+            heightGraph = findViewById(R.id.heightforageAnthropometry);
+            weightGraph = findViewById(R.id.weightforageAnthropometry);
+            weightHeightGraph = findViewById(R.id.weightforheightAnthropometry);
+            AgeInWeeksTxt = findViewById(R.id.ageInWeeks);
+            AgeInMonthsTxt  =  findViewById(R.id.ageInMonths);
+            plotGraphButton = findViewById(R.id.plotGraph);
 
-        eventUid = getIntent().getStringExtra(IntentExtra.EVENT_UID.name());
-        programUid = getIntent().getStringExtra(IntentExtra.PROGRAM_UID.name());
-        selectedChild = getIntent().getStringExtra(IntentExtra.TEI_ID.name());
-        formType = FormType.valueOf(getIntent().getStringExtra(IntentExtra.TYPE.name()));
-        orgUnit = getIntent().getStringExtra(IntentExtra.OU_UID.name());
+            eventUid = getIntent().getStringExtra(IntentExtra.EVENT_UID.name());
+            programUid = getIntent().getStringExtra(IntentExtra.PROGRAM_UID.name());
+            selectedChild = getIntent().getStringExtra(IntentExtra.TEI_ID.name());
+            formType = FormType.valueOf(getIntent().getStringExtra(IntentExtra.TYPE.name()));
+            orgUnit = getIntent().getStringExtra(IntentExtra.OU_UID.name());
 
-        engineInitialization = PublishProcessor.create();
+            engineInitialization = PublishProcessor.create();
 
-        // Get the birthday of the child
-        birthday = Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
-                .byTrackedEntityInstance().eq(selectedChild)
-                .byTrackedEntityAttribute().eq("qNH202ChkV3")
-                .one().blockingGet();
+            // Get the birthday of the child
+            birthday = Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
+                    .byTrackedEntityInstance().eq(selectedChild)
+                    .byTrackedEntityAttribute().eq("qNH202ChkV3")
+                    .one().blockingGet();
 
-        // Get the sex of the child
-        TrackedEntityAttributeValue sex_d = Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
-                .byTrackedEntityInstance().eq(selectedChild)
-                .byTrackedEntityAttribute().eq("lmtzQrlHMYF")
-                .one().blockingGet();
+            // Get the sex of the child
+            TrackedEntityAttributeValue sex_d = Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
+                    .byTrackedEntityInstance().eq(selectedChild)
+                    .byTrackedEntityAttribute().eq("lmtzQrlHMYF")
+                    .one().blockingGet();
 
-        if (sex_d == null)
-            System.out.println("Sex is null");
-        
-        sex = sex_d.value();
+            if (sex_d == null)
+                System.out.println("Sex is null");
 
-        context = this;
+            sex = sex_d.value();
 
-        heightValues = new HashMap<>();
-        weightValues = new HashMap<>();
-        selectDataSets();
+            context = this;
+
+            heightValues = new HashMap<>();
+            weightValues = new HashMap<>();
+            selectDataSets();
 
 
-        Date date = new Date();
-        String s_day          = (String) DateFormat.format("dd",   date); // 20
-        String s_monthNumber  = (String) DateFormat.format("MM",   date); // 06
-        String s_year         = (String) DateFormat.format("yyyy", date); // 2013
+            Date date = new Date();
+            String s_day          = (String) DateFormat.format("dd",   date); // 20
+            String s_monthNumber  = (String) DateFormat.format("MM",   date); // 06
+            String s_year         = (String) DateFormat.format("yyyy", date); // 2013
 
-        final int year = Integer.parseInt(s_year);
-        final int month = Integer.parseInt(s_monthNumber);
-        final int day = Integer.parseInt(s_day);
+            final int year = Integer.parseInt(s_year);
+            final int month = Integer.parseInt(s_monthNumber);
+            final int day = Integer.parseInt(s_day);
 
-        textView_Date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.out.println("Clicked et date");
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        context, android.R.style.Theme_Holo_Light_Dialog, setListener, year, month, day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            textView_Date.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    System.out.println("Clicked et date");
+                    DatePickerDialog datePickerDialog = new DatePickerDialog(
+                            context, android.R.style.Theme_Holo_Light_Dialog, setListener, year, month, day);
+                    datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                Date dob = null;
-                try {
-                    dob = formatter.parse(birthday.value());
-                    datePickerDialog.getDatePicker().setMinDate(dob.getTime());
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                    Date dob = null;
+                    try {
+                        dob = formatter.parse(birthday.value());
+                        datePickerDialog.getDatePicker().setMinDate(dob.getTime());
 
-                    Calendar c = Calendar.getInstance();
-                    c.setTime(dob);
-                    c.add(Calendar.DATE, 365*5+2);
+                        Calendar c = Calendar.getInstance();
+                        c.setTime(dob);
+                        c.add(Calendar.DATE, 365*5+2);
 
-                    datePickerDialog.getDatePicker().setMaxDate(c.getTimeInMillis());
-                } catch (ParseException e) {
-                    e.printStackTrace();
+                        datePickerDialog.getDatePicker().setMaxDate(c.getTimeInMillis());
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    datePickerDialog.show();
+
                 }
-                datePickerDialog.show();
+            });
 
-            }
-        });
+            datePicker.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-        datePicker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                selectDate(year, month, day);
-            }
-        });
-
-        String date_string = "";
-        setListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                month = month+1;
-
-                String date_string = year + "-" + String.format("%02d", month) + "-" + String.format("%02d", dayOfMonth) ;
-                textView_Date.setText(date_string);
-                setAgeInWeeks();
-            }
-        };
-
-
-        // Load the existing values - form.CHECK
-        if(formType == AnthropometryActivityNew.FormType.CHECK)
-        {
-            // set date
-            try{
-                String prev_date = getDataElement("YB21tVtxZ0z");
-                if(!prev_date.isEmpty())
-                {
-                    textView_Date.setText(prev_date);
+                    selectDate(year, month, day);
                 }
-            }
-            catch (Exception e)
+            });
+
+            String date_string = "";
+            setListener = new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                    month = month+1;
+
+                    String date_string = year + "-" + String.format("%02d", month) + "-" + String.format("%02d", dayOfMonth) ;
+                    textView_Date.setText(date_string);
+                    setAgeInWeeks();
+                }
+            };
+
+
+            // Load the existing values - form.CHECK
+            if(formType == AnthropometryActivityNew.FormType.CHECK)
             {
-                textView_Date.setText("");
+                // set date
+                try{
+                    String prev_date = getDataElement("YB21tVtxZ0z");
+                    if(!prev_date.isEmpty())
+                    {
+                        textView_Date.setText(prev_date);
+                    }
+                }
+                catch (Exception e)
+                {
+                    textView_Date.setText("");
+                }
+
+                heightTxt.setText(getDataElement("cDXlUgg1WiZ"));
+                weightTxt.setText(getDataElement("rBRI27lvfY5"));
+
+                String Currentweight;
+                if (weightTxt.getText().toString().isEmpty()) {
+                    Currentweight = "";
+                } else {
+                    Currentweight = String.valueOf(
+                            Float.parseFloat(weightTxt.getText().toString()) / 1000f);
+                }
+
+                // First set age in weeks because change color uses its value
+                setAgeInWeeks();
+
+                ChangeColor(heightTxt, heightTxt.getText().toString(), heightDataWHO, true);
+                ChangeColor(weightTxt, Currentweight, weightDataWHO, true);
+
+
+
+            }else{
+                textView_Date.setText("Click here to set Date");
             }
 
-            heightTxt.setText(getDataElement("cDXlUgg1WiZ"));
-            weightTxt.setText(getDataElement("rBRI27lvfY5"));
+            heightTxt.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                }
 
-            String Currentweight;
-            if (weightTxt.getText().toString().isEmpty()) {
-                Currentweight = "";
-            } else {
-                Currentweight = String.valueOf(
-                        Float.parseFloat(weightTxt.getText().toString()) / 1000f);
-            }
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                }
 
-            // First set age in weeks because change color uses its value
-            setAgeInWeeks();
+                @Override
+                public void afterTextChanged(Editable s) {
+                    ChangeColor(heightTxt, s.toString(), heightDataWHO, true);
+                }
+            });
 
-            ChangeColor(heightTxt, heightTxt.getText().toString(), heightDataWHO, true);
-            ChangeColor(weightTxt, Currentweight, weightDataWHO, true);
+            weightTxt.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                }
 
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                }
 
+                @Override
+                public void afterTextChanged(Editable s) {
+                    ChangeColor(weightTxt, s.toString(), weightDataWHO, false);
+                }
+            });
 
-        }else{
-            textView_Date.setText("Click here to set Date");
-        }
-
-        heightTxt.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                ChangeColor(heightTxt, s.toString(), heightDataWHO, true);
-            }
-        });
-
-        weightTxt.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                ChangeColor(weightTxt, s.toString(), weightDataWHO, false);
-            }
-        });
-
-        saveButton.setOnClickListener(v -> {
-            saveElements();
-            //finishEnrollment();
-        });
-
-        plotGraphButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            saveButton.setOnClickListener(v -> {
                 saveElements();
-                weightGraph.removeAllSeries();
-                heightGraph.removeAllSeries();
-                plotGraph();
-                plotDataElements();
-                drawLineGraph();
+                //finishEnrollment();
+            });
+
+            plotGraphButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    saveElements();
+                    weightGraph.removeAllSeries();
+                    heightGraph.removeAllSeries();
+                    plotGraph();
+                    plotDataElements();
+                    drawLineGraph();
+                }
+            });
+
+
+
+            plotGraph();
+            plotDataElements();
+            drawLineGraph();
+
+
+            if (EventFormService.getInstance().init(
+                    Sdk.d2(),
+                    eventUid,
+                    programUid,
+                    getIntent().getStringExtra(IntentExtra.OU_UID.name())))
+                this.engineService = new RuleEngineService();
+        }
+
+        @Override
+        protected void onResume() {
+            super.onResume();
+        }
+
+        @Override
+        protected void onPause() {
+            super.onPause();
+
+        }
+
+        @Override
+        protected void onDestroy() {
+            EventFormService.clear();
+            super.onDestroy();
+        }
+
+        @Override
+        public void onBackPressed() {
+
+            if (formType == FormType.CREATE)
+                EventFormService.getInstance().delete();
+            setResult(RESULT_CANCELED);
+            finish();
+
+            //EventFormService.clear();
+            //setResult(RESULT_OK);
+            //finish();
+        }
+
+
+
+        private void saveElements()
+        {
+            if(textView_Date.getText().toString().equals("Click here to set Date")||
+                    textView_Date.getText().toString().isEmpty())
+            {
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+                builder1.setMessage("Date Not Selected");
+                builder1.setCancelable(true);
+
+                builder1.setNegativeButton(
+                        "Close",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                                //return;
+                            }
+                        });
+
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+                return;
             }
-        });
 
+            if( heightTxt.getText().toString().isEmpty() ||
+                    Integer.parseInt(heightTxt.getText().toString()) < 15
+                    || Integer.parseInt(heightTxt.getText().toString()) > 150)
+            {
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+                builder1.setMessage("Height value should be between 15-150cm");
+                builder1.setCancelable(true);
 
+                builder1.setNegativeButton(
+                        "Close",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                                //return;
+                            }
+                        });
 
-        plotGraph();
-        plotDataElements();
-        drawLineGraph();
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+                return;
+            }
 
+            if( weightTxt.getText().toString().isEmpty() ||
+                    Integer.parseInt(weightTxt.getText().toString()) < 100
+                    || Integer.parseInt(weightTxt.getText().toString()) > 50000)
+            {
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+                builder1.setMessage("Weight value should be between 100-50000gram");
+                builder1.setCancelable(true);
 
-        if (EventFormService.getInstance().init(
-                Sdk.d2(),
-                eventUid,
-                programUid,
-                getIntent().getStringExtra(IntentExtra.OU_UID.name())))
-            this.engineService = new RuleEngineService();
-    }
+                builder1.setNegativeButton(
+                        "Close",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                                //return;
+                            }
+                        });
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-    }
-
-    @Override
-    protected void onDestroy() {
-        EventFormService.clear();
-        super.onDestroy();
-    }
-
-    @Override
-    public void onBackPressed() {
-
-        if (formType == FormType.CREATE)
-            EventFormService.getInstance().delete();
-        setResult(RESULT_CANCELED);
-        finish();
-
-        //EventFormService.clear();
-        //setResult(RESULT_OK);
-        //finish();
-    }
-
-
-
-    private void saveElements()
-    {
-        if(textView_Date.getText().toString().equals("Click here to set Date")||
-                textView_Date.getText().toString().isEmpty())
-        {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("Date Not Selected");
-            builder1.setCancelable(true);
-
-            builder1.setNegativeButton(
-                    "Close",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                            //return;
-                        }
-                    });
-
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
-            return;
-        }
-
-        if( heightTxt.getText().toString().isEmpty() ||
-                Integer.parseInt(heightTxt.getText().toString()) < 15
-                || Integer.parseInt(heightTxt.getText().toString()) > 150)
-        {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("Height value should be between 15-150cm");
-            builder1.setCancelable(true);
-
-            builder1.setNegativeButton(
-                    "Close",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                            //return;
-                        }
-                    });
-
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
-            return;
-        }
-
-        if( weightTxt.getText().toString().isEmpty() ||
-                Integer.parseInt(weightTxt.getText().toString()) < 100
-                || Integer.parseInt(weightTxt.getText().toString()) > 50000)
-        {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("Weight value should be between 100-50000grams");
-            builder1.setCancelable(true);
-
-            builder1.setNegativeButton(
-                    "Close",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                            //return;
-                        }
-                    });
-
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
-            return;
-        }
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+                return;
+            }
 
         /*
         System.out.println(getDataElement("YB21tVtxZ0z")); // Date
@@ -422,83 +423,126 @@ public class AnthropometryActivityNew extends AppCompatActivity {
         //System.out.println(getDataElement("bJHCnjX02PN")); // weight for age
         //System.out.println(getDataElement("jnzg5BvOj5T")); // weight for lenght
         */
-        saveDataElement("YB21tVtxZ0z", textView_Date.getText().toString());
-        saveDataElement("cDXlUgg1WiZ", heightTxt.getText().toString());
-        saveDataElement("rBRI27lvfY5", weightTxt.getText().toString());
+            saveDataElement("YB21tVtxZ0z", textView_Date.getText().toString());
+            saveDataElement("cDXlUgg1WiZ", heightTxt.getText().toString());
+            saveDataElement("rBRI27lvfY5", weightTxt.getText().toString());
 
-        finishEnrollment();
+            finishEnrollment();
 
-    }
-
-    private void ChangeColor(EditText text, String s,
-                             Map<Integer, double[]> data, boolean height) {
-        int currentAge = 0;
-        if(!AgeInWeeksTxt.getText().toString().isEmpty() &&
-                !AgeInWeeksTxt.getText().toString().equals("Age in weeks"))
-            currentAge = Integer.parseInt(AgeInWeeksTxt.getText().toString());
-
-        float currentValue;
-        if (s.isEmpty()) {
-            currentValue = 0;
-            text.setBackgroundColor(Color.WHITE);
-            return;
-        } else {
-            if (height) {
-                currentValue = Float.parseFloat(s);
-            } else {
-                currentValue = Float.parseFloat(s) / 1000f;
-            }
         }
 
-        int category = 0;
-        try {
-            System.out.println("Change color : " + currentAge +" currentValue" + currentValue);
+        private void ChangeColor(EditText text, String s,
+                                 Map<Integer, double[]> data, boolean height) {
+            int currentAge = 0;
+            if(AgeInWeeksTxt.getText().toString().isEmpty() &&
+                    AgeInWeeksTxt.getText().toString().equals("Age in weeks"))
+                currentAge = Integer.parseInt(AgeInWeeksTxt.getText().toString());
 
-            // divide by 4 to covert to months
-            double[] array = data.get( currentAge/4 );
-            for (category = 0; category < 4; ) {
-
-                assert array != null;
-                if (array[category] < currentValue) {
-                    category++;
+            float currentValue;
+            if (s.isEmpty()) {
+                currentValue = 0;
+                text.setBackgroundColor(Color.WHITE);
+                return;
+            } else {
+                if (height) {
+                    currentValue = Float.parseFloat(s);
                 } else {
-                    break;
+                    currentValue = Float.parseFloat(s) / 1000f;
                 }
             }
-            category = category - 1;
-        } catch (Exception e) {
-            e.printStackTrace();
+
+            int category = 0;
+            try {
+                System.out.println("Change color : " + currentAge +" currentValue" + currentValue);
+
+                // divide by 4 to covert to months
+                double[] array = data.get( currentAge/4 );
+                for (category = 0; category < 4; ) {
+
+                    assert array != null;
+                    if (array[category] < currentValue) {
+                        category++;
+                    } else {
+                        break;
+                    }
+                }
+                category = category - 1;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            System.out.println("Suitable Category is " + category);
+
+            switch (category) {
+                case -1:
+                    //text.setBackgroundColor(Color.RED);
+                    text.setBackgroundColor(Color.parseColor("#e6653b"));
+                    break;
+                case 0:
+                    //text.setBackgroundColor(Color.rgb(255, 165, 0)); // orange
+                    text.setBackgroundColor(Color.parseColor("#ccc971"));
+                    break;
+                case 1:
+                    //text.setBackgroundColor(Color.YELLOW);
+                    text.setBackgroundColor(Color.parseColor("#afe1bb"));
+                    break;
+                case 2:
+                    //text.setBackgroundColor(Color.GREEN);
+                    text.setBackgroundColor(Color.parseColor("#a3ccae"));
+                    break;
+                case 3:
+                    //text.setBackgroundColor(Color.rgb(215, 31, 226)); // purple color
+                    text.setBackgroundColor(Color.parseColor("#f3e5f6"));
+                    break;
+
+            }
+
         }
-
-        System.out.println("Suitable Category is " + category);
-
-        switch (category) {
-            case -1:
-                //text.setBackgroundColor(Color.RED);
-                text.setBackgroundColor(Color.parseColor("#a60c0c"));
-                break;
-            case 0:
-                //text.setBackgroundColor(Color.rgb(255, 165, 0)); // orange
-                text.setBackgroundColor(Color.parseColor("#F6A21E"));
-                break;
-            case 1:
-                //text.setBackgroundColor(Color.YELLOW);
-                text.setBackgroundColor(Color.parseColor("#afe1bb"));
-                break;
-            case 2:
-                //text.setBackgroundColor(Color.GREEN);
-                text.setBackgroundColor(Color.parseColor("#a3ccae"));
-                break;
-            case 3:
-                //text.setBackgroundColor(Color.rgb(215, 31, 226)); // purple color
-                text.setBackgroundColor(Color.parseColor("#f3e5f6"));
-                break;
-
-        }
-
-    }
 
     private void setAgeInWeeks()
+    {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+
+
+            try {
+                // Parse event date
+                Date dob = formatter.parse(birthday.value());
+                Date eventDate = formatter.parse(textView_Date.getText().toString());
+
+                // Calculate age in weeks
+                long diffInMillies = Math.abs(eventDate.getTime() - dob.getTime());
+
+                int diff = (int) TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS) / 7;
+                double diffWeeks = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS) / 7 / 52.143;
+
+                int yrs = diff/52;
+                //if(yrs==0){
+                AgeInWeeksTxt.setText(String.valueOf(diff));
+
+                String doubleAsString = String.valueOf(diffWeeks);
+                int indexOfDecimal = doubleAsString.indexOf(".");
+                //System.out.println("Double Number: " + diff);
+                //System.out.println("Integer Part: " + doubleAsString.substring(0, indexOfDecimal));
+                //System.out.println("Decimal Part: " + doubleAsString.substring(indexOfDecimal));
+
+                //double months = Double.valueOf(doubleAsString.substring(indexOfDecimal)) * 12;
+                //AgeInMonthsTxt.setText(String.valueOf(diff));
+                double months = Math.round(Double.valueOf(doubleAsString.substring(indexOfDecimal)) * 12 *  100)/100;
+
+                AgeInMonthsTxt.setText(doubleAsString.substring(0, indexOfDecimal) + " years " + months+  " months");
+                //}else
+                //{
+                //    String display = String.valueOf(yrs) +"yrs " + String.valueOf(diff%52);
+                //    AgeInWeeksTxt.setText(display);
+                //}
+
+
+            } catch (Exception error) {
+                System.out.print("Error in parsing date field: " + error.toString());
+            }
+    }
+
+    private void setAgeInYearsAndMonths()
     {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -509,30 +553,24 @@ public class AnthropometryActivityNew extends AppCompatActivity {
 
             // Calculate age in weeks
             long diffInMillies = Math.abs(eventDate.getTime() - dob.getTime());
-            int diff = (int) TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS) / 7;
+            double diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS) / 7 / 52.143;
 
-            int yrs = diff/52;
+            String doubleAsString = String.valueOf(diff);
+            int indexOfDecimal = doubleAsString.indexOf(".");
+            //System.out.println("Double Number: " + diff);
+            //System.out.println("Integer Part: " + doubleAsString.substring(0, indexOfDecimal));
+            //System.out.println("Decimal Part: " + doubleAsString.substring(indexOfDecimal));
 
-            AgeInWeeksTxt.setText(String.valueOf(diff));
+            //double months = Double.valueOf(doubleAsString.substring(indexOfDecimal)) * 12;
+            //AgeInMonthsTxt.setText(String.valueOf(diff));
+            double months = Math.round(Double.valueOf(doubleAsString.substring(indexOfDecimal)) * 12 *  100)/100;
 
-            if(yrs==0){
-                AgeInMonthsTxt.setText(String.valueOf(diff));
-            }else if(yrs==1)
-            {
-                String display = String.valueOf(yrs) +"yr " + String.valueOf(diff%52) + "w";
-                AgeInMonthsTxt.setText(display);
-            }else
-            {
-                String display = String.valueOf(yrs) +"yrs " + String.valueOf(diff%52)+ "w";
-                AgeInMonthsTxt.setText(display);
-            }
+            AgeInMonthsTxt.setText(doubleAsString.substring(0, indexOfDecimal) + " years " + months+  " months");
 
         } catch (Exception error) {
             System.out.print("Error in parsing date field: " + error.toString());
         }
-
     }
-
 
     private void selectDataSets()
     {

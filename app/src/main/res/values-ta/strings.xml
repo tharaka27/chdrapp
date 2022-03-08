@@ -136,6 +136,7 @@
     <string name="name_mother"><font size="12">தாயின் பெயர்</font></string>
     <string name="date_of_birth_mother"><font size="12">தாயின் பிறந்த தேதி</font></string>
     <string name="no_of_children"><font size="12">இந்தக் குழந்தை உட்பட வாழும் குழந்தைகளின் எண்ணிக்கை</font></string>
+    <string name="occu_specifcation"><font size="10">சுயதொழில், ஊதியம் பெற்ற வேலை அல்லது ஓய்வு பெற்றால், தாயின் தொழிலைக் குறிப்பிடவும்</font></string>
     <string name="edu_level_mother"><font size="12">உயர் கல்வி மட்டம்</font></string>
     <string name="nic_mother"><font size="12">NIC எண்</font></string>
 
@@ -168,7 +169,7 @@
     <string name="an_length"><font size="12">நீளம்/உயரம் (செ.மீ.)</font></string>
     <string name="an_measures_title">ஆந்த்ரோபோமெட்ரிக் நடவடிக்கைகள்</string>
     <string name="an_age_weeks">வாரங்களில் வயது</string>
-    <string name="an_age_years_months_years">ஆண்டுகள், மாதங்கள் மற்றும் வாரங்களில் வயது</string>
+    <string name="an_age_years_months_years">ஆண்டுகள் மற்றும் மாதங்களில் வயது</string>
     <string name="an_plot_graph">சதி வரைபடங்கள்</string>
     <string name="an_weight_for_age">வயதுக்கு ஏற்ற எடை</string>
     <string name="an_height_for_age">வயதுக்கான நீளம்/உயரம்</string>
@@ -357,22 +358,22 @@
     </string-array>
 
 
-    <string-array name="highestEdu">
+    <string-array name="highestEdu">    //need to update in both languages
         <item>முறையான பள்ளிப்படிப்பு இல்லை</item>
-        <item>தரம் 1 முதல் 5 வரை (கிரேடு 5-ஐ முடிக்கவில்லை/சில முதன்மைக் கல்வி)</item>
-        <item>தரம் 5 முடித்தது (முதன்மை நிறைவு)</item>
-        <item>தரம் 6 முதல் 10 வரை (கிரேடு 10/சில இடைநிலைக் கல்வியை முடிக்கவில்லை)</item>
-        <item>10 ஆம் வகுப்பு முடித்தார் (இரண்டாம் நிலைக் கல்வி முடித்தார்)</item>
-        <item>தரம் 11 அல்லது அதற்கு மேல் (இரண்டாம் நிலைக் கல்வியை விட உயர்வானது)</item>
+        <item>ஆரம்பக் கல்வி (தரம் 1 முதல் 5 வரை)</item>
+        <item>இடைநிலைக் கல்வி (6ம் வகுப்பு முதல் 10ம் வகுப்பு வரை)</item>
+        <item>க.பொ.த சாதாரண தரம் (O/L) அல்லது அதற்கு சமம்</item>
+        <item>க.பொ.த உயர்தரம் (உ/த) அல்லது அதற்கு சமம்</item>
+        <item>உயர் கல்வி (டிப்ளமோ, பட்டம் போன்றவை)</item>
     </string-array>
 
     <string-array name="eduLevel_english_only">
         <item>No formal schooling</item>
-        <item>Grade 1 to 5 (Not completed Grade 5/Some Primary education)</item>
-        <item>Completed grade 5 (Completed Primary)</item>
-        <item>Grade 6 to 10 (Not completed Grade 10/Some Secondary education)</item>
-        <item>Completed grade 10 (Completed Secondary education)</item>
-        <item>Grade 11 or higher (Higher than Secondary education)</item>
+        <item>Primary education (grade 1 to 5)</item>
+        <item>Secondary education (grade 6 to 10)</item>
+        <item>GCE Ordinary Level (O/L) or equal</item>
+        <item>GCE Advanced Level (A/L) or equal</item>
+        <item>Higher education (diploma, degree etc)</item>
     </string-array>
 
 
@@ -390,20 +391,14 @@
 
 
     <string-array name="occupation">
-        <item>மாணவர்</item>
-        <item>இல்லத்தரசி</item>
-        <item>ஓய்வு பெற்றவர்</item>
-        <item>வேலையில்லாதவர்</item>
-        <item>Paid employment</item>
+        <item>வீட்டுனிய</item>
+        <item>சிஷ்ய</item>
+        <item>வேலைக்காக எதிர்பார்த்தேன்/சோயமின்</item>
+        <item>சுய வேலை</item>
+        <item>ஊதியம் கொண்ட வேலை</item>
+        <item>விஷ்ரமிக்காய்</item>
     </string-array>
 
-    <string-array name="occupation_english_only">
-        <item>Student</item>
-        <item>Home maker</item>
-        <item>Retired</item>
-        <item>Unemployed</item>
-        <item>Paid employment</item>
-    </string-array>
 
 
     <string-array name="relationship">

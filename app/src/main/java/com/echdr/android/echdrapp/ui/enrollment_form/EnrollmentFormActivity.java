@@ -84,7 +84,6 @@ public class EnrollmentFormActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_enrollement_form_three);
 
-
         teiUid = getIntent().getStringExtra(IntentExtra.TEI_UID.name());
 
         adapter = new FormAdapter(getValueListener(), getImageListener());
