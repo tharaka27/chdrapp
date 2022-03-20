@@ -139,7 +139,7 @@ public class ChildDetailsActivity extends ListActivity {
         nic = findViewById(R.id.nic);
         occupation = findViewById(R.id.occupation);
         sector = findViewById(R.id.sector);
-        //occu_specification = findViewById(R.id.ocu_specifcation);
+        occu_specification = findViewById(R.id.occu_specifcation1);
         highestEduLevel = findViewById(R.id.highestEduLevel);
         mother_name = findViewById(R.id.mother_name);
         mother_dob = findViewById(R.id.mother_dob);
@@ -225,7 +225,7 @@ public class ChildDetailsActivity extends ListActivity {
         }catch (Exception e){
             e.printStackTrace();
         }
-        /*
+
         try{
             occu_specification.setText(getValueListener("s7Rde0kFOFb"));
 
@@ -233,7 +233,7 @@ public class ChildDetailsActivity extends ListActivity {
             e.printStackTrace();
         }
 
-         */
+
         try{
             cd_dob.setText(getValueListener("qNH202ChkV3"));
 
@@ -366,7 +366,7 @@ public class ChildDetailsActivity extends ListActivity {
             caregiver_name.setEnabled(true);
             lPhone.setEnabled(true);
             mNumber.setEnabled(true);
-            //occu_specification.setEnabled(true);
+            occu_specification.setEnabled(true);
 
         });
 
@@ -379,7 +379,7 @@ public class ChildDetailsActivity extends ListActivity {
             String gnAreaChild = GN_Area.getText().toString();
             String relationChild = relationship.getSelectedItem().toString();
             String nationalId = nic.getText().toString();
-            //String occupation_sep = occu_specification.getText().toString();
+            String occupation_sep = occu_specification.getText().toString();
             String occupationChild = occupation.getSelectedItem().toString();
             String sectorChild = sector.getSelectedItem().toString();
             String highestEdu = highestEduLevel.getSelectedItem().toString();
@@ -401,7 +401,7 @@ public class ChildDetailsActivity extends ListActivity {
             saveDataElement("ghN8XfnlU5V", relationChild);
             saveDataElement("Gzjb3fp9FSe", nationalId);
             saveDataElement("Srxv0vniOnf", occupationChild);
-            //saveDataElement("s7Rde0kFOFb", occupation_sep);
+            saveDataElement("s7Rde0kFOFb", occupation_sep);
             saveDataElement("igjlkmMF81X", sectorChild);
             saveDataElement("GMNSaaq4xST", highestEdu);
             saveDataElement("K7Fxa2wv2Rx", momName);

@@ -144,7 +144,7 @@
     <!--    caregiver's info-->
     <string name="caregiver_title">Care giver\'s information</string>
     <string name="cg_rel"><font size="12">Caregiver\'s relationship to child</font></string>
-    <string name="cg_name"><font size="12">If caregiver is not the mother, caregiver\'s mame</font></string>
+    <string name="cg_name"><font size="12">If caregiver is not the mother, caregiver\'s name</font></string>
     <string name="newborn_title">Newborn\'s information</string>
     <string name="birth_len"><font size="12">Length at birth (cm)</font></string>
     <string name="birth_weight"><font size="12">Weight at birth (grams)</font></string>
@@ -251,7 +251,7 @@
     <string name="supp_intervention_title">Supplementary Feeding Interventions</string>
     <string name="supp_intervention_date">Intervention date</string>
     <string name="supp_intervention_on_triposha">On Thriposha</string>
-    <string name="supp_intervention_packets">Number of thriposha packets given</string>
+    <string name="supp_intervention_packets">Number of Thriposha packets given</string>
     <string name="supp_intervention_counselling">IYCF/Nutrtion counselling given</string>
 
 

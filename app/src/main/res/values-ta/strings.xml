@@ -335,11 +335,6 @@
         <item>குறிப்பிடப்படாதது</item>
     </string-array>
 
-    <string-array name="sex_english_only">
-        <item>Male</item>
-        <item>Female</item>
-        <item>Unspecified</item>
-    </string-array>
 
     <string-array name="ethnicity">
         <item>சிங்களவர்கள்</item>
@@ -349,13 +344,6 @@
         <item>மற்றவைகள்</item>
     </string-array>
 
-    <string-array name="ethinicity_english_only">
-        <item>Sinhalese</item>
-        <item>Tamil</item>
-        <item>Muslim</item>
-        <item>Burgher</item>
-        <item>Others</item>
-    </string-array>
 
 
     <string-array name="highestEdu">    //need to update in both languages

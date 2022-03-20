@@ -470,7 +470,7 @@
                             android:textColorHint="@color/desc" />
 
                         <EditText
-                            android:id="@+id/occu_specifcation"
+                            android:id="@+id/occu_specifcation1"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"

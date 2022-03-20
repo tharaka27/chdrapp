@@ -357,7 +357,7 @@ public class SupplementaryInterventionActivity extends AppCompatActivity {
                 || Integer.parseInt(numberOfTriposha.getText().toString()) > 5)
         {
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("Number of thriposha packets given should be between 0-5");
+            builder1.setMessage("Number of Thriposha packets given should be between 0-5");
             builder1.setCancelable(true);
 
             builder1.setNegativeButton(

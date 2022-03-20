@@ -27,7 +27,7 @@ public class LanguageSelection extends AppCompatActivity {
     private Button languageButton;
 
 
-    TextView messageView;
+    //TextView messageView;
     Button btnHindi, btnEnglish, btnTamil;
     Resources resources;
 
@@ -41,7 +41,7 @@ public class LanguageSelection extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language_selection);
 
-        messageView = (TextView) findViewById(R.id.textView);
+        //messageView = (TextView) findViewById(R.id.textView);
         btnHindi = findViewById(R.id.btnHindi);
         btnEnglish = findViewById(R.id.btnEnglish);
         btnTamil = findViewById(R.id.btnTamil);
@@ -56,7 +56,7 @@ public class LanguageSelection extends AppCompatActivity {
             public void onClick(View view) {
                 context = LocaleHelper.setLocale(LanguageSelection.this, "en");
                 resources = context.getResources();
-                messageView.setText(resources.getString(R.string.language));
+                //messageView.setText(resources.getString(R.string.language));
                 ActivityStarter.startActivity(LanguageSelection.this, MainActivity.getMainActivityIntent(context),true);
 
             }
@@ -67,7 +67,7 @@ public class LanguageSelection extends AppCompatActivity {
             public void onClick(View view) {
                 context = LocaleHelper.setLocale(LanguageSelection.this, "si");
                 resources = context.getResources();
-                messageView.setText(resources.getString(R.string.language));
+                //messageView.setText(resources.getString(R.string.language));
                 ActivityStarter.startActivity(LanguageSelection.this, MainActivity.getMainActivityIntent(context),true);
 
             }
@@ -78,7 +78,7 @@ public class LanguageSelection extends AppCompatActivity {
             public void onClick(View view) {
                 context = LocaleHelper.setLocale(LanguageSelection.this, "ta");
                 resources = context.getResources();
-                messageView.setText(resources.getString(R.string.language));
+                //messageView.setText(resources.getString(R.string.language));
                 ActivityStarter.startActivity(LanguageSelection.this, MainActivity.getMainActivityIntent(context),true);
 
             }

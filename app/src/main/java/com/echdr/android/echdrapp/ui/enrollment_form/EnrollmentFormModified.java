@@ -47,6 +47,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import io.reactivex.Flowable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -214,6 +216,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
                         context, android.R.style.Theme_Holo_Light_Dialog, setListenerRegistration, year, month, day);
                 datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
                 datePickerDialog.show();
             }
         });
@@ -241,6 +244,8 @@ public class EnrollmentFormModified extends AppCompatActivity {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
                         context, android.R.style.Theme_Holo_Light_Dialog, setListenerDob, year, month, day);
                 datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 datePickerDialog.show();
             }
         });
@@ -522,16 +527,21 @@ public class EnrollmentFormModified extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                // Date and immunization number validation
-                if(immuneNum.getText().toString().isEmpty()) //|| immuneNum.getText().toString().matches())
+                // Immunization number validation
+                String pattern = "[0-9][0-9]\\/[0-1][0-9]\\/[0-3][0-9]";
+                Matcher m1 = null;
+                Matcher m2 = null;
+                Pattern r = Pattern.compile(pattern);
 
-                ///!StringUtils.isNumeric(immuneNum.getText().toString()))
-                {
-                    AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                    builder1.setMessage("Immune Number not given");
-                    builder1.setCancelable(true);
+                String patternLPhone = "[0-9]{10}";
+                Pattern q = Pattern.compile(patternLPhone);
 
-                    builder1.setNegativeButton(
+                if (immuneNum.getText().toString().isEmpty()) {
+                    AlertDialog.Builder builder2 = new AlertDialog.Builder(context);
+                    builder2.setMessage("Birth and Immunization Number is not filled");
+                    builder2.setCancelable(true);
+
+                    builder2.setNegativeButton(
                             "Close",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
@@ -540,9 +550,119 @@ public class EnrollmentFormModified extends AppCompatActivity {
                                 }
                             });
 
-                    AlertDialog alert11 = builder1.create();
-                    alert11.show();
+                    AlertDialog alert12 = builder2.create();
+                    alert12.show();
                     return;
+                    //Toast.makeText(EnrollmentFormModified.this, "Birth and Immunization Number is not filled ", Toast.LENGTH_LONG).show();
+                } else {
+                    m1 = r.matcher(immuneNum.getText().toString().trim());
+                    if (m1.find()) {
+                        //Toast.makeText(EnrollmentFormModified.this, "Birth and Immunization Number matched", Toast.LENGTH_LONG).show();
+                    } else {
+                        AlertDialog.Builder builder3 = new AlertDialog.Builder(context);
+                        builder3.setMessage("Birth and Immunization Number not matched");
+                        builder3.setCancelable(true);
+
+                        builder3.setNegativeButton(
+                                "Close",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                        //return;
+                                    }
+                                });
+
+                        AlertDialog alert13 = builder3.create();
+                        alert13.show();
+                        return;
+                        //Toast.makeText(EnrollmentFormModified.this, "NO MATCH", Toast.LENGTH_LONG).show();
+                    }
+                }
+
+                if(landNumber.getText().toString().isEmpty()){
+                    AlertDialog.Builder builder3 = new AlertDialog.Builder(context);
+                    builder3.setMessage("Land Number is not filled");
+                    builder3.setCancelable(true);
+
+                    builder3.setNegativeButton(
+                            "Close",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                    //return;
+                                }
+                            });
+
+                    AlertDialog alert13 = builder3.create();
+                    alert13.show();
+                    return;
+                    //Toast.makeText(EnrollmentFormModified.this, "Birth and Immunization Number is not filled ", Toast.LENGTH_LONG).show();
+                } else {
+                    m2 = q.matcher(landNumber.getText().toString().trim());
+                    if (m2.find()) {
+                        //Toast.makeText(EnrollmentFormModified.this, "Land Number matched", Toast.LENGTH_LONG).show();
+                    } else {
+                        AlertDialog.Builder builder4 = new AlertDialog.Builder(context);
+                        builder4.setMessage("Land Number not matched");
+                        builder4.setCancelable(true);
+
+                        builder4.setNegativeButton(
+                                "Close",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                        //return;
+                                    }
+                                });
+
+                        AlertDialog alert14 = builder4.create();
+                        alert14.show();
+                        return;
+                        //Toast.makeText(EnrollmentFormModified.this, "NO MATCH", Toast.LENGTH_LONG).show();
+                    }
+                }
+
+                if(mobileNumber.getText().toString().isEmpty()){
+                    AlertDialog.Builder builder8 = new AlertDialog.Builder(context);
+                    builder8.setMessage("Mobile Number is not filled");
+                    builder8.setCancelable(true);
+
+                    builder8.setNegativeButton(
+                            "Close",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                    //return;
+                                }
+                            });
+
+                    AlertDialog alert18 = builder8.create();
+                    builder8.show();
+                    return;
+                    //Toast.makeText(EnrollmentFormModified.this, "Birth and Immunization Number is not filled ", Toast.LENGTH_LONG).show();
+                } else {
+                    m2 = q.matcher(mobileNumber.getText().toString().trim());
+                    if (m2.find()) {
+                        //Toast.makeText(EnrollmentFormModified.this, "Land Number matched", Toast.LENGTH_LONG).show();
+                    } else {
+                        AlertDialog.Builder builder8 = new AlertDialog.Builder(context);
+                        builder8.setMessage("Mobile Number not matched");
+                        builder8.setCancelable(true);
+
+                        builder8.setNegativeButton(
+                                "Close",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                        //return;
+                                    }
+                                });
+
+                        AlertDialog alert18 = builder8.create();
+                        builder8.show();
+                        return;
+                        //Toast.makeText(EnrollmentFormModified.this, "NO MATCH", Toast.LENGTH_LONG).show();
+                    }
                 }
                 /*if(textView_dob.getText().toString().isEmpty())
                 {
@@ -566,6 +686,70 @@ public class EnrollmentFormModified extends AppCompatActivity {
 
                  */
 
+                if( numberOfChildren.getText().toString().isEmpty() ||
+                        Integer.parseInt(numberOfChildren.getText().toString()) < 0
+                        || Integer.parseInt(numberOfChildren.getText().toString()) >= 20)
+                {
+                    AlertDialog.Builder builder5 = new AlertDialog.Builder(context);
+                    builder5.setMessage("Number of Children is allowed up to 20");
+                    builder5.setCancelable(true);
+
+                    builder5.setNegativeButton(
+                            "Close",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                    //return;
+                                }
+                            });
+
+                    AlertDialog alert15 = builder5.create();
+                    alert15.show();
+                    return;
+                }
+
+                if(weight.getText().toString().isEmpty() ||
+                        Integer.parseInt(weight.getText().toString()) < 500
+                        || Integer.parseInt(weight.getText().toString()) >= 9999)
+                {
+                    AlertDialog.Builder builder6 = new AlertDialog.Builder(context);
+                    builder6.setMessage("Weight in Grams is allowed 500-9999");
+                    builder6.setCancelable(true);
+
+                    builder6.setNegativeButton(
+                            "Close",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                    //return;
+                                }
+                            });
+
+                    AlertDialog alert16 = builder6.create();
+                    alert16.show();
+                    return;
+                }
+                if(length.getText().toString().isEmpty() ||
+                        Integer.parseInt(length.getText().toString()) < 10
+                        || Integer.parseInt(length.getText().toString()) >= 99)
+                {
+                    AlertDialog.Builder builder7 = new AlertDialog.Builder(context);
+                    builder7.setMessage("Length in Centimeters is allowed 10-99");
+                    builder7.setCancelable(true);
+
+                    builder7.setNegativeButton(
+                            "Close",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                    //return;
+                                }
+                            });
+
+                    AlertDialog alert17 = builder7.create();
+                    alert17.show();
+                    return;
+                }
                 saveElements();
             }
         });
@@ -868,6 +1052,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 context, android.R.style.Theme_Holo_Light_Dialog, setListenerMotherDob, year, month, day);
         datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
         datePickerDialog.show();
     }
 

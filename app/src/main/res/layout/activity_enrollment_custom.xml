@@ -647,7 +647,7 @@
                             android:textSize="10dp" />
 
                         <EditText
-                            android:id="@+id/ocu_specifcation"
+                            android:id="@+id/occu_specifcation"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"

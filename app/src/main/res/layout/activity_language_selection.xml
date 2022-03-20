@@ -36,6 +36,7 @@ android:layout_height="match_parent">
             android:textSize="20sp"
             android:textStyle="bold" />
 
+        <!--
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
@@ -44,10 +45,12 @@ android:layout_height="match_parent">
             android:layout_marginTop="15dp"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="15dp"
-            android:text="Please Select your Language to Continue"
+
             android:textAlignment="center"
             android:textSize="20sp"
             android:textStyle="bold"/>
+            android:text="Please Select your Language to Continue"-->
+
 
 
         <!--button view for hindi language-->
