@@ -978,7 +978,7 @@
                     android:textColor="@color/title"
                     android:textSize="20sp"
                     android:textStyle="bold" />
-<!--
+                <!--
                 <ImageButton
                     android:id="@+id/edit_btn"
                     android:layout_width="36dp"

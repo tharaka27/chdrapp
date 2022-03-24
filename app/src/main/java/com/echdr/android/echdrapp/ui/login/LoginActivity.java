@@ -48,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory()).get(LoginViewModel.class);
 
         serverUrlEditText = "https://www.erhmis.fhb.health.gov.lk/erhmis2356/api/";
+        //serverUrlEditText = "https://www.erhmis.fhb.health.gov.lk/erhmis2356/dhis-web-dashboard/";
         usernameEditText = findViewById(R.id.username_yash);
         passwordEditText = findViewById(R.id.password_yash);
         loginButton = findViewById(R.id.btnLogin);
