@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -30,6 +31,7 @@ import com.echdr.android.echdrapp.ui.events.EventsActivity;
 
 import org.hisp.dhis.android.core.arch.repositories.scope.RepositoryScope;
 import org.hisp.dhis.android.core.enrollment.Enrollment;
+import org.hisp.dhis.android.core.enrollment.EnrollmentObjectRepository;
 import org.hisp.dhis.android.core.enrollment.EnrollmentStatus;
 import org.hisp.dhis.android.core.maintenance.D2Error;
 import org.hisp.dhis.android.core.option.Option;
@@ -735,8 +737,45 @@ public class ChildDetailsActivity extends ListActivity {
         antopoNotEnrolled.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                /*
                 ActivityStarter.startActivity(ChildDetailsActivity.this,
                         EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), trackedEntityInstanceUid, "hM6Yt9FQL0n", orgUnit), false);
+                 */
+                // Get the latest enrollment
+
+                List<Enrollment> AnthropometryStatus = Sdk.d2().enrollmentModule().enrollments()
+                        .byTrackedEntityInstance().eq(teiUid)
+                        .byProgram().eq("hM6Yt9FQL0n")
+                        .orderByCreated(RepositoryScope.OrderByDirection.DESC)
+                        .blockingGet();
+
+                String anthropometryEnrollmentID = "";
+
+                // The child should have at least one enrollment
+                if(!AnthropometryStatus.isEmpty())
+                {
+                    anthropometryEnrollmentID = AnthropometryStatus.get(0).uid();
+                }
+                else
+                {
+                    return;
+                }
+
+                // set the enrollment status to active based on the enrollment ID
+                EnrollmentObjectRepository rep = Sdk.d2().enrollmentModule().enrollments()
+                        .uid(anthropometryEnrollmentID);
+                try {
+                    rep.setStatus(EnrollmentStatus.ACTIVE);
+                } catch (D2Error d2Error) {
+                    d2Error.printStackTrace();
+                    Toast.makeText(context, "re-enrolling unsuccessful",
+                            Toast.LENGTH_LONG).show();
+                }
+
+                Intent intent = EventsActivity.getIntent(getApplicationContext(), "hM6Yt9FQL0n",
+                        teiUid, anthropometryEnrollmentID);
+                startActivity(intent);
 
             }
         });
