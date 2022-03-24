@@ -363,6 +363,31 @@ public class SupplementaryIndicationActivity extends AppCompatActivity {
             alert11.show();
             return;
         }
+
+
+        if(checkbox_Green.isChecked() && checkbox_MAM.isChecked()
+                && checkbox_Underweight.isChecked() || checkbox_Underweight.isChecked() &&
+                    checkbox_Green.isChecked())
+        {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+            builder1.setMessage("The selection combination is invalid. Possible combinations" +
+                    " are \n1. MAM\n2. Underweight\n3. Green Zone" +
+                    "\n4. MAM + Underweight\n5. MAM + Green Zone");
+            builder1.setCancelable(true);
+
+            builder1.setNegativeButton(
+                    "Close",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+            return;
+        }
+
         saveDataElement("KuMTUOY6X3L", textView_Date.getText().toString());
         saveDataElement("o4ltT56H9QV", checkbox_MAM.isChecked() ? "true" : "");
         saveDataElement("tSnrbDU0cJA", checkbox_Green.isChecked() ? "true" : "");
