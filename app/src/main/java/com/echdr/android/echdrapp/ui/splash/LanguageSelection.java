@@ -20,6 +20,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 public class LanguageSelection extends AppCompatActivity {
     private Spinner languageSpinner;
     protected String[] languageArray;
@@ -55,6 +57,7 @@ public class LanguageSelection extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 context = LocaleHelper.setLocale(LanguageSelection.this, "en");
+                
                 resources = context.getResources();
                 //messageView.setText(resources.getString(R.string.language));
                 ActivityStarter.startActivity(LanguageSelection.this, MainActivity.getMainActivityIntent(context),true);

@@ -3,7 +3,9 @@ package com.echdr.android.echdrapp.ui.events;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
@@ -11,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 
+import com.echdr.android.echdrapp.LocaleHelper;
 import com.echdr.android.echdrapp.R;
 import com.echdr.android.echdrapp.data.Sdk;
 import com.echdr.android.echdrapp.data.service.ActivityStarter;
@@ -47,7 +50,10 @@ import org.hisp.dhis.android.core.program.ProgramStage;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -66,6 +72,7 @@ public class EventsActivity extends ListActivity {
     private String stageSelected;
     private FloatingActionButton anthUnenroll;
     private String programEnrollmentID;
+
 
     private enum IntentExtra {
         PROGRAM, TEI_ID, ENROLLMENT_ID
@@ -194,21 +201,117 @@ public class EventsActivity extends ListActivity {
                     ArrayAdapter<String> stages_names = new ArrayAdapter<String>
                             (this, android.R.layout.select_dialog_singlechoice);
 
+
+                    //get the language preference
+                    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+                    String language = preferences.getString("Locale.Helper.Selected.Language", "en");
+                    //String language = Locale.getDefault().getLanguage();
+
                     // The order of the overweight or stunting or therapeutic programs should be
                     // in following order. Other programs are shown in the sane order as in
                     // the database.
+                    Map<String, String> map = new HashMap<String, String>();
                     if(selectedProgram.equals("JsfNVX0hdq9") || selectedProgram.equals("lSSNwBMiwrK")
                             || selectedProgram.equals("CoGsKgEG4O0") ) {
-                        stages_names.add("Management");
-                        //stages_names.add(context.getResources().getString(R.string.st_mana));
-                        stages_names.add("Intervention");
-                        //stages_names.add(context.getResources().getString(R.string.st_inter));
-                        stages_names.add("Outcome");
-                        //stages_names.add(context.getResources().getString(R.string.st_out));
-                    }else
+                        System.out.println("[DELETE] language is " + language);
+
+                        if (language.equals("en")){
+                            stages_names.add("Management");
+                            map.put("Management", "Management");
+                            stages_names.add("Intervention");
+                            map.put("Intervention", "Intervention");
+                            stages_names.add("Outcome");
+                            map.put("Outcome", "Outcome");
+                        }
+                        else if(language.equals("si"))
+                        {
+                            stages_names.add("කළමනාකරණය");
+                            map.put("කළමනාකරණය", "Management");
+                            stages_names.add("මැදිහත් වීම");
+                            map.put("මැදිහත් වීම", "Intervention");
+                            stages_names.add("ප්රතිඵලය");
+                            map.put("ප්රතිඵලය", "Outcome");
+                        }
+                        else{
+                            stages_names.add("மேலாண்மை");
+                            map.put("மேலாண்மை", "Management");
+                            stages_names.add("தலையீடு");
+                            map.put("தலையீடு", "Intervention");
+                            stages_names.add("விளைவு");
+                            map.put("விளைவு", "Outcome");
+
+                        }
+                    }
+                    // anthropometry
+                    else if(selectedProgram.equals("hM6Yt9FQL0n"))
                     {
-                        for (ProgramStage stageItem : stages) {
-                            stages_names.add(stageItem.name());
+                        if (language.equals("en")){
+                            stages_names.add("Anthropometry");
+                            map.put("Management", "Anthropometry");
+                        }
+                        else if(language.equals("si"))
+                        {
+                            stages_names.add("මානවමිතිය");
+                            map.put("මානවමිතිය", "Anthropometry");
+                        }
+                        else{
+                            stages_names.add("மானுடவியல்");
+                            map.put("மானுடவியல்", "Anthropometry");
+                        }
+                    }
+                    // other health non health
+                    else if(selectedProgram.equals("iUgzznPsePB"))
+                    {
+                        if (language.equals("en"))
+                        {
+                            stages_names.add(stages.get(0).name());
+                            map.put(stages.get(0).name(), stages.get(0).name());
+                            stages_names.add(stages.get(1).name());
+                            map.put(stages.get(1).name(), stages.get(1).name());
+                        }
+                        else if(language.equals("si"))
+                        {
+                            stages_names.add("1.ලියාපදිංචි වීමට හේතුව");
+                            map.put("1.ලියාපදිංචි වීමට හේතුව", stages.get(0).name());
+                            stages_names.add("2.අවදානම් සාධක ඇගයීම");
+                            map.put("2.අවදානම් සාධක ඇගයීම", stages.get(1).name());
+                        }
+                        else{
+                            stages_names.add("1.சேர்வதற்கான காரணம்");
+                            map.put("1.சேர்வதற்கான காரணம்", stages.get(0).name());
+                            stages_names.add("2.ஆபத்து காரணி மதிப்பீடு");
+                            map.put("2.ஆபத்து காரணி மதிப்பீடு", stages.get(1).name());
+                        }
+                    }
+                    // supplementary tc6RsYbgGzm
+                    else if(selectedProgram.equals("tc6RsYbgGzm"))
+                    {
+                        if (language.equals("en"))
+                        {
+                            stages_names.add(stages.get(0).name());
+                            map.put(stages.get(0).name(), stages.get(0).name());
+                            stages_names.add(stages.get(1).name());
+                            map.put(stages.get(1).name(), stages.get(1).name());
+                            stages_names.add(stages.get(2).name());
+                            map.put(stages.get(2).name(), stages.get(1).name());
+
+                        }
+                        else if(language.equals("si"))
+                        {
+                            stages_names.add("ත්රිපෝෂ සඳහා ඇඟවීම");
+                            map.put("ත්රිපෝෂ සඳහා ඇඟවීම", stages.get(0).name());
+                            stages_names.add("මැදිහත්වීම්");
+                            map.put("මැදිහත්වීම්", stages.get(1).name());
+                            stages_names.add("ප්රතිඵලය");
+                            map.put("ප්රතිඵලය", stages.get(2).name());
+                        }
+                        else{
+                            stages_names.add("திரிபோஷத்திற்கான அறிகுறி");
+                            map.put("திரிபோஷத்திற்கான அறிகுறி", stages.get(0).name());
+                            stages_names.add("தலையீடுகள்");
+                            map.put("தலையீடுகள்", stages.get(1).name());
+                            stages_names.add("விளைவு");
+                            map.put("விளைவு", stages.get(1).name());
                         }
                     }
 
@@ -239,7 +342,9 @@ public class EventsActivity extends ListActivity {
                             // ToDo: Correct the database stunting outcome
                             for(int i=0; i<stages.size();i++)
                             {
-                                if(stages.get(i).name().equals(stages_names.getItem(which)))
+
+                                String english_stage_name =  map.get(stages_names.getItem(which));
+                                if(stages.get(i).name().equals(english_stage_name))
                                 {
                                     stageSelected = stages.get(i).uid();
                                     //stageSelected = stages_names.getItem(i);

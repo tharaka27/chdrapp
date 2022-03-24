@@ -750,6 +750,35 @@ public class EnrollmentFormModified extends AppCompatActivity {
                     alert17.show();
                     return;
                 }
+
+                //make occupation mandatory
+
+                if( occu_specification.getText().toString().isEmpty())
+                {
+                    if(occupation.getSelectedItemPosition() == 3 ||
+                            occupation.getSelectedItemPosition() == 5)
+                    {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                        builder.setMessage("If occupation is Self-employed or retired Mother's" +
+                                " occupation can not be empty");
+                        builder.setCancelable(true);
+
+                        builder.setNegativeButton(
+                                "Close",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                        //return;
+                                    }
+                                });
+
+                        AlertDialog alert1 = builder.create();
+                        alert1.show();
+                        return;
+                    }
+                }
+
+
                 saveElements();
             }
         });
