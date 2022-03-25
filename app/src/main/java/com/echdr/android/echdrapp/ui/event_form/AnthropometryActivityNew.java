@@ -230,6 +230,9 @@ public class AnthropometryActivityNew extends AppCompatActivity {
                     if(!prev_date.isEmpty())
                     {
                         textView_Date.setText(prev_date);
+
+                        weightTxt.setEnabled(true);
+                        heightTxt.setEnabled(true);
                     }
                 }
                 catch (Exception e)
@@ -292,7 +295,7 @@ public class AnthropometryActivityNew extends AppCompatActivity {
 
             saveButton.setOnClickListener(v -> {
                 saveElements();
-                //finishEnrollment();
+                finishEnrollment();
             });
 
             plotGraphButton.setOnClickListener(new View.OnClickListener() {
@@ -433,7 +436,7 @@ public class AnthropometryActivityNew extends AppCompatActivity {
             saveDataElement("cDXlUgg1WiZ", heightTxt.getText().toString());
             saveDataElement("rBRI27lvfY5", weightTxt.getText().toString());
 
-            finishEnrollment();
+            //finishEnrollment();
 
         }
 
@@ -746,12 +749,15 @@ public class AnthropometryActivityNew extends AppCompatActivity {
         height_series.appendData(
                 new DataPoint(0,birthHeight), true, 61
         );
+        System.out.println("[Debug] Birth height is " + String.valueOf(birthHeight));
+
         weight_series.appendData(
                 new DataPoint(0,birthWeight/1000), true, 61
         );
         weight_for_height_series.appendData(
                 new DataPoint(birthHeight, birthWeight/1000) , true, 61
         );
+        System.out.println("[Debug] Draw height is " + String.valueOf(birthHeight));
 
         for(int i=0; i< 60; i++)
         {

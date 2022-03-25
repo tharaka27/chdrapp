@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -111,6 +112,33 @@ public class EventsActivity extends ListActivity {
         selectedProgram = getIntent().getStringExtra(IntentExtra.PROGRAM.name());
         selectedChild = getIntent().getStringExtra(IntentExtra.TEI_ID.name());
         programEnrollmentID = getIntent().getStringExtra(IntentExtra.ENROLLMENT_ID.name());
+
+        // set toolbar title
+        TextView title = findViewById(R.id.eventTitle);
+
+        switch (selectedProgram)
+        {
+            case "hM6Yt9FQL0n":
+                title.setText(R.string.an_title);
+                break;
+            case "tc6RsYbgGzm":
+                title.setText(R.string.sup_prog);
+                break;
+            case "CoGsKgEG4O0":
+                title.setText(R.string.thera_prog);
+                break;
+            case "JsfNVX0hdq9":
+                title.setText(R.string.overw_prog);
+                break;
+            case "lSSNwBMiwrK":
+                title.setText(R.string.stunt_prog);
+                break;
+            case "iUgzznPsePB":
+                title.setText(R.string.other_prog);
+                break;
+
+        }
+        //title.setText(R.string.an_title);
 
         // Composite Disposable instance is required for creating new events in the
         // background

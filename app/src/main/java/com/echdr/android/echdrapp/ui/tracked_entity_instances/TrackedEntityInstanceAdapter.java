@@ -22,6 +22,7 @@ import com.echdr.android.echdrapp.ui.base.ListItemWithSyncHolder;
 import com.echdr.android.echdrapp.ui.tracker_import_conflicts.TrackerImportConflictsAdapter;
 
 import org.hisp.dhis.android.core.arch.call.D2Progress;
+import org.hisp.dhis.android.core.arch.repositories.scope.RepositoryScope;
 import org.hisp.dhis.android.core.common.State;
 import org.hisp.dhis.android.core.enrollment.Enrollment;
 import org.hisp.dhis.android.core.enrollment.EnrollmentStatus;
@@ -123,19 +124,29 @@ public class TrackedEntityInstanceAdapter extends PagedListAdapter<TrackedEntity
 
         setState(trackedEntityInstance.state(), holder.syncIcon);
 
-        Enrollment enroll = Sdk.d2().enrollmentModule().enrollments()
+        /*Enrollment enroll = Sdk.d2().enrollmentModule().enrollments()
                 .byTrackedEntityInstance().eq(trackedEntityInstance.uid())
                 .byProgram().eq("hM6Yt9FQL0n")
                 .one().blockingGet();
+        */
+        //TODO make thr latest enrollment
+        List<Enrollment> enroll = Sdk.d2().enrollmentModule().enrollments()
+                .byTrackedEntityInstance().eq(trackedEntityInstance.uid())
+                .byProgram().eq("hM6Yt9FQL0n")
+                .orderByCreated(RepositoryScope.OrderByDirection.DESC)
+                .blockingGet();
+
         if (enroll != null)
         {
-            if(enroll.status().equals(EnrollmentStatus.ACTIVE))
+            Enrollment otherEnrollmentID =  enroll.get(0);
+
+            if(otherEnrollmentID.status().equals(EnrollmentStatus.ACTIVE))
             {
-                holder.subtitle1.setText(enroll.status().toString());
+                holder.subtitle1.setText(otherEnrollmentID.status().toString());
                 holder.subtitle1.setTextColor(Color.rgb(34,139, 34));
             }else
             {
-                holder.subtitle1.setText(enroll.status().toString());
+                holder.subtitle1.setText(otherEnrollmentID.status().toString());
                 holder.subtitle1.setTextColor(Color.RED);
             }
         }
