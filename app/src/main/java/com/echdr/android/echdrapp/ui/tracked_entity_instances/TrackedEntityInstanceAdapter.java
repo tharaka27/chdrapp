@@ -137,22 +137,7 @@ public class TrackedEntityInstanceAdapter extends PagedListAdapter<TrackedEntity
                 .byProgram().eq("hM6Yt9FQL0n")
                 .orderByCreated(RepositoryScope.OrderByDirection.DESC)
                 .blockingGet();
-
-
-        // TODO get person name
-        String currentValue = "";
-        try {
-            currentValue = Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
-                    .byTrackedEntityInstance().eq(trackedEntityInstance.uid())
-                    .byTrackedEntityAttribute().eq("zh4hiarsSD5")
-                    .one().blockingGet().value();
-
-            System.out.println("[INFO] Processing child: " + currentValue);
-        }catch (Exception e)
-        {
-            System.out.print("[Error] in TEI Adapter " );
-            System.out.println(e.toString());
-        }
+        
 
         if (enroll != null)
         {
