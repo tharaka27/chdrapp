@@ -129,26 +129,41 @@ public class TrackedEntityInstanceAdapter extends PagedListAdapter<TrackedEntity
                 .byProgram().eq("hM6Yt9FQL0n")
                 .one().blockingGet();
         */
-        //TODO make thr latest enrollment
+        //TODO make the latest enrollment
         List<Enrollment> enroll = Sdk.d2().enrollmentModule().enrollments()
                 .byTrackedEntityInstance().eq(trackedEntityInstance.uid())
                 .byProgram().eq("hM6Yt9FQL0n")
                 .orderByCreated(RepositoryScope.OrderByDirection.DESC)
                 .blockingGet();
 
+        // TODO get person name
+        String currentValue = Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
+                .byTrackedEntityInstance().eq(trackedEntityInstance.uid())
+                .byTrackedEntityAttribute().eq("zh4hiarsSD5")
+                .one().blockingGet().value();
+
+        System.out.println("[INFO] Processing child: " + currentValue );
+
         if (enroll != null)
         {
-            Enrollment otherEnrollmentID =  enroll.get(0);
-
-            if(otherEnrollmentID.status().equals(EnrollmentStatus.ACTIVE))
-            {
-                holder.subtitle1.setText(otherEnrollmentID.status().toString());
-                holder.subtitle1.setTextColor(Color.rgb(34,139, 34));
-            }else
-            {
-                holder.subtitle1.setText(otherEnrollmentID.status().toString());
-                holder.subtitle1.setTextColor(Color.RED);
+            try {
+                Enrollment otherEnrollmentID = enroll.get(0);
+                if(otherEnrollmentID.status().equals(EnrollmentStatus.ACTIVE))
+                {
+                    holder.subtitle1.setText(otherEnrollmentID.status().toString());
+                    holder.subtitle1.setTextColor(Color.rgb(34,139, 34));
+                }else
+                {
+                    holder.subtitle1.setText(otherEnrollmentID.status().toString());
+                    holder.subtitle1.setTextColor(Color.RED);
+                }
             }
+            catch (Exception e)
+            {
+                holder.subtitle1.setText("");
+
+            }
+
         }
             //holder.subtitle1.setText(enroll.status().toString());
 

@@ -2,6 +2,7 @@ package com.echdr.android.echdrapp.ui.enrollment_form;
 
 import static android.text.TextUtils.isEmpty;
 
+
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -26,11 +27,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.echdr.android.echdrapp.R;
 import com.echdr.android.echdrapp.data.Sdk;
+import com.echdr.android.echdrapp.data.service.ActivityStarter;
 import com.echdr.android.echdrapp.data.service.forms.EnrollmentFormService;
 import com.echdr.android.echdrapp.data.service.forms.EventFormService;
 import com.echdr.android.echdrapp.data.service.forms.FormField;
 import com.echdr.android.echdrapp.data.service.forms.RuleEngineService;
 import com.echdr.android.echdrapp.ui.event_form.SupplementaryIndicationActivity;
+import com.echdr.android.echdrapp.ui.events.EventsActivity;
+import com.echdr.android.echdrapp.ui.tracked_entity_instances.ChildDetailsActivity;
 
 import org.apache.commons.lang3.StringUtils;
 import org.hisp.dhis.android.core.enrollment.Enrollment;
@@ -1054,7 +1058,23 @@ public class EnrollmentFormModified extends AppCompatActivity {
         saveDataElement("LpvdWM4YuRq", length.getText().toString());
 
 
-        finishEnrollment();
+        //finishEnrollment();
+        /*
+        ActivityStarter.startActivity(
+                this,
+                ChildDetailsActivity.getTrackedEntityInstancesActivityIntent(
+                        this,
+                        trackedEntityInstance.uid()
+                ),true
+        );
+         */
+        ActivityStarter.startActivity(
+                this,
+                ChildDetailsActivity.getTrackedEntityInstancesActivityIntent(
+                        this,
+                        teiUid
+                ),true
+        );
     }
 
     private void selectDateRegistration(int year, int month, int day)
@@ -1143,7 +1163,18 @@ public class EnrollmentFormModified extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+
         EnrollmentFormService.getInstance().delete();
+
+        try {
+            Sdk.d2().trackedEntityModule().trackedEntityInstances().uid(teiUid).blockingDelete();
+
+        } catch (D2Error d2Error) {
+            d2Error.printStackTrace();
+            System.out.println("[INFO] Tracked identity delete failed");
+        }
+
+
         setResult(RESULT_CANCELED);
         finish();
     }

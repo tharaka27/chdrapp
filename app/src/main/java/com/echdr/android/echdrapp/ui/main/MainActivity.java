@@ -60,6 +60,7 @@ import io.reactivex.schedulers.Schedulers;
 public class MainActivity extends AppCompatActivity{
 
     private CompositeDisposable compositeDisposable;
+    private final int ENROLLMENT_RQ = 1210;
 
     private Context context;
     private TextView numAllregistrations;
@@ -285,6 +286,15 @@ public class MainActivity extends AppCompatActivity{
                         })
                         .doOnError(Throwable::printStackTrace)
                         .subscribe());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        /*
+        if(requestCode == ENROLLMENT_RQ && resultCode == RESULT_OK){
+
+        }*/
+        super.onActivityResult(requestCode,resultCode,data);
     }
 
 
