@@ -252,6 +252,7 @@ public class TrackedEntityInstancesActivity extends ListActivity {
         try{
                 teiRepository = Sdk.d2().trackedEntityModule()
                         .trackedEntityInstances()
+                        .byDeleted().isFalse()
                         .withTrackedEntityAttributeValues();
         }
         catch (Exception e){
