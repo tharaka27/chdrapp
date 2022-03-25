@@ -201,6 +201,8 @@ public class AnthropometryActivityNew extends AppCompatActivity {
                 }
             });
 
+
+
             String date_string = "";
             setListener = new DatePickerDialog.OnDateSetListener() {
                 @Override
@@ -210,6 +212,11 @@ public class AnthropometryActivityNew extends AppCompatActivity {
                     String date_string = year + "-" + String.format("%02d", month) + "-" + String.format("%02d", dayOfMonth) ;
                     textView_Date.setText(date_string);
                     setAgeInWeeks();
+
+                    // make sure weight and height is set after date is picked
+                    // unless color changes will not work properly
+                    weightTxt.setEnabled(true);
+                    heightTxt.setEnabled(true);
                 }
             };
 
@@ -300,8 +307,7 @@ public class AnthropometryActivityNew extends AppCompatActivity {
                 }
             });
 
-
-
+            
             plotGraph();
             plotDataElements();
             drawLineGraph();

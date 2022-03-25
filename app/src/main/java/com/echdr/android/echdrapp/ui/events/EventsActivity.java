@@ -216,8 +216,8 @@ public class EventsActivity extends ListActivity {
                         System.out.println("[DELETE] language is " + language);
 
                         if (language.equals("en")){
-                            stages_names.add("Management");
-                            map.put("Management", "Management");
+                            stages_names.add("Management Status");
+                            map.put("Management Status", "Management");
                             stages_names.add("Intervention");
                             map.put("Intervention", "Intervention");
                             stages_names.add("Outcome");
@@ -247,7 +247,7 @@ public class EventsActivity extends ListActivity {
                     {
                         if (language.equals("en")){
                             stages_names.add("Anthropometry");
-                            map.put("Management", "Anthropometry");
+                            map.put("Anthropometry", "Anthropometry");
                         }
                         else if(language.equals("si"))
                         {
