@@ -187,7 +187,7 @@ public class TrackedEntityInstancesActivity extends ListActivity {
                 //.byOrgUnits().in(organisationUids)
                 //.byOrgUnitMode().eq(OrganisationUnitMode.DESCENDANTS)
                 .byProgram().eq(savedProgram)
-                .byEnrollmentStatus().eq(EnrollmentStatus.COMPLETED)
+                //.byEnrollmentStatus().eq(EnrollmentStatus.COMPLETED)
                 .byFilter(savedAttribute).like(name)
                 .getPaged(100);
 
