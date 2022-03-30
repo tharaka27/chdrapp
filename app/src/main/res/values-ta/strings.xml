@@ -187,6 +187,19 @@
     <string name="oth_reason_overweight">அதிக எடை / உடல் பருமன்</string>
     <string name="oth_reason_stuning">ஸ்டண்டிங்</string>
 
+    <!-- other - intervention-poverty -->
+    <string name="oth_inter_poverty_title">தலையீடு - வறுமை மற்றும் மோசமான வருமான மேலாண்மை</string>
+    <string name="oth_inter_povert_date">தலையீடு தேதி</string>
+    <string name="oth_inter_povert_training">விவசாயம் சார்ந்த தொழில்முனைவோர் பயிற்சி</string>
+    <string name="oth_inter_povert_support">விவசாயம் சார்ந்த வாழ்வாதார ஆதரவு</string>
+    <string name="oth_inter_povert_livelihood">வாழ்வாதாரத்தை நிறுவ சொத்து பரிமாற்றம்</string>
+    <string name="oth_inter_povert_polu_support">வணிக கால்நடை மற்றும் கோழி ஆதரவு</string>
+    <string name="oth_inter_povert_empower_training">அதிகாரமளிக்கும் பயிற்சி</string>
+    <string name="oth_inter_povert_financial">நிதி கல்வியறிவு பயிற்சி</string>
+    <string name="oth_inter_povert_samurdhi">சமுர்த்தி வழங்கல்</string>
+    <string name="oth_inter_povert_samurdhi_bank">சமுர்த்தி வங்கி கடன் வழங்குதல்</string>
+    <string name="oth_inter_povert_comm_cultivation">வணிக சாகுபடிக்கு சமூக நீர் சேகரிப்பை ஆதரிக்கவும்</string>
+    <string name="oth_inter_povert_market_access">மதிப்பு சங்கிலி ஆதரவு மற்றும் அதிகரித்த சந்தை அணுகல்</string>
 
 
     <!-- other - risk factor evaluation -->
@@ -198,6 +211,33 @@
     <string name="oth_risk_child">குழந்தை பராமரிப்பு போதுமானதாக இல்லை</string>
     <string name="oth_risk_commun">தொற்று நோய்களின் அதிக பாதிப்பு</string>
 
+    <!-- other - food-insecurity -->
+    <string name="oth_food_insecurity_title">உணவுப் பாதுகாப்பின்மை</string>
+    <string name="oth_food_insecurity_date">தலையீடு தேதி</string>
+    <string name="oth_food_insecurity_agri_training">விவசாய திறன் பயிற்சி / தொழில்நுட்ப ஆதரவு</string>
+    <string name="oth_food_insecurity_live_stock">வீடுகளுக்கான நேரடி இருப்பு மற்றும் கோழி ஆதரவு திட்டங்கள்</string>
+    <string name="oth_food_insecurity_support_gardening">வீட்டுத்தோட்டத்தை ஆதரிக்கவும்</string>
+    <string name="oth_food_insecurity_support_water">வீட்டு நீர் சேகரிப்பு / நீர் பாசன திட்டங்களை ஆதரிக்கவும்</string>
+    <string name="oth_food_insecurity_training">அறுவடைக்குப் பின் ஏற்படும் இழப்பைக் குறைக்க பயிற்சி</string>
+
+
+    <!-- other - Inadequate water, sanitation and Hygiene-->
+    <string name="oth_indequate_title">போதுமான தண்ணீர், சுகாதாரம் மற்றும் சுகாதாரம்</string>
+    <string name="oth_indequate_date">தலையீடு தேதி</string>
+    <string name="oth_indequate_hand_wash">கை கழுவும் வசதிகளை மதிப்பிடுங்கள்</string>
+    <string name="oth_inadequate_toilet_facility">உள்ளூர் தரத்திற்கு எதிராக கழிப்பறை வசதியை மதிப்பிடுங்கள்</string>
+    <string name="oth_inadequate_awareness_drinking">பாதுகாப்பான முறையில் நிர்வகிக்கப்படும் குடிநீர் குறித்த விழிப்புணர்வு</string>
+    <string name="oth_inadequate_awareness_wash">வாஷ் நடைமுறைகள் பற்றிய விழிப்புணர்வு</string>
+    <string name="oth_inadequate_enrolment_house">வீடு கட்டுதல்/புதுப்பித்தல் திட்டத்தில் பதிவு செய்தல்</string>
+    <string name="oth_indequate_establish_water">சமூக நீர் வழங்கல் திட்டத்திற்கு நீர் சுத்திகரிப்பு முறையை நிறுவுதல்</string>
+    <string name="oth_indequate_imporve_water">தற்போதுள்ள நீர் ஆதாரத்தை மேம்படுத்துதல் (பாதுகாக்கப்படாதது முதல் பாதுகாக்கப்பட்டது வரை)</string>
+    <string name="oth_indequate_alternative_water">மாற்று நீர் ஆதாரங்களை அறிமுகப்படுத்துதல் (மழை நீர் சேகரிப்பு)</string>
+    <string name="oth_inadequate_household_water">வீட்டு நீர் சுத்திகரிப்பு முறைகளை அறிமுகப்படுத்துங்கள்</string>
+    <string name="oth_inadequate_monitor_sanitation">பாதுகாப்பாக நிர்வகிக்கப்படும் சுகாதாரத்தை கண்காணிக்கவும்</string>
+    <string name="oth_inadequate_provide_safe_water">பாதுகாப்பான நீர் வழங்கல் அமைப்புகளுக்கான அணுகலை வழங்குதல்</string>
+    <string name="oth_inadequate_provide_improved">மேம்படுத்தப்பட்ட சுகாதாரம்/கழிவறை வசதிகளை வழங்குதல்</string>
+    <string name="oth_inadequate_renovation">குழாய் கிணறு சீரமைப்பு</string>
+    <string name="oth_inadequate_water_quality">நீர் தர கண்காணிப்பு</string>
 
     <!-- overweight - intervention -->
     <string name="over_inter_title">அதிக எடை / உடல் பருமன் தலையீடு</string>
@@ -333,8 +373,14 @@
         <item>ஆண்</item>
         <item>பெண்</item>
         <item>குறிப்பிடப்படாதது</item>
+
     </string-array>
 
+    <string-array name="sex_english_only">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Unspecified</item>
+    </string-array>
 
     <string-array name="ethnicity">
         <item>சிங்களவர்கள்</item>
@@ -344,6 +390,13 @@
         <item>மற்றவைகள்</item>
     </string-array>
 
+    <string-array name="ethinicity_english_only">
+        <item>Sinhalese</item>
+        <item>Tamil</item>
+        <item>Muslim</item>
+        <item>Burgher</item>
+        <item>Others</item>
+    </string-array>
 
 
     <string-array name="highestEdu">    //need to update in both languages
@@ -387,6 +440,14 @@
         <item>விஷ்ரமிக்காய்</item>
     </string-array>
 
+    <string-array name="occupation_english_only">
+        <item>Homemaker</item>
+        <item>Student</item>
+        <item>Awaiting/looking for employment</item>
+        <item>Self employment</item>
+        <item>Paid employment</item>
+        <item>Retired</item>
+    </string-array>
 
 
     <string-array name="relationship">

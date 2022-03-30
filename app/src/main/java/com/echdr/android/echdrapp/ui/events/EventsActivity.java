@@ -23,6 +23,7 @@ import com.echdr.android.echdrapp.ui.event_form.AnthropometryActivity;
 import com.echdr.android.echdrapp.ui.event_form.AnthropometryActivityNew;
 import com.echdr.android.echdrapp.ui.event_form.EventFormActivity;
 import com.echdr.android.echdrapp.ui.event_form.OtherEvaluationActivity;
+import com.echdr.android.echdrapp.ui.event_form.OtherInterventionPoverty;
 import com.echdr.android.echdrapp.ui.event_form.OtherReasonForActivity;
 import com.echdr.android.echdrapp.ui.event_form.OtherReferredForInterventionActivity;
 import com.echdr.android.echdrapp.ui.event_form.OverweightIntervensionActivity;
@@ -487,7 +488,18 @@ public class EventsActivity extends ListActivity {
                                                                     selectedChild);
                                                         }
 
-                                                        /*
+                                                        else if(stageSelected.equals("m7IDhrn3y22")) // other - reason for enrollment
+                                                        {
+                                                            return OtherReasonForActivity.getFormActivityIntent(
+                                                                    EventsActivity.this,
+                                                                    eventUid,
+                                                                    selectedProgram,
+                                                                    Sdk.d2().organisationUnitModule().organisationUnits()
+                                                                            .one().blockingGet().uid(),
+                                                                    OtherReasonForActivity.FormType.CREATE,
+                                                                    selectedChild);
+                                                        }
+
                                                         else if(stageSelected.equals("y2imfIjE4zt")) // other - referred for intervention
                                                         {
                                                             return OtherReferredForInterventionActivity.getFormActivityIntent(
@@ -500,7 +512,20 @@ public class EventsActivity extends ListActivity {
                                                                     selectedChild);
                                                         }
 
-                                                         */
+
+                                                        else if(stageSelected.equals("bXWTWS8lkbv")) // other - intervention - Poverty & Poor Income Management
+                                                        {
+                                                            return OtherInterventionPoverty.getFormActivityIntent(
+                                                                    EventsActivity.this,
+                                                                    eventUid,
+                                                                    selectedProgram,
+                                                                    Sdk.d2().organisationUnitModule().organisationUnits()
+                                                                            .one().blockingGet().uid(),
+                                                                    OtherInterventionPoverty.FormType.CREATE,
+                                                                    selectedChild);
+                                                        }
+
+
 
                                                         else if(stageSelected.equals("TC7YSoNEUag")) // overweight - management
                                                         {

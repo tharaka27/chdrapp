@@ -21,6 +21,8 @@ import com.echdr.android.echdrapp.ui.event_form.AnthropometryActivity;
 import com.echdr.android.echdrapp.ui.event_form.AnthropometryActivityNew;
 import com.echdr.android.echdrapp.ui.event_form.EventFormActivity;
 import com.echdr.android.echdrapp.ui.event_form.OtherEvaluationActivity;
+import com.echdr.android.echdrapp.ui.event_form.OtherFoodInsecurityActivity;
+import com.echdr.android.echdrapp.ui.event_form.OtherInterventionPoverty;
 import com.echdr.android.echdrapp.ui.event_form.OtherReasonForActivity;
 import com.echdr.android.echdrapp.ui.event_form.OtherReferredForInterventionActivity;
 import com.echdr.android.echdrapp.ui.event_form.OverweightIntervensionActivity;
@@ -99,6 +101,7 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
 
     @Override
     public void onBindViewHolder(@NonNull ListItemWithSyncHolder holder, int position) {
+
         Event event = getItem(position);
         List<TrackedEntityDataValue> values = new ArrayList<>(event.trackedEntityDataValues());
 
@@ -225,7 +228,33 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
                         ), false
                 );
             }
-            /*
+            else if(event.programStage().equals("bXWTWS8lkbv")) // other - Poverty & Poor Income Management
+            {
+                ActivityStarter.startActivity(activity,
+                        OtherInterventionPoverty.getFormActivityIntent(
+                                activity,
+                                event.uid(),
+                                event.program(),
+                                event.organisationUnit(),
+                                OtherInterventionPoverty.FormType.CHECK,
+                                selectedChild
+                        ), false
+                );
+            }
+            else if(event.programStage().equals("m7IDhrn3y22")) // other - food insercurity
+            {
+                ActivityStarter.startActivity(activity,
+                        OtherFoodInsecurityActivity.getFormActivityIntent(
+                                activity,
+                                event.uid(),
+                                event.program(),
+                                event.organisationUnit(),
+                                OtherFoodInsecurityActivity.FormType.CHECK,
+                                selectedChild
+                        ), false
+                );
+            }
+
             else if(event.programStage().equals("y2imfIjE4zt")) // other - intervention
             {
                 ActivityStarter.startActivity(activity,
@@ -240,7 +269,6 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
                 );
             }
 
-             */
             else if(event.programStage().equals("TC7YSoNEUag")) // overweight - management
             {
                 ActivityStarter.startActivity(activity,
@@ -398,6 +426,8 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
                 );
             }
         });
+
+
     }
 
 

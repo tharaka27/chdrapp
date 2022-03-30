@@ -91,7 +91,7 @@ public class OtherReferredForInterventionActivity extends AppCompatActivity {
         checkbox_Poor_Income  = findViewById(R.id.poor_income_Checkbox);
         checkbox_Food_Insecurity = findViewById(R.id.food_insecurity_Checkbox);
         checkbox_Inadequate_Water  = findViewById(R.id.inadequate_water_Checkbox);
-        saveButton         = findViewById(R.id.otherrefferedForSave);
+        //saveButton         = findViewById(R.id.otherrefferedForSave);
 
         context = this;
 
@@ -114,6 +114,7 @@ public class OtherReferredForInterventionActivity extends AppCompatActivity {
         final int month = Integer.parseInt(s_monthNumber);
         final int day = Integer.parseInt(s_day);
 
+        /*
         textView_Date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -132,6 +133,8 @@ public class OtherReferredForInterventionActivity extends AppCompatActivity {
             }
         });
 
+         */
+
         setListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -142,9 +145,11 @@ public class OtherReferredForInterventionActivity extends AppCompatActivity {
                 textView_Date.setText(date);
             }
         };
+        System.out.println("[INFO] Outside check other reffered for intervention");
 
         if(formType == OtherReferredForInterventionActivity.FormType.CHECK)
         {
+            System.out.println("[INFO] Inside check other reffered for intervention");
             System.out.println(getDataElement("eS218sAeBrF")); // food insecurity
             System.out.println(getDataElement("u42hzwuTyyD")); // inadequate water sanitation
             System.out.println(getDataElement("VjMbDm82Aoi")); // poor income
@@ -169,6 +174,9 @@ public class OtherReferredForInterventionActivity extends AppCompatActivity {
                 {
                     checkbox_Poor_Income.setChecked(true);
                 }
+                else{
+                    checkbox_Poor_Income.setChecked(false);
+                }
             }
             catch (Exception e)
             {
@@ -180,6 +188,9 @@ public class OtherReferredForInterventionActivity extends AppCompatActivity {
                 if(getDataElement("eS218sAeBrF").equals("true"))
                 {
                     checkbox_Food_Insecurity.setChecked(true);
+                }
+                else {
+                    checkbox_Food_Insecurity.setChecked(false);
                 }
             }
             catch (Exception e)
@@ -193,6 +204,10 @@ public class OtherReferredForInterventionActivity extends AppCompatActivity {
                 {
                     checkbox_Inadequate_Water.setChecked(true);
                 }
+                else
+                {
+                    checkbox_Inadequate_Water.setChecked(false);
+                }
             }
             catch (Exception e)
             {
@@ -204,6 +219,7 @@ public class OtherReferredForInterventionActivity extends AppCompatActivity {
             textView_Date.setText("Click here to set Date");
         }
 
+        /*
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -211,6 +227,8 @@ public class OtherReferredForInterventionActivity extends AppCompatActivity {
                 saveElements();
             }
         });
+
+         */
 
         if (EventFormService.getInstance().init(
                 Sdk.d2(),
@@ -264,6 +282,7 @@ public class OtherReferredForInterventionActivity extends AppCompatActivity {
         return currentValue;
     }
 
+
     private void saveDataElement(String dataElement, String value){
         TrackedEntityDataValueObjectRepository valueRepository;
         try {
@@ -309,6 +328,8 @@ public class OtherReferredForInterventionActivity extends AppCompatActivity {
         }
     }
 
+
+
     private void saveElements()
     {
         if(textView_Date.getText().toString().equals("Click here to set Date")||
@@ -330,6 +351,8 @@ public class OtherReferredForInterventionActivity extends AppCompatActivity {
             alert11.show();
             return;
         }
+
+
 
 
         // un-enroll from the program
@@ -407,6 +430,7 @@ public class OtherReferredForInterventionActivity extends AppCompatActivity {
     {
         return DayofMonth + "/" + month + "/" + year;
     }
+
 
 }
 

@@ -188,7 +188,46 @@
     <string name="oth_reason_overweight">Overweight/ Obesity</string>
     <string name="oth_reason_stuning">Stunting</string>
 
+    <!-- other - intervention-poverty -->
+    <string name="oth_inter_poverty_title">Intervention - Poverty and Poor Income Management</string>
+    <string name="oth_inter_povert_date">Date of Intervention</string>
+    <string name="oth_inter_povert_training">Agriculture based entrepreneur training</string>
+    <string name="oth_inter_povert_support">Agriculture based livelihood support</string>
+    <string name="oth_inter_povert_livelihood">Asset transfer to establish livelihood</string>
+    <string name="oth_inter_povert_polu_support">Commercial livestock and poultry support</string>
+    <string name="oth_inter_povert_empower_training">Empowerment training</string>
+    <string name="oth_inter_povert_financial">Financial literacy Training</string>
+    <string name="oth_inter_povert_samurdhi">Provision of Samurdhi</string>
+    <string name="oth_inter_povert_samurdhi_bank">Provision of Samurdhi bank loan</string>
+    <string name="oth_inter_povert_comm_cultivation">Support community water harvesting for commercial cultivation</string>
+    <string name="oth_inter_povert_market_access">Value chain support and increased market access</string>
 
+    <!-- other - food-insecurity -->
+    <string name="oth_food_insecurity_title">Food Insecurity</string>
+    <string name="oth_food_insecurity_date">Date of Intervention</string>
+    <string name="oth_food_insecurity_agri_training">Agriculture skills training/ technical support</string>
+    <string name="oth_food_insecurity_live_stock">Live stock and poultry support projects for households</string>
+    <string name="oth_food_insecurity_support_gardening">Support home gardening</string>
+    <string name="oth_food_insecurity_support_water">Support household water harvesting /water irrigation projects</string>
+    <string name="oth_food_insecurity_training">Training to reduce post harvest loss</string>
+
+    <!-- other - Inadequate water, sanitation and Hygiene-->
+    <string name="oth_indequate_title">Inadequate water, sanitation and Hygiene</string>
+    <string name="oth_indequate_date">Date of Intervention</string>
+    <string name="oth_indequate_hand_wash">Assess hand washing facilities</string>
+    <string name="oth_inadequate_toilet_facility">Assess toilet facility against local standards</string>
+    <string name="oth_inadequate_awareness_drinking">Awareness on safely managed drinking water</string>
+    <string name="oth_inadequate_awareness_wash">Awareness on WASH practices</string>
+    <string name="oth_inadequate_enrolment_house">Enrolment to house construction/renovation programme</string>
+    <string name="oth_indequate_establish_water">Establish water treatment method to community water supply scheme</string>
+    <string name="oth_indequate_imporve_water">Improve existing water source(from unprotected to protected)</string>
+    <string name="oth_indequate_alternative_water">Introduce alternative water sources (rain water harvesting)</string>
+    <string name="oth_inadequate_household_water">Introduce household water treatment methods</string>
+    <string name="oth_inadequate_monitor_sanitation">Monitor safely managed sanitation</string>
+    <string name="oth_inadequate_provide_safe_water">Provide access to safe water supply systems</string>
+    <string name="oth_inadequate_provide_improved">Provide improved sanitation/latrine facilities</string>
+    <string name="oth_inadequate_renovation">Renovation of tube well</string>
+    <string name="oth_inadequate_water_quality">Water quality monitoring</string>
 
     <!-- other - risk factor evaluation -->
     <string name="oth_risk_title">Risk Factor Evaluation</string>

@@ -186,6 +186,19 @@
     <string name="oth_reason_overweight">අධික බර / තරබාරුකම</string>
     <string name="oth_reason_stuning">මිටි බව</string>
 
+    <!-- other - intervention-poverty -->
+    <string name="oth_inter_poverty_title">මැදිහත්වීම - දරිද්රතාවය සහ දුර්වල ආදායම් කළමනාකරණය</string>
+    <string name="oth_inter_povert_date">මැදිහත්වීමේ දිනය</string>
+    <string name="oth_inter_povert_training">කෘෂිකර්මය පදනම් කරගත් ව්‍යවසායක පුහුණුව</string>
+    <string name="oth_inter_povert_support">කෘෂිකර්මාන්තය පදනම් කරගත් ජීවනෝපාය ආධාර</string>
+    <string name="oth_inter_povert_livelihood">ජීවනෝපාය ස්ථාපිත කිරීම සඳහා වත්කම් මාරු කිරීම</string>
+    <string name="oth_inter_povert_polu_support">වාණිජ පශු සම්පත් සහ කුකුළු ආධාර</string>
+    <string name="oth_inter_povert_empower_training">සවිබල ගැන්වීමේ පුහුණුව</string>
+    <string name="oth_inter_povert_financial">මූල්ය සාක්ෂරතා පුහුණුව</string>
+    <string name="oth_inter_povert_samurdhi">සමෘද්ධි ලබාදීම</string>
+    <string name="oth_inter_povert_samurdhi_bank">සමෘද්ධි බැංකු ණය ලබාදීම</string>
+    <string name="oth_inter_povert_comm_cultivation">වාණිජ වගාව සඳහා ප්‍රජා ජල අස්වනු නෙලීමට සහාය වීම</string>
+    <string name="oth_inter_povert_market_access">අගය දාම සහාය සහ වෙළඳපල ප්‍රවේශය වැඩි කිරීම</string>
 
     <!-- other - risk factor evaluation -->
     <string name="oth_risk_title">අවදානම් සාධක ඇගයීම</string>
@@ -195,6 +208,37 @@
     <string name="oth_risk_water">ප්රමාණවත් ජල සනීපාරක්ෂාව</string>
     <string name="oth_risk_child">ළමා රැකවරණය ප්රමාණවත් නොවීම</string>
     <string name="oth_risk_commun">බෝවන රෝගවල ඉහළ පැතිරීම</string>
+
+
+    <!-- other - food-insecurity -->
+    <string name="oth_food_insecurity_title">ආහාර අනාරක්ෂිත බව</string>
+    <string name="oth_food_insecurity_date">මැදිහත්වීමේ දිනය</string>
+    <string name="oth_food_insecurity_agri_training">කෘෂිකාර්මික කුසලතා පුහුණුව / තාක්ෂණික සහාය</string>
+    <string name="oth_food_insecurity_live_stock">කුටුම්භ සඳහා සජීවී තොග සහ කුකුළු ආධාර ව්‍යාපෘති</string>
+    <string name="oth_food_insecurity_support_gardening">ගෙවතු වගාවට සහය වන්න</string>
+    <string name="oth_food_insecurity_support_water">ගෘහස්ථ ජල අස්වැන්න / ජල වාරිමාර්ග ව්‍යාපෘති සඳහා සහාය වීම</string>
+    <string name="oth_food_insecurity_training">පසු අස්වනු හානිය අවම කිරීම සඳහා පුහුණු කිරීම</string>
+
+
+
+    <!-- other - Inadequate water, sanitation and Hygiene-->
+    <string name="oth_indequate_title">ප්රමාණවත් ජලය, සනීපාරක්ෂාව සහ සනීපාරක්ෂාව</string>
+    <string name="oth_indequate_date">මැදිහත්වීමේ දිනය</string>
+    <string name="oth_indequate_hand_wash">අත් සේදීමේ පහසුකම් තක්සේරු කරන්න</string>
+    <string name="oth_inadequate_toilet_facility">දේශීය ප්‍රමිතීන්ට එරෙහිව වැසිකිළි පහසුකම් තක්සේරු කරන්න</string>
+    <string name="oth_inadequate_awareness_drinking">ආරක්ෂිතව කළමනාකරණය කළ පානීය ජලය පිළිබඳ දැනුවත් කිරීම</string>
+    <string name="oth_inadequate_awareness_wash">වොෂ් පිළිවෙත් පිළිබඳ දැනුවත් කිරීම</string>
+    <string name="oth_inadequate_enrolment_house">නිවාස ඉදිකිරීමේ/අලුත්වැඩියා කිරීමේ වැඩසටහනට බඳවා ගැනීම</string>
+    <string name="oth_indequate_establish_water">ප්‍රජා ජල සම්පාදන යෝජනා ක්‍රමයට ජල පිරිපහදු ක්‍රමයක් ඇති කිරීම</string>
+    <string name="oth_indequate_imporve_water">පවතින ජල මූලාශ්‍රය වැඩිදියුණු කිරීම (අනාරක්ෂිත සිට ආරක්ෂිත දක්වා)</string>
+    <string name="oth_indequate_alternative_water">විකල්ප ජල මූලාශ්‍ර හඳුන්වා දීම (වැසි ජලය රැස් කිරීම)</string>
+    <string name="oth_inadequate_household_water">ගෘහස්ථ ජල පිරිපහදු ක්රම හඳුන්වා දෙන්න</string>
+    <string name="oth_inadequate_monitor_sanitation">ආරක්ෂිතව කළමනාකරණය කළ සනීපාරක්ෂාව නිරීක්ෂණය කරන්න</string>
+    <string name="oth_inadequate_provide_safe_water">ආරක්ෂිත ජල සැපයුම් පද්ධති සඳහා ප්රවේශය ලබා දීම</string>
+    <string name="oth_inadequate_provide_improved">වැඩිදියුණු කළ සනීපාරක්ෂක / වැසිකිළි පහසුකම් සැපයීම</string>
+    <string name="oth_inadequate_renovation">නල ළිඳ ප්‍රතිසංස්කරණය කිරීම</string>
+    <string name="oth_inadequate_water_quality">ජල තත්ත්ව අධීක්ෂණය</string>
+
 
     <!-- overweight - intervention -->
     <string name="over_inter_title">අධික බර / තරබාරුකම සඳහා මැදිහත් වීම</string>
@@ -241,7 +285,7 @@
     <string name="supp_indication_entollment">ඇතුළත් වීමේ වර්ගය</string>
 
     <!-- supplementory - intervention -->
-    <string name="supp_intervention_title">අතිරේක ආහාර ලබාදීම මැදිහත් වීම</string>
+    <string name="supp_intervention_title">අතිරේක ආහාර ලබාදීම සඳහා  මැදිහත් වීම</string>
     <string name="supp_intervention_date">මැදිහත්වීමේ දිනය</string>
     <string name="supp_intervention_on_triposha">ත්‍රිපෝෂ මත</string>
     <string name="supp_intervention_packets">ලබා දී ඇති ත්‍රිපෝෂ පැකට් ගණන</string>
@@ -316,12 +360,26 @@
         <item>නිශ්චිතව දක්වා නැත</item>
     </string-array>
 
+    <string-array name="sex_english_only">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Unspecified</item>
+    </string-array>
+
     <string-array name="ethnicity">
         <item>සිංහල</item>
         <item>දෙමළ</item>
         <item>මුස්ලිම්</item>
         <item>බර්ගර්</item>
         <item>අන් අය</item>
+    </string-array>
+
+    <string-array name="ethinicity_english_only">
+        <item>Sinhalese</item>
+        <item>Tamil</item>
+        <item>Muslim</item>
+        <item>Burgher</item>
+        <item>Others</item>
     </string-array>
 
     <string-array name="highestEdu">    //need to update in both languages
@@ -333,10 +391,25 @@
         <item>උසස් අධ්‍යාපනය (ඩිප්ලෝමා, උපාධිය ආදිය)</item>
     </string-array>
 
+    <string-array name="eduLevel_english_only">
+        <item>No formal schooling</item>
+        <item>Primary education (grade 1 to 5)</item>
+        <item>Secondary education (grade 6 to 10)</item>
+        <item>GCE Ordinary Level (O/L) or equal</item>
+        <item>GCE Advanced Level (A/L) or equal</item>
+        <item>Higher education (diploma, degree etc)</item>
+    </string-array>
+
     <string-array name="sector">
         <item>ගම්බද</item>
         <item>නාගරික</item>
         <item>වතු</item>
+    </string-array>
+
+    <string-array name="sector_english_only">
+        <item>Rural</item>
+        <item>Urban</item>
+        <item>Estate</item>
     </string-array>
 
     <string-array name="occupation">
@@ -348,6 +421,15 @@
         <item>විශ්‍රාමිකයි</item>
     </string-array>
 
+    <string-array name="occupation_english_only">
+        <item>Homemaker</item>
+        <item>Student</item>
+        <item>Awaiting/looking for employment</item>
+        <item>Self employment</item>
+        <item>Paid employment</item>
+        <item>Retired</item>
+    </string-array>
+
     <string-array name="relationship">
         <item>මව</item>
         <item>පියා</item>
@@ -357,6 +439,14 @@
     </string-array>
 
 
+    <string-array name="relationship_english_only">
+        <item>Mother</item>
+        <item>Father</item>
+        <item>Grand parents</item>
+        <item>other close relatives</item>
+        <item>others</item>
+    </string-array>
+
     <!--    Child registration arrays ends here-->
 
     <!--    Supplementary intervention spinner-->
@@ -365,14 +455,29 @@
         <item>නැවත ඇතිවීම</item>
     </string-array>
 
+    <string-array name="supp_intervention_type_english">
+        <item>1st time enrollment to this programme</item>
+        <item>Relapse</item>
+    </string-array>
+
     <string-array name="other_management_type">
         <item>මෙම වැඩසටහනට පළමු වරට ලියාපදිංචි වීම</item>
         <item>නැවත ඇතිවීම</item>
     </string-array>
 
+    <string-array name="other_management_type_english">
+        <item>1st time enrollment to this programme</item>
+        <item>Relapse</item>
+    </string-array>
+
     <string-array name="therapeutical_management_type">
         <item>මෙම වැඩසටහනට පළමු වරට ලියාපදිංචි වීම</item>
         <item>නැවත ඇතිවීම</item>
+    </string-array>
+
+    <string-array name="therapeutical_management_type_english">
+        <item>1st time enrollment to this programme</item>
+        <item>Relapse</item>
     </string-array>
 
     <string-array name="stunting_management_type">
@@ -388,6 +493,13 @@
         <item>මිය ගියා</item>
     </string-array>
 
+    <string-array name="overweight_outcome_type_english">
+        <item>Recovered</item>
+        <item>Defaulted</item>
+        <item>Left the area</item>
+        <item>Left due to completion of age 5</item>
+        <item>Died</item>
+    </string-array>
     <string-array name="stunting_outcome_type">
         <item>යථා තත්ත්වයට පත් විය</item>
         <item>ප්‍රතිකාරය පැහැරහරින ලදී</item>
@@ -405,6 +517,14 @@
         <item>මිය ගියා</item>
     </string-array>
 
+    <string-array name="supp_outcome_type_english">
+        <item>Recovered</item>
+        <item>Sent to therapeutic feeding Programme</item>
+        <item>Defaulted</item>
+        <item>Left the area</item>
+        <item>Left due to completion of age 5</item>
+        <item>Died</item>
+    </string-array>
     <string-array name="tera_outcome_type">
         <item>යථා තත්ත්වයට පත් විය</item>
         <item>ඔ‍ය්ෂධීය ආහාර ලබාදීම වැඩසටහනට යවා ඇත</item>
@@ -412,6 +532,15 @@
         <item>ප්රදේශය හැරගිය ලදී</item>
         <item>වයස අවුරුදු 5 සම්පූර්ණ වීම නිසා අත්හැරියා</item>
         <item>මිය ගියා</item>
+    </string-array>
+
+    <string-array name="tera_outcome_type_english">
+        <item>Recovered</item>
+        <item>Sent to supplementary feeding Programme</item>
+        <item>Defaulted</item>
+        <item>Left the area</item>
+        <item>Left due to completion of age 5</item>
+        <item>Died</item>
     </string-array>
 
 </resources>

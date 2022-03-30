@@ -183,8 +183,11 @@ public class AnthropometryActivityNew extends AppCompatActivity {
                         Calendar c = Calendar.getInstance();
                         c.setTime(dob);
                         c.add(Calendar.DATE, 365*5+2);
+                        long minimum_value = Math.min(c.getTimeInMillis(), System.currentTimeMillis());
 
-                        datePickerDialog.getDatePicker().setMaxDate(c.getTimeInMillis());
+                        datePickerDialog.getDatePicker().setMaxDate(minimum_value);
+                        //datePickerDialog.getDatePicker().setMaxDate(c.getTimeInMillis());
+
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }

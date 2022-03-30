@@ -23,7 +23,7 @@
         <ScrollView
             android:layout_width="fill_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.6">
+            android:layout_weight="0.8">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -54,11 +54,11 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.4"
                             android:background="@null"
-                            android:text="@string/tera_management_date"
+                            android:text="@string/oth_food_insecurity_date"
                             android:textColorHint="@color/desc" />
 
                         <TextView
-                            android:id="@+id/editTextDateTherapeuticManagement"
+                            android:id="@+id/editTextDateOtherFoodInsecurity"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
@@ -68,9 +68,9 @@
                             android:textColorHint="@color/desc" />
 
                         <ImageView
-                            android:id="@+id/therapeutic_date_pick"
+                            android:id="@+id/other_intervention_poverty_date_pick"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="20dp"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="0.2"
                             android:background="@drawable/background_popup_card"
@@ -79,7 +79,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginHorizontal="5dp"
                         android:layout_marginVertical="5dp"
                         android:layout_weight="1"
@@ -95,43 +95,11 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="@string/tera_management_enrollment"
-                            android:textColorHint="@color/desc" />
-
-                        <Spinner
-                            android:id="@+id/therapeutic_management_Enrollment_spinner"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.5">
-
-                        </Spinner>
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginHorizontal="5dp"
-                        android:layout_marginVertical="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/background_popup_card"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="8dp"
-                        android:weightSum="1">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_weight="0.5"
-                            android:background="@null"
-                            android:text="@string/tera_management_hospital"
+                            android:text="@string/oth_food_insecurity_agri_training"
                             android:textColorHint="@color/desc" />
 
                         <RadioGroup
-                            android:id="@+id/radioGroupTherapeuticHospital"
+                            android:id="@+id/oth_food_agri_training_radio"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
@@ -141,24 +109,26 @@
                             android:textColorHint="@color/desc">
 
                             <RadioButton
-                                android:id="@+id/radioButtonTherapeuticHospitalYes"
+                                android:id="@+id/oth_food_agri_training_radio_yes"
                                 android:layout_width="0dp"
                                 android:layout_height="55dp"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_weight="0.5"
                                 android:checked="false"
                                 android:text="@string/yes"
-                                android:textSize="15sp" />
+                                android:textSize="15sp"
+                                android:editable="false"/>
 
                             <RadioButton
-                                android:id="@+id/radioButtonTherapeuticHospitalNo"
+                                android:id="@+id/oth_food_agri_training_radio_no"
                                 android:layout_width="0dp"
                                 android:layout_height="55dp"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_weight="0.5"
                                 android:checked="false"
                                 android:text="@string/no"
-                                android:textSize="15sp" />
+                                android:textSize="15sp"
+                                android:editable="false"/>
 
                         </RadioGroup>
 
@@ -183,11 +153,11 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="@string/tera_management_seen"
+                            android:text="@string/oth_food_insecurity_live_stock"
                             android:textColorHint="@color/desc" />
 
                         <RadioGroup
-                            android:id="@+id/radioGroupTherapeuticPaediatrician"
+                            android:id="@+id/oth_food_live_stock_radio"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
@@ -197,33 +167,34 @@
                             android:textColorHint="@color/desc">
 
                             <RadioButton
-                                android:id="@+id/radioButtonTherapeuticPaediatricianYes"
+                                android:id="@+id/oth_food_live_stock_radio_yes"
                                 android:layout_width="0dp"
                                 android:layout_height="55dp"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_weight="0.5"
                                 android:checked="false"
                                 android:text="@string/yes"
-                                android:textSize="15sp" />
+                                android:textSize="15sp"
+                                android:editable="false"/>
 
                             <RadioButton
-                                android:id="@+id/radioButtonTherapeuticPaediatricianNo"
+                                android:id="@+id/oth_food_live_stock_radio_no"
                                 android:layout_width="0dp"
                                 android:layout_height="55dp"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_weight="0.5"
                                 android:checked="false"
                                 android:text="@string/no"
-                                android:textSize="15sp" />
+                                android:textSize="15sp"
+                                android:editable="false"/>
 
                         </RadioGroup>
 
 
                     </LinearLayout>
-
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginHorizontal="5dp"
                         android:layout_marginVertical="5dp"
                         android:layout_weight="1"
@@ -239,11 +210,11 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="@string/tera_management_bp100"
+                            android:text="@string/oth_food_insecurity_support_gardening"
                             android:textColorHint="@color/desc" />
 
                         <RadioGroup
-                            android:id="@+id/radioGroupTherapeuticBP100"
+                            android:id="@+id/oth_food_support_radio"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
@@ -253,27 +224,143 @@
                             android:textColorHint="@color/desc">
 
                             <RadioButton
-                                android:id="@+id/radioButtonTherapeuticBP100Yes"
+                                android:id="@+id/oth_food_support_radio_yes"
                                 android:layout_width="0dp"
                                 android:layout_height="55dp"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_weight="0.5"
                                 android:checked="false"
                                 android:text="@string/yes"
-                                android:textSize="15sp" />
+                                android:textSize="15sp"
+                                android:editable="false"/>
 
                             <RadioButton
-                                android:id="@+id/radioButtonTherapeuticBP100No"
+                                android:id="@+id/oth_food_support_radio_no"
                                 android:layout_width="0dp"
                                 android:layout_height="55dp"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_weight="0.5"
                                 android:checked="false"
                                 android:text="@string/no"
-                                android:textSize="15sp" />
+                                android:textSize="15sp"
+                                android:editable="false"/>
 
                         </RadioGroup>
 
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_popup_card"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:text="@string/oth_food_insecurity_support_water"
+                            android:textColorHint="@color/desc" />
+
+                        <RadioGroup
+                            android:id="@+id/oth_food_support_household_radio"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:orientation="horizontal"
+                            android:textColorHint="@color/desc">
+
+                            <RadioButton
+                                android:id="@+id/oth_food_support_household_radio_yes"
+                                android:layout_width="0dp"
+                                android:layout_height="55dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_weight="0.5"
+                                android:checked="false"
+                                android:text="@string/yes"
+                                android:textSize="15sp"
+                                android:editable="false"/>
+
+                            <RadioButton
+                                android:id="@+id/oth_food_support_household_radio_no"
+                                android:layout_width="0dp"
+                                android:layout_height="55dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_weight="0.5"
+                                android:checked="false"
+                                android:text="@string/no"
+                                android:textSize="15sp"
+                                android:editable="false"/>
+
+                        </RadioGroup>
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_popup_card"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:text="@string/oth_food_insecurity_training"
+                            android:textColorHint="@color/desc" />
+
+                        <RadioGroup
+                            android:id="@+id/oth_food_training_radio"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:orientation="horizontal"
+                            android:textColorHint="@color/desc">
+
+                            <RadioButton
+                                android:id="@+id/oth_food_training_radio_yes"
+                                android:layout_width="0dp"
+                                android:layout_height="55dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_weight="0.5"
+                                android:checked="false"
+                                android:text="@string/yes"
+                                android:textSize="15sp"
+                                android:editable="false"/>
+
+                            <RadioButton
+                                android:id="@+id/oth_food_training_radio_no"
+                                android:layout_width="0dp"
+                                android:layout_height="55dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_weight="0.5"
+                                android:checked="false"
+                                android:text="@string/no"
+                                android:textSize="15sp"
+                                android:editable="false"/>
+
+                        </RadioGroup>
 
                     </LinearLayout>
 
@@ -283,20 +370,20 @@
         </ScrollView>
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/therapeuticManagementSave"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:textSize="18dp"
-        android:layout_marginVertical="30dp"
-        android:layout_marginHorizontal="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@drawable/background_button"
-        android:textAllCaps="false"
-        android:text="@string/submit" />
-
+    <!--
+        <Button
+            android:id="@+id/stuntingManagementSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textSize="18dp"
+            android:layout_marginVertical="30dp"
+            android:layout_marginHorizontal="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/background_button"
+            android:textAllCaps="false"
+            android:text="@string/submit" />
+    -->
     <RelativeLayout
         android:id="@+id/view1"
         android:paddingHorizontal="16dp"
@@ -316,26 +403,25 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginVertical="10dp"
                 android:orientation="horizontal">
-
                 <!--
-                <ImageButton
-                    android:id="@+id/back_btn"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/background_back_btn"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:padding="10dp"
-                    android:src="@drawable/back" />
-                    -->
+                                <ImageButton
+                                    android:id="@+id/back_btn"
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_marginStart="10dp"
+                                    android:background="@drawable/background_back_btn"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    android:padding="10dp"
+                                    android:src="@drawable/back" />
+                                    -->
 
                 <TextView
                     android:id="@+id/title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/tera_management_title"
+                    android:text="@string/oth_food_insecurity_title"
                     android:textAlignment="center"
                     android:textColor="@color/title"
                     android:textSize="20sp"
@@ -344,4 +430,5 @@
             </RelativeLayout>
         </LinearLayout>
     </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

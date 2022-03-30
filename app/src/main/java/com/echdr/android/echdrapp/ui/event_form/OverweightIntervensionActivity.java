@@ -28,8 +28,12 @@ import com.echdr.android.echdrapp.data.service.forms.EventFormService;
 import com.echdr.android.echdrapp.data.service.forms.RuleEngineService;
 
 import org.hisp.dhis.android.core.maintenance.D2Error;
+import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValue;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityDataValueObjectRepository;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import io.reactivex.processors.PublishProcessor;
@@ -53,6 +57,9 @@ public class OverweightIntervensionActivity extends AppCompatActivity {
     private RadioGroup radioGroupCounselling;
     private RadioButton radioButtonCounsellingYes;
     private RadioButton radioButtonCounsellingNo;
+
+    private TrackedEntityAttributeValue birthday;
+
 
     private enum IntentExtra {
         EVENT_UID, PROGRAM_UID, OU_UID, TYPE, TEI_ID
@@ -97,6 +104,11 @@ public class OverweightIntervensionActivity extends AppCompatActivity {
 
         engineInitialization = PublishProcessor.create();
 
+        birthday = Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
+                .byTrackedEntityInstance().eq(selectedChild)
+                .byTrackedEntityAttribute().eq("qNH202ChkV3")
+                .one().blockingGet();
+
         //Calendar calendar = Calendar.getInstance();
         Date date = new Date();
         String s_day          = (String) DateFormat.format("dd",   date); // 20
@@ -114,6 +126,23 @@ public class OverweightIntervensionActivity extends AppCompatActivity {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
                         context, android.R.style.Theme_Holo_Light_Dialog, setListener, year, month, day);
                 datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                Date dob = null;
+                try {
+                    dob = formatter.parse(birthday.value());
+                    datePickerDialog.getDatePicker().setMinDate(dob.getTime());
+
+                    Calendar c = Calendar.getInstance();
+                    c.setTime(dob);
+                    c.add(Calendar.DATE, 365*5+2);
+                    long minimum_value = Math.min(c.getTimeInMillis(), System.currentTimeMillis());
+
+                    datePickerDialog.getDatePicker().setMaxDate(minimum_value);
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 datePickerDialog.show();
             }
         });
