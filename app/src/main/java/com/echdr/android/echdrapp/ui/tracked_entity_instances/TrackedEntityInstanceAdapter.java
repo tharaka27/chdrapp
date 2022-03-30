@@ -129,20 +129,15 @@ public class TrackedEntityInstanceAdapter extends PagedListAdapter<TrackedEntity
                 .byProgram().eq("hM6Yt9FQL0n")
                 .one().blockingGet();
         */
+
+
         //TODO make the latest enrollment
         List<Enrollment> enroll = Sdk.d2().enrollmentModule().enrollments()
                 .byTrackedEntityInstance().eq(trackedEntityInstance.uid())
                 .byProgram().eq("hM6Yt9FQL0n")
                 .orderByCreated(RepositoryScope.OrderByDirection.DESC)
                 .blockingGet();
-
-        // TODO get person name
-        String currentValue = Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
-                .byTrackedEntityInstance().eq(trackedEntityInstance.uid())
-                .byTrackedEntityAttribute().eq("zh4hiarsSD5")
-                .one().blockingGet().value();
-
-        System.out.println("[INFO] Processing child: " + currentValue );
+        
 
         if (enroll != null)
         {
