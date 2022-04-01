@@ -116,7 +116,7 @@ public class OtherInadequateWaterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_other_intervention_poverty);
+        setContentView(R.layout.activity_other_inadequate_water);
 
         textView_Date = findViewById(R.id.editTextDateOtherInterventionPoverty);
         //datePicker         = findViewById(R.id.other_intervention_poverty_date_pick);

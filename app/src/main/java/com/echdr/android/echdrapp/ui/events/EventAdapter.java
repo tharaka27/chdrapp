@@ -22,6 +22,7 @@ import com.echdr.android.echdrapp.ui.event_form.AnthropometryActivityNew;
 import com.echdr.android.echdrapp.ui.event_form.EventFormActivity;
 import com.echdr.android.echdrapp.ui.event_form.OtherEvaluationActivity;
 import com.echdr.android.echdrapp.ui.event_form.OtherFoodInsecurityActivity;
+import com.echdr.android.echdrapp.ui.event_form.OtherInadequateWaterActivity;
 import com.echdr.android.echdrapp.ui.event_form.OtherInterventionPoverty;
 import com.echdr.android.echdrapp.ui.event_form.OtherReasonForActivity;
 import com.echdr.android.echdrapp.ui.event_form.OtherReferredForInterventionActivity;
@@ -87,7 +88,9 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
         programStageNames.put("B8Jbdgg7Ut1", new String[]{context.getResources().getString(R.string.st_mana)});
         programStageNames.put("YweAFncBjUm", new String[]{context.getResources().getString(R.string.st_inter)});
         programStageNames.put("RtC4CcoEs4J", new String[]{context.getResources().getString(R.string.st_out)});
-
+        programStageNames.put("bXWTWS8lkbv", new String[]{context.getResources().getString(R.string.oth_inter_poverty_title)});
+        programStageNames.put("m7IDhrn3y22", new String[]{context.getResources().getString(R.string.oth_food_insecurity_title)});
+        programStageNames.put("EHn8MUIERRM", new String[]{context.getResources().getString(R.string.oth_indequate_title)});
     }
 
 
@@ -113,7 +116,17 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
         holder.icon.setImageResource(R.drawable.ic_programs_black_24dp);
         holder.delete.setVisibility(View.VISIBLE);
          */
-        holder.title.setText(programStageNames.get(event.programStage())[0]);
+        try
+        {
+            holder.title.setText(programStageNames.get(event.programStage())[0]);
+        }
+        catch (Exception e)
+        {
+            System.out.println("[ERROR] Error occured when setting program stage name in " +
+                    "adapter");
+            holder.title.setText("");
+        }
+        //holder.title.setText(programStageNames.get(event.programStage())[0]);
 
         /* selecting subtitle two */
         String sub_two_data = "";
@@ -241,7 +254,7 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
                         ), false
                 );
             }
-            else if(event.programStage().equals("m7IDhrn3y22")) // other - food insercurity
+            else if(event.programStage().equals("m7IDhrn3y22")) // other - food insecurity
             {
                 ActivityStarter.startActivity(activity,
                         OtherFoodInsecurityActivity.getFormActivityIntent(
@@ -250,6 +263,20 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
                                 event.program(),
                                 event.organisationUnit(),
                                 OtherFoodInsecurityActivity.FormType.CHECK,
+                                selectedChild
+                        ), false
+                );
+            }
+
+            else if(event.programStage().equals("EHn8MUIERRM")) // other - inadequate water
+            {
+                ActivityStarter.startActivity(activity,
+                        OtherInadequateWaterActivity.getFormActivityIntent(
+                                activity,
+                                event.uid(),
+                                event.program(),
+                                event.organisationUnit(),
+                                OtherInadequateWaterActivity.FormType.CHECK,
                                 selectedChild
                         ), false
                 );
@@ -413,6 +440,7 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
                 );
             }
             else {
+                System.out.println("[Error] Program not selected properly");
                 ActivityStarter.startActivity(
                         activity,
                         EventFormActivity.getFormActivityIntent(
