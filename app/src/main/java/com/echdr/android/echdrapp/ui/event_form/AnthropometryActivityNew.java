@@ -446,8 +446,8 @@ public class AnthropometryActivityNew extends AppCompatActivity {
         private void ChangeColor(EditText text, String s,
                                  Map<Integer, double[]> data, boolean height) {
             int currentAge = 0;
-            if(AgeInWeeksTxt.getText().toString().isEmpty() &&
-                    AgeInWeeksTxt.getText().toString().equals("Age in weeks"))
+            if(!(AgeInWeeksTxt.getText().toString().isEmpty() ||
+                    AgeInWeeksTxt.getText().toString().equals("Age in weeks")))
                 currentAge = Integer.parseInt(AgeInWeeksTxt.getText().toString());
 
             float currentValue;
@@ -469,6 +469,7 @@ public class AnthropometryActivityNew extends AppCompatActivity {
 
                 // divide by 4 to covert to months
                 double[] array = data.get( currentAge/4 );
+                System.out.println("month : " + String.valueOf(currentAge/4) +" currentValue " + currentValue);
                 for (category = 0; category < 4; ) {
 
                     assert array != null;
@@ -488,22 +489,27 @@ public class AnthropometryActivityNew extends AppCompatActivity {
             switch (category) {
                 case -1:
                     //text.setBackgroundColor(Color.RED);
-                    text.setBackgroundColor(Color.parseColor("#e6653b"));
+                    //text.setBackgroundColor(Color.parseColor("#e6653b"));
+                    text.setBackgroundColor(Color.parseColor("#a60c0c"));
                     break;
                 case 0:
                     //text.setBackgroundColor(Color.rgb(255, 165, 0)); // orange
-                    text.setBackgroundColor(Color.parseColor("#ccc971"));
+                    //text.setBackgroundColor(Color.parseColor("#ccc971"));
+                    text.setBackgroundColor(Color.parseColor("#F6A21E"));
                     break;
                 case 1:
                     //text.setBackgroundColor(Color.YELLOW);
+                    //text.setBackgroundColor(Color.parseColor("#afe1bb"));
                     text.setBackgroundColor(Color.parseColor("#afe1bb"));
                     break;
                 case 2:
                     //text.setBackgroundColor(Color.GREEN);
+                    //text.setBackgroundColor(Color.parseColor("#a3ccae"));
                     text.setBackgroundColor(Color.parseColor("#a3ccae"));
                     break;
                 case 3:
                     //text.setBackgroundColor(Color.rgb(215, 31, 226)); // purple color
+                    //text.setBackgroundColor(Color.parseColor("#f3e5f6"));
                     text.setBackgroundColor(Color.parseColor("#f3e5f6"));
                     break;
 
