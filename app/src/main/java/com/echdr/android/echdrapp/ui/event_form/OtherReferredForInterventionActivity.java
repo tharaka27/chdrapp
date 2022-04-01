@@ -133,7 +133,7 @@ public class OtherReferredForInterventionActivity extends AppCompatActivity {
             }
         });
 
-         */
+         *
 
         setListener = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -146,6 +146,8 @@ public class OtherReferredForInterventionActivity extends AppCompatActivity {
             }
         };
         System.out.println("[INFO] Outside check other reffered for intervention");
+
+         */
 
         if(formType == OtherReferredForInterventionActivity.FormType.CHECK)
         {
@@ -416,7 +418,7 @@ public class OtherReferredForInterventionActivity extends AppCompatActivity {
 
     }
 
-
+/*
     private void selectDate(int year, int month, int day)
     {
         System.out.println("Clicked et date");
@@ -430,6 +432,8 @@ public class OtherReferredForInterventionActivity extends AppCompatActivity {
     {
         return DayofMonth + "/" + month + "/" + year;
     }
+
+ */
 
 
 }

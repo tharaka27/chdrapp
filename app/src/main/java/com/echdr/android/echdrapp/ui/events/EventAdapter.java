@@ -94,7 +94,6 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
     }
 
 
-
     @NonNull
     @Override
     public ListItemWithSyncHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

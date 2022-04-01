@@ -47,6 +47,7 @@ import org.hisp.dhis.rules.models.RuleActionHideField;
 import org.hisp.dhis.rules.models.RuleEffect;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -216,11 +217,15 @@ public class EnrollmentFormModified extends AppCompatActivity {
         textView_date_of_registration.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("Clicked et date");
+                Calendar c = Calendar.getInstance();
+                c.add(Calendar.YEAR, -5); // subtract 5 years from now
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        context, android.R.style.Theme_Holo_Light_Dialog, setListenerRegistration, year, month, day);
+                        context, android.R.style.Theme_Holo_Light_Dialog, setListenerDob, year, month, day);
                 datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+
                 datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+
                 datePickerDialog.show();
             }
         });
@@ -244,12 +249,16 @@ public class EnrollmentFormModified extends AppCompatActivity {
         textView_dob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("Clicked et date");
+
+                Calendar c = Calendar.getInstance();
+                c.add(Calendar.YEAR, -5); // subtract 5 years from now
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
                         context, android.R.style.Theme_Holo_Light_Dialog, setListenerDob, year, month, day);
                 datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+
                 datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
-                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+
                 datePickerDialog.show();
             }
         });
