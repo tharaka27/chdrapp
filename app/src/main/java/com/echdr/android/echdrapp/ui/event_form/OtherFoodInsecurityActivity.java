@@ -15,9 +15,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.echdr.android.echdrapp.R;
 import com.echdr.android.echdrapp.data.Sdk;
+import com.echdr.android.echdrapp.data.service.DateFormatHelper;
 import com.echdr.android.echdrapp.data.service.forms.EventFormService;
 import com.echdr.android.echdrapp.data.service.forms.RuleEngineService;
 
+import org.hisp.dhis.android.core.event.Event;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValue;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityDataValueObjectRepository;
 
@@ -122,6 +124,7 @@ public class OtherFoodInsecurityActivity extends AppCompatActivity {
 
         engineInitialization = PublishProcessor.create();
 
+        /*
         birthday = Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
                 .byTrackedEntityInstance().eq(selectedChild)
                 .byTrackedEntityAttribute().eq("qNH202ChkV3")
@@ -147,6 +150,17 @@ public class OtherFoodInsecurityActivity extends AppCompatActivity {
                 textView_Date.setText(date);
             }
         };
+        */
+
+        try{
+            Event e = Sdk.d2().eventModule().events().byUid().eq(eventUid).one().blockingGet();
+            textView_Date.setText(DateFormatHelper.formatSimpleDate(e.eventDate()));
+            System.out.println("Event Date is " + e.eventDate());
+        }
+        catch (Exception e)
+        {
+            System.out.println("[Error] Error occured while retrieving event date");
+        }
 
 
         // Load the existing values - form.CHECK
