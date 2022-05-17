@@ -349,7 +349,7 @@
     <string name="therapeutic">சிகிச்சை உணவு</string>
     <string name="stunt">ஸ்டண்டிங்</string>
     <string name="other">பிற உடல்நலம்/ ஆரோக்கியமற்றது</string>
-
+    <string name="subsection_title">பிறப்பு விவரங்கள்</string>
 
     <!--    Supplementary intervention spinner-->
     <string-array name="supp_intervention_type">

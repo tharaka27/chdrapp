@@ -345,6 +345,7 @@
     <string name="therapeutic">අතිරේක ආහාර ලබාදීම</string>
     <string name="stunt">මිටි බව සදහා මැදිහත්වීම</string>
     <string name="other">වෙනත් සෞඛ්‍ය/ සෞඛ්‍ය නොවන</string>
+    <string name="subsection_title">උපත් විස්තර</string>
 
 
     <!--    Child registration arrays starts here-->
