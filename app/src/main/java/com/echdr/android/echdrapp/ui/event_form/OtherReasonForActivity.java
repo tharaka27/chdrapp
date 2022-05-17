@@ -253,6 +253,7 @@ public class OtherReasonForActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
                 saveElements();
             }
         });
