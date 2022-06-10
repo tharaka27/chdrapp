@@ -107,7 +107,7 @@
     <string name="title_activity_home">home</string>
     <string name="wish">Hello,</string>
     <string name="sup_prog">Supplementary \nFeeding Programme</string>
-    <string name="thera_prog">Therapeutic \nProgramme</string>
+    <string name="thera_prog">Therapeutic Feeding \nProgramme</string>
     <string name="overw_prog">Overweight/Obesity \nProgramme</string>
     <string name="stunt_prog">Stunting \nProgramme</string>
     <string name="other_prog">Other Health/ \nNon-health</string>
@@ -245,7 +245,7 @@
     <string name="over_inter_counselling">IYCF/Nutrtion counselling given</string>
 
     <!-- overweight - management -->
-    <string name="over_mana_title">Overweight Management</string>
+    <string name="over_mana_title">Management Status</string>
     <string name="over_mana_date">Management date</string>
     <string name="over_mana_enrol_type">Enrollment type</string>
     <string name="over_mana_hospital">Referred to Hospital</string>
@@ -264,7 +264,7 @@
 
 
     <!-- stunting - management -->
-    <string name="stunt_mana_title">Stunting Management</string>
+    <string name="stunt_mana_title">Management Status</string>
     <string name="stunt_mana_date">Management date</string>
     <string name="stunt_mana_enrol_type">Enrollment type</string>
     <string name="stunt_mana_hospital">Referred to Hospital</string>
@@ -308,7 +308,7 @@
 
 
     <!-- tera - management -->
-    <string name="tera_management_title">Therapeutic Feeding Management</string>
+    <string name="tera_management_title">Management Status</string>
     <string name="tera_management_date">Management date</string>
     <string name="tera_management_enrollment">Enrollment type</string>
     <string name="tera_management_hospital">Referred to Hospital</string>
@@ -349,6 +349,7 @@
     <string name="therapeutic">Therapeutic feeding</string>
     <string name="stunt">Stunting</string>
     <string name="other">Other health/ Non-health</string>
+    <string name="subsection_title">Birth Details</string>
 
 
     <!--    Supplementary intervention spinner-->

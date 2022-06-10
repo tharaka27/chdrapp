@@ -211,9 +211,10 @@ public class EnrollmentFormModified extends AppCompatActivity {
         String s_year = (String) DateFormat.format("yyyy", date); // 2013
 
         final int year = Integer.parseInt(s_year);
-        final int month = Integer.parseInt(s_monthNumber);
+        final int month = Integer.parseInt(s_monthNumber) - 1;
         final int day = Integer.parseInt(s_day);
 
+        /*
         textView_date_of_registration.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -223,12 +224,12 @@ public class EnrollmentFormModified extends AppCompatActivity {
                         context, android.R.style.Theme_Holo_Light_Dialog, setListenerDob, year, month, day);
                 datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
-
                 datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
 
                 datePickerDialog.show();
             }
         });
+         */
 
         datePicker_registration.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -246,6 +247,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
             }
         };
 
+        /*
         textView_dob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -262,6 +264,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
+         */
 
         datePicker_dob.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -274,19 +277,13 @@ public class EnrollmentFormModified extends AppCompatActivity {
         setListenerDob = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                //month = month + 1;
-                //year = year%100; //get only last two digits
-                //String date = year + "-" + String.format("%02d", month) + "-" + String.format("%02d", dayOfMonth);
-                //String date = String.format("%02d", dayOfMonth) + "/" + String.format("%02d", month) + "/" + year ;
-                    month = month + 1;
-                    String date = year + "-" + String.format("%02d", month) + "-" + String.format("%02d", dayOfMonth);
-                    textView_dob.setText(date);
-
+               month = month  + 1;
+               String date = year + "-" + String.format("%02d", month) + "-" + String.format("%02d", dayOfMonth);
+               textView_dob.setText(date);
             }
         };
 
-
-
+        /*
         textView_mother_dob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -297,6 +294,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
+         */
 
         datePicker_mother_dob.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -763,6 +761,55 @@ public class EnrollmentFormModified extends AppCompatActivity {
                     alert17.show();
                     return;
                 }
+
+                // Caregiver is not mother
+                if( !relationship_english_only[relationship.getSelectedItemPosition()].equals("Mother")
+                && caregiver.getText().toString().isEmpty() )
+                {
+                    AlertDialog.Builder builder7 = new AlertDialog.Builder(context);
+                    builder7.setMessage("If caregiver is not mother, caregiver name is mandatory.");
+                    builder7.setCancelable(true);
+
+                    builder7.setNegativeButton(
+                            "Close",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                    //return;
+                                }
+                            });
+
+                    AlertDialog alert17 = builder7.create();
+                    alert17.show();
+                    return;
+                }
+                // Occupation specification is mandatory is self employed/retired/paid employement
+                //<item>Self employment</item>
+                //<item>Paid employment</item>
+                //<item>Retired</item>
+                if( occu_specification.getText().toString().isEmpty() &&
+                        (occupation_english_only[occupation.getSelectedItemPosition()].equals("Retired") ||
+                                occupation_english_only[occupation.getSelectedItemPosition()].equals("Self employment") ||
+                                occupation_english_only[occupation.getSelectedItemPosition()].equals("Paid employment")) )
+                {
+                    AlertDialog.Builder builder7 = new AlertDialog.Builder(context);
+                    builder7.setMessage("If caregiver is not mother, caregiver name is mandatory.");
+                    builder7.setCancelable(true);
+
+                    builder7.setNegativeButton(
+                            "Close",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                    //return;
+                                }
+                            });
+
+                    AlertDialog alert17 = builder7.create();
+                    alert17.show();
+                    return;
+                }
+
                 saveElements();
             }
         });
@@ -1060,9 +1107,13 @@ public class EnrollmentFormModified extends AppCompatActivity {
     private void selectDateRegistration(int year, int month, int day)
     {
         System.out.println("Clicked et date");
+        Calendar c = Calendar.getInstance();
+        c.add(Calendar.DATE, -7); // subtract 5 years from now
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 context, android.R.style.Theme_Holo_Light_Dialog, setListenerRegistration, year, month, day);
         datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+        datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
         datePickerDialog.show();
     }
 
@@ -1072,6 +1123,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 context, android.R.style.Theme_Holo_Light_Dialog, setListenerDob, year, month, day);
         datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
         datePickerDialog.show();
     }
 
