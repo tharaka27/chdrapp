@@ -120,7 +120,7 @@
     <string name="demo_info_title">ජනවිකාස තොරතුරු</string>
     <string name="date_of_reg"><font size="14">ලියාපදිංචි දිනය</font></string>
     <string name="gn_area"><font size="14">ග්‍රාම නිලධාරී වසම</font></string>
-    <string name="birth_num"><font size="12">උපත් සහ ප්‍රතිශක්තිකරණය \nලියාපදිංච් අංකය</font></string>
+    <string name="birth_num"><font size="12">උපත් හා ප‍්‍රතිශක්තිකරණ ලේඛණ අංකය</font></string>
     <string name="name"><font size="12">දරුවාගේ නම</font></string>
     <string name="sex"><font size="12">ලිංගිකත්වය</font></string>
     <string name="date_of_birth"><font size="12">උපන්දිනය</font></string>
@@ -187,15 +187,15 @@
     <string name="oth_reason_stuning">මිටි බව</string>
 
     <!-- other - intervention-poverty -->
-    <string name="oth_inter_poverty_title">මැදිහත්වීම - දරිද්රතාවය සහ දුර්වල ආදායම් කළමනාකරණය</string>
+    <string name="oth_inter_poverty_title">මැදිහත්වීම - දරිද්‍ර‍්‍රතාවය හා ආදායම් කළමණාකරනයේ දුර්වලතා</string>
     <string name="oth_inter_povert_date">මැදිහත්වීමේ දිනය</string>
     <string name="oth_inter_povert_training">කෘෂිකර්මය පදනම් කරගත් ව්‍යවසායක පුහුණුව</string>
     <string name="oth_inter_povert_support">කෘෂිකර්මාන්තය පදනම් කරගත් ජීවනෝපාය ආධාර</string>
     <string name="oth_inter_povert_livelihood">ජීවනෝපාය ස්ථාපිත කිරීම සඳහා වත්කම් මාරු කිරීම</string>
     <string name="oth_inter_povert_polu_support">වාණිජ පශු සම්පත් සහ කුකුළු ආධාර</string>
-    <string name="oth_inter_povert_empower_training">සවිබල ගැන්වීමේ පුහුණුව</string>
+    <string name="oth_inter_povert_empower_training">බලගැන්වීමේ පුහුණු ලබාදීම</string>
     <string name="oth_inter_povert_financial">මූල්ය සාක්ෂරතා පුහුණුව</string>
-    <string name="oth_inter_povert_samurdhi">සමෘද්ධි ලබාදීම</string>
+    <string name="oth_inter_povert_samurdhi">සමෘධි ප්‍රතිපාදන ලබාදීම</string>
     <string name="oth_inter_povert_samurdhi_bank">සමෘද්ධි බැංකු ණය ලබාදීම</string>
     <string name="oth_inter_povert_comm_cultivation">වාණිජ වගාව සඳහා ප්‍රජා ජල අස්වනු නෙලීමට සහාය වීම</string>
     <string name="oth_inter_povert_market_access">අගය දාම සහාය සහ වෙළඳපල ප්‍රවේශය වැඩි කිරීම</string>
@@ -203,26 +203,26 @@
     <!-- other - risk factor evaluation -->
     <string name="oth_risk_title">අවදානම් සාධක ඇගයීම</string>
     <string name="oth_risk_date">ඇගයීමේ දිනය</string>
-    <string name="oth_risk_poverty">දුප්පත්කම සහ දුර්වල ආදායම් කළමනාකරණය</string>
+    <string name="oth_risk_poverty">දරිද්‍ර‍්‍රතාවය හා ආදායම් කළමණාකරනයේ දුර්වලතා</string>
     <string name="oth_risk_food">ආහාර අනාරක්ෂිත බව</string>
-    <string name="oth_risk_water">ප්රමාණවත් ජල සනීපාරක්ෂාව</string>
+    <string name="oth_risk_water">ජල සනීපාරක්ෂාව ප‍්‍රමාණවත් නොවීම</string>
     <string name="oth_risk_child">ළමා රැකවරණය ප්රමාණවත් නොවීම</string>
     <string name="oth_risk_commun">බෝවන රෝගවල ඉහළ පැතිරීම</string>
 
 
     <!-- other - food-insecurity -->
-    <string name="oth_food_insecurity_title">ආහාර අනාරක්ෂිත බව</string>
+    <string name="oth_food_insecurity_title">ආහාර අනාරක්ෂිතතාවය</string>
     <string name="oth_food_insecurity_date">මැදිහත්වීමේ දිනය</string>
-    <string name="oth_food_insecurity_agri_training">කෘෂිකාර්මික කුසලතා පුහුණුව / තාක්ෂණික සහාය</string>
-    <string name="oth_food_insecurity_live_stock">කුටුම්භ සඳහා සජීවී තොග සහ කුකුළු ආධාර ව්‍යාපෘති</string>
-    <string name="oth_food_insecurity_support_gardening">ගෙවතු වගාවට සහය වන්න</string>
-    <string name="oth_food_insecurity_support_water">ගෘහස්ථ ජල අස්වැන්න / ජල වාරිමාර්ග ව්‍යාපෘති සඳහා සහාය වීම</string>
-    <string name="oth_food_insecurity_training">පසු අස්වනු හානිය අවම කිරීම සඳහා පුහුණු කිරීම</string>
+    <string name="oth_food_insecurity_agri_training">කෘෂිකර්මික නිපුණතා පුහුණුව / තාක්ෂණික සහය</string>
+    <string name="oth_food_insecurity_live_stock">පශු සම්පත් සහ කුකුළු ගොවිපල ව්‍යාපෘති සඳහා නිවාස ඒකක සදහා ආධාර කිරීම</string>
+    <string name="oth_food_insecurity_support_gardening">ගෙවතු වගාවට ආධාර කිරීම (පැල/අමුද්‍රව්‍ය/පුහුණුව)</string>
+    <string name="oth_food_insecurity_support_water"> ගෘහස්ථ ජල එක්රැස් කිරීමේ ව්‍යපෘති/වගා ජල පද්ධති සදහා ආධාර කිරීම</string>
+    <string name="oth_food_insecurity_training">පසු අස්වැනු හානිය අහිමි වීම් අඩු කරගැනීමට පුහුණු වැඩසටහන් </string>
 
 
 
     <!-- other - Inadequate water, sanitation and Hygiene-->
-    <string name="oth_indequate_title">ප්රමාණවත් ජලය, සනීපාරක්ෂාව සහ සනීපාරක්ෂාව</string>
+    <string name="oth_indequate_title">ජල සනීපාරක්ෂාව ප‍්‍රමාණවත් නොවීම</string>
     <string name="oth_indequate_date">මැදිහත්වීමේ දිනය</string>
     <string name="oth_indequate_hand_wash">අත් සේදීමේ පහසුකම් තක්සේරු කරන්න</string>
     <string name="oth_inadequate_toilet_facility">දේශීය ප්‍රමිතීන්ට එරෙහිව වැසිකිළි පහසුකම් තක්සේරු කරන්න</string>

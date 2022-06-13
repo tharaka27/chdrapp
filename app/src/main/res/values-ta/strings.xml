@@ -194,9 +194,9 @@
     <string name="oth_inter_povert_support">விவசாயம் சார்ந்த வாழ்வாதார ஆதரவு</string>
     <string name="oth_inter_povert_livelihood">வாழ்வாதாரத்தை நிறுவ சொத்து பரிமாற்றம்</string>
     <string name="oth_inter_povert_polu_support">வணிக கால்நடை மற்றும் கோழி ஆதரவு</string>
-    <string name="oth_inter_povert_empower_training">அதிகாரமளிக்கும் பயிற்சி</string>
+    <string name="oth_inter_povert_empower_training">வலுவூட்டல் பயிற்சி</string>
     <string name="oth_inter_povert_financial">நிதி கல்வியறிவு பயிற்சி</string>
-    <string name="oth_inter_povert_samurdhi">சமுர்த்தி வழங்கல்</string>
+    <string name="oth_inter_povert_samurdhi">சமுர்தி வழங்கல்</string>
     <string name="oth_inter_povert_samurdhi_bank">சமுர்த்தி வங்கி கடன் வழங்குதல்</string>
     <string name="oth_inter_povert_comm_cultivation">வணிக சாகுபடிக்கு சமூக நீர் சேகரிப்பை ஆதரிக்கவும்</string>
     <string name="oth_inter_povert_market_access">மதிப்பு சங்கிலி ஆதரவு மற்றும் அதிகரித்த சந்தை அணுகல்</string>
@@ -205,24 +205,24 @@
     <!-- other - risk factor evaluation -->
     <string name="oth_risk_title">ஆபத்து காரணி மதிப்பீடு</string>
     <string name="oth_risk_date">மதிப்பீட்டு தேதி</string>
-    <string name="oth_risk_poverty">வறுமை மற்றும் மோசமான வருமான மேலாண்மை</string>
+    <string name="oth_risk_poverty">வறுமை மற்றும் குறைந்த வருமான முகாiமாத்துவம்</string>
     <string name="oth_risk_food">உணவுப் பாதுகாப்பின்மை</string>
-    <string name="oth_risk_water">போதிய தண்ணீர் சுகாதாரமின்மை</string>
+    <string name="oth_risk_water">போதியளவு நீர் சுகாதார இன்மை</string>
     <string name="oth_risk_child">குழந்தை பராமரிப்பு போதுமானதாக இல்லை</string>
     <string name="oth_risk_commun">தொற்று நோய்களின் அதிக பாதிப்பு</string>
 
     <!-- other - food-insecurity -->
-    <string name="oth_food_insecurity_title">உணவுப் பாதுகாப்பின்மை</string>
+    <string name="oth_food_insecurity_title">உணவு பாதுகாப்பின்மை</string>
     <string name="oth_food_insecurity_date">தலையீடு தேதி</string>
-    <string name="oth_food_insecurity_agri_training">விவசாய திறன் பயிற்சி / தொழில்நுட்ப ஆதரவு</string>
-    <string name="oth_food_insecurity_live_stock">வீடுகளுக்கான நேரடி இருப்பு மற்றும் கோழி ஆதரவு திட்டங்கள்</string>
-    <string name="oth_food_insecurity_support_gardening">வீட்டுத்தோட்டத்தை ஆதரிக்கவும்</string>
+    <string name="oth_food_insecurity_agri_training">விவசாய திறன்கள்; பயிற்சி தொழினுட்ப உதவி</string>
+    <string name="oth_food_insecurity_live_stock">வீட்டு நீர் சீர்ப்பாசன முறைக்கு உதவி </string>
+    <string name="oth_food_insecurity_support_gardening">வவீட்டுத் தோட்டத்துக்கு உதவியளித்தல் (பயிர் வகை/ உபகரணங்கள்/ பயிற்சி)</string>
     <string name="oth_food_insecurity_support_water">வீட்டு நீர் சேகரிப்பு / நீர் பாசன திட்டங்களை ஆதரிக்கவும்</string>
-    <string name="oth_food_insecurity_training">அறுவடைக்குப் பின் ஏற்படும் இழப்பைக் குறைக்க பயிற்சி</string>
+    <string name="oth_food_insecurity_training">குடும்ப கால்நடை வளர்ப்பு மற்றும் கோழி பண்ணை உதவி</string>
 
 
     <!-- other - Inadequate water, sanitation and Hygiene-->
-    <string name="oth_indequate_title">போதுமான தண்ணீர், சுகாதாரம் மற்றும் சுகாதாரம்</string>
+    <string name="oth_indequate_title">போதியளவு நீர் சுகாதார இன்மை</string>
     <string name="oth_indequate_date">தலையீடு தேதி</string>
     <string name="oth_indequate_hand_wash">கை கழுவும் வசதிகளை மதிப்பிடுங்கள்</string>
     <string name="oth_inadequate_toilet_facility">உள்ளூர் தரத்திற்கு எதிராக கழிப்பறை வசதியை மதிப்பிடுங்கள்</string>
@@ -234,7 +234,7 @@
     <string name="oth_indequate_alternative_water">மாற்று நீர் ஆதாரங்களை அறிமுகப்படுத்துதல் (மழை நீர் சேகரிப்பு)</string>
     <string name="oth_inadequate_household_water">வீட்டு நீர் சுத்திகரிப்பு முறைகளை அறிமுகப்படுத்துங்கள்</string>
     <string name="oth_inadequate_monitor_sanitation">பாதுகாப்பாக நிர்வகிக்கப்படும் சுகாதாரத்தை கண்காணிக்கவும்</string>
-    <string name="oth_inadequate_provide_safe_water">பாதுகாப்பான நீர் வழங்கல் அமைப்புகளுக்கான அணுகலை வழங்குதல்</string>
+    <string name="oth_inadequate_provide_safe_water">பாதுகாப்பான நீர் வழங்கல் முறைமைக்கு அணுகலை வழங்கல்</string>
     <string name="oth_inadequate_provide_improved">மேம்படுத்தப்பட்ட சுகாதாரம்/கழிவறை வசதிகளை வழங்குதல்</string>
     <string name="oth_inadequate_renovation">குழாய் கிணறு சீரமைப்பு</string>
     <string name="oth_inadequate_water_quality">நீர் தர கண்காணிப்பு</string>
