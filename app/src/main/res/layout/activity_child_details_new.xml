@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.tracked_entity_instances.ChildDetailsActivity">
+    tools:context=".ui.tracked_entity_instances.ChildDetailsActivityNew">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,7 +36,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
@@ -50,25 +49,33 @@
                         android:weightSum="1">
 
                         <TextView
-                            android:id="@+id/Cname"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
-                            android:layout_weight="0.5"
+                            android:layout_weight="0.4"
                             android:background="@null"
-                            android:text="@string/cd_name"
+                            android:text="@string/date_of_reg"
                             android:textColorHint="@color/desc" />
 
-                        <EditText
-                            android:id="@+id/name"
+                        <TextView
+                            android:id="@+id/editTextDateofRegistration"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.5"
-                            android:textSize="15dp"
-                            android:enabled="false">
+                            android:layout_gravity="center"
+                            android:layout_weight="0.4"
+                            android:background="@null"
+                            android:enabled="false"
+                            android:textColorHint="@color/desc" />
 
-                        </EditText>
-
+                        <ImageView
+                            android:id="@+id/date_pick_registration"
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.2"
+                            android:background="@drawable/background_popup_card"
+                            android:src="@drawable/calendar"
+                            android:enabled="false"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -84,7 +91,41 @@
                         android:weightSum="1">
 
                         <TextView
-                            android:id="@+id/Ccd_no"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:text="@string/gn_area"
+                            android:textColorHint="@color/desc" />
+
+                        <EditText
+                            android:id="@+id/gn_area"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:hint="Enter here"
+                            android:textColorHint="@color/desc"
+                            android:textSize="15dp"
+                            android:enabled="false"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_popup_card"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:weightSum="1">
+
+                        <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
@@ -93,16 +134,16 @@
                             android:text="@string/birth_num"
                             android:textColorHint="@color/desc" />
 
-                        <TextView
-                            android:id="@+id/cd_no"
+                        <EditText
+                            android:id="@+id/immuneNum"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:hint="@string/cd_no"
+                            android:hint="Enter here"
+                            android:enabled="false"
                             android:textColorHint="@color/desc" />
-
 
                     </LinearLayout>
 
@@ -119,7 +160,73 @@
                         android:weightSum="1">
 
                         <TextView
-                            android:id="@+id/Ccd_dob"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:text="@string/name"
+                            android:textColorHint="@color/desc" />
+
+                        <EditText
+                            android:id="@+id/name"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:hint="Enter here"
+                            android:textColorHint="@color/desc"
+                            android:textSize="15dp"
+                            android:enabled="false"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_popup_card"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:text="@string/sex"
+                            android:textColorHint="@color/desc" />
+
+                        <Spinner
+                            android:id="@+id/sex"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.5"
+                            android:enabled="false">
+
+                        </Spinner>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_popup_card"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:weightSum="1">
+
+                        <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
@@ -129,22 +236,23 @@
                             android:textColorHint="@color/desc" />
 
                         <TextView
-                            android:id="@+id/cd_dob"
+                            android:id="@+id/editTextDateofBirth"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:layout_weight="0.4"
                             android:background="@null"
-                            android:hint="@string/cd_dob"
+                            android:enabled="false"
                             android:textColorHint="@color/desc" />
 
                         <ImageView
-                            android:id="@+id/an_date_pick"
+                            android:id="@+id/date_pick_birth"
                             android:layout_width="0dp"
-                            android:layout_height="20dp"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="0.2"
                             android:background="@drawable/background_popup_card"
+                            android:enabled="false"
                             android:src="@drawable/calendar" />
                     </LinearLayout>
 
@@ -161,143 +269,6 @@
                         android:weightSum="1">
 
                         <TextView
-                            android:id="@+id/Ccd_gender"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_weight="0.5"
-                            android:background="@null"
-                            android:text="@string/sex"
-                            android:textColorHint="@color/desc" />
-
-                        <Spinner
-                            android:id="@+id/sex"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.5">
-
-                        </Spinner>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginHorizontal="5dp"
-                        android:layout_marginVertical="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/background_popup_card"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="8dp"
-                        android:weightSum="1">
-
-                        <TextView
-                            android:id="@+id/Aaddress"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_weight="0.5"
-                            android:background="@null"
-                            android:text="@string/addr"
-                            android:textColorHint="@color/desc" />
-
-                        <EditText
-                            android:id="@+id/address"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.5"
-                            android:textSize="15dp"
-                            android:enabled="false">
-
-                        </EditText>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginHorizontal="5dp"
-                        android:layout_marginVertical="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/background_popup_card"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="8dp"
-                        android:weightSum="1">
-
-                        <TextView
-                            android:id="@+id/BbrithWeight"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_weight="0.5"
-                            android:background="@null"
-                            android:text="@string/birth_weight"
-                            android:textColorHint="@color/desc" />
-
-                        <EditText
-                            android:id="@+id/birthWeight"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.5"
-                            android:enabled="false"
-                            android:textSize="15dp"
-                            android:inputType="number">
-
-                        </EditText>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginHorizontal="5dp"
-                        android:layout_marginVertical="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/background_popup_card"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="8dp"
-                        android:weightSum="1">
-
-                        <TextView
-                            android:id="@+id/BbrithHeight"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_weight="0.5"
-                            android:background="@null"
-                            android:text="@string/birth_len"
-                            android:textColorHint="@color/desc" />
-
-                        <EditText
-                            android:id="@+id/birthHeight"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.5"
-                            android:enabled="false"
-                            android:textSize="15dp"
-                            android:inputType="number">
-
-                        </EditText>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginHorizontal="5dp"
-                        android:layout_marginVertical="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/background_popup_card"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="8dp"
-                        android:weightSum="1">
-
-                        <TextView
-                            android:id="@+id/eethnicity"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
@@ -310,77 +281,11 @@
                             android:id="@+id/ethnicity"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.5">
-
-                        </Spinner>
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginHorizontal="5dp"
-                        android:layout_marginVertical="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/background_popup_card"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="8dp"
-                        android:weightSum="1">
-
-                        <TextView
-                            android:id="@+id/GgnArea"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
                             android:layout_weight="0.5"
-                            android:background="@null"
-                            android:text="@string/gn_area"
-                            android:textColorHint="@color/desc" />
-
-                        <EditText
-                            android:id="@+id/GN_Area"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.5"
-                            android:textSize="15dp"
                             android:enabled="false">
 
-                        </EditText>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginHorizontal="5dp"
-                        android:layout_marginVertical="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/background_popup_card"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="8dp"
-                        android:weightSum="1">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_weight="0.5"
-                            android:background="@null"
-                            android:text="@string/cg_rel"
-                            android:textColorHint="@color/desc" />
-
-                        <Spinner
-                            android:id="@+id/relationship"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.5">
-
                         </Spinner>
 
-
                     </LinearLayout>
 
                     <LinearLayout
@@ -401,84 +306,20 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:text="@string/nic_mother"
+                            android:text="@string/addr"
                             android:textColorHint="@color/desc" />
 
                         <EditText
-                            android:id="@+id/nic"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.5"
-                            android:textSize="15dp"
-                            android:enabled="false">
-
-                        </EditText>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginHorizontal="5dp"
-                        android:layout_marginVertical="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/background_popup_card"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="8dp"
-                        android:weightSum="1">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_weight="0.5"
-                            android:background="@null"
-                            android:text="@string/occup_mother"
-                            android:textColorHint="@color/desc" />
-
-                        <Spinner
-                            android:id="@+id/occupation"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.5">
-
-                        </Spinner>
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginHorizontal="5dp"
-                        android:layout_marginVertical="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/background_popup_card"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="8dp"
-                        android:weightSum="1">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_weight="0.5"
-                            android:background="@null"
-                            android:text="@string/occu_specifcation"
-                            android:textColorHint="@color/desc" />
-
-                        <EditText
-                            android:id="@+id/occu_specifcation1"
+                            android:id="@+id/address"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
                             android:hint="Enter here"
+                            android:textColorHint="@color/desc"
                             android:textSize="15dp"
-                            android:textColorHint="@color/desc" />
+                            android:enabled="false"/>
 
                     </LinearLayout>
 
@@ -507,185 +348,10 @@
                             android:id="@+id/sector"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.5">
-
-                        </Spinner>
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginHorizontal="5dp"
-                        android:layout_marginVertical="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/background_popup_card"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="8dp"
-                        android:weightSum="1">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
                             android:layout_weight="0.5"
-                            android:background="@null"
-                            android:text="@string/edu_level_mother"
-                            android:textColorHint="@color/desc" />
-
-                        <Spinner
-                            android:id="@+id/highestEduLevel"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.5">
-
-                        </Spinner>
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginHorizontal="5dp"
-                        android:layout_marginVertical="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/background_popup_card"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="8dp"
-                        android:weightSum="1">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_weight="0.5"
-                            android:background="@null"
-                            android:text="@string/name_mother"
-                            android:textColorHint="@color/desc" />
-
-                        <EditText
-                            android:id="@+id/mother_name"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.5"
-                            android:textSize="15dp"
                             android:enabled="false">
 
-                        </EditText>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginHorizontal="5dp"
-                        android:layout_marginVertical="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/background_popup_card"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="8dp"
-                        android:weightSum="1">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_weight="0.4"
-                            android:background="@null"
-                            android:text="@string/date_of_birth_mother"
-                            android:textColorHint="@color/desc" />
-
-                        <EditText
-                            android:id="@+id/mother_dob"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_weight="0.4"
-                            android:background="@null"
-                            android:enabled="false"
-                            android:hint="Mother DOB"
-                            android:inputType="date"
-                            android:textColorHint="@color/desc" />
-
-                        <ImageView
-                            android:id="@+id/date_pick"
-                            android:layout_width="0dp"
-                            android:layout_height="20dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_weight="0.2"
-                            android:background="@drawable/background_popup_card"
-                            android:src="@drawable/calendar" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginHorizontal="5dp"
-                        android:layout_marginVertical="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/background_popup_card"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="8dp"
-                        android:weightSum="1">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_weight="0.5"
-                            android:background="@null"
-                            android:text="@string/no_of_children"
-                            android:textColorHint="@color/desc" />
-
-                        <EditText
-                            android:id="@+id/numberOfChildren"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.5"
-                            android:enabled="false"
-                            android:textSize="15dp"
-                            android:inputType="number">
-
-                        </EditText>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginHorizontal="5dp"
-                        android:layout_marginVertical="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/background_popup_card"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="8dp"
-                        android:weightSum="1">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_weight="0.5"
-                            android:background="@null"
-                            android:text="@string/cg_name"
-                            android:textColorHint="@color/desc" />
-
-                        <EditText
-                            android:id="@+id/caregiver_name"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.5"
-                            android:textSize="15dp"
-                            android:enabled="false">
-
-                        </EditText>
+                        </Spinner>
 
                     </LinearLayout>
 
@@ -711,15 +377,18 @@
                             android:textColorHint="@color/desc" />
 
                         <EditText
-                            android:id="@+id/lPhone"
+
+                            android:id="@+id/lNumber"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
+                            android:layout_gravity="center"
                             android:layout_weight="0.5"
-                            android:enabled="false"
+                            android:background="@null"
+                            android:hint="Enter here"
+                            android:inputType="number"
+                            android:textColorHint="@color/desc"
                             android:textSize="15dp"
-                            android:inputType="number">
-
-                        </EditText>
+                            android:enabled="false"/>
 
                     </LinearLayout>
 
@@ -748,14 +417,415 @@
                             android:id="@+id/mNumber"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
+                            android:layout_gravity="center"
                             android:layout_weight="0.5"
-                            android:enabled="false"
+                            android:background="@null"
+                            android:hint="Enter here"
+                            android:inputType="number"
+                            android:textColorHint="@color/desc"
                             android:textSize="15dp"
-                            android:inputType="number">
-
-                        </EditText>
+                            android:enabled="false"/>
 
                     </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_popup_card"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:text="@string/name_mother"
+                            android:textColorHint="@color/desc" />
+
+                        <EditText
+                            android:id="@+id/motherName"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:hint="Enter here"
+                            android:textColorHint="@color/desc"
+                            android:textSize="15dp"
+                            android:enabled="false"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_popup_card"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:text="@string/nic_mother"
+                            android:textColorHint="@color/desc" />
+
+                        <EditText
+                            android:id="@+id/nic"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:hint="Enter here"
+                            android:textColorHint="@color/desc"
+                            android:textSize="15dp"
+                            android:enabled="false"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_popup_card"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.4"
+                            android:background="@null"
+                            android:text="@string/date_of_birth_mother"
+                            android:textColorHint="@color/desc" />
+
+                        <TextView
+                            android:id="@+id/editTextMomDateofBirth"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.4"
+                            android:background="@null"
+                            android:enabled="false"
+                            android:textColorHint="@color/desc" />
+
+                        <ImageView
+                            android:id="@+id/date_pick_mom_birth"
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.2"
+                            android:enabled="false"
+                            android:background="@drawable/background_popup_card"
+                            android:src="@drawable/calendar" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_popup_card"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:text="@string/no_of_children"
+                            android:textColorHint="@color/desc" />
+
+                        <EditText
+                            android:id="@+id/number_of_children"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:hint="Enter here"
+                            android:inputType="number"
+                            android:enabled="false"
+                            android:textColorHint="@color/desc"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_popup_card"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:text="@string/edu_level_mother"
+                            android:textColorHint="@color/desc" />
+
+                        <Spinner
+                            android:id="@+id/edu_level"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.5"
+                            android:enabled="false">
+
+                        </Spinner>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_popup_card"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:text="@string/occup_mother"
+                            android:textColorHint="@color/desc" />
+
+                        <Spinner
+                            android:id="@+id/occupation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.5"
+                            android:enabled="false">
+
+                        </Spinner>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_popup_card"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:text="@string/occu_specifcation"
+                            android:textColorHint="@color/desc"/>
+
+                        <EditText
+                            android:id="@+id/occu_specifcation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:hint="Enter here"
+                            android:textColorHint="@color/desc"
+                            android:textSize="15dp"
+                            android:enabled="false"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_popup_card"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:text="@string/cg_rel"
+                            android:textColorHint="@color/desc" />
+
+                        <Spinner
+                            android:id="@+id/relationship"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.5"
+                            android:enabled="false">
+
+                        </Spinner>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_popup_card"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:text="@string/cg_name"
+                            android:textColorHint="@color/desc" />
+
+                        <EditText
+                            android:id="@+id/caregiverName"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:hint="Enter here"
+                            android:enabled="false"
+                            android:textColorHint="@color/desc"
+                            android:textSize="15dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="@string/subsection_title"
+                            android:textAlignment="center"
+                            android:gravity="center_vertical"
+                            android:textColorHint="@color/desc">
+
+                        </TextView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_popup_card"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:text="@string/birth_weight"
+                            android:textColorHint="@color/desc" />
+
+                        <EditText
+
+                            android:id="@+id/weight"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:hint="Enter here"
+                            android:inputType="number"
+                            android:enabled="false"
+                            android:textColorHint="@color/desc" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_popup_card"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:text="@string/birth_len"
+                            android:textColorHint="@color/desc" />
+
+                        <EditText
+                            android:id="@+id/length"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:hint="Enter here"
+                            android:inputType="number"
+                            android:enabled="false"
+                            android:textColorHint="@color/desc" />
+
+                    </LinearLayout>
+
 
                 </LinearLayout>
 

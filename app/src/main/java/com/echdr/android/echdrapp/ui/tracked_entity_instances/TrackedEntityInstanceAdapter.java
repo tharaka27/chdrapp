@@ -169,7 +169,7 @@ public class TrackedEntityInstanceAdapter extends PagedListAdapter<TrackedEntity
         holder.itemView.setOnClickListener(view -> {
             ActivityStarter.startActivity(
                     activity,
-                    ChildDetailsActivity.getTrackedEntityInstancesActivityIntent(
+                    ChildDetailsActivityNew.getTrackedEntityInstancesActivityIntent(
                             activity,
                             trackedEntityInstance.uid()
                     ),false

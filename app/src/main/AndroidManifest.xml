@@ -106,6 +106,9 @@
             android:name=".ui.tracked_entity_instances.ChildDetailsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".ui.tracked_entity_instances.ChildDetailsActivityNew"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".ui.programs.ProgramsActivity"
             android:label="@string/title_activity_programs"
             android:theme="@style/AppTheme.NoActionBar" />
