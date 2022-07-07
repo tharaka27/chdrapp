@@ -787,7 +787,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
                 //<item>Self employment</item>
                 //<item>Paid employment</item>
                 //<item>Retired</item>
-                if( occu_specification.getText().toString().isEmpty() &&
+                if(occu_specification.getText().toString().isEmpty() &&
                         (occupation_english_only[occupation.getSelectedItemPosition()].equals("Retired") ||
                                 occupation_english_only[occupation.getSelectedItemPosition()].equals("Self employment") ||
                                 occupation_english_only[occupation.getSelectedItemPosition()].equals("Paid employment")) )

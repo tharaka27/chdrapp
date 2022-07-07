@@ -112,19 +112,19 @@
     <string name="other_prog"><font size="12">වෙනත් සෞඛ්‍ය/ \nසෞඛ්‍ය නොවන</font></string>
     <string name="area_details">මගේ ප්‍රදේශයේ විස්තර බලන්න</string>
     <string name="area_details_desc">ඔබේ ප්‍රදේශයේ සියලුම ළමා ලැයිස්තුව බැලීමට මෙතැන ක්ලික් කරන්න</string>
-    <string name="new_child">ළමා ලියාපදිංචිය</string>
+    <string name="new_child">ලියාපදිංචි වීම</string>
     <string name="new_child_desc">වැඩසටහනට නව දරුවෙකු එක් කිරීමට මෙතන ක්ලික් කරන්න</string>
     <string name="all_reg">සියලුම ලියාපදිංචි කිරීම්</string>
 
     <!--    demographic info-->
     <string name="demo_info_title">ජනවිකාස තොරතුරු</string>
-    <string name="date_of_reg"><font size="14">ලියාපදිංචි දිනය</font></string>
-    <string name="gn_area"><font size="14">ග්‍රාම නිලධාරී වසම</font></string>
+    <string name="date_of_reg"><font size="14">ලියාපදිංචි වූ දිනය</font></string>
+    <string name="gn_area"><font size="14">ග‍්‍රාම නිලධාරී කොට්ඨාශය</font></string>
     <string name="birth_num"><font size="12">උපත් හා ප‍්‍රතිශක්තිකරණ ලේඛණ අංකය</font></string>
     <string name="name"><font size="12">දරුවාගේ නම</font></string>
-    <string name="sex"><font size="12">ලිංගිකත්වය</font></string>
-    <string name="date_of_birth"><font size="12">උපන්දිනය</font></string>
-    <string name="ethnicity"><font size="12">වාර්ගිකත්වය</font></string>
+    <string name="sex"><font size="12">ස්ත‍්‍රී පුරුෂ භාවය</font></string>
+    <string name="date_of_birth"><font size="12">උපන් දිනය</font></string>
+    <string name="ethnicity"><font size="12">ජාතිය</font></string>
     <string name="addr"><font size="12">ලිපිනය</font></string>
     <string name="sector"><font size="12">අංශය</font></string>
     <string name="ll_num"><font size="12">ස්ථාවර දුරකතන අංකය</font></string>
@@ -136,8 +136,8 @@
     <string name="name_mother"><font size="12">මවගේ නම</font></string>
     <string name="date_of_birth_mother"><font size="12">මවගේ උපන් දිනය</font></string>
     <string name="no_of_children"><font size="12">මෙම දරුවා ඇතුළුව ජීවමාන දරුවන් සංඛ්‍යාව</font></string>
-    <string name="occu_specifcation"><font size="10">ස්වයං රැකියාවක්, වැටුප් සහිත රැකියාවක් හෝ විශ්‍රාම යෑමක් නම්, කරුණාකර මවගේ රැකියාව සඳහන් කරන්න</font></string>
-    <string name="edu_level_mother"><font size="12">ඉහළම අධ්‍යාපන මට්ටම</font></string>
+    <string name="occu_specifcation"><font size="12">ස්වයං රැකියාවක්, වැටුප් සහිත රැකියාවක් හෝ විශ්‍රාම යෑමක් නම්, කරුණාකර මවගේ රැකියාව සඳහන් කරන්න</font></string>
+    <string name="edu_level_mother"><font size="12">ඉහළම අධ්‍යාපන සුදුසුකම</font></string>
     <string name="nic_mother"><font size="12">ජාතික හැඳුනුම්පත් අංකය</font></string>
 
     <!--    caregiver's info-->
@@ -164,8 +164,8 @@
     <string name="an_title">වර්ධන තත්වය මැනීම</string>
     <string name="an_date_enrol"><font size="12">ලියාපදිංචි වූ දිනය</font></string>
     <string name="an_date"><font size="12">දිනය</font></string>
-    <string name="an_weight"><font size="12">බර (ග්‍රෑම්)</font></string>
-    <string name="an_length"><font size="12">දිග/උස (සෙ.මී.)</font></string>
+    <string name="an_weight"><font size="12">බර (g)</font></string>
+    <string name="an_length"><font size="12">දිග/උස (c.m)</font></string>
     <string name="an_measures_title">වර්ධන තත්වය මිනුම්</string>
     <string name="save">සුරකින්න</string>
     <string name="an_age_weeks">සති වලින් වයස</string>
@@ -201,13 +201,13 @@
     <string name="oth_inter_povert_market_access">අගය දාම සහාය සහ වෙළඳපල ප්‍රවේශය වැඩි කිරීම</string>
 
     <!-- other - risk factor evaluation -->
-    <string name="oth_risk_title">අවදානම් සාධක ඇගයීම</string>
-    <string name="oth_risk_date">ඇගයීමේ දිනය</string>
+    <string name="oth_risk_title">1 වන අදියර :අවදානම් සාධක තක්සේරු කිරීම</string>
+    <string name="oth_risk_date">බඳවාගත්  දිනය</string>
     <string name="oth_risk_poverty">දරිද්‍ර‍්‍රතාවය හා ආදායම් කළමණාකරනයේ දුර්වලතා</string>
-    <string name="oth_risk_food">ආහාර අනාරක්ෂිත බව</string>
+    <string name="oth_risk_food">ආහාර අනාරක්ෂිතතාවය බව</string>
     <string name="oth_risk_water">ජල සනීපාරක්ෂාව ප‍්‍රමාණවත් නොවීම</string>
     <string name="oth_risk_child">ළමා රැකවරණය ප්රමාණවත් නොවීම</string>
-    <string name="oth_risk_commun">බෝවන රෝගවල ඉහළ පැතිරීම</string>
+    <string name="oth_risk_commun">බෝ වන රෝග ව්‍යාප්තිය ඉහළ මට්ටමක පැවතීම</string>
 
 
     <!-- other - food-insecurity -->
@@ -218,7 +218,6 @@
     <string name="oth_food_insecurity_support_gardening">ගෙවතු වගාවට ආධාර කිරීම (පැල/අමුද්‍රව්‍ය/පුහුණුව)</string>
     <string name="oth_food_insecurity_support_water"> ගෘහස්ථ ජල එක්රැස් කිරීමේ ව්‍යපෘති/වගා ජල පද්ධති සදහා ආධාර කිරීම</string>
     <string name="oth_food_insecurity_training">පසු අස්වැනු හානිය අහිමි වීම් අඩු කරගැනීමට පුහුණු වැඩසටහන් </string>
-
 
 
     <!-- other - Inadequate water, sanitation and Hygiene-->
@@ -241,82 +240,81 @@
 
 
     <!-- overweight - intervention -->
-    <string name="over_inter_title">අධික බර / තරබාරුකම සඳහා මැදිහත් වීම</string>
-    <string name="over_inter_date">මැදිහත්වීමේ දිනය</string>
-    <string name="over_inter_counselling">IYCF/පෝෂණ උපදේශනය ලබා දී ඇත</string>
+    <string name="over_inter_title">2 වන අදියර : මැදිහත් වීම් </string>
+    <string name="over_inter_date">දිනය</string>
+    <string name="over_inter_counselling">ළදරුවන්ට හා කුඩා දරුවන්ට  ආහාර දීම  පිළිබද  උපදේශනය / පෝෂණ උපදේශනය සිදු කිරීම : ඔව් / නැත</string>
 
     <!-- overweight - management -->
-    <string name="over_mana_title">අධික බර කළමනාකරණය</string>
-    <string name="over_mana_date">කළමනාකරණ දිනය</string>
-    <string name="over_mana_enrol_type">ඇතුළත් වීමේ වර්ගය</string>
-    <string name="over_mana_hospital">රෝහලට යොමු කළා</string>
-    <string name="over_mana_seen">ළමා රෝග විශේෂඥ වෛද්‍ය/එම්ඕ පෝෂණවේදය විසින් බලන ලදී</string>
+    <string name="over_mana_title">1 වන අදියර : කළමණාකරනය (එක් වරක් පමණි)</string>
+    <string name="over_mana_date">දිනය</string>
+    <string name="over_mana_enrol_type">බඳවාගැනීමෙ ස්වභාවය</string>
+    <string name="over_mana_hospital">රෝහලට යොමු කිරීම (ඔව් / නැත)</string>
+    <string name="over_mana_seen">ළමා රෝග විශේෂඥ වෛද්‍ය වරයකු විසින් / පෝෂණ වෛද්‍ය සායනයේදී පරීක්ෂා කිරීම (ඔව්/ නැත)</string>
 
     <!-- overweight - outcome -->
-    <string name="over_out_title">අධික බර ප්රතිඵලය</string>
+    <string name="over_out_title">3 වන අදියර : අවසන් ප‍්‍රතිඵලය</string>
     <string name="over_out_date">දිනය</string>
-    <string name="over_out_outcome">ප්රතිඵලය</string>
+    <string name="over_out_outcome">මැදිහත්වීමෙs අවසන් ප‍්‍රතිඵලය</string>
 
     <!-- stunting - intervention -->
-    <string name="stunt_inter_title">මිටි බව සඳහා මැදිහත් වීම</string>
-    <string name="stunt_inter_date">මැදිහත්වීමේ දිනය</string>
-    <string name="stunt_inter_counselling">IYCF/පෝෂණ උපදේශනය ලබා දී ඇත</string>
+    <string name="stunt_inter_title">2 වන අදියර : මැදිහත් වීම් </string>
+    <string name="stunt_inter_date">දිනය</string>
+    <string name="stunt_inter_counselling">ළදරුවන්ට හා කුඩා දරුවන්ට  ආහාර දීම  පිළිබද  උපදේශනය / පෝෂණ උපදේශනය සිදු කිරීම : ඔව් / නැත</string>
 
     <!-- stunting - management -->
-    <string name="stunt_mana_title">මිටි බව කළමනාකරණය</string>
-    <string name="stunt_mana_date">කළමනාකරණ දිනය</string>
-    <string name="stunt_mana_enrol_type">ඇතුළත් වීමේ වර්ගය</string>
-    <string name="stunt_mana_hospital">ෝහලට යොමු කළා</string>
-    <string name="stunt_mana_seen">ළමා රෝග විශේෂඥ වෛද්‍ය/එම්ඕ පෝෂණවේදය විසින් බලන ලදී</string>
+    <string name="stunt_mana_title">1 වන අදියර : කළමණාකරනය (එක් වරක් පමණි)</string>
+    <string name="stunt_mana_date">දිනය</string>
+    <string name="stunt_mana_enrol_type">බඳවාගැනීමෙ ස්වභාවය</string>
+    <string name="stunt_mana_hospital">රෝහලට යොමු කිරීම (ඔව් / නැත)</string>
+    <string name="stunt_mana_seen">ළමා රෝග විශේෂඥ වෛද්‍ය වරයකු විසින් / පෝෂණ වෛද්‍ය සායනයේදී පරීක්ෂා කිරීම (ඔව්/ නැත)</string>
 
 
     <!-- stunting - outcome -->
-    <string name="stunt_out_title">මිටි බව ප්රතිඵලය</string>
+    <string name="stunt_out_title">3 වන අදියර : අවසන් ප‍්‍රතිඵලය</string>
     <string name="stunt_out_date">දිනය</string>
-    <string name="stunt_out_outcome">ප්රතිඵලය</string>
+    <string name="stunt_out_outcome">මැදිහත්වීමෙs අවසන් ප‍්‍රතිඵලය</string>
 
 
     <!-- supplementory - indication -->
-    <string name="supp_indication_title">ත්‍රිපෝෂ සඳහා ඇඟවීම</string>
-    <string name="supp_indication_date">ත්‍රිපෝෂ සඳහා ඇඟවීම දිනය</string>
-    <string name="supp_indication_mam">MAM</string>
+    <string name="supp_indication_title">1 වන අදියර ( ත‍්‍රිපෝෂ ඇරඹීීම සඳහා හේතුව (එක් වරක් පමණි)</string>
+    <string name="supp_indication_date">දිනය</string>
+    <string name="supp_indication_mam">මධ්‍යස්ථ තීව‍්‍ර මන්දපෝෂණය(මධ්‍යස්ථ කෘශ බව - "MAM")</string>
     <string name="supp_indication_underweight">අඩු බර</string>
-    <string name="supp_indication_growth">හරිත කලාපයේ දිගුකාලීන වර්ධනය අඩාල වේ</string>
+    <string name="supp_indication_growth"> කොල පරාසයේ දීර්ග කාලීන වර්ධනය අඩාලවීම</string>
     <string name="supp_indication_entollment">ඇතුළත් වීමේ වර්ගය</string>
 
     <!-- supplementory - intervention -->
-    <string name="supp_intervention_title">අතිරේක ආහාර ලබාදීම සඳහා  මැදිහත් වීම</string>
-    <string name="supp_intervention_date">මැදිහත්වීමේ දිනය</string>
-    <string name="supp_intervention_on_triposha">ත්‍රිපෝෂ මත</string>
+    <string name="supp_intervention_title">2 වන අදියර :මැදිහත් වීම්</string>
+    <string name="supp_intervention_date">දිනය</string>
+    <string name="supp_intervention_on_triposha">ත‍්‍රිපෝෂ ලබා දීම(ඔව් / නැත)</string>
     <string name="supp_intervention_packets">ලබා දී ඇති ත්‍රිපෝෂ පැකට් ගණන</string>
-    <string name="supp_intervention_counselling">IYCF/පෝෂණ උපදේශනය ලබා දී ඇත</string>
+    <string name="supp_intervention_counselling">ළදරුවන්ට හා කුඩා දරුවන්ට  ආහාර දීම  පිළිබද  උපදේශනය / පෝෂණ උපදේශනය සිදු කිරීම : ඔව් / නැත)</string>
 
 
     <!-- supplementory - outcome -->
-    <string name="supp_out_title">අතිරේක ආහාර ලබාදීම ප්රතිඵලය</string>
+    <string name="supp_out_title">3 වන අදියර : අවසන් ප‍්‍රතිඵලය</string>
     <string name="supp_out_date">දිනය</string>
-    <string name="supp_out_outcome">ප්රතිඵලය</string>
+    <string name="supp_out_outcome">අතිරේක ආහාර ලබාදීමෙි අවසන් ප‍්‍රතිඵලය</string>
 
 
     <!-- tera - intervention -->
-    <string name="tera_intervention_title">ඔ‍ය්ෂධීය ආහාර ලබාදීම මැදිහත් වීම</string>
-    <string name="tera_intervention_date">මැදිහත්වීමේ දිනය</string>
-    <string name="tera_intervention_bp100">BP 100 මත</string>
-    <string name="tera_intervention_counselling">IYCF/පෝෂණ උපදේශනය ලබා දී ඇත</string>
+    <string name="tera_intervention_title">2 වන අදියර : මැදිහත් වීම්</string>
+    <string name="tera_intervention_date">දිනය</string>
+    <string name="tera_intervention_bp100">ඖෂධීය ආහාර BP100 ලබා දීම (ඔව් / නැත)</string>
+    <string name="tera_intervention_counselling">ළදරුවන්ට හා කුඩා දරුවන්ට  ආහාර දීම  පිළිබද  උපදේශනය / පෝෂණ උපදේශනය සිදු කිරීම : ඔව් / නැත</string>
 
 
     <!-- tera - management -->
-    <string name="tera_management_title">ඔ‍ය්ෂධීය ආහාර ලබාදීම කළමනාකරණය</string>
-    <string name="tera_management_date">කළමනාකරණය දිනය </string>
-    <string name="tera_management_enrollment">ඇතුළත් වීමේ වර්ගය</string>
-    <string name="tera_management_hospital">රෝහලට යොමු කළා</string>
-    <string name="tera_management_seen">ළමා රෝග විශේෂඥ වෛද්‍ය/එම්ඕ පෝෂණවේදය විසින් බලන ලදී</string>
-    <string name="tera_management_bp100">BP100 මත ආරම්භ විය</string>
+    <string name="tera_management_title">1 වන අදියර : කළමණාකරනය (එක් වරක් පමණි)</string>
+    <string name="tera_management_date">දිනය</string>
+    <string name="tera_management_enrollment">බඳවාගැනීමෙ ස්වභාවය</string>
+    <string name="tera_management_hospital">රෝහලට යොමු කිරීම (ඔව් / නැත)</string>
+    <string name="tera_management_seen">ළමා රෝග විශේෂඥ වෛද්‍ය වරයකු විසින් / පෝෂණ වෛද්‍ය සායනයේදී පරීක්ෂා කිරීම (ඔව්/ නැත)</string>
 
     <!-- tera - outcome -->
-    <string name="tera_out_title">ඔ‍ය්ෂධීය ආහාර ලබාදීම ප්රතිඵලය</string>
+    <string name="tera_out_title">3 වන අදියර : අවසන් ප‍්‍රතිඵලය</string>
     <string name="tera_out_date">දිනය</string>
-    <string name="tera_out_outcome">ප්රතිඵලය</string>
+    <string name="tera_out_outcome">ඖෂධීය ආහාර ලබාදීමෙි අවසන් ප‍්‍රතිඵලය</string>
 
 
     <!--    child details-->
@@ -344,7 +342,7 @@
     <string name="overweight">අධික බර/ ස්ථුලතාය සදහා මැදිහත්වීම</string>
     <string name="therapeutic">අතිරේක ආහාර ලබාදීම</string>
     <string name="stunt">මිටි බව සදහා මැදිහත්වීම</string>
-    <string name="other">වෙනත් සෞඛ්‍ය/ සෞඛ්‍ය නොවන</string>
+    <string name="other">වෙනත් සෞඛ්‍ය / සෞඛ්‍ය නොවන වැඩසටහන් </string>
     <string name="subsection_title">උපත් විස්තර</string>
 
 
@@ -356,9 +354,9 @@
     </string-array>
 
     <string-array name="sex">
-        <item>පිරිමි</item>
-        <item>ගැහැණු</item>
-        <item>නිශ්චිතව දක්වා නැත</item>
+        <item>පුරුෂ</item>
+        <item>ස්ත‍්‍රී</item>
+        <item>නිශ්චය කර නැත</item>
     </string-array>
 
     <string-array name="sex_english_only">
@@ -372,7 +370,7 @@
         <item>දෙමළ</item>
         <item>මුස්ලිම්</item>
         <item>බර්ගර්</item>
-        <item>අන් අය</item>
+        <item>වෙනත්</item>
     </string-array>
 
     <string-array name="ethinicity_english_only">
@@ -384,12 +382,12 @@
     </string-array>
 
     <string-array name="highestEdu">    //need to update in both languages
-        <item>විධිමත් පාසල් අධ්‍යාපනයක් නැත</item>
-        <item>ප්‍රාථමික අධ්‍යාපනය (1 සිට 5 ශ්‍රේණිය දක්වා)</item>
-        <item>ද්විතීයික අධ්‍යාපනය (6 සිට 10 ශ්‍රේණිය දක්වා)</item>
-        <item>අ.පො.ස සාමාන්‍ය පෙළ (සා.පෙළ) හෝ ඊට සමාන</item>
-        <item>අ.පො.ස උසස් පෙළ (උ/පෙළ) හෝ ඊට සමාන</item>
-        <item>උසස් අධ්‍යාපනය (ඩිප්ලෝමා, උපාධිය ආදිය)</item>
+        <item>පාසල් අධ්යාපනයක් ලබා නැත</item>
+        <item>1 සිට 5  වන ශ්‍රේණිිය තෙක් (5 වන ශ්‍රේණිිය සම්පූර්ණ කර නැත /යම් ප‍්‍රාථමික අධ්‍යාපනයක් ලබා ඇත)</item>
+        <item>5 වන ශ්‍රේණිිය සමත් (ප‍්‍රාථමික අධ්‍යාපනය සම්පූර්ණ කර ඇත)</item>
+        <item>6 සිට 10 වන ශ්‍රේණිය තෙක් (10 වන ශ්‍රේණිිය සම්පූර්ණ කර නැත /යම් ද්විතීයික අධ්‍යාපනයක් ලබා ඇත)</item>
+        <item>10 ශ්‍රේණිය සමත් (ද්විතීයික අධ්‍යාපනය සමිපූර්ණ කර ඇත)</item>
+        <item>11 ශ්‍රේණිය හෝ ඊට ඉහළ අධ්‍යාපන මට්ටම (ද්විතීයික අධ්‍යාපන මට්ටමට වඩා වැඩි)</item>
     </string-array>
 
     <string-array name="eduLevel_english_only">
@@ -402,7 +400,7 @@
     </string-array>
 
     <string-array name="sector">
-        <item>ගම්බද</item>
+        <item>ග‍්‍රාමීීය</item>
         <item>නාගරික</item>
         <item>වතු</item>
     </string-array>
@@ -452,8 +450,8 @@
 
     <!--    Supplementary intervention spinner-->
     <string-array name="supp_intervention_type">
-        <item>මෙම වැඩසටහනට පළමු වරට ලියාපදිංචි වීම</item>
-        <item>නැවත ඇතිවීම</item>
+        <item>නව බඳවාගැනීම /පළමු හඳුනාගැනීම</item>
+        <item>නැවත බඳවා ගැනීම</item>
     </string-array>
 
     <string-array name="supp_intervention_type_english">
@@ -462,8 +460,8 @@
     </string-array>
 
     <string-array name="other_management_type">
-        <item>මෙම වැඩසටහනට පළමු වරට ලියාපදිංචි වීම</item>
-        <item>නැවත ඇතිවීම</item>
+        <item>නව බඳවාගැනීම /පළමු හඳුනාගැනීම</item>
+        <item>නැවත බඳවා ගැනීම</item>
     </string-array>
 
     <string-array name="other_management_type_english">
@@ -472,8 +470,8 @@
     </string-array>
 
     <string-array name="therapeutical_management_type">
-        <item>මෙම වැඩසටහනට පළමු වරට ලියාපදිංචි වීම</item>
-        <item>නැවත ඇතිවීම</item>
+        <item>නව බඳවාගැනීම /පළමු හඳුනාගැනීම</item>
+        <item>නැවත බඳවා ගැනීම</item>
     </string-array>
 
     <string-array name="therapeutical_management_type_english">
@@ -482,16 +480,16 @@
     </string-array>
 
     <string-array name="stunting_management_type">
-        <item>මෙම වැඩසටහනට පළමු වරට ලියාපදිංචි වීම</item>
-        <item>නැවත ඇතිවීම</item>
+        <item>නව බඳවාගැනීම /පළමු හඳුනාගැනීම</item>
+        <item>නැවත බඳවා ගැනීම</item>
     </string-array>
 
     <string-array name="overweight_outcome_type">
         <item>යථා තත්ත්වයට පත් විය</item>
         <item>ප්‍රතිකාරය පැහැරහරින ලදී</item>
-        <item>ප්රදේශය හැරගිය ලදී</item>
+        <item>ප‍්‍ර‍්‍රදේශය හැර යන ලදී</item>
         <item>වයස අවුරුදු 5 සම්පූර්ණ වීම නිසා අත්හැරියා</item>
-        <item>මිය ගියා</item>
+        <item>මියයන ලදී</item>
     </string-array>
 
     <string-array name="overweight_outcome_type_english">
@@ -504,18 +502,18 @@
     <string-array name="stunting_outcome_type">
         <item>යථා තත්ත්වයට පත් විය</item>
         <item>ප්‍රතිකාරය පැහැරහරින ලදී</item>
-        <item>ප්රදේශය හැරගිය ලදී</item>
+        <item>ප‍්‍ර‍්‍රදේශය හැර යන ලදී</item>
         <item>වයස අවුරුදු 5 සම්පූර්ණ වීම නිසා අත්හැරියා</item>
-        <item>මිය ගියා</item>
+        <item>මියයන ලදී</item>
     </string-array>
 
     <string-array name="supp_outcome_type">
         <item>යථා තත්ත්වයට පත් විය</item>
         <item>අතිරේක ආහාර ලබාදීම වැඩසටහනට යවා ඇත</item>
         <item>ප්‍රතිකාරය පැහැරහරින ලදී</item>
-        <item>ප්රදේශය හැරගිය ලදී</item>
+        <item>ප‍්‍ර‍්‍රදේශය හැර යන ලදී</item>
         <item>වයස අවුරුදු 5 සම්පූර්ණ වීම නිසා අත්හැරියා</item>
-        <item>මිය ගියා</item>
+        <item>මියයන ලදී</item>
     </string-array>
 
     <string-array name="supp_outcome_type_english">
@@ -530,9 +528,9 @@
         <item>යථා තත්ත්වයට පත් විය</item>
         <item>ඔ‍ය්ෂධීය ආහාර ලබාදීම වැඩසටහනට යවා ඇත</item>
         <item>ප්‍රතිකාරය පැහැරහරින ලදී</item>
-        <item>ප්රදේශය හැරගිය ලදී</item>
+        <item>ප‍්‍ර‍්‍රදේශය හැර යන ලදී</item>
         <item>වයස අවුරුදු 5 සම්පූර්ණ වීම නිසා අත්හැරියා</item>
-        <item>මිය ගියා</item>
+        <item>මියයන ලදී</item>
     </string-array>
 
     <string-array name="tera_outcome_type_english">

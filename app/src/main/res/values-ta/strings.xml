@@ -136,8 +136,8 @@
     <string name="name_mother"><font size="12">தாயின் பெயர்</font></string>
     <string name="date_of_birth_mother"><font size="12">தாயின் பிறந்த தேதி</font></string>
     <string name="no_of_children"><font size="12">இந்தக் குழந்தை உட்பட வாழும் குழந்தைகளின் எண்ணிக்கை</font></string>
-    <string name="occu_specifcation"><font size="10">சுயதொழில், ஊதியம் பெற்ற வேலை அல்லது ஓய்வு பெற்றால், தாயின் தொழிலைக் குறிப்பிடவும்</font></string>
-    <string name="edu_level_mother"><font size="12">உயர் கல்வி மட்டம்</font></string>
+    <string name="occu_specifcation"><font size="12">சுயதொழில், ஊதியம் பெற்ற வேலை அல்லது ஓய்வு பெற்றால், தாயின் தொழிலைக் குறிப்பிடவும்</font></string>
+    <string name="edu_level_mother"><font size="12">உயர் கல்வி மட்டம்  (கீழிறங்கும் பட்டியல்) </font></string>
     <string name="nic_mother"><font size="12">NIC எண்</font></string>
 
     <!--    caregiver's info-->
@@ -203,13 +203,13 @@
 
 
     <!-- other - risk factor evaluation -->
-    <string name="oth_risk_title">ஆபத்து காரணி மதிப்பீடு</string>
-    <string name="oth_risk_date">மதிப்பீட்டு தேதி</string>
-    <string name="oth_risk_poverty">வறுமை மற்றும் குறைந்த வருமான முகாiமாத்துவம்</string>
-    <string name="oth_risk_food">உணவுப் பாதுகாப்பின்மை</string>
-    <string name="oth_risk_water">போதியளவு நீர் சுகாதார இன்மை</string>
-    <string name="oth_risk_child">குழந்தை பராமரிப்பு போதுமானதாக இல்லை</string>
-    <string name="oth_risk_commun">தொற்று நோய்களின் அதிக பாதிப்பு</string>
+    <string name="oth_risk_title">ஆபத்துக் காரணிகளின் மதிப்பீடு (மீண்டும் செய்யக்கூடியது)</string>
+    <string name="oth_risk_date">திகதி</string>
+    <string name="oth_risk_poverty">வறுமையும் வறுமை வருமான முகாமையும் (தேர்வுப் பெட்டி)</string>
+    <string name="oth_risk_food">உணவுப்பாதுகாப்பு (தேர்வுப் பெட்டி) </string>
+    <string name="oth_risk_water">குறைவான நீர் சுகாதாரம் (தேர்வுப் பெட்டி) </string>
+    <string name="oth_risk_child">குறைவான சிறுவர் பராமரிப்பு (தேர்வுப் பெட்டி) </string>
+    <string name="oth_risk_commun">அதிகளவில் தொற்று நோய்கள் காணப்படுகின்றமை (தேர்வுப் பெட்டி) </string>
 
     <!-- other - food-insecurity -->
     <string name="oth_food_insecurity_title">உணவு பாதுகாப்பின்மை</string>
@@ -240,86 +240,85 @@
     <string name="oth_inadequate_water_quality">நீர் தர கண்காணிப்பு</string>
 
     <!-- overweight - intervention -->
-    <string name="over_inter_title">அதிக எடை / உடல் பருமன் தலையீடு</string>
-    <string name="over_inter_date">தலையீடு தேதி</string>
-    <string name="over_inter_counselling">IYCF/Nutrtion ஆலோசனை வழங்கப்பட்டது</string>
+    <string name="over_inter_title">நிலை 2:  தலையீடுகள் ( மீண்டும் செய்யக்கூடியது )</string>
+    <string name="over_inter_date">திகதி</string>
+    <string name="over_inter_counselling">IYCF/போஷணை உளவளத்துணை கொடுத்தது (ஆம்/இல்லை)</string>
 
     <!-- overweight - management -->
-    <string name="over_mana_title">அதிக எடை மேலாண்மை</string>
-    <string name="over_mana_date">மேலாண்மை தேதி</string>
-    <string name="over_mana_enrol_type">பதிவு வகை</string>
-    <string name="over_mana_hospital">மருத்துவமனைக்கு பரிந்துரைக்கப்பட்டது</string>
-    <string name="over_mana_seen">குழந்தை மருத்துவர்/எம்ஓ ஊட்டச்சத்து மூலம் பார்க்கப்பட்டது</string>
+    <string name="over_mana_title">நிலை 1: முகாமை (மீண்டும் செய்ய முடியாதது)</string>
+    <string name="over_mana_date">திகதி</string>
+    <string name="over_mana_enrol_type">சேர்ந்த வகை (கீழிறங்கும் பட்டியல்)</string>
+    <string name="over_mana_hospital">வைத்த்pயசாலைக்கு அனுப்புதல் (ஆம்/இல்லை)</string>
+    <string name="over_mana_seen">சிறுவர் வைத்திய நிபுணர் பார்வையிட்டது  (ஆம்/இல்லை)</string>
 
     <!-- overweight - outcome -->
-    <string name="over_out_title">அதிக எடை விளைவு</string>
-    <string name="over_out_date">முடிவு தேதி</string>
-    <string name="over_out_outcome">விளைவு</string>
+    <string name="over_out_title">நிலை 3 : விளைவு (மீண்டும் செய்ய முடியாதது) </string>
+    <string name="over_out_date">திகதி</string>
+    <string name="over_out_outcome">சிகிச்சை ஊட்டல் திட்ட விளைவு (கீழிறங்கும் பட்டியல)</string>
 
 
     <!-- stunting - intervention -->
-    <string name="stunt_inter_title">ஸ்டண்டிங் தலையீடு</string>
-    <string name="stunt_inter_date">தலையீடு தேதி</string>
-    <string name="stunt_inter_counselling">IYCF/Nutrtion ஆலோசனை வழங்கப்பட்டது</string>
+    <string name="stunt_inter_title">நிலை 2:  தலையீடுகள் ( மீண்டும் செய்யக்கூடியது)</string>
+    <string name="stunt_inter_date">திகதி</string>
+    <string name="stunt_inter_counselling">IYCF/ போஷணை உளவளத்துணை கொடுத்தது (ஆம்/இல்லை)</string>
 
 
     <!-- stunting - management -->
-    <string name="stunt_mana_title">ஸ்டண்டிங் மேலாண்மை</string>
-    <string name="stunt_mana_date">மேலாண்மை தேதி</string>
-    <string name="stunt_mana_enrol_type">பதிவு வகை</string>
-    <string name="stunt_mana_hospital">மருத்துவமனைக்கு பரிந்துரைக்கப்பட்டது</string>
-    <string name="stunt_mana_seen">குழந்தை மருத்துவர்/எம்ஓ ஊட்டச்சத்து மூலம் பார்க்கப்பட்டது</string>
+    <string name="stunt_mana_title">நிலை 1: முகாமை (மீண்டும் செய்ய முடியாதது) </string>
+    <string name="stunt_mana_date">திகதி</string>
+    <string name="stunt_mana_enrol_type">சேர்ந்த வகை (கீழிறங்கும் பட்டியல்) </string>
+    <string name="stunt_mana_hospital">வைத்த்pயசாலைக்கு அனுப்புதல் (ஆம்/இல்லை)</string>
+    <string name="stunt_mana_seen">சிறுவர் வைத்திய நிபுணர் பார்வையிட்டது  (ஆம்/இல்லை)</string>
 
 
     <!-- stunting - outcome -->
-    <string name="stunt_out_title">ஸ்டண்டிங் விளைவு</string>
-    <string name="stunt_out_date">முடிவு தேதி</string>
-    <string name="stunt_out_outcome">விளைவு</string>
+    <string name="stunt_out_title">நிலை 3 : விளைவு (மீண்டும் செய்ய முடியாதது) </string>
+    <string name="stunt_out_date">திகதி</string>
+    <string name="stunt_out_outcome">குள்ளமாதல் திட்டத்திற்கான  விளைவுகள் (கீழிறங்கும் பட்டியல்)</string>
 
 
     <!-- supplementory - indication -->
-    <string name="supp_indication_title">திரிபோஷத்திற்கான அறிகுறி</string>
-    <string name="supp_indication_date">திரிபோஷ தேதிக்கான அறிகுறி</string>
-    <string name="supp_indication_mam">MAM</string>
-    <string name="supp_indication_underweight">எடை குறைவு</string>
-    <string name="supp_indication_growth">பச்சை மண்டலத்தில் நீண்ட கால வளர்ச்சி குறைகிறது</string>
+    <string name="supp_indication_title">நிலை 1: திரிபோஷக்கான காரணம் (மீண்டும் செய்ய முடியாது) </string>
+    <string name="supp_indication_date">திகதி</string>
+    <string name="supp_indication_mam">மத்திமமான குறகிய காலப்போஷாக்கின்மை (தேர்வுப்பெட்டி)</string>
+    <string name="supp_indication_underweight">நிறைக்குறைவு (தேர்வுப்பெட்டி)</string>
+    <string name="supp_indication_growth">பச்சை வலயத்திலுள்ள நீண்டகால வளர்ச்சிக்குறைபாடு (தேர்வுப் பெட்டி)</string>
     <string name="supp_indication_entollment">பதிவு வகை</string>
 
 
     <!-- supplementory - intervention -->
-    <string name="supp_intervention_title">துணை உணவு இடையீடுகள்</string>
-    <string name="supp_intervention_date">தலையீடு தேதி</string>
-    <string name="supp_intervention_on_triposha">அன்று திரிபோஷா</string>
-    <string name="supp_intervention_packets">கொடுக்கப்பட்ட திரிபோஷா பாக்கெட்டுகளின் எண்ணிக்கை</string>
-    <string name="supp_intervention_counselling">IYCF/Nutrtion ஆலோசனை வழங்கப்பட்டது</string>
+    <string name="supp_intervention_title">நிலை 2: தலையீடுகள் (மீண்டும் செய்யலாம்)</string>
+    <string name="supp_intervention_date">திகதி</string>
+    <string name="supp_intervention_on_triposha">திரிபோஷாவில் உள்ளார் (ஆம்/ இல்லை) </string>
+    <string name="supp_intervention_packets">கொடுக்கப்பட்ட திரிபோஷா பக்கற்குகளின் எண்ணிக்கை</string>
+    <string name="supp_intervention_counselling">IYCF/ போஷணை உளவளத்துணை கொடுத்தது (ஆம் / இல்லை)</string>
 
 
     <!-- supplementory - outcome -->
-    <string name="supp_out_title">துணை உணவு விளைவு</string>
-    <string name="supp_out_date">முடிவு தேதி</string>
-    <string name="supp_out_outcome">விளைவு</string>
+    <string name="supp_out_title">நிலை 3 : விளைவு (மீண்டும் செய்ய முடியாதது)</string>
+    <string name="supp_out_date">திகதி</string>
+    <string name="supp_out_outcome">குறைநிரப்பு உணவூட்டல் திட்ட விளைவு (கீழிறங்கும் பட்டியல்)</string>
 
 
     <!-- tera - intervention -->
-    <string name="tera_intervention_title">சிகிச்சை உணவு இடையீடுகள்</string>
-    <string name="tera_intervention_date">தலையீடு தேதி</string>
-    <string name="tera_intervention_bp100">பிபி 100 இல்</string>
-    <string name="tera_intervention_counselling">IYCF/Nutrtion ஆலோசனை வழங்கப்பட்டது</string>
+    <string name="tera_intervention_title">நிலை 2:  தலையீடுகள் (மீண்டும் செய்யக்கூடியது)</string>
+    <string name="tera_intervention_date">திகதி</string>
+    <string name="tera_intervention_bp100">BP 100 இல் உள்ளார் (ஆம்/இல்லை)</string>
+    <string name="tera_intervention_counselling">IYCF/ போஷணை உளவளத்துணை கொடுத்தது (ஆம்/இல்லை)</string>
 
 
     <!-- tera - management -->
-    <string name="tera_management_title">சிகிச்சை உணவு மேலாண்மை</string>
-    <string name="tera_management_date">மேலாண்மை தேதி</string>
-    <string name="tera_management_enrollment">பதிவு வகை</string>
-    <string name="tera_management_hospital">மருத்துவமனைக்கு பரிந்துரைக்கப்பட்டது</string>
-    <string name="tera_management_seen">குழந்தை மருத்துவர்/எம்ஓ ஊட்டச்சத்து மூலம் பார்க்கப்பட்டது</string>
-    <string name="tera_management_bp100">BP100 இல் தொடங்கப்பட்டது</string>
+    <string name="tera_management_title">நிலை 1: முகாமை (மீண்டும் செய்ய முடியாதது)</string>
+    <string name="tera_management_date">திகதி</string>
+    <string name="tera_management_enrollment">சேர்ந்த வகை (கீழிறங்கும் பட்டியல்)</string>
+    <string name="tera_management_hospital">வைத்த்pயசாலைக்கு அனுப்புதல் (ஆம்/இல்லை) </string>
+    <string name="tera_management_seen">சிறுவர் வைத்திய நிபுணர் பார்வையிட்டது  (ஆம்/இல்லை)</string>
 
 
     <!-- tera - outcome -->
-    <string name="tera_out_title">சிகிச்சை உணவு விளைவு</string>
-    <string name="tera_out_date">முடிவு தேதி</string>
-    <string name="tera_out_outcome">விளைவு</string>
+    <string name="tera_out_title">நிலை 3 : விளைவு (மீண்டும் செய்ய முடியாதது) </string>
+    <string name="tera_out_date">திகதி</string>
+    <string name="tera_out_outcome">சிகிச்சை ஊட்டல் திட்ட விளைவு (கீழிறங்கும் பட்டியல)</string>
 
 
 
@@ -348,7 +347,7 @@
     <string name="overweight">அதிக எடை</string>
     <string name="therapeutic">சிகிச்சை உணவு</string>
     <string name="stunt">ஸ்டண்டிங்</string>
-    <string name="other">பிற உடல்நலம்/ ஆரோக்கியமற்றது</string>
+    <string name="other">ஏனைய சுகாதார / சுகாதாரம் சமபந்தமற்ற திட்டங்கள்</string>
     <string name="subsection_title">பிறப்பு விவரங்கள்</string>
 
     <!--    Supplementary intervention spinner-->
@@ -370,9 +369,9 @@
     </string-array>
 
     <string-array name="sex">
-        <item>ஆண்</item>
-        <item>பெண்</item>
-        <item>குறிப்பிடப்படாதது</item>
+        <item>ஆண</item>
+        <item>பெண</item>
+        <item>குறிப்பிட இயலாதது</item>
 
     </string-array>
 
@@ -383,11 +382,11 @@
     </string-array>
 
     <string-array name="ethnicity">
-        <item>சிங்களவர்கள்</item>
-        <item>தமிழ்</item>
-        <item>முஸ்லிம்</item>
-        <item>பர்கர்</item>
-        <item>மற்றவைகள்</item>
+        <item>சிங்களவர்</item>
+        <item>தமிழர்</item>
+        <item>முஸலீம்</item>
+        <item>பறங்கியர்</item>
+        <item>வேறு</item>
     </string-array>
 
     <string-array name="ethinicity_english_only">
@@ -400,12 +399,12 @@
 
 
     <string-array name="highestEdu">    //need to update in both languages
-        <item>முறையான பள்ளிப்படிப்பு இல்லை</item>
-        <item>ஆரம்பக் கல்வி (தரம் 1 முதல் 5 வரை)</item>
-        <item>இடைநிலைக் கல்வி (6ம் வகுப்பு முதல் 10ம் வகுப்பு வரை)</item>
-        <item>க.பொ.த சாதாரண தரம் (O/L) அல்லது அதற்கு சமம்</item>
-        <item>க.பொ.த உயர்தரம் (உ/த) அல்லது அதற்கு சமம்</item>
-        <item>உயர் கல்வி (டிப்ளமோ, பட்டம் போன்றவை)</item>
+        <item>முறையான பாடசாலையின்மை</item>
+        <item>தரம் 1 இலிருந்து 5 (தரம் 5 பூர்த்தி செய்யப்படவில்லை/ஓரளவான ஆரம்பக்கல்வி)</item>
+        <item>தரம் 5 பூர்த்தி (ஆரம்பக்கல்வி பூர்த்தி)</item>
+        <item>தரம் 6  இலிருந்து 10 (தரம் 10 பூர்த்தி செய்யப்படவில்லை/ஓரளவான இரண்டாமநிலைக்கல்வி)</item>
+        <item>தரம் 10 பூர்த்தி (இரண்டாம் நிலைக் கல்வி பூர்த்தி)</item>
+        <item>தரம் 10 அல்லது உயர்வான (இரண்டாம் நிலைக் கல்வியிலும் உயர்வான)</item>
     </string-array>
 
     <string-array name="eduLevel_english_only">
@@ -419,7 +418,7 @@
 
 
     <string-array name="sector">
-        <item>கிராமப்புறம்</item>
+        <item>கிராமம்</item>
         <item>நகர்ப்புறம்</item>
         <item>எஸ்டேட்</item>
     </string-array>
@@ -470,8 +469,8 @@
     <!--    Child registration arrays ends here-->
 
     <string-array name="other_management_type">
-        <item>இந்த திட்டத்தில் முதல் முறையாக பதிவு செய்தல்</item>
-        <item>மறுபிறப்பு</item>
+        <item>முதல் தடவையாக திட்டத்தில் சேர்க்கப்பட்டவர்</item>
+        <item>மீண்டும் வருத்தம் ஏற்பட்டது </item>
     </string-array>
 
     <string-array name="other_management_type_english">
@@ -480,8 +479,8 @@
     </string-array>
 
     <string-array name="therapeutical_management_type">
-        <item>இந்த திட்டத்தில் முதல் முறையாக பதிவு செய்தல்</item>
-        <item>மறுபிறப்பு</item>
+        <item>முதல் தடவையாக திட்டத்தில் சேர்க்கப்பட்டவர்</item>
+        <item>மீண்டும் வருத்தம் ஏற்பட்டது</item>
     </string-array>
 
     <string-array name="therapeutical_management_type_english">
@@ -490,8 +489,8 @@
     </string-array>
 
     <string-array name="stunting_management_type">
-        <item>இந்த திட்டத்தில் முதல் முறையாக பதிவு செய்தல்</item>
-        <item>மறுபிறப்பு</item>
+        <item>முதல் தடவையாக திட்டத்தில் சேர்க்கப்பட்டவர்</item>
+        <item>மீண்டும் வருத்தம் ஏற்பட்டது</item>
     </string-array>
 
     <string-array name="overweight_outcome_type">
