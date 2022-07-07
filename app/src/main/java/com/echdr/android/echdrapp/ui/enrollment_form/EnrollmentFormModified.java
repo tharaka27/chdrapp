@@ -793,7 +793,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
                                 occupation_english_only[occupation.getSelectedItemPosition()].equals("Paid employment")) )
                 {
                     AlertDialog.Builder builder7 = new AlertDialog.Builder(context);
-                    builder7.setMessage("If caregiver is not mother, caregiver name is mandatory.");
+                    builder7.setMessage("Occupation specification is mandatory is self employed/retired/paid.");
                     builder7.setCancelable(true);
 
                     builder7.setNegativeButton(

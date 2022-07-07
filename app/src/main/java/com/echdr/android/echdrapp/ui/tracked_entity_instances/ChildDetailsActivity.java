@@ -3,6 +3,7 @@ package com.echdr.android.echdrapp.ui.tracked_entity_instances;
 import static android.text.TextUtils.isEmpty;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 
 import com.echdr.android.echdrapp.R;
 import com.echdr.android.echdrapp.data.Sdk;
@@ -44,6 +46,8 @@ import org.hisp.dhis.android.core.trackedentity.TrackedEntityInstance;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import io.reactivex.disposables.Disposable;
 
@@ -99,11 +103,22 @@ public class ChildDetailsActivity extends ListActivity {
     private String orgUnit;
     private Context context;
     protected String[] sexArray;
+    protected String[] sex_english_only;
+
     protected String[] ethinicityArray;
+    protected String[] ethinicity_english_only;
+
     protected String[] sectorArray;
+    protected String[] sector_english_only;
+
     protected String[] eduLevelArray;
+    protected String[] eduLevel_english_only;
+
     protected String[] occupationArray;
+    protected String[] occupation_english_only;
+
     protected String[] relationshipArray;
+    protected String[] relationship_english_only;
 
     private String anthropometryEnrollmentID;
     private String otherEnrollmentID;
@@ -220,6 +235,14 @@ public class ChildDetailsActivity extends ListActivity {
         eduLevelArray = getResources().getStringArray(R.array.highestEdu);
         occupationArray = getResources().getStringArray(R.array.occupation);
         relationshipArray = getResources().getStringArray(R.array.relationship);
+
+
+        sex_english_only = getResources().getStringArray(R.array.sex_english_only);
+        ethinicity_english_only = getResources().getStringArray(R.array.ethinicity_english_only);
+        sector_english_only = getResources().getStringArray(R.array.sector_english_only);
+        eduLevel_english_only = getResources().getStringArray(R.array.eduLevel_english_only);
+        occupation_english_only = getResources().getStringArray(R.array.occupation_english_only);
+        relationship_english_only = getResources().getStringArray(R.array.relationship_english_only);
 
         try{
             cd_no.setText(getValueListener("h2ATdtJguMq"));
@@ -373,6 +396,12 @@ public class ChildDetailsActivity extends ListActivity {
         });
 
         submitButton.setOnClickListener(view -> {
+
+
+
+
+
+
             String nameChild = name.getText().toString();
             String addressChild = address.getText().toString();
             String birthHeightChild = birthHeight.getText().toString();
