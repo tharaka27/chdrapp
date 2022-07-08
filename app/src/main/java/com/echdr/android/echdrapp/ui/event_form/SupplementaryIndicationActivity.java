@@ -56,7 +56,6 @@ public class SupplementaryIndicationActivity extends AppCompatActivity {
     private CheckBox checkbox_MAM;
     private CheckBox checkbox_Green;
     private CheckBox checkbox_Underweight;
-    private Spinner spinner_Enrollment;
     private Button saveButton;
     private ImageView datePicker;
 
@@ -98,7 +97,6 @@ public class SupplementaryIndicationActivity extends AppCompatActivity {
         textView_Date = findViewById(R.id.editTextDate);
         checkbox_MAM  = findViewById(R.id.MAM_Checkbox);
         checkbox_Green = findViewById(R.id.Green_Checkbox);
-        spinner_Enrollment = findViewById(R.id.Enrollment_spinner);
         saveButton         = findViewById(R.id.supplementaryIndicationSave);
         datePicker         = findViewById(R.id.supp_date_pick);
         checkbox_Underweight = findViewById(R.id.underweight_Checkbox);
@@ -175,12 +173,6 @@ public class SupplementaryIndicationActivity extends AppCompatActivity {
             }
         };
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context,
-                R.array.supp_intervention_type,
-                android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_Enrollment.setAdapter(adapter);
-        spinner_Enrollment.setOnItemSelectedListener(new EnrollmentTypeSpinnerClass());
 
         // Load the existing values - form.CHECK
         if(formType == FormType.CHECK)
@@ -239,9 +231,6 @@ public class SupplementaryIndicationActivity extends AppCompatActivity {
                 checkbox_Green.setChecked(false);
             }
 
-            // set enrollment type
-            spinner_Enrollment.setSelection(
-                    getSpinnerSelection("Fzl8qpcjcwV", supp_type_array));
 
         }
         else{
@@ -419,9 +408,6 @@ public class SupplementaryIndicationActivity extends AppCompatActivity {
         saveDataElement("o4ltT56H9QV", checkbox_MAM.isChecked() ? "true" : "");
         saveDataElement("tSnrbDU0cJA", checkbox_Green.isChecked() ? "true" : "");
         saveDataElement("B0RrjNXLZ6z", checkbox_Underweight.isChecked() ? "true" : "");
-
-        saveDataElement("Fzl8qpcjcwV",
-                supp_type_array_english[spinner_Enrollment.getSelectedItemPosition()]);
 
         finishEnrollment();
     }

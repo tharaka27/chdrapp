@@ -221,6 +221,62 @@
 
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_popup_card"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:text="@string/tera_management_bp100"
+                            android:textColorHint="@color/desc" />
+
+                        <RadioGroup
+                            android:id="@+id/radioGroupTherapeuticBP100"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:orientation="horizontal"
+                            android:textColorHint="@color/desc">
+
+                            <RadioButton
+                                android:id="@+id/radioButtonTherapeuticBP100Yes"
+                                android:layout_width="0dp"
+                                android:layout_height="55dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_weight="0.5"
+                                android:checked="false"
+                                android:text="@string/yes"
+                                android:textSize="15sp" />
+
+                            <RadioButton
+                                android:id="@+id/radioButtonTherapeuticBP100No"
+                                android:layout_width="0dp"
+                                android:layout_height="55dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_weight="0.5"
+                                android:checked="false"
+                                android:text="@string/no"
+                                android:textSize="15sp" />
+
+                        </RadioGroup>
+
+
+                    </LinearLayout>
+
                 </LinearLayout>
 
             </RelativeLayout>

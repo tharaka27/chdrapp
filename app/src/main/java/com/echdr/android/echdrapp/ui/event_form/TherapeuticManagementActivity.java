@@ -69,6 +69,10 @@ public class TherapeuticManagementActivity extends AppCompatActivity {
     private RadioGroup radioGroupTherapeuticPaediatrician;
     private RadioButton radioButtonTherapeuticPaediatricianYes;
     private RadioButton radioButtonTherapeuticPaediatricianNo;
+    private RadioGroup radioGroupTherapeuticBP100;
+    private RadioButton radioButtonTherapeuticBP100Yes;
+    private RadioButton radioButtonTherapeuticBP100No;
+
     private enum IntentExtra {
         EVENT_UID, PROGRAM_UID, OU_UID, TYPE, TEI_ID
     }
@@ -108,6 +112,9 @@ public class TherapeuticManagementActivity extends AppCompatActivity {
         radioGroupTherapeuticPaediatrician = findViewById(R.id.radioGroupTherapeuticPaediatrician);
         radioButtonTherapeuticPaediatricianYes = findViewById(R.id.radioButtonTherapeuticPaediatricianYes);
         radioButtonTherapeuticPaediatricianNo = findViewById(R.id.radioButtonTherapeuticPaediatricianNo);
+        radioGroupTherapeuticBP100 = findViewById(R.id.radioGroupTherapeuticBP100);
+        radioButtonTherapeuticBP100Yes = findViewById(R.id.radioButtonTherapeuticBP100Yes);
+        radioButtonTherapeuticBP100No = findViewById(R.id.radioButtonTherapeuticBP100No);
 
         context = this;
 
@@ -226,6 +233,23 @@ public class TherapeuticManagementActivity extends AppCompatActivity {
             catch (Exception e)
             {
                 radioGroupTherapeuticHospital.clearCheck();
+            }
+
+            // set bp100
+            try{
+                if(getDataElement("sYmcJNBVsXA").equals("true"))
+                {
+                    radioButtonTherapeuticBP100Yes.setChecked(true);
+                    radioButtonTherapeuticBP100No.setChecked(false);
+                }else if(getDataElement("sYmcJNBVsXA").equals("false"))
+                {
+                    radioButtonTherapeuticBP100Yes.setChecked(false);
+                    radioButtonTherapeuticBP100No.setChecked(true);
+                }
+            }
+            catch (Exception e)
+            {
+                radioGroupTherapeuticBP100.clearCheck();
             }
 
             // set nutrition seen
@@ -417,9 +441,19 @@ public class TherapeuticManagementActivity extends AppCompatActivity {
             paediatricianSelection = "false";
         }
 
+        String BP100 = "";
+        if(radioButtonTherapeuticBP100Yes.isChecked())
+        {
+            BP100 = "true";
+        }else if(radioButtonTherapeuticBP100No.isChecked())
+        {
+            BP100 = "false";
+        }
+
 
         saveDataElement("ous3DfCJdmJ", paediatricianSelection);
         saveDataElement("U266Gc85oQr", ReferredToHostital);
+        saveDataElement("sYmcJNBVsXA", BP100);
         saveDataElement("ZUcO0D98xSN",
                 other_type_therapeutic_array_english[spinner_Enrollment.getSelectedItemPosition()]);
 

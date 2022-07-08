@@ -117,36 +117,36 @@
     <string name="all_reg">அனைத்து பதிவுகளும்</string>
 
     <!--    demographic info-->
-    <string name="demo_info_title">மக்கள்தொகை தகவல்</string>
-    <string name="date_of_reg"><font size="14">பதிவு செய்யப்பட்ட தேதி</font></string>
-    <string name="gn_area"><font size="14">GN பகுதி</font></string>
-    <string name="birth_num"><font size="12">பிறப்பு மற்றும் தடுப்பூசி \nபதிவு எண்</font></string>
-    <string name="name"><font size="12">குழந்தையின் பெயர்</font></string>
-    <string name="sex"><font size="12">செக்ஸ்</font></string>
-    <string name="date_of_birth"><font size="12">பிறந்த தேதி</font></string>
-    <string name="ethnicity"><font size="12">இனம்</font></string>
-    <string name="addr"><font size="12">முகவரி</font></string>
-    <string name="sector"><font size="12">துறை</font></string>
-    <string name="ll_num"><font size="12">தொலைபேசி எண்</font></string>
-    <string name="mob_num"><font size="12">கைபேசி எண்</font></string>
+    <string name="demo_info_title">மக்கள் தொகை  தரவு</string>
+    <string name="date_of_reg"><font size="14">பதிவு செய்த திகதி</font></string>
+    <string name="gn_area"><font size="14">கிராம உத்தியோகத்தர் பிரிவு (எழுதவும்)</font></string>
+    <string name="birth_num"><font size="12">பிறப்பு மற்றும் தடுப்பூசி இல (எழுதவும்) </font></string>
+    <string name="name"><font size="12">பிள்ளையின் பெயர் (எழுதவும்)</font></string>
+    <string name="sex"><font size="12">பால் (கீழிறங்கும் பட்டியல்)</font></string>
+    <string name="date_of_birth"><font size="12">பிறந்த திகதி</font></string>
+    <string name="ethnicity"><font size="12">இனம்  (கீழிறங்கும் பட்டியல்)</font></string>
+    <string name="addr"><font size="12">விலாசம் (எழுதவும்)</font></string>
+    <string name="sector"><font size="12">பிரிவு (கீழிறங்கும் பட்டியல்)</font></string>
+    <string name="ll_num"><font size="12">வீட்டுத் தொலைபேசி இல</font></string>
+    <string name="mob_num"><font size="12">செல்லிடத் / கையடக்கத் தொலைபேசி இல</font></string>
 
     <!--    mother info-->
     <string name="mother_info_title">தாயின் தகவல்</string>
-    <string name="occup_mother"><font size="12">தொழில்</font></string>
+    <string name="occup_mother"><font size="12">தொழில் (கீழிறங்கும் பட்டியல்)</font></string>
     <string name="name_mother"><font size="12">தாயின் பெயர்</font></string>
-    <string name="date_of_birth_mother"><font size="12">தாயின் பிறந்த தேதி</font></string>
-    <string name="no_of_children"><font size="12">இந்தக் குழந்தை உட்பட வாழும் குழந்தைகளின் எண்ணிக்கை</font></string>
+    <string name="date_of_birth_mother"><font size="12">பிறந்த திகதி</font></string>
+    <string name="no_of_children"><font size="12">பிள்ளைகளின் எண்ணிக்கை (இப்பிள்ளையுடன்)</font></string>
     <string name="occu_specifcation"><font size="12">சுயதொழில், ஊதியம் பெற்ற வேலை அல்லது ஓய்வு பெற்றால், தாயின் தொழிலைக் குறிப்பிடவும்</font></string>
-    <string name="edu_level_mother"><font size="12">உயர் கல்வி மட்டம்  (கீழிறங்கும் பட்டியல்) </font></string>
-    <string name="nic_mother"><font size="12">NIC எண்</font></string>
+    <string name="edu_level_mother"><font size="12">தாயினுடைய கல்வி நிலை</font></string>
+    <string name="nic_mother"><font size="12">அடையாள அட்டை இல. (விரும்பினால்)</font></string>
 
     <!--    caregiver's info-->
-    <string name="caregiver_title">கவனிப்பு தகவல்களை வழங்குகிறது</string>
-    <string name="cg_rel"><font size="12">குழந்தையுடன் பராமரிப்பாளரின் உறவு</font></string>
-    <string name="cg_name"><font size="12">பராமரிப்பாளர் தாய் இல்லையென்றால், பராமரிப்பாளரின் பெயர்</font></string>
-    <string name="newborn_title">புதிதாகப் பிறந்தவரின் தகவல்</string>
-    <string name="birth_len"><font size="12">பிறக்கும் போது நீளம் (செ.மீ.)</font></string>
-    <string name="birth_weight"><font size="12">பிறக்கும் போது எடை (கிராம்)</font></string>
+    <string name="caregiver_title">தாய் பற்றிய தகவல்கள்</string>
+    <string name="cg_rel"><font size="12">பிள்ளையுடனான உறவுமுறை (கீழிறங்கும் பட்டியல்)</font></string>
+    <string name="cg_name"><font size="12">பராமரிப்பாளர் தாய் இல்லையெனில் பெயர் (எழுதவும்)</font></string>
+    <string name="newborn_title">சிசு பற்றிய தகவல்கள்</string>
+    <string name="birth_len"><font size="12">பிறப்பு நீளம் (செ.மீ) </font></string>
+    <string name="birth_weight"><font size="12">பிறப்பு நிறை (கிராம்)</font></string>
     <string name="submit">சமர்ப்பிக்கவும்</string>
 
     <!--    program stages-->
@@ -179,7 +179,7 @@
 
     <!-- other - reason for enrollment -->
     <string name="oth_reason_title">சேர்க்கைக்கான காரணம்</string>
-    <string name="oth_reason_date">பதிவு தேதிக்கான காரணம்</string>
+    <string name="oth_reason_date">திகதி</string>
     <string name="oth_reason_sam">கடுமையான ஊட்டச்சத்து குறைபாடு</string>
     <string name="oth_reason_mam">மிதமான கடுமையான ஊட்டச்சத்து குறைபாடு</string>
     <string name="oth_reason_faltering">பசுமை மண்டலத்தில் நீண்டகால வளர்ச்சி வீழ்ச்சியடைந்து வருகிறது</string>
@@ -189,7 +189,7 @@
 
     <!-- other - intervention-poverty -->
     <string name="oth_inter_poverty_title">தலையீடு - வறுமை மற்றும் மோசமான வருமான மேலாண்மை</string>
-    <string name="oth_inter_povert_date">தலையீடு தேதி</string>
+    <string name="oth_inter_povert_date">திகதி</string>
     <string name="oth_inter_povert_training">விவசாயம் சார்ந்த தொழில்முனைவோர் பயிற்சி</string>
     <string name="oth_inter_povert_support">விவசாயம் சார்ந்த வாழ்வாதார ஆதரவு</string>
     <string name="oth_inter_povert_livelihood">வாழ்வாதாரத்தை நிறுவ சொத்து பரிமாற்றம்</string>
@@ -313,7 +313,7 @@
     <string name="tera_management_enrollment">சேர்ந்த வகை (கீழிறங்கும் பட்டியல்)</string>
     <string name="tera_management_hospital">வைத்த்pயசாலைக்கு அனுப்புதல் (ஆம்/இல்லை) </string>
     <string name="tera_management_seen">சிறுவர் வைத்திய நிபுணர் பார்வையிட்டது  (ஆம்/இல்லை)</string>
-
+    <string name="tera_management_bp100">100 BP தருகிறது</string>
 
     <!-- tera - outcome -->
     <string name="tera_out_title">நிலை 3 : விளைவு (மீண்டும் செய்ய முடியாதது) </string>

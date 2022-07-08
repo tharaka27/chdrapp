@@ -171,7 +171,7 @@ public class TherapeuticOutcomeActivity extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context,
                 R.array.tera_outcome_type,
                 android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_expandable_list_item_1);
         spinner_Enrollment.setAdapter(adapter);
         spinner_Enrollment.setOnItemSelectedListener(new TherapeuticOutcomeActivity.EnrollmentTypeSpinnerClass());
 

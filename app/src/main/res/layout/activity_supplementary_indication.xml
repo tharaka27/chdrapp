@@ -79,7 +79,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginHorizontal="5dp"
                         android:layout_marginVertical="5dp"
                         android:layout_weight="1"
@@ -91,7 +91,7 @@
 
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
@@ -107,70 +107,6 @@
                             android:background="@null"
                             android:text ="@string/yes"
                             android:textColorHint="@color/desc" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginHorizontal="5dp"
-                        android:layout_marginVertical="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/background_popup_card"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="8dp"
-                        android:weightSum="1">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_weight="0.5"
-                            android:background="@null"
-                            android:text="@string/supp_indication_underweight"
-                            android:textColorHint="@color/desc" />
-
-                        <CheckBox
-                            android:id="@+id/underweight_Checkbox"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_weight="0.5"
-                            android:background="@null"
-                            android:text ="@string/yes"
-                            android:textColorHint="@color/desc" />
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginHorizontal="5dp"
-                        android:layout_marginVertical="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/background_popup_card"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="8dp"
-                        android:weightSum="1">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_weight="0.5"
-                            android:background="@null"
-                            android:text="@string/supp_indication_entollment"
-                            android:textColorHint="@color/desc" />
-
-                        <Spinner
-                            android:id="@+id/Enrollment_spinner"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.5">
-
-                        </Spinner>
-
 
                     </LinearLayout>
                     <LinearLayout
@@ -196,6 +132,38 @@
 
                         <CheckBox
                             android:id="@+id/Green_Checkbox"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:text ="@string/yes"
+                            android:textColorHint="@color/desc" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_popup_card"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:text="@string/supp_indication_underweight"
+                            android:textColorHint="@color/desc" />
+
+                        <CheckBox
+                            android:id="@+id/underweight_Checkbox"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"

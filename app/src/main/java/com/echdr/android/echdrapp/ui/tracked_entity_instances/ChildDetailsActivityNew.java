@@ -256,7 +256,7 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
         ArrayAdapter<CharSequence> eduadapter = ArrayAdapter.createFromResource(context,
                 R.array.highestEdu,
                 android.R.layout.simple_spinner_item);
-        eduadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        eduadapter.setDropDownViewResource(android.R.layout.simple_expandable_list_item_1);
         eduLevel.setAdapter(eduadapter);
         eduLevel.setOnItemSelectedListener(new ChildDetailsActivityNew.EnrollmentTypeSpinnerClass());
 

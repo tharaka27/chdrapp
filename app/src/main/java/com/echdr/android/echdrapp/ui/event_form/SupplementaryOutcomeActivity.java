@@ -172,7 +172,7 @@ public class SupplementaryOutcomeActivity extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context,
                 R.array.supp_outcome_type,
                 android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_expandable_list_item_1);
         spinner_Enrollment.setAdapter(adapter);
         spinner_Enrollment.setOnItemSelectedListener(new SupplementaryOutcomeActivity.EnrollmentTypeSpinnerClass());
 
