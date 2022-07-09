@@ -162,7 +162,7 @@
 
 
     <!--    anthropometry programme-->
-    <string name="an_title">ஆந்த்ரோபோமெட்ரி</string>
+    <string name="an_title">நிலை 1: மனித உடலளவீடு (மீண்டும் செய்யக்கூடியது) </string>
     <string name="an_date_enrol"><font size="12">பதிவு செய்த தேதி</font></string>
     <string name="an_date"><font size="12">தேதி</font></string>
     <string name="an_weight"><font size="12">எடை (கிராம்)</font></string>
@@ -278,7 +278,7 @@
 
 
     <!-- supplementory - indication -->
-    <string name="supp_indication_title">நிலை 1: திரிபோஷக்கான காரணம் (மீண்டும் செய்ய முடியாது) </string>
+    <string name="supp_indication_title">நிலை 1: திரிபோஷக்கான காரணம் (மீண்டும் செய்ய முடியாது)</string>
     <string name="supp_indication_date">திகதி</string>
     <string name="supp_indication_mam">மத்திமமான குறகிய காலப்போஷாக்கின்மை (தேர்வுப்பெட்டி)</string>
     <string name="supp_indication_underweight">நிறைக்குறைவு (தேர்வுப்பெட்டி)</string>
@@ -348,7 +348,9 @@
     <string name="therapeutic">சிகிச்சை உணவு</string>
     <string name="stunt">ஸ்டண்டிங்</string>
     <string name="other">ஏனைய சுகாதார / சுகாதாரம் சமபந்தமற்ற திட்டங்கள்</string>
-    <string name="subsection_title">பிறப்பு விவரங்கள்</string>
+    <string name="subsection_title">சிசு பற்றிய தகவல்கள்</string>
+    <string name="mother_details">தாய் பற்றிய தகவல்கள் </string>
+    <string name="caregiver_details">தாய் பற்றிய தகவல்கள்</string>
 
     <!--    Supplementary intervention spinner-->
     <string-array name="supp_intervention_type">

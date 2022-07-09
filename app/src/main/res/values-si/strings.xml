@@ -107,7 +107,7 @@
     <string name="wish">ආයුබෝවන්,</string>
     <string name="sup_prog">අතිරේක ආහාර ලබාදීම</string>
     <string name="thera_prog">ඖෂධීය ආහාර ලබාදීම</string>
-    <string name="overw_prog">අධික බර/ස්ථුලතාය</string>
+    <string name="overw_prog">අධි බර / ස්ථූලතාවය \nසඳහා මැදිහත්වීම</string>
     <string name="stunt_prog">මිටි බව \nසදහා මැදිහත්වීම</string>
     <string name="other_prog"><font size="12">වෙනත් සෞඛ්‍ය/ \nසෞඛ්‍ය නොවන</font></string>
     <string name="area_details">මගේ ප්‍රදේශයේ විස්තර බලන්න</string>
@@ -161,7 +161,7 @@
     <string name="st_indication">ත්‍රිපෝෂ සඳහා ඇඟවීම</string>
 
     <!--    anthropometry programme-->
-    <string name="an_title">වර්ධන තත්වය මැනීම</string>
+    <string name="an_title">1 වන අදියර ( වර්ධන තත්ත්වය මැනීම)</string>
     <string name="an_date_enrol"><font size="12">ලියාපදිංචි වූ දිනය</font></string>
     <string name="an_date"><font size="12">දිනය</font></string>
     <string name="an_weight"><font size="12">බර (g)</font></string>
@@ -179,11 +179,11 @@
     <!-- other - reason for enrollment -->
     <string name="oth_reason_title">ලියාපදිංචි වීමට හේතුව</string>
     <string name="oth_reason_date">දිනය</string>
-    <string name="oth_reason_sam">දරුණු උග්‍ර මන්දපෝෂණය</string>
-    <string name="oth_reason_mam">මධ්යස්ථ උග්ර මන්දපෝෂණය</string>
+    <string name="oth_reason_sam">උග්‍ර තීව‍්‍ර මන්දපෝෂණය (SAM)</string>
+    <string name="oth_reason_mam">මධ්‍යස්ථ තීව‍්‍ර මන්දපෝෂණය (මධ්‍යස්ථ කෘශ බව (MAM) </string>
     <string name="oth_reason_faltering">හරිත කලාපයේ දිගුකාලීන වර්ධනය අඩාල වේ</string>
     <string name="oth_reason_under">අඩු බර</string>
-    <string name="oth_reason_overweight">අධික බර / තරබාරුකම</string>
+    <string name="oth_reason_overweight">අධි බර / ස්ථූලතාවය</string>
     <string name="oth_reason_stuning">මිටි බව</string>
 
     <!-- other - intervention-poverty -->
@@ -201,10 +201,10 @@
     <string name="oth_inter_povert_market_access">අගය දාම සහාය සහ වෙළඳපල ප්‍රවේශය වැඩි කිරීම</string>
 
     <!-- other - risk factor evaluation -->
-    <string name="oth_risk_title">1 වන අදියර :අවදානම් සාධක තක්සේරු කිරීම</string>
+    <string name="oth_risk_title">2 වන අදියර :අවදානම් සාධක තක්සේරු කිරීම</string>
     <string name="oth_risk_date">බඳවාගත්  දිනය</string>
     <string name="oth_risk_poverty">දරිද්‍ර‍්‍රතාවය හා ආදායම් කළමණාකරනයේ දුර්වලතා</string>
-    <string name="oth_risk_food">ආහාර අනාරක්ෂිත තාවය</string>
+    <string name="oth_risk_food">ආහාර අනාරක්ෂිත භාවය</string>
     <string name="oth_risk_water">ජල සනීපාරක්ෂාව ප්රමාණවත් නොවීම</string>
     <string name="oth_risk_child">ළමා රැකවරණය ප්රමාණවත් නොවීම</string>
     <string name="oth_risk_commun">බෝ වන රෝග ව්‍යාප්තිය ඉහළ මට්ටමක පැවතීම</string>
@@ -344,7 +344,10 @@
     <string name="therapeutic">අතිරේක ආහාර ලබාදීම</string>
     <string name="stunt">මිටි බව සදහා මැදිහත්වීම</string>
     <string name="other">වෙනත් සෞඛ්‍ය / සෞඛ්‍ය නොවන වැඩසටහන් </string>
-    <string name="subsection_title">උපත් විස්තර</string>
+    <string name="subsection_title">නවජන්මයාගේ තොරතුරු</string>
+    <string name="mother_details">මවගේ තොරතරු</string>
+    <string name="caregiver_details">රැකබලාගන්නාගේ තොරතූරු</string>
+
 
 
     <!--    Child registration arrays starts here-->

@@ -79,7 +79,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginHorizontal="5dp"
                         android:layout_marginVertical="5dp"
                         android:layout_weight="1"
@@ -91,7 +91,7 @@
 
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
@@ -101,7 +101,7 @@
                         <CheckBox
                             android:id="@+id/Moderate_acute_Checkbox"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
@@ -112,7 +112,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginHorizontal="5dp"
                         android:layout_marginVertical="5dp"
                         android:layout_weight="1"
@@ -124,7 +124,7 @@
 
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
@@ -134,7 +134,7 @@
                         <CheckBox
                             android:id="@+id/Long_standing_Checkbox"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
@@ -145,7 +145,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginHorizontal="5dp"
                         android:layout_marginVertical="5dp"
                         android:layout_weight="1"
@@ -157,7 +157,7 @@
 
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
@@ -167,7 +167,7 @@
                         <CheckBox
                             android:id="@+id/Underweight_Checkbox"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
@@ -177,7 +177,7 @@
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginHorizontal="5dp"
                         android:layout_marginVertical="5dp"
                         android:layout_weight="1"
@@ -189,7 +189,7 @@
 
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
@@ -199,7 +199,7 @@
                         <CheckBox
                             android:id="@+id/Severe_acute_Checkbox"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
@@ -209,7 +209,7 @@
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginHorizontal="5dp"
                         android:layout_marginVertical="5dp"
                         android:layout_weight="1"
@@ -221,7 +221,7 @@
 
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
@@ -231,7 +231,7 @@
                         <CheckBox
                             android:id="@+id/Overweight_Checkbox"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
@@ -242,7 +242,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginHorizontal="5dp"
                         android:layout_marginVertical="5dp"
                         android:layout_weight="1"
@@ -254,7 +254,7 @@
 
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
@@ -264,7 +264,7 @@
                         <CheckBox
                             android:id="@+id/Stunting_Checkbox"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
@@ -306,6 +306,16 @@
             android:orientation="vertical"
             android:paddingTop="30dp">
 
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/oth_reason_title"
+                android:textAlignment="center"
+                android:textColor="@color/title"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -325,16 +335,6 @@
                     android:padding="10dp"
                     android:src="@drawable/back" />
                     -->
-
-                <TextView
-                    android:id="@+id/title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/oth_reason_title"
-                    android:textAlignment="center"
-                    android:textColor="@color/title"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
 
             </RelativeLayout>
         </LinearLayout>

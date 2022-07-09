@@ -322,7 +322,7 @@ public class EventsActivity extends ListActivity {
                             stages_names.add(stages.get(1).name());
                             map.put(stages.get(1).name(), stages.get(1).name());
                             stages_names.add(stages.get(2).name());
-                            map.put(stages.get(2).name(), stages.get(1).name());
+                            map.put(stages.get(2).name(), stages.get(2).name());
 
                         }
                         else if(language.equals("si"))
@@ -340,7 +340,7 @@ public class EventsActivity extends ListActivity {
                             stages_names.add("தலையீடுகள்");
                             map.put("தலையீடுகள்", stages.get(1).name());
                             stages_names.add("விளைவு");
-                            map.put("விளைவு", stages.get(1).name());
+                            map.put("விளைவு", stages.get(2).name());
                         }
                     }
 
