@@ -1,5 +1,7 @@
 package com.echdr.android.echdrapp.ui.tracked_entity_instances;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -9,6 +11,7 @@ import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.paging.DataSource;
 import androidx.paging.PagedListAdapter;
@@ -50,10 +53,13 @@ public class TrackedEntityInstanceAdapter extends PagedListAdapter<TrackedEntity
 
     private final AppCompatActivity activity;
     private DataSource<?, TrackedEntityInstance> source;
+    private Context context;
+
 
     public TrackedEntityInstanceAdapter(AppCompatActivity activity) {
         super(new DiffByIdItemCallback<>());
         this.activity = activity;
+        this.context = context;
     }
 
     @NonNull
@@ -68,6 +74,7 @@ public class TrackedEntityInstanceAdapter extends PagedListAdapter<TrackedEntity
         TrackedEntityInstance trackedEntityInstance = getItem(position);
         List<TrackedEntityAttributeValue> values = trackedEntityInstance.trackedEntityAttributeValues();
         holder.title.setText(valueAt(values, "zh4hiarsSD5"));
+
         //holder.subtitle1.setText(valueAt(values, teiSubtitle1(trackedEntityInstance)));
         //holder.subtitle2.setText(setSubtitle2(values, trackedEntityInstance));
 
@@ -83,13 +90,35 @@ public class TrackedEntityInstanceAdapter extends PagedListAdapter<TrackedEntity
         setImage(trackedEntityInstance, holder);
         holder.delete.setVisibility(View.VISIBLE);
         holder.delete.setOnClickListener(view -> {
-            try {
-                Sdk.d2().trackedEntityModule().trackedEntityInstances().uid(trackedEntityInstance.uid()).blockingDelete();
-                invalidateSource();
-                notifyDataSetChanged();
-            } catch (D2Error d2Error) {
-                d2Error.printStackTrace();
-            }
+
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(activity);
+            builder1.setMessage("Are you sure you want to delete the child?");
+            builder1.setCancelable(true);
+
+            builder1.setNegativeButton(
+                    "Close",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                            return;
+                        }
+                    });
+            builder1.setPositiveButton(
+                    "confirm",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            try {
+                                Sdk.d2().trackedEntityModule().trackedEntityInstances().uid(trackedEntityInstance.uid()).blockingDelete();
+                                invalidateSource();
+                                notifyDataSetChanged();
+                            } catch (D2Error d2Error) {
+                                d2Error.printStackTrace();
+                            }
+                        }
+                    });
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
         });
         if (trackedEntityInstance.state() == State.TO_POST ||
                 trackedEntityInstance.state() == State.TO_UPDATE) {
