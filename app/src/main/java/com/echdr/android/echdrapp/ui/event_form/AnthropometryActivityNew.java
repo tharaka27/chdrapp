@@ -656,14 +656,14 @@ public class AnthropometryActivityNew extends AppCompatActivity {
         weightHeightGraph.getViewport().setXAxisBoundsManual(true);
         weightHeightGraph.getViewport().setYAxisBoundsManual(true);
 
-        weightGraph.getGridLabelRenderer().setHorizontalAxisTitle("month");
-        weightGraph.getGridLabelRenderer().setVerticalAxisTitle("weight");
+        weightGraph.getGridLabelRenderer().setHorizontalAxisTitle(getString(R.string.month));
+        weightGraph.getGridLabelRenderer().setVerticalAxisTitle(getString(R.string.weight));
 
-        heightGraph.getGridLabelRenderer().setHorizontalAxisTitle("month");
-        heightGraph.getGridLabelRenderer().setVerticalAxisTitle("height");
+        heightGraph.getGridLabelRenderer().setHorizontalAxisTitle(getString(R.string.month));
+        heightGraph.getGridLabelRenderer().setVerticalAxisTitle(getString(R.string.height));
 
-        weightHeightGraph.getGridLabelRenderer().setHorizontalAxisTitle("height");
-        weightHeightGraph.getGridLabelRenderer().setVerticalAxisTitle("weight");
+        weightHeightGraph.getGridLabelRenderer().setHorizontalAxisTitle(getString(R.string.height));
+        weightHeightGraph.getGridLabelRenderer().setVerticalAxisTitle(getString(R.string.weight));
 
         // enable zooming
         weightGraph.getViewport().setScalable(true);

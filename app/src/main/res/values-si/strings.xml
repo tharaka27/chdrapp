@@ -161,7 +161,7 @@
     <string name="st_indication">ත්‍රිපෝෂ සඳහා ඇඟවීම</string>
 
     <!--    anthropometry programme-->
-    <string name="an_title">1 වන අදියර ( වර්ධන තත්ත්වය මැනීම)</string>
+    <string name="an_title">1 වන අදියර (වර්ධන තත්ත්වය මැනීම)</string>
     <string name="an_date_enrol"><font size="12">ලියාපදිංචි වූ දිනය</font></string>
     <string name="an_date"><font size="12">දිනය</font></string>
     <string name="an_weight"><font size="12">බර (g)</font></string>
@@ -174,6 +174,10 @@
     <string name="an_weight_for_age">වයසට එදිරිව බර</string>
     <string name="an_height_for_age">වයසට එදිරිව දිග/උස</string>
     <string name="an_weight_for_height">දිග/උසට එදිරිව බර</string>
+    <string name="month">මාස</string>
+    <string name="weight">බර</string>
+    <string name="height">උස</string>
+    <string name="stage">වැඩසටහන් අදියර තෝරන්න</string>
 
 
     <!-- other - reason for enrollment -->
@@ -276,7 +280,7 @@
 
 
     <!-- supplementory - indication -->
-    <string name="supp_indication_title">1 වන අදියර ත‍්‍රිපෝෂ ඇරඹීීම සඳහා හේතුව (එක් වරක් පමණි)</string>
+    <string name="supp_indication_title">1 වන අදියර ත්‍රිපෝෂ ඇරඹීීම සඳහා හේතුව (එක් වරක් පමණි)</string>
     <string name="supp_indication_date">දිනය</string>
     <string name="supp_indication_mam">මධ්‍යස්ථ තීව‍්‍ර මන්දපෝෂණය(මධ්‍යස්ථ කෘශ බව - "MAM")</string>
     <string name="supp_indication_underweight">අඩු බර</string>
@@ -286,7 +290,7 @@
     <!-- supplementory - intervention -->
     <string name="supp_intervention_title">2 වන අදියර :මැදිහත් වීම්</string>
     <string name="supp_intervention_date">දිනය</string>
-    <string name="supp_intervention_on_triposha">ත‍්‍රිපෝෂ ලබා දීම(ඔව් / නැත)</string>
+    <string name="supp_intervention_on_triposha">ත්‍රිපෝෂ ලබා දීම(ඔව් / නැත)</string>
     <string name="supp_intervention_packets">ලබා දී ඇති ත්‍රිපෝෂ පැකට් ගණන</string>
     <string name="supp_intervention_counselling">ළදරුවන්ට හා කුඩා දරුවන්ට  ආහාර දීම  පිළිබද  උපදේශනය / පෝෂණ උපදේශනය සිදු කිරීම : ඔව් / නැත)</string>
 

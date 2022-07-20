@@ -105,11 +105,11 @@
     <!--    home-->
     <string name="title_activity_home">வீடு</string>
     <string name="wish">வணக்கம்,</string>
-    <string name="sup_prog">துணை \nஉணவுத் திட்டம்</string>
-    <string name="thera_prog">சிகிச்சை \nதிட்டம்</string>
-    <string name="overw_prog">அதிக எடை/உடல் பருமன் \nதிட்டம்</string>
-    <string name="stunt_prog">ஸ்டண்டிங் \nநிரல்</string>
-    <string name="other_prog">பிற உடல்நலம்/ \nஆரோக்கியமற்றது</string>
+    <string name="sup_prog">துணை உணவு /nவழங்குதல்</string>
+    <string name="thera_prog">மருந்து உணவு /nவழங்குதல்</string>
+    <string name="overw_prog">அதிக எடை/உடல் /nபருமனுக்கு தலையீடு</string>
+    <string name="stunt_prog">சுருக்கத்திற்கான /nதலையீடு</string>
+    <string name="other_prog">பிற சுகாதார / சுகாதாரமற்ற /nதிட்டங்கள்</string>
     <string name="area_details">எனது பகுதி விவரங்களைப் பார்க்கவும்</string>
     <string name="area_details_desc">உங்கள் பகுதியில் உள்ள அனைத்து குழந்தை பட்டியலையும் பார்க்க இங்கே கிளிக் செய்யவும்</string>
     <string name="new_child">குழந்தை பதிவு</string>
@@ -118,74 +118,78 @@
 
     <!--    demographic info-->
     <string name="demo_info_title">மக்கள் தொகை  தரவு</string>
-    <string name="date_of_reg"><font size="14">பதிவு செய்த திகதி</font></string>
-    <string name="gn_area"><font size="14">கிராம உத்தியோகத்தர் பிரிவு (எழுதவும்)</font></string>
-    <string name="birth_num"><font size="12">பிறப்பு மற்றும் தடுப்பூசி இல (எழுதவும்) </font></string>
-    <string name="name"><font size="12">பிள்ளையின் பெயர் (எழுதவும்)</font></string>
-    <string name="sex"><font size="12">பால் (கீழிறங்கும் பட்டியல்)</font></string>
+    <string name="date_of_reg"><font size="14">பதிவு செய்யப்பட்ட திகதி</font></string>
+    <string name="gn_area"><font size="14">கி.உ பகுதி (இலவச உரை)</font></string>
+    <string name="birth_num"><font size="12">பிறப்பு மற்றும் தடுப்பூசி பதிவு இல</font></string>
+    <string name="name"><font size="12">குழந்தையின் பெயர் (இலவச உரை)</font></string>
+    <string name="sex"><font size="12">செக்ஸ் (கீழ்தோன்றும் பட்டியல்)</font></string>
     <string name="date_of_birth"><font size="12">பிறந்த திகதி</font></string>
-    <string name="ethnicity"><font size="12">இனம்  (கீழிறங்கும் பட்டியல்)</font></string>
-    <string name="addr"><font size="12">விலாசம் (எழுதவும்)</font></string>
-    <string name="sector"><font size="12">பிரிவு (கீழிறங்கும் பட்டியல்)</font></string>
-    <string name="ll_num"><font size="12">வீட்டுத் தொலைபேசி இல</font></string>
-    <string name="mob_num"><font size="12">செல்லிடத் / கையடக்கத் தொலைபேசி இல</font></string>
+    <string name="ethnicity"><font size="12">இனம்</font></string>
+    <string name="addr"><font size="12">முகவரி</font></string>
+    <string name="sector"><font size="12">துறை</font></string>
+    <string name="ll_num"><font size="12">தொலைபேசி இல</font></string>
+    <string name="mob_num"><font size="12">கைபேசி இல</font></string>
 
     <!--    mother info-->
     <string name="mother_info_title">தாயின் தகவல்</string>
-    <string name="occup_mother"><font size="12">தொழில் (கீழிறங்கும் பட்டியல்)</font></string>
-    <string name="name_mother"><font size="12">தாயின் பெயர்</font></string>
+    <string name="occup_mother"><font size="12">தொழில்</font></string>
+    <string name="name_mother"><font size="12">பெயர்</font></string>
     <string name="date_of_birth_mother"><font size="12">பிறந்த திகதி</font></string>
-    <string name="no_of_children"><font size="12">பிள்ளைகளின் எண்ணிக்கை (இப்பிள்ளையுடன்)</font></string>
+    <string name="no_of_children"><font size="12">இந்தக் குழந்தை உட்பட வாழும் குழந்தைகளின் இல. ணிக்கை</font></string>
     <string name="occu_specifcation"><font size="12">சுயதொழில், ஊதியம் பெற்ற வேலை அல்லது ஓய்வு பெற்றால், தாயின் தொழிலைக் குறிப்பிடவும்</font></string>
-    <string name="edu_level_mother"><font size="12">தாயினுடைய கல்வி நிலை</font></string>
-    <string name="nic_mother"><font size="12">அடையாள அட்டை இல. (விரும்பினால்)</font></string>
+    <string name="edu_level_mother"><font size="12">மிக உயர்ந்த கல்வி நிலை</font></string>
+    <string name="nic_mother"><font size="12">NIC இல</font></string>
 
     <!--    caregiver's info-->
-    <string name="caregiver_title">தாய் பற்றிய தகவல்கள்</string>
-    <string name="cg_rel"><font size="12">பிள்ளையுடனான உறவுமுறை (கீழிறங்கும் பட்டியல்)</font></string>
-    <string name="cg_name"><font size="12">பராமரிப்பாளர் தாய் இல்லையெனில் பெயர் (எழுதவும்)</font></string>
-    <string name="newborn_title">சிசு பற்றிய தகவல்கள்</string>
-    <string name="birth_len"><font size="12">பிறப்பு நீளம் (செ.மீ) </font></string>
-    <string name="birth_weight"><font size="12">பிறப்பு நிறை (கிராம்)</font></string>
+    <string name="caregiver_title">கவனிப்பு வழங்குபவரின் தகவல்</string>
+    <string name="cg_rel"><font size="12">குழந்தையுடனான உறவு</font></string>
+    <string name="cg_name"><font size="12">பராமரிப்பாளர் தாய் இல்லையென்றால் - பெயர்</font></string>
+    <string name="newborn_title">பிறந்த தகவல்</string>
+    <string name="birth_len"><font size="12">பிறக்கும் போது நீளம் (செ.மீ.)</font></string>
+    <string name="birth_weight"><font size="12">பிறப்பு எடை (கிராம்)</font></string>
     <string name="submit">சமர்ப்பிக்கவும்</string>
 
     <!--    program stages-->
-    <string name="an_stage">நிலை 1 : ஆந்த்ரோபோமெட்ரி</string>
+    <string name="an_stage">நிலை 1: வளர்ச்சி நிலை கண்காணிப்பு</string>
     <string name="st_reason">சேர்க்கைக்கான காரணம்</string>
-    <string name="st_risk">ஆபத்து காரணி மதிப்பீடு</string>
+    <string name="st_risk">ஆபத்துக் காரணிகளின் மதிப்பீடு</string>
     <string name="st_reff">தலையீட்டிற்கு பரிந்துரைக்கப்பட்டது</string>
     <string name="st_mana">நிலை 1: மேலாண்மை நிலை</string>
-    <string name="st_inter">தலையீடு</string>
+    <string name="st_inter">தலையீடுகள்</string>
     <string name="st_out">விளைவு</string>
-    <string name="st_indication">திரிபோஷத்திற்கான அறிகுறி</string>
+    <string name="st_indication">திரிபோஷக்கான காரணம்</string>
 
 
 
     <!--    anthropometry programme-->
-    <string name="an_title">நிலை 1: மனித உடலளவீடு (மீண்டும் செய்யக்கூடியது) </string>
-    <string name="an_date_enrol"><font size="12">பதிவு செய்த தேதி</font></string>
-    <string name="an_date"><font size="12">தேதி</font></string>
-    <string name="an_weight"><font size="12">எடை (கிராம்)</font></string>
-    <string name="an_length"><font size="12">நீளம்/உயரம் (செ.மீ.)</font></string>
+    <string name="an_title">நிலை 1: வளர்ச்சி நிலை கண்காணிப்பு /n(மீண்டும் மீண்டும் செய்யக்கூடியது) </string>
+    <string name="an_date_enrol"><font size="12">திகதி</font></string>
+    <string name="an_date"><font size="12">திகதி</font></string>
+    <string name="an_weight"><font size="12">நிறை (கிராம்)</font></string>
+    <string name="an_length"><font size="12">நீளம் அல்லது உயரம் (செ.மீ)</font></string>
     <string name="an_measures_title">ஆந்த்ரோபோமெட்ரிக் நடவடிக்கைகள்</string>
     <string name="an_age_weeks">வாரங்களில் வயது</string>
     <string name="an_age_years_months_years">ஆண்டுகள் மற்றும் மாதங்களில் வயது</string>
     <string name="an_plot_graph">சதி வரைபடங்கள்</string>
-    <string name="an_weight_for_age">வயதுக்கு ஏற்ற எடை</string>
+    <string name="an_weight_for_age">(தானாக உருவாக்கப்பட்ட) வரைபடங்கள்</string>
     <string name="an_height_for_age">வயதுக்கான நீளம்/உயரம்</string>
-    <string name="an_weight_for_height">நீளம்/உயரத்திற்கான எடை</string>
+    <string name="an_weight_for_height">நிலையான விலகல் வகைப்பாடு</string>
     <string name="save">சேமிக்கவும்</string>
+    <string name="month">மாதம்</string>
+    <string name="weight">எடை</string>
+    <string name="height">உயரம்</string>
+    <string name="stage">நிரல் கட்டத்தைத் தேர்ந்தெடுக்கவும்</string>
 
 
     <!-- other - reason for enrollment -->
-    <string name="oth_reason_title">சேர்க்கைக்கான காரணம்</string>
+    <string name="oth_reason_title">நிலை 1: சேர்க்கைக்கான காரணம் /n(மீண்டும் செய்ய முடியாதது)</string>
     <string name="oth_reason_date">திகதி</string>
-    <string name="oth_reason_sam">கடுமையான ஊட்டச்சத்து குறைபாடு</string>
-    <string name="oth_reason_mam">மிதமான கடுமையான ஊட்டச்சத்து குறைபாடு</string>
-    <string name="oth_reason_faltering">பசுமை மண்டலத்தில் நீண்டகால வளர்ச்சி வீழ்ச்சியடைந்து வருகிறது</string>
+    <string name="oth_reason_sam">பச்சை மண்டலத்தில் நீண்ட கால வளர்ச்சி குறைகிறது</string>
+    <string name="oth_reason_mam">மத்திமமான குறுகிய காலப் போஷாக்கின்மை</string>
+    <string name="oth_reason_faltering">பச்சை மண்டலத்தில் நீண்ட கால வளர்ச்சி குறைகிறது</string>
     <string name="oth_reason_under">எடை குறைவு</string>
-    <string name="oth_reason_overweight">அதிக எடை / உடல் பருமன்</string>
-    <string name="oth_reason_stuning">ஸ்டண்டிங்</string>
+    <string name="oth_reason_overweight">அதிக எடை/உடல் பருமன்</string>
+    <string name="oth_reason_stuning">குள்ளமாதல்</string>
 
     <!-- other - intervention-poverty -->
     <string name="oth_inter_poverty_title">தலையீடு - வறுமை மற்றும் மோசமான வருமான மேலாண்மை</string>
@@ -203,13 +207,13 @@
 
 
     <!-- other - risk factor evaluation -->
-    <string name="oth_risk_title">ஆபத்துக் காரணிகளின் மதிப்பீடு (மீண்டும் செய்யக்கூடியது)</string>
+    <string name="oth_risk_title">ஆபத்துக் காரணிகளின் மதிப்பீடு</string>
     <string name="oth_risk_date">திகதி</string>
-    <string name="oth_risk_poverty">வறுமையும் வறுமை வருமான முகாமையும் (தேர்வுப் பெட்டி)</string>
-    <string name="oth_risk_food">உணவுப்பாதுகாப்பு (தேர்வுப் பெட்டி) </string>
-    <string name="oth_risk_water">குறைவான நீர் சுகாதாரம் (தேர்வுப் பெட்டி) </string>
-    <string name="oth_risk_child">குறைவான சிறுவர் பராமரிப்பு (தேர்வுப் பெட்டி) </string>
-    <string name="oth_risk_commun">அதிகளவில் தொற்று நோய்கள் காணப்படுகின்றமை (தேர்வுப் பெட்டி) </string>
+    <string name="oth_risk_poverty">வறுமையும் குறைந்த வருமான முகாமையும்</string>
+    <string name="oth_risk_food">உணவுப்பாதுகாப்பு</string>
+    <string name="oth_risk_water">குறைவான நீர் சுகாதாரம்</string>
+    <string name="oth_risk_child">குறைவான சிறுவர் பராமரிப்பு</string>
+    <string name="oth_risk_commun">அதிகளவில் தொற்று நோய்கள் காணப்படுகின்றமை</string>
 
     <!-- other - food-insecurity -->
     <string name="oth_food_insecurity_title">உணவு பாதுகாப்பின்மை</string>
@@ -240,33 +244,33 @@
     <string name="oth_inadequate_water_quality">நீர் தர கண்காணிப்பு</string>
 
     <!-- overweight - intervention -->
-    <string name="over_inter_title">நிலை 2:  தலையீடுகள் ( மீண்டும் செய்யக்கூடியது )</string>
+    <string name="over_inter_title">நிலை 2:  தலையீடுகள்</string>
     <string name="over_inter_date">திகதி</string>
     <string name="over_inter_counselling">IYCF/போஷணை உளவளத்துணை கொடுத்தது (ஆம்/இல்லை)</string>
 
     <!-- overweight - management -->
-    <string name="over_mana_title">நிலை 1: முகாமை (மீண்டும் செய்ய முடியாதது)</string>
+    <string name="over_mana_title">நிலை 1: முகாமை \n(மீண்டும் செய்ய முடியாதது) </string>
     <string name="over_mana_date">திகதி</string>
-    <string name="over_mana_enrol_type">சேர்ந்த வகை (கீழிறங்கும் பட்டியல்)</string>
+    <string name="over_mana_enrol_type">சேர்ந்த வகை</string>
     <string name="over_mana_hospital">வைத்த்pயசாலைக்கு அனுப்புதல் (ஆம்/இல்லை)</string>
     <string name="over_mana_seen">சிறுவர் வைத்திய நிபுணர் பார்வையிட்டது  (ஆம்/இல்லை)</string>
 
     <!-- overweight - outcome -->
     <string name="over_out_title">நிலை 3 : விளைவு (மீண்டும் செய்ய முடியாதது) </string>
     <string name="over_out_date">திகதி</string>
-    <string name="over_out_outcome">சிகிச்சை ஊட்டல் திட்ட விளைவு (கீழிறங்கும் பட்டியல)</string>
+    <string name="over_out_outcome">அதிக நிறை/அதீத நிறைத்திட்ட விளைவுகள்</string>
 
 
     <!-- stunting - intervention -->
-    <string name="stunt_inter_title">நிலை 2:  தலையீடுகள் ( மீண்டும் செய்யக்கூடியது)</string>
+    <string name="stunt_inter_title">நிலை 2:  தலையீடுகள்</string>
     <string name="stunt_inter_date">திகதி</string>
     <string name="stunt_inter_counselling">IYCF/ போஷணை உளவளத்துணை கொடுத்தது (ஆம்/இல்லை)</string>
 
 
     <!-- stunting - management -->
-    <string name="stunt_mana_title">நிலை 1: முகாமை (மீண்டும் செய்ய முடியாதது) </string>
+    <string name="stunt_mana_title">நிலை 1: முகாமை</string>
     <string name="stunt_mana_date">திகதி</string>
-    <string name="stunt_mana_enrol_type">சேர்ந்த வகை (கீழிறங்கும் பட்டியல்) </string>
+    <string name="stunt_mana_enrol_type">சேர்ந்த வகை</string>
     <string name="stunt_mana_hospital">வைத்த்pயசாலைக்கு அனுப்புதல் (ஆம்/இல்லை)</string>
     <string name="stunt_mana_seen">சிறுவர் வைத்திய நிபுணர் பார்வையிட்டது  (ஆம்/இல்லை)</string>
 
@@ -274,20 +278,20 @@
     <!-- stunting - outcome -->
     <string name="stunt_out_title">நிலை 3 : விளைவு (மீண்டும் செய்ய முடியாதது) </string>
     <string name="stunt_out_date">திகதி</string>
-    <string name="stunt_out_outcome">குள்ளமாதல் திட்டத்திற்கான  விளைவுகள் (கீழிறங்கும் பட்டியல்)</string>
+    <string name="stunt_out_outcome">குள்ளமாதல் திட்டத்திற்கான  விளைவுகள்</string>
 
 
     <!-- supplementory - indication -->
-    <string name="supp_indication_title">நிலை 1: திரிபோஷக்கான காரணம் (மீண்டும் செய்ய முடியாது)</string>
+    <string name="supp_indication_title">நிலை 1: திரிபோஷக்கான காரணம்</string>
     <string name="supp_indication_date">திகதி</string>
-    <string name="supp_indication_mam">மத்திமமான குறகிய காலப்போஷாக்கின்மை (தேர்வுப்பெட்டி)</string>
-    <string name="supp_indication_underweight">நிறைக்குறைவு (தேர்வுப்பெட்டி)</string>
-    <string name="supp_indication_growth">பச்சை வலயத்திலுள்ள நீண்டகால வளர்ச்சிக்குறைபாடு (தேர்வுப் பெட்டி)</string>
+    <string name="supp_indication_mam">மத்திமமான குறுகிய காலப் போஷாக்கின்மை</string>
+    <string name="supp_indication_underweight">நிறைக்குறைவு</string>
+    <string name="supp_indication_growth">பச்சை வலயத்திலுள்ள நீண்டகால வளர்ச்சிக்குறைபாடு</string>
     <string name="supp_indication_entollment">பதிவு வகை</string>
 
 
     <!-- supplementory - intervention -->
-    <string name="supp_intervention_title">நிலை 2: தலையீடுகள் (மீண்டும் செய்யலாம்)</string>
+    <string name="supp_intervention_title">நிலை 2: தலையீடுகள்</string>
     <string name="supp_intervention_date">திகதி</string>
     <string name="supp_intervention_on_triposha">திரிபோஷாவில் உள்ளார் (ஆம்/ இல்லை) </string>
     <string name="supp_intervention_packets">கொடுக்கப்பட்ட திரிபோஷா பக்கற்குகளின் எண்ணிக்கை</string>
@@ -295,30 +299,30 @@
 
 
     <!-- supplementory - outcome -->
-    <string name="supp_out_title">நிலை 3 : விளைவு (மீண்டும் செய்ய முடியாதது)</string>
+    <string name="supp_out_title">நிலை 3 : விளைவு</string>
     <string name="supp_out_date">திகதி</string>
-    <string name="supp_out_outcome">குறைநிரப்பு உணவூட்டல் திட்ட விளைவு (கீழிறங்கும் பட்டியல்)</string>
+    <string name="supp_out_outcome">குறைநிரப்பு உணவூட்டல் திட்ட விளைவு</string>
 
 
     <!-- tera - intervention -->
-    <string name="tera_intervention_title">நிலை 2:  தலையீடுகள் (மீண்டும் செய்யக்கூடியது)</string>
+    <string name="tera_intervention_title">நிலை 2:  தலையீடுகள்</string>
     <string name="tera_intervention_date">திகதி</string>
     <string name="tera_intervention_bp100">BP 100 இல் உள்ளார் (ஆம்/இல்லை)</string>
     <string name="tera_intervention_counselling">IYCF/ போஷணை உளவளத்துணை கொடுத்தது (ஆம்/இல்லை)</string>
 
 
     <!-- tera - management -->
-    <string name="tera_management_title">நிலை 1: முகாமை (மீண்டும் செய்ய முடியாதது)</string>
+    <string name="tera_management_title">நிலை 1: முகாமை</string>
     <string name="tera_management_date">திகதி</string>
-    <string name="tera_management_enrollment">சேர்ந்த வகை (கீழிறங்கும் பட்டியல்)</string>
+    <string name="tera_management_enrollment">சேர்ந்த வகை</string>
     <string name="tera_management_hospital">வைத்த்pயசாலைக்கு அனுப்புதல் (ஆம்/இல்லை) </string>
     <string name="tera_management_seen">சிறுவர் வைத்திய நிபுணர் பார்வையிட்டது  (ஆம்/இல்லை)</string>
-    <string name="tera_management_bp100">100 BP தருகிறது</string>
+    <string name="tera_management_bp100">BP 100  தொடங்கியது (ஆம்/இல்லை)</string>
 
     <!-- tera - outcome -->
-    <string name="tera_out_title">நிலை 3 : விளைவு (மீண்டும் செய்ய முடியாதது) </string>
+    <string name="tera_out_title">நிலை 3 : விளைவு</string>
     <string name="tera_out_date">திகதி</string>
-    <string name="tera_out_outcome">சிகிச்சை ஊட்டல் திட்ட விளைவு (கீழிறங்கும் பட்டியல)</string>
+    <string name="tera_out_outcome">சிகிச்சை ஊட்டல் திட்ட விளைவு</string>
 
 
 
@@ -326,8 +330,8 @@
     <string name="cd_title">குழந்தை விவரங்கள்</string>
     <string name="cd_name"><font size="12">குழந்தையின் பெயர்</font></string>
     <string name="cd_no"><font size="12">பிறப்பு மற்றும் தடுப்பூசி \nபதிவு எண்</font></string>
-    <string name="cd_dob"><font size="12">பிறந்த தேதி</font></string>
-    <string name="cd_gender"><font size="12">பாலினம்</font></string>
+    <string name="cd_dob"><font size="12">பிறந்த திகதி</font></string>
+    <string name="cd_gender"><font size="12">செக்ஸ்</font></string>
     <string name="cd_aep">ஏற்கனவே பதிவுசெய்யப்பட்ட திட்டங்கள்</string>
     <string name="cd_nep">நிரல்கள் பதிவு செய்யப்படவில்லை</string>
 
@@ -342,20 +346,20 @@
     <string name="ad_sort"><font size="13">வரிசைப்படுத்து</font></string>
     <string name="ad_search_result">இங்கே தேடவும்</string>
 
-    <string name="anthropometry">ஆந்த்ரோபோமெட்ரி</string>
-    <string name="supplementary">துணை</string>
-    <string name="overweight">அதிக எடை</string>
-    <string name="therapeutic">சிகிச்சை உணவு</string>
-    <string name="stunt">ஸ்டண்டிங்</string>
-    <string name="other">ஏனைய சுகாதார / சுகாதாரம் சமபந்தமற்ற திட்டங்கள்</string>
-    <string name="subsection_title">சிசு பற்றிய தகவல்கள்</string>
-    <string name="mother_details">தாய் பற்றிய தகவல்கள் </string>
-    <string name="caregiver_details">தாய் பற்றிய தகவல்கள்</string>
+    <string name="anthropometry">வளர்ச்சி நிலை கண்காணிப்பு</string>
+    <string name="supplementary">குறைநிரப்பு உணவூட்டல் திட்டம் </string>
+    <string name="overweight">அதிக நிறை/ அதீத நிறைத்திட்டம்</string>
+    <string name="therapeutic">சிகிச்சை ஊட்டல் திட்டம் </string>
+    <string name="stunt">சுருக்கத்திற்கான தலையீடு</string>
+    <string name="other">குள்ளமானவர்களுக்கான திட்டம் </string>
+    <string name="subsection_title">பிறந்த தகவல்</string>
+    <string name="mother_details">தாயின் தகவல்</string>
+    <string name="caregiver_details">கவனிப்பு வழங்குபவரின் தகவல்</string>
 
     <!--    Supplementary intervention spinner-->
     <string-array name="supp_intervention_type">
-        <item>இந்த திட்டத்தில் முதல் முறையாக பதிவு செய்தல்</item>
-        <item>மறுபிறப்பு</item>
+        <item>இந்த பிரிவில் முதல் முறையாக பதிவு செய்தல்</item>
+        <item>மறுபடியும் ஏற்படல்</item>
     </string-array>
 
     <string-array name="supp_intervention_type_english">
@@ -371,9 +375,9 @@
     </string-array>
 
     <string-array name="sex">
-        <item>ஆண</item>
-        <item>பெண</item>
-        <item>குறிப்பிட இயலாதது</item>
+        <item>ஆண்</item>
+        <item>பெண்</item>
+        <item>குறிப்பிடப்படாதது</item>
 
     </string-array>
 
@@ -384,11 +388,11 @@
     </string-array>
 
     <string-array name="ethnicity">
-        <item>சிங்களவர்</item>
-        <item>தமிழர்</item>
-        <item>முஸலீம்</item>
-        <item>பறங்கியர்</item>
-        <item>வேறு</item>
+        <item>சிங்களவர்கள்</item>
+        <item>தமிழ்</item>
+        <item>முஸ்லிம்</item>
+        <item>பர்கர்</item>
+        <item>மற்றவைகள்</item>
     </string-array>
 
     <string-array name="ethinicity_english_only">
@@ -401,12 +405,12 @@
 
 
     <string-array name="highestEdu">    //need to update in both languages
-        <item>முறையான பாடசாலையின்மை</item>
-        <item>தரம் 1 இலிருந்து 5 (தரம் 5 பூர்த்தி செய்யப்படவில்லை/ஓரளவான ஆரம்பக்கல்வி)</item>
-        <item>தரம் 5 பூர்த்தி (ஆரம்பக்கல்வி பூர்த்தி)</item>
-        <item>தரம் 6  இலிருந்து 10 (தரம் 10 பூர்த்தி செய்யப்படவில்லை/ஓரளவான இரண்டாமநிலைக்கல்வி)</item>
-        <item>தரம் 10 பூர்த்தி (இரண்டாம் நிலைக் கல்வி பூர்த்தி)</item>
-        <item>தரம் 10 அல்லது உயர்வான (இரண்டாம் நிலைக் கல்வியிலும் உயர்வான)</item>
+        <item>முறையான பள்ளிப்படிப்பு இல்லை</item>
+        <item>ஆரம்பக் கல்வி (தரம் 1 முதல் 5 வரை)</item>
+        <item>இடைநிலைக் கல்வி (6ம் வகுப்பு முதல் 10ம் வகுப்பு வரை)</item>
+        <item>க.பொ.த சாதாரண தரம் (O/L) அல்லது அதற்கு சமம்</item>
+        <item>க.பொ.த உயர்தரம் (உ/த) அல்லது அதற்கு சமம்</item>
+        <item>உயர் கல்வி (டிப்ளமோ, பட்டம் போன்றவை)</item>
     </string-array>
 
     <string-array name="eduLevel_english_only">
@@ -421,8 +425,8 @@
 
     <string-array name="sector">
         <item>கிராமம்</item>
-        <item>நகர்ப்புறம்</item>
-        <item>எஸ்டேட்</item>
+        <item>நகரம்</item>
+        <item>தோட்டம்</item>
     </string-array>
 
     <string-array name="sector_english_only">
@@ -433,12 +437,12 @@
 
 
     <string-array name="occupation">
-        <item>வீட்டுனிய</item>
-        <item>சிஷ்ய</item>
-        <item>வேலைக்காக எதிர்பார்த்தேன்/சோயமின்</item>
+        <item>இல்லத்தரசி</item>
+        <item>மாணவி</item>
+        <item>வேலையில்லாதவர்</item>
         <item>சுய வேலை</item>
-        <item>ஊதியம் கொண்ட வேலை</item>
-        <item>விஷ்ரமிக்காய்</item>
+        <item>ஊதியம் பெறும் தொழில்</item>
+        <item>ஓய்வு பெற்றவர்</item>
     </string-array>
 
     <string-array name="occupation_english_only">
@@ -454,7 +458,7 @@
     <string-array name="relationship">
         <item>அம்மா</item>
         <item>அப்பா</item>
-        <item>தாத்தா பாட்டி</item>
+        <item>பெரிய பெற்றோர்</item>
         <item>மற்ற நெருங்கிய உறவினர்கள்</item>
         <item>மற்றவைகள்</item>
     </string-array>
@@ -471,8 +475,8 @@
     <!--    Child registration arrays ends here-->
 
     <string-array name="other_management_type">
-        <item>முதல் தடவையாக திட்டத்தில் சேர்க்கப்பட்டவர்</item>
-        <item>மீண்டும் வருத்தம் ஏற்பட்டது </item>
+        <item>இந்த பிரிவில் முதல் முறையாக பதிவு செய்தல்</item>
+        <item>மறுபடியும் ஏற்படல் </item>
     </string-array>
 
     <string-array name="other_management_type_english">
@@ -481,8 +485,8 @@
     </string-array>
 
     <string-array name="therapeutical_management_type">
-        <item>முதல் தடவையாக திட்டத்தில் சேர்க்கப்பட்டவர்</item>
-        <item>மீண்டும் வருத்தம் ஏற்பட்டது</item>
+        <item>இந்த பிரிவில் முதல் முறையாக பதிவு செய்தல்</item>
+        <item>மறுபடியும் ஏற்படல்</item>
     </string-array>
 
     <string-array name="therapeutical_management_type_english">
@@ -491,8 +495,8 @@
     </string-array>
 
     <string-array name="stunting_management_type">
-        <item>முதல் தடவையாக திட்டத்தில் சேர்க்கப்பட்டவர்</item>
-        <item>மீண்டும் வருத்தம் ஏற்பட்டது</item>
+        <item>இந்த பிரிவில் முதல் முறையாக பதிவு செய்தல்ர்</item>
+        <item>மறுபடியும் ஏற்படல்</item>
     </string-array>
 
     <string-array name="overweight_outcome_type">
