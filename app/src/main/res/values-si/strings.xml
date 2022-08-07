@@ -178,6 +178,12 @@
     <string name="weight">බර</string>
     <string name="height">උස</string>
     <string name="stage">වැඩසටහන් අදියර තෝරන්න</string>
+    <string name="unenroll">ලියාපදිංචියෙන් ඉවත් වීමට ඉදිරියට යන්නද?</string>
+    <string name="unenroll_antopo">මෙම ක්‍රියාවෙන් \n දරුවා මානවමිතික වැඩසටහනෙන් ඉවත් කරනු ඇත</string>
+    <string name="unenroll_overWeight">මෙම ක්‍රියාව මගින් දරුවා \n වැඩි බර වැඩසටහනෙන් ඉවත් කරනු ඇත</string>
+    <string name="unenroll_stunting">මෙම ක්‍රියාවෙන් මිටි බව \nසදහා මැදිහත්වීම වැඩසටහනෙන් ඉවත් කරනු ඇත</string>
+    <string name="unenroll_supplimentory">මෙම ක්‍රියාවෙන් අතිරේක ආහාර ලබාදීම \n වැඩසටහනෙන් ඉවත් කරනු ඇත</string>
+    <string name="unenroll_thera">මෙම ක්‍රියාවෙන් ඖෂධීය ආහාර ලබාදීම \n වැඩසටහනෙන් ඉවත් කරනු ඇත</string>
 
 
     <!-- other - reason for enrollment -->

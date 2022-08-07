@@ -179,6 +179,12 @@
     <string name="weight">எடை</string>
     <string name="height">உயரம்</string>
     <string name="stage">நிரல் கட்டத்தைத் தேர்ந்தெடுக்கவும்</string>
+    <string name="unenroll">பதிவுநீக்க தொடரவா?</string>
+    <string name="unenroll_antopo">இந்தச் செயல், மானுடவியல் திட்டத்தில் இருந்து \n குழந்தையை நீக்கிவிடும்</string>
+    <string name="unenroll_overWeight">இந்தச் செயல், ஓவர்லோட் திட்டத்தில் இருந்து \n குழந்தையை அகற்றும்</string>
+    <string name="unenroll_stunting">இந்தச் செயல் \nகுறுக்கத்திற்கான திட்டத்திலிருந்து தலையீட்டை அகற்றும்</string>
+    <string name="unenroll_supplimentory">இந்த செயல் நிரலில் இருந்து கூடுதல் ஊட்டத்தை \n அகற்றும்</string>
+    <string name="unenroll_thera">இந்த செயல் திட்டத்தில் இருந்து \n மருந்து ஊட்டத்தை அகற்றும்</string>
 
 
     <!-- other - reason for enrollment -->

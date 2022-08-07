@@ -179,6 +179,12 @@
     <string name="weight">Weight</string>
     <string name="height">Height</string>
     <string name="stage">Select Program Stage</string>
+    <string name="unenroll">Proceed to Un-enroll?</string>
+    <string name="unenroll_antopo">This action will Un-enroll the child \n from the anthropometry program</string>
+    <string name="unenroll_overWeight">This action will Un-enroll the child \n from the overweight program</string>
+    <string name="unenroll_stunting">This action will Un-enroll the child \n from the stunting program</string>
+    <string name="unenroll_supplimentory">This action will Un-enroll the child \n from the supplementary feeding program</string>
+    <string name="unenroll_thera">This action will Un-enroll the child \n from the therapeutic feeding program</string>
 
 
     <!-- other - reason for enrollment -->
