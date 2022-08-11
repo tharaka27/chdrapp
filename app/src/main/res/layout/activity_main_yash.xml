@@ -423,6 +423,15 @@
                     android:layout_weight="1"
                     android:text="@string/sync"
                     android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/languageBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginBottom="0dp"
+                    android:text="Change Language" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -452,14 +461,6 @@
             android:textColor="@color/title"
             android:textSize="20dp"
             android:textStyle="bold" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="0dp"
-            android:layout_marginBottom="0dp"
-            android:text="Change Language"/>
 
     </RelativeLayout>
 
