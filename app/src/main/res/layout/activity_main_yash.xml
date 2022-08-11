@@ -414,6 +414,7 @@
                     android:minHeight="48dp"
                     android:text="Sync Data" />
 
+
                 <Button
                     android:id="@+id/uploadBtn"
                     android:layout_width="wrap_content"
@@ -421,7 +422,7 @@
                     android:layout_margin="15dp"
                     android:layout_weight="1"
                     android:text="@string/sync"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -435,7 +436,9 @@
             android:id="@+id/wish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="530dp"
             android:text="@string/wish"
             android:textColor="@color/title"
             android:textSize="19dp" />
@@ -450,9 +453,16 @@
             android:textSize="20dp"
             android:textStyle="bold" />
 
-
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
+            android:text="Change Language"/>
 
     </RelativeLayout>
+
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
