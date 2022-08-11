@@ -73,16 +73,6 @@ android:layout_height="match_parent">
                 android:text="සිංහල"
                 android:textColor="#ffffff" />
 
-            <!--button view for english language-->
-            <Button
-                android:id="@+id/btnEnglish"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:background="@color/colorPrimary"
-                android:text="English"
-                android:textColor="#ffffff" />
-
             <Button
                 android:id="@+id/btnTamil"
                 android:layout_width="wrap_content"
@@ -92,6 +82,15 @@ android:layout_height="match_parent">
                 android:text="தமிழ்"
                 android:textColor="#ffffff" />
 
+            <!--button view for english language-->
+            <Button
+                android:id="@+id/btnEnglish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:background="@color/colorPrimary"
+                android:text="English"
+                android:textColor="#ffffff" />
 
         </LinearLayout>
 

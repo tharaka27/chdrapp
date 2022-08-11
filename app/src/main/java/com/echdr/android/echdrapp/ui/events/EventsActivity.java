@@ -162,7 +162,7 @@ public class EventsActivity extends ListActivity {
                 public void onClick(View v) {
                     AlertDialog.Builder builderSingle = new AlertDialog.Builder(context);
                     builderSingle.setIcon(R.drawable.baby_girl);
-                    builderSingle.setTitle("Are you sure to un-enroll from Anthropometry Program");
+                    builderSingle.setTitle(R.string.unenroll_antopo);
 
                     builderSingle.setNegativeButton("un-enroll", new DialogInterface.OnClickListener() {
                         @Override
@@ -350,7 +350,7 @@ public class EventsActivity extends ListActivity {
                     // program
                     AlertDialog.Builder builderSingle = new AlertDialog.Builder(this);
                     builderSingle.setIcon(R.drawable.baby_girl);
-                    builderSingle.setTitle("Select program stage");
+                    builderSingle.setTitle(getString(R.string.stage));
 
                     builderSingle.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
                         @Override

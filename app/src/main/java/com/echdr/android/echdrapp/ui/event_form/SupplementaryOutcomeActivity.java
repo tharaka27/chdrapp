@@ -352,9 +352,8 @@ public class SupplementaryOutcomeActivity extends AppCompatActivity {
         // un-enroll from the program
         AlertDialog.Builder builderSingle = new AlertDialog.Builder(context);
         builderSingle.setIcon(R.drawable.baby_girl);
-        builderSingle.setTitle("Proceed to un-enroll ?");
-        builderSingle.setMessage("This action will un-enroll the child \n" +
-                "from the supplementary program");
+        builderSingle.setTitle(getString(R.string.unenroll));
+        builderSingle.setMessage(getString(R.string.unenroll_supplimentory));
 
         builderSingle.setNegativeButton("un-enroll", new DialogInterface.OnClickListener() {
             @Override
