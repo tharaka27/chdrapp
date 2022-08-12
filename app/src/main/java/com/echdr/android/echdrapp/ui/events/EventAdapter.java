@@ -1,12 +1,14 @@
 package com.echdr.android.echdrapp.ui.events;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.paging.DataSource;
 import androidx.paging.PagedListAdapter;
@@ -175,13 +177,37 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
         holder.delete.setVisibility(View.VISIBLE);
 
         holder.delete.setOnClickListener(view -> {
-            try {
-                Sdk.d2().eventModule().events().uid(event.uid()).blockingDelete();
-                invalidateSource();
-                notifyDataSetChanged();
-            } catch (D2Error d2Error) {
-                d2Error.printStackTrace();
-            }
+
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(activity);
+            builder1.setMessage("Are you sure you want to delete the Event?");
+            builder1.setCancelable(true);
+
+            builder1.setNegativeButton(
+                    "Close",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                            return;
+                        }
+                    });
+            builder1.setPositiveButton(
+                    "confirm",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            try {
+                                Sdk.d2().eventModule().events().uid(event.uid()).blockingDelete();
+                                invalidateSource();
+                                notifyDataSetChanged();
+                            } catch (D2Error d2Error) {
+                                d2Error.printStackTrace();
+                            }
+                        }
+                    });
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+
+
         });
         setBackgroundColor(R.color.colorAccentDark, holder.icon);
         setState(event.state(), holder.syncIcon);

@@ -590,7 +590,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
                     }
                 }
 
-                if(landNumber.getText().toString().isEmpty()){
+                if(landNumber.getText().toString().isEmpty() && mobileNumber.getText().toString().isEmpty() ){
                     AlertDialog.Builder builder3 = new AlertDialog.Builder(context);
                     builder3.setMessage("Land Number is not filled");
                     builder3.setCancelable(true);
