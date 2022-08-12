@@ -105,37 +105,37 @@
     <!--    home-->
     <string name="title_activity_home">வீடு</string>
     <string name="wish">வணக்கம்,</string>
-    <string name="sup_prog">துணை உணவு /nவழங்குதல்</string>
-    <string name="thera_prog">மருந்து உணவு /nவழங்குதல்</string>
-    <string name="overw_prog">அதிக எடை/உடல் /nபருமனுக்கு தலையீடு</string>
-    <string name="stunt_prog">சுருக்கத்திற்கான /nதலையீடு</string>
-    <string name="other_prog">பிற சுகாதார / சுகாதாரமற்ற /nதிட்டங்கள்</string>
-    <string name="area_details">எனது பகுதி விவரங்களைப் பார்க்கவும்</string>
-    <string name="area_details_desc">உங்கள் பகுதியில் உள்ள அனைத்து குழந்தை பட்டியலையும் பார்க்க இங்கே கிளிக் செய்யவும்</string>
-    <string name="new_child">குழந்தை பதிவு</string>
-    <string name="new_child_desc">புதிய குழந்தையை நிரலில் சேர்க்க இங்கே கிளிக் செய்யவும்</string>
+    <string name="sup_prog">குறைநிரப்பு உணவூட்டல் திட்டம்</string>
+    <string name="thera_prog">சிகிச்சை ஊட்டல் திட்டம்</string>
+    <string name="overw_prog">அதிக நிறை/ அதீத நிறைத்திட்டம் </string>
+    <string name="stunt_prog">குள்ளமானவர்களுக்கான திட்டம் </string>
+    <string name="other_prog">ஏனைய சுகாதார /சுகாதாரம் சமபந்தமற்ற திட்டங்கள் </string>
+    <string name="area_details">எனது பகுதி விபரங்களை பார்க்க</string>
+    <string name="area_details_desc">உங்கள் பகுதியில் உள்ள அனைத்து குழந்தைகளின் பட்டியலைப் பார்க்க இங்கே அழுத்தவும்</string>
+    <string name="new_child">குழந்தை பதிவு </string>
+    <string name="new_child_desc">புதிய குழந்தையை திட்டத்தில் சேர்க்க இங்கே அழுத்தவும்</string>
     <string name="all_reg">அனைத்து பதிவுகளும்</string>
 
     <!--    demographic info-->
     <string name="demo_info_title">மக்கள் தொகை  தரவு</string>
     <string name="date_of_reg"><font size="14">பதிவு செய்யப்பட்ட திகதி</font></string>
-    <string name="gn_area"><font size="14">கி.உ பகுதி (இலவச உரை)</font></string>
+    <string name="gn_area"><font size="14">கி.உ பகுதி</font></string>
     <string name="birth_num"><font size="12">பிறப்பு மற்றும் தடுப்பூசி பதிவு இல</font></string>
-    <string name="name"><font size="12">குழந்தையின் பெயர் (இலவச உரை)</font></string>
-    <string name="sex"><font size="12">செக்ஸ் (கீழ்தோன்றும் பட்டியல்)</font></string>
+    <string name="name"><font size="12">குழந்தையின் பெயர்</font></string>
+    <string name="sex"><font size="12">பால்</font></string>
     <string name="date_of_birth"><font size="12">பிறந்த திகதி</font></string>
     <string name="ethnicity"><font size="12">இனம்</font></string>
     <string name="addr"><font size="12">முகவரி</font></string>
     <string name="sector"><font size="12">துறை</font></string>
     <string name="ll_num"><font size="12">தொலைபேசி இல</font></string>
-    <string name="mob_num"><font size="12">கைபேசி இல</font></string>
+    <string name="mob_num"><font size="12">கையடக்கத்தொலைபேசி இல</font></string>
 
     <!--    mother info-->
     <string name="mother_info_title">தாயின் தகவல்</string>
     <string name="occup_mother"><font size="12">தொழில்</font></string>
     <string name="name_mother"><font size="12">பெயர்</font></string>
     <string name="date_of_birth_mother"><font size="12">பிறந்த திகதி</font></string>
-    <string name="no_of_children"><font size="12">இந்தக் குழந்தை உட்பட வாழும் குழந்தைகளின் இல. ணிக்கை</font></string>
+    <string name="no_of_children"><font size="12">இந்தக் குழந்தை உட்பட வாழும் குழந்தைகளின் எண்ணிக்கை</font></string>
     <string name="occu_specifcation"><font size="12">சுயதொழில், ஊதியம் பெற்ற வேலை அல்லது ஓய்வு பெற்றால், தாயின் தொழிலைக் குறிப்பிடவும்</font></string>
     <string name="edu_level_mother"><font size="12">மிக உயர்ந்த கல்வி நிலை</font></string>
     <string name="nic_mother"><font size="12">NIC இல</font></string>
@@ -162,78 +162,78 @@
 
 
     <!--    anthropometry programme-->
-    <string name="an_title">நிலை 1: வளர்ச்சி நிலை கண்காணிப்பு /n(மீண்டும் மீண்டும் செய்யக்கூடியது) </string>
+    <string name="an_title">நிலை 1: வளர்ச்சி நிலை கண்காணிப்பு \n(மீளக்கூடியது)</string>
     <string name="an_date_enrol"><font size="12">திகதி</font></string>
     <string name="an_date"><font size="12">திகதி</font></string>
     <string name="an_weight"><font size="12">நிறை (கிராம்)</font></string>
     <string name="an_length"><font size="12">நீளம் அல்லது உயரம் (செ.மீ)</font></string>
     <string name="an_measures_title">ஆந்த்ரோபோமெட்ரிக் நடவடிக்கைகள்</string>
-    <string name="an_age_weeks">வாரங்களில் வயது</string>
-    <string name="an_age_years_months_years">ஆண்டுகள் மற்றும் மாதங்களில் வயது</string>
-    <string name="an_plot_graph">சதி வரைபடங்கள்</string>
-    <string name="an_weight_for_age">(தானாக உருவாக்கப்பட்ட) வரைபடங்கள்</string>
-    <string name="an_height_for_age">வயதுக்கான நீளம்/உயரம்</string>
-    <string name="an_weight_for_height">நிலையான விலகல் வகைப்பாடு</string>
+    <string name="an_age_weeks">வயது வாரங்களில்</string>
+    <string name="an_age_years_months_years">வயது வருடங்களிலும் மாதங்களிலும்</string>
+    <string name="an_plot_graph">வரைபை உருவாக்க</string>
+    <string name="an_weight_for_age">வயதிற்கேற்ற நிறை (தானாக உருவாக்கப்பட்ட) வரைபடங்கள்</string>
+    <string name="an_height_for_age">வயதிற்கேற்ற உயரம்</string>
+    <string name="an_weight_for_height">உயரதிற்கேற்ற நிறை (நிலையான விலகல் வகைப்பாடு)</string>
     <string name="save">சேமிக்கவும்</string>
     <string name="month">மாதம்</string>
     <string name="weight">எடை</string>
     <string name="height">உயரம்</string>
     <string name="stage">நிரல் கட்டத்தைத் தேர்ந்தெடுக்கவும்</string>
     <string name="unenroll">பதிவுநீக்க தொடரவா?</string>
-    <string name="unenroll_antopo">இந்தச் செயல், மானுடவியல் திட்டத்தில் இருந்து \n குழந்தையை நீக்கிவிடும்</string>
-    <string name="unenroll_overWeight">இந்தச் செயல், ஓவர்லோட் திட்டத்தில் இருந்து \n குழந்தையை அகற்றும்</string>
+    <string name="unenroll_antopo">இந்தச் செயல், மானுடவியல் திட்டத்தில் இருந்து \nகுழந்தையை நீக்கிவிடும்</string>
+    <string name="unenroll_overWeight">இந்தச் செயல், ஓவர்லோட் திட்டத்தில் இருந்து \nகுழந்தையை அகற்றும்</string>
     <string name="unenroll_stunting">இந்தச் செயல் \nகுறுக்கத்திற்கான திட்டத்திலிருந்து தலையீட்டை அகற்றும்</string>
-    <string name="unenroll_supplimentory">இந்த செயல் நிரலில் இருந்து கூடுதல் ஊட்டத்தை \n அகற்றும்</string>
-    <string name="unenroll_thera">இந்த செயல் திட்டத்தில் இருந்து \n மருந்து ஊட்டத்தை அகற்றும்</string>
+    <string name="unenroll_supplimentory">இந்த செயல் நிரலில் இருந்து கூடுதல் ஊட்டத்தை \nஅகற்றும்</string>
+    <string name="unenroll_thera">இந்த செயல் திட்டத்தில் இருந்து \nமருந்து ஊட்டத்தை அகற்றும்</string>
 
 
     <!-- other - reason for enrollment -->
-    <string name="oth_reason_title">நிலை 1: சேர்க்கைக்கான காரணம் /n(மீண்டும் செய்ய முடியாதது)</string>
+    <string name="oth_reason_title"> வைத்தியசாலைக்கு அனுப்புதல் (ஆம்/இல்லை) </string>
     <string name="oth_reason_date">திகதி</string>
-    <string name="oth_reason_sam">பச்சை மண்டலத்தில் நீண்ட கால வளர்ச்சி குறைகிறது</string>
+    <string name="oth_reason_sam">தீவிர குறுகிய காலப் போஷாக்கின்மை</string>
     <string name="oth_reason_mam">மத்திமமான குறுகிய காலப் போஷாக்கின்மை</string>
-    <string name="oth_reason_faltering">பச்சை மண்டலத்தில் நீண்ட கால வளர்ச்சி குறைகிறது</string>
-    <string name="oth_reason_under">எடை குறைவு</string>
-    <string name="oth_reason_overweight">அதிக எடை/உடல் பருமன்</string>
+    <string name="oth_reason_faltering">பச்சை மண்டலத்தில் வளர்ச்சி குன்றி நீண்ட காலமாக உள்ளமை</string>
+    <string name="oth_reason_under">நிறைகுறைவு</string>
+    <string name="oth_reason_overweight">அதிக நிறை/ அதீத நிறை</string>
     <string name="oth_reason_stuning">குள்ளமாதல்</string>
 
     <!-- other - intervention-poverty -->
-    <string name="oth_inter_poverty_title">தலையீடு - வறுமை மற்றும் மோசமான வருமான மேலாண்மை</string>
+    <string name="oth_inter_poverty_title">தலையீடு- வறுமையும் குறைந்த வருமான முகாமையும் </string>
     <string name="oth_inter_povert_date">திகதி</string>
     <string name="oth_inter_povert_training">விவசாயம் சார்ந்த தொழில்முனைவோர் பயிற்சி</string>
     <string name="oth_inter_povert_support">விவசாயம் சார்ந்த வாழ்வாதார ஆதரவு</string>
     <string name="oth_inter_povert_livelihood">வாழ்வாதாரத்தை நிறுவ சொத்து பரிமாற்றம்</string>
-    <string name="oth_inter_povert_polu_support">வணிக கால்நடை மற்றும் கோழி ஆதரவு</string>
+    <string name="oth_inter_povert_polu_support">வணிக கால்நடை மற்றும் கோழி வளர்ப்புக்கான ஆதரவு</string>
     <string name="oth_inter_povert_empower_training">வலுவூட்டல் பயிற்சி</string>
-    <string name="oth_inter_povert_financial">நிதி கல்வியறிவு பயிற்சி</string>
+    <string name="oth_inter_povert_financial">நிதிக்கல்வி அறிவு பயிற்சி</string>
     <string name="oth_inter_povert_samurdhi">சமுர்தி வழங்கல்</string>
     <string name="oth_inter_povert_samurdhi_bank">சமுர்த்தி வங்கி கடன் வழங்குதல்</string>
-    <string name="oth_inter_povert_comm_cultivation">வணிக சாகுபடிக்கு சமூக நீர் சேகரிப்பை ஆதரிக்கவும்</string>
+    <string name="oth_inter_povert_comm_cultivation">வணிக வேளாண்மைக்கு சமூக நீர் சேகரிப்பு ஆதரவு</string>
     <string name="oth_inter_povert_market_access">மதிப்பு சங்கிலி ஆதரவு மற்றும் அதிகரித்த சந்தை அணுகல்</string>
 
 
     <!-- other - risk factor evaluation -->
-    <string name="oth_risk_title">ஆபத்துக் காரணிகளின் மதிப்பீடு</string>
-    <string name="oth_risk_date">திகதி</string>
-    <string name="oth_risk_poverty">வறுமையும் குறைந்த வருமான முகாமையும்</string>
-    <string name="oth_risk_food">உணவுப்பாதுகாப்பு</string>
-    <string name="oth_risk_water">குறைவான நீர் சுகாதாரம்</string>
-    <string name="oth_risk_child">குறைவான சிறுவர் பராமரிப்பு</string>
-    <string name="oth_risk_commun">அதிகளவில் தொற்று நோய்கள் காணப்படுகின்றமை</string>
+    <string name="oth_risk_title">தலையீடு செய்ய பரிந்துரைக்கப்படுகிறது</string>
+    <string name="oth_risk_date">மதிப்பீட்டு திகதி</string>
+    <string name="oth_risk_poverty">வறுமையும் குறைந்த வருமான முகாமையும் </string>
+    <string name="oth_risk_food">உணவுப்பாதுகாப்பின்மை </string>
+    <string name="oth_risk_water">குறைவான நீர் சுகாதாரம் </string>
+    <string name="oth_risk_child">சிறுவர் பராமரிப்பு போதுமானதற்ற தன்மை</string>
+    <string name="oth_risk_commun">அதிகளவில் தொற்று நோய்கள் காணப்படுகின்றமை </string>
 
     <!-- other - food-insecurity -->
-    <string name="oth_food_insecurity_title">உணவு பாதுகாப்பின்மை</string>
-    <string name="oth_food_insecurity_date">தலையீடு தேதி</string>
-    <string name="oth_food_insecurity_agri_training">விவசாய திறன்கள்; பயிற்சி தொழினுட்ப உதவி</string>
-    <string name="oth_food_insecurity_live_stock">வீட்டு நீர் சீர்ப்பாசன முறைக்கு உதவி </string>
-    <string name="oth_food_insecurity_support_gardening">வவீட்டுத் தோட்டத்துக்கு உதவியளித்தல் (பயிர் வகை/ உபகரணங்கள்/ பயிற்சி)</string>
-    <string name="oth_food_insecurity_support_water">வீட்டு நீர் சேகரிப்பு / நீர் பாசன திட்டங்களை ஆதரிக்கவும்</string>
-    <string name="oth_food_insecurity_training">குடும்ப கால்நடை வளர்ப்பு மற்றும் கோழி பண்ணை உதவி</string>
+    <string name="oth_food_insecurity_title">தலையீடு- உணவுப்பாதுகாப்பின்மை</string>
+    <string name="oth_food_insecurity_date">தலையீட்டு திகதி</string>
+    <string name="oth_food_insecurity_agri_training">விவசாய திறன் பயிற்சி/தொழில்நுட்ப ஆதரவு</string>
+    <string name="oth_food_insecurity_live_stock">வீடுகளுக்கான கால்நடை மற்றும் கோழி வளர்ப்பு ஆதரவு திட்டங்கள்</string>
+    <string name="oth_food_insecurity_support_gardening">வீட்டுத்தோட்டத்தை ஆதரிக்க</string>
+    <string name="oth_food_insecurity_support_water">வீட்டுமட்ட நீர் சேகரிப்பு / நீர் பாசன திட்டங்களை ஆதரிக்க</string>
+    <string name="oth_food_insecurity_training">அறுவடைக்குப் பின் ஏற்படும் இழப்பைக் குறைக்க பயிற்சி</string>
 
 
     <!-- other - Inadequate water, sanitation and Hygiene-->
-    <string name="oth_indequate_title">போதியளவு நீர் சுகாதார இன்மை</string>
-    <string name="oth_indequate_date">தலையீடு தேதி</string>
+    <string name="oth_indequate_title">போதுமான நீர் சுகாதாரம் மற்றும் சுத்தமின்மை</string>
+    <string name="oth_indequate_date">தலையீட்டு திகதி</string>
     <string name="oth_indequate_hand_wash">கை கழுவும் வசதிகளை மதிப்பிடுங்கள்</string>
     <string name="oth_inadequate_toilet_facility">உள்ளூர் தரத்திற்கு எதிராக கழிப்பறை வசதியை மதிப்பிடுங்கள்</string>
     <string name="oth_inadequate_awareness_drinking">பாதுகாப்பான முறையில் நிர்வகிக்கப்படும் குடிநீர் குறித்த விழிப்புணர்வு</string>
@@ -258,7 +258,7 @@
     <string name="over_mana_title">நிலை 1: முகாமை \n(மீண்டும் செய்ய முடியாதது) </string>
     <string name="over_mana_date">திகதி</string>
     <string name="over_mana_enrol_type">சேர்ந்த வகை</string>
-    <string name="over_mana_hospital">வைத்த்pயசாலைக்கு அனுப்புதல் (ஆம்/இல்லை)</string>
+    <string name="over_mana_hospital"> வைத்தியசாலைக்கு அனுப்புதல் (ஆம்/இல்லை) </string>
     <string name="over_mana_seen">சிறுவர் வைத்திய நிபுணர் பார்வையிட்டது  (ஆம்/இல்லை)</string>
 
     <!-- overweight - outcome -->
@@ -277,7 +277,7 @@
     <string name="stunt_mana_title">நிலை 1: முகாமை</string>
     <string name="stunt_mana_date">திகதி</string>
     <string name="stunt_mana_enrol_type">சேர்ந்த வகை</string>
-    <string name="stunt_mana_hospital">வைத்த்pயசாலைக்கு அனுப்புதல் (ஆம்/இல்லை)</string>
+    <string name="stunt_mana_hospital"> வைத்தியசாலைக்கு அனுப்புதல் (ஆம்/இல்லை) </string>
     <string name="stunt_mana_seen">சிறுவர் வைத்திய நிபுணர் பார்வையிட்டது  (ஆம்/இல்லை)</string>
 
 
@@ -288,7 +288,7 @@
 
 
     <!-- supplementory - indication -->
-    <string name="supp_indication_title">நிலை 1: திரிபோஷக்கான காரணம்</string>
+    <string name="supp_indication_title">நிலை 1: திரிபோஷாவுக்கான காரணம்</string>
     <string name="supp_indication_date">திகதி</string>
     <string name="supp_indication_mam">மத்திமமான குறுகிய காலப் போஷாக்கின்மை</string>
     <string name="supp_indication_underweight">நிறைக்குறைவு</string>
@@ -299,8 +299,8 @@
     <!-- supplementory - intervention -->
     <string name="supp_intervention_title">நிலை 2: தலையீடுகள்</string>
     <string name="supp_intervention_date">திகதி</string>
-    <string name="supp_intervention_on_triposha">திரிபோஷாவில் உள்ளார் (ஆம்/ இல்லை) </string>
-    <string name="supp_intervention_packets">கொடுக்கப்பட்ட திரிபோஷா பக்கற்குகளின் எண்ணிக்கை</string>
+    <string name="supp_intervention_on_triposha">திரிபோஷாவில் உள்ளார் (ஆம்/ இல்லை)</string>
+    <string name="supp_intervention_packets">திரிபோஷாவில் உள்ளார் (ஆம்/ இல்லை)</string>
     <string name="supp_intervention_counselling">IYCF/ போஷணை உளவளத்துணை கொடுத்தது (ஆம் / இல்லை)</string>
 
 
@@ -321,8 +321,8 @@
     <string name="tera_management_title">நிலை 1: முகாமை</string>
     <string name="tera_management_date">திகதி</string>
     <string name="tera_management_enrollment">சேர்ந்த வகை</string>
-    <string name="tera_management_hospital">வைத்த்pயசாலைக்கு அனுப்புதல் (ஆம்/இல்லை) </string>
-    <string name="tera_management_seen">சிறுவர் வைத்திய நிபுணர் பார்வையிட்டது  (ஆம்/இல்லை)</string>
+    <string name="tera_management_hospital">வைத்தியசாலைக்கு அனுப்புதல் (ஆம்/இல்லை)</string>
+    <string name="tera_management_seen">சிறுவர் வைத்திய நிபுணர்/ போஷணை வைத்தியர் பார்வையிட்டது  (ஆம்/இல்லை)</string>
     <string name="tera_management_bp100">BP 100  தொடங்கியது (ஆம்/இல்லை)</string>
 
     <!-- tera - outcome -->

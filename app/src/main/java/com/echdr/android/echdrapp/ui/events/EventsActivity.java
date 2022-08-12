@@ -258,8 +258,8 @@ public class EventsActivity extends ListActivity {
                             map.put("කළමනාකරණය", "Management");
                             stages_names.add("මැදිහත් වීම");
                             map.put("මැදිහත් වීම", "Intervention");
-                            stages_names.add("ප්රතිඵලය");
-                            map.put("ප්රතිඵලය", "Outcome");
+                            stages_names.add("ප\u200D්\u200Dරතිඵලය");
+                            map.put("ප\u200D්\u200Dරතිඵලය", "Outcome");
                         }
                         else{
                             stages_names.add("மேலாண்மை");
@@ -327,12 +327,12 @@ public class EventsActivity extends ListActivity {
                         }
                         else if(language.equals("si"))
                         {
-                            stages_names.add("ත්රිපෝෂ සඳහා ඇඟවීම");
-                            map.put("ත්රිපෝෂ සඳහා ඇඟවීම", stages.get(0).name());
+                            stages_names.add("ත්\u200Dරිපෝෂ සඳහා ඇඟවීම");
+                            map.put("ත්\u200Dරිපෝෂ සඳහා ඇඟවීම", stages.get(0).name());
                             stages_names.add("මැදිහත්වීම්");
                             map.put("මැදිහත්වීම්", stages.get(1).name());
-                            stages_names.add("ප්රතිඵලය");
-                            map.put("ප්රතිඵලය", stages.get(2).name());
+                            stages_names.add("ප\u200D්\u200Dරතිඵලය");
+                            map.put("ප\u200D්\u200Dරතිඵලය", stages.get(2).name());
                         }
                         else{
                             stages_names.add("திரிபோஷத்திற்கான அறிகுறி");

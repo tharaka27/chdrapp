@@ -75,14 +75,14 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="0dp"
-                                    android:layout_weight="1.2"
+                                    android:layout_weight="1"
                                     android:text="@string/all_reg" />
 
                                 <TextView
                                     android:id="@+id/numAll"
                                     android:layout_width="wrap_content"
                                     android:layout_height="0dp"
-                                    android:layout_weight="0.8"
+                                    android:layout_weight="1"
                                     android:text="32"
                                     android:textSize="30sp"
                                     android:textStyle="bold" />

@@ -109,7 +109,7 @@
     <string name="thera_prog">ඖෂධීය ආහාර ලබාදීම</string>
     <string name="overw_prog">අධි බර / ස්ථූලතාවය \nසඳහා මැදිහත්වීම</string>
     <string name="stunt_prog">මිටි බව \nසදහා මැදිහත්වීම</string>
-    <string name="other_prog"><font size="12">වෙනත් සෞඛ්‍ය/ \nසෞඛ්‍ය නොවන</font></string>
+    <string name="other_prog">වෙනත් සෞඛ්‍ය/ \nසෞඛ්‍ය නොවන</string>
     <string name="area_details">මගේ ප්‍රදේශයේ විස්තර බලන්න</string>
     <string name="area_details_desc">ඔබේ ප්‍රදේශයේ සියලුම ළමා ලැයිස්තුව බැලීමට මෙතැන ක්ලික් කරන්න</string>
     <string name="new_child">ලියාපදිංචි වීම</string>
@@ -149,7 +149,6 @@
     <string name="birth_weight"><font size="12">උපත් බර (g)</font></string>
     <string name="submit">තහවුරු කරන්න</string>
 
-
     <!--    program stages-->
     <string name="an_stage">අදියර 1 : වර්ධන තත්වය මැනීම</string>
     <string name="st_reason">ඇතුළත් වීමට හේතුව</string>
@@ -185,12 +184,11 @@
     <string name="unenroll_supplimentory">මෙම ක්‍රියාවෙන් අතිරේක ආහාර ලබාදීම \n වැඩසටහනෙන් ඉවත් කරනු ඇත</string>
     <string name="unenroll_thera">මෙම ක්‍රියාවෙන් ඖෂධීය ආහාර ලබාදීම \n වැඩසටහනෙන් ඉවත් කරනු ඇත</string>
 
-
     <!-- other - reason for enrollment -->
     <string name="oth_reason_title">ලියාපදිංචි වීමට හේතුව</string>
     <string name="oth_reason_date">දිනය</string>
     <string name="oth_reason_sam">උග්‍ර තීව‍්‍ර මන්දපෝෂණය (SAM)</string>
-    <string name="oth_reason_mam">මධ්‍යස්ථ තීව‍්‍ර මන්දපෝෂණය (මධ්‍යස්ථ කෘශ බව (MAM) </string>
+    <string name="oth_reason_mam">මධ්‍යස්ථ තීව‍්‍ර මන්දපෝෂණය (මධ්‍යස්ථ කෘශ බව (MAM)) </string>
     <string name="oth_reason_faltering">හරිත කලාපයේ දිගුකාලීන වර්ධනය අඩාල වේ</string>
     <string name="oth_reason_under">අඩු බර</string>
     <string name="oth_reason_overweight">අධි බර / ස්ථූලතාවය</string>

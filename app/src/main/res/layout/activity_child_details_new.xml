@@ -312,14 +312,14 @@
                         <EditText
                             android:id="@+id/address"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_height="42dp"
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
+                            android:enabled="false"
                             android:hint="Enter here"
                             android:textColorHint="@color/desc"
-                            android:textSize="15dp"
-                            android:enabled="false"/>
+                            android:textSize="15dp" />
 
                     </LinearLayout>
 
@@ -900,7 +900,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.2"
-                    android:src="@drawable/stunting" />
+                    android:src="@drawable/stunting"/>
 
                 <ImageView
                     android:visibility="gone"
