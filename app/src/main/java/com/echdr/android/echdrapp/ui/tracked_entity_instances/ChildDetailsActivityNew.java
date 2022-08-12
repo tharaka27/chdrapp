@@ -290,7 +290,7 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
         final int month = Integer.parseInt(s_monthNumber) - 1;
         final int day = Integer.parseInt(s_day);
 
-        /*
+
         datePicker_registration.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -306,7 +306,7 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
                 textView_date_of_registration.setText(date);
             }
         };
-         */
+
 
 
         datePicker_dob.setOnClickListener(new View.OnClickListener() {
@@ -342,6 +342,16 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
             }
         };
 
+        // setting date of registration
+        try {
+            String prev_date = getDataElement("KuMTUOY6X3L");
+            System.out.println("results out " + prev_date );
+            if (!prev_date.isEmpty()) {
+                textView_date_of_registration.setText(prev_date);
+            }
+        } catch (Exception e) {
+            textView_date_of_registration.setText("");
+        }
 
         // setting mother DOB date
         try {

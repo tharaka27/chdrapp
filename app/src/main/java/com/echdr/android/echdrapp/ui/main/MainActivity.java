@@ -33,6 +33,7 @@ import com.echdr.android.echdrapp.ui.enrollment_form.EnrollmentFormModified;
 import com.echdr.android.echdrapp.ui.events.EventsActivity;
 import com.echdr.android.echdrapp.ui.foreign_key_violations.ForeignKeyViolationsActivity;
 import com.echdr.android.echdrapp.ui.programs.ProgramsActivity;
+import com.echdr.android.echdrapp.ui.splash.LanguageSelection;
 import com.echdr.android.echdrapp.ui.tracked_entity_instances.TrackedEntityInstancesActivity;
 import com.echdr.android.echdrapp.ui.tracked_entity_instances.search.TrackedEntityInstanceSearchActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -71,6 +72,7 @@ public class MainActivity extends AppCompatActivity{
     private TextView numOtherHealth;
     private Button syncBtn;
     private Button UploadBtn;
+    private Button languageBtn;
     private LinearLayout myAreaDetailsBtn;
     private LinearLayout createNewChild;
     private ProgressBar progressBar;
@@ -107,6 +109,7 @@ public class MainActivity extends AppCompatActivity{
 
     private void inflateMainView() {
 
+        languageBtn = findViewById(R.id.languageBtn);
         syncBtn = findViewById(R.id.syncBtn);
         UploadBtn = findViewById(R.id.uploadBtn);
         myAreaDetailsBtn = findViewById(R.id.area);
@@ -213,6 +216,13 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 uploadData();
+            }
+        });
+
+        languageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ActivityStarter.startActivity(MainActivity.this, LanguageSelection.getLanguageSelectionActivityIntent(context),true);
             }
         });
     }
