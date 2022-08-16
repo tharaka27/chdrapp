@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +25,7 @@ import com.echdr.android.echdrapp.R;
 import com.echdr.android.echdrapp.data.Sdk;
 import com.echdr.android.echdrapp.data.service.ActivityStarter;
 import com.echdr.android.echdrapp.data.service.SyncStatusHelper;
+import com.echdr.android.echdrapp.service.Constants;
 import com.echdr.android.echdrapp.ui.code_executor.CodeExecutorActivity;
 import com.echdr.android.echdrapp.ui.d2_errors.D2ErrorActivity;
 import com.echdr.android.echdrapp.ui.data_sets.DataSetsActivity;
@@ -60,6 +62,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity{
 
+    private static final String TAG = "MainActivity";
     private CompositeDisposable compositeDisposable;
     private final int ENROLLMENT_RQ = 1210;
 
@@ -76,6 +79,7 @@ public class MainActivity extends AppCompatActivity{
     private LinearLayout myAreaDetailsBtn;
     private LinearLayout createNewChild;
     private ProgressBar progressBar;
+    private TextView greeting;
     private boolean isSyncing = false;
 
     public static Intent getMainActivityIntent(Context context) {
@@ -90,13 +94,7 @@ public class MainActivity extends AppCompatActivity{
         compositeDisposable = new CompositeDisposable();
         context = this;
 
-        User user = getUser();
-        TextView greeting = findViewById(R.id.greetingYash);
-        greeting.setText(String.format("%s!", user.displayName()));
-
-
         inflateMainView();
-
     }
 
     @Override
@@ -109,73 +107,62 @@ public class MainActivity extends AppCompatActivity{
 
     private void inflateMainView() {
 
-        languageBtn = findViewById(R.id.languageBtn);
-        syncBtn = findViewById(R.id.syncBtn);
-        UploadBtn = findViewById(R.id.uploadBtn);
-        myAreaDetailsBtn = findViewById(R.id.area);
-        createNewChild = findViewById(R.id.new_child);
-        progressBar = findViewById(R.id.progressBar);
-
-        //progressBar.setVisibility(View.VISIBLE);
-
+        languageBtn         = findViewById(R.id.languageBtn);
+        syncBtn             = findViewById(R.id.syncBtn);
+        UploadBtn           = findViewById(R.id.uploadBtn);
+        myAreaDetailsBtn    = findViewById(R.id.area);
+        createNewChild      = findViewById(R.id.new_child);
+        progressBar         = findViewById(R.id.progressBar);
         numAllregistrations = findViewById(R.id.numAll);
-        numTherapeutic = findViewById(R.id.numTherapeutical);
-        numOtherHealth = findViewById(R.id.numOther);
-        numOverweight = findViewById(R.id.numOverweight);
-        numStunting = findViewById(R.id.numStunting);
-        numSupplementary = findViewById(R.id.numSup);
+        numTherapeutic      = findViewById(R.id.numTherapeutical);
+        numOtherHealth      = findViewById(R.id.numOther);
+        numOverweight       = findViewById(R.id.numOverweight);
+        numStunting         = findViewById(R.id.numStunting);
+        numSupplementary    = findViewById(R.id.numSup);
+        greeting   = findViewById(R.id.greetingYash);
 
-        numAllregistrations.setText(MessageFormat.format("{0}",
-                SyncStatusHelper.trackedEntityInstanceCount()));
-        numSupplementary.setText(MessageFormat.format("{0}",
-                SyncStatusHelper.supplementaryCount()));
-        numOtherHealth.setText(MessageFormat.format("{0}",
-                SyncStatusHelper.otherCount()));
-        numOverweight.setText(MessageFormat.format("{0}",
-                SyncStatusHelper.overweightCount()));
-        numStunting.setText(MessageFormat.format("{0}",
-                SyncStatusHelper.stuntingCount()));
-        numTherapeutic.setText(MessageFormat.format("{0}",
-                SyncStatusHelper.therapeuticalCount()));
+        greeting.setText(String.format("%s!", getUser().displayName()));
+
+        numAllregistrations.setText(MessageFormat.format("{0}", SyncStatusHelper.trackedEntityInstanceCount()));
+        numSupplementary.setText(MessageFormat.format("{0}", SyncStatusHelper.supplementaryCount()));
+        numOtherHealth.setText(MessageFormat.format("{0}", SyncStatusHelper.otherCount()));
+        numOverweight.setText(MessageFormat.format("{0}", SyncStatusHelper.overweightCount()));
+        numStunting.setText(MessageFormat.format("{0}", SyncStatusHelper.stuntingCount()));
+        numTherapeutic.setText(MessageFormat.format("{0}", SyncStatusHelper.therapeuticalCount()));
 
         myAreaDetailsBtn.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 Intent searchAreaDetails = new Intent(getApplicationContext(), TrackedEntityInstancesActivity.class);
                 startActivity(searchAreaDetails);
-
             }
         });
 
         createNewChild.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast t = Toast.makeText(context, "Clicked add new child", Toast.LENGTH_LONG);
-                t.show();
 
                 int ENROLLMENT_RQ = 1210;
                 List<String> j = new ArrayList<>();
-                j.add("hM6Yt9FQL0n");
+                j.add(Constants.PLATFORM_ANTHROPOMETRY_PROGRAMME);
                 compositeDisposable.add(
-                        Sdk.d2().programModule().programs().uid("hM6Yt9FQL0n").get()
+                        Sdk.d2().programModule().programs().uid(Constants.PLATFORM_ANTHROPOMETRY_PROGRAMME).get()
                                 .map(program -> Sdk.d2().trackedEntityModule().trackedEntityInstances()
                                         .blockingAdd(
                                                 TrackedEntityInstanceCreateProjection.builder()
                                                         .organisationUnit(
                                                                 Sdk.d2().organisationUnitModule().organisationUnits()
-                                                                        .byProgramUids(Collections.singletonList("hM6Yt9FQL0n"))
+                                                                        .byProgramUids(Collections.singletonList(Constants.PLATFORM_ANTHROPOMETRY_PROGRAMME))
                                                                         .byOrganisationUnitScope(OrganisationUnit.Scope.SCOPE_DATA_CAPTURE)
                                                                         .one().blockingGet().uid()
                                                         )
                                                         .trackedEntityType(program.trackedEntityType().uid())
                                                         .build()
                                         ))
-                                //.map(teiUid -> EnrollmentFormActivity.getFormActivityIntent(
                                 .map(teiUid -> EnrollmentFormModified.getModifiedFormActivityIntent(
                                         MainActivity.this,
                                         teiUid,
-                                        "hM6Yt9FQL0n",
+                                        Constants.PLATFORM_ANTHROPOMETRY_PROGRAMME,
                                         Sdk.d2().organisationUnitModule().organisationUnits()
                                                 //.byProgramUids(Collections.singletonList("hM6Yt9FQL0n"))
                                                 .byProgramUids( j)
@@ -256,7 +243,6 @@ public class MainActivity extends AppCompatActivity{
                             // set progress bar gone
                             progressBar.setVisibility(View.GONE);
                             syncBtn.setClickable(true);
-                            //syncBtn.setText("SYNC DATA");
                             ActivityStarter.startActivity(this, MainActivity.getMainActivityIntent(this),
                                     true);
                         })
@@ -291,8 +277,7 @@ public class MainActivity extends AppCompatActivity{
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .doOnComplete(() -> {
-                            Toast t = Toast.makeText(context,
-                                    "Syncing data complete", Toast.LENGTH_LONG);
+                            Log.i(TAG, Constants.APP_DATA_UPLOAD_STARTED);
                         })
                         .doOnError(Throwable::printStackTrace)
                         .subscribe());
@@ -300,10 +285,6 @@ public class MainActivity extends AppCompatActivity{
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        /*
-        if(requestCode == ENROLLMENT_RQ && resultCode == RESULT_OK){
-
-        }*/
         super.onActivityResult(requestCode,resultCode,data);
     }
 
