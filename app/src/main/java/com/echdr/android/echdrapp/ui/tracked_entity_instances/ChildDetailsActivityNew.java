@@ -1285,6 +1285,8 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
             public void onClick(View view) {
                 ActivityStarter.startActivity(ChildDetailsActivityNew.this,
                         EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "JsfNVX0hdq9", orgUnit), false);
+                //ActivityStarter.startActivity(ChildDetailsActivityNew.this,
+                //        EnrollmentFormModified.getModifiedFormActivityIntent(getApplicationContext(), teiUid, "JsfNVX0hdq9", orgUnit), false);
 
             }
         });
@@ -1358,7 +1360,9 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ActivityStarter.startActivity(ChildDetailsActivityNew.this,
-                        EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "iUgzznPsePB", orgUnit), false);
+                 EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "iUgzznPsePB", orgUnit), false);
+                //ActivityStarter.startActivity(ChildDetailsActivityNew.this,
+                //        EnrollmentFormModified.getModifiedFormActivityIntent(getApplicationContext(), teiUid, "iUgzznPsePB", orgUnit), false);
 
             }
         });
@@ -1378,6 +1382,8 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
             public void onClick(View view) {
                 ActivityStarter.startActivity(ChildDetailsActivityNew.this,
                         EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "lSSNwBMiwrK", orgUnit), false);
+                //ActivityStarter.startActivity(ChildDetailsActivityNew.this,
+                // EnrollmentFormModified.getModifiedFormActivityIntent(getApplicationContext(), teiUid, "lSSNwBMiwrK", orgUnit), false);
 
             }
         });
@@ -1396,7 +1402,9 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ActivityStarter.startActivity(ChildDetailsActivityNew.this,
-                        EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "tc6RsYbgGzm", orgUnit), false);
+                      EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "tc6RsYbgGzm", orgUnit), false);
+                //ActivityStarter.startActivity(ChildDetailsActivityNew.this,
+                // EnrollmentFormModified.getModifiedFormActivityIntent(getApplicationContext(), teiUid, "tc6RsYbgGzm", orgUnit), false);
 
             }
         });
@@ -1416,6 +1424,8 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
             public void onClick(View view) {
                 ActivityStarter.startActivity(ChildDetailsActivityNew.this,
                         EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "CoGsKgEG4O0", orgUnit), false);
+                //ActivityStarter.startActivity(ChildDetailsActivityNew.this,
+                // EnrollmentFormModified.getModifiedFormActivityIntent(getApplicationContext(), teiUid, "CoGsKgEG4O0", orgUnit), false);
 
             }
         });
