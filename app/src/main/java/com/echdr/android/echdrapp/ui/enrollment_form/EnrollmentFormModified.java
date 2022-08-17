@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -32,6 +33,7 @@ import com.echdr.android.echdrapp.data.service.forms.EnrollmentFormService;
 import com.echdr.android.echdrapp.data.service.forms.EventFormService;
 import com.echdr.android.echdrapp.data.service.forms.FormField;
 import com.echdr.android.echdrapp.data.service.forms.RuleEngineService;
+import com.echdr.android.echdrapp.service.util;
 import com.echdr.android.echdrapp.ui.event_form.SupplementaryIndicationActivity;
 import com.echdr.android.echdrapp.ui.events.EventsActivity;
 import com.echdr.android.echdrapp.ui.tracked_entity_instances.ChildDetailsActivity;
@@ -63,7 +65,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class EnrollmentFormModified extends AppCompatActivity {
 
-
+    private static final String TAG = "EnrollmentFormActivity";
     private CompositeDisposable disposable;
     private PublishProcessor<Boolean> engineInitialization;
     private RuleEngineService engineService;
@@ -342,6 +344,8 @@ public class EnrollmentFormModified extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // start of the validating this should be false
+                isError = false;
 
                 // Immunization number validation
                 String pattern = "[0-9][0-9]\\/[0-1][0-9]\\/[0-3][0-9]";
@@ -440,6 +444,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setMessage(ErrorMessage);
         builder.setCancelable(true);
+        Log.e(TAG, ErrorMessage);
 
         builder.setNegativeButton(
                 "Close",
@@ -467,7 +472,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
 
     private void setEditText(TextView textView, String dataElement){
         try {
-            String element = getDataElement(dataElement);
+            String element = util.getDataElement(dataElement, teiUid);
             if (!element.isEmpty()) {
                 textView.setText(dataElement);
             }
@@ -485,114 +490,44 @@ public class EnrollmentFormModified extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new EnrollmentTypeSpinnerClass());
     }
 
-    private String getDataElement(String dataElement) {
-        TrackedEntityAttributeValueObjectRepository valueRepository =
-                Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
-                        .value(
-
-                                dataElement,
-                                teiUid
-                                //getIntent().getStringExtra(EnrollmentFormModified.IntentExtra.TEI_UID.name()
-                                //)
-                        );
-        String currentValue = valueRepository.blockingExists() ?
-                valueRepository.blockingGet().value() : "";
-
-        return currentValue;
-    }
-
-    private void saveDataElement(String dataElement, String value){
-        TrackedEntityAttributeValueObjectRepository valueRepository;
-        try {
-            valueRepository = Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
-                    .value(
-                            dataElement,
-                            teiUid
-                    );
-        }catch (Exception e)
-        {
-            //EnrollmentFormService.getInstance().init(
-                    //Sdk.d2(),
-                    //teiUid,
-                    //"hM6Yt9FQL0n",
-                    //getIntent().getStringExtra(EnrollmentFormModified.IntentExtra.OU_UID.name()));
-            valueRepository = Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
-                    .value(
-                            teiUid,
-                            //EnrollmentFormService.getInstance().getEnrollmentUid(),
-                            dataElement
-                    );
-        }
-
-        String currentValue = valueRepository.blockingExists() ?
-                valueRepository.blockingGet().value() : "";
-
-        if (currentValue == null)
-            currentValue = "";
-
-        try{
-            if(!isEmpty(value))
-            {
-                valueRepository.blockingSet(value);
-            }else
-            {
-                valueRepository.blockingDeleteIfExist();
-            }
-        } catch (D2Error d2Error) {
-            d2Error.printStackTrace();
-        }finally {
-            if (!value.equals(currentValue)) {
-                engineInitialization.onNext(true);
-            }
-        }
-    }
 
     private void saveElements()
     {
         if(isError){
+            Log.e(TAG, "Error occured while trying to save tracked entity instance" );
             return;
         }
 
         //saveDataElement("KuMTUOY6X3L", textView_date_of_registration.getText().toString());
-        saveDataElement("upQGjAHBjzu", GNArea.getText().toString());
-        saveDataElement("h2ATdtJguMq", immuneNum.getText().toString());
-        saveDataElement("zh4hiarsSD5", name.getText().toString());
-        saveDataElement("lmtzQrlHMYF",
-                sex_english_only[sex.getSelectedItemPosition()]);
-        saveDataElement("qNH202ChkV3", textView_dob.getText().toString());
-        saveDataElement("b9CoAneYYys",
-                ethinicity_english_only[ethnicity.getSelectedItemPosition()]);
-        saveDataElement("D9aC5K6C6ne", address.getText().toString());
-        saveDataElement("igjlkmMF81X",
-                sector_english_only[sector.getSelectedItemPosition()]);
-        saveDataElement("cpcMXDhQouL", landNumber.getText().toString());
-        saveDataElement("LYRf4eIUVuN", mobileNumber.getText().toString());
-        saveDataElement("K7Fxa2wv2Rx", motherName.getText().toString());
-        saveDataElement("Gzjb3fp9FSe", nic.getText().toString());
-        saveDataElement("kYfIkz2M6En", textView_mother_dob.getText().toString());
-        saveDataElement("Gy4bCBxNuo4", numberOfChildren.getText().toString());
-        saveDataElement("GMNSaaq4xST",
-                eduLevel_english_only[eduLevel.getSelectedItemPosition()]);
-        saveDataElement("Srxv0vniOnf",
-                occupation_english_only[occupation.getSelectedItemPosition()]);
-        saveDataElement("s7Rde0kFOFb", occu_specification.getText().toString());
-        saveDataElement("ghN8XfnlU5V",
-                relationship_english_only[relationship.getSelectedItemPosition()]);
-        saveDataElement("hxCXbI5J2YS", caregiver.getText().toString());
-        saveDataElement("Fs89NLB2FrA", weight.getText().toString());
-        saveDataElement("LpvdWM4YuRq", length.getText().toString());
+        util.saveDataElement("upQGjAHBjzu", GNArea.getText().toString(), teiUid, engineInitialization);
+        util.saveDataElement("h2ATdtJguMq", immuneNum.getText().toString(), teiUid, engineInitialization);
+        util.saveDataElement("zh4hiarsSD5", name.getText().toString(), teiUid, engineInitialization);
+        util.saveDataElement("lmtzQrlHMYF",
+                sex_english_only[sex.getSelectedItemPosition()], teiUid, engineInitialization);
+        util.saveDataElement("qNH202ChkV3", textView_dob.getText().toString(), teiUid, engineInitialization);
+        util.saveDataElement("b9CoAneYYys",
+                ethinicity_english_only[ethnicity.getSelectedItemPosition()], teiUid, engineInitialization);
+        util.saveDataElement("D9aC5K6C6ne", address.getText().toString(), teiUid, engineInitialization);
+        util.saveDataElement("igjlkmMF81X",
+                sector_english_only[sector.getSelectedItemPosition()], teiUid, engineInitialization);
+        util.saveDataElement("cpcMXDhQouL", landNumber.getText().toString(), teiUid, engineInitialization);
+        util.saveDataElement("LYRf4eIUVuN", mobileNumber.getText().toString(), teiUid, engineInitialization);
+        util.saveDataElement("K7Fxa2wv2Rx", motherName.getText().toString(), teiUid, engineInitialization);
+        util.saveDataElement("Gzjb3fp9FSe", nic.getText().toString(), teiUid, engineInitialization);
+        util.saveDataElement("kYfIkz2M6En", textView_mother_dob.getText().toString(), teiUid, engineInitialization);
+        util.saveDataElement("Gy4bCBxNuo4", numberOfChildren.getText().toString(), teiUid, engineInitialization);
+        util.saveDataElement("GMNSaaq4xST",
+                eduLevel_english_only[eduLevel.getSelectedItemPosition()], teiUid, engineInitialization);
+        util.saveDataElement("Srxv0vniOnf",
+                occupation_english_only[occupation.getSelectedItemPosition()], teiUid, engineInitialization);
+        util.saveDataElement("s7Rde0kFOFb", occu_specification.getText().toString(), teiUid, engineInitialization);
+        util.saveDataElement("ghN8XfnlU5V",
+                relationship_english_only[relationship.getSelectedItemPosition()], teiUid, engineInitialization);
+        util.saveDataElement("hxCXbI5J2YS", caregiver.getText().toString(), teiUid, engineInitialization);
+        util.saveDataElement("Fs89NLB2FrA", weight.getText().toString(), teiUid, engineInitialization);
+        util.saveDataElement("LpvdWM4YuRq", length.getText().toString(), teiUid, engineInitialization);
 
 
-        //finishEnrollment();
-        /*
-        ActivityStarter.startActivity(
-                this,
-                ChildDetailsActivity.getTrackedEntityInstancesActivityIntent(
-                        this,
-                        trackedEntityInstance.uid()
-                ),true
-        );
-         */
         ActivityStarter.startActivity(
                 this,
                 ChildDetailsActivity.getTrackedEntityInstancesActivityIntent(
@@ -646,7 +581,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
     private int getSpinnerSelection(String dataElement, String [] array)
     {
         int itemPosition = -1;
-        String stringElement = getDataElement(dataElement);
+        String stringElement = util.getDataElement(dataElement, teiUid);
         for(int i =0; i<array.length; i++)
         {
             if(array[i].equals(stringElement))
