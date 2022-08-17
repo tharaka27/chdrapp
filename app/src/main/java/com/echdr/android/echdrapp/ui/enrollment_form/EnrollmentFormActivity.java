@@ -28,6 +28,7 @@ import com.echdr.android.echdrapp.data.service.forms.RuleEngineService;
 import com.echdr.android.echdrapp.databinding.ActivityEnrollmentFormBinding;
 import com.echdr.android.echdrapp.databinding.ActivityEnrollementFormThreeBinding;
 import com.echdr.android.echdrapp.ui.tracked_entity_instances.ChildDetailsActivity;
+import com.echdr.android.echdrapp.ui.tracked_entity_instances.ChildDetailsActivityNew;
 
 import org.hisp.dhis.android.core.arch.helpers.FileResizerHelper;
 import org.hisp.dhis.android.core.arch.helpers.FileResourceDirectoryHelper;
@@ -99,6 +100,7 @@ public class EnrollmentFormActivity extends AppCompatActivity {
                 getIntent().getStringExtra(IntentExtra.OU_UID.name())))
             this.engineService = new RuleEngineService();
 
+        AutoClose();
     }
 
     private FormAdapter.OnImageSelectionClick getImageListener() {
@@ -235,6 +237,18 @@ public class EnrollmentFormActivity extends AppCompatActivity {
         Intent i =  ChildDetailsActivity.getTrackedEntityInstancesActivityIntent(this, teiUid);
         finish();
         startActivity(i);
+
+    }
+
+    private void AutoClose() {
+        setResult(RESULT_OK);
+        //finish();
+
+        //Intent i =  ChildDetailsActivity.getTrackedEntityInstancesActivityIntent(this, teiUid);
+        //finish();
+        //startActivity(i);
+        ActivityStarter.startActivity(EnrollmentFormActivity.this,
+                ChildDetailsActivity.getTrackedEntityInstancesActivityIntent(this, teiUid), true);
 
     }
 

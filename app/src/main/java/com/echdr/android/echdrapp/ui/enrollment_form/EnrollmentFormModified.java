@@ -539,7 +539,6 @@ public class EnrollmentFormModified extends AppCompatActivity {
 
     private void selectDateRegistration(int year, int month, int day)
     {
-        System.out.println("Clicked et date");
         Calendar c = Calendar.getInstance();
         c.add(Calendar.DATE, -7*4); // subtract 1 month from now
         DatePickerDialog datePickerDialog = new DatePickerDialog(
@@ -552,7 +551,6 @@ public class EnrollmentFormModified extends AppCompatActivity {
 
     private void selectDate(int year, int month, int day)
     {
-        System.out.println("Clicked et date");
         Calendar c2 = Calendar.getInstance();
         c2.add(Calendar.DATE, -7*4*12*5); // subtract 5 years from now
         DatePickerDialog datePickerDialog = new DatePickerDialog(
@@ -565,7 +563,6 @@ public class EnrollmentFormModified extends AppCompatActivity {
 
     private void selectDateMotherDOB(int year, int month, int day)
     {
-        System.out.println("Clicked et date");
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 context, android.R.style.Theme_Holo_Light_Dialog, setListenerMotherDob, year, month, day);
         datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
