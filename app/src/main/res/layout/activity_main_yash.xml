@@ -52,7 +52,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_marginVertical="5dp"
-                            android:layout_weight="1"
+                            android:layout_weight="2"
                             android:orientation="horizontal"
                             android:weightSum="1">
 
@@ -60,7 +60,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_marginEnd="5dp"
-                                android:layout_weight="0.4"
+                                android:layout_weight="0.2"
                                 android:paddingHorizontal="16dp"
                                 android:paddingVertical="20dp"
                                 android:background="@drawable/registration"/>
@@ -68,33 +68,42 @@
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight="0.6"
+                                android:layout_weight="0.8"
                                 android:orientation="vertical"
                                 android:weightSum="2">
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="0dp"
-                                    android:layout_weight="1"
+                                    android:layout_weight="0.8"
                                     android:text="@string/all_reg" />
 
                                 <TextView
                                     android:id="@+id/numAll"
                                     android:layout_width="wrap_content"
                                     android:layout_height="0dp"
-                                    android:layout_weight="1"
+                                    android:layout_weight="1.2"
                                     android:text="32"
                                     android:textSize="30sp"
                                     android:textStyle="bold" />
                             </LinearLayout>
                         </LinearLayout>
 
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
                         <LinearLayout
                             android:id="@+id/supp"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_marginVertical="5dp"
-                            android:layout_weight="1"
+                            android:layout_weight="2"
                             android:orientation="horizontal"
                             android:weightSum="1">
 
@@ -102,7 +111,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_marginEnd="5dp"
-                                android:layout_weight="0.4"
+                                android:layout_weight="0.2"
                                 android:background="@drawable/supplements"
                                 android:paddingHorizontal="16dp"
                                 android:paddingVertical="20dp"/>
@@ -110,21 +119,21 @@
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight="0.6"
+                                android:layout_weight="0.8"
                                 android:orientation="vertical"
                                 android:weightSum="2">
 
                                 <TextView
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="match_parent"
                                     android:layout_height="0dp"
-                                    android:layout_weight="1.2"
+                                    android:layout_weight="0.8"
                                     android:text="@string/sup_prog" />
 
                                 <TextView
                                     android:id="@+id/numSup"
                                     android:layout_width="wrap_content"
                                     android:layout_height="0dp"
-                                    android:layout_weight="0.8"
+                                    android:layout_weight="1.2"
                                     android:text="32"
                                     android:textSize="28sp"
                                     android:textStyle="bold" />
@@ -142,7 +151,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_marginVertical="5dp"
-                            android:layout_weight="1"
+                            android:layout_weight="2"
                             android:orientation="horizontal"
                             android:weightSum="1">
 
@@ -151,7 +160,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_marginEnd="5dp"
-                                android:layout_weight="0.4"
+                                android:layout_weight="0.2"
                                 android:background="@drawable/feeding"
                                 android:paddingHorizontal="16dp"
                                 android:paddingVertical="20dp"/>
@@ -159,32 +168,41 @@
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight="0.6"
+                                android:layout_weight="0.8"
                                 android:orientation="vertical"
                                 android:weightSum="2">
 
                                 <TextView
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="match_parent"
                                     android:layout_height="0dp"
-                                    android:layout_weight="1.2"
+                                    android:layout_weight="0.8"
                                     android:text="@string/thera_prog" />
 
                                 <TextView
                                     android:id="@+id/numTherapeutical"
                                     android:layout_width="wrap_content"
                                     android:layout_height="0dp"
-                                    android:layout_weight="0.8"
+                                    android:layout_weight="1.2"
                                     android:text="16"
                                     android:textSize="28sp"
                                     android:textStyle="bold" />
                             </LinearLayout>
                         </LinearLayout>
 
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_marginVertical="5dp"
-                            android:layout_weight="1"
+                            android:layout_weight="2"
                             android:orientation="horizontal"
                             android:weightSum="1">
 
@@ -193,7 +211,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_marginEnd="5dp"
-                                android:layout_weight="0.4"
+                                android:layout_weight="0.2"
                                 android:background="@drawable/weighingscale"
                                 android:paddingHorizontal="16dp"
                                 android:paddingVertical="20dp"/>
@@ -201,21 +219,21 @@
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight="0.6"
+                                android:layout_weight="0.8"
                                 android:orientation="vertical"
                                 android:weightSum="2">
 
                                 <TextView
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="match_parent"
                                     android:layout_height="0dp"
-                                    android:layout_weight="1.2"
+                                    android:layout_weight="0.8"
                                     android:text="@string/overw_prog" />
 
                                 <TextView
                                     android:id="@+id/numOverweight"
                                     android:layout_width="wrap_content"
                                     android:layout_height="0dp"
-                                    android:layout_weight="0.8"
+                                    android:layout_weight="1.2"
                                     android:text="17"
                                     android:textSize="28sp"
                                     android:textStyle="bold" />
@@ -233,7 +251,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_marginVertical="5dp"
-                            android:layout_weight="1"
+                            android:layout_weight="2"
                             android:orientation="horizontal">
 
                             <ImageView
@@ -241,10 +259,10 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_marginEnd="5dp"
-                                android:layout_weight="0.4"
+                                android:layout_weight="0.15"
                                 android:background="@drawable/kidscouple"
                                 android:paddingHorizontal="16dp"
-                                android:paddingVertical="20dp" />
+                                android:paddingVertical="20dp"/>
 
                             <LinearLayout
                                 android:layout_width="0dp"
@@ -254,16 +272,16 @@
                                 android:weightSum="2">
 
                                 <TextView
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="match_parent"
                                     android:layout_height="0dp"
-                                    android:layout_weight="1.2"
+                                    android:layout_weight="0.8"
                                     android:text="@string/stunt_prog" />
 
                                 <TextView
                                     android:id="@+id/numStunting"
                                     android:layout_width="wrap_content"
                                     android:layout_height="0dp"
-                                    android:layout_weight="0.8"
+                                    android:layout_weight="1.2"
                                     android:text="21"
                                     android:textSize="28sp"
                                     android:textStyle="bold" />
@@ -271,11 +289,19 @@
                             </LinearLayout>
                         </LinearLayout>
 
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_marginVertical="5dp"
-                            android:layout_weight="1"
+                            android:layout_weight="2"
                             android:orientation="horizontal"
                             android:weightSum="1">
 
@@ -284,7 +310,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_marginEnd="5dp"
-                                android:layout_weight="0.4"
+                                android:layout_weight="0.2"
                                 android:background="@drawable/other_health"
                                 android:paddingHorizontal="16dp"
                                 android:paddingVertical="20dp" />
@@ -292,21 +318,21 @@
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight="0.6"
+                                android:layout_weight="0.8"
                                 android:orientation="vertical"
                                 android:weightSum="2">
 
                                 <TextView
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="match_parent"
                                     android:layout_height="0dp"
-                                    android:layout_weight="1.2"
+                                    android:layout_weight="0.8"
                                     android:text="@string/other_prog" />
 
                                 <TextView
                                     android:id="@+id/numOther"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="match_parent"
                                     android:layout_height="0dp"
-                                    android:layout_weight="0.8"
+                                    android:layout_weight="1.2"
                                     android:text="21"
                                     android:textSize="28sp"
                                     android:textStyle="bold" />
@@ -318,6 +344,7 @@
                         android:id="@+id/area"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
                         android:background="?android:attr/selectableItemBackground"
                         android:clickable="true"
                         android:orientation="horizontal">

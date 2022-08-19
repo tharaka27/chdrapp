@@ -106,11 +106,11 @@
     <!--    home-->
     <string name="title_activity_home">home</string>
     <string name="wish">Hello,</string>
-    <string name="sup_prog">Supplementary \nFeeding Programme</string>
-    <string name="thera_prog">Therapeutic Feeding \nProgramme</string>
-    <string name="overw_prog">Overweight/Obesity \nProgramme</string>
-    <string name="stunt_prog">Stunting \nProgramme</string>
-    <string name="other_prog">Other Health/ \nNon-health</string>
+    <string name="sup_prog">Supplementary Feeding Programme</string>
+    <string name="thera_prog">Therapeutic Feeding Programme</string>
+    <string name="overw_prog">Overweight/Obesity Programme</string>
+    <string name="stunt_prog">Stunting Programme</string>
+    <string name="other_prog">Other Health/ Non-health</string>
     <string name="area_details">View my area details</string>
     <string name="area_details_desc">Click here to view all the child list in your area</string>
     <string name="new_child">Child Registration</string>

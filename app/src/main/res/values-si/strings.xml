@@ -107,9 +107,9 @@
     <string name="wish">ආයුබෝවන්,</string>
     <string name="sup_prog">අතිරේක ආහාර ලබාදීම</string>
     <string name="thera_prog">ඖෂධීය ආහාර ලබාදීම</string>
-    <string name="overw_prog">අධි බර / ස්ථූලතාවය \nසඳහා මැදිහත්වීම</string>
-    <string name="stunt_prog">මිටි බව \nසදහා මැදිහත්වීම</string>
-    <string name="other_prog">වෙනත් සෞඛ්‍ය/ \nසෞඛ්‍ය නොවන</string>
+    <string name="overw_prog">අධි බර / ස්ථූලතාවය සඳහා මැදිහත්වීම</string>
+    <string name="stunt_prog">මිටි බව සදහා මැදිහත්වීම</string>
+    <string name="other_prog">වෙනත් සෞඛ්‍ය/ සෞඛ්‍ය නොවන</string>
     <string name="area_details">මගේ ප්‍රදේශයේ විස්තර බලන්න</string>
     <string name="area_details_desc">ඔබේ ප්‍රදේශයේ සියලුම ළමා ලැයිස්තුව බැලීමට මෙතැන ක්ලික් කරන්න</string>
     <string name="new_child">ලියාපදිංචි වීම</string>
