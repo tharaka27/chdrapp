@@ -160,13 +160,6 @@ public class SupplementaryInterventionActivity extends AppCompatActivity {
             }
         });
 
-        datePicker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectDate(year, month, day);
-            }
-        });
-
         setListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -380,15 +373,34 @@ public class SupplementaryInterventionActivity extends AppCompatActivity {
             return;
         }
 
-        if( numberOfTriposha.getText().toString().isEmpty() ||
-                Integer.parseInt(numberOfTriposha.getText().toString()) < 0
-                || Integer.parseInt(numberOfTriposha.getText().toString()) > 2)
-        {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("Number of Thriposha packets given should be between 0-2");
-            builder1.setCancelable(true);
+        if(radioButtonTriposhaYes.isChecked()){
+            if( numberOfTriposha.getText().toString().isEmpty() ||
+                    Integer.parseInt(numberOfTriposha.getText().toString()) < 0
+                    || Integer.parseInt(numberOfTriposha.getText().toString()) > 2)
+            {
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+                builder1.setMessage("Number of Thriposha packets given should be between 0-2");
+                builder1.setCancelable(true);
 
-            builder1.setNegativeButton(
+                builder1.setNegativeButton(
+                        "Close",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                                //return;
+                            }
+                        });
+
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+                return;
+            }
+        }else {
+            AlertDialog.Builder builder2 = new AlertDialog.Builder(context);
+            builder2.setMessage("Child is not on Triposha. Therefore can't enter a number");
+            builder2.setCancelable(true);
+
+            builder2.setNegativeButton(
                     "Close",
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
@@ -397,10 +409,12 @@ public class SupplementaryInterventionActivity extends AppCompatActivity {
                         }
                     });
 
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
+            AlertDialog alert12 = builder2.create();
+            alert12.show();
             return;
+
         }
+
 
         saveDataElement("WRjdfCRNhnU", textView_Date.getText().toString());
 
@@ -421,8 +435,6 @@ public class SupplementaryInterventionActivity extends AppCompatActivity {
         {
             counsilling = "false";
         }
-
-
 
         saveDataElement("pAxHi8Zd5ZD", onTriposha);
         saveDataElement("FoAmHt6CnGU", counsilling);

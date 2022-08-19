@@ -157,13 +157,6 @@ public class SupplementaryIndicationActivity extends AppCompatActivity {
             }
         });
 
-        datePicker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectDate(year, month, day);
-            }
-        });
-
         setListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -380,7 +373,6 @@ public class SupplementaryIndicationActivity extends AppCompatActivity {
             return;
         }
 
-
         if(checkbox_Green.isChecked() && checkbox_MAM.isChecked()
                 && checkbox_Underweight.isChecked() || checkbox_Underweight.isChecked() &&
                     checkbox_Green.isChecked())
@@ -388,7 +380,7 @@ public class SupplementaryIndicationActivity extends AppCompatActivity {
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
             builder1.setMessage("The selection combination is invalid. Possible combinations" +
                     " are \n1. MAM\n2. Underweight\n3. Green Zone" +
-                    "\n4. MAM + Underweight\n5. MAM + Green Zone");
+                    "\n4. MAM + Underweight\n5. MAM + Longstanding Growth Faltering Zone");
             builder1.setCancelable(true);
 
             builder1.setNegativeButton(
