@@ -44,6 +44,7 @@ import org.hisp.dhis.android.core.arch.repositories.scope.RepositoryScope;
 import org.hisp.dhis.android.core.enrollment.Enrollment;
 import org.hisp.dhis.android.core.enrollment.EnrollmentObjectRepository;
 import org.hisp.dhis.android.core.enrollment.EnrollmentStatus;
+import org.hisp.dhis.android.core.event.Event;
 import org.hisp.dhis.android.core.event.EventCollectionRepository;
 import org.hisp.dhis.android.core.event.EventCreateProjection;
 import org.hisp.dhis.android.core.maintenance.D2Error;
@@ -244,31 +245,82 @@ public class EventsActivity extends ListActivity {
                             || selectedProgram.equals("CoGsKgEG4O0") ) {
                         System.out.println("[DELETE] language is " + language);
 
+                        //check if there are at least one management activity
+                        /*
+                        List<Enrollment> enrollmentCheck = Sdk.d2().enrollmentModule().enrollments()
+                                .byTrackedEntityInstance().eq(selectedChild)
+                                .byProgram().eq(selectedProgram)
+                                .blockingGet();
+                         */
+
+                        List<String> j = new ArrayList<>();
+                        j.add(selectedChild);
+
+                        EventCollectionRepository eventCollectionRepository =
+                                Sdk.d2().eventModule().events().byProgramUid().eq(selectedProgram)
+                                        .byEnrollmentUid().eq(programEnrollmentID)
+                                        .byTrackedEntityInstanceUids(j);
+
+                        /*
+                        for (Enrollment enrollment:eventCollectionRepository) {
+                            System.out.println(enrollment.);
+                        }*/
+
+                        System.out.println("UI");
+                        List<Event> eventsList;
+                        String stage = "";
+                        if(selectedProgram.equals("CoGsKgEG4O0")){
+                            stage = "B8Jbdgg7Ut1";
+                        }else if(selectedProgram.equals("lSSNwBMiwrK")){
+                            stage = "iEylwjAa5Cq";
+                        }
+                        else if(selectedProgram.equals("JsfNVX0hdq9")){
+                            stage = "TC7YSoNEUag";
+                        }
+
+                        eventsList= eventCollectionRepository
+                                .byProgramStageUid().eq(stage)
+                                .blockingGet();
+                        boolean isManagementOnly = false;
+                        System.out.println(eventsList.size());
+                        if(eventsList.isEmpty()){
+                            isManagementOnly = true;
+                            System.out.println("No management activity");
+                        }
+
                         if (language.equals("en")){
+                            if(isManagementOnly){
                             stages_names.add("Management Status");
                             map.put("Management Status", "Management");
+                            }else{
                             stages_names.add("Intervention");
                             map.put("Intervention", "Intervention");
                             stages_names.add("Outcome");
                             map.put("Outcome", "Outcome");
+                            }
                         }
                         else if(language.equals("si"))
                         {
+                            if(isManagementOnly){
                             stages_names.add("කළමනාකරණය");
                             map.put("කළමනාකරණය", "Management");
-                            stages_names.add("මැදිහත් වීම");
-                            map.put("මැදිහත් වීම", "Intervention");
-                            stages_names.add("ප\u200D්\u200Dරතිඵලය");
-                            map.put("ප\u200D්\u200Dරතිඵලය", "Outcome");
+                            }else {
+                                stages_names.add("මැදිහත් වීම");
+                                map.put("මැදිහත් වීම", "Intervention");
+                                stages_names.add("ප\u200D්\u200Dරතිඵලය");
+                                map.put("ප\u200D්\u200Dරතිඵලය", "Outcome");
+                            }
                         }
                         else{
-                            stages_names.add("மேலாண்மை");
-                            map.put("மேலாண்மை", "Management");
-                            stages_names.add("தலையீடு");
-                            map.put("தலையீடு", "Intervention");
-                            stages_names.add("விளைவு");
-                            map.put("விளைவு", "Outcome");
-
+                            if(isManagementOnly) {
+                                stages_names.add("மேலாண்மை");
+                                map.put("மேலாண்மை", "Management");
+                            }else {
+                                stages_names.add("தலையீடு");
+                                map.put("தலையீடு", "Intervention");
+                                stages_names.add("விளைவு");
+                                map.put("விளைவு", "Outcome");
+                            }
                         }
                     }
                     // anthropometry
@@ -702,7 +754,7 @@ public class EventsActivity extends ListActivity {
      *
      * @return
      */
-    private EventCollectionRepository getEventRepository() {
+    private EventCollectionRepository  getEventRepository() {
         List<String> j = new ArrayList<>();
         j.add(selectedChild);
         /*
@@ -712,6 +764,7 @@ public class EventsActivity extends ListActivity {
          */
         EventCollectionRepository eventRepository = Sdk.d2().eventModule().events()
                 .withTrackedEntityDataValues().byTrackedEntityInstanceUids(j);
+
 
         if (!isEmpty(selectedProgram)) {
             return eventRepository.byProgramUid().eq(selectedProgram)
