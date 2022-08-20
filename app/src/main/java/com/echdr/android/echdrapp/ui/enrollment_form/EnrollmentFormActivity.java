@@ -28,6 +28,7 @@ import com.echdr.android.echdrapp.data.service.forms.RuleEngineService;
 import com.echdr.android.echdrapp.databinding.ActivityEnrollmentFormBinding;
 import com.echdr.android.echdrapp.databinding.ActivityEnrollementFormThreeBinding;
 import com.echdr.android.echdrapp.ui.tracked_entity_instances.ChildDetailsActivity;
+import com.echdr.android.echdrapp.ui.tracked_entity_instances.ChildDetailsActivityNew;
 
 import org.hisp.dhis.android.core.arch.helpers.FileResizerHelper;
 import org.hisp.dhis.android.core.arch.helpers.FileResourceDirectoryHelper;
@@ -232,7 +233,7 @@ public class EnrollmentFormActivity extends AppCompatActivity {
         setResult(RESULT_OK);
         //finish();
 
-        Intent i =  ChildDetailsActivity.getTrackedEntityInstancesActivityIntent(this, teiUid);
+        Intent i =  ChildDetailsActivityNew.getTrackedEntityInstancesActivityIntent(this, teiUid);
         finish();
         startActivity(i);
 

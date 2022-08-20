@@ -618,7 +618,8 @@ public class EnrollmentFormModified extends AppCompatActivity {
                     alert13.show();
                     return;
                     //Toast.makeText(EnrollmentFormModified.this, "Birth and Immunization Number is not filled ", Toast.LENGTH_LONG).show();
-                } else {
+                } else if (!landNumber.getText().toString().isEmpty())
+                {
                     m2 = q.matcher(landNumber.getText().toString().trim());
                     if (m2.find()) {
                         //Toast.makeText(EnrollmentFormModified.this, "Land Number matched", Toast.LENGTH_LONG).show();
