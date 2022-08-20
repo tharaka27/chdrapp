@@ -378,9 +378,7 @@ public class SupplementaryIndicationActivity extends AppCompatActivity {
                     checkbox_Green.isChecked())
         {
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("The selection combination is invalid. Possible combinations" +
-                    " are \n1. MAM\n2. Underweight\n3. Green Zone" +
-                    "\n4. MAM + Underweight\n5. MAM + Longstanding Growth Faltering Zone");
+            builder1.setMessage(R.string.supp_indication_combinations);
             builder1.setCancelable(true);
 
             builder1.setNegativeButton(

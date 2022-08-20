@@ -119,22 +119,22 @@
     <!--    demographic info-->
     <string name="demo_info_title">மக்கள் தொகை  தரவு</string>
     <string name="date_of_reg"><font size="14">பதிவு செய்யப்பட்ட திகதி</font></string>
-    <string name="gn_area"><font size="14">கி.உ பகுதி</font></string>
-    <string name="birth_num"><font size="12">பிறப்பு மற்றும் தடுப்பூசி பதிவு இல</font></string>
-    <string name="name"><font size="12">குழந்தையின் பெயர்</font></string>
-    <string name="sex"><font size="12">பால்</font></string>
-    <string name="date_of_birth"><font size="12">பிறந்த திகதி</font></string>
-    <string name="ethnicity"><font size="12">இனம்</font></string>
-    <string name="addr"><font size="12">முகவரி</font></string>
-    <string name="sector"><font size="12">துறை</font></string>
+    <string name="gn_area"><font size="14">கி.உ பகுதி *</font></string>
+    <string name="birth_num"><font size="12">பிறப்பு மற்றும் தடுப்பூசி பதிவு இல *</font></string>
+    <string name="name"><font size="12">குழந்தையின் பெயர் *</font></string>
+    <string name="sex"><font size="12">பால் *</font></string>
+    <string name="date_of_birth"><font size="12">பிறந்த திகதி *</font></string>
+    <string name="ethnicity"><font size="12">இனம் *</font></string>
+    <string name="addr"><font size="12">முகவரி *</font></string>
+    <string name="sector"><font size="12">துறை *</font></string>
     <string name="ll_num"><font size="12">தொலைபேசி இல</font></string>
     <string name="mob_num"><font size="12">கையடக்கத்தொலைபேசி இல</font></string>
 
     <!--    mother info-->
     <string name="mother_info_title">தாயின் தகவல்</string>
     <string name="occup_mother"><font size="12">தொழில்</font></string>
-    <string name="name_mother"><font size="12">பெயர்</font></string>
-    <string name="date_of_birth_mother"><font size="12">பிறந்த திகதி</font></string>
+    <string name="name_mother"><font size="12">பெயர் *</font></string>
+    <string name="date_of_birth_mother"><font size="12">பிறந்த திகதி *</font></string>
     <string name="no_of_children"><font size="12">இந்தக் குழந்தை உட்பட வாழும் குழந்தைகளின் எண்ணிக்கை</font></string>
     <string name="occu_specifcation"><font size="12">சுயதொழில், ஊதியம் பெற்ற வேலை அல்லது ஓய்வு பெற்றால், தாயின் தொழிலைக் குறிப்பிடவும்</font></string>
     <string name="edu_level_mother"><font size="12">மிக உயர்ந்த கல்வி நிலை</font></string>
@@ -294,7 +294,8 @@
     <string name="supp_indication_underweight">நிறைக்குறைவு</string>
     <string name="supp_indication_growth">பச்சை வலயத்திலுள்ள நீண்டகால வளர்ச்சிக்குறைபாடு</string>
     <string name="supp_indication_entollment">பதிவு வகை</string>
-
+    <string name="supp_indication_combinations">தேர்வு சேர்க்கை தவறானது. சாத்தியமான சேர்க்கைகள்\n1. MAM\n2. எடை குறைவு \n3.  நீண்டகால வளர்ச்சி தடுமாறிய மண்டலம்
+                    \n4. MAM + எடை குறைவு\n5. MAM + நீண்டகால வளர்ச்சி தடுமாறிய மண்டலம்</string>
 
     <!-- supplementory - intervention -->
     <string name="supp_intervention_title">நிலை 2: தலையீடுகள்</string>

@@ -120,34 +120,34 @@
     <!--    demographic info-->
     <string name="demo_info_title">Demographic information</string>
     <string name="date_of_reg"><font size="14">Date of registration</font></string>
-    <string name="gn_area"><font size="14">GN area (Free text)</font></string>
-    <string name="birth_num"><font size="12">Birth and Immunization Register Number (Free text)</font></string>
-    <string name="name"><font size="12">Name of the child (Free text)</font></string>
-    <string name="sex"><font size="12">Sex (dropdown list)</font></string>
-    <string name="date_of_birth"><font size="12">Date of birth</font></string>
-    <string name="ethnicity"><font size="12">Ethnicity (dropdown list)</font></string>
-    <string name="addr"><font size="12">Address (Free text)</font></string>
-    <string name="sector"><font size="12">Sector (drop down list)</font></string>
+    <string name="gn_area"><font size="14">GN area (Free text) *</font></string>
+    <string name="birth_num"><font size="12">Birth and Immunization Register Number (Free text) *</font></string>
+    <string name="name"><font size="12">Name of the child (Free text) *</font></string>
+    <string name="sex"><font size="12">Sex (dropdown list) *</font></string>
+    <string name="date_of_birth"><font size="12">Date of birth *</font></string>
+    <string name="ethnicity"><font size="12">Ethnicity (dropdown list) *</font></string>
+    <string name="addr"><font size="12">Address (Free text) *</font></string>
+    <string name="sector"><font size="12">Sector (drop down list) *</font></string>
     <string name="ll_num"><font size="12">Land line number</font></string>
     <string name="mob_num"><font size="12">Mobile number</font></string>
 
     <!--    mother info-->
     <string name="mother_info_title">Mother\'s information</string>
-    <string name="occup_mother"><font size="12">Occupation</font></string>
-    <string name="name_mother"><font size="12">Name of the mother</font></string>
+    <string name="occup_mother"><font size="12">Occupation *</font></string>
+    <string name="name_mother"><font size="12">Name of the mother *</font></string>
     <string name="date_of_birth_mother"><font size="12">Mother\'s date of birth</font></string>
     <string name="no_of_children"><font size="12">Number of living children including this child</font></string>
     <string name="occu_specifcation"><font size="12">If self employment, paid employment or retired, please specify mother\'s occupation</font></string>
-    <string name="edu_level_mother"><font size="12">Highest education level</font></string>
+    <string name="edu_level_mother"><font size="12">Highest education level *</font></string>
     <string name="nic_mother"><font size="12">NIC number</font></string>
 
     <!--    caregiver's info-->
     <string name="caregiver_title">Care giver\'s information</string>
-    <string name="cg_rel"><font size="12">Caregiver\'s relationship to child</font></string>
+    <string name="cg_rel"><font size="12">Caregiver\'s relationship to child *</font></string>
     <string name="cg_name"><font size="12">If caregiver is not the mother, caregiver\'s name</font></string>
     <string name="newborn_title">Newborn\'s information</string>
-    <string name="birth_len"><font size="12">Length at birth (cm)</font></string>
-    <string name="birth_weight"><font size="12">Weight at birth (grams)</font></string>
+    <string name="birth_len"><font size="12">Length at birth (cm) *</font></string>
+    <string name="birth_weight"><font size="12">Weight at birth (grams) *</font></string>
     <string name="submit">Submit</string>
 
     <!--    program stages-->
@@ -293,7 +293,8 @@
     <string name="supp_indication_underweight">Underweight (checkbox)</string>
     <string name="supp_indication_growth">Long standing growth faltering in green zone (checkbox)</string>
     <string name="supp_indication_entollment">Enrollment type (Dropdown list)</string>
-
+    <string name="supp_indication_combinations">The selection combination is invalid. Possible combinations are \n1. MAM\n2. Underweight\n3. Longstanding Growth Faltering Zone
+                    \n4. MAM + Underweight \n5. MAM + Longstanding Growth Faltering Zone</string>
 
     <!-- supplementory - intervention -->
     <string name="supp_intervention_title">Stage 2: Interventions \n(repeatable)</string>
@@ -301,6 +302,7 @@
     <string name="supp_intervention_on_triposha">On Thriposha (Yes/No)</string>
     <string name="supp_intervention_packets">Number of Thriposha packets given</string>
     <string name="supp_intervention_counselling">IYCF/Nutrition counselling given (Yes/No)</string>
+
 
 
     <!-- supplementory - outcome -->

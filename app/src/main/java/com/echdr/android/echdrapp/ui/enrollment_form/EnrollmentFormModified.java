@@ -414,6 +414,16 @@ public class EnrollmentFormModified extends AppCompatActivity {
             textView_dob.setText("");
         }
 
+        // setting registration date
+        try {
+            String prev_reg_date = getDataElement("zmCxHpWgOOv");
+            if (!prev_reg_date.isEmpty()) {
+                textView_date_of_registration.setText(prev_reg_date);
+            }
+        } catch (Exception e) {
+            textView_date_of_registration.setText("");
+        }
+
         //select ethnicity
         ethnicity.setSelection(
                 getSpinnerSelection("b9CoAneYYys", ethinicityArray));
@@ -697,8 +707,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
 
                  */
 
-                if( numberOfChildren.getText().toString().isEmpty() ||
-                        Integer.parseInt(numberOfChildren.getText().toString()) < 0
+                if(Integer.parseInt(numberOfChildren.getText().toString()) < 0
                         || Integer.parseInt(numberOfChildren.getText().toString()) >= 20)
                 {
                     AlertDialog.Builder builder5 = new AlertDialog.Builder(context);
@@ -1055,7 +1064,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
             alert11.show();
             return;
         }
-        //saveDataElement("KuMTUOY6X3L", textView_date_of_registration.getText().toString());
+        saveDataElement("zmCxHpWgOOv", textView_date_of_registration.getText().toString());
         saveDataElement("upQGjAHBjzu", GNArea.getText().toString());
         saveDataElement("h2ATdtJguMq", immuneNum.getText().toString());
         saveDataElement("zh4hiarsSD5", name.getText().toString());
