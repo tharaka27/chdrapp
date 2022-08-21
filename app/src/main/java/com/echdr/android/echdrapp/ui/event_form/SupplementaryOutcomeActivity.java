@@ -153,6 +153,34 @@ public class SupplementaryOutcomeActivity extends AppCompatActivity {
             }
         });
 
+        datePicker.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        context, android.R.style.Theme_Holo_Light_Dialog, setListener, year, month, day);
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                Date dob = null;
+                try {
+                    dob = formatter.parse(birthday.value());
+                    datePickerDialog.getDatePicker().setMinDate(dob.getTime());
+
+                    Calendar c = Calendar.getInstance();
+                    c.setTime(dob);
+                    c.add(Calendar.DATE, 365*5+2);
+                    long minimum_value = Math.min(c.getTimeInMillis(), System.currentTimeMillis());
+
+                    datePickerDialog.getDatePicker().setMaxDate(minimum_value);
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                datePickerDialog.show();
+            }
+        });
+
         setListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -326,7 +354,7 @@ public class SupplementaryOutcomeActivity extends AppCompatActivity {
                 textView_Date.getText().toString().isEmpty())
         {
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("Date Not Selected");
+            builder1.setMessage(getString(R.string.date));
             builder1.setCancelable(true);
 
             builder1.setNegativeButton(
@@ -340,6 +368,38 @@ public class SupplementaryOutcomeActivity extends AppCompatActivity {
             AlertDialog alert11 = builder1.create();
             alert11.show();
             return;
+        }
+
+        if (spinner_Enrollment.getSelectedItemPosition() == 4){
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            Date dob = null;
+            try {
+                dob = formatter.parse(birthday.value());
+                Calendar c = Calendar.getInstance();
+                c.setTime(dob);
+                long minimum_value =  System.currentTimeMillis() - c.getTimeInMillis();
+
+                if (minimum_value < 157784630000L){
+                    AlertDialog.Builder builder2 = new AlertDialog.Builder(context);
+                    builder2.setMessage("The Child is not 5 years old");
+                    builder2.setCancelable(true);
+
+                    builder2.setNegativeButton(
+                            "Close",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                    AlertDialog alert12 = builder2.create();
+                    alert12.show();
+                    return;
+                }
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
 
         // un-enroll from the program

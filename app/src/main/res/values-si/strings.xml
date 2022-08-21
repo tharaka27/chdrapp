@@ -105,16 +105,36 @@
     <!--    home-->
     <string name="title_activity_home">home</string>
     <string name="wish">ආයුබෝවන්,</string>
-    <string name="sup_prog">අතිරේක ආහාර ලබාදීම</string>
-    <string name="thera_prog">ඖෂධීය ආහාර ලබාදීම</string>
-    <string name="overw_prog">අධි බර / ස්ථූලතාවය සඳහා මැදිහත්වීම</string>
-    <string name="stunt_prog">මිටි බව සදහා මැදිහත්වීම</string>
-    <string name="other_prog">වෙනත් සෞඛ්‍ය/ සෞඛ්‍ය නොවන</string>
+    <string name="sup_prog"><font size="16">අතිරේක ආහාර ලබාදීම</font></string>
+    <string name="thera_prog"><font size="16">ඖෂධීය ආහාර ලබාදීම</font></string>
+    <string name="overw_prog"><font size="16">අධි බර / ස්ථූලතාවය සඳහා මැදිහත්වීම</font></string>
+    <string name="stunt_prog"><font size="16">මිටි බව සදහා මැදිහත්වීම</font></string>
+    <string name="other_prog"><font size="16">වෙනත් සෞඛ්‍ය/ සෞඛ්‍ය නොවන</font></string>
     <string name="area_details">මගේ ප්‍රදේශයේ විස්තර බලන්න</string>
     <string name="area_details_desc">ඔබේ ප්‍රදේශයේ සියලුම ළමා ලැයිස්තුව බැලීමට මෙතැන ක්ලික් කරන්න</string>
     <string name="new_child">ලියාපදිංචි වීම</string>
     <string name="new_child_desc">වැඩසටහනට නව දරුවෙකු එක් කිරීමට මෙතන ක්ලික් කරන්න</string>
-    <string name="all_reg">සියලුම ලියාපදිංචි කිරීම්</string>
+    <string name="all_reg"><font size="16">සියලුම ලියාපදිංචි කිරීම්</font></string>
+
+    <!--  anthropometry messages  -->
+    <string name="date">දිනය තෝරා නැත</string>
+    <string name="anthro_height">දිග සෙන්ටිමීටර් 10 – 99 දක්වා ඇතුළත් කළ හැකි වේ</string>
+    <string name="anthro_weight">බර ග්රෑම් 500 – 9999 දක්වා ඇතුළත් කළ හැකි වේ</string>
+    <string name="anthro_gn">GN ප්‍රදේශය පුරවා නැත</string>
+    <string name="anthro_immune">උපත් හා ප්‍රතිශක්තිකරණ ලේඛණ අංකය ඇතුළත් කර නැත</string>
+    <string name="anthro_name">දරුවාගේ නම පුරවා නැත</string>
+    <string name="anthro_dob">උපන් දිනය පුරවා නැත</string>
+    <string name="anthro_address">ලිපිනය පුරවා නැත</string>
+    <string name="anthro_mom_name">මවගේ නම පුරවා නැත</string>
+    <string name="anthro_mom_dob">මවගේ උපන් දිනය පුරවා නැත</string>
+    <string name="anthro_weight_not_filled">උපත් බර (ග්රෑම් වලින්) පිරී නැත</string>
+    <string name="anthro_length_not_filled">උපතේදී දිග (සෙ.මී.) පුරවා නැත</string>
+    <string name="anthro_occu">වෘත්තීය පිරිවිතර අනිවාර්ය වේ ස්වයං රැකියා / විශ්රාමික / වැටුප්</string>
+    <string name="anthro_not_mot">භාරකරු මව නොවේ නම්, භාරකරුගේ නම අනිවාර්ය වේ</string>
+    <string name="anthro_regis_length">දිග සෙන්ටිමීටර් 10 – 99 දක්වා ඇතුළත් කළ හැකි වේ</string>
+    <string name="anthro_regis_weight">බර ග්රෑම් 500 – 9999 දක්වා ඇතුළත් කළ හැකි වේ</string>
+    <string name="anthro_chirdren">ඇතුළත් කළ හැකි උපරිම දරුවන් සංඛ්‍යාව 20කි</string>
+    <string name="anthro_regis_land">ස්ථාවර දුරකථන අංකය ඇතුළත් කර නැත</string>
 
     <!--    demographic info-->
     <string name="demo_info_title">ජනවිද්‍යාත්මක තොරතුරු</string>

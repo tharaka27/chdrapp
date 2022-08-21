@@ -79,6 +79,8 @@ public class AnthropometryActivityNew extends AppCompatActivity {
         private EditText weightTxt;
         private Button saveButton;
         private Button plotGraphButton;
+//        private ImageView backButton;
+
         private TrackedEntityAttributeValue birthday;
 
         Map<Integer, Integer> heightValues;
@@ -124,6 +126,7 @@ public class AnthropometryActivityNew extends AppCompatActivity {
             AgeInWeeksTxt = findViewById(R.id.ageInWeeks);
             AgeInMonthsTxt  =  findViewById(R.id.ageInMonths);
             plotGraphButton = findViewById(R.id.plotGraph);
+//            backButton = findViewById(R.id.back_btn_anthopo);
 
             eventUid = getIntent().getStringExtra(IntentExtra.EVENT_UID.name());
             programUid = getIntent().getStringExtra(IntentExtra.PROGRAM_UID.name());
@@ -200,7 +203,27 @@ public class AnthropometryActivityNew extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-                    selectDate(year, month, day);
+                    DatePickerDialog datePickerDialog = new DatePickerDialog(
+                            context, android.R.style.Theme_Holo_Light_Dialog, setListener, year, month, day);
+                    datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                    Date dob = null;
+                    try {
+                        dob = formatter.parse(birthday.value());
+                        datePickerDialog.getDatePicker().setMinDate(dob.getTime());
+
+                        Calendar c = Calendar.getInstance();
+                        c.setTime(dob);
+                        c.add(Calendar.DATE, 365*5+2);
+                        long minimum_value = Math.min(c.getTimeInMillis(), System.currentTimeMillis());
+
+                        datePickerDialog.getDatePicker().setMaxDate(minimum_value);
+
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    datePickerDialog.show();
                 }
             });
 
@@ -359,13 +382,13 @@ public class AnthropometryActivityNew extends AppCompatActivity {
 
 
 
-        private void saveElements()
-        {
+        private void saveElements() {
+
             if(textView_Date.getText().toString().equals("Click here to set Date")||
                     textView_Date.getText().toString().isEmpty())
             {
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                builder1.setMessage("Date Not Selected");
+                builder1.setMessage(getString(R.string.date));
                 builder1.setCancelable(true);
 
                 builder1.setNegativeButton(
@@ -373,7 +396,6 @@ public class AnthropometryActivityNew extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 dialog.cancel();
-                                //return;
                             }
                         });
 
@@ -387,7 +409,7 @@ public class AnthropometryActivityNew extends AppCompatActivity {
                     || Integer.parseInt(heightTxt.getText().toString()) > 150)
             {
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                builder1.setMessage("Height value should be between 15-150cm");
+                builder1.setMessage(getString(R.string.anthro_height));
                 builder1.setCancelable(true);
 
                 builder1.setNegativeButton(
@@ -409,7 +431,7 @@ public class AnthropometryActivityNew extends AppCompatActivity {
                     || Integer.parseInt(weightTxt.getText().toString()) > 50000)
             {
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                builder1.setMessage("Weight value should be between 100-50000gram");
+                builder1.setMessage(getString(R.string.anthro_weight));
                 builder1.setCancelable(true);
 
                 builder1.setNegativeButton(
@@ -843,6 +865,7 @@ public class AnthropometryActivityNew extends AppCompatActivity {
         return currentValue;
     }
 
+
     private void saveDataElement(String dataElement, String value) {
         TrackedEntityDataValueObjectRepository valueRepository;
         try {
@@ -899,7 +922,5 @@ public class AnthropometryActivityNew extends AppCompatActivity {
 
         return currentValue;
     }
-
-
 
 }

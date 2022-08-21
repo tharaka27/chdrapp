@@ -35,6 +35,7 @@ import com.echdr.android.echdrapp.data.service.forms.RuleEngineService;
 import com.echdr.android.echdrapp.ui.event_form.SupplementaryIndicationActivity;
 import com.echdr.android.echdrapp.ui.events.EventsActivity;
 import com.echdr.android.echdrapp.ui.tracked_entity_instances.ChildDetailsActivity;
+import com.echdr.android.echdrapp.ui.tracked_entity_instances.ChildDetailsActivityNew;
 
 import org.apache.commons.lang3.StringUtils;
 import org.hisp.dhis.android.core.enrollment.Enrollment;
@@ -559,7 +560,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
 
                 if (immuneNum.getText().toString().isEmpty()) {
                     AlertDialog.Builder builder2 = new AlertDialog.Builder(context);
-                    builder2.setMessage("Birth and Immunization Number is not filled");
+                    builder2.setMessage(getString(R.string.anthro_immune));
                     builder2.setCancelable(true);
 
                     builder2.setNegativeButton(
@@ -581,7 +582,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
                         //Toast.makeText(EnrollmentFormModified.this, "Birth and Immunization Number matched", Toast.LENGTH_LONG).show();
                     } else {
                         AlertDialog.Builder builder3 = new AlertDialog.Builder(context);
-                        builder3.setMessage("Birth and Immunization Number not matched");
+                        builder3.setMessage(getString(R.string.anthro_immune));
                         builder3.setCancelable(true);
 
                         builder3.setNegativeButton(
@@ -602,7 +603,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
 
                 if(landNumber.getText().toString().isEmpty() && mobileNumber.getText().toString().isEmpty() ){
                     AlertDialog.Builder builder3 = new AlertDialog.Builder(context);
-                    builder3.setMessage("Land Number is not filled");
+                    builder3.setMessage(getString(R.string.anthro_regis_land));
                     builder3.setCancelable(true);
 
                     builder3.setNegativeButton(
@@ -625,7 +626,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
                         //Toast.makeText(EnrollmentFormModified.this, "Land Number matched", Toast.LENGTH_LONG).show();
                     } else {
                         AlertDialog.Builder builder4 = new AlertDialog.Builder(context);
-                        builder4.setMessage("Land Number not matched");
+                        builder4.setMessage(getString(R.string.anthro_regis_land));
                         builder4.setCancelable(true);
 
                         builder4.setNegativeButton(
@@ -712,7 +713,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
                         || Integer.parseInt(numberOfChildren.getText().toString()) >= 20)
                 {
                     AlertDialog.Builder builder5 = new AlertDialog.Builder(context);
-                    builder5.setMessage("Number of Children is allowed up to 20");
+                    builder5.setMessage(getString(R.string.anthro_chirdren));
                     builder5.setCancelable(true);
 
                     builder5.setNegativeButton(
@@ -734,7 +735,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
                         || Integer.parseInt(weight.getText().toString()) >= 9999)
                 {
                     AlertDialog.Builder builder6 = new AlertDialog.Builder(context);
-                    builder6.setMessage("Weight in Grams is allowed 500-9999");
+                    builder6.setMessage(getString(R.string.anthro_regis_weight));
                     builder6.setCancelable(true);
 
                     builder6.setNegativeButton(
@@ -755,7 +756,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
                         || Integer.parseInt(length.getText().toString()) >= 99)
                 {
                     AlertDialog.Builder builder7 = new AlertDialog.Builder(context);
-                    builder7.setMessage("Length in Centimeters is allowed 10-99");
+                    builder7.setMessage(getString(R.string.anthro_regis_length));
                     builder7.setCancelable(true);
 
                     builder7.setNegativeButton(
@@ -777,7 +778,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
                 && caregiver.getText().toString().isEmpty() )
                 {
                     AlertDialog.Builder builder7 = new AlertDialog.Builder(context);
-                    builder7.setMessage("If caregiver is not mother, caregiver name is mandatory.");
+                    builder7.setMessage(getString(R.string.anthro_not_mot));
                     builder7.setCancelable(true);
 
                     builder7.setNegativeButton(
@@ -803,7 +804,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
                                 occupation_english_only[occupation.getSelectedItemPosition()].equals("Paid employment")) )
                 {
                     AlertDialog.Builder builder7 = new AlertDialog.Builder(context);
-                    builder7.setMessage("Occupation specification is mandatory is self employed/retired/paid.");
+                    builder7.setMessage(getString(R.string.anthro_occu));
                     builder7.setCancelable(true);
 
                     builder7.setNegativeButton(
@@ -906,7 +907,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
         if(GNArea.getText().toString().isEmpty())
         {
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("GN Area is not filled");
+            builder1.setMessage(getString(R.string.anthro_gn));
             builder1.setCancelable(true);
 
             builder1.setNegativeButton(
@@ -924,7 +925,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
         if(immuneNum.getText().toString().isEmpty())
         {
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("Birth and Immunization Number is not filled");
+            builder1.setMessage(getString(R.string.anthro_immune));
             builder1.setCancelable(true);
 
             builder1.setNegativeButton(
@@ -942,7 +943,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
         if(name.getText().toString().isEmpty())
         {
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("Name of the child is not filled");
+            builder1.setMessage(getString(R.string.anthro_name));
             builder1.setCancelable(true);
 
             builder1.setNegativeButton(
@@ -960,7 +961,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
         if(textView_dob.getText().toString().isEmpty())
         {
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("Date of Birth is not filled");
+            builder1.setMessage(getString(R.string.anthro_dob));
             builder1.setCancelable(true);
 
             builder1.setNegativeButton(
@@ -978,7 +979,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
         if(address.getText().toString().isEmpty())
         {
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("Address is not filled");
+            builder1.setMessage(getString(R.string.anthro_address));
             builder1.setCancelable(true);
 
             builder1.setNegativeButton(
@@ -996,7 +997,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
         if(motherName.getText().toString().isEmpty())
         {
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("Name of Mother is not filled");
+            builder1.setMessage(getString(R.string.anthro_mom_name));
             builder1.setCancelable(true);
 
             builder1.setNegativeButton(
@@ -1014,7 +1015,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
         if(textView_mother_dob.getText().toString().isEmpty())
         {
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("Mother's date of birth is not filled");
+            builder1.setMessage(getString(R.string.anthro_mom_dob));
             builder1.setCancelable(true);
 
             builder1.setNegativeButton(
@@ -1032,7 +1033,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
         if(weight.getText().toString().isEmpty())
         {
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("Birth weight (in grams) is not filled");
+            builder1.setMessage(getString(R.string.anthro_weight_not_filled));
             builder1.setCancelable(true);
 
             builder1.setNegativeButton(
@@ -1050,7 +1051,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
         if(length.getText().toString().isEmpty())
         {
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("Length at birth (in cm) is not filled");
+            builder1.setMessage(getString(R.string.anthro_length_not_filled));
             builder1.setCancelable(true);
 
             builder1.setNegativeButton(
@@ -1107,7 +1108,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
          */
         ActivityStarter.startActivity(
                 this,
-                ChildDetailsActivity.getTrackedEntityInstancesActivityIntent(
+                ChildDetailsActivityNew.getTrackedEntityInstancesActivityIntent(
                         this,
                         teiUid
                 ),true

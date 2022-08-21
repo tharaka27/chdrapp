@@ -106,16 +106,36 @@
     <!--    home-->
     <string name="title_activity_home">home</string>
     <string name="wish">Hello,</string>
-    <string name="sup_prog">Supplementary Feeding Programme</string>
-    <string name="thera_prog">Therapeutic Feeding Programme</string>
-    <string name="overw_prog">Overweight/Obesity Programme</string>
-    <string name="stunt_prog">Stunting Programme</string>
-    <string name="other_prog">Other Health/ Non-health</string>
+    <string name="sup_prog"><font size="16">Supplementary Feeding Programme</font></string>
+    <string name="thera_prog"><font size="16">Therapeutic Feeding Programme</font></string>
+    <string name="overw_prog"><font size="16">Overweight/Obesity Programme</font></string>
+    <string name="stunt_prog"><font size="16">Stunting Programme</font></string>
+    <string name="other_prog"><font size="16">Other Health/ Non-health</font></string>
     <string name="area_details">View my area details</string>
     <string name="area_details_desc">Click here to view all the child list in your area</string>
     <string name="new_child">Child Registration</string>
     <string name="new_child_desc">Click here to add a new child to programme</string>
-    <string name="all_reg">All registrations</string>
+    <string name="all_reg"><font size="16">All registrations</font></string>
+
+    <!--  anthropometry messages  -->
+    <string name="date">Date Not Selected</string>
+    <string name="anthro_height">Height value should be between 15-150cm</string>
+    <string name="anthro_weight">Weight value should be between 100-50000gram</string>
+    <string name="anthro_gn">GN Area is not filled</string>
+    <string name="anthro_immune">Birth and Immunization Number is not filled</string>
+    <string name="anthro_name">Name of the child is not filled</string>
+    <string name="anthro_dob">Date of Birth is not filled</string>
+    <string name="anthro_address">Address is not filled</string>
+    <string name="anthro_mom_name">Name of Mother is not filled</string>
+    <string name="anthro_mom_dob">Mothers date of birth is not filled</string>
+    <string name="anthro_weight_not_filled">Birth weight (in grams) is not filled</string>
+    <string name="anthro_length_not_filled">Length at birth (in cm) is not filled</string>
+    <string name="anthro_occu">Occupation specification is mandatory is self employed/retired/paid</string>
+    <string name="anthro_not_mot">If caregiver is not mother, caregiver name is mandatory</string>
+    <string name="anthro_regis_length">Length in Centimeters is allowed 10-99</string>
+    <string name="anthro_regis_weight">Weight in Grams is allowed 500-9999</string>
+    <string name="anthro_chirdren">Number of Children is allowed up to 20</string>
+    <string name="anthro_regis_land">Land Number is not filled</string>
 
     <!--    demographic info-->
     <string name="demo_info_title">Demographic information</string>
