@@ -136,6 +136,7 @@
     <string name="anthro_regis_weight">Weight in Grams is allowed 500-9999</string>
     <string name="anthro_chirdren">Number of Children is allowed up to 20</string>
     <string name="anthro_regis_land">Land Number is not filled</string>
+    <string name="anthro_regis_mobile">Mobile Number is not filled</string>
 
     <!--    demographic info-->
     <string name="demo_info_title">Demographic information</string>
@@ -155,7 +156,7 @@
     <string name="mother_info_title">Mother\'s information</string>
     <string name="occup_mother"><font size="12">Occupation *</font></string>
     <string name="name_mother"><font size="12">Name of the mother *</font></string>
-    <string name="date_of_birth_mother"><font size="12">Mother\'s date of birth</font></string>
+    <string name="date_of_birth_mother"><font size="12">Mother\'s date of birth *</font></string>
     <string name="no_of_children"><font size="12">Number of living children including this child</font></string>
     <string name="occu_specifcation"><font size="12">If self employment, paid employment or retired, please specify mother\'s occupation</font></string>
     <string name="edu_level_mother"><font size="12">Highest education level *</font></string>

@@ -135,6 +135,7 @@
     <string name="anthro_regis_weight">கிராம் எடை 500-9999 அனுமதிக்கப்படுகிறது</string>
     <string name="anthro_chirdren">குழந்தைகளின் எண்ணிக்கை 20 வரை அனுமதிக்கப்படுகிறது</string>
     <string name="anthro_regis_land">நில எண் நிரப்பப்படவில்லை</string>
+    <string name="anthro_regis_mobile">Mobile Number is not filled</string>
 
     <!--    demographic info-->
     <string name="demo_info_title">மக்கள் தொகை  தரவு</string>

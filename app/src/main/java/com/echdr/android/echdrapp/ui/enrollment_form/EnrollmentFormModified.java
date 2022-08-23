@@ -603,7 +603,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
 
                 if(landNumber.getText().toString().isEmpty() && mobileNumber.getText().toString().isEmpty() ){
                     AlertDialog.Builder builder3 = new AlertDialog.Builder(context);
-                    builder3.setMessage(getString(R.string.anthro_regis_land));
+                    builder3.setMessage(getString(R.string.anthro_regis_mobile));
                     builder3.setCancelable(true);
 
                     builder3.setNegativeButton(
@@ -619,8 +619,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
                     alert13.show();
                     return;
                     //Toast.makeText(EnrollmentFormModified.this, "Birth and Immunization Number is not filled ", Toast.LENGTH_LONG).show();
-                } else if (!landNumber.getText().toString().isEmpty())
-                {
+                } else if (!landNumber.getText().toString().isEmpty()) {
                     m2 = q.matcher(landNumber.getText().toString().trim());
                     if (m2.find()) {
                         //Toast.makeText(EnrollmentFormModified.this, "Land Number matched", Toast.LENGTH_LONG).show();
@@ -709,8 +708,9 @@ public class EnrollmentFormModified extends AppCompatActivity {
 
                  */
 
-                if(Integer.parseInt(numberOfChildren.getText().toString()) < 0
-                        || Integer.parseInt(numberOfChildren.getText().toString()) >= 20)
+                if(numberOfChildren.getText().toString().isEmpty() ||
+                        Integer.parseInt(numberOfChildren.getText().toString()) < 0 ||
+                        Integer.parseInt(numberOfChildren.getText().toString()) >= 20)
                 {
                     AlertDialog.Builder builder5 = new AlertDialog.Builder(context);
                     builder5.setMessage(getString(R.string.anthro_chirdren));

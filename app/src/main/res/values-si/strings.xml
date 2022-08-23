@@ -135,6 +135,7 @@
     <string name="anthro_regis_weight">බර ග්රෑම් 500 – 9999 දක්වා ඇතුළත් කළ හැකි වේ</string>
     <string name="anthro_chirdren">ඇතුළත් කළ හැකි උපරිම දරුවන් සංඛ්‍යාව 20කි</string>
     <string name="anthro_regis_land">ස්ථාවර දුරකථන අංකය ඇතුළත් කර නැත</string>
+    <string name="anthro_regis_mobile">ජංගම දුරකථන අංකය පුරවා නැත</string>
 
     <!--    demographic info-->
     <string name="demo_info_title">ජනවිද්‍යාත්මක තොරතුරු</string>
