@@ -827,8 +827,6 @@ public class EnrollmentFormModified extends AppCompatActivity {
             }
         });
 
-        //TODO to make child unique
-        isImmuNumDuplicate("12/12/12");
     }
 
     class EnrollmentTypeSpinnerClass implements AdapterView.OnItemSelectedListener {
@@ -861,23 +859,13 @@ public class EnrollmentFormModified extends AppCompatActivity {
     }
 
     private boolean isImmuNumDuplicate(String immuNum){
-
-        /*
-        TrackedEntityAttributeValueObjectRepository valueRepository
-                = Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
-                    .value("dataElement", teiUid);
-         */
         try{
             List<TrackedEntityAttributeValue> values =
                 Sdk.d2().trackedEntityModule().trackedEntityAttributeValues().byValue().eq(immuNum).blockingGet();
-            System.out.print("success ");
-            System.out.println(values.size());
-            for(int i=0; i< values.size(); i++){
-                System.out.print(values.get(i).value());
-                System.out.print(" ");
-                System.out.print(values.get(i).created());
-                System.out.print(" ");
-                System.out.println(values.get(i).trackedEntityInstance());
+            if(values.isEmpty()){
+                return false;
+            }else{
+                return true;
             }
         }catch (Exception e){
             System.out.print("failure ");
@@ -1082,6 +1070,24 @@ public class EnrollmentFormModified extends AppCompatActivity {
         {
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
             builder1.setMessage(getString(R.string.anthro_length_not_filled));
+            builder1.setCancelable(true);
+
+            builder1.setNegativeButton(
+                    "Close",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+            return;
+        }
+        if(isImmuNumDuplicate(immuneNum.getText().toString()))
+        {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+            builder1.setMessage("Child with same immuNum already exists in PHM area");
             builder1.setCancelable(true);
 
             builder1.setNegativeButton(
