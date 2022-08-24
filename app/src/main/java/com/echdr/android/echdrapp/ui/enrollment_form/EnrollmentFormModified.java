@@ -40,7 +40,9 @@ import com.echdr.android.echdrapp.ui.tracked_entity_instances.ChildDetailsActivi
 import org.apache.commons.lang3.StringUtils;
 import org.hisp.dhis.android.core.enrollment.Enrollment;
 import org.hisp.dhis.android.core.maintenance.D2Error;
+import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValue;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValueObjectRepository;
+import org.hisp.dhis.android.core.trackedentity.TrackedEntityDataValue;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityDataValueObjectRepository;
 import org.hisp.dhis.rules.RuleEngine;
 import org.hisp.dhis.rules.models.RuleAction;
@@ -825,6 +827,8 @@ public class EnrollmentFormModified extends AppCompatActivity {
             }
         });
 
+        //TODO to make child unique
+        isImmuNumDuplicate("12/12/12");
     }
 
     class EnrollmentTypeSpinnerClass implements AdapterView.OnItemSelectedListener {
@@ -854,6 +858,32 @@ public class EnrollmentFormModified extends AppCompatActivity {
                 valueRepository.blockingGet().value() : "";
 
         return currentValue;
+    }
+
+    private boolean isImmuNumDuplicate(String immuNum){
+
+        /*
+        TrackedEntityAttributeValueObjectRepository valueRepository
+                = Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
+                    .value("dataElement", teiUid);
+         */
+        try{
+            List<TrackedEntityAttributeValue> values =
+                Sdk.d2().trackedEntityModule().trackedEntityAttributeValues().byValue().eq(immuNum).blockingGet();
+            System.out.print("success ");
+            System.out.println(values.size());
+            for(int i=0; i< values.size(); i++){
+                System.out.print(values.get(i).value());
+                System.out.print(" ");
+                System.out.print(values.get(i).created());
+                System.out.print(" ");
+                System.out.println(values.get(i).trackedEntityInstance());
+            }
+        }catch (Exception e){
+            System.out.print("failure ");
+            System.out.println(e.toString());
+        }
+        return false;
     }
 
     private void saveDataElement(String dataElement, String value){

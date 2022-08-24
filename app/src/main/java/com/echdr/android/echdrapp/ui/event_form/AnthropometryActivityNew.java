@@ -320,8 +320,10 @@ public class AnthropometryActivityNew extends AppCompatActivity {
             });
 
             saveButton.setOnClickListener(v -> {
-                saveElements();
-                finishEnrollment();
+                boolean wasSuccessful = saveElements();
+                if(wasSuccessful) {
+                    finishEnrollment();
+                }
             });
 
             plotGraphButton.setOnClickListener(new View.OnClickListener() {
@@ -382,7 +384,7 @@ public class AnthropometryActivityNew extends AppCompatActivity {
 
 
 
-        private void saveElements() {
+        private boolean saveElements() {
 
             if(textView_Date.getText().toString().equals("Click here to set Date")||
                     textView_Date.getText().toString().isEmpty())
@@ -401,7 +403,7 @@ public class AnthropometryActivityNew extends AppCompatActivity {
 
                 AlertDialog alert11 = builder1.create();
                 alert11.show();
-                return;
+                return false;
             }
 
             if( heightTxt.getText().toString().isEmpty() ||
@@ -423,7 +425,7 @@ public class AnthropometryActivityNew extends AppCompatActivity {
 
                 AlertDialog alert11 = builder1.create();
                 alert11.show();
-                return;
+                return false;
             }
 
             if( weightTxt.getText().toString().isEmpty() ||
@@ -445,7 +447,7 @@ public class AnthropometryActivityNew extends AppCompatActivity {
 
                 AlertDialog alert11 = builder1.create();
                 alert11.show();
-                return;
+                return false;
             }
 
         /*
@@ -462,7 +464,7 @@ public class AnthropometryActivityNew extends AppCompatActivity {
             saveDataElement("rBRI27lvfY5", weightTxt.getText().toString());
 
             //finishEnrollment();
-
+            return true;
         }
 
         private void ChangeColor(EditText text, String s,
