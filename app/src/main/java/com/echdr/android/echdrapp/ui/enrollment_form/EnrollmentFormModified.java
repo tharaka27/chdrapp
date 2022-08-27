@@ -364,79 +364,79 @@ public class EnrollmentFormModified extends AppCompatActivity {
                 Pattern q = Pattern.compile(patternLPhone);
 
                 if (GNArea.getText().toString().isEmpty()) {
-                    CreateAlertDialog("GN Area is not filled");
+                    CreateAlertDialog(getString(R.string.anthro_gn));
                 }
                 if (name.getText().toString().isEmpty()) {
-                    CreateAlertDialog("Name of the child is not filled");
+                    CreateAlertDialog(getString(R.string.anthro_name));
                 }
                 if (textView_dob.getText().toString().isEmpty()) {
-                    CreateAlertDialog("Date of Birth is not filled");
+                    CreateAlertDialog(getString(R.string.anthro_dob));
                 }
                 if (address.getText().toString().isEmpty()) {
-                    CreateAlertDialog("Address is not filled");
+                    CreateAlertDialog(getString(R.string.anthro_address));
                 }
                 if (motherName.getText().toString().isEmpty()) {
-                    CreateAlertDialog("Name of Mother is not filled");
+                    CreateAlertDialog(getString(R.string.anthro_mom_name));
                 }
                 if (textView_mother_dob.getText().toString().isEmpty()) {
-                    CreateAlertDialog("Mother's date of birth is not filled");
+                    CreateAlertDialog(getString(R.string.anthro_mom_dob));
                 }
                 if (immuneNum.getText().toString().isEmpty()) {
-                    CreateAlertDialog("Birth and Immunization Number is not filled");
+                    CreateAlertDialog(getString(R.string.anthro_immune));
                 } else {
                     m1 = r.matcher(immuneNum.getText().toString().trim());
                     if (!m1.find()) {
-                        CreateAlertDialog("Birth and Immunization Number not matched");
+                        CreateAlertDialog(getString(R.string.anthro_immune));
                     }
                 }
                 if(landNumber.getText().toString().isEmpty() && mobileNumber.getText().toString().isEmpty() ){
-                    CreateAlertDialog("Land Number is not filled");
+                    CreateAlertDialog(getString(R.string.anthro_regis_land));
                 } else {
                     m2 = q.matcher(landNumber.getText().toString().trim());
                     if (!m2.find()) {
-                        CreateAlertDialog("Land Number not matched");
+                        CreateAlertDialog(getString(R.string.anthro_regis_land));
                     }
                 }
                 if(mobileNumber.getText().toString().isEmpty()){
-                    CreateAlertDialog("Mobile Number is not filled");
+                    CreateAlertDialog(getString(R.string.anthro_regis_mobile));
                 } else {
                     m2 = q.matcher(mobileNumber.getText().toString().trim());
                     if (m2.find()) {
                         //Toast.makeText(EnrollmentFormModified.this, "Land Number matched", Toast.LENGTH_LONG).show();
                     } else {
-                        CreateAlertDialog("Mobile Number not matched");
+                        CreateAlertDialog(getString(R.string.anthro_regis_mobile));
                     }
                 }
                 if( numberOfChildren.getText().toString().isEmpty() ||
                         Integer.parseInt(numberOfChildren.getText().toString()) < 0
                         || Integer.parseInt(numberOfChildren.getText().toString()) >= 20)
                 {
-                    CreateAlertDialog("Number of Children is allowed up to 20");
+                    CreateAlertDialog(getString(R.string.anthro_chirdren));
                 }
 
                 if(weight.getText().toString().isEmpty() ||
                         Integer.parseInt(weight.getText().toString()) < 500
                         || Integer.parseInt(weight.getText().toString()) >= 9999)
                 {
-                    CreateAlertDialog("Weight in Grams is allowed 500-9999");
+                    CreateAlertDialog(getString(R.string.anthro_regis_weight));
                 }
                 if(length.getText().toString().isEmpty() ||
                         Integer.parseInt(length.getText().toString()) < 10
                         || Integer.parseInt(length.getText().toString()) >= 99)
                 {
-                    CreateAlertDialog("Length in Centimeters is allowed 10-99");
+                    CreateAlertDialog(getString(R.string.anthro_regis_length));
                 }
                 if( !relationship_english_only[relationship.getSelectedItemPosition()].equals("Mother")
                 && caregiver.getText().toString().isEmpty() )
                 {
-                    CreateAlertDialog("If caregiver is not mother, caregiver name is mandatory.");
+                    CreateAlertDialog(getString(R.string.anthro_not_mot));
                 }
                 if(occu_specification.getText().toString().isEmpty() &&
                         (occupation_english_only[occupation.getSelectedItemPosition()].equals("Retired") ||
                                 occupation_english_only[occupation.getSelectedItemPosition()].equals("Self employment") ||
                                 occupation_english_only[occupation.getSelectedItemPosition()].equals("Paid employment")) )
                 {
-                    CreateAlertDialog("Occupation specification is mandatory is self employed/retired/paid.");
+                    CreateAlertDialog(getString(R.string.anthro_occu));
                 }
 
                 if(!nic.getText().toString().isEmpty()){
