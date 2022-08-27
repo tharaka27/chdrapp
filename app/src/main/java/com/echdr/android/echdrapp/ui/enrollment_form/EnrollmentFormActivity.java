@@ -100,6 +100,7 @@ public class EnrollmentFormActivity extends AppCompatActivity {
                 getIntent().getStringExtra(IntentExtra.OU_UID.name())))
             this.engineService = new RuleEngineService();
 
+        finishEnrollment();
     }
 
     private FormAdapter.OnImageSelectionClick getImageListener() {
@@ -227,6 +228,16 @@ public class EnrollmentFormActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    private void finishEnrollment() {
+        setResult(RESULT_OK);
+        //finish();
+
+        Intent i =  ChildDetailsActivityNew.getTrackedEntityInstancesActivityIntent(this, teiUid);
+        finish();
+        startActivity(i);
+
     }
 
     private void finishEnrollment(View view) {

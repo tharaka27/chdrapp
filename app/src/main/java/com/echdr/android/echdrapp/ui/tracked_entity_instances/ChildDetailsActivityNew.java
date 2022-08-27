@@ -1272,9 +1272,11 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
         overweightNotEnrolled.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ActivityStarter.startActivity(ChildDetailsActivityNew.this,
-                        EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "JsfNVX0hdq9", orgUnit), false);
-
+                //ActivityStarter.startActivity(ChildDetailsActivityNew.this,
+                //        EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "JsfNVX0hdq9", orgUnit), false);
+                Intent intent = EnrollmentFormActivity.getFormActivityIntent(ChildDetailsActivityNew.this, teiUid, "JsfNVX0hdq9", orgUnit);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -1329,6 +1331,7 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
                 Intent intent = EventsActivity.getIntent(getApplicationContext(), "hM6Yt9FQL0n",
                         teiUid, anthropometryEnrollmentID);
                 startActivity(intent);
+                finish();
 
             }
         });
@@ -1346,9 +1349,11 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
         otherHealthNotEnrolled.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ActivityStarter.startActivity(ChildDetailsActivityNew.this,
-                        EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "iUgzznPsePB", orgUnit), false);
-
+                //ActivityStarter.startActivity(ChildDetailsActivityNew.this,
+                //        EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "iUgzznPsePB", orgUnit), true);
+                Intent intent = EnrollmentFormActivity.getFormActivityIntent(ChildDetailsActivityNew.this, teiUid, "iUgzznPsePB", orgUnit);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -1365,8 +1370,11 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
         stuntingNotEnrolled.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ActivityStarter.startActivity(ChildDetailsActivityNew.this,
-                        EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "lSSNwBMiwrK", orgUnit), false);
+                //ActivityStarter.startActivity(ChildDetailsActivityNew.this,
+                //        EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "lSSNwBMiwrK", orgUnit), true);
+                Intent intent = EnrollmentFormActivity.getFormActivityIntent(ChildDetailsActivityNew.this, teiUid, "lSSNwBMiwrK", orgUnit);
+                startActivity(intent);
+                finish();
 
             }
         });
@@ -1384,8 +1392,11 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
         supplementaryNotEnrolled.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ActivityStarter.startActivity(ChildDetailsActivityNew.this,
-                        EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "tc6RsYbgGzm", orgUnit), false);
+                //ActivityStarter.startActivity(ChildDetailsActivityNew.this,
+                 //       EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "tc6RsYbgGzm", orgUnit), true);
+                Intent intent = EnrollmentFormActivity.getFormActivityIntent(ChildDetailsActivityNew.this, teiUid, "tc6RsYbgGzm", orgUnit);
+                startActivity(intent);
+                finish();
 
             }
         });
@@ -1403,9 +1414,11 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
         therapeuticNotEnrolled.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ActivityStarter.startActivity(ChildDetailsActivityNew.this,
-                        EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "CoGsKgEG4O0", orgUnit), false);
-
+                //ActivityStarter.startActivity(ChildDetailsActivityNew.this,
+                //        EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "CoGsKgEG4O0", orgUnit), true);
+                Intent intent = EnrollmentFormActivity.getFormActivityIntent(ChildDetailsActivityNew.this, teiUid, "CoGsKgEG4O0", orgUnit);
+                startActivity(intent);
+                finish();
             }
         });
 
