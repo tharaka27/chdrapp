@@ -1276,9 +1276,32 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
             public void onClick(View view) {
                 //ActivityStarter.startActivity(ChildDetailsActivityNew.this,
                 //        EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "JsfNVX0hdq9", orgUnit), false);
-                Intent intent = EnrollmentFormActivity.getFormActivityIntent(ChildDetailsActivityNew.this, teiUid, "JsfNVX0hdq9", orgUnit);
-                startActivity(intent);
-                finish();
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage("Please confirm overweight program enrollment");
+                builder.setCancelable(true);
+
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = EnrollmentFormActivity.getFormActivityIntent(ChildDetailsActivityNew.this, teiUid, "JsfNVX0hdq9", orgUnit);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
+                builder.setNegativeButton(
+                        "Close",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                                //return;
+                            }
+                        });
+
+                AlertDialog alert12 = builder.create();
+                alert12.show();
+                return;
+
             }
         });
 
@@ -1353,9 +1376,32 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
             public void onClick(View view) {
                 //ActivityStarter.startActivity(ChildDetailsActivityNew.this,
                 //        EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "iUgzznPsePB", orgUnit), true);
-                Intent intent = EnrollmentFormActivity.getFormActivityIntent(ChildDetailsActivityNew.this, teiUid, "iUgzznPsePB", orgUnit);
-                startActivity(intent);
-                finish();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage("Please confirm other health/non health program enrollment");
+                builder.setCancelable(true);
+
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = EnrollmentFormActivity.getFormActivityIntent(ChildDetailsActivityNew.this, teiUid, "iUgzznPsePB", orgUnit);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
+                builder.setNegativeButton(
+                        "Close",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                                //return;
+                            }
+                        });
+
+                AlertDialog alert12 = builder.create();
+                alert12.show();
+                return;
             }
         });
 
@@ -1374,9 +1420,32 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
             public void onClick(View view) {
                 //ActivityStarter.startActivity(ChildDetailsActivityNew.this,
                 //        EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "lSSNwBMiwrK", orgUnit), true);
-                Intent intent = EnrollmentFormActivity.getFormActivityIntent(ChildDetailsActivityNew.this, teiUid, "lSSNwBMiwrK", orgUnit);
-                startActivity(intent);
-                finish();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage("Please confirm stunting program enrollment");
+                builder.setCancelable(true);
+
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = EnrollmentFormActivity.getFormActivityIntent(ChildDetailsActivityNew.this, teiUid, "lSSNwBMiwrK", orgUnit);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
+                builder.setNegativeButton(
+                        "Close",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                                //return;
+                            }
+                        });
+
+                AlertDialog alert12 = builder.create();
+                alert12.show();
+                return;
 
             }
         });
@@ -1396,9 +1465,32 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
             public void onClick(View view) {
                 //ActivityStarter.startActivity(ChildDetailsActivityNew.this,
                  //       EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "tc6RsYbgGzm", orgUnit), true);
-                Intent intent = EnrollmentFormActivity.getFormActivityIntent(ChildDetailsActivityNew.this, teiUid, "tc6RsYbgGzm", orgUnit);
-                startActivity(intent);
-                finish();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage("Please confirm supplementary program enrollment");
+                builder.setCancelable(true);
+
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = EnrollmentFormActivity.getFormActivityIntent(ChildDetailsActivityNew.this, teiUid, "tc6RsYbgGzm", orgUnit);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
+                builder.setNegativeButton(
+                        "Close",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                                //return;
+                            }
+                        });
+
+                AlertDialog alert12 = builder.create();
+                alert12.show();
+                return;
 
             }
         });
@@ -1418,9 +1510,32 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
             public void onClick(View view) {
                 //ActivityStarter.startActivity(ChildDetailsActivityNew.this,
                 //        EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "CoGsKgEG4O0", orgUnit), true);
-                Intent intent = EnrollmentFormActivity.getFormActivityIntent(ChildDetailsActivityNew.this, teiUid, "CoGsKgEG4O0", orgUnit);
-                startActivity(intent);
-                finish();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage("Please confirm therapeutical feeding program enrollment");
+                builder.setCancelable(true);
+
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = EnrollmentFormActivity.getFormActivityIntent(ChildDetailsActivityNew.this, teiUid, "CoGsKgEG4O0", orgUnit);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
+                builder.setNegativeButton(
+                        "Close",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                                //return;
+                            }
+                        });
+
+                AlertDialog alert12 = builder.create();
+                alert12.show();
+                return;
             }
         });
 
