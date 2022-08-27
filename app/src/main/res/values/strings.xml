@@ -135,8 +135,8 @@
     <string name="anthro_regis_length">Length in Centimeters is allowed 10-99</string>
     <string name="anthro_regis_weight">Weight in Grams is allowed 500-9999</string>
     <string name="anthro_chirdren">Number of Children is allowed up to 20</string>
-    <string name="anthro_regis_land">Land Number is not filled</string>
-    <string name="anthro_regis_mobile">Mobile Number is not filled</string>
+    <string name="anthro_regis_land">Land Number is not filled or less/more characters</string>
+    <string name="anthro_regis_mobile">Mobile Number is not filled or less/more characters</string>
 
     <!--    demographic info-->
     <string name="demo_info_title">Demographic information</string>

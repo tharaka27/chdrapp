@@ -33,6 +33,7 @@ import com.echdr.android.echdrapp.data.service.forms.EnrollmentFormService;
 import com.echdr.android.echdrapp.data.service.forms.EventFormService;
 import com.echdr.android.echdrapp.data.service.forms.FormField;
 import com.echdr.android.echdrapp.data.service.forms.RuleEngineService;
+import com.echdr.android.echdrapp.service.Validator.EnrollmentFormValidator;
 import com.echdr.android.echdrapp.service.util;
 import com.echdr.android.echdrapp.ui.event_form.SupplementaryIndicationActivity;
 import com.echdr.android.echdrapp.ui.events.EventsActivity;
@@ -215,22 +216,6 @@ public class EnrollmentFormModified extends AppCompatActivity {
         final int month = Integer.parseInt(s_monthNumber) - 1;
         final int day = Integer.parseInt(s_day);
 
-        /*
-        textView_date_of_registration.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar c = Calendar.getInstance();
-                c.add(Calendar.YEAR, -5); // subtract 5 years from now
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        context, android.R.style.Theme_Holo_Light_Dialog, setListenerDob, year, month, day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
-                datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
-
-                datePickerDialog.show();
-            }
-        });
-         */
 
         datePicker_registration.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -248,24 +233,6 @@ public class EnrollmentFormModified extends AppCompatActivity {
             }
         };
 
-        /*
-        textView_dob.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Calendar c = Calendar.getInstance();
-                c.add(Calendar.YEAR, -5); // subtract 5 years from now
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        context, android.R.style.Theme_Holo_Light_Dialog, setListenerDob, year, month, day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
-
-                datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
-
-                datePickerDialog.show();
-            }
-        });
-         */
 
         datePicker_dob.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -283,19 +250,6 @@ public class EnrollmentFormModified extends AppCompatActivity {
                textView_dob.setText(date);
             }
         };
-
-        /*
-        textView_mother_dob.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.out.println("Clicked et date");
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        context, android.R.style.Theme_Holo_Light_Dialog, setListenerMotherDob, year, month, day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                datePickerDialog.show();
-            }
-        });
-         */
 
         datePicker_mother_dob.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -349,143 +303,35 @@ public class EnrollmentFormModified extends AppCompatActivity {
             public void onClick(View v) {
                 // start of the validating this should be false
                 isError = false;
+                EnrollmentFormValidator enrollmentFormValidator = new EnrollmentFormValidator();
+                enrollmentFormValidator.setGNArea(GNArea);
+                enrollmentFormValidator.setName(name);
+                enrollmentFormValidator.setBirthday(textView_dob);
+                enrollmentFormValidator.setAddress(address);
+                enrollmentFormValidator.setMotherName(motherName);
+                enrollmentFormValidator.setMother_birthday(textView_mother_dob);
+                enrollmentFormValidator.setImmuneNum(immuneNum);
+                enrollmentFormValidator.setLandNumber(landNumber);
+                enrollmentFormValidator.setMobileNumber(mobileNumber);
+                enrollmentFormValidator.setNumberOfChildren(numberOfChildren);
+                enrollmentFormValidator.setWeight(weight);
+                enrollmentFormValidator.setLength(length);
+                enrollmentFormValidator.setRelationship_english_only(relationship_english_only);
+                enrollmentFormValidator.setRelationship(relationship);
+                enrollmentFormValidator.setCaregiver(caregiver);
+                enrollmentFormValidator.setOccu_specification(occu_specification);
+                enrollmentFormValidator.setOccupation(occupation);
+                enrollmentFormValidator.setOccupation_english_only(occupation_english_only);
+                enrollmentFormValidator.setNic(nic);
+                enrollmentFormValidator.setContext(context);
+                enrollmentFormValidator.setTAG(TAG);
 
-                // Immunization number validation
-                String pattern = "[0-9][0-9]\\/[0-1][0-9]\\/[0-3][0-9]";
-                Matcher m1 = null;
-                Matcher m2 = null;
-                Pattern r = Pattern.compile(pattern);
-
-                String nicPattern = "^([0-9]{9}[x|X|v|V]|[0-9]{12})$";
-                Matcher mNICPattern = null;
-                Pattern pNICPattern = Pattern.compile(nicPattern);
-
-                String patternLPhone = "[0-9]{10}";
-                Pattern q = Pattern.compile(patternLPhone);
-
-                if (GNArea.getText().toString().isEmpty()) {
-                    CreateAlertDialog(getString(R.string.anthro_gn));
-                }
-                if (name.getText().toString().isEmpty()) {
-                    CreateAlertDialog(getString(R.string.anthro_name));
-                }
-                if (textView_dob.getText().toString().isEmpty()) {
-                    CreateAlertDialog(getString(R.string.anthro_dob));
-                }
-                if (address.getText().toString().isEmpty()) {
-                    CreateAlertDialog(getString(R.string.anthro_address));
-                }
-                if (motherName.getText().toString().isEmpty()) {
-                    CreateAlertDialog(getString(R.string.anthro_mom_name));
-                }
-                if (textView_mother_dob.getText().toString().isEmpty()) {
-                    CreateAlertDialog(getString(R.string.anthro_mom_dob));
-                }
-                if (immuneNum.getText().toString().isEmpty()) {
-                    CreateAlertDialog(getString(R.string.anthro_immune));
-                } else {
-                    m1 = r.matcher(immuneNum.getText().toString().trim());
-                    if (!m1.find()) {
-                        CreateAlertDialog(getString(R.string.anthro_immune));
-                    }
-                }
-                if(landNumber.getText().toString().isEmpty() && mobileNumber.getText().toString().isEmpty() ){
-                    CreateAlertDialog(getString(R.string.anthro_regis_land));
-                } else {
-                    m2 = q.matcher(landNumber.getText().toString().trim());
-                    if (!m2.find()) {
-                        CreateAlertDialog(getString(R.string.anthro_regis_land));
-                    }
-                }
-                if(mobileNumber.getText().toString().isEmpty()){
-                    CreateAlertDialog(getString(R.string.anthro_regis_mobile));
-                } else {
-                    m2 = q.matcher(mobileNumber.getText().toString().trim());
-                    if (m2.find()) {
-                        //Toast.makeText(EnrollmentFormModified.this, "Land Number matched", Toast.LENGTH_LONG).show();
-                    } else {
-                        CreateAlertDialog(getString(R.string.anthro_regis_mobile));
-                    }
-                }
-                if( numberOfChildren.getText().toString().isEmpty() ||
-                        Integer.parseInt(numberOfChildren.getText().toString()) < 0
-                        || Integer.parseInt(numberOfChildren.getText().toString()) >= 20)
-                {
-                    CreateAlertDialog(getString(R.string.anthro_chirdren));
-                }
-
-                if(weight.getText().toString().isEmpty() ||
-                        Integer.parseInt(weight.getText().toString()) < 500
-                        || Integer.parseInt(weight.getText().toString()) >= 9999)
-                {
-                    CreateAlertDialog(getString(R.string.anthro_regis_weight));
-                }
-                if(length.getText().toString().isEmpty() ||
-                        Integer.parseInt(length.getText().toString()) < 10
-                        || Integer.parseInt(length.getText().toString()) >= 99)
-                {
-                    CreateAlertDialog(getString(R.string.anthro_regis_length));
-                }
-                if( !relationship_english_only[relationship.getSelectedItemPosition()].equals("Mother")
-                && caregiver.getText().toString().isEmpty() )
-                {
-                    CreateAlertDialog(getString(R.string.anthro_not_mot));
-                }
-                if(occu_specification.getText().toString().isEmpty() &&
-                        (occupation_english_only[occupation.getSelectedItemPosition()].equals("Retired") ||
-                                occupation_english_only[occupation.getSelectedItemPosition()].equals("Self employment") ||
-                                occupation_english_only[occupation.getSelectedItemPosition()].equals("Paid employment")) )
-                {
-                    CreateAlertDialog(getString(R.string.anthro_occu));
-                }
-
-                if(!nic.getText().toString().isEmpty()){
-                    mNICPattern = pNICPattern.matcher(nic.getText().toString().trim());
-                    if (mNICPattern.find()) {
-                        //Toast.makeText(EnrollmentFormModified.this, "Land Number matched", Toast.LENGTH_LONG).show();
-                    } else {
-                        AlertDialog.Builder builder8 = new AlertDialog.Builder(context);
-                        builder8.setMessage("NIC validation failure");
-                        builder8.setCancelable(true);
-
-                        builder8.setNegativeButton(
-                                "Close",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        dialog.cancel();
-                                        //return;
-                                    }
-                                });
-
-                        AlertDialog alert18 = builder8.create();
-                        builder8.show();
-                        return;
-                        //Toast.makeText(EnrollmentFormModified.this, "NO MATCH", Toast.LENGTH_LONG).show();
-                    }
-                }
+                isError = enrollmentFormValidator.validate();
 
                 saveElements();
             }
         });
 
-    }
-
-    private void CreateAlertDialog(String ErrorMessage){
-        isError = true;
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setMessage(ErrorMessage);
-        builder.setCancelable(true);
-        Log.e(TAG, ErrorMessage);
-
-        builder.setNegativeButton(
-                "Close",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-        AlertDialog alert = builder.create();
-        alert.show();
     }
 
     class EnrollmentTypeSpinnerClass implements AdapterView.OnItemSelectedListener {

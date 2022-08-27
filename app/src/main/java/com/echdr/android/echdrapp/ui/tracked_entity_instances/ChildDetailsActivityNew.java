@@ -12,6 +12,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -34,6 +35,7 @@ import com.echdr.android.echdrapp.data.service.forms.EnrollmentFormService;
 import com.echdr.android.echdrapp.data.service.forms.EventFormService;
 import com.echdr.android.echdrapp.data.service.forms.FormField;
 import com.echdr.android.echdrapp.data.service.forms.RuleEngineService;
+import com.echdr.android.echdrapp.service.Validator.EnrollmentFormValidator;
 import com.echdr.android.echdrapp.ui.enrollment_form.EnrollmentFormActivity;
 import com.echdr.android.echdrapp.ui.enrollment_form.EnrollmentFormModified;
 import com.echdr.android.echdrapp.ui.event_form.SupplementaryIndicationActivity;
@@ -73,7 +75,8 @@ import io.reactivex.schedulers.Schedulers;
 
 public class ChildDetailsActivityNew extends AppCompatActivity {
 
-
+    private static final String TAG = "ChildDetailsActivity";
+    private static boolean isValidated = true;
     private CompositeDisposable disposable;
     private PublishProcessor<Boolean> engineInitialization;
     private RuleEngineService engineService;
@@ -565,282 +568,35 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
 
             submitButton.setOnClickListener(view -> {
 
-                // Immunization number validation
-                String pattern = "[0-9][0-9]\\/[0-1][0-9]\\/[0-3][0-9]";
-                Matcher m1 = null;
-                Matcher m2 = null;
-                Pattern r = Pattern.compile(pattern);
+                isValidated = true;
+                EnrollmentFormValidator enrollmentFormValidator = new EnrollmentFormValidator();
+                enrollmentFormValidator.setGNArea(GNArea);
+                enrollmentFormValidator.setName(name);
+                enrollmentFormValidator.setBirthday(textView_dob);
+                enrollmentFormValidator.setAddress(address);
+                enrollmentFormValidator.setMotherName(motherName);
+                enrollmentFormValidator.setMother_birthday(textView_mother_dob);
+                enrollmentFormValidator.setImmuneNum(immuneNum);
+                enrollmentFormValidator.setLandNumber(landNumber);
+                enrollmentFormValidator.setMobileNumber(mobileNumber);
+                enrollmentFormValidator.setNumberOfChildren(numberOfChildren);
+                enrollmentFormValidator.setWeight(weight);
+                enrollmentFormValidator.setLength(length);
+                enrollmentFormValidator.setRelationship_english_only(relationship_english_only);
+                enrollmentFormValidator.setRelationship(relationship);
+                enrollmentFormValidator.setCaregiver(caregiver);
+                enrollmentFormValidator.setOccu_specification(occu_specification);
+                enrollmentFormValidator.setOccupation(occupation);
+                enrollmentFormValidator.setOccupation_english_only(occupation_english_only);
+                enrollmentFormValidator.setNic(nic);
+                enrollmentFormValidator.setContext(context);
+                enrollmentFormValidator.setTAG(TAG);
 
-                String patternLPhone = "[0-9]{10}";
-                Pattern q = Pattern.compile(patternLPhone);
+                isValidated = enrollmentFormValidator.validate();
 
-                String nicPattern = "^([0-9]{9}[x|X|v|V]|[0-9]{12})$";
-                Matcher mNICPattern = null;
-                Pattern pNICPattern = Pattern.compile(nicPattern);
-
-                if (immuneNum.getText().toString().isEmpty()) {
-                    AlertDialog.Builder builder2 = new AlertDialog.Builder(context);
-                    builder2.setMessage("Birth and Immunization Number is not filled");
-                    builder2.setCancelable(true);
-
-                    builder2.setNegativeButton(
-                            "Close",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                    //return;
-                                }
-                            });
-
-                    AlertDialog alert12 = builder2.create();
-                    alert12.show();
+                if(!isValidated){
+                    Log.e(TAG, "Error occured while trying to save tracked entity instance" );
                     return;
-                    //Toast.makeText(EnrollmentFormModified.this, "Birth and Immunization Number is not filled ", Toast.LENGTH_LONG).show();
-                } else {
-                    m1 = r.matcher(immuneNum.getText().toString().trim());
-                    if (m1.find()) {
-                        //Toast.makeText(EnrollmentFormModified.this, "Birth and Immunization Number matched", Toast.LENGTH_LONG).show();
-                    } else {
-                        AlertDialog.Builder builder3 = new AlertDialog.Builder(context);
-                        builder3.setMessage("Birth and Immunization Number not matched");
-                        builder3.setCancelable(true);
-
-                        builder3.setNegativeButton(
-                                "Close",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        dialog.cancel();
-                                        //return;
-                                    }
-                                });
-
-                        AlertDialog alert13 = builder3.create();
-                        alert13.show();
-                        return;
-                        //Toast.makeText(EnrollmentFormModified.this, "NO MATCH", Toast.LENGTH_LONG).show();
-                    }
-                }
-
-                if(landNumber.getText().toString().isEmpty()){
-                    AlertDialog.Builder builder3 = new AlertDialog.Builder(context);
-                    builder3.setMessage("Land Number is not filled");
-                    builder3.setCancelable(true);
-
-                    builder3.setNegativeButton(
-                            "Close",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                    //return;
-                                }
-                            });
-
-                    AlertDialog alert13 = builder3.create();
-                    alert13.show();
-                    return;
-                    //Toast.makeText(EnrollmentFormModified.this, "Birth and Immunization Number is not filled ", Toast.LENGTH_LONG).show();
-                } else {
-                    m2 = q.matcher(landNumber.getText().toString().trim());
-                    if (m2.find()) {
-                        //Toast.makeText(EnrollmentFormModified.this, "Land Number matched", Toast.LENGTH_LONG).show();
-                    } else {
-                        AlertDialog.Builder builder4 = new AlertDialog.Builder(context);
-                        builder4.setMessage("Land Number not matched");
-                        builder4.setCancelable(true);
-
-                        builder4.setNegativeButton(
-                                "Close",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        dialog.cancel();
-                                        //return;
-                                    }
-                                });
-
-                        AlertDialog alert14 = builder4.create();
-                        alert14.show();
-                        return;
-                        //Toast.makeText(EnrollmentFormModified.this, "NO MATCH", Toast.LENGTH_LONG).show();
-                    }
-                }
-
-                if(mobileNumber.getText().toString().isEmpty()){
-                    AlertDialog.Builder builder8 = new AlertDialog.Builder(context);
-                    builder8.setMessage("Mobile Number is not filled");
-                    builder8.setCancelable(true);
-
-                    builder8.setNegativeButton(
-                            "Close",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                    //return;
-                                }
-                            });
-
-                    AlertDialog alert18 = builder8.create();
-                    builder8.show();
-                    return;
-                    //Toast.makeText(EnrollmentFormModified.this, "Birth and Immunization Number is not filled ", Toast.LENGTH_LONG).show();
-                } else {
-                    m2 = q.matcher(mobileNumber.getText().toString().trim());
-                    if (m2.find()) {
-                        //Toast.makeText(EnrollmentFormModified.this, "Land Number matched", Toast.LENGTH_LONG).show();
-                    } else {
-                        AlertDialog.Builder builder8 = new AlertDialog.Builder(context);
-                        builder8.setMessage("Mobile Number not matched");
-                        builder8.setCancelable(true);
-
-                        builder8.setNegativeButton(
-                                "Close",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        dialog.cancel();
-                                        //return;
-                                    }
-                                });
-
-                        AlertDialog alert18 = builder8.create();
-                        builder8.show();
-                        return;
-                        //Toast.makeText(EnrollmentFormModified.this, "NO MATCH", Toast.LENGTH_LONG).show();
-                    }
-                }
-                if( numberOfChildren.getText().toString().isEmpty() ||
-                        Integer.parseInt(numberOfChildren.getText().toString()) < 0
-                        || Integer.parseInt(numberOfChildren.getText().toString()) >= 20)
-                {
-                    AlertDialog.Builder builder5 = new AlertDialog.Builder(context);
-                    builder5.setMessage("Number of Children is allowed up to 20");
-                    builder5.setCancelable(true);
-
-                    builder5.setNegativeButton(
-                            "Close",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                    //return;
-                                }
-                            });
-
-                    AlertDialog alert15 = builder5.create();
-                    alert15.show();
-                    return;
-                }
-
-                if(weight.getText().toString().isEmpty() ||
-                        Integer.parseInt(weight.getText().toString()) < 500
-                        || Integer.parseInt(weight.getText().toString()) >= 9999)
-                {
-                    AlertDialog.Builder builder6 = new AlertDialog.Builder(context);
-                    builder6.setMessage("Weight in Grams is allowed 500-9999");
-                    builder6.setCancelable(true);
-
-                    builder6.setNegativeButton(
-                            "Close",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                    //return;
-                                }
-                            });
-
-                    AlertDialog alert16 = builder6.create();
-                    alert16.show();
-                    return;
-                }
-                if(length.getText().toString().isEmpty() ||
-                        Integer.parseInt(length.getText().toString()) < 10
-                        || Integer.parseInt(length.getText().toString()) >= 99)
-                {
-                    AlertDialog.Builder builder7 = new AlertDialog.Builder(context);
-                    builder7.setMessage("Length in Centimeters is allowed 10-99");
-                    builder7.setCancelable(true);
-
-                    builder7.setNegativeButton(
-                            "Close",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                    //return;
-                                }
-                            });
-
-                    AlertDialog alert17 = builder7.create();
-                    alert17.show();
-                    return;
-                }
-
-                // Caregiver is not mother
-                if( !relationship_english_only[relationship.getSelectedItemPosition()].equals("Mother")
-                        && caregiver.getText().toString().isEmpty() )
-                {
-                    AlertDialog.Builder builder7 = new AlertDialog.Builder(context);
-                    builder7.setMessage("If caregiver is not mother, caregiver name is mandatory.");
-                    builder7.setCancelable(true);
-
-                    builder7.setNegativeButton(
-                            "Close",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                    //return;
-                                }
-                            });
-
-                    AlertDialog alert17 = builder7.create();
-                    alert17.show();
-                    return;
-                }
-                // Occupation specification is mandatory is self employed/retired/paid employement
-                //<item>Self employment</item>
-                //<item>Paid employment</item>
-                //<item>Retired</item>
-                if( occu_specification.getText().toString().isEmpty() &&
-                        (occupation_english_only[occupation.getSelectedItemPosition()].equals("Retired") ||
-                                occupation_english_only[occupation.getSelectedItemPosition()].equals("Self employment") ||
-                                occupation_english_only[occupation.getSelectedItemPosition()].equals("Paid employment")) )
-                {
-                    AlertDialog.Builder builder7 = new AlertDialog.Builder(context);
-                    builder7.setMessage("Occupation specification is mandatory is self employed/retired/paid.");
-                    builder7.setCancelable(true);
-
-                    builder7.setNegativeButton(
-                            "Close",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                    //return;
-                                }
-                            });
-
-                    AlertDialog alert17 = builder7.create();
-                    alert17.show();
-                    return;
-                }
-                if(!nic.getText().toString().isEmpty()){
-                    mNICPattern = pNICPattern.matcher(nic.getText().toString().trim());
-                    if (mNICPattern.find()) {
-                        //Toast.makeText(EnrollmentFormModified.this, "Land Number matched", Toast.LENGTH_LONG).show();
-                    } else {
-                        AlertDialog.Builder builder8 = new AlertDialog.Builder(context);
-                        builder8.setMessage("NIC validation failure");
-                        builder8.setCancelable(true);
-
-                        builder8.setNegativeButton(
-                                "Close",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        dialog.cancel();
-                                        //return;
-                                    }
-                                });
-
-                        AlertDialog alert18 = builder8.create();
-                        builder8.show();
-                        return;
-                        //Toast.makeText(EnrollmentFormModified.this, "NO MATCH", Toast.LENGTH_LONG).show();
-                    }
                 }
 
                 saveElements();
@@ -921,168 +677,7 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
 
     private void saveElements()
     {
-        if(GNArea.getText().toString().isEmpty())
-        {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("GN Area is not filled");
-            builder1.setCancelable(true);
 
-            builder1.setNegativeButton(
-                    "Close",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
-            return;
-        }
-        if(immuneNum.getText().toString().isEmpty())
-        {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("Birth and Immunization Number is not filled");
-            builder1.setCancelable(true);
-
-            builder1.setNegativeButton(
-                    "Close",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
-            return;
-        }
-        if(name.getText().toString().isEmpty())
-        {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("Name of the child is not filled");
-            builder1.setCancelable(true);
-
-            builder1.setNegativeButton(
-                    "Close",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
-            return;
-        }
-        if(textView_dob.getText().toString().isEmpty())
-        {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("Date of Birth is not filled");
-            builder1.setCancelable(true);
-
-            builder1.setNegativeButton(
-                    "Close",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
-            return;
-        }
-        if(address.getText().toString().isEmpty())
-        {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("Address is not filled");
-            builder1.setCancelable(true);
-
-            builder1.setNegativeButton(
-                    "Close",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
-            return;
-        }
-        if(motherName.getText().toString().isEmpty())
-        {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("Name of Mother is not filled");
-            builder1.setCancelable(true);
-
-            builder1.setNegativeButton(
-                    "Close",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
-            return;
-        }
-        if(textView_mother_dob.getText().toString().isEmpty())
-        {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("Mother's date of birth is not filled");
-            builder1.setCancelable(true);
-
-            builder1.setNegativeButton(
-                    "Close",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
-            return;
-        }
-        if(weight.getText().toString().isEmpty())
-        {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("Birth weight (in grams) is not filled");
-            builder1.setCancelable(true);
-
-            builder1.setNegativeButton(
-                    "Close",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
-            return;
-        }
-        if(length.getText().toString().isEmpty())
-        {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("Length at birth (in cm) is not filled");
-            builder1.setCancelable(true);
-
-            builder1.setNegativeButton(
-                    "Close",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
-            return;
-        }
         //saveDataElement("KuMTUOY6X3L", textView_date_of_registration.getText().toString());
         saveDataElement("upQGjAHBjzu", GNArea.getText().toString());
         saveDataElement("h2ATdtJguMq", immuneNum.getText().toString());

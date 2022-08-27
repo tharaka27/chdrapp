@@ -84,7 +84,7 @@ dependencies {
     debugImplementation ("com.facebook.flipper:flipper-network-plugin:${libraries.flipper}") {
         exclude group: 'com.squareup.okhttp3'
     }
-
+    compileOnly "org.projectlombok:lombok:1.18.24"
     releaseImplementation "com.facebook.flipper:flipper-noop:${libraries.flipper}"
 
     implementation 'com.jjoe64:graphview:4.2.2'
