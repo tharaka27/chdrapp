@@ -40,7 +40,9 @@ import com.echdr.android.echdrapp.ui.tracked_entity_instances.ChildDetailsActivi
 import org.apache.commons.lang3.StringUtils;
 import org.hisp.dhis.android.core.enrollment.Enrollment;
 import org.hisp.dhis.android.core.maintenance.D2Error;
+import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValue;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValueObjectRepository;
+import org.hisp.dhis.android.core.trackedentity.TrackedEntityDataValue;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityDataValueObjectRepository;
 import org.hisp.dhis.rules.RuleEngine;
 import org.hisp.dhis.rules.models.RuleAction;
@@ -555,6 +557,10 @@ public class EnrollmentFormModified extends AppCompatActivity {
                 Matcher m2 = null;
                 Pattern r = Pattern.compile(pattern);
 
+                String nicPattern = "^([0-9]{9}[x|X|v|V]|[0-9]{12})$";
+                Matcher mNICPattern = null;
+                Pattern pNICPattern = Pattern.compile(nicPattern);
+
                 String patternLPhone = "[0-9]{10}";
                 Pattern q = Pattern.compile(patternLPhone);
 
@@ -821,6 +827,31 @@ public class EnrollmentFormModified extends AppCompatActivity {
                     return;
                 }
 
+                if(!nic.getText().toString().isEmpty()){
+                    mNICPattern = pNICPattern.matcher(nic.getText().toString().trim());
+                    if (mNICPattern.find()) {
+                        //Toast.makeText(EnrollmentFormModified.this, "Land Number matched", Toast.LENGTH_LONG).show();
+                    } else {
+                        AlertDialog.Builder builder8 = new AlertDialog.Builder(context);
+                        builder8.setMessage("NIC validation failure");
+                        builder8.setCancelable(true);
+
+                        builder8.setNegativeButton(
+                                "Close",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                        //return;
+                                    }
+                                });
+
+                        AlertDialog alert18 = builder8.create();
+                        builder8.show();
+                        return;
+                        //Toast.makeText(EnrollmentFormModified.this, "NO MATCH", Toast.LENGTH_LONG).show();
+                    }
+                }
+
                 saveElements();
             }
         });
@@ -854,6 +885,18 @@ public class EnrollmentFormModified extends AppCompatActivity {
                 valueRepository.blockingGet().value() : "";
 
         return currentValue;
+    }
+
+    private boolean isImmuNumDuplicate(String immuNum){
+        try{
+            List<TrackedEntityAttributeValue> values =
+                Sdk.d2().trackedEntityModule().trackedEntityAttributeValues().byValue().eq(immuNum).blockingGet();
+            return !values.isEmpty();
+        }catch (Exception e){
+            System.out.print("failure ");
+            System.out.println(e.toString());
+        }
+        return false;
     }
 
     private void saveDataElement(String dataElement, String value){
@@ -1052,6 +1095,24 @@ public class EnrollmentFormModified extends AppCompatActivity {
         {
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
             builder1.setMessage(getString(R.string.anthro_length_not_filled));
+            builder1.setCancelable(true);
+
+            builder1.setNegativeButton(
+                    "Close",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+            return;
+        }
+        if(isImmuNumDuplicate(immuneNum.getText().toString()))
+        {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+            builder1.setMessage("Child with same immuNum already exists in PHM area");
             builder1.setCancelable(true);
 
             builder1.setNegativeButton(
