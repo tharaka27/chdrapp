@@ -574,6 +574,10 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
                 String patternLPhone = "[0-9]{10}";
                 Pattern q = Pattern.compile(patternLPhone);
 
+                String nicPattern = "^([0-9]{9}[x|X|v|V]|[0-9]{12})$";
+                Matcher mNICPattern = null;
+                Pattern pNICPattern = Pattern.compile(nicPattern);
+
                 if (immuneNum.getText().toString().isEmpty()) {
                     AlertDialog.Builder builder2 = new AlertDialog.Builder(context);
                     builder2.setMessage("Birth and Immunization Number is not filled");
@@ -813,6 +817,30 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
                     AlertDialog alert17 = builder7.create();
                     alert17.show();
                     return;
+                }
+                if(!nic.getText().toString().isEmpty()){
+                    mNICPattern = pNICPattern.matcher(nic.getText().toString().trim());
+                    if (mNICPattern.find()) {
+                        //Toast.makeText(EnrollmentFormModified.this, "Land Number matched", Toast.LENGTH_LONG).show();
+                    } else {
+                        AlertDialog.Builder builder8 = new AlertDialog.Builder(context);
+                        builder8.setMessage("NIC validation failure");
+                        builder8.setCancelable(true);
+
+                        builder8.setNegativeButton(
+                                "Close",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                        //return;
+                                    }
+                                });
+
+                        AlertDialog alert18 = builder8.create();
+                        builder8.show();
+                        return;
+                        //Toast.makeText(EnrollmentFormModified.this, "NO MATCH", Toast.LENGTH_LONG).show();
+                    }
                 }
 
                 saveElements();
