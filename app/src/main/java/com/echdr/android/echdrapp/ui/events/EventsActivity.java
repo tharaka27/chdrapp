@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -40,6 +41,7 @@ import com.echdr.android.echdrapp.ui.event_form.TherapeuticManagementActivity;
 import com.echdr.android.echdrapp.ui.event_form.TherapeuticOutcomeActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.hisp.dhis.android.core.arch.db.stores.binders.internal.StatementWrapper;
 import org.hisp.dhis.android.core.arch.repositories.scope.RepositoryScope;
 import org.hisp.dhis.android.core.enrollment.Enrollment;
 import org.hisp.dhis.android.core.enrollment.EnrollmentObjectRepository;
@@ -50,9 +52,11 @@ import org.hisp.dhis.android.core.event.EventCreateProjection;
 import org.hisp.dhis.android.core.maintenance.D2Error;
 import org.hisp.dhis.android.core.organisationunit.OrganisationUnit;
 import org.hisp.dhis.android.core.program.ProgramStage;
+import org.hisp.dhis.android.core.program.ProgramStageTableInfo;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -115,6 +119,18 @@ public class EventsActivity extends ListActivity {
         selectedChild = getIntent().getStringExtra(IntentExtra.TEI_ID.name());
         programEnrollmentID = getIntent().getStringExtra(IntentExtra.ENROLLMENT_ID.name());
 
+        //Cursor cursor = Sdk.d2().databaseAdapter().query("Select name from ProgramStage where uid={}", "L4MJKSCcUof");
+        //String s = cursor.getString(0);
+        //System.out.println("Database query :" + s);
+
+        // Direct database interaction to correct Stunting outcome name from "Out come" to "Outcome"
+        try {
+            String query = "UPDATE " + ProgramStageTableInfo.TABLE_INFO.name() + " SET name='Outcome' where uid='L4MJKSCcUof'";
+            Sdk.d2().databaseAdapter().execSQL(query);
+        }catch (Exception e)
+        {
+            System.out.println(e.toString());
+        }
         // set toolbar title
         TextView title = findViewById(R.id.eventTitle);
 
@@ -429,7 +445,7 @@ public class EventsActivity extends ListActivity {
                                 {
                                     stageSelected = stages.get(i).uid();
                                     //stageSelected = stages_names.getItem(i);
-                                }else if(stages.get(which).name().equals("Out come"))
+                                }else if(stages.get(which).name().equals("Out come")) //Out come
                                 {
                                     stageSelected = "L4MJKSCcUof";
                                 }
@@ -496,6 +512,7 @@ public class EventsActivity extends ListActivity {
                                                     {
                                                         System.out.println("Valencia Came here");
                                                         System.out.println(selectedProgram);
+                                                        System.out.println(stageSelected);
                                                         if(selectedProgram.equals("hM6Yt9FQL0n"))
                                                         {
                                                             return AnthropometryActivityNew.getFormActivityIntent(
