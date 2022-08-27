@@ -100,7 +100,7 @@ public class EnrollmentFormActivity extends AppCompatActivity {
                 getIntent().getStringExtra(IntentExtra.OU_UID.name())))
             this.engineService = new RuleEngineService();
 
-        AutoClose();
+        finishEnrollment();
     }
 
     private FormAdapter.OnImageSelectionClick getImageListener() {
@@ -230,26 +230,22 @@ public class EnrollmentFormActivity extends AppCompatActivity {
         return true;
     }
 
-    private void finishEnrollment(View view) {
+    private void finishEnrollment() {
         setResult(RESULT_OK);
         //finish();
 
-        Intent i =  ChildDetailsActivity.getTrackedEntityInstancesActivityIntent(this, teiUid);
+        Intent i =  ChildDetailsActivityNew.getTrackedEntityInstancesActivityIntent(this, teiUid);
         finish();
         startActivity(i);
 
     }
 
-    private void AutoClose() {
+    private void finishEnrollment(View view) {
         setResult(RESULT_OK);
         //finish();
-
-        //Intent i =  ChildDetailsActivity.getTrackedEntityInstancesActivityIntent(this, teiUid);
-        //finish();
-        //startActivity(i);
-        ActivityStarter.startActivity(EnrollmentFormActivity.this,
-                ChildDetailsActivity.getTrackedEntityInstancesActivityIntent(this, teiUid), true);
-
+        Intent i =  ChildDetailsActivityNew.getTrackedEntityInstancesActivityIntent(this, teiUid);
+        finish();
+        startActivity(i);
     }
 
     @Override

@@ -37,11 +37,14 @@ import com.echdr.android.echdrapp.service.util;
 import com.echdr.android.echdrapp.ui.event_form.SupplementaryIndicationActivity;
 import com.echdr.android.echdrapp.ui.events.EventsActivity;
 import com.echdr.android.echdrapp.ui.tracked_entity_instances.ChildDetailsActivity;
+import com.echdr.android.echdrapp.ui.tracked_entity_instances.ChildDetailsActivityNew;
 
 import org.apache.commons.lang3.StringUtils;
 import org.hisp.dhis.android.core.enrollment.Enrollment;
 import org.hisp.dhis.android.core.maintenance.D2Error;
+import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValue;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValueObjectRepository;
+import org.hisp.dhis.android.core.trackedentity.TrackedEntityDataValue;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityDataValueObjectRepository;
 import org.hisp.dhis.rules.RuleEngine;
 import org.hisp.dhis.rules.models.RuleAction;
@@ -353,6 +356,10 @@ public class EnrollmentFormModified extends AppCompatActivity {
                 Matcher m2 = null;
                 Pattern r = Pattern.compile(pattern);
 
+                String nicPattern = "^([0-9]{9}[x|X|v|V]|[0-9]{12})$";
+                Matcher mNICPattern = null;
+                Pattern pNICPattern = Pattern.compile(nicPattern);
+
                 String patternLPhone = "[0-9]{10}";
                 Pattern q = Pattern.compile(patternLPhone);
 
@@ -419,7 +426,6 @@ public class EnrollmentFormModified extends AppCompatActivity {
                 {
                     CreateAlertDialog("Length in Centimeters is allowed 10-99");
                 }
-
                 if( !relationship_english_only[relationship.getSelectedItemPosition()].equals("Mother")
                 && caregiver.getText().toString().isEmpty() )
                 {
@@ -431,6 +437,31 @@ public class EnrollmentFormModified extends AppCompatActivity {
                                 occupation_english_only[occupation.getSelectedItemPosition()].equals("Paid employment")) )
                 {
                     CreateAlertDialog("Occupation specification is mandatory is self employed/retired/paid.");
+                }
+
+                if(!nic.getText().toString().isEmpty()){
+                    mNICPattern = pNICPattern.matcher(nic.getText().toString().trim());
+                    if (mNICPattern.find()) {
+                        //Toast.makeText(EnrollmentFormModified.this, "Land Number matched", Toast.LENGTH_LONG).show();
+                    } else {
+                        AlertDialog.Builder builder8 = new AlertDialog.Builder(context);
+                        builder8.setMessage("NIC validation failure");
+                        builder8.setCancelable(true);
+
+                        builder8.setNegativeButton(
+                                "Close",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                        //return;
+                                    }
+                                });
+
+                        AlertDialog alert18 = builder8.create();
+                        builder8.show();
+                        return;
+                        //Toast.makeText(EnrollmentFormModified.this, "NO MATCH", Toast.LENGTH_LONG).show();
+                    }
                 }
 
                 saveElements();
@@ -527,10 +558,9 @@ public class EnrollmentFormModified extends AppCompatActivity {
         util.saveDataElement("Fs89NLB2FrA", weight.getText().toString(), teiUid, engineInitialization);
         util.saveDataElement("LpvdWM4YuRq", length.getText().toString(), teiUid, engineInitialization);
 
-
         ActivityStarter.startActivity(
                 this,
-                ChildDetailsActivity.getTrackedEntityInstancesActivityIntent(
+                ChildDetailsActivityNew.getTrackedEntityInstancesActivityIntent(
                         this,
                         teiUid
                 ),true

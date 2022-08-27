@@ -338,7 +338,7 @@ public class OtherReferredForInterventionActivity extends AppCompatActivity {
                 textView_Date.getText().toString().isEmpty())
         {
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("Date Not Selected");
+            builder1.setMessage(getString(R.string.date));
             builder1.setCancelable(true);
 
             builder1.setNegativeButton(

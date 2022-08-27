@@ -105,48 +105,69 @@
     <!--    home-->
     <string name="title_activity_home">home</string>
     <string name="wish">ආයුබෝවන්,</string>
-    <string name="sup_prog">අතිරේක ආහාර ලබාදීම</string>
-    <string name="thera_prog">ඖෂධීය ආහාර ලබාදීම</string>
-    <string name="overw_prog">අධි බර / ස්ථූලතාවය \nසඳහා මැදිහත්වීම</string>
-    <string name="stunt_prog">මිටි බව \nසදහා මැදිහත්වීම</string>
-    <string name="other_prog">වෙනත් සෞඛ්‍ය/ \nසෞඛ්‍ය නොවන</string>
+    <string name="sup_prog"><font size="16">අතිරේක ආහාර ලබාදීම</font></string>
+    <string name="thera_prog"><font size="16">ඖෂධීය ආහාර ලබාදීම</font></string>
+    <string name="overw_prog"><font size="16">අධි බර / ස්ථූලතාවය සඳහා මැදිහත්වීම</font></string>
+    <string name="stunt_prog"><font size="16">මිටි බව සදහා මැදිහත්වීම</font></string>
+    <string name="other_prog"><font size="16">වෙනත් සෞඛ්‍ය/ සෞඛ්‍ය නොවන</font></string>
     <string name="area_details">මගේ ප්‍රදේශයේ විස්තර බලන්න</string>
     <string name="area_details_desc">ඔබේ ප්‍රදේශයේ සියලුම ළමා ලැයිස්තුව බැලීමට මෙතැන ක්ලික් කරන්න</string>
     <string name="new_child">ලියාපදිංචි වීම</string>
     <string name="new_child_desc">වැඩසටහනට නව දරුවෙකු එක් කිරීමට මෙතන ක්ලික් කරන්න</string>
-    <string name="all_reg">සියලුම ලියාපදිංචි කිරීම්</string>
+    <string name="all_reg"><font size="16">සියලුම ලියාපදිංචි කිරීම්</font></string>
+
+    <!--  anthropometry messages  -->
+    <string name="date">දිනය තෝරා නැත</string>
+    <string name="anthro_height">දිග සෙන්ටිමීටර් 10 – 99 දක්වා ඇතුළත් කළ හැකි වේ</string>
+    <string name="anthro_weight">බර ග්රෑම් 500 – 9999 දක්වා ඇතුළත් කළ හැකි වේ</string>
+    <string name="anthro_gn">GN ප්‍රදේශය පුරවා නැත</string>
+    <string name="anthro_immune">උපත් හා ප්‍රතිශක්තිකරණ ලේඛණ අංකය ඇතුළත් කර නැත</string>
+    <string name="anthro_name">දරුවාගේ නම පුරවා නැත</string>
+    <string name="anthro_dob">උපන් දිනය පුරවා නැත</string>
+    <string name="anthro_address">ලිපිනය පුරවා නැත</string>
+    <string name="anthro_mom_name">මවගේ නම පුරවා නැත</string>
+    <string name="anthro_mom_dob">මවගේ උපන් දිනය පුරවා නැත</string>
+    <string name="anthro_weight_not_filled">උපත් බර (ග්රෑම් වලින්) පිරී නැත</string>
+    <string name="anthro_length_not_filled">උපතේදී දිග (සෙ.මී.) පුරවා නැත</string>
+    <string name="anthro_occu">වෘත්තීය පිරිවිතර අනිවාර්ය වේ ස්වයං රැකියා / විශ්රාමික / වැටුප්</string>
+    <string name="anthro_not_mot">භාරකරු මව නොවේ නම්, භාරකරුගේ නම අනිවාර්ය වේ</string>
+    <string name="anthro_regis_length">දිග සෙන්ටිමීටර් 10 – 99 දක්වා ඇතුළත් කළ හැකි වේ</string>
+    <string name="anthro_regis_weight">බර ග්රෑම් 500 – 9999 දක්වා ඇතුළත් කළ හැකි වේ</string>
+    <string name="anthro_chirdren">ඇතුළත් කළ හැකි උපරිම දරුවන් සංඛ්‍යාව 20කි</string>
+    <string name="anthro_regis_land">ස්ථාවර දුරකථන අංකය ඇතුළත් කර නැත</string>
+    <string name="anthro_regis_mobile">ජංගම දුරකථන අංකය පුරවා නැත</string>
 
     <!--    demographic info-->
     <string name="demo_info_title">ජනවිද්‍යාත්මක තොරතුරු</string>
     <string name="date_of_reg"><font size="14">ලියාපදිංචි වූ දිනය</font></string>
-    <string name="gn_area"><font size="14">ග‍්‍රාම නිලධාරී කොට්ඨාශය</font></string>
-    <string name="birth_num"><font size="12">උපත් හා ප‍්‍රතිශක්තිකරණ ලේඛණ අංකය</font></string>
-    <string name="name"><font size="12">දරුවාගේ නම</font></string>
-    <string name="sex"><font size="12">ස්ත‍්‍රී පුරුෂ භාවය</font></string>
-    <string name="date_of_birth"><font size="12">උපන් දිනය</font></string>
-    <string name="ethnicity"><font size="12">ජාතිය</font></string>
-    <string name="addr"><font size="12">ලිපිනය</font></string>
-    <string name="sector"><font size="12">ග‍්‍රාමීීය නාගරික වතු අංශය</font></string>
+    <string name="gn_area"><font size="14">ග‍්‍රාම නිලධාරී කොට්ඨාශය *</font></string>
+    <string name="birth_num"><font size="12">උපත් හා ප‍්‍රතිශක්තිකරණ ලේඛණ අංකය *</font></string>
+    <string name="name"><font size="12">දරුවාගේ නම *</font></string>
+    <string name="sex"><font size="12">ස්ත‍්‍රී පුරුෂ භාවය *</font></string>
+    <string name="date_of_birth"><font size="12">උපන් දිනය *</font></string>
+    <string name="ethnicity"><font size="12">ජාතිය *</font></string>
+    <string name="addr"><font size="12">ලිපිනය *</font></string>
+    <string name="sector"><font size="12">ග‍්‍රාමීීය නාගරික වතු අංශය *</font></string>
     <string name="ll_num"><font size="12">ස්ථාවර දුරකතන අංකය</font></string>
     <string name="mob_num"><font size="12">ජංගම දුරකතන අංකය</font></string>
 
     <!--    mother info-->
     <string name="mother_info_title">මවගේ තොරතුරු</string>
-    <string name="occup_mother"><font size="12">රැකියාව</font></string>
-    <string name="name_mother"><font size="12">මවගේ නම</font></string>
-    <string name="date_of_birth_mother"><font size="12">මවගේ උපන් දිනය</font></string>
+    <string name="occup_mother"><font size="12">රැකියාව *</font></string>
+    <string name="name_mother"><font size="12">මවගේ නම *</font></string>
+    <string name="date_of_birth_mother"><font size="12">මවගේ උපන් දිනය *</font></string>
     <string name="no_of_children"><font size="12">මෙම දරුවා ඇතුළුව ජීවමාන දරුවන් සංඛ්‍යාව</font></string>
     <string name="occu_specifcation"><font size="12">ස්වයං රැකියාවක්, වැටුප් සහිත රැකියාවක් හෝ විශ්‍රාම යෑමක් නම්, කරුණාකර මවගේ රැකියාව සඳහන් කරන්න</font></string>
-    <string name="edu_level_mother"><font size="12">මවගේ අධ්‍යාපන මට්ටම</font></string>
+    <string name="edu_level_mother"><font size="12">මවගේ අධ්‍යාපන මට්ටම *</font></string>
     <string name="nic_mother"><font size="12">ජාතික හැඳුනුම්පත් අංකය</font></string>
 
     <!--    caregiver's info-->
     <string name="caregiver_title">රැකවරණය සපයන්නාගේ තොරතුරු</string>
-    <string name="cg_rel"><font size="12">දරුවා සමඟ රැකබලා ගන්නාගේ සම්බන්ධතාවය</font></string>
+    <string name="cg_rel"><font size="12">දරුවා සමඟ රැකබලා ගන්නාගේ සම්බන්ධතාවය *</font></string>
     <string name="cg_name"><font size="12">භාරකරු මව නොවේ නම්, භාරකරුගේ නම</font></string>
     <string name="newborn_title">නවජන්මයාගේ තොරතුරු</string>
-    <string name="birth_len"><font size="12">උපතේදී දිග (c.m.)</font></string>
-    <string name="birth_weight"><font size="12">උපත් බර (g)</font></string>
+    <string name="birth_len"><font size="12">උපතේදී දිග (c.m.) *</font></string>
+    <string name="birth_weight"><font size="12">උපත් බර (g) *</font></string>
     <string name="submit">තහවුරු කරන්න</string>
 
     <!--    program stages-->
@@ -290,6 +311,8 @@
     <string name="supp_indication_underweight">අඩු බර</string>
     <string name="supp_indication_growth"> කොල පරාසයේ දීර්ග කාලීන වර්ධනය අඩාලවීම</string>
     <string name="supp_indication_entollment">ඇතුළත් වීමේ වර්ගය</string>
+    <string name="supp_indication_combinations">තෝරා ඇති සං‍යෝජන වලංගු නොවේ. තේරිය හැකි සං‍යෝජන වන්නේ \n1. MAM\n2. අඩු බර \n3.  දීර්ග කාලීන වර්දනය අඩාල වීම
+                    \n4. MAM + අඩු බර \n5. MAM + දීර්ග කාලීන වර්දනය අඩාල වීම</string>
 
     <!-- supplementory - intervention -->
     <string name="supp_intervention_title">2 වන අදියර :මැදිහත් වීම්</string>

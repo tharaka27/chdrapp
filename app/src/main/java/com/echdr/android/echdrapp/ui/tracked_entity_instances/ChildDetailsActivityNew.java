@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
@@ -144,6 +145,14 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
     private ImageView stuntingEnrolled;
     private ImageView stuntingNotEnrolled;
 
+    private boolean IsAnthropometryEnrolled = false;
+    private boolean IsSupplementaryEnrolled= false;
+    private boolean IsTherapeuticalEnrolled= false;
+    private boolean IsOtherNonHealthEnrolled= false;
+    private boolean IsStuntingEnrolled= false;
+    private boolean IsOverweightEnrolled= false;
+
+
     private ImageButton edit_button;
 
     private Button submitButton;
@@ -245,6 +254,7 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
         sexadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sex.setAdapter(sexadapter);
         sex.setOnItemSelectedListener(new ChildDetailsActivityNew.EnrollmentTypeSpinnerClass());
+        sex.setEnabled(false);
 
         ArrayAdapter<CharSequence> ethinicityadapter = ArrayAdapter.createFromResource(context,
                 R.array.ethnicity,
@@ -252,6 +262,7 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
         ethinicityadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         ethnicity.setAdapter(ethinicityadapter);
         ethnicity.setOnItemSelectedListener(new ChildDetailsActivityNew.EnrollmentTypeSpinnerClass());
+        ethnicity.setEnabled(false);
 
         ArrayAdapter<CharSequence> eduadapter = ArrayAdapter.createFromResource(context,
                 R.array.highestEdu,
@@ -259,6 +270,7 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
         eduadapter.setDropDownViewResource(android.R.layout.simple_expandable_list_item_1);
         eduLevel.setAdapter(eduadapter);
         eduLevel.setOnItemSelectedListener(new ChildDetailsActivityNew.EnrollmentTypeSpinnerClass());
+        eduLevel.setEnabled(false);
 
         ArrayAdapter<CharSequence> sectoradapter = ArrayAdapter.createFromResource(context,
                 R.array.sector,
@@ -266,6 +278,7 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
         sectoradapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sector.setAdapter(sectoradapter);
         sector.setOnItemSelectedListener(new ChildDetailsActivityNew.EnrollmentTypeSpinnerClass());
+        sector.setEnabled(false);
 
         ArrayAdapter<CharSequence> occuadapter = ArrayAdapter.createFromResource(context,
                 R.array.occupation,
@@ -273,6 +286,7 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
         occuadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         occupation.setAdapter(occuadapter);
         occupation.setOnItemSelectedListener(new ChildDetailsActivityNew.EnrollmentTypeSpinnerClass());
+        occupation.setEnabled(false);
 
         ArrayAdapter<CharSequence> relationadapter = ArrayAdapter.createFromResource(context,
                 R.array.relationship,
@@ -280,6 +294,7 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
         relationadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         relationship.setAdapter(relationadapter);
         relationship.setOnItemSelectedListener(new ChildDetailsActivityNew.EnrollmentTypeSpinnerClass());
+        relationship.setEnabled(false);
 
         Date date = new Date();
         String s_day = (String) DateFormat.format("dd", date); // 20
@@ -290,13 +305,8 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
         final int month = Integer.parseInt(s_monthNumber) - 1;
         final int day = Integer.parseInt(s_day);
 
-
-        datePicker_registration.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectDateRegistration(year, month, day);
-            }
-        });
+        submitButton.setClickable(false);
+        submitButton.setBackgroundColor(Color.GRAY);
 
         setListenerRegistration = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -307,15 +317,6 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
             }
         };
 
-
-
-        datePicker_dob.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectDate(year, month, day);
-            }
-        });
-
         setListenerDob = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -324,14 +325,6 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
                 textView_dob.setText(date);
             }
         };
-
-        datePicker_mother_dob.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectDateMotherDOB(year, month, day);
-            }
-        });
-
 
         setListenerMotherDob = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -344,7 +337,7 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
 
         // setting date of registration
         try {
-            String prev_date = getDataElement("KuMTUOY6X3L");
+            String prev_date = getDataElement("zmCxHpWgOOv");
             System.out.println("results out " + prev_date );
             if (!prev_date.isEmpty()) {
                 textView_date_of_registration.setText(prev_date);
@@ -535,6 +528,7 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
 
         getEnrollment();
         EnrollToPrograms();
+        submitButton.setEnabled(false);
 
         edit_button.setOnClickListener(view ->{
             textView_date_of_registration.setEnabled(false);
@@ -542,7 +536,7 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
             GNArea.setEnabled(true);
             immuneNum.setEnabled(false);
             name.setEnabled(true);
-            sex.setEnabled(true);
+            sex.setEnabled(false);
             textView_dob.setEnabled(false);
             datePicker_dob.setEnabled(false);
             ethnicity.setEnabled(true);
@@ -562,44 +556,74 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
             caregiver.setEnabled(true);
             weight.setEnabled(true);
             length.setEnabled(true);
+
+            //submitButton.setClickable(true);
+            submitButton.setEnabled(true);
+            submitButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.background_button));
         });
 
-        submitButton.setOnClickListener(view -> {
 
-            // Immunization number validation
-            String pattern = "[0-9][0-9]\\/[0-1][0-9]\\/[0-3][0-9]";
-            Matcher m1 = null;
-            Matcher m2 = null;
-            Pattern r = Pattern.compile(pattern);
+            submitButton.setOnClickListener(view -> {
 
-            String patternLPhone = "[0-9]{10}";
-            Pattern q = Pattern.compile(patternLPhone);
+                // Immunization number validation
+                String pattern = "[0-9][0-9]\\/[0-1][0-9]\\/[0-3][0-9]";
+                Matcher m1 = null;
+                Matcher m2 = null;
+                Pattern r = Pattern.compile(pattern);
 
-            if (immuneNum.getText().toString().isEmpty()) {
-                AlertDialog.Builder builder2 = new AlertDialog.Builder(context);
-                builder2.setMessage("Birth and Immunization Number is not filled");
-                builder2.setCancelable(true);
+                String patternLPhone = "[0-9]{10}";
+                Pattern q = Pattern.compile(patternLPhone);
 
-                builder2.setNegativeButton(
-                        "Close",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                                //return;
-                            }
-                        });
+                String nicPattern = "^([0-9]{9}[x|X|v|V]|[0-9]{12})$";
+                Matcher mNICPattern = null;
+                Pattern pNICPattern = Pattern.compile(nicPattern);
 
-                AlertDialog alert12 = builder2.create();
-                alert12.show();
-                return;
-                //Toast.makeText(EnrollmentFormModified.this, "Birth and Immunization Number is not filled ", Toast.LENGTH_LONG).show();
-            } else {
-                m1 = r.matcher(immuneNum.getText().toString().trim());
-                if (m1.find()) {
-                    //Toast.makeText(EnrollmentFormModified.this, "Birth and Immunization Number matched", Toast.LENGTH_LONG).show();
+                if (immuneNum.getText().toString().isEmpty()) {
+                    AlertDialog.Builder builder2 = new AlertDialog.Builder(context);
+                    builder2.setMessage("Birth and Immunization Number is not filled");
+                    builder2.setCancelable(true);
+
+                    builder2.setNegativeButton(
+                            "Close",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                    //return;
+                                }
+                            });
+
+                    AlertDialog alert12 = builder2.create();
+                    alert12.show();
+                    return;
+                    //Toast.makeText(EnrollmentFormModified.this, "Birth and Immunization Number is not filled ", Toast.LENGTH_LONG).show();
                 } else {
+                    m1 = r.matcher(immuneNum.getText().toString().trim());
+                    if (m1.find()) {
+                        //Toast.makeText(EnrollmentFormModified.this, "Birth and Immunization Number matched", Toast.LENGTH_LONG).show();
+                    } else {
+                        AlertDialog.Builder builder3 = new AlertDialog.Builder(context);
+                        builder3.setMessage("Birth and Immunization Number not matched");
+                        builder3.setCancelable(true);
+
+                        builder3.setNegativeButton(
+                                "Close",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                        //return;
+                                    }
+                                });
+
+                        AlertDialog alert13 = builder3.create();
+                        alert13.show();
+                        return;
+                        //Toast.makeText(EnrollmentFormModified.this, "NO MATCH", Toast.LENGTH_LONG).show();
+                    }
+                }
+
+                if(landNumber.getText().toString().isEmpty()){
                     AlertDialog.Builder builder3 = new AlertDialog.Builder(context);
-                    builder3.setMessage("Birth and Immunization Number not matched");
+                    builder3.setMessage("Land Number is not filled");
                     builder3.setCancelable(true);
 
                     builder3.setNegativeButton(
@@ -614,78 +638,35 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
                     AlertDialog alert13 = builder3.create();
                     alert13.show();
                     return;
-                    //Toast.makeText(EnrollmentFormModified.this, "NO MATCH", Toast.LENGTH_LONG).show();
-                }
-            }
-
-            if(landNumber.getText().toString().isEmpty()){
-                AlertDialog.Builder builder3 = new AlertDialog.Builder(context);
-                builder3.setMessage("Land Number is not filled");
-                builder3.setCancelable(true);
-
-                builder3.setNegativeButton(
-                        "Close",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                                //return;
-                            }
-                        });
-
-                AlertDialog alert13 = builder3.create();
-                alert13.show();
-                return;
-                //Toast.makeText(EnrollmentFormModified.this, "Birth and Immunization Number is not filled ", Toast.LENGTH_LONG).show();
-            } else {
-                m2 = q.matcher(landNumber.getText().toString().trim());
-                if (m2.find()) {
-                    //Toast.makeText(EnrollmentFormModified.this, "Land Number matched", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(EnrollmentFormModified.this, "Birth and Immunization Number is not filled ", Toast.LENGTH_LONG).show();
                 } else {
-                    AlertDialog.Builder builder4 = new AlertDialog.Builder(context);
-                    builder4.setMessage("Land Number not matched");
-                    builder4.setCancelable(true);
+                    m2 = q.matcher(landNumber.getText().toString().trim());
+                    if (m2.find()) {
+                        //Toast.makeText(EnrollmentFormModified.this, "Land Number matched", Toast.LENGTH_LONG).show();
+                    } else {
+                        AlertDialog.Builder builder4 = new AlertDialog.Builder(context);
+                        builder4.setMessage("Land Number not matched");
+                        builder4.setCancelable(true);
 
-                    builder4.setNegativeButton(
-                            "Close",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                    //return;
-                                }
-                            });
+                        builder4.setNegativeButton(
+                                "Close",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                        //return;
+                                    }
+                                });
 
-                    AlertDialog alert14 = builder4.create();
-                    alert14.show();
-                    return;
-                    //Toast.makeText(EnrollmentFormModified.this, "NO MATCH", Toast.LENGTH_LONG).show();
+                        AlertDialog alert14 = builder4.create();
+                        alert14.show();
+                        return;
+                        //Toast.makeText(EnrollmentFormModified.this, "NO MATCH", Toast.LENGTH_LONG).show();
+                    }
                 }
-            }
 
-            if(mobileNumber.getText().toString().isEmpty()){
-                AlertDialog.Builder builder8 = new AlertDialog.Builder(context);
-                builder8.setMessage("Mobile Number is not filled");
-                builder8.setCancelable(true);
-
-                builder8.setNegativeButton(
-                        "Close",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                                //return;
-                            }
-                        });
-
-                AlertDialog alert18 = builder8.create();
-                builder8.show();
-                return;
-                //Toast.makeText(EnrollmentFormModified.this, "Birth and Immunization Number is not filled ", Toast.LENGTH_LONG).show();
-            } else {
-                m2 = q.matcher(mobileNumber.getText().toString().trim());
-                if (m2.find()) {
-                    //Toast.makeText(EnrollmentFormModified.this, "Land Number matched", Toast.LENGTH_LONG).show();
-                } else {
+                if(mobileNumber.getText().toString().isEmpty()){
                     AlertDialog.Builder builder8 = new AlertDialog.Builder(context);
-                    builder8.setMessage("Mobile Number not matched");
+                    builder8.setMessage("Mobile Number is not filled");
                     builder8.setCancelable(true);
 
                     builder8.setNegativeButton(
@@ -700,124 +681,170 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
                     AlertDialog alert18 = builder8.create();
                     builder8.show();
                     return;
-                    //Toast.makeText(EnrollmentFormModified.this, "NO MATCH", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(EnrollmentFormModified.this, "Birth and Immunization Number is not filled ", Toast.LENGTH_LONG).show();
+                } else {
+                    m2 = q.matcher(mobileNumber.getText().toString().trim());
+                    if (m2.find()) {
+                        //Toast.makeText(EnrollmentFormModified.this, "Land Number matched", Toast.LENGTH_LONG).show();
+                    } else {
+                        AlertDialog.Builder builder8 = new AlertDialog.Builder(context);
+                        builder8.setMessage("Mobile Number not matched");
+                        builder8.setCancelable(true);
+
+                        builder8.setNegativeButton(
+                                "Close",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                        //return;
+                                    }
+                                });
+
+                        AlertDialog alert18 = builder8.create();
+                        builder8.show();
+                        return;
+                        //Toast.makeText(EnrollmentFormModified.this, "NO MATCH", Toast.LENGTH_LONG).show();
+                    }
                 }
-            }
-            if( numberOfChildren.getText().toString().isEmpty() ||
-                    Integer.parseInt(numberOfChildren.getText().toString()) < 0
-                    || Integer.parseInt(numberOfChildren.getText().toString()) >= 20)
-            {
-                AlertDialog.Builder builder5 = new AlertDialog.Builder(context);
-                builder5.setMessage("Number of Children is allowed up to 20");
-                builder5.setCancelable(true);
+                if( numberOfChildren.getText().toString().isEmpty() ||
+                        Integer.parseInt(numberOfChildren.getText().toString()) < 0
+                        || Integer.parseInt(numberOfChildren.getText().toString()) >= 20)
+                {
+                    AlertDialog.Builder builder5 = new AlertDialog.Builder(context);
+                    builder5.setMessage("Number of Children is allowed up to 20");
+                    builder5.setCancelable(true);
 
-                builder5.setNegativeButton(
-                        "Close",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                                //return;
-                            }
-                        });
+                    builder5.setNegativeButton(
+                            "Close",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                    //return;
+                                }
+                            });
 
-                AlertDialog alert15 = builder5.create();
-                alert15.show();
-                return;
-            }
+                    AlertDialog alert15 = builder5.create();
+                    alert15.show();
+                    return;
+                }
 
-            if(weight.getText().toString().isEmpty() ||
-                    Integer.parseInt(weight.getText().toString()) < 500
-                    || Integer.parseInt(weight.getText().toString()) >= 9999)
-            {
-                AlertDialog.Builder builder6 = new AlertDialog.Builder(context);
-                builder6.setMessage("Weight in Grams is allowed 500-9999");
-                builder6.setCancelable(true);
+                if(weight.getText().toString().isEmpty() ||
+                        Integer.parseInt(weight.getText().toString()) < 500
+                        || Integer.parseInt(weight.getText().toString()) >= 9999)
+                {
+                    AlertDialog.Builder builder6 = new AlertDialog.Builder(context);
+                    builder6.setMessage("Weight in Grams is allowed 500-9999");
+                    builder6.setCancelable(true);
 
-                builder6.setNegativeButton(
-                        "Close",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                                //return;
-                            }
-                        });
+                    builder6.setNegativeButton(
+                            "Close",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                    //return;
+                                }
+                            });
 
-                AlertDialog alert16 = builder6.create();
-                alert16.show();
-                return;
-            }
-            if(length.getText().toString().isEmpty() ||
-                    Integer.parseInt(length.getText().toString()) < 10
-                    || Integer.parseInt(length.getText().toString()) >= 99)
-            {
-                AlertDialog.Builder builder7 = new AlertDialog.Builder(context);
-                builder7.setMessage("Length in Centimeters is allowed 10-99");
-                builder7.setCancelable(true);
+                    AlertDialog alert16 = builder6.create();
+                    alert16.show();
+                    return;
+                }
+                if(length.getText().toString().isEmpty() ||
+                        Integer.parseInt(length.getText().toString()) < 10
+                        || Integer.parseInt(length.getText().toString()) >= 99)
+                {
+                    AlertDialog.Builder builder7 = new AlertDialog.Builder(context);
+                    builder7.setMessage("Length in Centimeters is allowed 10-99");
+                    builder7.setCancelable(true);
 
-                builder7.setNegativeButton(
-                        "Close",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                                //return;
-                            }
-                        });
+                    builder7.setNegativeButton(
+                            "Close",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                    //return;
+                                }
+                            });
 
-                AlertDialog alert17 = builder7.create();
-                alert17.show();
-                return;
-            }
+                    AlertDialog alert17 = builder7.create();
+                    alert17.show();
+                    return;
+                }
 
-            // Caregiver is not mother
-            if( !relationship_english_only[relationship.getSelectedItemPosition()].equals("Mother")
-                    && caregiver.getText().toString().isEmpty() )
-            {
-                AlertDialog.Builder builder7 = new AlertDialog.Builder(context);
-                builder7.setMessage("If caregiver is not mother, caregiver name is mandatory.");
-                builder7.setCancelable(true);
+                // Caregiver is not mother
+                if( !relationship_english_only[relationship.getSelectedItemPosition()].equals("Mother")
+                        && caregiver.getText().toString().isEmpty() )
+                {
+                    AlertDialog.Builder builder7 = new AlertDialog.Builder(context);
+                    builder7.setMessage("If caregiver is not mother, caregiver name is mandatory.");
+                    builder7.setCancelable(true);
 
-                builder7.setNegativeButton(
-                        "Close",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                                //return;
-                            }
-                        });
+                    builder7.setNegativeButton(
+                            "Close",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                    //return;
+                                }
+                            });
 
-                AlertDialog alert17 = builder7.create();
-                alert17.show();
-                return;
-            }
-            // Occupation specification is mandatory is self employed/retired/paid employement
-            //<item>Self employment</item>
-            //<item>Paid employment</item>
-            //<item>Retired</item>
-            if( occu_specification.getText().toString().isEmpty() &&
-                    (occupation_english_only[occupation.getSelectedItemPosition()].equals("Retired") ||
-                            occupation_english_only[occupation.getSelectedItemPosition()].equals("Self employment") ||
-                            occupation_english_only[occupation.getSelectedItemPosition()].equals("Paid employment")) )
-            {
-                AlertDialog.Builder builder7 = new AlertDialog.Builder(context);
-                builder7.setMessage("Occupation specification is mandatory is self employed/retired/paid.");
-                builder7.setCancelable(true);
+                    AlertDialog alert17 = builder7.create();
+                    alert17.show();
+                    return;
+                }
+                // Occupation specification is mandatory is self employed/retired/paid employement
+                //<item>Self employment</item>
+                //<item>Paid employment</item>
+                //<item>Retired</item>
+                if( occu_specification.getText().toString().isEmpty() &&
+                        (occupation_english_only[occupation.getSelectedItemPosition()].equals("Retired") ||
+                                occupation_english_only[occupation.getSelectedItemPosition()].equals("Self employment") ||
+                                occupation_english_only[occupation.getSelectedItemPosition()].equals("Paid employment")) )
+                {
+                    AlertDialog.Builder builder7 = new AlertDialog.Builder(context);
+                    builder7.setMessage("Occupation specification is mandatory is self employed/retired/paid.");
+                    builder7.setCancelable(true);
 
-                builder7.setNegativeButton(
-                        "Close",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                                //return;
-                            }
-                        });
+                    builder7.setNegativeButton(
+                            "Close",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                    //return;
+                                }
+                            });
 
-                AlertDialog alert17 = builder7.create();
-                alert17.show();
-                return;
-            }
+                    AlertDialog alert17 = builder7.create();
+                    alert17.show();
+                    return;
+                }
+                if(!nic.getText().toString().isEmpty()){
+                    mNICPattern = pNICPattern.matcher(nic.getText().toString().trim());
+                    if (mNICPattern.find()) {
+                        //Toast.makeText(EnrollmentFormModified.this, "Land Number matched", Toast.LENGTH_LONG).show();
+                    } else {
+                        AlertDialog.Builder builder8 = new AlertDialog.Builder(context);
+                        builder8.setMessage("NIC validation failure");
+                        builder8.setCancelable(true);
 
-            saveElements();
-        });
+                        builder8.setNegativeButton(
+                                "Close",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                        //return;
+                                    }
+                                });
+
+                        AlertDialog alert18 = builder8.create();
+                        builder8.show();
+                        return;
+                        //Toast.makeText(EnrollmentFormModified.this, "NO MATCH", Toast.LENGTH_LONG).show();
+                    }
+                }
+
+                saveElements();
+            });
 
     }
 
@@ -1172,6 +1199,7 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
 
         if(!AnthropometryStatus.isEmpty())
         {
+            IsAnthropometryEnrolled = true;
             System.out.println("Anthropometry is " + AnthropometryStatus.get(0).status().toString() );
             anthropometryEnrollmentID = AnthropometryStatus.get(0).uid();
             if ( AnthropometryStatus.get(0).status().equals(EnrollmentStatus.ACTIVE)) {
@@ -1189,6 +1217,7 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
 
         if(!otherStatus.isEmpty())
         {
+            IsOtherNonHealthEnrolled = true;
             otherEnrollmentID =  otherStatus.get(0).uid();
             if ( otherStatus.get(0).status().equals(EnrollmentStatus.ACTIVE)) {
                 otherHealthEnrolled.setVisibility(View.VISIBLE);
@@ -1205,6 +1234,7 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
 
         if(!overweightStatus.isEmpty())
         {
+            IsOverweightEnrolled = true;
             overweightEnrollmentID =  overweightStatus.get(0).uid();
             if ( overweightStatus.get(0).status().equals(EnrollmentStatus.ACTIVE)) {
                 overweightEnrolled.setVisibility(View.VISIBLE);
@@ -1221,6 +1251,7 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
 
         if(!stuntingStatus.isEmpty())
         {
+            IsStuntingEnrolled = true;
             stuntingEnrollmentID = stuntingStatus.get(0).uid();
             if ( stuntingStatus.get(0).status().equals(EnrollmentStatus.ACTIVE)) {
                 stuntingEnrolled.setVisibility(View.VISIBLE);
@@ -1237,6 +1268,7 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
 
         if(!supplementaryStatus.isEmpty())
         {
+            IsSupplementaryEnrolled = true;
             supplementaryEnrollmentID = supplementaryStatus.get(0).uid();
             if ( supplementaryStatus.get(0).status().equals(EnrollmentStatus.ACTIVE)) {
                 supplementaryEnrolled.setVisibility(View.VISIBLE);
@@ -1253,6 +1285,7 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
 
         if(!therapeuticStatus.isEmpty())
         {
+            IsTherapeuticalEnrolled = true;
             therapeuticEnrollmentID = therapeuticStatus.get(0).uid();
             if ( therapeuticStatus.get(0).status().equals(EnrollmentStatus.ACTIVE)) {
                 therapeuticEnrolled.setVisibility(View.VISIBLE);
@@ -1283,10 +1316,53 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
         overweightNotEnrolled.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ActivityStarter.startActivity(ChildDetailsActivityNew.this,
-                        EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "JsfNVX0hdq9", orgUnit), false);
                 //ActivityStarter.startActivity(ChildDetailsActivityNew.this,
-                //        EnrollmentFormModified.getModifiedFormActivityIntent(getApplicationContext(), teiUid, "JsfNVX0hdq9", orgUnit), false);
+                //        EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "JsfNVX0hdq9", orgUnit), false);
+                if(IsTherapeuticalEnrolled || IsStuntingEnrolled || IsSupplementaryEnrolled){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setMessage("Already enrolled to either one or more programs of \nTherapeutical, Stunting, Supplementary");
+                    builder.setCancelable(true);
+
+                    builder.setNegativeButton(
+                            "Close",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                    //return;
+                                }
+                            });
+
+                    AlertDialog alert12 = builder.create();
+                    alert12.show();
+                    return;
+                }
+
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage("Please confirm overweight program enrollment");
+                builder.setCancelable(true);
+
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = EnrollmentFormActivity.getFormActivityIntent(ChildDetailsActivityNew.this, teiUid, "JsfNVX0hdq9", orgUnit);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
+                builder.setNegativeButton(
+                        "Close",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                                //return;
+                            }
+                        });
+
+                AlertDialog alert12 = builder.create();
+                alert12.show();
+                return;
 
             }
         });
@@ -1342,6 +1418,7 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
                 Intent intent = EventsActivity.getIntent(getApplicationContext(), "hM6Yt9FQL0n",
                         teiUid, anthropometryEnrollmentID);
                 startActivity(intent);
+                finish();
 
             }
         });
@@ -1357,13 +1434,37 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
         });
 
         otherHealthNotEnrolled.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                ActivityStarter.startActivity(ChildDetailsActivityNew.this,
-                 EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "iUgzznPsePB", orgUnit), false);
                 //ActivityStarter.startActivity(ChildDetailsActivityNew.this,
-                //        EnrollmentFormModified.getModifiedFormActivityIntent(getApplicationContext(), teiUid, "iUgzznPsePB", orgUnit), false);
+                //        EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "iUgzznPsePB", orgUnit), true);
 
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage("Please confirm other health/non health program enrollment");
+                builder.setCancelable(true);
+
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = EnrollmentFormActivity.getFormActivityIntent(ChildDetailsActivityNew.this, teiUid, "iUgzznPsePB", orgUnit);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
+                builder.setNegativeButton(
+                        "Close",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                                //return;
+                            }
+                        });
+
+                AlertDialog alert12 = builder.create();
+                alert12.show();
+                return;
             }
         });
 
@@ -1380,10 +1481,53 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
         stuntingNotEnrolled.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ActivityStarter.startActivity(ChildDetailsActivityNew.this,
-                        EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "lSSNwBMiwrK", orgUnit), false);
+
+                if(IsOverweightEnrolled){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setMessage("Already enrolled to Overweight program");
+                    builder.setCancelable(true);
+
+                    builder.setNegativeButton(
+                            "Close",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                    //return;
+                                }
+                            });
+
+                    AlertDialog alert12 = builder.create();
+                    alert12.show();
+                    return;
+                }
                 //ActivityStarter.startActivity(ChildDetailsActivityNew.this,
-                // EnrollmentFormModified.getModifiedFormActivityIntent(getApplicationContext(), teiUid, "lSSNwBMiwrK", orgUnit), false);
+                //        EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "lSSNwBMiwrK", orgUnit), true);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage("Please confirm stunting program enrollment");
+                builder.setCancelable(true);
+
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = EnrollmentFormActivity.getFormActivityIntent(ChildDetailsActivityNew.this, teiUid, "lSSNwBMiwrK", orgUnit);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
+                builder.setNegativeButton(
+                        "Close",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                                //return;
+                            }
+                        });
+
+                AlertDialog alert12 = builder.create();
+                alert12.show();
+                return;
 
             }
         });
@@ -1401,10 +1545,52 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
         supplementaryNotEnrolled.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ActivityStarter.startActivity(ChildDetailsActivityNew.this,
-                      EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "tc6RsYbgGzm", orgUnit), false);
+                if(IsOverweightEnrolled){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setMessage("Already enrolled to Overweight program");
+                    builder.setCancelable(true);
+
+                    builder.setNegativeButton(
+                            "Close",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                    //return;
+                                }
+                            });
+
+                    AlertDialog alert12 = builder.create();
+                    alert12.show();
+                    return;
+                }
                 //ActivityStarter.startActivity(ChildDetailsActivityNew.this,
-                // EnrollmentFormModified.getModifiedFormActivityIntent(getApplicationContext(), teiUid, "tc6RsYbgGzm", orgUnit), false);
+                 //       EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "tc6RsYbgGzm", orgUnit), true);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage("Please confirm supplementary program enrollment");
+                builder.setCancelable(true);
+
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = EnrollmentFormActivity.getFormActivityIntent(ChildDetailsActivityNew.this, teiUid, "tc6RsYbgGzm", orgUnit);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
+                builder.setNegativeButton(
+                        "Close",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                                //return;
+                            }
+                        });
+
+                AlertDialog alert12 = builder.create();
+                alert12.show();
+                return;
 
             }
         });
@@ -1422,11 +1608,52 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
         therapeuticNotEnrolled.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ActivityStarter.startActivity(ChildDetailsActivityNew.this,
-                        EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "CoGsKgEG4O0", orgUnit), false);
-                //ActivityStarter.startActivity(ChildDetailsActivityNew.this,
-                // EnrollmentFormModified.getModifiedFormActivityIntent(getApplicationContext(), teiUid, "CoGsKgEG4O0", orgUnit), false);
+                if(IsOverweightEnrolled){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setMessage("Already enrolled to Overweight program");
+                    builder.setCancelable(true);
 
+                    builder.setNegativeButton(
+                            "Close",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                    //return;
+                                }
+                            });
+
+                    AlertDialog alert12 = builder.create();
+                    alert12.show();
+                    return;
+                }
+                //ActivityStarter.startActivity(ChildDetailsActivityNew.this,
+                //        EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "CoGsKgEG4O0", orgUnit), true);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage("Please confirm therapeutical feeding program enrollment");
+                builder.setCancelable(true);
+
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = EnrollmentFormActivity.getFormActivityIntent(ChildDetailsActivityNew.this, teiUid, "CoGsKgEG4O0", orgUnit);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
+                builder.setNegativeButton(
+                        "Close",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                                //return;
+                            }
+                        });
+
+                AlertDialog alert12 = builder.create();
+                alert12.show();
+                return;
             }
         });
 
@@ -1441,7 +1668,5 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
         });
 
     }
-
-
 
 }

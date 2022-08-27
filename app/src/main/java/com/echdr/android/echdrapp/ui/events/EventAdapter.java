@@ -386,7 +386,7 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
                         ), false
                 );
             }
-            else if(event.programStage().equals("L4MJKSCcUof")) // stunting - management
+            else if(event.programStage().equals("L4MJKSCcUof")) // stunting - outcome
             {
                 ActivityStarter.startActivity(activity,
                         StuntingOutcomeActivity.getFormActivityIntent(

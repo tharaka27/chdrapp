@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -40,18 +41,22 @@ import com.echdr.android.echdrapp.ui.event_form.TherapeuticManagementActivity;
 import com.echdr.android.echdrapp.ui.event_form.TherapeuticOutcomeActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.hisp.dhis.android.core.arch.db.stores.binders.internal.StatementWrapper;
 import org.hisp.dhis.android.core.arch.repositories.scope.RepositoryScope;
 import org.hisp.dhis.android.core.enrollment.Enrollment;
 import org.hisp.dhis.android.core.enrollment.EnrollmentObjectRepository;
 import org.hisp.dhis.android.core.enrollment.EnrollmentStatus;
+import org.hisp.dhis.android.core.event.Event;
 import org.hisp.dhis.android.core.event.EventCollectionRepository;
 import org.hisp.dhis.android.core.event.EventCreateProjection;
 import org.hisp.dhis.android.core.maintenance.D2Error;
 import org.hisp.dhis.android.core.organisationunit.OrganisationUnit;
 import org.hisp.dhis.android.core.program.ProgramStage;
+import org.hisp.dhis.android.core.program.ProgramStageTableInfo;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -114,6 +119,18 @@ public class EventsActivity extends ListActivity {
         selectedChild = getIntent().getStringExtra(IntentExtra.TEI_ID.name());
         programEnrollmentID = getIntent().getStringExtra(IntentExtra.ENROLLMENT_ID.name());
 
+        //Cursor cursor = Sdk.d2().databaseAdapter().query("Select name from ProgramStage where uid={}", "L4MJKSCcUof");
+        //String s = cursor.getString(0);
+        //System.out.println("Database query :" + s);
+
+        // Direct database interaction to correct Stunting outcome name from "Out come" to "Outcome"
+        try {
+            String query = "UPDATE " + ProgramStageTableInfo.TABLE_INFO.name() + " SET name='Outcome' where uid='L4MJKSCcUof'";
+            Sdk.d2().databaseAdapter().execSQL(query);
+        }catch (Exception e)
+        {
+            System.out.println(e.toString());
+        }
         // set toolbar title
         TextView title = findViewById(R.id.eventTitle);
 
@@ -244,31 +261,82 @@ public class EventsActivity extends ListActivity {
                             || selectedProgram.equals("CoGsKgEG4O0") ) {
                         System.out.println("[DELETE] language is " + language);
 
+                        //check if there are at least one management activity
+                        /*
+                        List<Enrollment> enrollmentCheck = Sdk.d2().enrollmentModule().enrollments()
+                                .byTrackedEntityInstance().eq(selectedChild)
+                                .byProgram().eq(selectedProgram)
+                                .blockingGet();
+                         */
+
+                        List<String> j = new ArrayList<>();
+                        j.add(selectedChild);
+
+                        EventCollectionRepository eventCollectionRepository =
+                                Sdk.d2().eventModule().events().byProgramUid().eq(selectedProgram)
+                                        .byEnrollmentUid().eq(programEnrollmentID)
+                                        .byTrackedEntityInstanceUids(j);
+
+                        /*
+                        for (Enrollment enrollment:eventCollectionRepository) {
+                            System.out.println(enrollment.);
+                        }*/
+
+                        System.out.println("UI");
+                        List<Event> eventsList;
+                        String stage = "";
+                        if(selectedProgram.equals("CoGsKgEG4O0")){
+                            stage = "B8Jbdgg7Ut1";
+                        }else if(selectedProgram.equals("lSSNwBMiwrK")){
+                            stage = "iEylwjAa5Cq";
+                        }
+                        else if(selectedProgram.equals("JsfNVX0hdq9")){
+                            stage = "TC7YSoNEUag";
+                        }
+
+                        eventsList= eventCollectionRepository
+                                .byProgramStageUid().eq(stage)
+                                .blockingGet();
+                        boolean isManagementOnly = false;
+                        System.out.println(eventsList.size());
+                        if(eventsList.isEmpty()){
+                            isManagementOnly = true;
+                            System.out.println("No management activity");
+                        }
+
                         if (language.equals("en")){
+                            if(isManagementOnly){
                             stages_names.add("Management Status");
                             map.put("Management Status", "Management");
+                            }else{
                             stages_names.add("Intervention");
                             map.put("Intervention", "Intervention");
                             stages_names.add("Outcome");
                             map.put("Outcome", "Outcome");
+                            }
                         }
                         else if(language.equals("si"))
                         {
+                            if(isManagementOnly){
                             stages_names.add("කළමනාකරණය");
                             map.put("කළමනාකරණය", "Management");
-                            stages_names.add("මැදිහත් වීම");
-                            map.put("මැදිහත් වීම", "Intervention");
-                            stages_names.add("ප\u200D්\u200Dරතිඵලය");
-                            map.put("ප\u200D්\u200Dරතිඵලය", "Outcome");
+                            }else {
+                                stages_names.add("මැදිහත් වීම");
+                                map.put("මැදිහත් වීම", "Intervention");
+                                stages_names.add("ප\u200D්\u200Dරතිඵලය");
+                                map.put("ප\u200D්\u200Dරතිඵලය", "Outcome");
+                            }
                         }
                         else{
-                            stages_names.add("மேலாண்மை");
-                            map.put("மேலாண்மை", "Management");
-                            stages_names.add("தலையீடு");
-                            map.put("தலையீடு", "Intervention");
-                            stages_names.add("விளைவு");
-                            map.put("விளைவு", "Outcome");
-
+                            if(isManagementOnly) {
+                                stages_names.add("மேலாண்மை");
+                                map.put("மேலாண்மை", "Management");
+                            }else {
+                                stages_names.add("தலையீடு");
+                                map.put("தலையீடு", "Intervention");
+                                stages_names.add("விளைவு");
+                                map.put("விளைவு", "Outcome");
+                            }
                         }
                     }
                     // anthropometry
@@ -377,7 +445,7 @@ public class EventsActivity extends ListActivity {
                                 {
                                     stageSelected = stages.get(i).uid();
                                     //stageSelected = stages_names.getItem(i);
-                                }else if(stages.get(which).name().equals("Out come"))
+                                }else if(stages.get(which).name().equals("Out come")) //Out come
                                 {
                                     stageSelected = "L4MJKSCcUof";
                                 }
@@ -444,6 +512,7 @@ public class EventsActivity extends ListActivity {
                                                     {
                                                         System.out.println("Valencia Came here");
                                                         System.out.println(selectedProgram);
+                                                        System.out.println(stageSelected);
                                                         if(selectedProgram.equals("hM6Yt9FQL0n"))
                                                         {
                                                             return AnthropometryActivityNew.getFormActivityIntent(
@@ -702,7 +771,7 @@ public class EventsActivity extends ListActivity {
      *
      * @return
      */
-    private EventCollectionRepository getEventRepository() {
+    private EventCollectionRepository  getEventRepository() {
         List<String> j = new ArrayList<>();
         j.add(selectedChild);
         /*
@@ -712,6 +781,7 @@ public class EventsActivity extends ListActivity {
          */
         EventCollectionRepository eventRepository = Sdk.d2().eventModule().events()
                 .withTrackedEntityDataValues().byTrackedEntityInstanceUids(j);
+
 
         if (!isEmpty(selectedProgram)) {
             return eventRepository.byProgramUid().eq(selectedProgram)

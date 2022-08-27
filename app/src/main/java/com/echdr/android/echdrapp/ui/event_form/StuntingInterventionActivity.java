@@ -149,10 +149,31 @@ public class StuntingInterventionActivity extends AppCompatActivity {
             }
         });
 
-        datePicker.setOnClickListener(new View.OnClickListener() {
+        datePicker.setOnClickListener(new View.OnClickListener(){
+
             @Override
             public void onClick(View v) {
-                selectDate(year, month, day);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        context, android.R.style.Theme_Holo_Light_Dialog, setListener, year, month, day);
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                Date dob = null;
+                try {
+                    dob = formatter.parse(birthday.value());
+                    datePickerDialog.getDatePicker().setMinDate(dob.getTime());
+
+                    Calendar c = Calendar.getInstance();
+                    c.setTime(dob);
+                    c.add(Calendar.DATE, 365*5+2);
+                    long minimum_value = Math.min(c.getTimeInMillis(), System.currentTimeMillis());
+
+                    datePickerDialog.getDatePicker().setMaxDate(minimum_value);
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                datePickerDialog.show();
             }
         });
 
@@ -320,7 +341,7 @@ public class StuntingInterventionActivity extends AppCompatActivity {
                 textView_Date.getText().toString().isEmpty())
         {
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("Date Not Selected");
+            builder1.setMessage(getString(R.string.date));
             builder1.setCancelable(true);
 
             builder1.setNegativeButton(
