@@ -280,6 +280,21 @@ public class SupplementaryInterventionActivity extends AppCompatActivity {
             }
         });
 
+        radioButtonTriposhaNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                numberOfTriposha.setText("");
+                numberOfTriposha.setEnabled(false);
+            }
+        });
+
+        radioButtonTriposhaYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                numberOfTriposha.setEnabled(true);
+            }
+        });
+
 
         if (EventFormService.getInstance().init(
                 Sdk.d2(),
@@ -424,7 +439,7 @@ public class SupplementaryInterventionActivity extends AppCompatActivity {
                 alert11.show();
                 return;
             }
-        }else {
+        }else if(radioButtonTriposhaNo.isChecked() && !numberOfTriposha.getText().toString().isEmpty()){
             AlertDialog.Builder builder2 = new AlertDialog.Builder(context);
             builder2.setMessage("Child is not on Triposha. Therefore can't enter a number");
             builder2.setCancelable(true);
