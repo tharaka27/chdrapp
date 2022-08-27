@@ -862,11 +862,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
         try{
             List<TrackedEntityAttributeValue> values =
                 Sdk.d2().trackedEntityModule().trackedEntityAttributeValues().byValue().eq(immuNum).blockingGet();
-            if(values.isEmpty()){
-                return false;
-            }else{
-                return true;
-            }
+            return !values.isEmpty();
         }catch (Exception e){
             System.out.print("failure ");
             System.out.println(e.toString());
