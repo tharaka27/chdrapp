@@ -520,6 +520,7 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
 
         getEnrollment();
         EnrollToPrograms();
+        submitButton.setEnabled(false);
 
         edit_button.setOnClickListener(view ->{
             textView_date_of_registration.setEnabled(false);
@@ -548,11 +549,12 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
             weight.setEnabled(true);
             length.setEnabled(true);
 
-            submitButton.setClickable(true);
+            //submitButton.setClickable(true);
+            submitButton.setEnabled(true);
             submitButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.background_button));
         });
 
-        if (submitButton.isClickable()){
+
             submitButton.setOnClickListener(view -> {
 
                 // Immunization number validation
@@ -807,7 +809,7 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
 
                 saveElements();
             });
-        }
+
     }
 
     class EnrollmentTypeSpinnerClass implements AdapterView.OnItemSelectedListener {
