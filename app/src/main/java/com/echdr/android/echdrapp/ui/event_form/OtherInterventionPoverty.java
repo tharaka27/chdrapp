@@ -401,7 +401,7 @@ public class OtherInterventionPoverty extends AppCompatActivity {
 
         }
         else{
-            textView_Date.setText("Click here to set Date");
+            textView_Date.setText(getString(R.string.date_button_text));
         }
 
 

@@ -395,8 +395,8 @@ public class EventsActivity extends ListActivity {
                         }
                         else if(language.equals("si"))
                         {
-                            stages_names.add("ත්\u200Dරිපෝෂ සඳහා ඇඟවීම");
-                            map.put("ත්\u200Dරිපෝෂ සඳහා ඇඟවීම", stages.get(0).name());
+                            stages_names.add("ත්\u200Dරිපෝෂ ලබාදීම ඇරබීම");
+                            map.put("ත්\u200Dරිපෝෂ ලබාදීම ඇරබීම", stages.get(0).name());
                             stages_names.add("මැදිහත්වීම්");
                             map.put("මැදිහත්වීම්", stages.get(1).name());
                             stages_names.add("ප\u200D්\u200Dරතිඵලය");

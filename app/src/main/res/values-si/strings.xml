@@ -23,6 +23,8 @@
     <string name="item_subtitle_1">Item subtitle 1</string>
     <string name="item_subtitle_2">Item subtitle 2</string>
     <string name="sync">සමමුහුර්ත කරන්න</string>
+    <string name="change_Language">භාෂාව වෙනස් කරන්න</string>
+
     <!-- Strings related to main -->
     <string name="title_activity_main">ප්‍රධාන පේජය</string>
     <string name="welcome">"සාදරයෙන් පිළිගනිමු!"</string>
@@ -89,6 +91,8 @@
     <string name="title_activity_enrollment_form">ලියාපදිංචි කිරීමේ පෝරමය</string>
     <string name="title_activity_event_form">සිදුවීම් ආකෘතිය</string>
     <string name="date_button_text">දිනය තේරීමට ක්ලික් කරන්න</string>
+    <string name="enter_here">මෙහි ටයිප් කරන්න</string>
+
     <string name="yes">ඔව්</string>
     <string name="no">නැත</string>
     <string name="filter_background">පෙරහන පසුබිම</string>
@@ -177,8 +181,8 @@
     <string name="st_reff">මැදිහත්වීම සඳහා යොමු කර ඇත</string>
     <string name="st_mana">අදියර 1: කළමනාකරණ තත්ත්වය</string>
     <string name="st_inter">මැදිහත් වීම</string>
-    <string name="st_out">ප්රතිඵලය</string>
-    <string name="st_indication">ත්‍රිපෝෂ සඳහා ඇඟවීම</string>
+    <string name="st_out">ප‍්‍රතිඵලය</string>
+    <string name="st_indication">ත්‍රිපෝෂ ලබාදීම ඇරබීම</string>
 
     <!--    anthropometry programme-->
     <string name="an_title">1 වන අදියර (වර්ධන තත්ත්වය මැනීම)</string>
@@ -309,7 +313,7 @@
     <string name="supp_indication_date">දිනය</string>
     <string name="supp_indication_mam">මධ්‍යස්ථ තීව‍්‍ර මන්දපෝෂණය(මධ්‍යස්ථ කෘශ බව - "MAM")</string>
     <string name="supp_indication_underweight">අඩු බර</string>
-    <string name="supp_indication_growth"> කොල පරාසයේ දීර්ග කාලීන වර්ධනය අඩාලවීම</string>
+    <string name="supp_indication_growth">කොල පරාසයේ දීර්ග කාලීන වර්ධනය අඩාලවීම</string>
     <string name="supp_indication_entollment">ඇතුළත් වීමේ වර්ගය</string>
     <string name="supp_indication_combinations">තෝරා ඇති සං‍යෝජන වලංගු නොවේ. තේරිය හැකි සං‍යෝජන වන්නේ \n1. MAM\n2. අඩු බර \n3.  දීර්ග කාලීන වර්දනය අඩාල වීම
                     \n4. MAM + අඩු බර \n5. MAM + දීර්ග කාලීන වර්දනය අඩාල වීම</string>
@@ -523,7 +527,7 @@
         <item>යථා තත්ත්වයට පත් විය</item>
         <item>ප්‍රතිකාරය පැහැරහරින ලදී</item>
         <item>ප‍්‍ර‍්‍රදේශය හැර යන ලදී</item>
-        <item>වයස අවුරුදු 5 සම්පූර්ණ වීම නිසා අත්හරින ලදී</item>
+        <item>වයස අවුරුදු 5 සම්පුර්ණ වීම නිසා මුදාහරින ලදි</item>
         <item>මියයන ලදී</item>
     </string-array>
 
@@ -538,16 +542,16 @@
         <item>යථා තත්ත්වයට පත් විය</item>
         <item>ප්‍රතිකාරය පැහැරහරින ලදී</item>
         <item>ප‍්‍ර‍්‍රදේශය හැර යන ලදී</item>
-        <item>වයස අවුරුදු 5 සම්පූර්ණ වීම නිසා අත්හරින ලදී</item>
+        <item>වයස අවුරුදු 5 සම්පුර්ණ වීම නිසා මුදාහරින ලදි</item>
         <item>මියයන ලදී</item>
     </string-array>
 
     <string-array name="supp_outcome_type">
         <item>යථා තත්ත්වයට පත් විය</item>
-        <item>ඔ‍ය්ෂධීය ආහාර ලබාදීම වැඩසටහනට යවා ඇත</item>
+        <item>ඖෂධීය ආහාර ලබාදීමෙ වැඩසටහන සඳහා යොමු කරන ලදී</item>
         <item>ප්‍රතිකාරය පැහැරහරින ලදී</item>
         <item>ප‍්‍ර‍්‍රදේශය හැර යන ලදී</item>
-        <item>වයස අවුරුදු 5 සම්පූර්ණ වීම නිසා අත්හරින ලදී</item>
+        <item>වයස අවුරුදු 5 සම්පුර්ණ වීම නිසා මුදාහරින ලදි</item>
         <item>මියයන ලදී</item>
     </string-array>
 
@@ -561,10 +565,10 @@
     </string-array>
     <string-array name="tera_outcome_type">
         <item>යථා තත්ත්වයට පත් විය</item>
-        <item>අතිරේක ආහාර ලබාදීම වැඩසටහනට යවා ඇත</item>
+        <item>අතිරේක ආහාර ලබාදීමෙ වැඩසටහන සඳහා යොමු කරන ලදී</item>
         <item>ප්‍රතිකාරය පැහැරහරින ලදී</item>
         <item>ප‍්‍ර‍්‍රදේශය හැර යන ලදී</item>
-        <item>වයස අවුරුදු 5 සම්පූර්ණ වීම නිසා අත්හරින ලදී</item>
+        <item>වයස අවුරුදු 5 සම්පුර්ණ වීම නිසා මුදාහරින ලදි</item>
         <item>මියයන ලදී</item>
     </string-array>
 

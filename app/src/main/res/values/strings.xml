@@ -24,6 +24,7 @@
     <string name="item_subtitle_1">Item subtitle 1</string>
     <string name="item_subtitle_2">Item subtitle 2</string>
     <string name="sync">SYNC</string>
+    <string name="change_Language">CHANGE LANGUAGE</string>
     <!-- Strings related to main -->
     <string name="title_activity_main">Home</string>
     <string name="welcome">"Welcome!"</string>
@@ -89,12 +90,13 @@
     <!-- Strings related to enrollment forms -->
     <string name="title_activity_enrollment_form">Enrollment form</string>
     <string name="title_activity_event_form">Event form</string>
-    <string name="date_button_text">Click to select date</string>
+    <string name="date_button_text">Click here to select date</string>
+    <string name="enter_here">Enter here</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="filter_background">filterBackground</string>
 
-    <!--<string name="app_name">Yashodhara</string> -->
+    <!--<string name="app_name">Yashodhara</string> -->s
     <string name="login_title">MSGP/U5 Monitoring System for Growth Problems in Under 5 Children</string>
     <string name="login_description">Log in to your Account</string>
     <string name="language_selection">Please select the language</string>

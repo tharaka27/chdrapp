@@ -23,6 +23,8 @@
     <string name="item_subtitle_1">Item subtitle 1</string>
     <string name="item_subtitle_2">Item subtitle 2</string>
     <string name="sync">ஒத்திசைவு</string>
+    <string name="change_Language">மொழியை மாற்றவும்</string>
+
     <!-- Strings related to main -->
     <string name="title_activity_main">வீடு</string>
     <string name="welcome">வரவேற்பு!</string>
@@ -89,6 +91,8 @@
     <string name="title_activity_enrollment_form">பதிவு படிவம்</string>
     <string name="title_activity_event_form">நிகழ்வு வடிவம்</string>
     <string name="date_button_text">தேதியைத் தேர்ந்தெடுக்க கிளிக் செய்யவும்</string>
+    <string name="enter_here">இங்கே தட்டச்சு செய்யவும் </string>
+
     <string name="yes">ஆம்</string>
     <string name="no">இல்லை</string>
     <string name="filter_background">வடிகட்டி பின்னணி</string>
@@ -135,7 +139,7 @@
     <string name="anthro_regis_weight">கிராம் எடை 500-9999 அனுமதிக்கப்படுகிறது</string>
     <string name="anthro_chirdren">குழந்தைகளின் எண்ணிக்கை 20 வரை அனுமதிக்கப்படுகிறது</string>
     <string name="anthro_regis_land">நில எண் நிரப்பப்படவில்லை</string>
-    <string name="anthro_regis_mobile">Mobile Number is not filled</string>
+    <string name="anthro_regis_mobile">மொபைல் எண் நிரப்பப்படவில்லை</string>
 
     <!--    demographic info-->
     <string name="demo_info_title">மக்கள் தொகை  தரவு</string>
