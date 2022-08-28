@@ -17,30 +17,6 @@ import lombok.Setter;
 
 public class  EnrollmentFormValidator {
 
-    /*
-    private @Setter String TAG = "";
-    @Setter Context context;
-    @Setter EditText GNArea;
-    @Setter EditText name;
-    @Setter TextView birthday;
-    @Setter EditText address;
-    @Setter EditText motherName;
-    @Setter TextView mother_birthday;
-    @Setter EditText immuneNum;
-    @Setter EditText landNumber;
-    @Setter EditText mobileNumber;
-    @Setter EditText numberOfChildren;
-    @Setter EditText weight;
-    @Setter EditText length;
-    @Setter Spinner relationship;
-    @Setter Spinner occupation;
-    @Setter EditText nic;
-    @Setter EditText caregiver;
-    @Setter EditText occu_specification;
-    @Setter String[] relationship_english_only;
-    @Setter String[] occupation_english_only;*/
-
-
     private  String TAG = "";
      Context context;
      EditText GNArea;
