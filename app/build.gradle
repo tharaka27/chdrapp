@@ -22,7 +22,8 @@ android {
         versionCode 1
         versionName "2.8-SNAPSHOT"
 
-        testInstrumentationRunner "androidx.test.ext.junit.runners.AndroidJUnit4"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
     }

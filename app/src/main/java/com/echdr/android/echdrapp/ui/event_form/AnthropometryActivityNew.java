@@ -713,16 +713,6 @@ public class AnthropometryActivityNew extends AppCompatActivity {
 
         for(int i=0; i < eventRepository.size(); i++)
         {
-            /*
-            System.out.println("Event ID" + eventRepository.get(i).uid());
-            System.out.println("Event date : " + getDataElementFromEvent(
-                    "YB21tVtxZ0z", eventRepository.get(i).uid()));
-            System.out.println("Event height : " + getDataElementFromEvent(
-                    "cDXlUgg1WiZ", eventRepository.get(i).uid()));
-            System.out.println("Event weight : " + getDataElementFromEvent(
-                    "rBRI27lvfY5", eventRepository.get(i).uid()));
-            */
-
             prepareDataPoints(
                     getDataElementFromEvent(
                             "YB21tVtxZ0z", eventRepository.get(i).uid()),
@@ -791,6 +781,8 @@ public class AnthropometryActivityNew extends AppCompatActivity {
                 new DataPoint(birthHeight, birthWeight/1000) , true, 61
         );
         System.out.println("[Debug] Draw height is " + String.valueOf(birthHeight));
+
+        //TODO height values missing value adder here
 
         for(int i=0; i< 60; i++)
         {
