@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -29,6 +30,8 @@ import com.echdr.android.echdrapp.R;
 import com.echdr.android.echdrapp.data.Sdk;
 import com.echdr.android.echdrapp.data.service.forms.EventFormService;
 import com.echdr.android.echdrapp.data.service.forms.RuleEngineService;
+import com.echdr.android.echdrapp.service.AnthropometryChartService;
+import com.echdr.android.echdrapp.service.Validator.AnthropometryValidator;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -57,6 +60,7 @@ import io.reactivex.processors.PublishProcessor;
 
 public class AnthropometryActivityNew extends AppCompatActivity {
 
+        private static final String TAG = "AnthropometryActivity";
         private String eventUid;
         private String programUid;
         private PublishProcessor<Boolean> engineInitialization;
@@ -89,6 +93,8 @@ public class AnthropometryActivityNew extends AppCompatActivity {
         Map<Integer, double[]> heightDataWHO;
         Map<Integer, double[]> weightDataWHO;
         Map<Double, double[]> weightForHeightDataWHO;
+
+        private AnthropometryChartService anthropometryChartService;
 
         private enum IntentExtra {
             EVENT_UID, PROGRAM_UID, OU_UID, TYPE, TEI_ID
@@ -158,6 +164,8 @@ public class AnthropometryActivityNew extends AppCompatActivity {
             heightValues = new HashMap<>();
             weightValues = new HashMap<>();
             selectDataSets();
+
+            anthropometryChartService = new AnthropometryChartService();
 
 
             Date date = new Date();
@@ -289,35 +297,8 @@ public class AnthropometryActivityNew extends AppCompatActivity {
                 textView_Date.setText("Click here to set Date");
             }
 
-            heightTxt.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-                    ChangeColor(heightTxt, s.toString(), heightDataWHO, true);
-                }
-            });
-
-            weightTxt.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-                    ChangeColor(weightTxt, s.toString(), weightDataWHO, false);
-                }
-            });
+            changeListeners(heightTxt, heightDataWHO, true);
+            changeListeners(weightTxt, weightDataWHO, false);
 
             saveButton.setOnClickListener(v -> {
                 boolean wasSuccessful = saveElements();
@@ -326,22 +307,33 @@ public class AnthropometryActivityNew extends AppCompatActivity {
                 }
             });
 
+            anthropometryChartService.setHeightGraph(heightGraph);
+            anthropometryChartService.setWeightGraph(weightGraph);
+            anthropometryChartService.setWeightHeightGraph(weightHeightGraph);
+            anthropometryChartService.setSex(sex);
+            anthropometryChartService.setContext(context);
+            anthropometryChartService.setSelectedChild(selectedChild);
+            anthropometryChartService.setBirthday(birthday);
+            anthropometryChartService.setHeightValues(heightValues);
+            anthropometryChartService.setWeightValues(weightValues);
+
+
             plotGraphButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     saveElements();
                     weightGraph.removeAllSeries();
                     heightGraph.removeAllSeries();
-                    plotGraph();
-                    plotDataElements();
-                    drawLineGraph();
+
+                    anthropometryChartService.plotGraph();
+                    anthropometryChartService.plotDataElements();
+                    anthropometryChartService.drawLineGraph();
                 }
             });
 
-            
-            plotGraph();
-            plotDataElements();
-            drawLineGraph();
+            anthropometryChartService.plotGraph();
+            anthropometryChartService.plotDataElements();
+            anthropometryChartService.drawLineGraph();
 
 
             if (EventFormService.getInstance().init(
@@ -350,6 +342,23 @@ public class AnthropometryActivityNew extends AppCompatActivity {
                     programUid,
                     getIntent().getStringExtra(IntentExtra.OU_UID.name())))
                 this.engineService = new RuleEngineService();
+        }
+
+        private void changeListeners(EditText editText, Map<Integer, double[]> dataWHO, boolean isHeight){
+            editText.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    ChangeColor(editText, s.toString(), dataWHO, isHeight);
+                }
+            });
         }
 
         @Override
@@ -385,80 +394,19 @@ public class AnthropometryActivityNew extends AppCompatActivity {
 
 
         private boolean saveElements() {
+            AnthropometryValidator anthropometryValidator = new AnthropometryValidator();
 
-            if(textView_Date.getText().toString().equals("Click here to set Date")||
-                    textView_Date.getText().toString().isEmpty())
-            {
-                AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                builder1.setMessage(getString(R.string.date));
-                builder1.setCancelable(true);
+            anthropometryValidator.setHeightTxt(heightTxt);
+            anthropometryValidator.setWeightTxt(weightTxt);
+            anthropometryValidator.setTextView_Date(textView_Date);
+            anthropometryValidator.setTAG(TAG);
+            anthropometryValidator.setContext(context);
 
-                builder1.setNegativeButton(
-                        "Close",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-
-                AlertDialog alert11 = builder1.create();
-                alert11.show();
+            if(!anthropometryValidator.validate()){
+                Log.e(TAG, "Error occured while trying to save tracked entity instance" );
                 return false;
             }
 
-            if( heightTxt.getText().toString().isEmpty() ||
-                    Integer.parseInt(heightTxt.getText().toString()) < 15
-                    || Integer.parseInt(heightTxt.getText().toString()) > 150)
-            {
-                AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                builder1.setMessage(getString(R.string.anthro_height));
-                builder1.setCancelable(true);
-
-                builder1.setNegativeButton(
-                        "Close",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                                //return;
-                            }
-                        });
-
-                AlertDialog alert11 = builder1.create();
-                alert11.show();
-                return false;
-            }
-
-            if( weightTxt.getText().toString().isEmpty() ||
-                    Integer.parseInt(weightTxt.getText().toString()) < 100
-                    || Integer.parseInt(weightTxt.getText().toString()) > 50000)
-            {
-                AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                builder1.setMessage(getString(R.string.anthro_weight));
-                builder1.setCancelable(true);
-
-                builder1.setNegativeButton(
-                        "Close",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                                //return;
-                            }
-                        });
-
-                AlertDialog alert11 = builder1.create();
-                alert11.show();
-                return false;
-            }
-
-        /*
-        System.out.println(getDataElement("YB21tVtxZ0z")); // Date
-        System.out.println(getDataElement("cDXlUgg1WiZ")); // height
-        //System.out.println(getDataElement("SOAtQfInRoy")); // length for age
-        //System.out.println(getDataElement("b4Gpl5ayBe3")); // age in months
-        System.out.println(getDataElement("rBRI27lvfY5")); // weight
-        //System.out.println(getDataElement("bJHCnjX02PN")); // weight for age
-        //System.out.println(getDataElement("jnzg5BvOj5T")); // weight for lenght
-        */
             saveDataElement("YB21tVtxZ0z", textView_Date.getText().toString());
             saveDataElement("cDXlUgg1WiZ", heightTxt.getText().toString());
             saveDataElement("rBRI27lvfY5", weightTxt.getText().toString());
@@ -637,204 +585,6 @@ public class AnthropometryActivityNew extends AppCompatActivity {
 
     }
 
-    private void plotGraph()
-    {
-
-        //setup charts and background
-        DataValuesWHO d = DataValuesWHO.getInstance();
-
-        if (sex.equals("Male")) {
-            for (int i = 3; i > -1; i--) {
-                heightGraph.addSeries(d.heightForAgeBoysValues(i, 60));
-                weightGraph.addSeries(d.weightForAgeBoys(i, 60));
-                weightHeightGraph.addSeries(d.weightForHeightBoys(i, 60));
-            }
-
-        } else {
-            for (int i = 3; i > -1; i--) {
-                heightGraph.addSeries(d.heightForAgeGirlsValues(i, 60));
-                weightGraph.addSeries(d.weightForAgeGirlsValues(i, 60));
-                weightHeightGraph.addSeries(d.weightForHeightGirls(i, 60));
-            }
-
-        }
-
-        heightGraph.getViewport().setBackgroundColor(Color.parseColor("#f3e5f6"));
-        weightGraph.getViewport().setBackgroundColor(Color.parseColor("#f3e5f6"));
-        weightHeightGraph.getViewport().setBackgroundColor(Color.parseColor("#f3e5f6"));
-
-        heightGraph.getViewport().setMaxX(60);
-        heightGraph.getViewport().setMaxY(130);
-
-        weightGraph.getViewport().setMaxX(60);
-        weightGraph.getViewport().setMaxY(30);
-
-        weightHeightGraph.getViewport().setMaxX(120);
-        weightHeightGraph.getViewport().setMaxY(32);
-
-        // don't show anomalies ( might be redundant when zooming is enabled)
-        weightGraph.getViewport().setYAxisBoundsManual(true);
-        heightGraph.getViewport().setYAxisBoundsManual(true);
-        weightGraph.getViewport().setXAxisBoundsManual(true);
-        heightGraph.getViewport().setXAxisBoundsManual(true);
-        weightHeightGraph.getViewport().setXAxisBoundsManual(true);
-        weightHeightGraph.getViewport().setYAxisBoundsManual(true);
-
-        weightGraph.getGridLabelRenderer().setHorizontalAxisTitle(getString(R.string.month));
-        weightGraph.getGridLabelRenderer().setVerticalAxisTitle(getString(R.string.weight));
-
-        heightGraph.getGridLabelRenderer().setHorizontalAxisTitle(getString(R.string.month));
-        heightGraph.getGridLabelRenderer().setVerticalAxisTitle(getString(R.string.height));
-
-        weightHeightGraph.getGridLabelRenderer().setHorizontalAxisTitle(getString(R.string.height));
-        weightHeightGraph.getGridLabelRenderer().setVerticalAxisTitle(getString(R.string.weight));
-
-        // enable zooming
-        weightGraph.getViewport().setScalable(true);
-        heightGraph.getViewport().setScalable(true);
-        weightGraph.getViewport().setScalableY(true);
-        heightGraph.getViewport().setScalableY(true);
-        weightHeightGraph.getViewport().setScalable(true);
-        weightHeightGraph.getViewport().setScalableY(true);
-
-
-    }
-
-    private void plotDataElements()
-    {
-        List<String> j = new ArrayList<>();
-        j.add(selectedChild);
-
-        // get all anthropometry data of the selected child
-        List<Event> eventRepository = Sdk.d2().eventModule().events()
-                .byTrackedEntityInstanceUids(j)
-                .byProgramUid().eq("hM6Yt9FQL0n")
-                .blockingGet();
-
-        for(int i=0; i < eventRepository.size(); i++)
-        {
-            prepareDataPoints(
-                    getDataElementFromEvent(
-                            "YB21tVtxZ0z", eventRepository.get(i).uid()),
-                    getDataElementFromEvent(
-                            "cDXlUgg1WiZ", eventRepository.get(i).uid()),
-                    getDataElementFromEvent(
-                            "rBRI27lvfY5", eventRepository.get(i).uid()));
-        }
-
-    }
-
-    private String getDataElementFromEvent(String dataElement, String captureEvent)
-    {
-        TrackedEntityDataValueObjectRepository valueRepository =
-                Sdk.d2().trackedEntityModule().trackedEntityDataValues()
-                        .value(
-                                captureEvent,
-                                dataElement
-                        );
-
-        String currentValue = valueRepository.blockingExists() ?
-                valueRepository.blockingGet().value() : "";
-
-        return currentValue;
-    }
-
-    private void prepareDataPoints(String date, String height, String weight)
-    {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-
-        try {
-            // Parse event date
-            Date dob = formatter.parse(birthday.value());
-            Date eventDate = formatter.parse(date);
-
-            // Calculate age in months
-            long diffInMillies = Math.abs(eventDate.getTime() - dob.getTime());
-            int diff = (int) TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS) / 30;
-
-            // Enter to the data values
-            heightValues.put(diff, Integer.parseInt(height));
-            weightValues.put(diff, Integer.parseInt(weight));
-
-        } catch (Exception error) {
-            System.out.print("Error in parsing date field: " + error.toString());
-        }
-    }
-
-    private void drawLineGraph()
-    {
-        LineGraphSeries<DataPoint> height_series = new LineGraphSeries<DataPoint>();
-        LineGraphSeries<DataPoint> weight_series = new LineGraphSeries<DataPoint>();
-        LineGraphSeries<DataPoint> weight_for_height_series = new LineGraphSeries<DataPoint>();
-
-        int birthWeight = Integer.parseInt(getValueListener("Fs89NLB2FrA"));
-        int birthHeight = Integer.parseInt(getValueListener("LpvdWM4YuRq"));
-        height_series.appendData(
-                new DataPoint(0,birthHeight), true, 61
-        );
-        System.out.println("[Debug] Birth height is " + String.valueOf(birthHeight));
-
-        weight_series.appendData(
-                new DataPoint(0,birthWeight/1000), true, 61
-        );
-        weight_for_height_series.appendData(
-                new DataPoint(birthHeight, birthWeight/1000) , true, 61
-        );
-        System.out.println("[Debug] Draw height is " + String.valueOf(birthHeight));
-
-        //TODO height values missing value adder here
-
-        for(int i=0; i< 60; i++)
-        {
-            if(heightValues.containsKey(i))
-            {
-                height_series.appendData(
-                        new DataPoint(i, heightValues.get(i)), true, 61);
-            }
-        }
-
-        for(int i=0; i< 60; i++)
-        {
-            if(weightValues.containsKey(i))
-            {
-                weight_series.appendData(
-                        new DataPoint(i, weightValues.get(i)/1000f), true, 61);
-            }
-        }
-
-        for(int i=0; i< 60; i++)
-        {
-            if(heightValues.containsKey(i))
-            {
-                try {
-                    weight_for_height_series.appendData(
-                            new DataPoint(
-                                    heightValues.get(i),
-                                    weightValues.get(i) / 1000f),
-                            true, 61);
-                } catch (Exception e)
-                {
-                    System.out.println("Error caught");
-                    Toast t = Toast.makeText(getApplicationContext(),
-                            "Height values should be increasing", Toast.LENGTH_LONG);
-                    t.show();
-                }
-            }
-        }
-
-
-        height_series.setColor(Color.BLACK);
-        height_series.setThickness(5);
-        weight_series.setColor(Color.BLACK);
-        weight_series.setThickness(5);
-        weight_for_height_series.setThickness(5);
-        weight_for_height_series.setColor(Color.BLACK);
-
-        heightGraph.addSeries(height_series);
-        weightGraph.addSeries(weight_series);
-        weightHeightGraph.addSeries(weight_for_height_series);
-
-    }
 
     private void selectDate(int year, int month, int day)
     {
@@ -905,16 +655,6 @@ public class AnthropometryActivityNew extends AppCompatActivity {
     private void finishEnrollment() {
         setResult(RESULT_OK);
         finish();
-    }
-
-    private String getValueListener(String dataElement) {
-
-        String currentValue = Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
-                .byTrackedEntityInstance().eq(selectedChild)
-                .byTrackedEntityAttribute().eq(dataElement)
-                .one().blockingGet().value();
-
-        return currentValue;
     }
 
 }

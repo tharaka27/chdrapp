@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 
 import lombok.Setter;
 
-public class  EnrollmentFormValidator {
+public class  EnrollmentFormValidator extends Validator {
 
     private  String TAG = "";
      Context context;
@@ -124,6 +124,9 @@ public class  EnrollmentFormValidator {
     }
 
     public boolean validate(){
+        super.setContext(context);
+        super.setTAG(TAG);
+
         // Immunization number validation
         String pattern = "[0-9][0-9]\\/[0-1][0-9]\\/[0-3][0-9]";
         Matcher m1 = null;
@@ -242,21 +245,6 @@ public class  EnrollmentFormValidator {
         return true;
     }
 
-    private void CreateAlertDialog(String ErrorMessage){
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setMessage(ErrorMessage);
-        builder.setCancelable(true);
-        Log.e(TAG, ErrorMessage);
 
-        builder.setNegativeButton(
-                "Close",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-        AlertDialog alert = builder.create();
-        alert.show();
-    }
 
 }

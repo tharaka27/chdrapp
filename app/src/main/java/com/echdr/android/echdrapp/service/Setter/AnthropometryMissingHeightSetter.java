@@ -22,9 +22,6 @@ public class AnthropometryMissingHeightSetter {
 
         if(nonZeroElements.size() <= 1){
             throw new IllegalArgumentException("interpolate: illegal count!");
-        }else{
-            System.out.print("nonZeroElements ");
-            System.out.println(nonZeroElements.size());
         }
 
         Map<Integer, Integer> pairs = make_pairs(nonZeroElements);
