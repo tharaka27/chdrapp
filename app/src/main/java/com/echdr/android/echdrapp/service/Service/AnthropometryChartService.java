@@ -1,4 +1,4 @@
-package com.echdr.android.echdrapp.service;
+package com.echdr.android.echdrapp.service.Service;
 
 import android.content.Context;
 import android.graphics.Color;

@@ -583,11 +583,11 @@ public class AnthropometryActivity extends AppCompatActivity {
 
         System.out.println(getDataElement("YB21tVtxZ0z")); // Date
         System.out.println(getDataElement("cDXlUgg1WiZ")); // height
-        //System.out.println(getDataElement("SOAtQfInRoy")); // length for age
-        //System.out.println(getDataElement("b4Gpl5ayBe3")); // age in months
+        //System.out.println(getDataTEIElement("SOAtQfInRoy")); // length for age
+        //System.out.println(getDataTEIElement("b4Gpl5ayBe3")); // age in months
         System.out.println(getDataElement("rBRI27lvfY5")); // weight
-        //System.out.println(getDataElement("bJHCnjX02PN")); // weight for age
-        //System.out.println(getDataElement("jnzg5BvOj5T")); // weight for lenght
+        //System.out.println(getDataTEIElement("bJHCnjX02PN")); // weight for age
+        //System.out.println(getDataTEIElement("jnzg5BvOj5T")); // weight for lenght
 
         saveDataElement("YB21tVtxZ0z", textView_Date.getText().toString());
         saveDataElement("cDXlUgg1WiZ", heightTxt.getText().toString());

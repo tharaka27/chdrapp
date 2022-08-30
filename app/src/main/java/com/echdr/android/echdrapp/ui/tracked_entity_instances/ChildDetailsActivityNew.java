@@ -678,7 +678,7 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
     private void saveElements()
     {
 
-        //saveDataElement("KuMTUOY6X3L", textView_date_of_registration.getText().toString());
+        //saveTEIDataElement("KuMTUOY6X3L", textView_date_of_registration.getText().toString());
         saveDataElement("upQGjAHBjzu", GNArea.getText().toString());
         saveDataElement("h2ATdtJguMq", immuneNum.getText().toString());
         saveDataElement("zh4hiarsSD5", name.getText().toString());

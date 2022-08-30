@@ -595,6 +595,7 @@ public class AnthropometryActivityNew extends AppCompatActivity {
         datePickerDialog.show();
     }
 
+    /*
     private String getDataElement(String dataElement) {
         TrackedEntityDataValueObjectRepository valueRepository =
                 Sdk.d2().trackedEntityModule().trackedEntityDataValues()
@@ -651,6 +652,7 @@ public class AnthropometryActivityNew extends AppCompatActivity {
             }
         }
     }
+     */
 
     private void finishEnrollment() {
         setResult(RESULT_OK);

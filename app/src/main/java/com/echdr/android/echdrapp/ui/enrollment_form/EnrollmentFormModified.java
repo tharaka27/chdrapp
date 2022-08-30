@@ -1,11 +1,8 @@
 package com.echdr.android.echdrapp.ui.enrollment_form;
 
-import static android.text.TextUtils.isEmpty;
-
 
 import android.app.DatePickerDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -21,47 +18,24 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.echdr.android.echdrapp.R;
 import com.echdr.android.echdrapp.data.Sdk;
 import com.echdr.android.echdrapp.data.service.ActivityStarter;
 import com.echdr.android.echdrapp.data.service.forms.EnrollmentFormService;
-import com.echdr.android.echdrapp.data.service.forms.EventFormService;
-import com.echdr.android.echdrapp.data.service.forms.FormField;
 import com.echdr.android.echdrapp.data.service.forms.RuleEngineService;
 import com.echdr.android.echdrapp.service.Validator.EnrollmentFormValidator;
 import com.echdr.android.echdrapp.service.util;
-import com.echdr.android.echdrapp.ui.event_form.SupplementaryIndicationActivity;
-import com.echdr.android.echdrapp.ui.events.EventsActivity;
-import com.echdr.android.echdrapp.ui.tracked_entity_instances.ChildDetailsActivity;
 import com.echdr.android.echdrapp.ui.tracked_entity_instances.ChildDetailsActivityNew;
 
-import org.apache.commons.lang3.StringUtils;
-import org.hisp.dhis.android.core.enrollment.Enrollment;
 import org.hisp.dhis.android.core.maintenance.D2Error;
-import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValue;
-import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValueObjectRepository;
-import org.hisp.dhis.android.core.trackedentity.TrackedEntityDataValue;
-import org.hisp.dhis.android.core.trackedentity.TrackedEntityDataValueObjectRepository;
 import org.hisp.dhis.rules.RuleEngine;
-import org.hisp.dhis.rules.models.RuleAction;
-import org.hisp.dhis.rules.models.RuleActionHideField;
-import org.hisp.dhis.rules.models.RuleEffect;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import io.reactivex.Flowable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.processors.PublishProcessor;
@@ -349,7 +323,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
 
     private void setEditText(TextView textView, String dataElement){
         try {
-            String element = util.getDataElement(dataElement, teiUid);
+            String element = util.getDataTEIElement(dataElement, teiUid);
             if (!element.isEmpty()) {
                 textView.setText(dataElement);
             }
@@ -375,34 +349,34 @@ public class EnrollmentFormModified extends AppCompatActivity {
             return;
         }
 
-        //saveDataElement("KuMTUOY6X3L", textView_date_of_registration.getText().toString());
-        util.saveDataElement("upQGjAHBjzu", GNArea.getText().toString(), teiUid, engineInitialization);
-        util.saveDataElement("h2ATdtJguMq", immuneNum.getText().toString(), teiUid, engineInitialization);
-        util.saveDataElement("zh4hiarsSD5", name.getText().toString(), teiUid, engineInitialization);
-        util.saveDataElement("lmtzQrlHMYF",
+        //saveTEIDataElement("KuMTUOY6X3L", textView_date_of_registration.getText().toString());
+        util.saveTEIDataElement("upQGjAHBjzu", GNArea.getText().toString(), teiUid, engineInitialization);
+        util.saveTEIDataElement("h2ATdtJguMq", immuneNum.getText().toString(), teiUid, engineInitialization);
+        util.saveTEIDataElement("zh4hiarsSD5", name.getText().toString(), teiUid, engineInitialization);
+        util.saveTEIDataElement("lmtzQrlHMYF",
                 sex_english_only[sex.getSelectedItemPosition()], teiUid, engineInitialization);
-        util.saveDataElement("qNH202ChkV3", textView_dob.getText().toString(), teiUid, engineInitialization);
-        util.saveDataElement("b9CoAneYYys",
+        util.saveTEIDataElement("qNH202ChkV3", textView_dob.getText().toString(), teiUid, engineInitialization);
+        util.saveTEIDataElement("b9CoAneYYys",
                 ethinicity_english_only[ethnicity.getSelectedItemPosition()], teiUid, engineInitialization);
-        util.saveDataElement("D9aC5K6C6ne", address.getText().toString(), teiUid, engineInitialization);
-        util.saveDataElement("igjlkmMF81X",
+        util.saveTEIDataElement("D9aC5K6C6ne", address.getText().toString(), teiUid, engineInitialization);
+        util.saveTEIDataElement("igjlkmMF81X",
                 sector_english_only[sector.getSelectedItemPosition()], teiUid, engineInitialization);
-        util.saveDataElement("cpcMXDhQouL", landNumber.getText().toString(), teiUid, engineInitialization);
-        util.saveDataElement("LYRf4eIUVuN", mobileNumber.getText().toString(), teiUid, engineInitialization);
-        util.saveDataElement("K7Fxa2wv2Rx", motherName.getText().toString(), teiUid, engineInitialization);
-        util.saveDataElement("Gzjb3fp9FSe", nic.getText().toString(), teiUid, engineInitialization);
-        util.saveDataElement("kYfIkz2M6En", textView_mother_dob.getText().toString(), teiUid, engineInitialization);
-        util.saveDataElement("Gy4bCBxNuo4", numberOfChildren.getText().toString(), teiUid, engineInitialization);
-        util.saveDataElement("GMNSaaq4xST",
+        util.saveTEIDataElement("cpcMXDhQouL", landNumber.getText().toString(), teiUid, engineInitialization);
+        util.saveTEIDataElement("LYRf4eIUVuN", mobileNumber.getText().toString(), teiUid, engineInitialization);
+        util.saveTEIDataElement("K7Fxa2wv2Rx", motherName.getText().toString(), teiUid, engineInitialization);
+        util.saveTEIDataElement("Gzjb3fp9FSe", nic.getText().toString(), teiUid, engineInitialization);
+        util.saveTEIDataElement("kYfIkz2M6En", textView_mother_dob.getText().toString(), teiUid, engineInitialization);
+        util.saveTEIDataElement("Gy4bCBxNuo4", numberOfChildren.getText().toString(), teiUid, engineInitialization);
+        util.saveTEIDataElement("GMNSaaq4xST",
                 eduLevel_english_only[eduLevel.getSelectedItemPosition()], teiUid, engineInitialization);
-        util.saveDataElement("Srxv0vniOnf",
+        util.saveTEIDataElement("Srxv0vniOnf",
                 occupation_english_only[occupation.getSelectedItemPosition()], teiUid, engineInitialization);
-        util.saveDataElement("s7Rde0kFOFb", occu_specification.getText().toString(), teiUid, engineInitialization);
-        util.saveDataElement("ghN8XfnlU5V",
+        util.saveTEIDataElement("s7Rde0kFOFb", occu_specification.getText().toString(), teiUid, engineInitialization);
+        util.saveTEIDataElement("ghN8XfnlU5V",
                 relationship_english_only[relationship.getSelectedItemPosition()], teiUid, engineInitialization);
-        util.saveDataElement("hxCXbI5J2YS", caregiver.getText().toString(), teiUid, engineInitialization);
-        util.saveDataElement("Fs89NLB2FrA", weight.getText().toString(), teiUid, engineInitialization);
-        util.saveDataElement("LpvdWM4YuRq", length.getText().toString(), teiUid, engineInitialization);
+        util.saveTEIDataElement("hxCXbI5J2YS", caregiver.getText().toString(), teiUid, engineInitialization);
+        util.saveTEIDataElement("Fs89NLB2FrA", weight.getText().toString(), teiUid, engineInitialization);
+        util.saveTEIDataElement("LpvdWM4YuRq", length.getText().toString(), teiUid, engineInitialization);
 
         ActivityStarter.startActivity(
                 this,
@@ -454,7 +428,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
     private int getSpinnerSelection(String dataElement, String [] array)
     {
         int itemPosition = -1;
-        String stringElement = util.getDataElement(dataElement, teiUid);
+        String stringElement = util.getDataTEIElement(dataElement, teiUid);
         for(int i =0; i<array.length; i++)
         {
             if(array[i].equals(stringElement))

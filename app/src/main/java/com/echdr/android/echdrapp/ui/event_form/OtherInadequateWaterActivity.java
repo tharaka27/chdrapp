@@ -231,7 +231,7 @@ public class OtherInadequateWaterActivity extends AppCompatActivity {
             /*
             // set date
             try{
-                String prev_date = getDataElement("GDF0Ms05QaS");
+                String prev_date = getDataTEIElement("GDF0Ms05QaS");
                 if(!prev_date.isEmpty())
                 {
                     textView_Date.setText(prev_date);
