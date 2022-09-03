@@ -383,32 +383,58 @@ public class EventsActivity extends ListActivity {
                     // supplementary tc6RsYbgGzm
                     else if(selectedProgram.equals("tc6RsYbgGzm"))
                     {
+                        List<String> j = new ArrayList<>();
+                        j.add(selectedChild);
+
+                        EventCollectionRepository eventCollectionRepository =
+                                Sdk.d2().eventModule().events().byProgramUid().eq(selectedProgram)
+                                        .byEnrollmentUid().eq(programEnrollmentID)
+                                        .byTrackedEntityInstanceUids(j);
+
+
+                        List<Event> eventsList= eventCollectionRepository
+                                .byProgramStageUid().eq("KN0o3H6x8IH").blockingGet();
+                        boolean isManagementOnly = false;
+                        System.out.println(eventsList.size());
+                        if(eventsList.isEmpty()){
+                            isManagementOnly = true;
+                            System.out.println("No management activity");
+                        }
+
                         if (language.equals("en"))
                         {
-                            stages_names.add(stages.get(0).name());
-                            map.put(stages.get(0).name(), stages.get(0).name());
-                            stages_names.add(stages.get(1).name());
-                            map.put(stages.get(1).name(), stages.get(1).name());
-                            stages_names.add(stages.get(2).name());
-                            map.put(stages.get(2).name(), stages.get(2).name());
-
+                            if(isManagementOnly) {
+                                stages_names.add(stages.get(0).name());
+                                map.put(stages.get(0).name(), stages.get(0).name());
+                            }else {
+                                stages_names.add(stages.get(1).name());
+                                map.put(stages.get(1).name(), stages.get(1).name());
+                                stages_names.add(stages.get(2).name());
+                                map.put(stages.get(2).name(), stages.get(2).name());
+                            }
                         }
                         else if(language.equals("si"))
                         {
-                            stages_names.add("ත්\u200Dරිපෝෂ සඳහා ඇඟවීම");
-                            map.put("ත්\u200Dරිපෝෂ සඳහා ඇඟවීම", stages.get(0).name());
-                            stages_names.add("මැදිහත්වීම්");
-                            map.put("මැදිහත්වීම්", stages.get(1).name());
-                            stages_names.add("ප\u200D්\u200Dරතිඵලය");
-                            map.put("ප\u200D්\u200Dරතිඵලය", stages.get(2).name());
+                            if(isManagementOnly) {
+                                stages_names.add("ත්\u200Dරිපෝෂ ලබාදීම ඇරබීම");
+                                map.put("ත්\u200Dරිපෝෂ ලබාදීම ඇරබීම", stages.get(0).name());
+                            }else {
+                                stages_names.add("මැදිහත්වීම්");
+                                map.put("මැදිහත්වීම්", stages.get(1).name());
+                                stages_names.add("ප\u200D්\u200Dරතිඵලය");
+                                map.put("ප\u200D්\u200Dරතිඵලය", stages.get(2).name());
+                            }
                         }
                         else{
-                            stages_names.add("திரிபோஷத்திற்கான அறிகுறி");
-                            map.put("திரிபோஷத்திற்கான அறிகுறி", stages.get(0).name());
-                            stages_names.add("தலையீடுகள்");
-                            map.put("தலையீடுகள்", stages.get(1).name());
-                            stages_names.add("விளைவு");
-                            map.put("விளைவு", stages.get(2).name());
+                            if(isManagementOnly) {
+                                stages_names.add("திரிபோஷத்திற்கான அறிகுறி");
+                                map.put("திரிபோஷத்திற்கான அறிகுறி", stages.get(0).name());
+                            }else {
+                                stages_names.add("தலையீடுகள்");
+                                map.put("தலையீடுகள்", stages.get(1).name());
+                                stages_names.add("விளைவு");
+                                map.put("விளைவு", stages.get(2).name());
+                            }
                         }
                     }
 

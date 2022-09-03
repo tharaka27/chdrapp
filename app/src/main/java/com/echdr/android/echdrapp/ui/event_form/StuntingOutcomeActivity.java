@@ -226,7 +226,7 @@ public class StuntingOutcomeActivity extends AppCompatActivity {
 
         }
         else{
-            textView_Date.setText("Click here to set Date");
+            textView_Date.setText(getString(R.string.date_button_text));
         }
 
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -353,7 +353,7 @@ public class StuntingOutcomeActivity extends AppCompatActivity {
 
     private void saveElements()
     {
-        if(textView_Date.getText().toString().equals("Click here to set Date")||
+        if(textView_Date.getText().toString().equals(getString(R.string.date_button_text))||
                 textView_Date.getText().toString().isEmpty())
         {
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
