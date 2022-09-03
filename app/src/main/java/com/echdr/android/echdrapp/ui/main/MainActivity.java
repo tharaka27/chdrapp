@@ -123,12 +123,6 @@ public class MainActivity extends AppCompatActivity{
 
         greeting.setText(String.format("%s!", getUser().displayName()));
 
-        numAllregistrations.setText(MessageFormat.format("{0}", SyncStatusHelper.trackedEntityInstanceCount()));
-        numSupplementary.setText(MessageFormat.format("{0}", SyncStatusHelper.supplementaryCount()));
-        numOtherHealth.setText(MessageFormat.format("{0}", SyncStatusHelper.otherCount()));
-        numOverweight.setText(MessageFormat.format("{0}", SyncStatusHelper.overweightCount()));
-        numStunting.setText(MessageFormat.format("{0}", SyncStatusHelper.stuntingCount()));
-        numTherapeutic.setText(MessageFormat.format("{0}", SyncStatusHelper.therapeuticalCount()));
 
         myAreaDetailsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -212,6 +206,18 @@ public class MainActivity extends AppCompatActivity{
                 ActivityStarter.startActivity(MainActivity.this, LanguageSelection.getLanguageSelectionActivityIntent(context),true);
             }
         });
+
+        setRegisteredNumbers();
+    }
+
+    private void setRegisteredNumbers(){
+        numAllregistrations.setText(MessageFormat.format("{0}", SyncStatusHelper.trackedEntityInstanceCount()));
+        numSupplementary.setText(MessageFormat.format("{0}", SyncStatusHelper.supplementaryCount()));
+        numOtherHealth.setText(MessageFormat.format("{0}", SyncStatusHelper.otherCount()));
+        numOverweight.setText(MessageFormat.format("{0}", SyncStatusHelper.overweightCount()));
+        numStunting.setText(MessageFormat.format("{0}", SyncStatusHelper.stuntingCount()));
+        numTherapeutic.setText(MessageFormat.format("{0}", SyncStatusHelper.therapeuticalCount()));
+
     }
 
 
@@ -243,7 +249,7 @@ public class MainActivity extends AppCompatActivity{
                             // set progress bar gone
                             progressBar.setVisibility(View.GONE);
                             syncBtn.setClickable(true);
-                            ActivityStarter.startActivity(this, MainActivity.getMainActivityIntent(this),
+                            ActivityStarter.startActivity(this, MainActivity.getMainActivityIntent(context),
                                     true);
                         })
                         .doOnError(Throwable::printStackTrace)
@@ -286,6 +292,12 @@ public class MainActivity extends AppCompatActivity{
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode,resultCode,data);
+    }
+
+    @Override
+    protected void onResume() {
+        setRegisteredNumbers();
+        super.onResume();
     }
 
 
