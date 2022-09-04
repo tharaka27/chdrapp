@@ -22,6 +22,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -141,6 +142,8 @@ public class AnthropometryChartService {
         weightHeightGraph.getViewport().setScalable(true);
         weightHeightGraph.getViewport().setScalableY(true);
 
+        heightValues = new HashMap<>();
+        weightValues = new HashMap<>();
 
     }
 
@@ -183,7 +186,7 @@ public class AnthropometryChartService {
     }
 
     @SuppressLint("LongLogTag")
-    public void prepareDataPoints(String date, String height, String weight)
+    private void prepareDataPoints(String date, String height, String weight)
     {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -198,7 +201,11 @@ public class AnthropometryChartService {
 
             // Enter to the data values
             if(height.isEmpty() || height == ""){
-                heightValues.put(diff, 0);
+                // if fall in to same week
+                if(heightValues.containsKey(diff) && heightValues.get(diff) != 0){
+                }else{
+                    heightValues.put(diff, 0);
+                }
             }else{
                 heightValues.put(diff, Integer.parseInt(height));
             }
@@ -221,12 +228,12 @@ public class AnthropometryChartService {
 
         int birthWeight = Integer.parseInt(getValueListener("Fs89NLB2FrA"));
         int birthHeight = Integer.parseInt(getValueListener("LpvdWM4YuRq"));
+
         height_series.appendData(
                 new DataPoint(0,birthHeight), true, 61
         );
 
         Log.i(TAG, String.format("Birth Height is %s", String.valueOf(birthHeight)));
-        //System.out.println("[Debug] Birth height is " + String.valueOf(birthHeight));
 
         weight_series.appendData(
                 new DataPoint(0,birthWeight/1000), true, 61
@@ -250,15 +257,7 @@ public class AnthropometryChartService {
         }
 
         // Fill the missing values
-        try {
-            anthropometryMissingHeightSetter.setDataElements(heightValues);
-            anthropometryMissingHeightSetter.setMissingElements();
-            heightValues = anthropometryMissingHeightSetter.getDataElements();
-        }catch (IllegalArgumentException e)
-        {
-            Log.e(TAG, e.toString());
-        }
-
+        int heightLastFilledElementWeight = 0;
         for(int i=0; i< 60; i++)
         {
             if(weightValues.containsKey(i))
@@ -271,6 +270,22 @@ public class AnthropometryChartService {
             }
         }
 
+        heightValues.put(0, birthHeight);
+        weightValues.put(0, birthWeight);
+
+        Log.i(TAG, String.format("Before Height values %s", heightValues.toString()));
+        Log.i(TAG, String.format("Before Weight values %s", weightValues.toString()));
+        Log.i(TAG, String.format("Before Last filled element is %d", heightLastFilledElement));
+
+        try {
+            anthropometryMissingHeightSetter.setDataElements(heightValues);
+            anthropometryMissingHeightSetter.setMissingElements();
+            heightValues = anthropometryMissingHeightSetter.getDataElements();
+        }catch (IllegalArgumentException e)
+        {
+            Log.e(TAG, e.toString());
+        }
+
         try {
             anthropometryMissingHeightSetter.setDataElements(weightValues);
             anthropometryMissingHeightSetter.setMissingElements();
@@ -280,9 +295,9 @@ public class AnthropometryChartService {
             Log.e(TAG, e.toString());
         }
 
-        Log.i(TAG, String.format("Height values %s", heightValues.toString()));
-        Log.i(TAG, String.format("Weight values %s", weightValues.toString()));
-        Log.i(TAG, String.format("Last filled element is %d", heightLastFilledElement));
+        Log.i(TAG, String.format("After Height values %s", heightValues.toString()));
+        Log.i(TAG, String.format("After Weight values %s", weightValues.toString()));
+        Log.i(TAG, String.format("After Last filled element is %d", heightLastFilledElement));
 
         // fill only till the last filled height value
         for(int i=0; i<= heightLastFilledElement; i++)
@@ -297,11 +312,9 @@ public class AnthropometryChartService {
                 } catch (Exception e)
                 {
                     Log.e(TAG, e.toString());
-                    /*
                     Toast t = Toast.makeText(context,
-                            "Height values should be increasing", Toast.LENGTH_LONG);
+                            "Height values should be in increasing order", Toast.LENGTH_LONG);
                     t.show();
-                     */
                 }
             }
         }

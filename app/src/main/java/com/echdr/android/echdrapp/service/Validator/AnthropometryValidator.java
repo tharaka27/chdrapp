@@ -10,7 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class AnthropometryValidator extends Validator {
-    private  String TAG = "";
+    private  String TAG = "AnthropometryValidator";
     private TextView textView_Date;
     private EditText heightTxt;
     private EditText weightTxt;
@@ -42,15 +42,13 @@ public class AnthropometryValidator extends Validator {
             return false;
         }
 
-        //TODO removed height validator
-        // TODO only isEmpty() should be removed
-        /*
-        if( heightTxt.getText().toString().isEmpty() ||
-                Integer.parseInt(heightTxt.getText().toString()) < 15
+        if(!heightTxt.getText().toString().isEmpty()){
+            if(Integer.parseInt(heightTxt.getText().toString()) < 15
                 || Integer.parseInt(heightTxt.getText().toString()) > 150){
-            CreateAlertDialog(context.getString(R.string.anthro_height));
-            return false;
-        }*/
+                CreateAlertDialog(context.getString(R.string.anthro_height));
+                return false;
+            }
+        }
 
         if( weightTxt.getText().toString().isEmpty() ||
                 Integer.parseInt(weightTxt.getText().toString()) < 100

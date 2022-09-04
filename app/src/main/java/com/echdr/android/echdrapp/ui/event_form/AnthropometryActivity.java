@@ -102,6 +102,8 @@ public class AnthropometryActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_anthropometry_new);
 
+            anthropometryChartService = new AnthropometryChartService();
+
             textView_Date = findViewById(R.id.anthropometryDate);
             datePicker = findViewById(R.id.anthropometry_date_pick);
             heightTxt = findViewById(R.id.anthropometryHeight);
@@ -148,9 +150,6 @@ public class AnthropometryActivity extends AppCompatActivity {
             heightValues = new HashMap<>();
             weightValues = new HashMap<>();
             selectDataSets();
-
-            anthropometryChartService = new AnthropometryChartService();
-
 
             Date date = new Date();
             String s_day          = (String) DateFormat.format("dd",   date); // 20
@@ -243,7 +242,6 @@ public class AnthropometryActivity extends AppCompatActivity {
             {
                 // set date
                 try{
-
                     String prev_date = util.getDataElement("YB21tVtxZ0z", eventUid);
                     if(!prev_date.isEmpty())
                     {
@@ -308,6 +306,7 @@ public class AnthropometryActivity extends AppCompatActivity {
                     saveElements();
                     weightGraph.removeAllSeries();
                     heightGraph.removeAllSeries();
+                    weightHeightGraph.removeAllSeries();
 
                     anthropometryChartService.plotGraph();
                     anthropometryChartService.plotDataElements();
@@ -372,9 +371,6 @@ public class AnthropometryActivity extends AppCompatActivity {
             setResult(RESULT_CANCELED);
             finish();
 
-            //EventFormService.clear();
-            //setResult(RESULT_OK);
-            //finish();
         }
 
 
@@ -389,7 +385,7 @@ public class AnthropometryActivity extends AppCompatActivity {
             anthropometryValidator.setContext(context);
 
             if(!anthropometryValidator.validate()){
-                Log.e(TAG, "Error occured while trying to save tracked entity instance" );
+                Log.e(TAG, "Error occurred while trying to save tracked entity instance" );
                 return false;
             }
 
@@ -425,16 +421,6 @@ public class AnthropometryActivity extends AppCompatActivity {
             weightForHeightDataWHO = d.getWeightForHeightGirls();
         }
 
-    }
-
-
-    private void selectDate(int year, int month, int day)
-    {
-        DatePickerDialog datePickerDialog = new DatePickerDialog(
-                context, android.R.style.Theme_Holo_Light_Dialog, setListener, year, month, day);
-        datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
-        datePickerDialog.show();
     }
 
     private void finishEnrollment() {
