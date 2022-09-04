@@ -67,6 +67,7 @@ public class AnthropometryActivity extends AppCompatActivity {
         private Button plotGraphButton;
 
         private TrackedEntityAttributeValue birthday;
+        private TrackedEntityAttributeValue sex_d;
 
         Map<Integer, Integer> heightValues;
         Map<Integer, Integer> weightValues;
@@ -102,25 +103,25 @@ public class AnthropometryActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_anthropometry_new);
 
-            anthropometryChartService = new AnthropometryChartService();
 
-            textView_Date = findViewById(R.id.anthropometryDate);
-            datePicker = findViewById(R.id.anthropometry_date_pick);
-            heightTxt = findViewById(R.id.anthropometryHeight);
-            weightTxt = findViewById(R.id.anthropometryWeight);
-            saveButton = findViewById(R.id.anthropometrySave);
-            heightGraph = findViewById(R.id.heightforageAnthropometry);
-            weightGraph = findViewById(R.id.weightforageAnthropometry);
-            weightHeightGraph = findViewById(R.id.weightforheightAnthropometry);
-            AgeInWeeksTxt = findViewById(R.id.ageInWeeks);
-            AgeInMonthsTxt  =  findViewById(R.id.ageInMonths);
-            plotGraphButton = findViewById(R.id.plotGraph);
 
-            eventUid = getIntent().getStringExtra(IntentExtra.EVENT_UID.name());
-            programUid = getIntent().getStringExtra(IntentExtra.PROGRAM_UID.name());
-            selectedChild = getIntent().getStringExtra(IntentExtra.TEI_ID.name());
-            formType = FormType.valueOf(getIntent().getStringExtra(IntentExtra.TYPE.name()));
-            orgUnit = getIntent().getStringExtra(IntentExtra.OU_UID.name());
+            textView_Date       = findViewById(R.id.anthropometryDate);
+            datePicker          = findViewById(R.id.anthropometry_date_pick);
+            heightTxt           = findViewById(R.id.anthropometryHeight);
+            weightTxt           = findViewById(R.id.anthropometryWeight);
+            saveButton          = findViewById(R.id.anthropometrySave);
+            heightGraph         = findViewById(R.id.heightforageAnthropometry);
+            weightGraph         = findViewById(R.id.weightforageAnthropometry);
+            weightHeightGraph   = findViewById(R.id.weightforheightAnthropometry);
+            AgeInWeeksTxt       = findViewById(R.id.ageInWeeks);
+            AgeInMonthsTxt      =  findViewById(R.id.ageInMonths);
+            plotGraphButton     = findViewById(R.id.plotGraph);
+
+            eventUid        = getIntent().getStringExtra(IntentExtra.EVENT_UID.name());
+            programUid      = getIntent().getStringExtra(IntentExtra.PROGRAM_UID.name());
+            selectedChild   = getIntent().getStringExtra(IntentExtra.TEI_ID.name());
+            formType        = FormType.valueOf(getIntent().getStringExtra(IntentExtra.TYPE.name()));
+            orgUnit         = getIntent().getStringExtra(IntentExtra.OU_UID.name());
 
             engineInitialization = PublishProcessor.create();
 
@@ -133,7 +134,7 @@ public class AnthropometryActivity extends AppCompatActivity {
                     .one().blockingGet();
 
             // Get the sex of the child
-            TrackedEntityAttributeValue sex_d = Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
+            sex_d = Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
                     .byTrackedEntityInstance().eq(selectedChild)
                     .byTrackedEntityAttribute().eq("lmtzQrlHMYF")
                     .one().blockingGet();
@@ -143,8 +144,8 @@ public class AnthropometryActivity extends AppCompatActivity {
             if (sex_d == null) {
                 Log.e(TAG, "TrackedEntityAttributeValue for sex is NULL");
             }
-            sex = sex_d.value();
 
+            sex = sex_d.value();
             context = this;
 
             heightValues = new HashMap<>();
@@ -289,16 +290,9 @@ public class AnthropometryActivity extends AppCompatActivity {
                 }
             });
 
-            anthropometryChartService.setHeightGraph(heightGraph);
-            anthropometryChartService.setWeightGraph(weightGraph);
-            anthropometryChartService.setWeightHeightGraph(weightHeightGraph);
-            anthropometryChartService.setSex(sex);
-            anthropometryChartService.setContext(context);
-            anthropometryChartService.setSelectedChild(selectedChild);
-            anthropometryChartService.setBirthday(birthday);
-            anthropometryChartService.setHeightValues(heightValues);
-            anthropometryChartService.setWeightValues(weightValues);
 
+            anthropometryChartService = new AnthropometryChartService(heightGraph, weightGraph,
+                    weightHeightGraph, sex, context, selectedChild, birthday, heightValues, weightValues);
 
             plotGraphButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -309,15 +303,10 @@ public class AnthropometryActivity extends AppCompatActivity {
                     weightHeightGraph.removeAllSeries();
 
                     anthropometryChartService.plotGraph();
-                    anthropometryChartService.plotDataElements();
-                    anthropometryChartService.drawLineGraph();
                 }
             });
 
             anthropometryChartService.plotGraph();
-            anthropometryChartService.plotDataElements();
-            anthropometryChartService.drawLineGraph();
-
 
             if (EventFormService.getInstance().init(
                     Sdk.d2(),
@@ -365,14 +354,11 @@ public class AnthropometryActivity extends AppCompatActivity {
 
         @Override
         public void onBackPressed() {
-
             if (formType == FormType.CREATE)
                 EventFormService.getInstance().delete();
             setResult(RESULT_CANCELED);
             finish();
-
         }
-
 
 
         private boolean saveElements() {
@@ -420,7 +406,6 @@ public class AnthropometryActivity extends AppCompatActivity {
             weightDataWHO = d.getWeightForAgeGirls();
             weightForHeightDataWHO = d.getWeightForHeightGirls();
         }
-
     }
 
     private void finishEnrollment() {

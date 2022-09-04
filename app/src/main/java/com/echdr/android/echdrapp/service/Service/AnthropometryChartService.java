@@ -43,6 +43,25 @@ public class AnthropometryChartService {
 
     AnthropometryMissingHeightSetter anthropometryMissingHeightSetter;
 
+    public AnthropometryChartService(GraphView heightGraph, GraphView weightGraph,
+                                     GraphView weightHeightGraph, String sex,
+                                     Context context, String selectedChild,
+                                     TrackedEntityAttributeValue birthday,
+                                     Map<Integer, Integer> heightValues,
+                                     Map<Integer, Integer> weightValues) {
+        this.heightGraph = heightGraph;
+        this.weightGraph = weightGraph;
+        this.weightHeightGraph = weightHeightGraph;
+        this.sex = sex;
+        this.context = context;
+        this.selectedChild = selectedChild;
+        this.birthday = birthday;
+        this.heightValues = heightValues;
+        this.weightValues = weightValues;
+        anthropometryMissingHeightSetter = new AnthropometryMissingHeightSetter();
+    }
+
+    /*
     public void setHeightGraph(GraphView heightGraph) {
         this.heightGraph = heightGraph;
     }
@@ -82,7 +101,12 @@ public class AnthropometryChartService {
     public AnthropometryChartService(){
         anthropometryMissingHeightSetter = new AnthropometryMissingHeightSetter();
     }
+     */
 
+    /**
+     * This method will plot the background of the graph based on the WHO dataset
+     *
+     */
     public void plotGraph()
     {
         //setup charts and background
@@ -145,9 +169,11 @@ public class AnthropometryChartService {
         heightValues = new HashMap<>();
         weightValues = new HashMap<>();
 
+        plotDataElements();
+        drawLineGraph();
     }
 
-    public void plotDataElements()
+    private void plotDataElements()
     {
         List<String> j = new ArrayList<>();
         j.add(selectedChild);
@@ -219,7 +245,7 @@ public class AnthropometryChartService {
     }
 
     @SuppressLint("LongLogTag")
-    public void drawLineGraph()
+    private void drawLineGraph()
     {
 
         LineGraphSeries<DataPoint> height_series = new LineGraphSeries<DataPoint>();

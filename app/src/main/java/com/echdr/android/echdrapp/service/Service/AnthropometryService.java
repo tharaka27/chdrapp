@@ -5,6 +5,8 @@ import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.echdr.android.echdrapp.ui.event_form.DataValuesWHO;
+
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValue;
 
 import java.text.SimpleDateFormat;
@@ -39,11 +41,9 @@ public class AnthropometryService {
 
         int category = 0;
         try {
-            System.out.println("Change color : " + currentAge +" currentValue" + currentValue);
-
             // divide by 4 to covert to months
             double[] array = data.get( currentAge/4 );
-            System.out.println("month : " + String.valueOf(currentAge/4) +" currentValue " + currentValue);
+
             for (category = 0; category < 4; ) {
 
                 assert array != null;
@@ -58,7 +58,6 @@ public class AnthropometryService {
             e.printStackTrace();
         }
 
-        System.out.println("Suitable Category is " + category);
 
         switch (category) {
             case -1:
@@ -97,14 +96,12 @@ public class AnthropometryService {
                 double diffWeeks = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS) / 7 / 52.143;
 
                 int yrs = diff/52;
-                //if(yrs==0){
+
                 AgeInWeeksTxt.setText(String.valueOf(diff));
 
                 String doubleAsString = String.valueOf(diffWeeks);
                 int indexOfDecimal = doubleAsString.indexOf(".");
 
-               //double months = Double.valueOf(doubleAsString.substring(indexOfDecimal)) * 12;
-                //AgeInMonthsTxt.setText(String.valueOf(diff));
                 double months = Math.round(Double.valueOf(doubleAsString.substring(indexOfDecimal)) * 12 *  100)/100;
 
                 AgeInMonthsTxt.setText(doubleAsString.substring(0, indexOfDecimal) + " years " + months+  " months");
