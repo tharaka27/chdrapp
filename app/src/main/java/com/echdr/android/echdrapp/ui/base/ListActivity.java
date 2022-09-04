@@ -29,4 +29,9 @@ public abstract class ListActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 }

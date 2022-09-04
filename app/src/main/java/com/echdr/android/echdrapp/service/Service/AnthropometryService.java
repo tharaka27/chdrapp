@@ -22,7 +22,7 @@ public class AnthropometryService {
                             boolean height, TextView AgeInWeeksTxt) {
         int currentAge = 0;
         if(!(AgeInWeeksTxt.getText().toString().isEmpty() ||
-                AgeInWeeksTxt.getText().toString().equals("Age in weeks"))) {
+                AgeInWeeksTxt.getText().toString().equals("Age in Weeks"))) {
             currentAge = Integer.parseInt(AgeInWeeksTxt.getText().toString());
         }
 

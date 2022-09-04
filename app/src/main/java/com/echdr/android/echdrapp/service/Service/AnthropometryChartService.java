@@ -233,7 +233,12 @@ public class AnthropometryChartService {
                     heightValues.put(diff, 0);
                 }
             }else{
-                heightValues.put(diff, Integer.parseInt(height));
+                if(heightValues.containsKey(diff) && heightValues.get(diff) != 0){
+                    heightValues.put(diff, heightValues.get(diff) > Integer.parseInt(height) ?
+                            heightValues.get(diff):Integer.parseInt(height) );
+                }else{
+                    heightValues.put(diff, Integer.parseInt(height));
+                }
             }
             weightValues.put(diff, Integer.parseInt(weight));
 

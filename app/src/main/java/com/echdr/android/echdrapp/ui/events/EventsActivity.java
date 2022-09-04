@@ -827,5 +827,11 @@ public class EventsActivity extends ListActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        observeEvents();
+    }
+
 
 }
