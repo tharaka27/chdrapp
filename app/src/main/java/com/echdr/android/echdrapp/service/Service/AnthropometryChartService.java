@@ -250,10 +250,14 @@ public class AnthropometryChartService {
         }
 
         // Fill the missing values
-        anthropometryMissingHeightSetter.setDataElements(heightValues);
-        anthropometryMissingHeightSetter.setMissingElements();
-        heightValues = anthropometryMissingHeightSetter.getDataElements();
-
+        try {
+            anthropometryMissingHeightSetter.setDataElements(heightValues);
+            anthropometryMissingHeightSetter.setMissingElements();
+            heightValues = anthropometryMissingHeightSetter.getDataElements();
+        }catch (IllegalArgumentException e)
+        {
+            Log.e(TAG, e.toString());
+        }
 
         for(int i=0; i< 60; i++)
         {
@@ -266,10 +270,15 @@ public class AnthropometryChartService {
                 weightValues.put(i, 0);
             }
         }
-        anthropometryMissingHeightSetter.setDataElements(weightValues);
-        anthropometryMissingHeightSetter.setMissingElements();
-        weightValues = anthropometryMissingHeightSetter.getDataElements();
 
+        try {
+            anthropometryMissingHeightSetter.setDataElements(weightValues);
+            anthropometryMissingHeightSetter.setMissingElements();
+            weightValues = anthropometryMissingHeightSetter.getDataElements();
+        } catch (IllegalArgumentException e)
+        {
+            Log.e(TAG, e.toString());
+        }
 
         Log.i(TAG, String.format("Height values %s", heightValues.toString()));
         Log.i(TAG, String.format("Weight values %s", weightValues.toString()));

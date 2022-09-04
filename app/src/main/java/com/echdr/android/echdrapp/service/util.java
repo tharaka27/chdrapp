@@ -2,8 +2,6 @@ package com.echdr.android.echdrapp.service;
 
 import com.echdr.android.echdrapp.data.Sdk;
 import com.echdr.android.echdrapp.data.service.forms.EventFormService;
-import com.echdr.android.echdrapp.data.service.forms.RuleEngineService;
-import com.echdr.android.echdrapp.ui.event_form.AnthropometryActivity;
 
 import static android.text.TextUtils.isEmpty;
 

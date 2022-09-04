@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -15,13 +14,11 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 
-import com.echdr.android.echdrapp.LocaleHelper;
 import com.echdr.android.echdrapp.R;
 import com.echdr.android.echdrapp.data.Sdk;
 import com.echdr.android.echdrapp.data.service.ActivityStarter;
 import com.echdr.android.echdrapp.ui.base.ListActivity;
 import com.echdr.android.echdrapp.ui.event_form.AnthropometryActivity;
-import com.echdr.android.echdrapp.ui.event_form.AnthropometryActivityNew;
 import com.echdr.android.echdrapp.ui.event_form.EventFormActivity;
 import com.echdr.android.echdrapp.ui.event_form.OtherEvaluationActivity;
 import com.echdr.android.echdrapp.ui.event_form.OtherInterventionPoverty;
@@ -41,7 +38,6 @@ import com.echdr.android.echdrapp.ui.event_form.TherapeuticManagementActivity;
 import com.echdr.android.echdrapp.ui.event_form.TherapeuticOutcomeActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import org.hisp.dhis.android.core.arch.db.stores.binders.internal.StatementWrapper;
 import org.hisp.dhis.android.core.arch.repositories.scope.RepositoryScope;
 import org.hisp.dhis.android.core.enrollment.Enrollment;
 import org.hisp.dhis.android.core.enrollment.EnrollmentObjectRepository;
@@ -56,10 +52,8 @@ import org.hisp.dhis.android.core.program.ProgramStageTableInfo;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -541,13 +535,13 @@ public class EventsActivity extends ListActivity {
                                                         System.out.println(stageSelected);
                                                         if(selectedProgram.equals("hM6Yt9FQL0n"))
                                                         {
-                                                            return AnthropometryActivityNew.getFormActivityIntent(
+                                                            return AnthropometryActivity.getFormActivityIntent(
                                                                     EventsActivity.this,
                                                                     eventUid,
                                                                     selectedProgram,
                                                                     Sdk.d2().organisationUnitModule().organisationUnits()
                                                                             .one().blockingGet().uid(),
-                                                                    AnthropometryActivityNew.FormType.CREATE,
+                                                                    AnthropometryActivity.FormType.CREATE,
                                                                     selectedChild);
                                                         }else if(stageSelected.equals("KN0o3H6x8IH"))
                                                         {
