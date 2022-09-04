@@ -42,12 +42,15 @@ public class AnthropometryValidator extends Validator {
             return false;
         }
 
+        //TODO removed height validator
+        // TODO only isEmpty() should be removed
+        /*
         if( heightTxt.getText().toString().isEmpty() ||
                 Integer.parseInt(heightTxt.getText().toString()) < 15
                 || Integer.parseInt(heightTxt.getText().toString()) > 150){
             CreateAlertDialog(context.getString(R.string.anthro_height));
             return false;
-        }
+        }*/
 
         if( weightTxt.getText().toString().isEmpty() ||
                 Integer.parseInt(weightTxt.getText().toString()) < 100

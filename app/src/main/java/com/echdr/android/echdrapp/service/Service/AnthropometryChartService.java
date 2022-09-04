@@ -1,11 +1,14 @@
 package com.echdr.android.echdrapp.service.Service;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.echdr.android.echdrapp.R;
 import com.echdr.android.echdrapp.data.Sdk;
+import com.echdr.android.echdrapp.service.Setter.AnthropometryMissingHeightSetter;
 import com.echdr.android.echdrapp.ui.event_form.DataValuesWHO;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
@@ -15,6 +18,7 @@ import org.hisp.dhis.android.core.event.Event;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValue;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityDataValueObjectRepository;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,6 +29,7 @@ import java.util.concurrent.TimeUnit;
 import lombok.Setter;
 
 public class AnthropometryChartService {
+    private static final String TAG = "AnthropometryChartService";
     private GraphView heightGraph;
     private GraphView weightGraph;
     private GraphView weightHeightGraph;
@@ -34,6 +39,8 @@ public class AnthropometryChartService {
     private TrackedEntityAttributeValue birthday;
     private Map<Integer, Integer> heightValues;
     private Map<Integer, Integer> weightValues;
+
+    AnthropometryMissingHeightSetter anthropometryMissingHeightSetter;
 
     public void setHeightGraph(GraphView heightGraph) {
         this.heightGraph = heightGraph;
@@ -71,6 +78,9 @@ public class AnthropometryChartService {
         this.weightValues = weightValues;
     }
 
+    public AnthropometryChartService(){
+        anthropometryMissingHeightSetter = new AnthropometryMissingHeightSetter();
+    }
 
     public void plotGraph()
     {
@@ -172,6 +182,7 @@ public class AnthropometryChartService {
         return currentValue;
     }
 
+    @SuppressLint("LongLogTag")
     public void prepareDataPoints(String date, String height, String weight)
     {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -186,16 +197,24 @@ public class AnthropometryChartService {
             int diff = (int) TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS) / 30;
 
             // Enter to the data values
-            heightValues.put(diff, Integer.parseInt(height));
+            if(height.isEmpty() || height == ""){
+                heightValues.put(diff, 0);
+            }else{
+                heightValues.put(diff, Integer.parseInt(height));
+            }
             weightValues.put(diff, Integer.parseInt(weight));
 
-        } catch (Exception error) {
-            System.out.print("Error in parsing date field: " + error.toString());
+        } catch (ParseException error) {
+            Log.e(TAG, String.format("Birthday : %s and event day : %s", birthday.value(), date));
+        } catch (Exception error){
+            Log.e(TAG, error.toString());
         }
     }
 
+    @SuppressLint("LongLogTag")
     public void drawLineGraph()
     {
+
         LineGraphSeries<DataPoint> height_series = new LineGraphSeries<DataPoint>();
         LineGraphSeries<DataPoint> weight_series = new LineGraphSeries<DataPoint>();
         LineGraphSeries<DataPoint> weight_for_height_series = new LineGraphSeries<DataPoint>();
@@ -205,7 +224,9 @@ public class AnthropometryChartService {
         height_series.appendData(
                 new DataPoint(0,birthHeight), true, 61
         );
-        System.out.println("[Debug] Birth height is " + String.valueOf(birthHeight));
+
+        Log.i(TAG, String.format("Birth Height is %s", String.valueOf(birthHeight)));
+        //System.out.println("[Debug] Birth height is " + String.valueOf(birthHeight));
 
         weight_series.appendData(
                 new DataPoint(0,birthWeight/1000), true, 61
@@ -213,18 +234,26 @@ public class AnthropometryChartService {
         weight_for_height_series.appendData(
                 new DataPoint(birthHeight, birthWeight/1000) , true, 61
         );
-        System.out.println("[Debug] Draw height is " + String.valueOf(birthHeight));
 
-        //TODO height values missing value adder here
-
+        int heightLastFilledElement = 0;
         for(int i=0; i< 60; i++)
         {
-            if(heightValues.containsKey(i))
+            if(heightValues.containsKey(i) && !heightValues.get(i).equals(0))
             {
+                heightLastFilledElement = i;
                 height_series.appendData(
                         new DataPoint(i, heightValues.get(i)), true, 61);
+            }else{
+                // fill for missing height setter
+                heightValues.put(i, 0);
             }
         }
+
+        // Fill the missing values
+        anthropometryMissingHeightSetter.setDataElements(heightValues);
+        anthropometryMissingHeightSetter.setMissingElements();
+        heightValues = anthropometryMissingHeightSetter.getDataElements();
+
 
         for(int i=0; i< 60; i++)
         {
@@ -232,25 +261,38 @@ public class AnthropometryChartService {
             {
                 weight_series.appendData(
                         new DataPoint(i, weightValues.get(i)/1000f), true, 61);
+            } else {
+                // fill for missing height setter
+                weightValues.put(i, 0);
             }
         }
+        anthropometryMissingHeightSetter.setDataElements(weightValues);
+        anthropometryMissingHeightSetter.setMissingElements();
+        weightValues = anthropometryMissingHeightSetter.getDataElements();
 
-        for(int i=0; i< 60; i++)
+
+        Log.i(TAG, String.format("Height values %s", heightValues.toString()));
+        Log.i(TAG, String.format("Weight values %s", weightValues.toString()));
+        Log.i(TAG, String.format("Last filled element is %d", heightLastFilledElement));
+
+        // fill only till the last filled height value
+        for(int i=0; i<= heightLastFilledElement; i++)
         {
             if(heightValues.containsKey(i))
             {
                 try {
                     weight_for_height_series.appendData(
-                            new DataPoint(
-                                    heightValues.get(i),
-                                    weightValues.get(i) / 1000f),
-                            true, 61);
+                            new DataPoint( heightValues.get(i),
+                                        weightValues.get(i) / 1000f),
+                                 true, 61);
                 } catch (Exception e)
                 {
-                    System.out.println("Error caught");
+                    Log.e(TAG, e.toString());
+                    /*
                     Toast t = Toast.makeText(context,
                             "Height values should be increasing", Toast.LENGTH_LONG);
                     t.show();
+                     */
                 }
             }
         }

@@ -30,8 +30,10 @@ import com.echdr.android.echdrapp.R;
 import com.echdr.android.echdrapp.data.Sdk;
 import com.echdr.android.echdrapp.data.service.forms.EventFormService;
 import com.echdr.android.echdrapp.data.service.forms.RuleEngineService;
-import com.echdr.android.echdrapp.service.AnthropometryChartService;
+import com.echdr.android.echdrapp.service.Service.AnthropometryChartService;
+import com.echdr.android.echdrapp.service.Service.AnthropometryService;
 import com.echdr.android.echdrapp.service.Validator.AnthropometryValidator;
+import com.echdr.android.echdrapp.service.util;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -83,7 +85,6 @@ public class AnthropometryActivityNew extends AppCompatActivity {
         private EditText weightTxt;
         private Button saveButton;
         private Button plotGraphButton;
-//        private ImageView backButton;
 
         private TrackedEntityAttributeValue birthday;
 
@@ -132,7 +133,6 @@ public class AnthropometryActivityNew extends AppCompatActivity {
             AgeInWeeksTxt = findViewById(R.id.ageInWeeks);
             AgeInMonthsTxt  =  findViewById(R.id.ageInMonths);
             plotGraphButton = findViewById(R.id.plotGraph);
-//            backButton = findViewById(R.id.back_btn_anthopo);
 
             eventUid = getIntent().getStringExtra(IntentExtra.EVENT_UID.name());
             programUid = getIntent().getStringExtra(IntentExtra.PROGRAM_UID.name());
@@ -141,6 +141,8 @@ public class AnthropometryActivityNew extends AppCompatActivity {
             orgUnit = getIntent().getStringExtra(IntentExtra.OU_UID.name());
 
             engineInitialization = PublishProcessor.create();
+
+            AnthropometryService anthropometryService = new AnthropometryService();
 
             // Get the birthday of the child
             birthday = Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
@@ -154,9 +156,11 @@ public class AnthropometryActivityNew extends AppCompatActivity {
                     .byTrackedEntityAttribute().eq("lmtzQrlHMYF")
                     .one().blockingGet();
 
-            if (sex_d == null)
-                System.out.println("Sex is null");
+            Log.i(TAG, String.format("Birthday : %s and sex : %s", birthday.value(), sex_d.value()));
 
+            if (sex_d == null) {
+                Log.e(TAG, "TrackedEntityAttributeValue for sex is NULL");
+            }
             sex = sex_d.value();
 
             context = this;
@@ -180,7 +184,6 @@ public class AnthropometryActivityNew extends AppCompatActivity {
             textView_Date.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    System.out.println("Clicked et date");
                     DatePickerDialog datePickerDialog = new DatePickerDialog(
                             context, android.R.style.Theme_Holo_Light_Dialog, setListener, year, month, day);
                     datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -245,7 +248,7 @@ public class AnthropometryActivityNew extends AppCompatActivity {
 
                     String date_string = year + "-" + String.format("%02d", month) + "-" + String.format("%02d", dayOfMonth) ;
                     textView_Date.setText(date_string);
-                    setAgeInWeeks();
+                    anthropometryService.setAgeInWeeks( birthday, textView_Date, AgeInWeeksTxt, AgeInMonthsTxt);
 
                     // make sure weight and height is set after date is picked
                     // unless color changes will not work properly
@@ -260,7 +263,8 @@ public class AnthropometryActivityNew extends AppCompatActivity {
             {
                 // set date
                 try{
-                    String prev_date = getDataElement("YB21tVtxZ0z");
+
+                    String prev_date = util.getDataElement("YB21tVtxZ0z", eventUid);
                     if(!prev_date.isEmpty())
                     {
                         textView_Date.setText(prev_date);
@@ -274,8 +278,8 @@ public class AnthropometryActivityNew extends AppCompatActivity {
                     textView_Date.setText("");
                 }
 
-                heightTxt.setText(getDataElement("cDXlUgg1WiZ"));
-                weightTxt.setText(getDataElement("rBRI27lvfY5"));
+                heightTxt.setText(util.getDataElement("cDXlUgg1WiZ", eventUid));
+                weightTxt.setText(util.getDataElement("rBRI27lvfY5", eventUid));
 
                 String Currentweight;
                 if (weightTxt.getText().toString().isEmpty()) {
@@ -286,19 +290,19 @@ public class AnthropometryActivityNew extends AppCompatActivity {
                 }
 
                 // First set age in weeks because change color uses its value
-                setAgeInWeeks();
+                anthropometryService.setAgeInWeeks( birthday, textView_Date, AgeInWeeksTxt, AgeInMonthsTxt);
 
-                ChangeColor(heightTxt, heightTxt.getText().toString(), heightDataWHO, true);
-                ChangeColor(weightTxt, Currentweight, weightDataWHO, true);
-
-
+                anthropometryService.ChangeColor(heightTxt, heightTxt.getText().toString(),
+                        heightDataWHO, true, AgeInWeeksTxt);
+                anthropometryService.ChangeColor(weightTxt, Currentweight,
+                        weightDataWHO, true, AgeInWeeksTxt);
 
             }else{
                 textView_Date.setText("Click here to set Date");
             }
 
-            changeListeners(heightTxt, heightDataWHO, true);
-            changeListeners(weightTxt, weightDataWHO, false);
+            changeListeners(heightTxt, heightDataWHO, true, anthropometryService);
+            changeListeners(weightTxt, weightDataWHO, false, anthropometryService);
 
             saveButton.setOnClickListener(v -> {
                 boolean wasSuccessful = saveElements();
@@ -344,7 +348,8 @@ public class AnthropometryActivityNew extends AppCompatActivity {
                 this.engineService = new RuleEngineService();
         }
 
-        private void changeListeners(EditText editText, Map<Integer, double[]> dataWHO, boolean isHeight){
+        private void changeListeners(EditText editText, Map<Integer, double[]> dataWHO,
+                                     boolean isHeight, AnthropometryService anthropometryService){
             editText.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -356,7 +361,8 @@ public class AnthropometryActivityNew extends AppCompatActivity {
 
                 @Override
                 public void afterTextChanged(Editable s) {
-                    ChangeColor(editText, s.toString(), dataWHO, isHeight);
+                    anthropometryService.ChangeColor(editText, s.toString(), dataWHO, isHeight,
+                        AgeInWeeksTxt );
                 }
             });
         }
@@ -407,160 +413,16 @@ public class AnthropometryActivityNew extends AppCompatActivity {
                 return false;
             }
 
-            saveDataElement("YB21tVtxZ0z", textView_Date.getText().toString());
-            saveDataElement("cDXlUgg1WiZ", heightTxt.getText().toString());
-            saveDataElement("rBRI27lvfY5", weightTxt.getText().toString());
+            util.saveDataElement("YB21tVtxZ0z", textView_Date.getText().toString(),
+                    eventUid, programUid, orgUnit, engineInitialization);
+            util.saveDataElement("cDXlUgg1WiZ", heightTxt.getText().toString(),
+                    eventUid, programUid, orgUnit, engineInitialization);
+            util.saveDataElement("rBRI27lvfY5", weightTxt.getText().toString(),
+                    eventUid, programUid, orgUnit, engineInitialization);
 
             //finishEnrollment();
             return true;
         }
-
-        private void ChangeColor(EditText text, String s,
-                                 Map<Integer, double[]> data, boolean height) {
-            int currentAge = 0;
-            if(!(AgeInWeeksTxt.getText().toString().isEmpty() ||
-                    AgeInWeeksTxt.getText().toString().equals("Age in weeks")))
-                currentAge = Integer.parseInt(AgeInWeeksTxt.getText().toString());
-
-            float currentValue;
-            if (s.isEmpty()) {
-                currentValue = 0;
-                text.setBackgroundColor(Color.WHITE);
-                return;
-            } else {
-                if (height) {
-                    currentValue = Float.parseFloat(s);
-                } else {
-                    currentValue = Float.parseFloat(s) / 1000f;
-                }
-            }
-
-            int category = 0;
-            try {
-                System.out.println("Change color : " + currentAge +" currentValue" + currentValue);
-
-                // divide by 4 to covert to months
-                double[] array = data.get( currentAge/4 );
-                System.out.println("month : " + String.valueOf(currentAge/4) +" currentValue " + currentValue);
-                for (category = 0; category < 4; ) {
-
-                    assert array != null;
-                    if (array[category] < currentValue) {
-                        category++;
-                    } else {
-                        break;
-                    }
-                }
-                category = category - 1;
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            System.out.println("Suitable Category is " + category);
-
-            switch (category) {
-                case -1:
-                    //text.setBackgroundColor(Color.RED);
-                    //text.setBackgroundColor(Color.parseColor("#e6653b"));
-                    text.setBackgroundColor(Color.parseColor("#a60c0c"));
-                    break;
-                case 0:
-                    //text.setBackgroundColor(Color.rgb(255, 165, 0)); // orange
-                    //text.setBackgroundColor(Color.parseColor("#ccc971"));
-                    text.setBackgroundColor(Color.parseColor("#F6A21E"));
-                    break;
-                case 1:
-                    //text.setBackgroundColor(Color.YELLOW);
-                    //text.setBackgroundColor(Color.parseColor("#afe1bb"));
-                    text.setBackgroundColor(Color.parseColor("#afe1bb"));
-                    break;
-                case 2:
-                    //text.setBackgroundColor(Color.GREEN);
-                    //text.setBackgroundColor(Color.parseColor("#a3ccae"));
-                    text.setBackgroundColor(Color.parseColor("#a3ccae"));
-                    break;
-                case 3:
-                    //text.setBackgroundColor(Color.rgb(215, 31, 226)); // purple color
-                    //text.setBackgroundColor(Color.parseColor("#f3e5f6"));
-                    text.setBackgroundColor(Color.parseColor("#f3e5f6"));
-                    break;
-
-            }
-
-        }
-
-    private void setAgeInWeeks()
-    {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-
-
-            try {
-                // Parse event date
-                Date dob = formatter.parse(birthday.value());
-                Date eventDate = formatter.parse(textView_Date.getText().toString());
-
-                // Calculate age in weeks
-                long diffInMillies = Math.abs(eventDate.getTime() - dob.getTime());
-
-                int diff = (int) TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS) / 7;
-                double diffWeeks = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS) / 7 / 52.143;
-
-                int yrs = diff/52;
-                //if(yrs==0){
-                AgeInWeeksTxt.setText(String.valueOf(diff));
-
-                String doubleAsString = String.valueOf(diffWeeks);
-                int indexOfDecimal = doubleAsString.indexOf(".");
-                //System.out.println("Double Number: " + diff);
-                //System.out.println("Integer Part: " + doubleAsString.substring(0, indexOfDecimal));
-                //System.out.println("Decimal Part: " + doubleAsString.substring(indexOfDecimal));
-
-                //double months = Double.valueOf(doubleAsString.substring(indexOfDecimal)) * 12;
-                //AgeInMonthsTxt.setText(String.valueOf(diff));
-                double months = Math.round(Double.valueOf(doubleAsString.substring(indexOfDecimal)) * 12 *  100)/100;
-
-                AgeInMonthsTxt.setText(doubleAsString.substring(0, indexOfDecimal) + " years " + months+  " months");
-                //}else
-                //{
-                //    String display = String.valueOf(yrs) +"yrs " + String.valueOf(diff%52);
-                //    AgeInWeeksTxt.setText(display);
-                //}
-
-
-            } catch (Exception error) {
-                System.out.print("Error in parsing date field: " + error.toString());
-            }
-    }
-
-    private void setAgeInYearsAndMonths()
-    {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-
-        try {
-            // Parse event date
-            Date dob = formatter.parse(birthday.value());
-            Date eventDate = formatter.parse(textView_Date.getText().toString());
-
-            // Calculate age in weeks
-            long diffInMillies = Math.abs(eventDate.getTime() - dob.getTime());
-            double diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS) / 7 / 52.143;
-
-            String doubleAsString = String.valueOf(diff);
-            int indexOfDecimal = doubleAsString.indexOf(".");
-            //System.out.println("Double Number: " + diff);
-            //System.out.println("Integer Part: " + doubleAsString.substring(0, indexOfDecimal));
-            //System.out.println("Decimal Part: " + doubleAsString.substring(indexOfDecimal));
-
-            //double months = Double.valueOf(doubleAsString.substring(indexOfDecimal)) * 12;
-            //AgeInMonthsTxt.setText(String.valueOf(diff));
-            double months = Math.round(Double.valueOf(doubleAsString.substring(indexOfDecimal)) * 12 *  100)/100;
-
-            AgeInMonthsTxt.setText(doubleAsString.substring(0, indexOfDecimal) + " years " + months+  " months");
-
-        } catch (Exception error) {
-            System.out.print("Error in parsing date field: " + error.toString());
-        }
-    }
 
     private void selectDataSets()
     {
@@ -594,65 +456,6 @@ public class AnthropometryActivityNew extends AppCompatActivity {
         datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
         datePickerDialog.show();
     }
-
-    /*
-    private String getDataElement(String dataElement) {
-        TrackedEntityDataValueObjectRepository valueRepository =
-                Sdk.d2().trackedEntityModule().trackedEntityDataValues()
-                        .value(
-                                eventUid,
-                                dataElement
-                        );
-
-        String currentValue = valueRepository.blockingExists() ?
-                valueRepository.blockingGet().value() : "";
-
-        return currentValue;
-    }
-
-
-    private void saveDataElement(String dataElement, String value) {
-        TrackedEntityDataValueObjectRepository valueRepository;
-        try {
-            valueRepository = Sdk.d2().trackedEntityModule().trackedEntityDataValues()
-                    .value(
-                            EventFormService.getInstance().getEventUid(),
-                            dataElement
-                    );
-        } catch (Exception e) {
-            EventFormService.getInstance().init(
-                    Sdk.d2(),
-                    eventUid,
-                    programUid,
-                    getIntent().getStringExtra(AnthropometryActivityNew.IntentExtra.OU_UID.name()));
-            valueRepository = Sdk.d2().trackedEntityModule().trackedEntityDataValues()
-                    .value(
-                            EventFormService.getInstance().getEventUid(),
-                            dataElement
-                    );
-        }
-
-        String currentValue = valueRepository.blockingExists() ?
-                valueRepository.blockingGet().value() : "";
-
-        if (currentValue == null)
-            currentValue = "";
-
-        try {
-            if (!isEmpty(value)) {
-                valueRepository.blockingSet(value);
-            } else {
-                valueRepository.blockingDeleteIfExist();
-            }
-        } catch (D2Error d2Error) {
-            d2Error.printStackTrace();
-        } finally {
-            if (!value.equals(currentValue)) {
-                engineInitialization.onNext(true);
-            }
-        }
-    }
-     */
 
     private void finishEnrollment() {
         setResult(RESULT_OK);
