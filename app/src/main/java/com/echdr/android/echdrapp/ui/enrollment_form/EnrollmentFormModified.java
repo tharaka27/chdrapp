@@ -48,7 +48,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
     private PublishProcessor<Boolean> engineInitialization;
     private RuleEngineService engineService;
     private RuleEngine ruleEngine;
-    private static boolean isError = false;
+    private static boolean isValidated = false;
 
     private DatePickerDialog.OnDateSetListener setListenerRegistration;
     private DatePickerDialog.OnDateSetListener setListenerDob;
@@ -276,7 +276,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // start of the validating this should be false
-                isError = false;
+                isValidated = false;
                 EnrollmentFormValidator enrollmentFormValidator = new EnrollmentFormValidator();
                 enrollmentFormValidator.setGNArea(GNArea);
                 enrollmentFormValidator.setName(name);
@@ -300,7 +300,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
                 enrollmentFormValidator.setContext(context);
                 enrollmentFormValidator.setTAG(TAG);
 
-                isError = enrollmentFormValidator.validate();
+                isValidated = enrollmentFormValidator.validate();
 
                 saveElements();
             }
@@ -344,7 +344,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
 
     private void saveElements()
     {
-        if(isError){
+        if(!isValidated){
             Log.e(TAG, "Error occured while trying to save tracked entity instance" );
             return;
         }
