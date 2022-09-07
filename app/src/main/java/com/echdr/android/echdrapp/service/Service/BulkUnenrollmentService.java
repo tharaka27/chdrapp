@@ -42,21 +42,22 @@ public class BulkUnenrollmentService {
         ProgramList = new HashMap<String, List<String>>();
 
         //program , programStage, date , outcome
-        ProgramList.put("hM6Yt9FQL0n",  Arrays.asList("pI5JAmTcjE4"));
-        ProgramList.put("JsfNVX0hdq9",  Arrays.asList("ctwLm9rn8gr","E5rWDjnuN6M","x9iPS2RiOKO"));
-        ProgramList.put("lSSNwBMiwrK",  Arrays.asList("L4MJKSCcUof","SgPDQhOWB7f", "BIeXJ9fThq6"));
-        ProgramList.put("tc6RsYbgGzm",  Arrays.asList("QKsx9TfOJ3m","lSy6bC6y3UD", "rTHNOXde3wr"));
-        ProgramList.put("CoGsKgEG4O0",  Arrays.asList("RtC4CcoEs4J","HXin8cvKgVq", "xi20olIPIsb"));
+        ProgramList.put("hM6Yt9FQL0n",  Arrays.asList("pI5JAmTcjE4", "Anthropometry"));
+        ProgramList.put("JsfNVX0hdq9",  Arrays.asList("ctwLm9rn8gr","E5rWDjnuN6M","x9iPS2RiOKO", "Overweight / Obesity"));
+        ProgramList.put("lSSNwBMiwrK",  Arrays.asList("L4MJKSCcUof","SgPDQhOWB7f", "BIeXJ9fThq6", "Stunting"));
+        ProgramList.put("tc6RsYbgGzm",  Arrays.asList("QKsx9TfOJ3m","lSy6bC6y3UD", "rTHNOXde3wr", "Supplementary feeding"));
+        ProgramList.put("CoGsKgEG4O0",  Arrays.asList("RtC4CcoEs4J","HXin8cvKgVq", "xi20olIPIsb", "Therapeutic feeding"));
     }
 
     public void unenroll(String programID, String orgID, String date, String reasonForUnenrollment,
                          PublishProcessor<Boolean> engineInitialization){
-
+        Log.i(TAG, "Starting bulk un-enrollment process");
         for (String program: ProgramList.keySet()) {
             if(!program.equals(programID)){
 
                 if(program.equals("hM6Yt9FQL0n")){ // anthropometry program does not have reason for un-enrollment
                     unenrollFromProgram(program, ProgramList.get(program).get(0), orgID, null, engineInitialization);
+                    Log.i(TAG, String.format("Un-enrolling from {}", ProgramList.get(program).get(1)));
                     continue;
                 }
                 List<String> programData = ProgramList.get(program);
@@ -65,6 +66,7 @@ public class BulkUnenrollmentService {
                 dataElements.put(ProgramList.get(program).get(2), reasonForUnenrollment);
                 unenrollFromProgram(program, programData.get(0), orgID,
                         dataElements, engineInitialization);
+                Log.i(TAG, String.format("Un-enrolling from {}", ProgramList.get(program).get(3)));
             }
         }
     }

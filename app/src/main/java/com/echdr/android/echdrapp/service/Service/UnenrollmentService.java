@@ -82,6 +82,8 @@ public class UnenrollmentService {
                     if(reasonForUnenrollment.equals("Left the area")||
                             reasonForUnenrollment.equals("Left due to completion of age 5")||
                             reasonForUnenrollment.equals("Died")){
+                        bulkUnenrollmentService.setSelectedChild(selectedChild);
+                        bulkUnenrollmentService.setContext(context);
                         bulkUnenrollmentService.unenroll(programID, orgID, date, reasonForUnenrollment, engineInitialization);
                     }
                     function.call();

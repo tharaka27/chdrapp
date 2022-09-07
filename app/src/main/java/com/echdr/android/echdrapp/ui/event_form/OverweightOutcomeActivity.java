@@ -4,8 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Log;
@@ -13,7 +11,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -26,14 +23,13 @@ import com.echdr.android.echdrapp.data.Sdk;
 import com.echdr.android.echdrapp.data.service.forms.EventFormService;
 import com.echdr.android.echdrapp.data.service.forms.RuleEngineService;
 import com.echdr.android.echdrapp.service.Service.UnenrollmentService;
+import com.echdr.android.echdrapp.service.Setter.DateSetter;
 import com.echdr.android.echdrapp.service.Validator.OverweightOutcomeValidator;
 import com.echdr.android.echdrapp.service.util;
+import com.echdr.android.echdrapp.ui.enrollment_form.EnrollmentFormModified;
 
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValue;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -88,10 +84,10 @@ public class OverweightOutcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overweight_outcome);
 
-        textView_Date = findViewById(R.id.editTextDateOverweightOutcome);
-        spinner_Enrollment = findViewById(R.id.overweight_outcome_Enrollment_spinner);
-        saveButton         = findViewById(R.id.overweightOutcomeSave);
-        datePicker         = findViewById(R.id.over_out_date_pick);
+        textView_Date       = findViewById(R.id.editTextDateOverweightOutcome);
+        spinner_Enrollment  = findViewById(R.id.overweight_outcome_Enrollment_spinner);
+        saveButton          = findViewById(R.id.overweightOutcomeSave);
+        datePicker          = findViewById(R.id.over_out_date_pick);
 
         context = this;
 
@@ -122,93 +118,20 @@ public class OverweightOutcomeActivity extends AppCompatActivity {
         final int month = Integer.parseInt(s_monthNumber);
         final int day = Integer.parseInt(s_day);
 
-        textView_Date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.out.println("Clicked et date");
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        context, android.R.style.Theme_Holo_Light_Dialog, setListener, year, month, day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        DateSetter.setContext(context);
+        DateSetter.setBirthday(birthday);
+        DateSetter.setSetListener(setListener);
+        DateSetter.setTextView(textView_Date);
+        DateSetter.setImageView(datePicker);
+        DateSetter.setDate(year, month, day, 365*5+2);
 
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                Date dob = null;
-                try {
-                    dob = formatter.parse(birthday.value());
-                    datePickerDialog.getDatePicker().setMinDate(dob.getTime());
-
-                    Calendar c = Calendar.getInstance();
-                    c.setTime(dob);
-                    c.add(Calendar.DATE, 365*5+2);
-                    long minimum_value = Math.min(c.getTimeInMillis(), System.currentTimeMillis());
-
-                    datePickerDialog.getDatePicker().setMaxDate(minimum_value);
-
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                datePickerDialog.show();
-            }
-        });
-
-        datePicker.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        context, android.R.style.Theme_Holo_Light_Dialog, setListener, year, month, day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                Date dob = null;
-                try {
-                    dob = formatter.parse(birthday.value());
-                    datePickerDialog.getDatePicker().setMinDate(dob.getTime());
-
-                    Calendar c = Calendar.getInstance();
-                    c.setTime(dob);
-                    c.add(Calendar.DATE, 365*5+2);
-                    long minimum_value = Math.min(c.getTimeInMillis(), System.currentTimeMillis());
-
-                    datePickerDialog.getDatePicker().setMaxDate(minimum_value);
-
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                datePickerDialog.show();
-            }
-        });
-        setListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                month = month+1;
-                String date = year + "-" + String.format("%02d", month) + "-" + String.format("%02d", dayOfMonth) ;
-                textView_Date.setText(date);
-            }
-        };
-
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context,
-                R.array.overweight_outcome_type,
-                android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_Enrollment.setAdapter(adapter);
-        spinner_Enrollment.setOnItemSelectedListener(new OverweightOutcomeActivity.EnrollmentTypeSpinnerClass());
+        setSpinner(spinner_Enrollment, R.array.overweight_outcome_type);
 
         // Load the existing values - form.CHECK
         if(formType == OverweightOutcomeActivity.FormType.CHECK)
         {
             // set date
-            try{
-                String prev_date = util.getDataElement("E5rWDjnuN6M", eventUid);
-                if(!prev_date.isEmpty())
-                {
-                    textView_Date.setText(prev_date);
-                }
-            }
-            catch (Exception e)
-            {
-                textView_Date.setText("");
-            }
-
+            setTextView(textView_Date, "E5rWDjnuN6M", eventUid);
 
             // set enrollment type
             spinner_Enrollment.setSelection(
@@ -229,7 +152,6 @@ public class OverweightOutcomeActivity extends AppCompatActivity {
                 }
             }
         });
-
 
         if (EventFormService.getInstance().init(
                 Sdk.d2(),
@@ -318,6 +240,25 @@ public class OverweightOutcomeActivity extends AppCompatActivity {
         finish();
     }
 
+    private void setSpinner(Spinner spinner, Object object){
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context,
+                (Integer) object,
+                android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new EnrollmentTypeSpinnerClass());
+    }
+
+    private void setTextView(TextView textView, String dataElement, String eventUid){
+        try {
+            String element = util.getDataElement(dataElement, eventUid);
+            if (!element.isEmpty()) {
+                textView.setText(dataElement);
+            }
+        } catch (Exception e) {
+            textView.setText("");
+        }
+    }
 
 
     private int getSpinnerSelection(String dataElement, String [] array)
