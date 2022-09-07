@@ -125,17 +125,19 @@ public class OverweightOutcomeActivity extends AppCompatActivity {
         DateSetter.setImageView(datePicker);
         DateSetter.setDate(year, month, day, 365*5+2);
 
-        setSpinner(spinner_Enrollment, R.array.overweight_outcome_type);
+        //TODO test new util.setTextView and util.getSpinnerSelection
+
+        util.setSpinner(context, spinner_Enrollment, R.array.overweight_outcome_type);
 
         // Load the existing values - form.CHECK
         if(formType == OverweightOutcomeActivity.FormType.CHECK)
         {
             // set date
-            setTextView(textView_Date, "E5rWDjnuN6M", eventUid);
+            util.setTextView(textView_Date, "E5rWDjnuN6M", eventUid);
 
             // set enrollment type
             spinner_Enrollment.setSelection(
-                    getSpinnerSelection("x9iPS2RiOKO", other_type_array));
+                    util.getSpinnerSelection(eventUid, "x9iPS2RiOKO", other_type_array));
 
         }
         else{
@@ -194,22 +196,6 @@ public class OverweightOutcomeActivity extends AppCompatActivity {
         return UnenrollmentService.isSuccessfulUnenrollment();
     }
 
-    class EnrollmentTypeSpinnerClass implements AdapterView.OnItemSelectedListener
-    {
-        @Override
-        public void onItemSelected(AdapterView<?> parent, View v, int position, long id)
-        {
-            Toast.makeText(v.getContext(), "Your choose :" +
-                    other_type_array[position],Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        public void onNothingSelected(AdapterView<?> parent) {
-
-        }
-    }
-
-
     @Override
     protected void onResume(){
         super.onResume();
@@ -238,41 +224,6 @@ public class OverweightOutcomeActivity extends AppCompatActivity {
             EventFormService.getInstance().delete();
         setResult(RESULT_CANCELED);
         finish();
-    }
-
-    private void setSpinner(Spinner spinner, Object object){
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context,
-                (Integer) object,
-                android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(new EnrollmentTypeSpinnerClass());
-    }
-
-    private void setTextView(TextView textView, String dataElement, String eventUid){
-        try {
-            String element = util.getDataElement(dataElement, eventUid);
-            if (!element.isEmpty()) {
-                textView.setText(dataElement);
-            }
-        } catch (Exception e) {
-            textView.setText("");
-        }
-    }
-
-
-    private int getSpinnerSelection(String dataElement, String [] array)
-    {
-        int itemPosition = -1;
-        String stringElement = util.getDataElement(dataElement, eventUid);
-        for(int i =0; i<array.length; i++)
-        {
-            if(array[i].equals(stringElement))
-            {
-                itemPosition = i;
-            }
-        }
-        return itemPosition;
     }
 
 }
