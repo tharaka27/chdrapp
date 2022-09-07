@@ -252,6 +252,37 @@ public class OverweightOutcomeActivity extends AppCompatActivity {
             this.engineService = new RuleEngineService();
     }
 
+    @SuppressLint("LongLogTag")
+    private boolean saveElements()
+    {
+        OverweightOutcomeValidator overweightOutcomeValidator = new OverweightOutcomeValidator();
+        overweightOutcomeValidator.setTextView_Date(textView_Date);
+        overweightOutcomeValidator.setContext(context);
+        overweightOutcomeValidator.setSpinner_Enrollment(spinner_Enrollment);
+        overweightOutcomeValidator.setBirthday(birthday);
+
+        if(!overweightOutcomeValidator.validate()){
+            Log.e(TAG, "Validation failure" );
+            return false;
+        }
+
+        Map<String, String> dataElements = new HashMap<>();
+        dataElements.put("E5rWDjnuN6M", textView_Date.getText().toString());
+        dataElements.put("x9iPS2RiOKO", english_other_type_array[spinner_Enrollment.getSelectedItemPosition()]);
+
+        UnenrollmentService.setSelectedChild(selectedChild);
+        UnenrollmentService.setContext(context);
+
+        UnenrollmentService.unenroll(getString(R.string.unenroll_overWeight),
+                dataElements, "JsfNVX0hdq9", eventUid, orgUnit, engineInitialization,
+                ()->{
+                    finishEnrollment();
+                    return null;
+                });
+
+        return UnenrollmentService.isSuccessfulUnenrollment();
+    }
+
     class EnrollmentTypeSpinnerClass implements AdapterView.OnItemSelectedListener
     {
         @Override
@@ -298,36 +329,7 @@ public class OverweightOutcomeActivity extends AppCompatActivity {
         finish();
     }
 
-    @SuppressLint("LongLogTag")
-    private boolean saveElements()
-    {
-        OverweightOutcomeValidator overweightOutcomeValidator = new OverweightOutcomeValidator();
-        overweightOutcomeValidator.setTextView_Date(textView_Date);
-        overweightOutcomeValidator.setContext(context);
-        overweightOutcomeValidator.setSpinner_Enrollment(spinner_Enrollment);
-        overweightOutcomeValidator.setBirthday(birthday);
 
-        if(!overweightOutcomeValidator.validate()){
-            Log.e(TAG, "Validation failure" );
-            return false;
-        }
-
-        Map<String, String> dataElements = new HashMap<>();
-        dataElements.put("E5rWDjnuN6M", textView_Date.getText().toString());
-        dataElements.put("x9iPS2RiOKO", english_other_type_array[spinner_Enrollment.getSelectedItemPosition()]);
-
-        UnenrollmentService.setSelectedChild(selectedChild);
-        UnenrollmentService.setContext(context);
-
-        UnenrollmentService.unenroll(getString(R.string.unenroll_overWeight),
-                dataElements, "JsfNVX0hdq9", eventUid, orgUnit, engineInitialization,
-                ()->{
-                    finishEnrollment();
-                    return null;
-                });
-
-        return UnenrollmentService.isSuccessfulUnenrollment();
-    }
 
     private int getSpinnerSelection(String dataElement, String [] array)
     {

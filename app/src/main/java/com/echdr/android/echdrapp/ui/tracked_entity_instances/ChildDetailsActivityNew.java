@@ -794,10 +794,11 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
 
         if(!AnthropometryStatus.isEmpty())
         {
-            IsAnthropometryEnrolled = true;
+            //IsAnthropometryEnrolled = true;
             System.out.println("Anthropometry is " + AnthropometryStatus.get(0).status().toString() );
             anthropometryEnrollmentID = AnthropometryStatus.get(0).uid();
             if ( AnthropometryStatus.get(0).status().equals(EnrollmentStatus.ACTIVE)) {
+                IsAnthropometryEnrolled = true;
                 antopoEnrolled.setVisibility(View.VISIBLE);
                 antopoNotEnrolled.setVisibility(View.GONE);
             }
@@ -812,9 +813,10 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
 
         if(!otherStatus.isEmpty())
         {
-            IsOtherNonHealthEnrolled = true;
+            //IsOtherNonHealthEnrolled = true;
             otherEnrollmentID =  otherStatus.get(0).uid();
             if ( otherStatus.get(0).status().equals(EnrollmentStatus.ACTIVE)) {
+                IsOtherNonHealthEnrolled = true;
                 otherHealthEnrolled.setVisibility(View.VISIBLE);
                 otherHealthNotEnrolled.setVisibility(View.GONE);
             }
@@ -829,9 +831,10 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
 
         if(!overweightStatus.isEmpty())
         {
-            IsOverweightEnrolled = true;
+            //IsOverweightEnrolled = true;
             overweightEnrollmentID =  overweightStatus.get(0).uid();
             if ( overweightStatus.get(0).status().equals(EnrollmentStatus.ACTIVE)) {
+                IsOverweightEnrolled = true;
                 overweightEnrolled.setVisibility(View.VISIBLE);
                 overweightNotEnrolled.setVisibility(View.GONE);
             }
@@ -846,9 +849,10 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
 
         if(!stuntingStatus.isEmpty())
         {
-            IsStuntingEnrolled = true;
+            //IsStuntingEnrolled = true;
             stuntingEnrollmentID = stuntingStatus.get(0).uid();
             if ( stuntingStatus.get(0).status().equals(EnrollmentStatus.ACTIVE)) {
+                IsStuntingEnrolled = true;
                 stuntingEnrolled.setVisibility(View.VISIBLE);
                 stuntingNotEnrolled.setVisibility(View.GONE);
             }
@@ -863,9 +867,10 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
 
         if(!supplementaryStatus.isEmpty())
         {
-            IsSupplementaryEnrolled = true;
+            //IsSupplementaryEnrolled = true;
             supplementaryEnrollmentID = supplementaryStatus.get(0).uid();
             if ( supplementaryStatus.get(0).status().equals(EnrollmentStatus.ACTIVE)) {
+                IsSupplementaryEnrolled = true;
                 supplementaryEnrolled.setVisibility(View.VISIBLE);
                 supplementaryNotEnrolled.setVisibility(View.GONE);
             }
@@ -880,9 +885,10 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
 
         if(!therapeuticStatus.isEmpty())
         {
-            IsTherapeuticalEnrolled = true;
+            //IsTherapeuticalEnrolled = true;
             therapeuticEnrollmentID = therapeuticStatus.get(0).uid();
             if ( therapeuticStatus.get(0).status().equals(EnrollmentStatus.ACTIVE)) {
+                IsTherapeuticalEnrolled = true;
                 therapeuticEnrolled.setVisibility(View.VISIBLE);
                 therapeuticNotEnrolled.setVisibility(View.GONE);
             }
