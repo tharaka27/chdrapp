@@ -28,6 +28,7 @@ public class UnenrollmentService {
     private static Context context;
     private static String selectedChild;
     private static boolean successfulUnenrollment = false;
+    private static BulkUnenrollmentService bulkUnenrollmentService = new BulkUnenrollmentService();
 
     public static void setContext(Context context) {
         UnenrollmentService.context = context;
@@ -41,7 +42,7 @@ public class UnenrollmentService {
         return successfulUnenrollment;
     }
 
-    public static void unenroll(String message, Map<String, String> dataElements,
+    public static void unenroll(String date, String reasonForUnenrollment, String message, Map<String, String> dataElements,
                                 String programID, String eventID, String orgID,
                                 PublishProcessor<Boolean> engineInitialization, Callable function){
 
@@ -75,6 +76,13 @@ public class UnenrollmentService {
                     for (String key: dataElements.keySet()) {
                         util.saveDataElement(key, dataElements.get(key), eventID,
                                 programID, orgID, engineInitialization );
+                    }
+
+                    // bulk un-enroll if the Left the area, left due to completion of age five, Died
+                    if(reasonForUnenrollment.equals("Left the area")||
+                            reasonForUnenrollment.equals("Left due to completion of age 5")||
+                            reasonForUnenrollment.equals("Died")){
+                        bulkUnenrollmentService.unenroll(programID, orgID, date, reasonForUnenrollment, engineInitialization);
                     }
                     function.call();
 

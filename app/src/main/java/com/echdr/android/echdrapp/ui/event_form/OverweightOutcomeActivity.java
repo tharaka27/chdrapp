@@ -1,11 +1,8 @@
 package com.echdr.android.echdrapp.ui.event_form;
 
-import static android.text.TextUtils.isEmpty;
-
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -18,13 +15,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.echdr.android.echdrapp.R;
@@ -35,20 +29,13 @@ import com.echdr.android.echdrapp.service.Service.UnenrollmentService;
 import com.echdr.android.echdrapp.service.Validator.OverweightOutcomeValidator;
 import com.echdr.android.echdrapp.service.util;
 
-import org.hisp.dhis.android.core.arch.repositories.scope.RepositoryScope;
-import org.hisp.dhis.android.core.enrollment.Enrollment;
-import org.hisp.dhis.android.core.enrollment.EnrollmentObjectRepository;
-import org.hisp.dhis.android.core.enrollment.EnrollmentStatus;
-import org.hisp.dhis.android.core.maintenance.D2Error;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValue;
-import org.hisp.dhis.android.core.trackedentity.TrackedEntityDataValueObjectRepository;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import io.reactivex.processors.PublishProcessor;
@@ -273,8 +260,10 @@ public class OverweightOutcomeActivity extends AppCompatActivity {
         UnenrollmentService.setSelectedChild(selectedChild);
         UnenrollmentService.setContext(context);
 
-        UnenrollmentService.unenroll(getString(R.string.unenroll_overWeight),
-                dataElements, "JsfNVX0hdq9", eventUid, orgUnit, engineInitialization,
+        UnenrollmentService.unenroll( textView_Date.getText().toString(),
+                english_other_type_array[spinner_Enrollment.getSelectedItemPosition()]
+                ,getString(R.string.unenroll_overWeight), dataElements, "JsfNVX0hdq9",
+                eventUid, orgUnit, engineInitialization,
                 ()->{
                     finishEnrollment();
                     return null;
