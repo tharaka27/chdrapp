@@ -128,7 +128,7 @@ public class  EnrollmentFormValidator extends Validator {
         super.setTAG(TAG);
 
         // Immunization number validation
-        String pattern = "[0-9][0-9]\\/[0-1][0-9]\\/[0-3][0-9]";
+        String pattern = "^[0-9][0-9]\\/[0-1][0-9]\\/[0-3][0-9]$";
         Matcher m1 = null;
         Matcher m2 = null;
         Pattern r = Pattern.compile(pattern);
