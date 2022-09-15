@@ -197,7 +197,7 @@ public class  EnrollmentFormValidator extends Validator {
             }
         }
         if( numberOfChildren.getText().toString().isEmpty() ||
-                Integer.parseInt(numberOfChildren.getText().toString()) < 0
+                Integer.parseInt(numberOfChildren.getText().toString()) < 1
                 || Integer.parseInt(numberOfChildren.getText().toString()) >= 20)
         {
             CreateAlertDialog(context.getString(R.string.anthro_chirdren));
