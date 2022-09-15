@@ -35,6 +35,7 @@ import com.echdr.android.echdrapp.data.service.forms.EnrollmentFormService;
 import com.echdr.android.echdrapp.data.service.forms.EventFormService;
 import com.echdr.android.echdrapp.data.service.forms.FormField;
 import com.echdr.android.echdrapp.data.service.forms.RuleEngineService;
+import com.echdr.android.echdrapp.service.Validator.EditAccessValidator;
 import com.echdr.android.echdrapp.service.Validator.EnrollmentFormValidator;
 import com.echdr.android.echdrapp.ui.enrollment_form.EnrollmentFormActivity;
 import com.echdr.android.echdrapp.ui.enrollment_form.EnrollmentFormModified;
@@ -533,15 +534,26 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
         EnrollToPrograms();
         submitButton.setEnabled(false);
 
+        EditAccessValidator editAccessValidator = new EditAccessValidator();
+        editAccessValidator.setContext(context);
+        editAccessValidator.setSelectedChild(teiUid);
+        editAccessValidator.setEnrollmentID(anthropometryEnrollmentID);
+
         edit_button.setOnClickListener(view ->{
-            textView_date_of_registration.setEnabled(false);
-            datePicker_registration.setEnabled(false);
-            GNArea.setEnabled(true);
+
+            if(editAccessValidator.validate()){
+                sex.setEnabled(true);
+                textView_dob.setEnabled(true);
+                datePicker_dob.setEnabled(true);
+            }else{
+                sex.setEnabled(false);
+                textView_dob.setEnabled(false);
+                datePicker_dob.setEnabled(false);
+            }
+
             immuneNum.setEnabled(false);
+            GNArea.setEnabled(true);
             name.setEnabled(true);
-            sex.setEnabled(false);
-            textView_dob.setEnabled(false);
-            datePicker_dob.setEnabled(false);
             ethnicity.setEnabled(true);
             address.setEnabled(true);
             sector.setEnabled(true);
@@ -559,6 +571,8 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
             caregiver.setEnabled(true);
             weight.setEnabled(true);
             length.setEnabled(true);
+
+
 
             //submitButton.setClickable(true);
             submitButton.setEnabled(true);
