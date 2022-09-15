@@ -402,7 +402,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
     private void selectDate(int year, int month, int day)
     {
         Calendar c2 = Calendar.getInstance();
-        c2.add(Calendar.DATE, -7*4*12*5); // subtract 5 years from now
+        c2.add(Calendar.DATE, -365*5); // subtract 5 years from now
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 context, android.R.style.Theme_Holo_Light_Dialog, setListenerDob, year, month, day);
         datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
