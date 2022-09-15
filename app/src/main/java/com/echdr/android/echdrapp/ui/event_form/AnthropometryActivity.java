@@ -59,6 +59,7 @@ public class AnthropometryActivity extends AppCompatActivity {
         private String orgUnit;
         private TextView AgeInWeeksTxt;
         private TextView AgeInMonthsTxt;
+        private TextView weightTxtKG;
         private Context context;
         private DatePickerDialog.OnDateSetListener setListener;
         private EditText heightTxt;
@@ -114,8 +115,9 @@ public class AnthropometryActivity extends AppCompatActivity {
             weightGraph         = findViewById(R.id.weightforageAnthropometry);
             weightHeightGraph   = findViewById(R.id.weightforheightAnthropometry);
             AgeInWeeksTxt       = findViewById(R.id.ageInWeeks);
-            AgeInMonthsTxt      =  findViewById(R.id.ageInMonths);
+            AgeInMonthsTxt      = findViewById(R.id.ageInMonths);
             plotGraphButton     = findViewById(R.id.plotGraph);
+            weightTxtKG         = findViewById(R.id.anthropometryWeightInKg);
 
             eventUid        = getIntent().getStringExtra(IntentExtra.EVENT_UID.name());
             programUid      = getIntent().getStringExtra(IntentExtra.PROGRAM_UID.name());
@@ -266,6 +268,7 @@ public class AnthropometryActivity extends AppCompatActivity {
                 } else {
                     Currentweight = String.valueOf(
                             Float.parseFloat(weightTxt.getText().toString()) / 1000f);
+                    weightTxtKG.setText(Currentweight);
                 }
 
                 // First set age in weeks because change color uses its value
@@ -331,6 +334,17 @@ public class AnthropometryActivity extends AppCompatActivity {
                 public void afterTextChanged(Editable s) {
                     anthropometryService.ChangeColor(editText, s.toString(), dataWHO, isHeight,
                         AgeInWeeksTxt );
+
+                    if(!isHeight){
+                        String Currentweight;
+                        if (editText.getText().toString().isEmpty()) {
+                            Currentweight = "";
+                        } else {
+                            Currentweight = String.valueOf(
+                                    Float.parseFloat(weightTxt.getText().toString()) / 1000f);
+                            weightTxtKG.setText(Currentweight);
+                        }
+                    }
                 }
             });
         }

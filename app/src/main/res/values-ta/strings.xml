@@ -191,6 +191,7 @@
     <string name="an_date_enrol"><font size="12">திகதி</font></string>
     <string name="an_date"><font size="12">திகதி</font></string>
     <string name="an_weight"><font size="12">நிறை (கிராம்)</font></string>
+    <string name="an_weight_kg"><font size="12">நிறை (kg)</font></string>
     <string name="an_length"><font size="12">நீளம் அல்லது உயரம் (செ.மீ)</font></string>
     <string name="an_measures_title">ஆந்த்ரோபோமெட்ரிக் நடவடிக்கைகள்</string>
     <string name="an_age_weeks">வயது வாரங்களில்</string>

@@ -189,6 +189,7 @@
     <string name="an_date_enrol"><font size="12">ලියාපදිංචි වූ දිනය</font></string>
     <string name="an_date"><font size="12">දිනය</font></string>
     <string name="an_weight"><font size="12">බර (g)</font></string>
+    <string name="an_weight_kg"><font size="12">බර (kg)</font></string>
     <string name="an_length"><font size="12">දිග/උස (c.m)</font></string>
     <string name="an_measures_title">වර්ධන තත්වය මිනුම්</string>
     <string name="save">සුරකින්න</string>
