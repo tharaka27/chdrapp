@@ -927,9 +927,9 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
             public void onClick(View view) {
                 //ActivityStarter.startActivity(ChildDetailsActivityNew.this,
                 //        EnrollmentFormActivity.getFormActivityIntent(getApplicationContext(), teiUid, "JsfNVX0hdq9", orgUnit), false);
-                if(IsTherapeuticalEnrolled || IsStuntingEnrolled || IsSupplementaryEnrolled){
+                if(IsSupplementaryEnrolled || IsTherapeuticalEnrolled){
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                    builder.setMessage("Already enrolled to either one or more programs of \nTherapeutical, Stunting, Supplementary");
+                    builder.setMessage("Already enrolled to either one or more programs of \nTherapeutical, Supplementary");
                     builder.setCancelable(true);
 
                     builder.setNegativeButton(
@@ -1091,7 +1091,7 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if(IsOverweightEnrolled){
+                if(true){
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
                     builder.setMessage("Already enrolled to Overweight program");
                     builder.setCancelable(true);
@@ -1154,9 +1154,9 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
         supplementaryNotEnrolled.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(IsOverweightEnrolled){
+                if(IsTherapeuticalEnrolled || IsOverweightEnrolled){
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                    builder.setMessage("Already enrolled to Overweight program");
+                    builder.setMessage("Already enrolled to either one or more programs of \nTherapeutical, Overweight/Obesity");
                     builder.setCancelable(true);
 
                     builder.setNegativeButton(
@@ -1217,9 +1217,9 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
         therapeuticNotEnrolled.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(IsOverweightEnrolled){
+                if(IsSupplementaryEnrolled || IsOverweightEnrolled){
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                    builder.setMessage("Already enrolled to Overweight program");
+                    builder.setMessage("Already enrolled to either one or more programs of \nSupplementary, Overweight/Obesity");
                     builder.setCancelable(true);
 
                     builder.setNegativeButton(
