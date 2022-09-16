@@ -20,9 +20,10 @@ android {
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
-        versionName "2.7"
+        versionName "2.8-SNAPSHOT"
 
-        testInstrumentationRunner "androidx.test.ext.junit.runners.AndroidJUnit4"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
     }
@@ -84,7 +85,7 @@ dependencies {
     debugImplementation ("com.facebook.flipper:flipper-network-plugin:${libraries.flipper}") {
         exclude group: 'com.squareup.okhttp3'
     }
-
+    compileOnly "org.projectlombok:lombok:1.18.24"
     releaseImplementation "com.facebook.flipper:flipper-noop:${libraries.flipper}"
 
     implementation 'com.jjoe64:graphview:4.2.2'

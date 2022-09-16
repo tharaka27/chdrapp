@@ -1,16 +1,14 @@
 package com.echdr.android.echdrapp.ui.enrollment_form;
 
-import static android.text.TextUtils.isEmpty;
-
 
 import android.app.DatePickerDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -20,45 +18,24 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.echdr.android.echdrapp.R;
 import com.echdr.android.echdrapp.data.Sdk;
 import com.echdr.android.echdrapp.data.service.ActivityStarter;
 import com.echdr.android.echdrapp.data.service.forms.EnrollmentFormService;
-import com.echdr.android.echdrapp.data.service.forms.EventFormService;
-import com.echdr.android.echdrapp.data.service.forms.FormField;
 import com.echdr.android.echdrapp.data.service.forms.RuleEngineService;
-import com.echdr.android.echdrapp.ui.event_form.SupplementaryIndicationActivity;
-import com.echdr.android.echdrapp.ui.events.EventsActivity;
-import com.echdr.android.echdrapp.ui.tracked_entity_instances.ChildDetailsActivity;
+import com.echdr.android.echdrapp.service.Validator.EnrollmentFormValidator;
+import com.echdr.android.echdrapp.service.util;
 import com.echdr.android.echdrapp.ui.tracked_entity_instances.ChildDetailsActivityNew;
 
-import org.apache.commons.lang3.StringUtils;
-import org.hisp.dhis.android.core.enrollment.Enrollment;
 import org.hisp.dhis.android.core.maintenance.D2Error;
-import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValue;
-import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValueObjectRepository;
-import org.hisp.dhis.android.core.trackedentity.TrackedEntityDataValue;
-import org.hisp.dhis.android.core.trackedentity.TrackedEntityDataValueObjectRepository;
 import org.hisp.dhis.rules.RuleEngine;
-import org.hisp.dhis.rules.models.RuleAction;
-import org.hisp.dhis.rules.models.RuleActionHideField;
-import org.hisp.dhis.rules.models.RuleEffect;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import io.reactivex.Flowable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.processors.PublishProcessor;
@@ -66,11 +43,12 @@ import io.reactivex.schedulers.Schedulers;
 
 public class EnrollmentFormModified extends AppCompatActivity {
 
-
+    private static final String TAG = "EnrollmentFormActivity";
     private CompositeDisposable disposable;
     private PublishProcessor<Boolean> engineInitialization;
     private RuleEngineService engineService;
     private RuleEngine ruleEngine;
+    private static boolean isValidated = false;
 
     private DatePickerDialog.OnDateSetListener setListenerRegistration;
     private DatePickerDialog.OnDateSetListener setListenerDob;
@@ -92,13 +70,10 @@ public class EnrollmentFormModified extends AppCompatActivity {
     protected String[] occupationArray;
     protected String[] occupation_english_only;
 
-
     protected String[] relationshipArray;
     protected String[] relationship_english_only;
 
-
     private String teiUid;
-
     private TextView textView_date_of_registration;
     private ImageView datePicker_registration;
     private EditText GNArea;
@@ -124,7 +99,6 @@ public class EnrollmentFormModified extends AppCompatActivity {
     private EditText caregiver;
     private EditText weight;
     private EditText length;
-
     private Button saveButton;
 
     private enum IntentExtra {
@@ -146,34 +120,33 @@ public class EnrollmentFormModified extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enrollment_custom);
 
-        textView_date_of_registration = findViewById(R.id.editTextDateofRegistration);
-        datePicker_registration = findViewById(R.id.date_pick_registration);
-        GNArea = findViewById(R.id.gn_area);
-        immuneNum = findViewById(R.id.immuneNum);
-        name = findViewById(R.id.name);
-        sex = findViewById(R.id.sex);
-        textView_dob = findViewById(R.id.editTextDateofBirth);
-        datePicker_dob = findViewById(R.id.date_pick_birth);
-        ethnicity = findViewById(R.id.ethnicity);
-        address = findViewById(R.id.address);
-        sector = findViewById(R.id.sector);
-        landNumber = findViewById(R.id.lNumber);
-        mobileNumber = findViewById(R.id.mNumber);
-        motherName = findViewById(R.id.motherName);
-        nic = findViewById(R.id.nic);
-        textView_mother_dob = findViewById(R.id.editTextMomDateofBirth);
-        datePicker_mother_dob = findViewById(R.id.date_pick_mom_birth);
-        numberOfChildren = findViewById(R.id.number_of_children);
-        eduLevel = findViewById(R.id.edu_level);
-        occupation = findViewById(R.id.occupation);
-        occu_specification = findViewById(R.id.occu_specifcation);
-        relationship = findViewById(R.id.relationship);
-        caregiver = findViewById(R.id.caregiverName);
-        weight = findViewById(R.id.weight);
-        length = findViewById(R.id.length);
+        textView_date_of_registration   = findViewById(R.id.editTextDateofRegistration);
+        datePicker_registration         = findViewById(R.id.date_pick_registration);
+        GNArea                          = findViewById(R.id.gn_area);
+        immuneNum                       = findViewById(R.id.immuneNum);
+        name                            = findViewById(R.id.name);
+        sex                             = findViewById(R.id.sex);
+        textView_dob                    = findViewById(R.id.editTextDateofBirth);
+        datePicker_dob                  = findViewById(R.id.date_pick_birth);
+        ethnicity                       = findViewById(R.id.ethnicity);
+        address                         = findViewById(R.id.address);
+        sector                          = findViewById(R.id.sector);
+        landNumber                      = findViewById(R.id.lNumber);
+        mobileNumber                    = findViewById(R.id.mNumber);
+        motherName                      = findViewById(R.id.motherName);
+        nic                             = findViewById(R.id.nic);
+        textView_mother_dob             = findViewById(R.id.editTextMomDateofBirth);
+        datePicker_mother_dob           = findViewById(R.id.date_pick_mom_birth);
+        numberOfChildren                = findViewById(R.id.number_of_children);
+        eduLevel                        = findViewById(R.id.edu_level);
+        occupation                      = findViewById(R.id.occupation);
+        occu_specification              = findViewById(R.id.occu_specifcation);
+        relationship                    = findViewById(R.id.relationship);
+        caregiver                       = findViewById(R.id.caregiverName);
+        weight                          = findViewById(R.id.weight);
+        length                          = findViewById(R.id.length);
 
         saveButton = findViewById(R.id.childSave);
-        //saveButton.setOnClickListener(this::finishEnrollment);
 
         context = this;
 
@@ -217,22 +190,6 @@ public class EnrollmentFormModified extends AppCompatActivity {
         final int month = Integer.parseInt(s_monthNumber) - 1;
         final int day = Integer.parseInt(s_day);
 
-        /*
-        textView_date_of_registration.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar c = Calendar.getInstance();
-                c.add(Calendar.YEAR, -5); // subtract 5 years from now
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        context, android.R.style.Theme_Holo_Light_Dialog, setListenerDob, year, month, day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
-                datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
-
-                datePickerDialog.show();
-            }
-        });
-         */
 
         datePicker_registration.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -250,24 +207,6 @@ public class EnrollmentFormModified extends AppCompatActivity {
             }
         };
 
-        /*
-        textView_dob.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Calendar c = Calendar.getInstance();
-                c.add(Calendar.YEAR, -5); // subtract 5 years from now
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        context, android.R.style.Theme_Holo_Light_Dialog, setListenerDob, year, month, day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
-
-                datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
-
-                datePickerDialog.show();
-            }
-        });
-         */
 
         datePicker_dob.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -286,19 +225,6 @@ public class EnrollmentFormModified extends AppCompatActivity {
             }
         };
 
-        /*
-        textView_mother_dob.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.out.println("Clicked et date");
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        context, android.R.style.Theme_Holo_Light_Dialog, setListenerMotherDob, year, month, day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                datePickerDialog.show();
-            }
-        });
-         */
-
         datePicker_mother_dob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -316,541 +242,65 @@ public class EnrollmentFormModified extends AppCompatActivity {
             }
         };
 
-
-
         //setting spinners
+        setSpinner(sex, R.array.sex);
+        setSpinner(ethnicity, R.array.ethnicity);
+        setSpinner(eduLevel, R.array.highestEdu);
+        setSpinner(sector, R.array.sector);
+        setSpinner(occupation, R.array.occupation);
+        setSpinner(relationship, R.array.relationship);
 
-        ArrayAdapter<CharSequence> sexadapter = ArrayAdapter.createFromResource(context,
-                R.array.sex,
-                android.R.layout.simple_spinner_item);
-        sexadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sex.setAdapter(sexadapter);
-        sex.setOnItemSelectedListener(new EnrollmentTypeSpinnerClass());
-
-        ArrayAdapter<CharSequence> ethinicityadapter = ArrayAdapter.createFromResource(context,
-                R.array.ethnicity,
-                android.R.layout.simple_spinner_item);
-        ethinicityadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        ethnicity.setAdapter(ethinicityadapter);
-        ethnicity.setOnItemSelectedListener(new EnrollmentTypeSpinnerClass());
-
-        ArrayAdapter<CharSequence> eduadapter = ArrayAdapter.createFromResource(context,
-                R.array.highestEdu,
-                android.R.layout.simple_spinner_item);
-        eduadapter.setDropDownViewResource(android.R.layout.simple_expandable_list_item_1);
-        eduLevel.setAdapter(eduadapter);
-        eduLevel.setOnItemSelectedListener(new EnrollmentTypeSpinnerClass());
-
-        ArrayAdapter<CharSequence> sectoradapter = ArrayAdapter.createFromResource(context,
-                R.array.sector,
-                android.R.layout.simple_spinner_item);
-        sectoradapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sector.setAdapter(sectoradapter);
-        sector.setOnItemSelectedListener(new EnrollmentTypeSpinnerClass());
-
-        ArrayAdapter<CharSequence> occuadapter = ArrayAdapter.createFromResource(context,
-                R.array.occupation,
-                android.R.layout.simple_spinner_item);
-        occuadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        occupation.setAdapter(occuadapter);
-        occupation.setOnItemSelectedListener(new EnrollmentTypeSpinnerClass());
-
-        ArrayAdapter<CharSequence> relationadapter = ArrayAdapter.createFromResource(context,
-                R.array.relationship,
-                android.R.layout.simple_spinner_item);
-        relationadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        relationship.setAdapter(relationadapter);
-        relationship.setOnItemSelectedListener(new EnrollmentTypeSpinnerClass());
-
-
-        // setting mother DOB date
-        try {
-            String prev_date = getDataElement("kYfIkz2M6En");
-            if (!prev_date.isEmpty()) {
-                textView_mother_dob.setText(prev_date);
-            }
-        } catch (Exception e) {
-            textView_mother_dob.setText("");
-        }
-
-        // setting GN area
-        try {
-            String prev_gn_area = getDataElement("upQGjAHBjzu");
-            if (!prev_gn_area.isEmpty()) {
-                GNArea.setText(prev_gn_area);
-            }
-        } catch (Exception e) {
-            GNArea.setText("");
-        }
-
-        // setting birth and immun number
-        try {
-            String prev_birth_num = getDataElement("h2ATdtJguMq");
-            if (!prev_birth_num.isEmpty()) {
-                immuneNum.setText(prev_birth_num);
-            }
-        } catch (Exception e) {
-            immuneNum.setText("");
-        }
-
-        // setting child name
-        try {
-            String prev_name = getDataElement("zh4hiarsSD5");
-            if (!prev_name.isEmpty()) {
-                name.setText(prev_name);
-            }
-        } catch (Exception e) {
-            name.setText("");
-        }
-
-        //select sex
-        sex.setSelection(
-                getSpinnerSelection("lmtzQrlHMYF", sexArray));
-
-        // setting child dob
-        try {
-            String prev_child_dob = getDataElement("qNH202ChkV3");
-            if (!prev_child_dob.isEmpty()) {
-                textView_dob.setText(prev_child_dob);
-            }
-        } catch (Exception e) {
-            textView_dob.setText("");
-        }
-
-        // setting registration date
-        try {
-            String prev_reg_date = getDataElement("zmCxHpWgOOv");
-            if (!prev_reg_date.isEmpty()) {
-                textView_date_of_registration.setText(prev_reg_date);
-            }
-        } catch (Exception e) {
-            textView_date_of_registration.setText("");
-        }
-
-        //select ethnicity
-        ethnicity.setSelection(
-                getSpinnerSelection("b9CoAneYYys", ethinicityArray));
-
-        // setting address
-        try {
-            String prev_address = getDataElement("D9aC5K6C6ne");
-            if (!prev_address.isEmpty()) {
-                address.setText(prev_address);
-            }
-        } catch (Exception e) {
-            address.setText("");
-        }
-
-        //select sector
-        sector.setSelection(
-                getSpinnerSelection("igjlkmMF81X", sectorArray));
-
-        // setting land number
-        try {
-            String prev_land_number = getDataElement("cpcMXDhQouL");
-            if (!prev_land_number.isEmpty()) {
-                landNumber.setText(prev_land_number);
-            }
-        } catch (Exception e) {
-            landNumber.setText("");
-        }
-
-        // setting mobile number
-        try {
-            String prev_mobile_number = getDataElement("LYRf4eIUVuN");
-            if (!prev_mobile_number.isEmpty()) {
-                mobileNumber.setText(prev_mobile_number);
-            }
-        } catch (Exception e) {
-            mobileNumber.setText("");
-        }
-
-        // setting mother name
-        try {
-            String prev_mom_name = getDataElement("K7Fxa2wv2Rx");
-            if (!prev_mom_name.isEmpty()) {
-                motherName.setText(prev_mom_name);
-            }
-        } catch (Exception e) {
-            motherName.setText("");
-        }
-
-        // setting nic
-        try {
-            String prev_nic = getDataElement("Gzjb3fp9FSe");
-            if (!prev_nic.isEmpty()) {
-                nic.setText(prev_nic);
-            }
-        } catch (Exception e) {
-            nic.setText("");
-        }
-
-        // setting number of children
-        try {
-            String prev_number_of_children = getDataElement("Gy4bCBxNuo4");
-            if (!prev_number_of_children.isEmpty()) {
-                numberOfChildren.setText(prev_number_of_children);
-            }
-        } catch (Exception e) {
-            numberOfChildren.setText("");
-        }
-
-        // setting occupation specification
-        try {
-            String o_specification = getDataElement("s7Rde0kFOFb");
-            if (!o_specification.isEmpty()) {
-                occu_specification.setText(o_specification);
-            }
-        } catch (Exception e) {
-            occu_specification.setText("");
-        }
-
-        // setting caregiver name
-        try {
-            String caregiverName = getDataElement("hxCXbI5J2YS");
-            if (!caregiverName.isEmpty()) {
-                caregiver.setText(caregiverName);
-            }
-        } catch (Exception e) {
-            caregiver.setText("");
-        }
-
-        //select education
-        eduLevel.setSelection(
-                getSpinnerSelection("GMNSaaq4xST", eduLevelArray));
-
-        //select occupation
-        occupation.setSelection(
-                getSpinnerSelection("Srxv0vniOnf", occupationArray));
-
-        //select relationship
-        relationship.setSelection(
-                getSpinnerSelection("ghN8XfnlU5V", relationshipArray));
-
-        // setting birth weight
-        try {
-            String prev_birth_weight = getDataElement("Fs89NLB2FrA");
-            if (!prev_birth_weight.isEmpty()) {
-                weight.setText(prev_birth_weight);
-            }
-        } catch (Exception e) {
-            weight.setText("");
-        }
-
-        // setting birth length
-        try {
-            String prev_birth_length = getDataElement("LpvdWM4YuRq");
-            if (!prev_birth_length.isEmpty()) {
-                length.setText(prev_birth_length);
-            }
-        } catch (Exception e) {
-            length.setText("");
-        }
+        setEditText(textView_mother_dob, "kYfIkz2M6En");
+        setEditText(GNArea, "upQGjAHBjzu");
+        setEditText(immuneNum, "h2ATdtJguMq");
+        setEditText(name, "zh4hiarsSD5");
+        setEditText(textView_dob, "qNH202ChkV3");
+        setEditText(address, "D9aC5K6C6ne");
+        setEditText(landNumber, "cpcMXDhQouL");
+        setEditText(mobileNumber, "LYRf4eIUVuN");
+        setEditText(motherName, "K7Fxa2wv2Rx");
+        setEditText(nic, "Gzjb3fp9FSe");
+        setEditText(numberOfChildren, "Gy4bCBxNuo4");
+        setEditText(occu_specification, "s7Rde0kFOFb");
+        setEditText(caregiver, "hxCXbI5J2YS");
+        setEditText(weight, "Fs89NLB2FrA");
+        setEditText(length, "LpvdWM4YuRq");
+        sex.setSelection(getSpinnerSelection("lmtzQrlHMYF", sexArray));
+        ethnicity.setSelection(getSpinnerSelection("b9CoAneYYys", ethinicityArray));
+        sector.setSelection(getSpinnerSelection("igjlkmMF81X", sectorArray));
+        eduLevel.setSelection(getSpinnerSelection("GMNSaaq4xST", eduLevelArray));
+        occupation.setSelection(getSpinnerSelection("Srxv0vniOnf", occupationArray));
+        relationship.setSelection(getSpinnerSelection("ghN8XfnlU5V", relationshipArray));
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // start of the validating this should be false
+                isValidated = false;
+                EnrollmentFormValidator enrollmentFormValidator = new EnrollmentFormValidator();
+                enrollmentFormValidator.setGNArea(GNArea);
+                enrollmentFormValidator.setName(name);
+                enrollmentFormValidator.setBirthday(textView_dob);
+                enrollmentFormValidator.setAddress(address);
+                enrollmentFormValidator.setMotherName(motherName);
+                enrollmentFormValidator.setMother_birthday(textView_mother_dob);
+                enrollmentFormValidator.setImmuneNum(immuneNum);
+                enrollmentFormValidator.setLandNumber(landNumber);
+                enrollmentFormValidator.setMobileNumber(mobileNumber);
+                enrollmentFormValidator.setNumberOfChildren(numberOfChildren);
+                enrollmentFormValidator.setWeight(weight);
+                enrollmentFormValidator.setLength(length);
+                enrollmentFormValidator.setRelationship_english_only(relationship_english_only);
+                enrollmentFormValidator.setRelationship(relationship);
+                enrollmentFormValidator.setCaregiver(caregiver);
+                enrollmentFormValidator.setOccu_specification(occu_specification);
+                enrollmentFormValidator.setOccupation(occupation);
+                enrollmentFormValidator.setOccupation_english_only(occupation_english_only);
+                enrollmentFormValidator.setNic(nic);
+                enrollmentFormValidator.setContext(context);
+                enrollmentFormValidator.setTAG(TAG);
 
-                // Immunization number validation
-                String pattern = "[0-9][0-9]\\/[0-1][0-9]\\/[0-3][0-9]";
-                Matcher m1 = null;
-                Matcher m2 = null;
-                Pattern r = Pattern.compile(pattern);
-
-                String nicPattern = "^([0-9]{9}[x|X|v|V]|[0-9]{12})$";
-                Matcher mNICPattern = null;
-                Pattern pNICPattern = Pattern.compile(nicPattern);
-
-                String patternLPhone = "[0-9]{10}";
-                Pattern q = Pattern.compile(patternLPhone);
-
-                if (immuneNum.getText().toString().isEmpty()) {
-                    AlertDialog.Builder builder2 = new AlertDialog.Builder(context);
-                    builder2.setMessage(getString(R.string.anthro_immune));
-                    builder2.setCancelable(true);
-
-                    builder2.setNegativeButton(
-                            "Close",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                    //return;
-                                }
-                            });
-
-                    AlertDialog alert12 = builder2.create();
-                    alert12.show();
-                    return;
-                    //Toast.makeText(EnrollmentFormModified.this, "Birth and Immunization Number is not filled ", Toast.LENGTH_LONG).show();
-                } else {
-                    m1 = r.matcher(immuneNum.getText().toString().trim());
-                    if (m1.find()) {
-                        //Toast.makeText(EnrollmentFormModified.this, "Birth and Immunization Number matched", Toast.LENGTH_LONG).show();
-                    } else {
-                        AlertDialog.Builder builder3 = new AlertDialog.Builder(context);
-                        builder3.setMessage(getString(R.string.anthro_immune));
-                        builder3.setCancelable(true);
-
-                        builder3.setNegativeButton(
-                                "Close",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        dialog.cancel();
-                                        //return;
-                                    }
-                                });
-
-                        AlertDialog alert13 = builder3.create();
-                        alert13.show();
-                        return;
-                        //Toast.makeText(EnrollmentFormModified.this, "NO MATCH", Toast.LENGTH_LONG).show();
-                    }
-                }
-
-                if(landNumber.getText().toString().isEmpty() && mobileNumber.getText().toString().isEmpty() ){
-                    AlertDialog.Builder builder3 = new AlertDialog.Builder(context);
-                    builder3.setMessage(getString(R.string.anthro_regis_mobile));
-                    builder3.setCancelable(true);
-
-                    builder3.setNegativeButton(
-                            "Close",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                    //return;
-                                }
-                            });
-
-                    AlertDialog alert13 = builder3.create();
-                    alert13.show();
-                    return;
-                    //Toast.makeText(EnrollmentFormModified.this, "Birth and Immunization Number is not filled ", Toast.LENGTH_LONG).show();
-                } else if (!landNumber.getText().toString().isEmpty()) {
-                    m2 = q.matcher(landNumber.getText().toString().trim());
-                    if (m2.find()) {
-                        //Toast.makeText(EnrollmentFormModified.this, "Land Number matched", Toast.LENGTH_LONG).show();
-                    } else {
-                        AlertDialog.Builder builder4 = new AlertDialog.Builder(context);
-                        builder4.setMessage(getString(R.string.anthro_regis_land));
-                        builder4.setCancelable(true);
-
-                        builder4.setNegativeButton(
-                                "Close",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        dialog.cancel();
-                                        //return;
-                                    }
-                                });
-
-                        AlertDialog alert14 = builder4.create();
-                        alert14.show();
-                        return;
-                        //Toast.makeText(EnrollmentFormModified.this, "NO MATCH", Toast.LENGTH_LONG).show();
-                    }
-                }
-
-                if(mobileNumber.getText().toString().isEmpty()){
-                    AlertDialog.Builder builder8 = new AlertDialog.Builder(context);
-                    builder8.setMessage("Mobile Number is not filled");
-                    builder8.setCancelable(true);
-
-                    builder8.setNegativeButton(
-                            "Close",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                    //return;
-                                }
-                            });
-
-                    AlertDialog alert18 = builder8.create();
-                    builder8.show();
-                    return;
-                    //Toast.makeText(EnrollmentFormModified.this, "Birth and Immunization Number is not filled ", Toast.LENGTH_LONG).show();
-                } else {
-                    m2 = q.matcher(mobileNumber.getText().toString().trim());
-                    if (m2.find()) {
-                        //Toast.makeText(EnrollmentFormModified.this, "Land Number matched", Toast.LENGTH_LONG).show();
-                    } else {
-                        AlertDialog.Builder builder8 = new AlertDialog.Builder(context);
-                        builder8.setMessage("Mobile Number not matched");
-                        builder8.setCancelable(true);
-
-                        builder8.setNegativeButton(
-                                "Close",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        dialog.cancel();
-                                        //return;
-                                    }
-                                });
-
-                        AlertDialog alert18 = builder8.create();
-                        builder8.show();
-                        return;
-                        //Toast.makeText(EnrollmentFormModified.this, "NO MATCH", Toast.LENGTH_LONG).show();
-                    }
-                }
-                /*if(textView_dob.getText().toString().isEmpty())
-                {
-                    AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                    builder1.setMessage("Birthday not given");
-                    builder1.setCancelable(true);
-
-                    builder1.setNegativeButton(
-                            "Close",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                    //return;
-                                }
-                            });
-
-                    AlertDialog alert11 = builder1.create();
-                    alert11.show();
-                    return;
-                }
-
-                 */
-
-                if(numberOfChildren.getText().toString().isEmpty() ||
-                        Integer.parseInt(numberOfChildren.getText().toString()) < 0 ||
-                        Integer.parseInt(numberOfChildren.getText().toString()) >= 20)
-                {
-                    AlertDialog.Builder builder5 = new AlertDialog.Builder(context);
-                    builder5.setMessage(getString(R.string.anthro_chirdren));
-                    builder5.setCancelable(true);
-
-                    builder5.setNegativeButton(
-                            "Close",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                    //return;
-                                }
-                            });
-
-                    AlertDialog alert15 = builder5.create();
-                    alert15.show();
-                    return;
-                }
-
-                if(weight.getText().toString().isEmpty() ||
-                        Integer.parseInt(weight.getText().toString()) < 500
-                        || Integer.parseInt(weight.getText().toString()) >= 9999)
-                {
-                    AlertDialog.Builder builder6 = new AlertDialog.Builder(context);
-                    builder6.setMessage(getString(R.string.anthro_regis_weight));
-                    builder6.setCancelable(true);
-
-                    builder6.setNegativeButton(
-                            "Close",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                    //return;
-                                }
-                            });
-
-                    AlertDialog alert16 = builder6.create();
-                    alert16.show();
-                    return;
-                }
-                if(length.getText().toString().isEmpty() ||
-                        Integer.parseInt(length.getText().toString()) < 10
-                        || Integer.parseInt(length.getText().toString()) >= 99)
-                {
-                    AlertDialog.Builder builder7 = new AlertDialog.Builder(context);
-                    builder7.setMessage(getString(R.string.anthro_regis_length));
-                    builder7.setCancelable(true);
-
-                    builder7.setNegativeButton(
-                            "Close",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                    //return;
-                                }
-                            });
-
-                    AlertDialog alert17 = builder7.create();
-                    alert17.show();
-                    return;
-                }
-
-                // Caregiver is not mother
-                if( !relationship_english_only[relationship.getSelectedItemPosition()].equals("Mother")
-                && caregiver.getText().toString().isEmpty() )
-                {
-                    AlertDialog.Builder builder7 = new AlertDialog.Builder(context);
-                    builder7.setMessage(getString(R.string.anthro_not_mot));
-                    builder7.setCancelable(true);
-
-                    builder7.setNegativeButton(
-                            "Close",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                    //return;
-                                }
-                            });
-
-                    AlertDialog alert17 = builder7.create();
-                    alert17.show();
-                    return;
-                }
-                // Occupation specification is mandatory is self employed/retired/paid employement
-                //<item>Self employment</item>
-                //<item>Paid employment</item>
-                //<item>Retired</item>
-                if(occu_specification.getText().toString().isEmpty() &&
-                        (occupation_english_only[occupation.getSelectedItemPosition()].equals("Retired") ||
-                                occupation_english_only[occupation.getSelectedItemPosition()].equals("Self employment") ||
-                                occupation_english_only[occupation.getSelectedItemPosition()].equals("Paid employment")) )
-                {
-                    AlertDialog.Builder builder7 = new AlertDialog.Builder(context);
-                    builder7.setMessage(getString(R.string.anthro_occu));
-                    builder7.setCancelable(true);
-
-                    builder7.setNegativeButton(
-                            "Close",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                    //return;
-                                }
-                            });
-
-                    AlertDialog alert17 = builder7.create();
-                    alert17.show();
-                    return;
-                }
-
-                if(!nic.getText().toString().isEmpty()){
-                    mNICPattern = pNICPattern.matcher(nic.getText().toString().trim());
-                    if (mNICPattern.find()) {
-                        //Toast.makeText(EnrollmentFormModified.this, "Land Number matched", Toast.LENGTH_LONG).show();
-                    } else {
-                        AlertDialog.Builder builder8 = new AlertDialog.Builder(context);
-                        builder8.setMessage("NIC validation failure");
-                        builder8.setCancelable(true);
-
-                        builder8.setNegativeButton(
-                                "Close",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        dialog.cancel();
-                                        //return;
-                                    }
-                                });
-
-                        AlertDialog alert18 = builder8.create();
-                        builder8.show();
-                        return;
-                        //Toast.makeText(EnrollmentFormModified.this, "NO MATCH", Toast.LENGTH_LONG).show();
-                    }
-                }
+                isValidated = enrollmentFormValidator.validate();
 
                 saveElements();
             }
@@ -871,302 +321,63 @@ public class EnrollmentFormModified extends AppCompatActivity {
         }
     }
 
-    private String getDataElement(String dataElement) {
-        TrackedEntityAttributeValueObjectRepository valueRepository =
-                Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
-                        .value(
-
-                                dataElement,
-                                teiUid
-                                //getIntent().getStringExtra(EnrollmentFormModified.IntentExtra.TEI_UID.name()
-                                //)
-                        );
-        String currentValue = valueRepository.blockingExists() ?
-                valueRepository.blockingGet().value() : "";
-
-        return currentValue;
-    }
-
-    private boolean isImmuNumDuplicate(String immuNum){
-        try{
-            List<TrackedEntityAttributeValue> values =
-                Sdk.d2().trackedEntityModule().trackedEntityAttributeValues().byValue().eq(immuNum).blockingGet();
-            return !values.isEmpty();
-        }catch (Exception e){
-            System.out.print("failure ");
-            System.out.println(e.toString());
-        }
-        return false;
-    }
-
-    private void saveDataElement(String dataElement, String value){
-        TrackedEntityAttributeValueObjectRepository valueRepository;
+    private void setEditText(TextView textView, String dataElement){
         try {
-            valueRepository = Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
-                    .value(
-                            dataElement,
-                            teiUid
-                    );
-        }catch (Exception e)
-        {
-            //EnrollmentFormService.getInstance().init(
-                    //Sdk.d2(),
-                    //teiUid,
-                    //"hM6Yt9FQL0n",
-                    //getIntent().getStringExtra(EnrollmentFormModified.IntentExtra.OU_UID.name()));
-            valueRepository = Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
-                    .value(
-                            teiUid,
-                            //EnrollmentFormService.getInstance().getEnrollmentUid(),
-                            dataElement
-                    );
-        }
-
-        String currentValue = valueRepository.blockingExists() ?
-                valueRepository.blockingGet().value() : "";
-
-        if (currentValue == null)
-            currentValue = "";
-
-        try{
-            if(!isEmpty(value))
-            {
-                valueRepository.blockingSet(value);
-            }else
-            {
-                valueRepository.blockingDeleteIfExist();
+            String element = util.getDataTEIElement(dataElement, teiUid);
+            if (!element.isEmpty()) {
+                textView.setText(dataElement);
             }
-        } catch (D2Error d2Error) {
-            d2Error.printStackTrace();
-        }finally {
-            if (!value.equals(currentValue)) {
-                engineInitialization.onNext(true);
-            }
+        } catch (Exception e) {
+            textView.setText("");
         }
     }
+
+    private void setSpinner(Spinner spinner, Object object){
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context,
+                (Integer) object,
+                android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new EnrollmentTypeSpinnerClass());
+    }
+
 
     private void saveElements()
     {
-        if(GNArea.getText().toString().isEmpty())
-        {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage(getString(R.string.anthro_gn));
-            builder1.setCancelable(true);
-
-            builder1.setNegativeButton(
-                    "Close",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
+        if(!isValidated){
+            Log.e(TAG, "Error occured while trying to save tracked entity instance" );
             return;
         }
-        if(immuneNum.getText().toString().isEmpty())
-        {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage(getString(R.string.anthro_immune));
-            builder1.setCancelable(true);
 
-            builder1.setNegativeButton(
-                    "Close",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
+        //saveTEIDataElement("KuMTUOY6X3L", textView_date_of_registration.getText().toString());
+        util.saveTEIDataElement("upQGjAHBjzu", GNArea.getText().toString(), teiUid, engineInitialization);
+        util.saveTEIDataElement("h2ATdtJguMq", immuneNum.getText().toString(), teiUid, engineInitialization);
+        util.saveTEIDataElement("zh4hiarsSD5", name.getText().toString(), teiUid, engineInitialization);
+        util.saveTEIDataElement("lmtzQrlHMYF",
+                sex_english_only[sex.getSelectedItemPosition()], teiUid, engineInitialization);
+        util.saveTEIDataElement("qNH202ChkV3", textView_dob.getText().toString(), teiUid, engineInitialization);
+        util.saveTEIDataElement("b9CoAneYYys",
+                ethinicity_english_only[ethnicity.getSelectedItemPosition()], teiUid, engineInitialization);
+        util.saveTEIDataElement("D9aC5K6C6ne", address.getText().toString(), teiUid, engineInitialization);
+        util.saveTEIDataElement("igjlkmMF81X",
+                sector_english_only[sector.getSelectedItemPosition()], teiUid, engineInitialization);
+        util.saveTEIDataElement("cpcMXDhQouL", landNumber.getText().toString(), teiUid, engineInitialization);
+        util.saveTEIDataElement("LYRf4eIUVuN", mobileNumber.getText().toString(), teiUid, engineInitialization);
+        util.saveTEIDataElement("K7Fxa2wv2Rx", motherName.getText().toString(), teiUid, engineInitialization);
+        util.saveTEIDataElement("Gzjb3fp9FSe", nic.getText().toString(), teiUid, engineInitialization);
+        util.saveTEIDataElement("kYfIkz2M6En", textView_mother_dob.getText().toString(), teiUid, engineInitialization);
+        util.saveTEIDataElement("Gy4bCBxNuo4", numberOfChildren.getText().toString(), teiUid, engineInitialization);
+        util.saveTEIDataElement("GMNSaaq4xST",
+                eduLevel_english_only[eduLevel.getSelectedItemPosition()], teiUid, engineInitialization);
+        util.saveTEIDataElement("Srxv0vniOnf",
+                occupation_english_only[occupation.getSelectedItemPosition()], teiUid, engineInitialization);
+        util.saveTEIDataElement("s7Rde0kFOFb", occu_specification.getText().toString(), teiUid, engineInitialization);
+        util.saveTEIDataElement("ghN8XfnlU5V",
+                relationship_english_only[relationship.getSelectedItemPosition()], teiUid, engineInitialization);
+        util.saveTEIDataElement("hxCXbI5J2YS", caregiver.getText().toString(), teiUid, engineInitialization);
+        util.saveTEIDataElement("Fs89NLB2FrA", weight.getText().toString(), teiUid, engineInitialization);
+        util.saveTEIDataElement("LpvdWM4YuRq", length.getText().toString(), teiUid, engineInitialization);
 
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
-            return;
-        }
-        if(name.getText().toString().isEmpty())
-        {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage(getString(R.string.anthro_name));
-            builder1.setCancelable(true);
-
-            builder1.setNegativeButton(
-                    "Close",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
-            return;
-        }
-        if(textView_dob.getText().toString().isEmpty())
-        {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage(getString(R.string.anthro_dob));
-            builder1.setCancelable(true);
-
-            builder1.setNegativeButton(
-                    "Close",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
-            return;
-        }
-        if(address.getText().toString().isEmpty())
-        {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage(getString(R.string.anthro_address));
-            builder1.setCancelable(true);
-
-            builder1.setNegativeButton(
-                    "Close",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
-            return;
-        }
-        if(motherName.getText().toString().isEmpty())
-        {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage(getString(R.string.anthro_mom_name));
-            builder1.setCancelable(true);
-
-            builder1.setNegativeButton(
-                    "Close",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
-            return;
-        }
-        if(textView_mother_dob.getText().toString().isEmpty())
-        {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage(getString(R.string.anthro_mom_dob));
-            builder1.setCancelable(true);
-
-            builder1.setNegativeButton(
-                    "Close",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
-            return;
-        }
-        if(weight.getText().toString().isEmpty())
-        {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage(getString(R.string.anthro_weight_not_filled));
-            builder1.setCancelable(true);
-
-            builder1.setNegativeButton(
-                    "Close",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
-            return;
-        }
-        if(length.getText().toString().isEmpty())
-        {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage(getString(R.string.anthro_length_not_filled));
-            builder1.setCancelable(true);
-
-            builder1.setNegativeButton(
-                    "Close",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
-            return;
-        }
-        if(isImmuNumDuplicate(immuneNum.getText().toString()))
-        {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("Child with same immuNum already exists in PHM area");
-            builder1.setCancelable(true);
-
-            builder1.setNegativeButton(
-                    "Close",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
-            return;
-        }
-        saveDataElement("zmCxHpWgOOv", textView_date_of_registration.getText().toString());
-        saveDataElement("upQGjAHBjzu", GNArea.getText().toString());
-        saveDataElement("h2ATdtJguMq", immuneNum.getText().toString());
-        saveDataElement("zh4hiarsSD5", name.getText().toString());
-        saveDataElement("lmtzQrlHMYF",
-                sex_english_only[sex.getSelectedItemPosition()]);
-        saveDataElement("qNH202ChkV3", textView_dob.getText().toString());
-        saveDataElement("b9CoAneYYys",
-                ethinicity_english_only[ethnicity.getSelectedItemPosition()]);
-        saveDataElement("D9aC5K6C6ne", address.getText().toString());
-        saveDataElement("igjlkmMF81X",
-                sector_english_only[sector.getSelectedItemPosition()]);
-        saveDataElement("cpcMXDhQouL", landNumber.getText().toString());
-        saveDataElement("LYRf4eIUVuN", mobileNumber.getText().toString());
-        saveDataElement("K7Fxa2wv2Rx", motherName.getText().toString());
-        saveDataElement("Gzjb3fp9FSe", nic.getText().toString());
-        saveDataElement("kYfIkz2M6En", textView_mother_dob.getText().toString());
-        saveDataElement("Gy4bCBxNuo4", numberOfChildren.getText().toString());
-        saveDataElement("GMNSaaq4xST",
-                eduLevel_english_only[eduLevel.getSelectedItemPosition()]);
-        saveDataElement("Srxv0vniOnf",
-                occupation_english_only[occupation.getSelectedItemPosition()]);
-        saveDataElement("s7Rde0kFOFb", occu_specification.getText().toString());
-        saveDataElement("ghN8XfnlU5V",
-                relationship_english_only[relationship.getSelectedItemPosition()]);
-        saveDataElement("hxCXbI5J2YS", caregiver.getText().toString());
-        saveDataElement("Fs89NLB2FrA", weight.getText().toString());
-        saveDataElement("LpvdWM4YuRq", length.getText().toString());
-
-
-        //finishEnrollment();
-        /*
-        ActivityStarter.startActivity(
-                this,
-                ChildDetailsActivity.getTrackedEntityInstancesActivityIntent(
-                        this,
-                        trackedEntityInstance.uid()
-                ),true
-        );
-         */
         ActivityStarter.startActivity(
                 this,
                 ChildDetailsActivityNew.getTrackedEntityInstancesActivityIntent(
@@ -1178,7 +389,6 @@ public class EnrollmentFormModified extends AppCompatActivity {
 
     private void selectDateRegistration(int year, int month, int day)
     {
-        System.out.println("Clicked et date");
         Calendar c = Calendar.getInstance();
         c.add(Calendar.DATE, -7*4); // subtract 1 month from now
         DatePickerDialog datePickerDialog = new DatePickerDialog(
@@ -1191,9 +401,8 @@ public class EnrollmentFormModified extends AppCompatActivity {
 
     private void selectDate(int year, int month, int day)
     {
-        System.out.println("Clicked et date");
         Calendar c2 = Calendar.getInstance();
-        c2.add(Calendar.DATE, -7*4*12*5); // subtract 5 years from now
+        c2.add(Calendar.DATE, -365*5); // subtract 5 years from now
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 context, android.R.style.Theme_Holo_Light_Dialog, setListenerDob, year, month, day);
         datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -1204,7 +413,6 @@ public class EnrollmentFormModified extends AppCompatActivity {
 
     private void selectDateMotherDOB(int year, int month, int day)
     {
-        System.out.println("Clicked et date");
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 context, android.R.style.Theme_Holo_Light_Dialog, setListenerMotherDob, year, month, day);
         datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -1220,7 +428,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
     private int getSpinnerSelection(String dataElement, String [] array)
     {
         int itemPosition = -1;
-        String stringElement = getDataElement(dataElement);
+        String stringElement = util.getDataTEIElement(dataElement, teiUid);
         for(int i =0; i<array.length; i++)
         {
             if(array[i].equals(stringElement))

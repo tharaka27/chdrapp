@@ -243,11 +243,9 @@ public class EnrollmentFormActivity extends AppCompatActivity {
     private void finishEnrollment(View view) {
         setResult(RESULT_OK);
         //finish();
-
         Intent i =  ChildDetailsActivityNew.getTrackedEntityInstancesActivityIntent(this, teiUid);
         finish();
         startActivity(i);
-
     }
 
     @Override

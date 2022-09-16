@@ -720,52 +720,23 @@ public class DataValuesWHO {
     private int getColor(int pos) {
         int color = Color.RED;
 
-        /*
         switch (pos) {
             case 0:
             case 6:
-                color = Color.RED;
-                break;
-            case 1:
-            case 5:
-                color = Color.rgb(255, 165, 0);
-                break;
-            case 2:
-            case 4:
-                color = Color.YELLOW;
-                break;
-            case 3:
-                color = Color.GREEN;
-                break;
-        }
-         */
-
-        switch (pos) {
-            case 0:
-            case 6:
-                //color = Color.parseColor("#e6653b");
                 color = Color.parseColor("#a60c0c"); // red colour
-
                 break;
             case 1:
             case 5:
-                //color = Color.parseColor("#ccc971");
                 color = Color.parseColor("#F6A21E"); // yellow colour
-
                 break;
             case 2:
             case 4:
-                //color = Color.parseColor("#afe1bb");
                 color = Color.parseColor("#afe1bb"); // light green color
-
                 break;
             case 3:
-                //color = Color.parseColor("#a3ccae");
                 color = Color.parseColor("#a3ccae"); // dark green color
-
                 break;
         }
-
 
         return color;
     }

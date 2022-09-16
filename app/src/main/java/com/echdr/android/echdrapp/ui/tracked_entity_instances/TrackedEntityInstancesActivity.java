@@ -279,5 +279,11 @@ public class TrackedEntityInstancesActivity extends ListActivity {
         super.onActivityResult(requestCode,resultCode,data);
     }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+        observeTrackedEntityInstances();
+    }
+
 
 }

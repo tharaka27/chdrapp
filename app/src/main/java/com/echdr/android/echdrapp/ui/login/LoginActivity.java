@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
@@ -18,6 +19,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.echdr.android.echdrapp.R;
 import com.echdr.android.echdrapp.data.Sdk;
 import com.echdr.android.echdrapp.data.service.ActivityStarter;
+import com.echdr.android.echdrapp.service.Constants;
 import com.echdr.android.echdrapp.ui.main.MainActivity;
 import com.echdr.android.echdrapp.ui.programs.ProgramsActivity;
 import com.echdr.android.echdrapp.ui.splash.LanguageSelection;
@@ -28,14 +30,13 @@ import io.reactivex.disposables.Disposable;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private static final String TAG = "LoginActivity";
     private LoginViewModel loginViewModel;
     private Disposable disposable;
 
-    private String serverUrlEditText;
     private TextInputEditText usernameEditText;
     private TextInputEditText passwordEditText;
     private Button loginButton;
-    private ProgressBar loadingProgressBar;
 
     public static Intent getLoginActivityIntent(Context context) {
         return new Intent(context, LoginActivity.class);
@@ -47,12 +48,9 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login_yash);
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory()).get(LoginViewModel.class);
 
-        serverUrlEditText = "https://www.erhmis.fhb.health.gov.lk/erhmis2356/api/";
-        //serverUrlEditText = "https://www.erhmis.fhb.health.gov.lk/erhmis2356/dhis-web-dashboard/";
         usernameEditText = findViewById(R.id.username_yash);
         passwordEditText = findViewById(R.id.password_yash);
         loginButton = findViewById(R.id.btnLogin);
-        //loadingProgressBar = findViewById(R.id.loginProgressBar);
 
         loginViewModel.getLoginFormState().observe(this, loginFormState -> {
             if (loginFormState == null) {
@@ -71,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
             if (loginResult == null) {
                 return;
             }
-            //loadingProgressBar.setVisibility(View.GONE);
+
             if (loginResult.getError() != null) {
                 showLoginFailed(loginResult.getError());
             }
@@ -79,7 +77,6 @@ public class LoginActivity extends AppCompatActivity {
                 if (Sdk.d2().programModule().programs().blockingCount() > 0) {
                     ActivityStarter.startActivity(this, ProgramsActivity.getProgramActivityIntent(this),true);
                 } else {
-                    //ActivityStarter.startActivity(this, MainActivity.getMainActivityIntent(this),true);
                     ActivityStarter.startActivity(this, LanguageSelection.getLanguageSelectionActivityIntent(this),true);
                 }
             }
@@ -100,14 +97,13 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 loginViewModel.loginDataChanged(
-                        //serverUrlEditText.getText().toString()
-                        serverUrlEditText,
-                        usernameEditText.getText().toString(),
-                        passwordEditText.getText().toString());
+                        Constants.ERHMIS_SERVER_URL,
+                        getValidatedString(usernameEditText),
+                        getValidatedString(passwordEditText)
+                );
             }
         };
 
-        //serverUrlEditText.addTextChangedListener(afterTextChangedListener);
         usernameEditText.addTextChangedListener(afterTextChangedListener);
         passwordEditText.addTextChangedListener(afterTextChangedListener);
 
@@ -119,20 +115,15 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         loginButton.setOnClickListener(v -> login());
-
-
     }
 
     private void login() {
-        //loadingProgressBar.setVisibility(View.VISIBLE);
         loginButton.setVisibility(View.INVISIBLE);
-        String username = usernameEditText.getText().toString();
-        String password = passwordEditText.getText().toString();
-        //String serverUrl = serverUrlEditText.getText().toString();
-        String serverUrl = serverUrlEditText;
+        String username = getValidatedString(usernameEditText);
+        String password = getValidatedString(passwordEditText);
 
         disposable = loginViewModel
-                .login(username, password, serverUrl)
+                .login(username, password, Constants.ERHMIS_SERVER_URL)
                 .doOnTerminate(() -> loginButton.setVisibility(View.VISIBLE))
                 .subscribe(u -> {}, t -> {});
     }
@@ -145,8 +136,18 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-
     private void showLoginFailed(String errorString) {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
+    }
+
+    private String getValidatedString(TextInputEditText editText){
+        try {
+            return editText.getText().toString();
+        }catch (NullPointerException e){
+            Log.e(TAG, "Username/password field is empty");
+        }catch (Exception e){
+            Log.e(TAG, e.toString());
+        }
+        return "";
     }
 }

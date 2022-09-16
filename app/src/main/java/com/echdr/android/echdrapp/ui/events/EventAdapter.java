@@ -2,7 +2,6 @@ package com.echdr.android.echdrapp.ui.events;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +19,6 @@ import com.echdr.android.echdrapp.data.service.DateFormatHelper;
 import com.echdr.android.echdrapp.ui.base.DiffByIdItemCallback;
 import com.echdr.android.echdrapp.ui.base.ListItemWithSyncHolder;
 import com.echdr.android.echdrapp.ui.event_form.AnthropometryActivity;
-import com.echdr.android.echdrapp.ui.event_form.AnthropometryActivityNew;
 import com.echdr.android.echdrapp.ui.event_form.EventFormActivity;
 import com.echdr.android.echdrapp.ui.event_form.OtherEvaluationActivity;
 import com.echdr.android.echdrapp.ui.event_form.OtherFoodInsecurityActivity;
@@ -218,12 +216,12 @@ public class EventAdapter extends PagedListAdapter<Event, ListItemWithSyncHolder
             if(event.program().equals("hM6Yt9FQL0n"))
             {
                 ActivityStarter.startActivity(activity,  // anthropometry
-                        AnthropometryActivityNew.getFormActivityIntent(
+                        AnthropometryActivity.getFormActivityIntent(
                                 activity,
                                 event.uid(),
                                 event.program(),
                                 event.organisationUnit(),
-                                AnthropometryActivityNew.FormType.CHECK,
+                                AnthropometryActivity.FormType.CHECK,
                                 selectedChild
                         ), false
                 );

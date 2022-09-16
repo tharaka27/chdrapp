@@ -137,8 +137,8 @@
     <string name="anthro_regis_length">Length in Centimeters is allowed 10-99</string>
     <string name="anthro_regis_weight">Weight in Grams is allowed 500-9999</string>
     <string name="anthro_chirdren">Number of Children is allowed up to 20</string>
-    <string name="anthro_regis_land">Land Number is not filled</string>
-    <string name="anthro_regis_mobile">Mobile Number is not filled</string>
+    <string name="anthro_regis_land">Land Number is not filled or less/more characters</string>
+    <string name="anthro_regis_mobile">Mobile Number is not filled or less/more characters</string>
 
     <!--    demographic info-->
     <string name="demo_info_title">Demographic information</string>
@@ -189,6 +189,7 @@
     <string name="an_date_enrol"><font size="12">Date of enrollment</font></string>
     <string name="an_date"><font size="12">Date</font></string>
     <string name="an_weight"><font size="12">Weight (grams)</font></string>
+    <string name="an_weight_kg"><font size="12">Weight (kg)</font></string>
     <string name="an_length"><font size="12">Length/ Height (cm)</font></string>
     <string name="an_measures_title">Anthropometric measures</string>
     <string name="an_age_weeks">Age in Weeks</string>
