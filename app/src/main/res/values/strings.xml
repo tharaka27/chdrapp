@@ -185,7 +185,7 @@
 
 
     <!--    anthropometry programme-->
-    <string name="an_title">Stage 1: Anthropometry (repeatable)</string>
+    <string name="an_title">Stage 1: Anthropometry</string>
     <string name="an_date_enrol"><font size="12">Date of enrollment</font></string>
     <string name="an_date"><font size="12">Date</font></string>
     <string name="an_weight"><font size="12">Weight (grams)</font></string>
@@ -212,7 +212,7 @@
 
 
     <!-- other - reason for enrollment -->
-    <string name="oth_reason_title">Stage 1: Reason for enrollment \n(Non Repeatable)</string>
+    <string name="oth_reason_title">Stage 1: Reason for enrollment</string>
     <string name="oth_reason_date">Date</string>
     <string name="oth_reason_sam">SAM (checkbox)</string>
     <string name="oth_reason_mam">MAM (checkbox)</string>
@@ -273,45 +273,45 @@
 
 
     <!-- overweight - intervention -->
-    <string name="over_inter_title">Stage 2: Interventions \n(Repeatable)</string>
+    <string name="over_inter_title">Stage 2: Interventions</string>
     <string name="over_inter_date">Date</string>
     <string name="over_inter_counselling">IYCF/Nutrition counselling given (Yes/No)</string>
 
     <!-- overweight - management -->
-    <string name="over_mana_title">Stage 1: Management \n(Non Repeatable)</string>
+    <string name="over_mana_title">Stage 1: Management Status</string>
     <string name="over_mana_date">Date</string>
     <string name="over_mana_enrol_type">Enrollment type (Dropdown list)</string>
     <string name="over_mana_hospital">Referred to hospital (Yes/No)</string>
-    <string name="over_mana_seen">Seen by Paediatrician/ MO Nutrition (Yes/No)</string>
+    <string name="over_mana_seen">Seen by Paediatrician/Hospital Nutrition Clinic (Yes/No)</string>
 
     <!-- overweight - outcome -->
-    <string name="over_out_title">Stage 3 : Outcome \n(Non repeatable)</string>
+    <string name="over_out_title">Stage 3 : Outcome</string>
     <string name="over_out_date">Date</string>
     <string name="over_out_outcome">Overweight/ Obesity - Outcome (dropdown list)</string>
 
 
     <!-- stunting - intervention -->
-    <string name="stunt_inter_title">Stage 2: Interventions \n(Repeatable)</string>
+    <string name="stunt_inter_title">Stage 2: Interventions</string>
     <string name="stunt_inter_date">Date</string>
     <string name="stunt_inter_counselling">IYCF/Nutrition counselling given (Yes/No)</string>
 
 
     <!-- stunting - management -->
-    <string name="stunt_mana_title">Stage 1: Management \n(Non Repeatable)</string>
+    <string name="stunt_mana_title">Stage 1: Management Status</string>
     <string name="stunt_mana_date">Date</string>
     <string name="stunt_mana_enrol_type">Enrollment type (Dropdown list)</string>
     <string name="stunt_mana_hospital">Referred to hospital (Yes/No)</string>
-    <string name="stunt_mana_seen">Seen by Paediatrician/ MO Nutrition (Yes/No)</string>
+    <string name="stunt_mana_seen">Seen by Paediatrician/Hospital Nutrition Clinic (Yes/No)</string>
 
 
     <!-- stunting - outcome -->
-    <string name="stunt_out_title">Stage 3 : Outcome \n(Non repeatable)</string>
+    <string name="stunt_out_title">Stage 3 : Outcome</string>
     <string name="stunt_out_date">Date</string>
     <string name="stunt_out_outcome">Stunting - Outcome (dropdown list)</string>
 
 
     <!-- supplementory - indication -->
-    <string name="supp_indication_title">Stage 1: Indication for Thriposha \n(Non repeatable)</string>
+    <string name="supp_indication_title">Stage 1: Indication for Thriposha</string>
     <string name="supp_indication_date">Indication for thriposha date</string>
     <string name="supp_indication_mam">MAM (checkbox)</string>
     <string name="supp_indication_underweight">Underweight (checkbox)</string>
@@ -321,7 +321,7 @@
                     \n4. MAM + Underweight \n5. MAM + Longstanding Growth Faltering Zone</string>
 
     <!-- supplementory - intervention -->
-    <string name="supp_intervention_title">Stage 2: Interventions \n(repeatable)</string>
+    <string name="supp_intervention_title">Stage 2: Interventions</string>
     <string name="supp_intervention_date">Date</string>
     <string name="supp_intervention_on_triposha">On Thriposha (Yes/No)</string>
     <string name="supp_intervention_packets">Number of Thriposha packets given</string>
@@ -330,29 +330,29 @@
 
 
     <!-- supplementory - outcome -->
-    <string name="supp_out_title">Stage 3 : Outcome \n(Non repeatable)</string>
+    <string name="supp_out_title">Stage 3 : Outcome</string>
     <string name="supp_out_date">Date</string>
     <string name="supp_out_outcome">Supplementary Feeding - Outcome (Dropdown list)</string>
 
 
     <!-- tera - intervention -->
-    <string name="tera_intervention_title">Stage 2: Interventions \n(Repeatable)</string>
+    <string name="tera_intervention_title">Stage 2: Interventions</string>
     <string name="tera_intervention_date">Date</string>
     <string name="tera_intervention_bp100">On BP100 (Yes/No) </string>
     <string name="tera_intervention_counselling">IYCF/Nutrition counselling given (Yes/No)</string>
 
 
     <!-- tera - management -->
-    <string name="tera_management_title">Stage 1: Management \n(Non Repeatable)</string>
+    <string name="tera_management_title">Stage 1: Management Status</string>
     <string name="tera_management_date">Date</string>
     <string name="tera_management_enrollment">Enrollment type (Dropdown list)</string>
     <string name="tera_management_hospital">Referred to hospital (Yes/No)</string>
-    <string name="tera_management_seen">Seen by Paediatrician/ MO Nutrition (Yes/No)</string>
+    <string name="tera_management_seen">Seen by Paediatrician/Hospital Nutrition Clinic (Yes/No)</string>
     <string name="tera_management_bp100">Started on BP 100 (Yes/No)</string>
 
 
     <!-- tera - outcome -->
-    <string name="tera_out_title">Stage 3 : Outcome \n(Non repeatable)</string>
+    <string name="tera_out_title">Stage 3 : Outcome</string>
     <string name="tera_out_date">Date</string>
     <string name="tera_out_outcome">Therapeutic Feeding - Outcome (Dropdown list)</string>
 
