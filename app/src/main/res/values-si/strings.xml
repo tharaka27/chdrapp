@@ -356,6 +356,7 @@
 
     <!--    child details-->
     <string name="cd_title">දරුවාගේ විස්තර</string>
+    <string name="cd_edit">සංස්කරණය කරන්න</string>
     <string name="cd_name"><font size="12">දරුවාගේ නම</font></string>
     <string name="cd_no"><font size="12">උපත් සහ ප්‍රතිශක්තිකරණය \nලියාපදිංච් අංකය</font></string>
     <string name="cd_dob"><font size="12">උපන්දිනය</font></string>

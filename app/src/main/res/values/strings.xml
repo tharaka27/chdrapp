@@ -360,6 +360,7 @@
 
     <!--    child details-->
     <string name="cd_title">Child details</string>
+    <string name="cd_edit">Edit</string>
     <string name="cd_name"><font size="12">Child name</font></string>
     <string name="cd_no"><font size="12">Birth and immunization \nRegistration number</font></string>
     <string name="cd_dob"><font size="12">Date of birth</font></string>

@@ -361,6 +361,7 @@
 
     <!--    child details-->
     <string name="cd_title">குழந்தை விவரங்கள்</string>
+    <string name="cd_edit">தொகு</string>
     <string name="cd_name"><font size="12">குழந்தையின் பெயர்</font></string>
     <string name="cd_no"><font size="12">பிறப்பு மற்றும் தடுப்பூசி \nபதிவு எண்</font></string>
     <string name="cd_dob"><font size="12">பிறந்த திகதி</font></string>
