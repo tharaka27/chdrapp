@@ -420,10 +420,10 @@ public class SupplementaryInterventionActivity extends AppCompatActivity {
         if(radioButtonTriposhaYes.isChecked()){
             if( numberOfTriposha.getText().toString().isEmpty() ||
                     Integer.parseInt(numberOfTriposha.getText().toString()) < 0
-                    || Integer.parseInt(numberOfTriposha.getText().toString()) > 2)
+                    || Integer.parseInt(numberOfTriposha.getText().toString()) > 4)
             {
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                builder1.setMessage("Number of Thriposha packets given should be between 0-2");
+                builder1.setMessage("Number of Thriposha packets given should be between 0-4");
                 builder1.setCancelable(true);
 
                 builder1.setNegativeButton(
