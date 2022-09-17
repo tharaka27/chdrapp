@@ -263,7 +263,7 @@
     <string name="oth_inadequate_water_quality">Water quality monitoring</string>
 
     <!-- other - risk factor evaluation -->
-    <string name="oth_risk_title">Stage 2: Risk factor evaluation \n(Repeatable)</string>
+    <string name="oth_risk_title">Stage 2: Risk factor evaluation</string>
     <string name="oth_risk_date">Date</string>
     <string name="oth_risk_poverty">Poverty and poor income Management (checkbox)</string>
     <string name="oth_risk_food">Food insecurity (checkbox)</string>

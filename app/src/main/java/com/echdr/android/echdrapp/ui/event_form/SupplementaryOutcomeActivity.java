@@ -2,6 +2,7 @@ package com.echdr.android.echdrapp.ui.event_form;
 
 import static android.text.TextUtils.isEmpty;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -10,6 +11,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -27,6 +29,11 @@ import com.echdr.android.echdrapp.R;
 import com.echdr.android.echdrapp.data.Sdk;
 import com.echdr.android.echdrapp.data.service.forms.EventFormService;
 import com.echdr.android.echdrapp.data.service.forms.RuleEngineService;
+import com.echdr.android.echdrapp.service.Service.UnenrollmentService;
+import com.echdr.android.echdrapp.service.Setter.DateSetter;
+import com.echdr.android.echdrapp.service.Validator.OverweightOutcomeValidator;
+import com.echdr.android.echdrapp.service.Validator.SupplementaryOutcomeValidator;
+import com.echdr.android.echdrapp.service.util;
 
 import org.hisp.dhis.android.core.arch.repositories.scope.RepositoryScope;
 import org.hisp.dhis.android.core.enrollment.Enrollment;
@@ -40,11 +47,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import io.reactivex.processors.PublishProcessor;
 
 public class SupplementaryOutcomeActivity extends AppCompatActivity {
+    private static final String TAG = "SupplementaryOutcomeActivity";
     private String eventUid;
     private String programUid;
     private String selectedChild;
@@ -60,8 +70,8 @@ public class SupplementaryOutcomeActivity extends AppCompatActivity {
     private RuleEngineService engineService;
     private DatePickerDialog.OnDateSetListener setListener;
     private Context context;
-    protected String[] other_type_array ;
-    protected String[] english_other_type_array ;
+    protected String[] other_type_array;
+    protected String[] other_type_array_english;
 
     private TrackedEntityAttributeValue birthday;
 
@@ -105,7 +115,7 @@ public class SupplementaryOutcomeActivity extends AppCompatActivity {
         orgUnit = getIntent().getStringExtra(SupplementaryOutcomeActivity.IntentExtra.OU_UID.name());
 
         other_type_array = getResources().getStringArray(R.array.supp_outcome_type);
-        english_other_type_array = getResources().getStringArray(R.array.supp_outcome_type_english);
+        other_type_array_english = getResources().getStringArray(R.array.supp_outcome_type_english);
 
 
         engineInitialization = PublishProcessor.create();
@@ -124,102 +134,27 @@ public class SupplementaryOutcomeActivity extends AppCompatActivity {
         final int month = Integer.parseInt(s_monthNumber);
         final int day = Integer.parseInt(s_day);
 
-        textView_Date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.out.println("Clicked et date");
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        context, android.R.style.Theme_Holo_Light_Dialog, setListener, year, month, day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        DateSetter.setContext(context);
+        DateSetter.setBirthday(birthday);
+        DateSetter.setSetListener(setListener);
+        DateSetter.setTextView(textView_Date);
+        DateSetter.setImageView(datePicker);
+        DateSetter.setDate(year, month, day, 365*5+2);
 
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                Date dob = null;
-                try {
-                    dob = formatter.parse(birthday.value());
-                    datePickerDialog.getDatePicker().setMinDate(dob.getTime());
+        //TODO test new util.setTextView and util.getSpinnerSelection
 
-                    Calendar c = Calendar.getInstance();
-                    c.setTime(dob);
-                    c.add(Calendar.DATE, 365*5+2);
-                    long minimum_value = Math.min(c.getTimeInMillis(), System.currentTimeMillis());
-
-                    datePickerDialog.getDatePicker().setMaxDate(minimum_value);
-                    //datePickerDialog.getDatePicker().setMaxDate(c.getTimeInMillis());
-
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                datePickerDialog.show();
-            }
-        });
-
-        datePicker.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        context, android.R.style.Theme_Holo_Light_Dialog, setListener, year, month, day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                Date dob = null;
-                try {
-                    dob = formatter.parse(birthday.value());
-                    datePickerDialog.getDatePicker().setMinDate(dob.getTime());
-
-                    Calendar c = Calendar.getInstance();
-                    c.setTime(dob);
-                    c.add(Calendar.DATE, 365*5+2);
-                    long minimum_value = Math.min(c.getTimeInMillis(), System.currentTimeMillis());
-
-                    datePickerDialog.getDatePicker().setMaxDate(minimum_value);
-
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                datePickerDialog.show();
-            }
-        });
-
-        setListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                month = month+1;
-                String date = year + "-" + String.format("%02d", month) + "-" + String.format("%02d", dayOfMonth) ;
-                textView_Date.setText(date);
-            }
-        };
-
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context,
-                R.array.supp_outcome_type,
-                android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_expandable_list_item_1);
-        spinner_Enrollment.setAdapter(adapter);
-        spinner_Enrollment.setOnItemSelectedListener(new SupplementaryOutcomeActivity.EnrollmentTypeSpinnerClass());
+        util.setSpinner(context, spinner_Enrollment, R.array.supp_outcome_type);
 
         // Load the existing values - form.CHECK
         if(formType == SupplementaryOutcomeActivity.FormType.CHECK)
         {
-            System.out.println(getDataElement("rTHNOXde3wr")); // type
-            System.out.println(getDataElement("lSy6bC6y3UD")); // date
 
             // set date
-            try{
-                String prev_date = getDataElement("lSy6bC6y3UD");
-                if(!prev_date.isEmpty())
-                {
-                    textView_Date.setText(prev_date);
-                }
-            }
-            catch (Exception e)
-            {
-                textView_Date.setText("");
-            }
-
+            util.setTextView(textView_Date, "lSy6bC6y3UD", eventUid);
 
             // set enrollment type
             spinner_Enrollment.setSelection(
-                    getSpinnerSelection("rTHNOXde3wr", other_type_array));
+                    util.getSpinnerSelection(eventUid,"rTHNOXde3wr", other_type_array));
 
         }
         else{
@@ -230,7 +165,10 @@ public class SupplementaryOutcomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                saveElements();
+                boolean wasSuccessful = saveElements();
+                if(wasSuccessful) {
+                    finishEnrollment();
+                }
             }
         });
 
@@ -243,21 +181,38 @@ public class SupplementaryOutcomeActivity extends AppCompatActivity {
             this.engineService = new RuleEngineService();
     }
 
-    class EnrollmentTypeSpinnerClass implements AdapterView.OnItemSelectedListener
+    @SuppressLint("LongLogTag")
+    private boolean saveElements()
     {
-        @Override
-        public void onItemSelected(AdapterView<?> parent, View v, int position, long id)
-        {
-            Toast.makeText(v.getContext(), "Your choose :" +
-                    other_type_array[position],Toast.LENGTH_SHORT).show();
+        SupplementaryOutcomeValidator supplementaryOutcomeValidator = new SupplementaryOutcomeValidator();
+        supplementaryOutcomeValidator.setTextView_Date(textView_Date);
+        supplementaryOutcomeValidator.setContext(context);
+        supplementaryOutcomeValidator.setSpinner_Enrollment(spinner_Enrollment);
+        supplementaryOutcomeValidator.setBirthday(birthday);
+
+        if(!supplementaryOutcomeValidator.validate()){
+            Log.e(TAG, "Validation failure" );
+            return false;
         }
 
-        @Override
-        public void onNothingSelected(AdapterView<?> parent) {
+        Map<String, String> dataElements = new HashMap<>();
+        dataElements.put("lSy6bC6y3UD", textView_Date.getText().toString());
+        dataElements.put("rTHNOXde3wr", other_type_array_english[spinner_Enrollment.getSelectedItemPosition()]);
 
-        }
+        UnenrollmentService.setSelectedChild(selectedChild);
+        UnenrollmentService.setContext(context);
+
+        UnenrollmentService.unenroll( textView_Date.getText().toString(),
+                other_type_array_english[spinner_Enrollment.getSelectedItemPosition()]
+                ,getString(R.string.unenroll_supplimentory), dataElements, "tc6RsYbgGzm",
+                eventUid, orgUnit, engineInitialization,
+                ()->{
+                    finishEnrollment();
+                    return null;
+                });
+
+        return UnenrollmentService.isSuccessfulUnenrollment();
     }
-
 
     @Override
     protected void onResume(){
@@ -289,191 +244,4 @@ public class SupplementaryOutcomeActivity extends AppCompatActivity {
         finish();
     }
 
-    private String getDataElement(String dataElement){
-        TrackedEntityDataValueObjectRepository valueRepository =
-                Sdk.d2().trackedEntityModule().trackedEntityDataValues()
-                        .value(
-                                eventUid,
-                                dataElement
-                        );
-
-        String currentValue = valueRepository.blockingExists() ?
-                valueRepository.blockingGet().value() : "";
-
-        return currentValue;
-    }
-
-    private void saveDataElement(String dataElement, String value){
-        TrackedEntityDataValueObjectRepository valueRepository;
-        try {
-            valueRepository = Sdk.d2().trackedEntityModule().trackedEntityDataValues()
-                    .value(
-                            EventFormService.getInstance().getEventUid(),
-                            dataElement
-                    );
-        }catch (Exception e)
-        {
-            EventFormService.getInstance().init(
-                    Sdk.d2(),
-                    eventUid,
-                    programUid,
-                    getIntent().getStringExtra(SupplementaryOutcomeActivity.IntentExtra.OU_UID.name()));
-            valueRepository = Sdk.d2().trackedEntityModule().trackedEntityDataValues()
-                    .value(
-                            EventFormService.getInstance().getEventUid(),
-                            dataElement
-                    );
-        }
-
-        String currentValue = valueRepository.blockingExists() ?
-                valueRepository.blockingGet().value() : "";
-
-        if (currentValue == null)
-            currentValue = "";
-
-        try{
-            if(!isEmpty(value))
-            {
-                valueRepository.blockingSet(value);
-            }else
-            {
-                valueRepository.blockingDeleteIfExist();
-            }
-        } catch (D2Error d2Error) {
-            d2Error.printStackTrace();
-        }finally {
-            if (!value.equals(currentValue)) {
-                engineInitialization.onNext(true);
-            }
-        }
-    }
-
-    private void saveElements()
-    {
-        if(textView_Date.getText().toString().equals(getString(R.string.date_button_text))||
-                textView_Date.getText().toString().isEmpty())
-        {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage(getString(R.string.date));
-            builder1.setCancelable(true);
-
-            builder1.setNegativeButton(
-                    "Close",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
-            return;
-        }
-
-        if (spinner_Enrollment.getSelectedItemPosition() == 4){
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-            Date dob = null;
-            try {
-                dob = formatter.parse(birthday.value());
-                Calendar c = Calendar.getInstance();
-                c.setTime(dob);
-                long minimum_value =  System.currentTimeMillis() - c.getTimeInMillis();
-
-                if (minimum_value < 157784630000L){
-                    AlertDialog.Builder builder2 = new AlertDialog.Builder(context);
-                    builder2.setMessage("The Child is not 5 years old");
-                    builder2.setCancelable(true);
-
-                    builder2.setNegativeButton(
-                            "Close",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                }
-                            });
-
-                    AlertDialog alert12 = builder2.create();
-                    alert12.show();
-                    return;
-                }
-
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-        }
-
-        // un-enroll from the program
-        AlertDialog.Builder builderSingle = new AlertDialog.Builder(context);
-        builderSingle.setIcon(R.drawable.baby_girl);
-        builderSingle.setTitle(getString(R.string.unenroll));
-        builderSingle.setMessage(getString(R.string.unenroll_supplimentory));
-
-        builderSingle.setNegativeButton("un-enroll", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-
-                // get latest enrollment
-                List<Enrollment> enrollmentStatus = Sdk.d2().enrollmentModule().enrollments()
-                        .byTrackedEntityInstance().eq(selectedChild)
-                        .byProgram().eq("tc6RsYbgGzm")
-                        .orderByCreated(RepositoryScope.OrderByDirection.DESC)
-                        .blockingGet();
-
-                String enrollmentID = "";
-
-                if(!enrollmentStatus.isEmpty())
-                {
-                    enrollmentID = enrollmentStatus.get(0).uid();
-                }
-
-                EnrollmentObjectRepository rep = Sdk.d2().enrollmentModule().enrollments()
-                        .uid(enrollmentID);
-                try {
-                    rep.setStatus(EnrollmentStatus.COMPLETED);
-
-                    saveDataElement("lSy6bC6y3UD", textView_Date.getText().toString());
-                    saveDataElement("rTHNOXde3wr",
-                            english_other_type_array[spinner_Enrollment.getSelectedItemPosition()]);
-
-                    finishEnrollment();
-
-                } catch (D2Error d2Error) {
-                    d2Error.printStackTrace();
-                    Toast.makeText(context, "Un-enrolling unsuccessful",
-                            Toast.LENGTH_LONG).show();
-                }
-
-
-                dialog.dismiss();
-                return;
-            }
-        });
-
-        builderSingle.show();
-
-    }
-
-    private void selectDate(int year, int month, int day)
-    {
-        System.out.println("Clicked et date");
-        DatePickerDialog datePickerDialog = new DatePickerDialog(
-                context, android.R.style.Theme_Holo_Light_Dialog, setListener, year, month, day);
-        datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        datePickerDialog.show();
-    }
-
-    private int getSpinnerSelection(String dataElement, String [] array)
-    {
-        int itemPosition = -1;
-        String stringElement = getDataElement(dataElement);
-        for(int i =0; i<array.length; i++)
-        {
-            if(array[i].equals(stringElement))
-            {
-                itemPosition = i;
-            }
-        }
-        return itemPosition;
-    }
 }
