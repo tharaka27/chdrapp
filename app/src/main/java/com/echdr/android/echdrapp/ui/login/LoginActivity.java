@@ -142,7 +142,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private String getValidatedString(TextInputEditText editText){
         try {
-            return editText.getText().toString();
+            return editText.getText().toString().trim();
         }catch (NullPointerException e){
             Log.e(TAG, "Username/password field is empty");
         }catch (Exception e){

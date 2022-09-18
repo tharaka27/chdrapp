@@ -9,7 +9,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Log;
@@ -19,8 +18,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,19 +30,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.echdr.android.echdrapp.R;
 import com.echdr.android.echdrapp.data.Sdk;
 import com.echdr.android.echdrapp.data.service.ActivityStarter;
-import com.echdr.android.echdrapp.data.service.forms.EnrollmentFormService;
-import com.echdr.android.echdrapp.data.service.forms.EventFormService;
-import com.echdr.android.echdrapp.data.service.forms.FormField;
 import com.echdr.android.echdrapp.data.service.forms.RuleEngineService;
 import com.echdr.android.echdrapp.service.Validator.EditAccessValidator;
 import com.echdr.android.echdrapp.service.Validator.EnrollmentFormValidator;
 import com.echdr.android.echdrapp.ui.enrollment_form.EnrollmentFormActivity;
-import com.echdr.android.echdrapp.ui.enrollment_form.EnrollmentFormModified;
-import com.echdr.android.echdrapp.ui.event_form.SupplementaryIndicationActivity;
 import com.echdr.android.echdrapp.ui.events.EventsActivity;
-import com.echdr.android.echdrapp.ui.tracked_entity_instances.ChildDetailsActivity;
 
-import org.apache.commons.lang3.StringUtils;
 import org.hisp.dhis.android.core.arch.repositories.scope.RepositoryScope;
 import org.hisp.dhis.android.core.enrollment.Enrollment;
 import org.hisp.dhis.android.core.enrollment.EnrollmentObjectRepository;
@@ -51,28 +43,16 @@ import org.hisp.dhis.android.core.enrollment.EnrollmentStatus;
 import org.hisp.dhis.android.core.maintenance.D2Error;
 import org.hisp.dhis.android.core.organisationunit.OrganisationUnit;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValueObjectRepository;
-import org.hisp.dhis.android.core.trackedentity.TrackedEntityDataValueObjectRepository;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityInstance;
 import org.hisp.dhis.rules.RuleEngine;
-import org.hisp.dhis.rules.models.RuleAction;
-import org.hisp.dhis.rules.models.RuleActionHideField;
-import org.hisp.dhis.rules.models.RuleEffect;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import io.reactivex.Flowable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.processors.PublishProcessor;
-import io.reactivex.schedulers.Schedulers;
 
 public class ChildDetailsActivityNew extends AppCompatActivity {
 
@@ -157,7 +137,7 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
     private boolean IsOverweightEnrolled= false;
 
 
-    private ImageButton edit_button;
+    private Button edit_button;
 
     private Button submitButton;
 
@@ -540,6 +520,7 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
         editAccessValidator.setEnrollmentID(anthropometryEnrollmentID);
 
         edit_button.setOnClickListener(view ->{
+            edit_button.setBackgroundResource(R.color.purple_200);
 
             if(editAccessValidator.validate()){
                 sex.setEnabled(true);

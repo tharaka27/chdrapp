@@ -280,7 +280,7 @@ public class AnthropometryActivity extends AppCompatActivity {
                         weightDataWHO, true, AgeInWeeksTxt);
 
             }else{
-                textView_Date.setText("Click here to set Date");
+                textView_Date.setText(R.string.date_button_text);
             }
 
             changeListeners(heightTxt, heightDataWHO, true, anthropometryService);

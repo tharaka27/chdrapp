@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:weightSum="1"
         android:orientation="vertical">
 
@@ -20,10 +20,10 @@
             android:layout_height="0dp"
             android:src="@drawable/group16682" />
 
-        <ScrollView
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.6">
+            android:layout_weight="0.78">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -245,7 +245,7 @@
                 </LinearLayout>
 
             </RelativeLayout>
-        </ScrollView>
+        </LinearLayout>
 
     </LinearLayout>
 
