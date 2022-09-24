@@ -26,6 +26,9 @@ import com.echdr.android.echdrapp.R;
 import com.echdr.android.echdrapp.data.Sdk;
 import com.echdr.android.echdrapp.data.service.forms.EventFormService;
 import com.echdr.android.echdrapp.data.service.forms.RuleEngineService;
+import com.echdr.android.echdrapp.service.Setter.DateSetter;
+import com.echdr.android.echdrapp.service.Validator.OverweightInterventionValidator;
+import com.echdr.android.echdrapp.service.util;
 
 import org.hisp.dhis.android.core.maintenance.D2Error;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValue;
@@ -86,21 +89,20 @@ public class OverweightIntervensionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overweight_intervention);
 
-        textView_Date = findViewById(R.id.intervensionDate);
-        saveButton         = findViewById(R.id.IntervensionSave);
-        datePicker         = findViewById(R.id.intervension_date_pick);
-        radioGroupCounselling = findViewById(R.id.radioGroupCounselling);
-        radioButtonCounsellingYes = findViewById(R.id.radioButtonCounsellingYes);
-        radioButtonCounsellingNo = findViewById(R.id.radioButtonCounsellingNo);
-
+        textView_Date               = findViewById(R.id.intervensionDate);
+        saveButton                  = findViewById(R.id.IntervensionSave);
+        datePicker                  = findViewById(R.id.intervension_date_pick);
+        radioGroupCounselling       = findViewById(R.id.radioGroupCounselling);
+        radioButtonCounsellingYes   = findViewById(R.id.radioButtonCounsellingYes);
+        radioButtonCounsellingNo    = findViewById(R.id.radioButtonCounsellingNo);
 
         context = this;
 
-        eventUid = getIntent().getStringExtra(OverweightIntervensionActivity.IntentExtra.EVENT_UID.name());
-        programUid = getIntent().getStringExtra(OverweightIntervensionActivity.IntentExtra.PROGRAM_UID.name());
-        selectedChild = getIntent().getStringExtra(OverweightIntervensionActivity.IntentExtra.TEI_ID.name());
-        formType = OverweightIntervensionActivity.FormType.valueOf(getIntent().getStringExtra(OverweightIntervensionActivity.IntentExtra.TYPE.name()));
-        orgUnit = getIntent().getStringExtra(OverweightIntervensionActivity.IntentExtra.OU_UID.name());
+        eventUid        = getIntent().getStringExtra(OverweightIntervensionActivity.IntentExtra.EVENT_UID.name());
+        programUid      = getIntent().getStringExtra(OverweightIntervensionActivity.IntentExtra.PROGRAM_UID.name());
+        selectedChild   = getIntent().getStringExtra(OverweightIntervensionActivity.IntentExtra.TEI_ID.name());
+        formType        = OverweightIntervensionActivity.FormType.valueOf(getIntent().getStringExtra(OverweightIntervensionActivity.IntentExtra.TYPE.name()));
+        orgUnit         = getIntent().getStringExtra(OverweightIntervensionActivity.IntentExtra.OU_UID.name());
 
         engineInitialization = PublishProcessor.create();
 
@@ -119,97 +121,26 @@ public class OverweightIntervensionActivity extends AppCompatActivity {
         final int month = Integer.parseInt(s_monthNumber);
         final int day = Integer.parseInt(s_day);
 
-        textView_Date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.out.println("Clicked et date");
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        context, android.R.style.Theme_Holo_Light_Dialog, setListener, year, month, day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                Date dob = null;
-                try {
-                    dob = formatter.parse(birthday.value());
-                    datePickerDialog.getDatePicker().setMinDate(dob.getTime());
-
-                    Calendar c = Calendar.getInstance();
-                    c.setTime(dob);
-                    c.add(Calendar.DATE, 365*5+2);
-                    long minimum_value = Math.min(c.getTimeInMillis(), System.currentTimeMillis());
-
-                    datePickerDialog.getDatePicker().setMaxDate(minimum_value);
-
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                datePickerDialog.show();
-            }
-        });
-
-        datePicker.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        context, android.R.style.Theme_Holo_Light_Dialog, setListener, year, month, day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                Date dob = null;
-                try {
-                    dob = formatter.parse(birthday.value());
-                    datePickerDialog.getDatePicker().setMinDate(dob.getTime());
-
-                    Calendar c = Calendar.getInstance();
-                    c.setTime(dob);
-                    c.add(Calendar.DATE, 365*5+2);
-                    long minimum_value = Math.min(c.getTimeInMillis(), System.currentTimeMillis());
-
-                    datePickerDialog.getDatePicker().setMaxDate(minimum_value);
-
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                datePickerDialog.show();
-            }
-        });
-
-        setListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                month = month+1;
-                String date = year + "-" + String.format("%02d", month) + "-" + String.format("%02d", dayOfMonth) ;
-                textView_Date.setText(date);
-            }
-        };
+        DateSetter.setContext(context);
+        DateSetter.setBirthday(birthday);
+        DateSetter.setSetListener(setListener);
+        DateSetter.setTextView(textView_Date);
+        DateSetter.setImageView(datePicker);
+        DateSetter.setDate(year, month, day, 365*5+2);
 
         if(formType == OverweightIntervensionActivity.FormType.CHECK)
         {
-            System.out.println(getDataElement("kCYwMXTkeAE")); // intervension date
-            System.out.println(getDataElement("J8qFRBqjDfE")); // counselling given
-
 
             // set date
-            try{
-                String prev_date = getDataElement("kCYwMXTkeAE");
-                if(!prev_date.isEmpty())
-                {
-                    textView_Date.setText(prev_date);
-                }
-            }
-            catch (Exception e)
-            {
-                textView_Date.setText("");
-            }
+            util.setTextView(textView_Date, "kCYwMXTkeAE", eventUid);
 
             // set counselling give
             try{
-                if(getDataElement("J8qFRBqjDfE").equals("true"))
+                if(util.getDataElement("J8qFRBqjDfE", eventUid).equals("true"))
                 {
                     radioButtonCounsellingYes.setChecked(true);
                     radioButtonCounsellingNo.setChecked(false);
-                }else if(getDataElement("J8qFRBqjDfE").equals("false"))
+                }else if(util.getDataElement("J8qFRBqjDfE", eventUid).equals("false"))
                 {
                     radioButtonCounsellingYes.setChecked(false);
                     radioButtonCounsellingNo.setChecked(true);
@@ -271,90 +202,15 @@ public class OverweightIntervensionActivity extends AppCompatActivity {
         finish();
     }
 
-    private String getDataElement(String dataElement){
-        TrackedEntityDataValueObjectRepository valueRepository =
-                Sdk.d2().trackedEntityModule().trackedEntityDataValues()
-                        .value(
-                                eventUid,
-                                dataElement
-                        );
-
-        String currentValue = valueRepository.blockingExists() ?
-                valueRepository.blockingGet().value() : "";
-
-        return currentValue;
-    }
-
-    private void saveDataElement(String dataElement, String value){
-        TrackedEntityDataValueObjectRepository valueRepository;
-        try {
-            valueRepository = Sdk.d2().trackedEntityModule().trackedEntityDataValues()
-                    .value(
-                            EventFormService.getInstance().getEventUid(),
-                            dataElement
-                    );
-        }catch (Exception e)
-        {
-            EventFormService.getInstance().init(
-                    Sdk.d2(),
-                    eventUid,
-                    programUid,
-                    getIntent().getStringExtra(OverweightIntervensionActivity.IntentExtra.OU_UID.name()));
-            valueRepository = Sdk.d2().trackedEntityModule().trackedEntityDataValues()
-                    .value(
-                            EventFormService.getInstance().getEventUid(),
-                            dataElement
-                    );
-        }
-
-        String currentValue = valueRepository.blockingExists() ?
-                valueRepository.blockingGet().value() : "";
-
-
-        if (currentValue == null)
-            currentValue = "";
-
-        try{
-            if(!isEmpty(value))
-            {
-                valueRepository.blockingSet(value);
-            }else
-            {
-                valueRepository.blockingDeleteIfExist();
-            }
-        } catch (D2Error d2Error) {
-            d2Error.printStackTrace();
-        }finally {
-            if (!value.equals(currentValue)) {
-                engineInitialization.onNext(true);
-            }
-        }
-    }
-
     private void saveElements()
     {
-        if(textView_Date.getText().toString().equals(getString(R.string.date_button_text))||
-                textView_Date.getText().toString().isEmpty())
-        {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage(getString(R.string.date));
-            builder1.setCancelable(true);
-
-            builder1.setNegativeButton(
-                    "Close",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
-            return;
-        }
+        OverweightInterventionValidator overweightInterventionValidator = new OverweightInterventionValidator();
+        overweightInterventionValidator.setContext(context);
+        overweightInterventionValidator.setTextView_Date(textView_Date);
 
 
-        saveDataElement("kCYwMXTkeAE", textView_Date.getText().toString());
+        util.saveDataElement("kCYwMXTkeAE", textView_Date.getText().toString(),
+                eventUid, programUid, orgUnit ,engineInitialization );
 
         String counsellingGiven = "";
         if(radioButtonCounsellingYes.isChecked())
@@ -365,22 +221,11 @@ public class OverweightIntervensionActivity extends AppCompatActivity {
             counsellingGiven = "false";
         }
 
-
-        saveDataElement("J8qFRBqjDfE", counsellingGiven);
+        util.saveDataElement("J8qFRBqjDfE", counsellingGiven, eventUid,
+                programUid, orgUnit ,engineInitialization );
 
 
         finishEnrollment();
     }
-
-    private void selectDate(int year, int month, int day)
-    {
-        System.out.println("Clicked et date");
-        DatePickerDialog datePickerDialog = new DatePickerDialog(
-                context, android.R.style.Theme_Holo_Light_Dialog, setListener, year, month, day);
-        datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        datePickerDialog.show();
-    }
-
-
 
 }

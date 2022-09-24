@@ -149,7 +149,7 @@ public class util {
         try {
             String element = util.getDataElement(dataElement, eventUid);
             if (!element.isEmpty()) {
-                textView.setText(dataElement);
+                textView.setText(element);
             }
         } catch (Exception e) {
             textView.setText("");
