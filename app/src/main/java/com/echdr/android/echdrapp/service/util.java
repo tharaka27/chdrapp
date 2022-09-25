@@ -170,5 +170,30 @@ public class util {
         return itemPosition;
     }
 
+    public static int getTEISpinnerSelection(String dataElement, String [] array, String teiUid)
+    {
+        int itemPosition = -1;
+        String stringElement = util.getDataTEIElement(dataElement, teiUid);
+        for(int i =0; i<array.length; i++)
+        {
+            if(array[i].equals(stringElement))
+            {
+                itemPosition = i;
+            }
+        }
+        return itemPosition;
+    }
+
+    public static void setTEITextview(TextView textView, String dataElement, String teiUid){
+        try {
+            String element = util.getDataTEIElement(dataElement, teiUid);
+            if (!element.isEmpty()) {
+                textView.setText(element);
+            }
+        } catch (Exception e) {
+            textView.setText("");
+        }
+    }
+
 
 }
