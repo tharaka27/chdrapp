@@ -122,8 +122,8 @@
 
     <!--  anthropometry messages  -->
     <string name="date">දිනය තෝරා නැත</string>
-    <string name="anthro_height">දිග සෙන්ටිමීටර් 10 – 99 දක්වා ඇතුළත් කළ හැකි වේ</string>
-    <string name="anthro_weight">බර ග්රෑම් 500 – 9999 දක්වා ඇතුළත් කළ හැකි වේ</string>
+    <string name="anthro_height">දිග සෙන්ටිමීටර් 15 – 140 දක්වා ඇතුළත් කළ හැකි වේ</string>
+    <string name="anthro_weight">බර ග්රෑම් 100 – 40000 දක්වා ඇතුළත් කළ හැකි වේ</string>
     <string name="anthro_gn">GN ප්‍රදේශය පුරවා නැත</string>
     <string name="anthro_immune">උපත් හා ප්‍රතිශක්තිකරණ ලේඛණ අංකය ඇතුළත් කර නැත</string>
     <string name="anthro_name">දරුවාගේ නම පුරවා නැත</string>

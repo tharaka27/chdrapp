@@ -243,34 +243,40 @@ public class EnrollmentFormModified extends AppCompatActivity {
         };
 
         //setting spinners
-        setSpinner(sex, R.array.sex);
-        setSpinner(ethnicity, R.array.ethnicity);
-        setSpinner(eduLevel, R.array.highestEdu);
-        setSpinner(sector, R.array.sector);
-        setSpinner(occupation, R.array.occupation);
-        setSpinner(relationship, R.array.relationship);
+        //setSpinner(sex, R.array.sex);
+        //setSpinner(ethnicity, R.array.ethnicity);
+        //setSpinner(eduLevel, R.array.highestEdu);
+        //setSpinner(sector, R.array.sector);
+        //setSpinner(occupation, R.array.occupation);
+        //setSpinner(relationship, R.array.relationship);
+        util.setSpinner(context, sex, R.array.sex);
+        util.setSpinner(context, ethnicity, R.array.ethnicity);
+        util.setSpinner(context, eduLevel, R.array.highestEdu);
+        util.setSpinner(context, sector, R.array.sector);
+        util.setSpinner(context, occupation, R.array.occupation);
+        util.setSpinner(context, relationship, R.array.relationship);
 
-        setEditText(textView_mother_dob, "kYfIkz2M6En");
-        setEditText(GNArea, "upQGjAHBjzu");
-        setEditText(immuneNum, "h2ATdtJguMq");
-        setEditText(name, "zh4hiarsSD5");
-        setEditText(textView_dob, "qNH202ChkV3");
-        setEditText(address, "D9aC5K6C6ne");
-        setEditText(landNumber, "cpcMXDhQouL");
-        setEditText(mobileNumber, "LYRf4eIUVuN");
-        setEditText(motherName, "K7Fxa2wv2Rx");
-        setEditText(nic, "Gzjb3fp9FSe");
-        setEditText(numberOfChildren, "Gy4bCBxNuo4");
-        setEditText(occu_specification, "s7Rde0kFOFb");
-        setEditText(caregiver, "hxCXbI5J2YS");
-        setEditText(weight, "Fs89NLB2FrA");
-        setEditText(length, "LpvdWM4YuRq");
-        sex.setSelection(getSpinnerSelection("lmtzQrlHMYF", sexArray));
-        ethnicity.setSelection(getSpinnerSelection("b9CoAneYYys", ethinicityArray));
-        sector.setSelection(getSpinnerSelection("igjlkmMF81X", sectorArray));
-        eduLevel.setSelection(getSpinnerSelection("GMNSaaq4xST", eduLevelArray));
-        occupation.setSelection(getSpinnerSelection("Srxv0vniOnf", occupationArray));
-        relationship.setSelection(getSpinnerSelection("ghN8XfnlU5V", relationshipArray));
+        util.setTEITextview(textView_mother_dob, "kYfIkz2M6En", teiUid);
+        util.setTEITextview(GNArea, "upQGjAHBjzu", teiUid);
+        util.setTEITextview(immuneNum, "h2ATdtJguMq", teiUid);
+        util.setTEITextview(name, "zh4hiarsSD5", teiUid);
+        util.setTEITextview(textView_dob, "qNH202ChkV3", teiUid);
+        util.setTEITextview(address, "D9aC5K6C6ne", teiUid);
+        util.setTEITextview(landNumber, "cpcMXDhQouL", teiUid);
+        util.setTEITextview(mobileNumber, "LYRf4eIUVuN", teiUid);
+        util.setTEITextview(motherName, "K7Fxa2wv2Rx", teiUid);
+        util.setTEITextview(nic, "Gzjb3fp9FSe", teiUid);
+        util.setTEITextview(numberOfChildren, "Gy4bCBxNuo4", teiUid);
+        util.setTEITextview(occu_specification, "s7Rde0kFOFb", teiUid);
+        util.setTEITextview(caregiver, "hxCXbI5J2YS", teiUid);
+        util.setTEITextview(weight, "Fs89NLB2FrA", teiUid);
+        util.setTEITextview(length, "LpvdWM4YuRq", teiUid);
+        sex.setSelection(util.getTEISpinnerSelection("lmtzQrlHMYF", sexArray, teiUid));
+        ethnicity.setSelection(util.getTEISpinnerSelection("b9CoAneYYys", ethinicityArray, teiUid));
+        sector.setSelection(util.getTEISpinnerSelection("igjlkmMF81X", sectorArray, teiUid));
+        eduLevel.setSelection(util.getTEISpinnerSelection("GMNSaaq4xST", eduLevelArray, teiUid));
+        occupation.setSelection(util.getTEISpinnerSelection("Srxv0vniOnf", occupationArray, teiUid));
+        relationship.setSelection(util.getTEISpinnerSelection("ghN8XfnlU5V", relationshipArray, teiUid));
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -307,7 +313,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
         });
 
     }
-
+/*
     class EnrollmentTypeSpinnerClass implements AdapterView.OnItemSelectedListener {
         @Override
         public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
@@ -320,7 +326,8 @@ public class EnrollmentFormModified extends AppCompatActivity {
 
         }
     }
-
+*/
+    /*
     private void setEditText(TextView textView, String dataElement){
         try {
             String element = util.getDataTEIElement(dataElement, teiUid);
@@ -330,16 +337,17 @@ public class EnrollmentFormModified extends AppCompatActivity {
         } catch (Exception e) {
             textView.setText("");
         }
-    }
+    }*/
 
-    private void setSpinner(Spinner spinner, Object object){
+    /*
+    private void setSpinner(Spinner spinner, Object object, Context context){
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context,
                 (Integer) object,
                 android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new EnrollmentTypeSpinnerClass());
-    }
+    }*/
 
 
     private void saveElements()
@@ -425,6 +433,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
         return DayofMonth + "/" + month + "/" + year;
     }
 
+    /*
     private int getSpinnerSelection(String dataElement, String [] array)
     {
         int itemPosition = -1;
@@ -437,7 +446,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
             }
         }
         return itemPosition;
-    }
+    }*/
 
     @Override
     protected void onResume() {

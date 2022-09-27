@@ -121,8 +121,8 @@
 
     <!--  anthropometry messages  -->
     <string name="date">Date Not Selected</string>
-    <string name="anthro_height">Height value should be between 15-150cm</string>
-    <string name="anthro_weight">Weight value should be between 100-50000gram</string>
+    <string name="anthro_height">Height value should be between 15-140cm</string>
+    <string name="anthro_weight">Weight value should be between 100-40000gram</string>
     <string name="anthro_gn">GN Area is not filled</string>
     <string name="anthro_immune">Birth and Immunization Number is not filled</string>
     <string name="anthro_name">Name of the child is not filled</string>

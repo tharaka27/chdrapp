@@ -44,7 +44,7 @@ public class AnthropometryValidator extends Validator {
 
         if(!heightTxt.getText().toString().isEmpty()){
             if(Integer.parseInt(heightTxt.getText().toString()) < 15
-                || Integer.parseInt(heightTxt.getText().toString()) > 150){
+                || Integer.parseInt(heightTxt.getText().toString()) > 140){
                 CreateAlertDialog(context.getString(R.string.anthro_height));
                 return false;
             }
@@ -52,7 +52,7 @@ public class AnthropometryValidator extends Validator {
 
         if( weightTxt.getText().toString().isEmpty() ||
                 Integer.parseInt(weightTxt.getText().toString()) < 100
-                || Integer.parseInt(weightTxt.getText().toString()) > 50000){
+                || Integer.parseInt(weightTxt.getText().toString()) > 40000){
             CreateAlertDialog(context.getString(R.string.anthro_weight));
             return false;
         }

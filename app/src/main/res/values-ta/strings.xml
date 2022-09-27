@@ -122,8 +122,8 @@
 
     <!--  anthropometry messages  -->
     <string name="date">தேதி தேர்ந்தெடுக்கப்படவில்லை</string>
-    <string name="anthro_height">உயரம் 15-150cm இடையே இருக்க வேண்டும்</string>
-    <string name="anthro_weight">எடை மதிப்பு 100-50000 கிராம் வரை இருக்க வேண்டும்</string>
+    <string name="anthro_height">உயரம் 15-140cm இடையே இருக்க வேண்டும்</string>
+    <string name="anthro_weight">எடை மதிப்பு 100-40000 கிராம் வரை இருக்க வேண்டும்</string>
     <string name="anthro_gn">GN பகுதி நிரப்பப்படவில்லை</string>
     <string name="anthro_immune">பிறப்பு மற்றும் நோய்த்தடுப்பு எண் நிரப்பப்படவில்லை</string>
     <string name="anthro_name">குழந்தையின் பெயர் நிரப்பப்படவில்லை</string>

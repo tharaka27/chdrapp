@@ -9,7 +9,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import com.echdr.android.echdrapp.R;
+import com.echdr.android.echdrapp.data.Sdk;
 
+import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValue;
+
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -173,6 +177,24 @@ public class  EnrollmentFormValidator extends Validator {
                 CreateAlertDialog(context.getString(R.string.anthro_immune));
                 return false;
             }
+
+            String immun = immuneNum.getText().toString().trim();
+            try {
+                List<TrackedEntityAttributeValue> values =
+                        Sdk.d2().trackedEntityModule()
+                                .trackedEntityAttributeValues().byValue()
+                                .eq(immun).blockingGet();
+                if(!values.isEmpty()){
+                    CreateAlertDialog("Child with same Immunization number" +
+                            "already exists in PHM area");
+                    return false;
+                }
+            }catch (Exception e)
+            {
+                Log.e(TAG, e.toString());
+                return false;
+            }
+
         }
         if(landNumber.getText().toString().isEmpty() && mobileNumber.getText().toString().isEmpty() ){
             CreateAlertDialog(context.getString(R.string.anthro_regis_land));
