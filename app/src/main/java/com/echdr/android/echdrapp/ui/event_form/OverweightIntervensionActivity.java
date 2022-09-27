@@ -203,7 +203,28 @@ public class OverweightIntervensionActivity extends AppCompatActivity {
     }
 
     private void saveElements()
+
     {
+        if(textView_Date.getText().toString().equals(getString(R.string.date_button_text))||
+                textView_Date.getText().toString().isEmpty())
+        {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+            builder1.setMessage(getString(R.string.date));
+            builder1.setCancelable(true);
+
+            builder1.setNegativeButton(
+                    "Close",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+            return;
+        }
+
         OverweightInterventionValidator overweightInterventionValidator = new OverweightInterventionValidator();
         overweightInterventionValidator.setContext(context);
         overweightInterventionValidator.setTextView_Date(textView_Date);

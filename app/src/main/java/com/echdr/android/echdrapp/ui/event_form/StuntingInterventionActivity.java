@@ -29,6 +29,10 @@ import com.echdr.android.echdrapp.R;
 import com.echdr.android.echdrapp.data.Sdk;
 import com.echdr.android.echdrapp.data.service.forms.EventFormService;
 import com.echdr.android.echdrapp.data.service.forms.RuleEngineService;
+import com.echdr.android.echdrapp.service.Setter.DateSetter;
+import com.echdr.android.echdrapp.service.Validator.OverweightInterventionValidator;
+import com.echdr.android.echdrapp.service.Validator.StuntingInterventionValidator;
+import com.echdr.android.echdrapp.service.util;
 
 import org.hisp.dhis.android.core.maintenance.D2Error;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValue;
@@ -120,99 +124,30 @@ public class StuntingInterventionActivity extends AppCompatActivity {
         final int month = Integer.parseInt(s_monthNumber);
         final int day = Integer.parseInt(s_day);
 
-        textView_Date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.out.println("Clicked et date");
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        context, android.R.style.Theme_Holo_Light_Dialog, setListener, year, month, day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        DateSetter.setContext(context);
+        DateSetter.setBirthday(birthday);
+        DateSetter.setSetListener(setListener);
+        DateSetter.setTextView(textView_Date);
+        DateSetter.setImageView(datePicker);
+        DateSetter.setDate(year, month, day, 365*5+2);
 
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                Date dob = null;
-                try {
-                    dob = formatter.parse(birthday.value());
-                    datePickerDialog.getDatePicker().setMinDate(dob.getTime());
-
-                    Calendar c = Calendar.getInstance();
-                    c.setTime(dob);
-                    c.add(Calendar.DATE, 365*5+2);
-                    long minimum_value = Math.min(c.getTimeInMillis(), System.currentTimeMillis());
-
-                    datePickerDialog.getDatePicker().setMaxDate(minimum_value);
-                    //datePickerDialog.getDatePicker().setMaxDate(c.getTimeInMillis());
-
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                datePickerDialog.show();
-            }
-        });
-
-        datePicker.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        context, android.R.style.Theme_Holo_Light_Dialog, setListener, year, month, day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                Date dob = null;
-                try {
-                    dob = formatter.parse(birthday.value());
-                    datePickerDialog.getDatePicker().setMinDate(dob.getTime());
-
-                    Calendar c = Calendar.getInstance();
-                    c.setTime(dob);
-                    c.add(Calendar.DATE, 365*5+2);
-                    long minimum_value = Math.min(c.getTimeInMillis(), System.currentTimeMillis());
-
-                    datePickerDialog.getDatePicker().setMaxDate(minimum_value);
-
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                datePickerDialog.show();
-            }
-        });
-
-        setListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                month = month+1;
-                String date = year + "-" + String.format("%02d", month) + "-" + String.format("%02d", dayOfMonth) ;
-                textView_Date.setText(date);
-            }
-        };
 
 
         // Load the existing values - form.CHECK
         if(formType == StuntingInterventionActivity.FormType.CHECK)
         {
-            System.out.println(getDataElement("RuOyWXMpWHs")); // Date
-            System.out.println(getDataElement("Xpf2G3fhTUb")); // counselling
 
             // set date
-            try{
-                String prev_date = getDataElement("RuOyWXMpWHs");
-                if(!prev_date.isEmpty())
-                {
-                    textView_Date.setText(prev_date);
-                }
-            }
-            catch (Exception e)
-            {
-                textView_Date.setText("");
-            }
+            util.setTextView(textView_Date, "RuOyWXMpWHs", eventUid);
+
 
             // set paediatrician seen
             try{
-                if(getDataElement("Xpf2G3fhTUb").equals("true"))
+                if(util.getDataElement("Xpf2G3fhTUb", eventUid).equals("true"))
                 {
                     councellingButtonYes.setChecked(true);
                     councellingButtonNo.setChecked(false);
-                }else if(getDataElement("Xpf2G3fhTUb").equals("false"))
+                }else if(util.getDataElement("Xpf2G3fhTUb", eventUid).equals("false"))
                 {
                     councellingButtonYes.setChecked(false);
                     councellingButtonNo.setChecked(true);
@@ -276,65 +211,6 @@ public class StuntingInterventionActivity extends AppCompatActivity {
         finish();
     }
 
-    private String getDataElement(String dataElement){
-        TrackedEntityDataValueObjectRepository valueRepository =
-                Sdk.d2().trackedEntityModule().trackedEntityDataValues()
-                        .value(
-                                eventUid,
-                                dataElement
-                        );
-
-        String currentValue = valueRepository.blockingExists() ?
-                valueRepository.blockingGet().value() : "";
-
-        return currentValue;
-    }
-
-    private void saveDataElement(String dataElement, String value){
-        TrackedEntityDataValueObjectRepository valueRepository;
-        try {
-            valueRepository = Sdk.d2().trackedEntityModule().trackedEntityDataValues()
-                    .value(
-                            EventFormService.getInstance().getEventUid(),
-                            dataElement
-                    );
-        }catch (Exception e)
-        {
-            EventFormService.getInstance().init(
-                    Sdk.d2(),
-                    eventUid,
-                    programUid,
-                    getIntent().getStringExtra(StuntingInterventionActivity.IntentExtra.OU_UID.name()));
-            valueRepository = Sdk.d2().trackedEntityModule().trackedEntityDataValues()
-                    .value(
-                            EventFormService.getInstance().getEventUid(),
-                            dataElement
-                    );
-        }
-
-        String currentValue = valueRepository.blockingExists() ?
-                valueRepository.blockingGet().value() : "";
-
-        if (currentValue == null)
-            currentValue = "";
-
-        try{
-            if(!isEmpty(value))
-            {
-                valueRepository.blockingSet(value);
-            }else
-            {
-                valueRepository.blockingDeleteIfExist();
-            }
-        } catch (D2Error d2Error) {
-            d2Error.printStackTrace();
-        }finally {
-            if (!value.equals(currentValue)) {
-                engineInitialization.onNext(true);
-            }
-        }
-    }
-
     private void saveElements()
     {
         if(textView_Date.getText().toString().equals(getString(R.string.date_button_text))||
@@ -358,28 +234,26 @@ public class StuntingInterventionActivity extends AppCompatActivity {
         }
 
 
-        saveDataElement("RuOyWXMpWHs", textView_Date.getText().toString());
+        StuntingInterventionValidator stuntingInterventionValidator = new StuntingInterventionValidator();
+        stuntingInterventionValidator.setContext(context);
+        stuntingInterventionValidator.setTextView_Date(textView_Date);
 
-        String councellingSelection = "";
+
+        util.saveDataElement("RuOyWXMpWHs", textView_Date.getText().toString(),
+                eventUid, programUid, orgUnit ,engineInitialization );
+
+        String counsellingGiven = "";
         if(councellingButtonYes.isChecked())
         {
-            councellingSelection = "true";
+            counsellingGiven = "true";
         }else if(councellingButtonNo.isChecked())
         {
-            councellingSelection = "false";
+            counsellingGiven = "false";
         }
 
-        saveDataElement("Xpf2G3fhTUb", councellingSelection);
+        util.saveDataElement("Xpf2G3fhTUb", counsellingGiven, eventUid,
+                programUid, orgUnit ,engineInitialization );
         finishEnrollment();
-    }
-
-    private void selectDate(int year, int month, int day)
-    {
-        System.out.println("Clicked et date");
-        DatePickerDialog datePickerDialog = new DatePickerDialog(
-                context, android.R.style.Theme_Holo_Light_Dialog, setListener, year, month, day);
-        datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        datePickerDialog.show();
     }
 
 }
