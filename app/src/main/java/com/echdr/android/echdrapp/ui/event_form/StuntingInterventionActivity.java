@@ -1,28 +1,18 @@
 package com.echdr.android.echdrapp.ui.event_form;
 
-import static android.text.TextUtils.isEmpty;
-
 import android.app.DatePickerDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.echdr.android.echdrapp.R;
@@ -30,22 +20,17 @@ import com.echdr.android.echdrapp.data.Sdk;
 import com.echdr.android.echdrapp.data.service.forms.EventFormService;
 import com.echdr.android.echdrapp.data.service.forms.RuleEngineService;
 import com.echdr.android.echdrapp.service.Setter.DateSetter;
-import com.echdr.android.echdrapp.service.Validator.OverweightInterventionValidator;
 import com.echdr.android.echdrapp.service.Validator.StuntingInterventionValidator;
 import com.echdr.android.echdrapp.service.util;
 
-import org.hisp.dhis.android.core.maintenance.D2Error;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValue;
-import org.hisp.dhis.android.core.trackedentity.TrackedEntityDataValueObjectRepository;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 import io.reactivex.processors.PublishProcessor;
 
 public class StuntingInterventionActivity extends AppCompatActivity {
+    private String TAG = "StuntingInterventionActivity";
     private String eventUid;
     private String programUid;
     private String selectedChild;
@@ -211,34 +196,17 @@ public class StuntingInterventionActivity extends AppCompatActivity {
         finish();
     }
 
-    private void saveElements()
+    private boolean saveElements()
     {
-        if(textView_Date.getText().toString().equals(getString(R.string.date_button_text))||
-                textView_Date.getText().toString().isEmpty())
-        {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage(getString(R.string.date));
-            builder1.setCancelable(true);
-
-            builder1.setNegativeButton(
-                    "Close",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
-            return;
-        }
-
 
         StuntingInterventionValidator stuntingInterventionValidator = new StuntingInterventionValidator();
         stuntingInterventionValidator.setContext(context);
         stuntingInterventionValidator.setTextView_Date(textView_Date);
 
-
+        if(!stuntingInterventionValidator.validate()){
+            Log.e(TAG, "Validation failure" );
+            return false;
+        }
         util.saveDataElement("RuOyWXMpWHs", textView_Date.getText().toString(),
                 eventUid, programUid, orgUnit ,engineInitialization );
 
@@ -254,6 +222,7 @@ public class StuntingInterventionActivity extends AppCompatActivity {
         util.saveDataElement("Xpf2G3fhTUb", counsellingGiven, eventUid,
                 programUid, orgUnit ,engineInitialization );
         finishEnrollment();
+        return false;
     }
 
 }

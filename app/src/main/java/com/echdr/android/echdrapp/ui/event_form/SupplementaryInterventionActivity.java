@@ -1,49 +1,37 @@
 package com.echdr.android.echdrapp.ui.event_form;
 
-import static android.text.TextUtils.isEmpty;
-
 import android.app.DatePickerDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.echdr.android.echdrapp.R;
 import com.echdr.android.echdrapp.data.Sdk;
 import com.echdr.android.echdrapp.data.service.forms.EventFormService;
 import com.echdr.android.echdrapp.data.service.forms.RuleEngineService;
+import com.echdr.android.echdrapp.service.Setter.DateSetter;
+import com.echdr.android.echdrapp.service.Validator.SupplementInterventionValidator;
+import com.echdr.android.echdrapp.service.util;
 
-import org.hisp.dhis.android.core.maintenance.D2Error;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValue;
-import org.hisp.dhis.android.core.trackedentity.TrackedEntityDataValueObjectRepository;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 import io.reactivex.processors.PublishProcessor;
 
 public class SupplementaryInterventionActivity extends AppCompatActivity {
-
+    private static final String TAG = "SupplementaryInter";
     private String eventUid;
     private String programUid;
     private String selectedChild;
@@ -131,101 +119,25 @@ public class SupplementaryInterventionActivity extends AppCompatActivity {
         final int month = Integer.parseInt(s_monthNumber);
         final int day = Integer.parseInt(s_day);
 
-        textView_Date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.out.println("Clicked et date");
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        context, android.R.style.Theme_Holo_Light_Dialog, setListener, year, month, day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                Date dob = null;
-                try {
-                    dob = formatter.parse(birthday.value());
-                    datePickerDialog.getDatePicker().setMinDate(dob.getTime());
-
-                    Calendar c = Calendar.getInstance();
-                    c.setTime(dob);
-                    c.add(Calendar.DATE, 365*5+2);
-                    long minimum_value = Math.min(c.getTimeInMillis(), System.currentTimeMillis());
-
-                    datePickerDialog.getDatePicker().setMaxDate(minimum_value);
-                    //datePickerDialog.getDatePicker().setMaxDate(c.getTimeInMillis());
-
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                datePickerDialog.show();
-            }
-        });
-
-        datePicker.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        context, android.R.style.Theme_Holo_Light_Dialog, setListener, year, month, day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                Date dob = null;
-                try {
-                    dob = formatter.parse(birthday.value());
-                    datePickerDialog.getDatePicker().setMinDate(dob.getTime());
-
-                    Calendar c = Calendar.getInstance();
-                    c.setTime(dob);
-                    c.add(Calendar.DATE, 365*5+2);
-                    long minimum_value = Math.min(c.getTimeInMillis(), System.currentTimeMillis());
-
-                    datePickerDialog.getDatePicker().setMaxDate(minimum_value);
-
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                datePickerDialog.show();
-            }
-        });
-
-        setListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                month = month+1;
-                String date = year + "-" + String.format("%02d", month) + "-" + String.format("%02d", dayOfMonth) ;
-                textView_Date.setText(date);
-            }
-        };
-
-        // Load the existing values - form.CHECK
+        DateSetter.setContext(context);
+        DateSetter.setBirthday(birthday);
+        DateSetter.setSetListener(setListener);
+        DateSetter.setTextView(textView_Date);
+        DateSetter.setImageView(datePicker);
+        DateSetter.setDate(year, month, day, 365*5+2);
 
         if(formType == SupplementaryInterventionActivity.FormType.CHECK)
         {
-            System.out.println(getDataElement("WRjdfCRNhnU")); // date
-            System.out.println(getDataElement("pAxHi8Zd5ZD")); // on triposha
-            System.out.println(getDataElement("h9Sv7i87Ks1")); // number of triposha packets given
-            System.out.println(getDataElement("FoAmHt6CnGU")); // counsilling given
-
             // set date
-            try{
-                String prev_date = getDataElement("WRjdfCRNhnU");
-                if(!prev_date.isEmpty())
-                {
-                    textView_Date.setText(prev_date);
-                }
-            }
-            catch (Exception e)
-            {
-                textView_Date.setText("");
-            }
+            util.setTextView(textView_Date, "WRjdfCRNhnU", eventUid);
 
             // on triposha
             try{
-                if(getDataElement("pAxHi8Zd5ZD").equals("true"))
+                if(util.getDataElement("pAxHi8Zd5ZD", eventUid).equals("true"))
                 {
                     radioButtonTriposhaYes.setChecked(true);
                     radioButtonTriposhaNo.setChecked(false);
-                }else if(getDataElement("pAxHi8Zd5ZD").equals("false"))
+                }else if(util.getDataElement("pAxHi8Zd5ZD", eventUid).equals("false"))
                 {
                     radioButtonTriposhaYes.setChecked(false);
                     radioButtonTriposhaNo.setChecked(true);
@@ -233,16 +145,16 @@ public class SupplementaryInterventionActivity extends AppCompatActivity {
             }
             catch (Exception e)
             {
-                radioGroupTriposha.clearCheck();
+                radioGroupCounselling.clearCheck();
             }
 
             // counselling given
             try{
-                if(getDataElement("FoAmHt6CnGU").equals("true"))
+                if(util.getDataElement("FoAmHt6CnGU", eventUid).equals("true"))
                 {
                     radioButtonCounsellingYes.setChecked(true);
                     radioButtonCounsellingNo.setChecked(false);
-                }else if(getDataElement("FoAmHt6CnGU").equals("false"))
+                }else if(util.getDataElement("FoAmHt6CnGU", eventUid).equals("false"))
                 {
                     radioButtonCounsellingYes.setChecked(false);
                     radioButtonCounsellingNo.setChecked(true);
@@ -254,19 +166,7 @@ public class SupplementaryInterventionActivity extends AppCompatActivity {
             }
 
             // Number of triposha
-            try{
-                String triposhaPackets = getDataElement("h9Sv7i87Ks1");
-                System.out.println(getDataElement("h9Sv7i87Ks1"));
-                if(!triposhaPackets.isEmpty())
-                {
-                    numberOfTriposha.setText(triposhaPackets);
-                }
-            }
-            catch (Exception e)
-            {
-                numberOfTriposha.setText("");
-            }
-
+            util.setTextView(numberOfTriposha, "h9Sv7i87Ks1", eventUid);
 
         }else{
             textView_Date.setText(getString(R.string.date_button_text));
@@ -280,22 +180,6 @@ public class SupplementaryInterventionActivity extends AppCompatActivity {
             }
         });
 
-        radioButtonTriposhaNo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                numberOfTriposha.setText("");
-                numberOfTriposha.setEnabled(false);
-            }
-        });
-
-        radioButtonTriposhaYes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                numberOfTriposha.setEnabled(true);
-            }
-        });
-
-
         if (EventFormService.getInstance().init(
                 Sdk.d2(),
                 eventUid,
@@ -303,7 +187,6 @@ public class SupplementaryInterventionActivity extends AppCompatActivity {
                 getIntent().getStringExtra(SupplementaryInterventionActivity.IntentExtra.OU_UID.name())))
             this.engineService = new RuleEngineService();
     }
-
 
     @Override
     protected void onResume(){
@@ -335,132 +218,24 @@ public class SupplementaryInterventionActivity extends AppCompatActivity {
         finish();
     }
 
-    private String getDataElement(String dataElement){
-        TrackedEntityDataValueObjectRepository valueRepository =
-                Sdk.d2().trackedEntityModule().trackedEntityDataValues()
-                        .value(
-                                eventUid,
-                                dataElement
-                        );
+    private boolean saveElements() {
 
-        String currentValue = valueRepository.blockingExists() ?
-                valueRepository.blockingGet().value() : "";
+        SupplementInterventionValidator supplimentInterventionValidator = new SupplementInterventionValidator();
+        supplimentInterventionValidator.setContext(context);
+        supplimentInterventionValidator.setTextView_Date(textView_Date);
+        supplimentInterventionValidator.setTextView_Packets(numberOfTriposha);
 
-        return currentValue;
-    }
 
-    private void saveDataElement(String dataElement, String value){
-        TrackedEntityDataValueObjectRepository valueRepository;
-        try {
-            valueRepository = Sdk.d2().trackedEntityModule().trackedEntityDataValues()
-                    .value(
-                            EventFormService.getInstance().getEventUid(),
-                            dataElement
-                    );
-        }catch (Exception e)
-        {
-            EventFormService.getInstance().init(
-                    Sdk.d2(),
-                    eventUid,
-                    programUid,
-                    getIntent().getStringExtra(SupplementaryInterventionActivity.IntentExtra.OU_UID.name()));
-            valueRepository = Sdk.d2().trackedEntityModule().trackedEntityDataValues()
-                    .value(
-                            EventFormService.getInstance().getEventUid(),
-                            dataElement
-                    );
+        if(!supplimentInterventionValidator.validate()){
+            Log.e(TAG, "Validation failure" );
+            return false;
         }
 
-        String currentValue = valueRepository.blockingExists() ?
-                valueRepository.blockingGet().value() : "";
+        util.saveDataElement("WRjdfCRNhnU", textView_Date.getText().toString(),
+                eventUid, programUid, orgUnit ,engineInitialization );
 
-        if (currentValue == null)
-            currentValue = "";
-
-        try{
-            if(!isEmpty(value))
-            {
-                valueRepository.blockingSet(value);
-            }else
-            {
-                valueRepository.blockingDeleteIfExist();
-            }
-        } catch (D2Error d2Error) {
-            d2Error.printStackTrace();
-        }finally {
-            if (!value.equals(currentValue)) {
-                engineInitialization.onNext(true);
-            }
-        }
-    }
-
-    private void saveElements() {
-
-        if(textView_Date.getText().toString().equals(getString(R.string.date_button_text))||
-                textView_Date.getText().toString().isEmpty())
-        {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage(getString(R.string.date));
-            builder1.setCancelable(true);
-
-            builder1.setNegativeButton(
-                    "Close",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-
-                            dialog.cancel();
-                        }
-                    });
-
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
-            return;
-        }
-
-        if(radioButtonTriposhaYes.isChecked()){
-            if( numberOfTriposha.getText().toString().isEmpty() ||
-                    Integer.parseInt(numberOfTriposha.getText().toString()) < 0
-                    || Integer.parseInt(numberOfTriposha.getText().toString()) > 4)
-            {
-                AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                builder1.setMessage("Number of Thriposha packets given should be between 0-4");
-                builder1.setCancelable(true);
-
-                builder1.setNegativeButton(
-                        "Close",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                                //return;
-                            }
-                        });
-
-                AlertDialog alert11 = builder1.create();
-                alert11.show();
-                return;
-            }
-        }else if(radioButtonTriposhaNo.isChecked() && !numberOfTriposha.getText().toString().isEmpty()){
-            AlertDialog.Builder builder2 = new AlertDialog.Builder(context);
-            builder2.setMessage("Child is not on Triposha. Therefore can't enter a number");
-            builder2.setCancelable(true);
-
-            builder2.setNegativeButton(
-                    "Close",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                            //return;
-                        }
-                    });
-
-            AlertDialog alert12 = builder2.create();
-            alert12.show();
-            return;
-
-        }
-
-
-        saveDataElement("WRjdfCRNhnU", textView_Date.getText().toString());
+        util.saveDataElement("h9Sv7i87Ks1", numberOfTriposha.getText().toString(),
+                eventUid, programUid, orgUnit ,engineInitialization );
 
         String onTriposha = "";
         if(radioButtonTriposhaYes.isChecked())
@@ -471,6 +246,9 @@ public class SupplementaryInterventionActivity extends AppCompatActivity {
             onTriposha = "false";
         }
 
+        util.saveDataElement("pAxHi8Zd5ZD", onTriposha, eventUid,
+                programUid, orgUnit ,engineInitialization );
+
         String counsilling = "";
         if(radioButtonCounsellingYes.isChecked())
         {
@@ -480,24 +258,13 @@ public class SupplementaryInterventionActivity extends AppCompatActivity {
             counsilling = "false";
         }
 
-        saveDataElement("pAxHi8Zd5ZD", onTriposha);
-        saveDataElement("FoAmHt6CnGU", counsilling);
-        saveDataElement("h9Sv7i87Ks1", numberOfTriposha.getText().toString());
+        util.saveDataElement("FoAmHt6CnGU", counsilling, eventUid,
+                programUid, orgUnit ,engineInitialization );
 
 
         finishEnrollment();
+        return false;
     }
-
-
-    private void selectDate(int year, int month, int day)
-    {
-        System.out.println("Clicked et date");
-        DatePickerDialog datePickerDialog = new DatePickerDialog(
-                context, android.R.style.Theme_Holo_Light_Dialog, setListener, year, month, day);
-        datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        datePickerDialog.show();
-    }
-
 
 
 }

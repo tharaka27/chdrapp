@@ -329,6 +329,7 @@
     <string name="supp_intervention_on_triposha">திரிபோஷாவில் உள்ளார் (ஆம்/ இல்லை)</string>
     <string name="supp_intervention_packets">திரிபோஷாவில் உள்ளார் (ஆம்/ இல்லை)</string>
     <string name="supp_intervention_counselling">IYCF/ போஷணை உளவளத்துணை கொடுத்தது (ஆம் / இல்லை)</string>
+    <string name="supp_intervention_alert">திரிபோஷ பாக்கெட்டுகளின் எண்ணிக்கையை 1 முதல் 4 வரை மட்டுமே கொடுக்க முடியும்</string>
 
 
     <!-- supplementory - outcome -->
