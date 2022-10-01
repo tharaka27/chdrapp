@@ -326,6 +326,7 @@
     <string name="supp_intervention_on_triposha">On Thriposha (Yes/No)</string>
     <string name="supp_intervention_packets">Number of Thriposha packets given</string>
     <string name="supp_intervention_counselling">IYCF/Nutrition counselling given (Yes/No)</string>
+    <string name="supp_intervention_alert">Number of Thriposha packets can only be given from 1 to 4</string>
 
 
 

@@ -325,6 +325,7 @@
     <string name="supp_intervention_on_triposha">ත්‍රිපෝෂ ලබා දීම(ඔව් / නැත)</string>
     <string name="supp_intervention_packets">ලබා දී ඇති ත්‍රිපෝෂ පැකට් ගණන</string>
     <string name="supp_intervention_counselling">ළදරුවන්ට හා කුඩා දරුවන්ට  ආහාර දීම  පිළිබද  උපදේශනය / පෝෂණ උපදේශනය සිදු කිරීම : ඔව් / නැත)</string>
+    <string name="supp_intervention_alert">ත්‍රිපෝෂ පැකට් ගණන ලබාදිය හැක්කේ 1 සිට 4 දක්වා පමණි</string>
 
 
     <!-- supplementory - outcome -->
