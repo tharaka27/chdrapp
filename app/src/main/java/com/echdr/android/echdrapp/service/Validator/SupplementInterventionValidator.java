@@ -37,7 +37,7 @@ public class SupplementInterventionValidator extends Validator{
 
         if (numberOfPackets.getText().toString().isEmpty() ||
                 Integer.parseInt(numberOfPackets.getText().toString()) > 4 ||
-                    Integer.parseInt(numberOfPackets.getText().toString()) < 0) {
+                    Integer.parseInt(numberOfPackets.getText().toString()) < 1) {
                 CreateAlertDialog(context.getString(R.string.supp_intervention_alert));
                 return false;
             }
