@@ -126,6 +126,7 @@
     <string name="anthro_weight">எடை மதிப்பு 100-40000 கிராம் வரை இருக்க வேண்டும்</string>
     <string name="anthro_gn">GN பகுதி நிரப்பப்படவில்லை</string>
     <string name="anthro_immune">பிறப்பு மற்றும் நோய்த்தடுப்பு எண் நிரப்பப்படவில்லை</string>
+    <string name="anthro_immune_not_matching">பிறப்பு மற்றும் நோய்த்தடுப்பு எண் சரியான வடிவத்தில் இல்லை</string>
     <string name="anthro_name">குழந்தையின் பெயர் நிரப்பப்படவில்லை</string>
     <string name="anthro_dob">பிறந்த தேதி நிரப்பப்படவில்லை</string>
     <string name="anthro_address">முகவரி நிரப்பப்படவில்லை</string>
@@ -137,9 +138,11 @@
     <string name="anthro_not_mot">பராமரிப்பாளர் தாய் இல்லையென்றால், பராமரிப்பாளரின் பெயர் கட்டாயம்</string>
     <string name="anthro_regis_length">சென்டிமீட்டர்களில் நீளம் 10-99 அனுமதிக்கப்படுகிறது</string>
     <string name="anthro_regis_weight">கிராம் எடை 500-9999 அனுமதிக்கப்படுகிறது</string>
-    <string name="anthro_chirdren">குழந்தைகளின் எண்ணிக்கை 20 வரை அனுமதிக்கப்படுகிறது</string>
-    <string name="anthro_regis_land">நில எண் நிரப்பப்படவில்லை</string>
-    <string name="anthro_regis_mobile">மொபைல் எண் நிரப்பப்படவில்லை</string>
+    <string name="anthro_chirdren">அனுமதிக்கப்பட்ட குழந்தைகளின் எண்ணிக்கை 1-20</string>
+    <string name="anthro_regis_land_empty">நில எண் நிரப்பப்படவில்லை</string>
+    <string name="anthro_regis_land">நில எண்ணில் குறைவான/அதிக எழுத்துகள் உள்ளன</string>
+    <string name="anthro_regis_mobile_empty">மொபைல் எண் நிரப்பப்படவில்லை</string>
+    <string name="anthro_regis_mobile">Mobile Number has less/more characters</string>
 
     <!--    demographic info-->
     <string name="demo_info_title">மக்கள் தொகை  தரவு</string>

@@ -179,7 +179,7 @@ public class  EnrollmentFormValidator extends Validator {
         } else {
             m1 = r.matcher(immuneNum.getText().toString().trim());
             if (!m1.find()) {
-                CreateAlertDialog(context.getString(R.string.anthro_immune));
+                CreateAlertDialog(context.getString(R.string.anthro_immune_not_matching));
                 return false;
             }
             if(isEnrollement){
@@ -203,7 +203,7 @@ public class  EnrollmentFormValidator extends Validator {
 
         }
         if(landNumber.getText().toString().isEmpty() && mobileNumber.getText().toString().isEmpty() ){
-            CreateAlertDialog(context.getString(R.string.anthro_regis_land));
+            CreateAlertDialog(context.getString(R.string.anthro_regis_land_empty));
             return false;
         } else {
             m2 = q.matcher(landNumber.getText().toString().trim());
@@ -213,7 +213,7 @@ public class  EnrollmentFormValidator extends Validator {
             }
         }
         if(mobileNumber.getText().toString().isEmpty()){
-            CreateAlertDialog(context.getString(R.string.anthro_regis_mobile));
+            CreateAlertDialog(context.getString(R.string.anthro_regis_mobile_empty));
             return false;
         } else {
             m2 = q.matcher(mobileNumber.getText().toString().trim());
