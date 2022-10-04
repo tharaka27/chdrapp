@@ -54,7 +54,7 @@ public class SupplementaryOutcomeValidator extends Validator{
             return false;
         }
 
-        if (spinner_Enrollment.getSelectedItemPosition() == 3){
+        if (spinner_Enrollment.getSelectedItemPosition() == 4){
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             Date dob = null;
             try {
