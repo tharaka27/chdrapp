@@ -243,12 +243,6 @@ public class EnrollmentFormModified extends AppCompatActivity {
         };
 
         //setting spinners
-        //setSpinner(sex, R.array.sex);
-        //setSpinner(ethnicity, R.array.ethnicity);
-        //setSpinner(eduLevel, R.array.highestEdu);
-        //setSpinner(sector, R.array.sector);
-        //setSpinner(occupation, R.array.occupation);
-        //setSpinner(relationship, R.array.relationship);
         util.setSpinner(context, sex, R.array.sex);
         util.setSpinner(context, ethnicity, R.array.ethnicity);
         util.setSpinner(context, eduLevel, R.array.highestEdu);
@@ -284,6 +278,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
                 // start of the validating this should be false
                 isValidated = false;
                 EnrollmentFormValidator enrollmentFormValidator = new EnrollmentFormValidator();
+                enrollmentFormValidator.setEnrollement(true);
                 enrollmentFormValidator.setGNArea(GNArea);
                 enrollmentFormValidator.setName(name);
                 enrollmentFormValidator.setBirthday(textView_dob);
@@ -313,42 +308,6 @@ public class EnrollmentFormModified extends AppCompatActivity {
         });
 
     }
-/*
-    class EnrollmentTypeSpinnerClass implements AdapterView.OnItemSelectedListener {
-        @Override
-        public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
-            //Toast.makeText(v.getContext(), "Your choose :" +
-                    //sexArray[position], Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        public void onNothingSelected(AdapterView<?> parent) {
-
-        }
-    }
-*/
-    /*
-    private void setEditText(TextView textView, String dataElement){
-        try {
-            String element = util.getDataTEIElement(dataElement, teiUid);
-            if (!element.isEmpty()) {
-                textView.setText(dataElement);
-            }
-        } catch (Exception e) {
-            textView.setText("");
-        }
-    }*/
-
-    /*
-    private void setSpinner(Spinner spinner, Object object, Context context){
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context,
-                (Integer) object,
-                android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(new EnrollmentTypeSpinnerClass());
-    }*/
-
 
     private void saveElements()
     {

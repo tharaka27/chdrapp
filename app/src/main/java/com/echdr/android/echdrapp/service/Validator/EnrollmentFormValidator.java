@@ -22,26 +22,27 @@ import lombok.Setter;
 public class  EnrollmentFormValidator extends Validator {
 
     private  String TAG = "";
-     Context context;
-     EditText GNArea;
-     EditText name;
-     TextView birthday;
-     EditText address;
-     EditText motherName;
-     TextView mother_birthday;
-     EditText immuneNum;
-     EditText landNumber;
-     EditText mobileNumber;
-     EditText numberOfChildren;
-     EditText weight;
-     EditText length;
-     Spinner relationship;
-     Spinner occupation;
-     EditText nic;
-     EditText caregiver;
-     EditText occu_specification;
-     String[] relationship_english_only;
-     String[] occupation_english_only;
+    Context context;
+    EditText GNArea;
+    EditText name;
+    TextView birthday;
+    EditText address;
+    EditText motherName;
+    TextView mother_birthday;
+    EditText immuneNum;
+    EditText landNumber;
+    EditText mobileNumber;
+    EditText numberOfChildren;
+    EditText weight;
+    EditText length;
+    Spinner relationship;
+    Spinner occupation;
+    EditText nic;
+    EditText caregiver;
+    EditText occu_specification;
+    String[] relationship_english_only;
+    String[] occupation_english_only;
+    boolean isEnrollement = false;
 
     public void setTAG(String TAG) {
         this.TAG = TAG;
@@ -127,6 +128,10 @@ public class  EnrollmentFormValidator extends Validator {
         this.occupation_english_only = occupation_english_only;
     }
 
+    public void setEnrollement(boolean enrollement) {
+        isEnrollement = enrollement;
+    }
+
     public boolean validate(){
         super.setContext(context);
         super.setTAG(TAG);
@@ -177,22 +182,23 @@ public class  EnrollmentFormValidator extends Validator {
                 CreateAlertDialog(context.getString(R.string.anthro_immune));
                 return false;
             }
-
-            String immun = immuneNum.getText().toString().trim();
-            try {
-                List<TrackedEntityAttributeValue> values =
-                        Sdk.d2().trackedEntityModule()
-                                .trackedEntityAttributeValues().byValue()
-                                .eq(immun).blockingGet();
-                if(!values.isEmpty()){
-                    CreateAlertDialog("Child with same Immunization number" +
-                            "already exists in PHM area");
+            if(isEnrollement){
+                String immun = immuneNum.getText().toString().trim();
+                try {
+                    List<TrackedEntityAttributeValue> values =
+                            Sdk.d2().trackedEntityModule()
+                                    .trackedEntityAttributeValues().byValue()
+                                    .eq(immun).blockingGet();
+                    if(!values.isEmpty()){
+                        CreateAlertDialog("Child with same Immunization number" +
+                                "already exists in PHM area");
+                        return false;
+                    }
+                }catch (Exception e)
+                {
+                    Log.e(TAG, e.toString());
                     return false;
                 }
-            }catch (Exception e)
-            {
-                Log.e(TAG, e.toString());
-                return false;
             }
 
         }
