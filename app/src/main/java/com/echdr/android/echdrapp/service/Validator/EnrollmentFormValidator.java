@@ -202,16 +202,7 @@ public class  EnrollmentFormValidator extends Validator {
             }
 
         }
-        if(landNumber.getText().toString().isEmpty() && mobileNumber.getText().toString().isEmpty() ){
-            CreateAlertDialog(context.getString(R.string.anthro_regis_land_empty));
-            return false;
-        } else {
-            m2 = q.matcher(landNumber.getText().toString().trim());
-            if (!m2.find()) {
-                CreateAlertDialog(context.getString(R.string.anthro_regis_land));
-                return false;
-            }
-        }
+
         if(mobileNumber.getText().toString().isEmpty()){
             CreateAlertDialog(context.getString(R.string.anthro_regis_mobile_empty));
             return false;
@@ -224,6 +215,20 @@ public class  EnrollmentFormValidator extends Validator {
                 return false;
             }
         }
+
+        if(landNumber.getText().toString().isEmpty() && mobileNumber.getText().toString().isEmpty() ){
+            CreateAlertDialog(context.getString(R.string.anthro_regis_land_empty));
+            return false;
+        } else {
+            if(!landNumber.getText().toString().isEmpty() ){
+                m2 = q.matcher(landNumber.getText().toString().trim());
+                if (!m2.find()) {
+                    CreateAlertDialog(context.getString(R.string.anthro_regis_land));
+                    return false;
+                }
+            }
+        }
+
         if( numberOfChildren.getText().toString().isEmpty() ||
                 Integer.parseInt(numberOfChildren.getText().toString()) < 1
                 || Integer.parseInt(numberOfChildren.getText().toString()) >= 20)
