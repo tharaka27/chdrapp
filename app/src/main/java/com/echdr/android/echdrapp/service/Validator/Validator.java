@@ -3,8 +3,17 @@ package com.echdr.android.echdrapp.service.Validator;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.util.Log;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
+
+import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValue;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Validator {
     private  String TAG = "";
@@ -33,5 +42,28 @@ public class Validator {
                 });
         AlertDialog alert = builder.create();
         alert.show();
+    }
+
+    protected boolean checkIfAgeIsFive(TextView textView_Date,
+                                       TrackedEntityAttributeValue birthday){
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date dob = null;
+        try {
+            dob = formatter.parse(birthday.value());
+            Calendar c = Calendar.getInstance();
+            c.setTime(dob);
+            Date event_date = formatter.parse(textView_Date.getText().toString());
+            Calendar td = Calendar.getInstance();
+            td.setTime(event_date);
+            long minimum_value =  td.getTimeInMillis() - c.getTimeInMillis();
+            if (minimum_value < 157784630000L){
+                CreateAlertDialog("The Child is not 5 years old");
+                return false;
+            }
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return true;
     }
 }

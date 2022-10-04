@@ -55,22 +55,7 @@ public class SupplementaryOutcomeValidator extends Validator{
         }
 
         if (spinner_Enrollment.getSelectedItemPosition() == 4){
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-            Date dob = null;
-            try {
-                dob = formatter.parse(birthday.value());
-                Calendar c = Calendar.getInstance();
-                c.setTime(dob);
-                long minimum_value =  System.currentTimeMillis() - c.getTimeInMillis();
-
-                if (minimum_value < 157784630000L){
-                    CreateAlertDialog("The Child is not 5 years old");
-                    return false;
-                }
-
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
+            return checkIfAgeIsFive(textView_Date, birthday);
         }
 
         return true;
