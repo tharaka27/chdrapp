@@ -48,6 +48,7 @@ import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValueObjec
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityInstance;
 import org.hisp.dhis.rules.RuleEngine;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
@@ -289,18 +290,36 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
             }
         };
 
+
+
         // setting date of registration
-        // TODO correct this
-        /*
+        // Get the latest enrollment
+
+        List<Enrollment> AnthropometryStatus = Sdk.d2().enrollmentModule().enrollments()
+                .byTrackedEntityInstance().eq(teiUid)
+                .byProgram().eq("hM6Yt9FQL0n")
+                .orderByCreated(RepositoryScope.OrderByDirection.DESC)
+                .blockingGet();
+        String anthropometryEnrollmentID = "";
+
+        // The child should have at least one enrollment
+        if(!AnthropometryStatus.isEmpty())
+        {
+            anthropometryEnrollmentID = AnthropometryStatus.get(0).uid();
+        }
+
+        // set the enrollment status to active based on the enrollment ID
         try {
-            String prev_date = getDataElement("zmCxHpWgOOv");
-            System.out.println("results out " + prev_date );
+            Date date_of_reg = Sdk.d2().enrollmentModule().enrollments()
+                    .uid(anthropometryEnrollmentID).blockingGet().enrollmentDate();
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            String prev_date = formatter.format(date_of_reg);
             if (!prev_date.isEmpty()) {
                 textView_date_of_registration.setText(prev_date);
             }
         } catch (Exception e) {
             textView_date_of_registration.setText("");
-        }*/
+        }
 
         // setting mother DOB date
         util.setTEITextview(textView_mother_dob, "kYfIkz2M6En", teiUid);
