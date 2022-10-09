@@ -166,7 +166,17 @@ public class SupplementaryInterventionActivity extends AppCompatActivity {
             }
 
             // Number of triposha
-            util.setTextView(numberOfTriposha, "h9Sv7i87Ks1", eventUid);
+            try{
+                String triposhaPackets = util.getDataElement("h9Sv7i87Ks1", eventUid);
+                if(!triposhaPackets.isEmpty())
+                {
+                    numberOfTriposha.setText(triposhaPackets);
+                }
+            }
+            catch (Exception e)
+            {
+                numberOfTriposha.setText("");
+            }
 
         }else{
             textView_Date.setText(getString(R.string.date_button_text));
@@ -177,6 +187,21 @@ public class SupplementaryInterventionActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 saveElements();
+            }
+        });
+
+        radioButtonTriposhaNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                numberOfTriposha.setText("");
+                numberOfTriposha.setEnabled(false);
+            }
+        });
+
+        radioButtonTriposhaYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                numberOfTriposha.setEnabled(true);
             }
         });
 
