@@ -373,7 +373,7 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
         editAccessValidator.setEnrollmentID(anthropometryEnrollmentID);
 
         edit_button.setOnClickListener(view ->{
-            edit_button.setBackgroundResource(R.color.purple_200);
+            edit_button.setBackgroundResource(R.drawable.button_edit_child_details_editing);
 
             if(editAccessValidator.validate()){
                 sex.setEnabled(true);
