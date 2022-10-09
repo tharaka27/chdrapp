@@ -2,6 +2,7 @@ package com.echdr.android.echdrapp.service.Validator;
 
 import android.content.Context;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.echdr.android.echdrapp.R;
@@ -11,6 +12,7 @@ public class SupplementInterventionValidator extends Validator{
     private TextView textView_Date;
     private EditText numberOfPackets;
     private Context context;
+    private RadioButton radioButtonTriposhaYes;
 
     public void setTextView_Date(TextView textView_Date) {
         this.textView_Date = textView_Date;
@@ -19,6 +21,10 @@ public class SupplementInterventionValidator extends Validator{
         this.numberOfPackets = textView_Packets;
 
     }
+    public void setRadioButtonTriposhaYes(RadioButton radioButtonTriposhaYes) {
+        this.radioButtonTriposhaYes = radioButtonTriposhaYes;
+    }
+
 
     @Override
     public void setContext(Context context) {
@@ -35,12 +41,16 @@ public class SupplementInterventionValidator extends Validator{
             return false;
         }
 
-        if (numberOfPackets.getText().toString().isEmpty() ||
-                Integer.parseInt(numberOfPackets.getText().toString()) > 4 ||
+        //validation only is onthriposha yes
+        if(radioButtonTriposhaYes.isChecked()) {
+            if (numberOfPackets.getText().toString().isEmpty() ||
+                    Integer.parseInt(numberOfPackets.getText().toString()) > 4 ||
                     Integer.parseInt(numberOfPackets.getText().toString()) < 1) {
                 CreateAlertDialog(context.getString(R.string.supp_intervention_alert));
                 return false;
             }
+        }
+
         return true;
     }
 }

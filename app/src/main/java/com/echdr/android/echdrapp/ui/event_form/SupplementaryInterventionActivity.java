@@ -172,6 +172,9 @@ public class SupplementaryInterventionActivity extends AppCompatActivity {
                 {
                     numberOfTriposha.setText(triposhaPackets);
                 }
+                if(radioButtonTriposhaNo.isChecked()){
+                    numberOfTriposha.setEnabled(false);
+                }
             }
             catch (Exception e)
             {
@@ -249,6 +252,7 @@ public class SupplementaryInterventionActivity extends AppCompatActivity {
         supplimentInterventionValidator.setContext(context);
         supplimentInterventionValidator.setTextView_Date(textView_Date);
         supplimentInterventionValidator.setTextView_Packets(numberOfTriposha);
+        supplimentInterventionValidator.setRadioButtonTriposhaYes(radioButtonTriposhaYes);
 
 
         if(!supplimentInterventionValidator.validate()){
