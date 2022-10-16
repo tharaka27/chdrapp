@@ -222,6 +222,10 @@
     <string name="oth_reason_under">நிறைகுறைவு</string>
     <string name="oth_reason_overweight">அதிக நிறை/ அதீத நிறை</string>
     <string name="oth_reason_stuning">குள்ளமாதல்</string>
+    <string name="oth_reason_combinations">தேர்வு சேர்க்கை தவறானது. சாத்தியமான சேர்க்கைகள் \n1. குள்ளமாதல் + மத்திமமான குறுகிய காலப் போஷாக்கின்மை + நிறைகுறைவு
+        \n2. குள்ளமாதல் + >தீவிர குறுகிய காலப் போஷாக்கின்மை + நிறைகுறைவு
+        \n3. குள்ளமாதல் + அதிக நிறை/ அதீத நிறை + நிறைகுறைவு
+                    \n4. குள்ளமாதல் + பச்சை மண்டலத்தில் வளர்ச்சி குன்றி நீண்ட காலமாக உள்ளமை</string>
 
     <!-- other - intervention-poverty -->
     <string name="oth_inter_poverty_title">தலையீடு- வறுமையும் குறைந்த வருமான முகாமையும் </string>
@@ -322,6 +326,7 @@
     <string name="supp_indication_entollment">பதிவு வகை</string>
     <string name="supp_indication_combinations">தேர்வு சேர்க்கை தவறானது. சாத்தியமான சேர்க்கைகள்\n1. MAM\n2. எடை குறைவு \n3.  நீண்டகால வளர்ச்சி தடுமாறிய மண்டலம்
                     \n4. MAM + எடை குறைவு\n5. MAM + நீண்டகால வளர்ச்சி தடுமாறிய மண்டலம்</string>
+
 
     <!-- supplementory - intervention -->
     <string name="supp_intervention_title">நிலை 2: தலையீடுகள்</string>

@@ -24,6 +24,7 @@ import com.echdr.android.echdrapp.R;
 import com.echdr.android.echdrapp.data.Sdk;
 import com.echdr.android.echdrapp.data.service.forms.EventFormService;
 import com.echdr.android.echdrapp.data.service.forms.RuleEngineService;
+import com.echdr.android.echdrapp.service.Setter.DateSetter;
 
 import org.hisp.dhis.android.core.maintenance.D2Error;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValue;
@@ -124,73 +125,12 @@ public class OtherReasonForActivity extends AppCompatActivity {
         final int month = Integer.parseInt(s_monthNumber);
         final int day = Integer.parseInt(s_day);
 
-        textView_Date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.out.println("Clicked et date");
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        context, android.R.style.Theme_Holo_Light_Dialog, setListener, year, month, day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                Date dob = null;
-                try {
-                    dob = formatter.parse(birthday.value());
-                    datePickerDialog.getDatePicker().setMinDate(dob.getTime());
-
-                    Calendar c = Calendar.getInstance();
-                    c.setTime(dob);
-                    c.add(Calendar.DATE, 365*5+2);
-                    long minimum_value = Math.min(c.getTimeInMillis(), System.currentTimeMillis());
-
-                    datePickerDialog.getDatePicker().setMaxDate(minimum_value);
-                    //datePickerDialog.getDatePicker().setMaxDate(c.getTimeInMillis());
-
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                datePickerDialog.show();
-            }
-        });
-
-        datePicker.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        context, android.R.style.Theme_Holo_Light_Dialog, setListener, year, month, day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                Date dob = null;
-                try {
-                    dob = formatter.parse(birthday.value());
-                    datePickerDialog.getDatePicker().setMinDate(dob.getTime());
-
-                    Calendar c = Calendar.getInstance();
-                    c.setTime(dob);
-                    c.add(Calendar.DATE, 365*5+2);
-                    long minimum_value = Math.min(c.getTimeInMillis(), System.currentTimeMillis());
-
-                    datePickerDialog.getDatePicker().setMaxDate(minimum_value);
-
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                datePickerDialog.show();
-            }
-        });
-
-        setListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                month = month + 1;
-
-
-                String date = year + "-" + String.format("%02d", month) + "-" + String.format("%02d", dayOfMonth);
-                textView_Date.setText(date);
-            }
-        };
+        DateSetter.setContext(context);
+        DateSetter.setBirthday(birthday);
+        DateSetter.setSetListener(setListener);
+        DateSetter.setTextView(textView_Date);
+        DateSetter.setImageView(datePicker);
+        DateSetter.setDate(year, month, day, 365*5+2);
 
         if (formType == OtherReasonForActivity.FormType.CHECK) {
             System.out.println(getDataElement("Dpw5YPM1CFj")); // reason for enrollment date
@@ -398,6 +338,28 @@ public class OtherReasonForActivity extends AppCompatActivity {
             AlertDialog alert11 = builder1.create();
             alert11.show();
             return;
+        }
+        if((checkbox_Stunting.isChecked() && checkbox_Moderate_Acute.isChecked() && checkbox_Underweight.isChecked() ||
+        checkbox_Stunting.isChecked() && checkbox_Severe_Acute.isChecked() && checkbox_Underweight.isChecked() ||
+        checkbox_Stunting.isChecked() && checkbox_Overweight.isChecked() && checkbox_Underweight.isChecked() ||
+        checkbox_Stunting.isChecked() && checkbox_Long_standing.isChecked())) {
+            {
+                AlertDialog.Builder builder2 = new AlertDialog.Builder(context);
+                builder2.setMessage(R.string.oth_reason_combinations);
+                builder2.setCancelable(true);
+
+                builder2.setNegativeButton(
+                        "Close",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alert12 = builder2.create();
+                alert12.show();
+                return;
+            }
         }
 
         System.out.println(getDataElement("Dpw5YPM1CFj")); // reason for enrollment date

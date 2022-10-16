@@ -220,6 +220,9 @@
     <string name="oth_reason_under">Underweight (checkbox)</string>
     <string name="oth_reason_overweight">Overweight/obesity (checkbox)</string>
     <string name="oth_reason_stuning">Stunting (checkbox)</string>
+    <string name="oth_reason_combinations">The selection combination is invalid. Possible combinations are \n1. Stunting + MAM + Underweight \n2. Stunting + SAM + Underweight
+        \n3. Stunting + Overweight + Underweight
+                    \n4. Stunting + Longstanding Growth Faltering Zone</string>
 
     <!-- other - intervention-poverty -->
     <string name="oth_inter_poverty_title">Intervention - Poverty and Poor Income Management</string>
