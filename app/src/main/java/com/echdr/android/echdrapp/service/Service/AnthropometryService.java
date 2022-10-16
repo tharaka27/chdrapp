@@ -93,18 +93,25 @@ public class AnthropometryService {
                 long diffInMillies = Math.abs(eventDate.getTime() - dob.getTime());
 
                 int diff = (int) TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS) / 7;
-                double diffWeeks = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS) / 7 / 52.143;
+                //double diffWeeks = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS) / 7 / 52.143;
 
-                int yrs = diff/52;
 
                 AgeInWeeksTxt.setText(String.valueOf(diff));
 
-                String doubleAsString = String.valueOf(diffWeeks);
-                int indexOfDecimal = doubleAsString.indexOf(".");
+                //String doubleAsString = String.valueOf(diffWeeks);
+                //int indexOfDecimal = doubleAsString.indexOf(".");
 
-                double months = Math.round(Double.valueOf(doubleAsString.substring(indexOfDecimal)) * 12 *  100)/100;
+                //double months = Math.round(Double.valueOf(doubleAsString.substring(indexOfDecimal)) * 12 *  100)/100 + 1;
 
-                AgeInMonthsTxt.setText(doubleAsString.substring(0, indexOfDecimal) + " years " + months+  " months");
+                //AgeInMonthsTxt.setText(doubleAsString.substring(0, indexOfDecimal) + " years " + months+  " months");
+                int diffInDays = (int) TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+                int m, year, week, day;
+                year = diffInDays / 365;
+                diffInDays = diffInDays % 365;
+                week = diffInDays / 7;
+                diffInDays = diffInDays % 7;
+                day = diffInDays;
+                AgeInMonthsTxt.setText( year + " years " + week +  " weeks " + day + " days");
 
             } catch (Exception error) {
                 Log.e(TAG, String.format("Error parsing the date filed %s", birthday.value()));
