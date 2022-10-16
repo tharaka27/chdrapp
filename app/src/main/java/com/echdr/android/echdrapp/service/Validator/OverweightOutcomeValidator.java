@@ -1,5 +1,7 @@
 package com.echdr.android.echdrapp.service.Validator;
 
+import static com.echdr.android.echdrapp.service.Constants.AGE_COMPLETED_FIVE_YEARS;
+
 import android.content.Context;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -58,7 +60,7 @@ public class OverweightOutcomeValidator extends Validator{
             return false;
         }
 
-        if (spinner_Enrollment.getSelectedItemPosition() == 4){
+        if (spinner_Enrollment.getSelectedItemPosition() == AGE_COMPLETED_FIVE_YEARS){
             return checkIfAgeIsFive(textView_Date, birthday);
         }
 

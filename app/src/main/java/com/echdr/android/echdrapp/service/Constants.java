@@ -8,4 +8,5 @@ public class Constants {
     public static String PLATFORM_ANTHROPOMETRY_PROGRAMME = "hM6Yt9FQL0n";
     public static String APP_DATA_SYNC_COMPLETED = "Syncing data complete";
     public static String APP_DATA_UPLOAD_STARTED = "Sync uploading started";
+    public static int AGE_COMPLETED_FIVE_YEARS = 1;
 }
