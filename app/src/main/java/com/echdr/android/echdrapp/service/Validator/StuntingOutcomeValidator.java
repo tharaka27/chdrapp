@@ -1,6 +1,6 @@
 package com.echdr.android.echdrapp.service.Validator;
 
-import static com.echdr.android.echdrapp.service.Constants.AGE_COMPLETED_FIVE_YEARS;
+import static com.echdr.android.echdrapp.service.Constants.AGE_COMPLETED_FIVE_YEARS_STUNTING;
 
 import android.content.Context;
 import android.widget.Spinner;
@@ -10,10 +10,6 @@ import com.echdr.android.echdrapp.R;
 
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValue;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 
 public class StuntingOutcomeValidator extends Validator{
     private String TAG = "StuntingOutcomeValidator";
@@ -56,7 +52,7 @@ public class StuntingOutcomeValidator extends Validator{
             return false;
         }
 
-        if (spinner_Enrollment.getSelectedItemPosition() == AGE_COMPLETED_FIVE_YEARS){
+        if (spinner_Enrollment.getSelectedItemPosition() == AGE_COMPLETED_FIVE_YEARS_STUNTING){
             return checkIfAgeIsFive(textView_Date, birthday);
         }
 
