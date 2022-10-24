@@ -3,6 +3,7 @@ package com.echdr.android.echdrapp.ui.enrollment_form;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -19,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.echdr.android.echdrapp.R;
@@ -243,12 +245,6 @@ public class EnrollmentFormModified extends AppCompatActivity {
         };
 
         //setting spinners
-        //setSpinner(sex, R.array.sex);
-        //setSpinner(ethnicity, R.array.ethnicity);
-        //setSpinner(eduLevel, R.array.highestEdu);
-        //setSpinner(sector, R.array.sector);
-        //setSpinner(occupation, R.array.occupation);
-        //setSpinner(relationship, R.array.relationship);
         util.setSpinner(context, sex, R.array.sex);
         util.setSpinner(context, ethnicity, R.array.ethnicity);
         util.setSpinner(context, eduLevel, R.array.highestEdu);
@@ -284,6 +280,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
                 // start of the validating this should be false
                 isValidated = false;
                 EnrollmentFormValidator enrollmentFormValidator = new EnrollmentFormValidator();
+                enrollmentFormValidator.setEnrollement(true);
                 enrollmentFormValidator.setGNArea(GNArea);
                 enrollmentFormValidator.setName(name);
                 enrollmentFormValidator.setBirthday(textView_dob);
@@ -309,46 +306,11 @@ public class EnrollmentFormModified extends AppCompatActivity {
                 isValidated = enrollmentFormValidator.validate();
 
                 saveElements();
+
             }
         });
 
     }
-/*
-    class EnrollmentTypeSpinnerClass implements AdapterView.OnItemSelectedListener {
-        @Override
-        public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
-            //Toast.makeText(v.getContext(), "Your choose :" +
-                    //sexArray[position], Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        public void onNothingSelected(AdapterView<?> parent) {
-
-        }
-    }
-*/
-    /*
-    private void setEditText(TextView textView, String dataElement){
-        try {
-            String element = util.getDataTEIElement(dataElement, teiUid);
-            if (!element.isEmpty()) {
-                textView.setText(dataElement);
-            }
-        } catch (Exception e) {
-            textView.setText("");
-        }
-    }*/
-
-    /*
-    private void setSpinner(Spinner spinner, Object object, Context context){
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context,
-                (Integer) object,
-                android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(new EnrollmentTypeSpinnerClass());
-    }*/
-
 
     private void saveElements()
     {
@@ -357,42 +319,65 @@ public class EnrollmentFormModified extends AppCompatActivity {
             return;
         }
 
-        //saveTEIDataElement("KuMTUOY6X3L", textView_date_of_registration.getText().toString());
-        util.saveTEIDataElement("upQGjAHBjzu", GNArea.getText().toString(), teiUid, engineInitialization);
-        util.saveTEIDataElement("h2ATdtJguMq", immuneNum.getText().toString(), teiUid, engineInitialization);
-        util.saveTEIDataElement("zh4hiarsSD5", name.getText().toString(), teiUid, engineInitialization);
-        util.saveTEIDataElement("lmtzQrlHMYF",
-                sex_english_only[sex.getSelectedItemPosition()], teiUid, engineInitialization);
-        util.saveTEIDataElement("qNH202ChkV3", textView_dob.getText().toString(), teiUid, engineInitialization);
-        util.saveTEIDataElement("b9CoAneYYys",
-                ethinicity_english_only[ethnicity.getSelectedItemPosition()], teiUid, engineInitialization);
-        util.saveTEIDataElement("D9aC5K6C6ne", address.getText().toString(), teiUid, engineInitialization);
-        util.saveTEIDataElement("igjlkmMF81X",
-                sector_english_only[sector.getSelectedItemPosition()], teiUid, engineInitialization);
-        util.saveTEIDataElement("cpcMXDhQouL", landNumber.getText().toString(), teiUid, engineInitialization);
-        util.saveTEIDataElement("LYRf4eIUVuN", mobileNumber.getText().toString(), teiUid, engineInitialization);
-        util.saveTEIDataElement("K7Fxa2wv2Rx", motherName.getText().toString(), teiUid, engineInitialization);
-        util.saveTEIDataElement("Gzjb3fp9FSe", nic.getText().toString(), teiUid, engineInitialization);
-        util.saveTEIDataElement("kYfIkz2M6En", textView_mother_dob.getText().toString(), teiUid, engineInitialization);
-        util.saveTEIDataElement("Gy4bCBxNuo4", numberOfChildren.getText().toString(), teiUid, engineInitialization);
-        util.saveTEIDataElement("GMNSaaq4xST",
-                eduLevel_english_only[eduLevel.getSelectedItemPosition()], teiUid, engineInitialization);
-        util.saveTEIDataElement("Srxv0vniOnf",
-                occupation_english_only[occupation.getSelectedItemPosition()], teiUid, engineInitialization);
-        util.saveTEIDataElement("s7Rde0kFOFb", occu_specification.getText().toString(), teiUid, engineInitialization);
-        util.saveTEIDataElement("ghN8XfnlU5V",
-                relationship_english_only[relationship.getSelectedItemPosition()], teiUid, engineInitialization);
-        util.saveTEIDataElement("hxCXbI5J2YS", caregiver.getText().toString(), teiUid, engineInitialization);
-        util.saveTEIDataElement("Fs89NLB2FrA", weight.getText().toString(), teiUid, engineInitialization);
-        util.saveTEIDataElement("LpvdWM4YuRq", length.getText().toString(), teiUid, engineInitialization);
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        String message = String.format("Please confirm BI number %s is correct",
+                immuneNum.getText().toString());
+        builder.setMessage(message);
+        builder.setCancelable(true);
 
-        ActivityStarter.startActivity(
-                this,
-                ChildDetailsActivityNew.getTrackedEntityInstancesActivityIntent(
-                        this,
-                        teiUid
-                ),true
-        );
+        builder.setNegativeButton(
+                "Close",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                //saveTEIDataElement("KuMTUOY6X3L", textView_date_of_registration.getText().toString());
+                util.saveTEIDataElement("upQGjAHBjzu", GNArea.getText().toString(), teiUid, engineInitialization);
+                util.saveTEIDataElement("h2ATdtJguMq", immuneNum.getText().toString(), teiUid, engineInitialization);
+                util.saveTEIDataElement("zh4hiarsSD5", name.getText().toString(), teiUid, engineInitialization);
+                util.saveTEIDataElement("lmtzQrlHMYF",
+                        sex_english_only[sex.getSelectedItemPosition()], teiUid, engineInitialization);
+                util.saveTEIDataElement("qNH202ChkV3", textView_dob.getText().toString(), teiUid, engineInitialization);
+                util.saveTEIDataElement("b9CoAneYYys",
+                        ethinicity_english_only[ethnicity.getSelectedItemPosition()], teiUid, engineInitialization);
+                util.saveTEIDataElement("D9aC5K6C6ne", address.getText().toString(), teiUid, engineInitialization);
+                util.saveTEIDataElement("igjlkmMF81X",
+                        sector_english_only[sector.getSelectedItemPosition()], teiUid, engineInitialization);
+                util.saveTEIDataElement("cpcMXDhQouL", landNumber.getText().toString(), teiUid, engineInitialization);
+                util.saveTEIDataElement("LYRf4eIUVuN", mobileNumber.getText().toString(), teiUid, engineInitialization);
+                util.saveTEIDataElement("K7Fxa2wv2Rx", motherName.getText().toString(), teiUid, engineInitialization);
+                util.saveTEIDataElement("Gzjb3fp9FSe", nic.getText().toString(), teiUid, engineInitialization);
+                util.saveTEIDataElement("kYfIkz2M6En", textView_mother_dob.getText().toString(), teiUid, engineInitialization);
+                util.saveTEIDataElement("Gy4bCBxNuo4", numberOfChildren.getText().toString(), teiUid, engineInitialization);
+                util.saveTEIDataElement("GMNSaaq4xST",
+                        eduLevel_english_only[eduLevel.getSelectedItemPosition()], teiUid, engineInitialization);
+                util.saveTEIDataElement("Srxv0vniOnf",
+                        occupation_english_only[occupation.getSelectedItemPosition()], teiUid, engineInitialization);
+                util.saveTEIDataElement("s7Rde0kFOFb", occu_specification.getText().toString(), teiUid, engineInitialization);
+                util.saveTEIDataElement("ghN8XfnlU5V",
+                        relationship_english_only[relationship.getSelectedItemPosition()], teiUid, engineInitialization);
+                util.saveTEIDataElement("hxCXbI5J2YS", caregiver.getText().toString(), teiUid, engineInitialization);
+                util.saveTEIDataElement("Fs89NLB2FrA", weight.getText().toString(), teiUid, engineInitialization);
+                util.saveTEIDataElement("LpvdWM4YuRq", length.getText().toString(), teiUid, engineInitialization);
+
+                ActivityStarter.startActivity(
+                        EnrollmentFormModified.this,
+                        ChildDetailsActivityNew.getTrackedEntityInstancesActivityIntent(
+                                context,
+                                teiUid
+                        ),true
+                );
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+
+
     }
 
     private void selectDateRegistration(int year, int month, int day)

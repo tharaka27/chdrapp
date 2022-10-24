@@ -320,8 +320,8 @@ public class TherapeuticManagementActivity extends AppCompatActivity {
         @Override
         public void onItemSelected(AdapterView<?> parent, View v, int position, long id)
         {
-            Toast.makeText(v.getContext(), "Your choose :" +
-                    other_type_therapeutic_array[position],Toast.LENGTH_SHORT).show();
+            //Toast.makeText(v.getContext(), "Your choose :" +
+            //        other_type_therapeutic_array[position],Toast.LENGTH_SHORT).show();
         }
 
         @Override

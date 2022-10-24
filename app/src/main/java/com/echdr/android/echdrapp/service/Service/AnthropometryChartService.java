@@ -61,48 +61,6 @@ public class AnthropometryChartService {
         anthropometryMissingHeightSetter = new AnthropometryMissingHeightSetter();
     }
 
-    /*
-    public void setHeightGraph(GraphView heightGraph) {
-        this.heightGraph = heightGraph;
-    }
-
-    public void setWeightGraph(GraphView weightGraph) {
-        this.weightGraph = weightGraph;
-    }
-
-    public void setWeightHeightGraph(GraphView weightHeightGraph) {
-        this.weightHeightGraph = weightHeightGraph;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public void setContext(Context context) {
-        this.context = context;
-    }
-
-    public void setSelectedChild(String selectedChild) {
-        this.selectedChild = selectedChild;
-    }
-
-    public void setBirthday(TrackedEntityAttributeValue birthday) {
-        this.birthday = birthday;
-    }
-
-    public void setHeightValues(Map<Integer, Integer> heightValues) {
-        this.heightValues = heightValues;
-    }
-
-    public void setWeightValues(Map<Integer, Integer> weightValues) {
-        this.weightValues = weightValues;
-    }
-
-    public AnthropometryChartService(){
-        anthropometryMissingHeightSetter = new AnthropometryMissingHeightSetter();
-    }
-     */
-
     /**
      * This method will plot the background of the graph based on the WHO dataset
      *

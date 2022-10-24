@@ -43,6 +43,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.hisp.dhis.android.core.arch.call.D2Progress;
+import org.hisp.dhis.android.core.enrollment.EnrollmentStatus;
 import org.hisp.dhis.android.core.organisationunit.OrganisationUnit;
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityInstanceCreateProjection;
 import org.hisp.dhis.android.core.user.User;

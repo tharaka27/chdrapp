@@ -370,6 +370,27 @@ public class OtherReasonForActivity extends AppCompatActivity {
         System.out.println(getDataElement("dnLak5wmEzT")); // overweight
         System.out.println(getDataElement("paM0QZaZMTO")); // stunting
 
+        if(checkbox_Long_standing.isChecked() && checkbox_Moderate_Acute.isChecked()
+                && checkbox_Underweight.isChecked() || checkbox_Underweight.isChecked() &&
+                checkbox_Long_standing.isChecked())
+        {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+            builder1.setMessage(R.string.supp_indication_combinations);
+            builder1.setCancelable(true);
+
+            builder1.setNegativeButton(
+                    "Close",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+            return;
+        }
+
 
         saveDataElement("Dpw5YPM1CFj", textView_Date.getText().toString());
         saveDataElement("AOKp3oQPyYP", checkbox_Severe_Acute.isChecked() ? "true" : "");

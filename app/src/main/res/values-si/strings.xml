@@ -126,6 +126,7 @@
     <string name="anthro_weight">බර ග්රෑම් 100 – 40000 දක්වා ඇතුළත් කළ හැකි වේ</string>
     <string name="anthro_gn">GN ප්‍රදේශය පුරවා නැත</string>
     <string name="anthro_immune">උපත් හා ප්‍රතිශක්තිකරණ ලේඛණ අංකය ඇතුළත් කර නැත</string>
+    <string name="anthro_immune_not_matching">උපත් සහ ප්‍රතිශක්තිකරණ අංකය නිවැරදි ආකෘතියේ නොමැත</string>
     <string name="anthro_name">දරුවාගේ නම පුරවා නැත</string>
     <string name="anthro_dob">උපන් දිනය පුරවා නැත</string>
     <string name="anthro_address">ලිපිනය පුරවා නැත</string>
@@ -137,9 +138,11 @@
     <string name="anthro_not_mot">භාරකරු මව නොවේ නම්, භාරකරුගේ නම අනිවාර්ය වේ</string>
     <string name="anthro_regis_length">දිග සෙන්ටිමීටර් 10 – 99 දක්වා ඇතුළත් කළ හැකි වේ</string>
     <string name="anthro_regis_weight">බර ග්රෑම් 500 – 9999 දක්වා ඇතුළත් කළ හැකි වේ</string>
-    <string name="anthro_chirdren">ඇතුළත් කළ හැකි උපරිම දරුවන් සංඛ්‍යාව 20කි</string>
-    <string name="anthro_regis_land">ස්ථාවර දුරකථන අංකය ඇතුළත් කර නැත</string>
-    <string name="anthro_regis_mobile">ජංගම දුරකථන අංකය පුරවා නැත</string>
+    <string name="anthro_chirdren">ඇතුළත් කළ හැකි ළමුන් ගණන 1-20 කි</string>
+    <string name="anthro_regis_land_empty">ස්ථාවර දුරකථන අංකය ඇතුළත් කර නැත</string>
+    <string name="anthro_regis_land">ස්ථාවර දුරකථන අංකය අඩු/වැඩි අක්ෂර ඇත</string>
+    <string name="anthro_regis_mobile_empty">ජංගම දුරකථන අංකය පුරවා නැත</string>
+    <string name="anthro_regis_mobile">ජංගම දුරකථන අංකය අඩු/වැඩි අක්ෂර ඇත</string>
 
     <!--    demographic info-->
     <string name="demo_info_title">ජනවිද්‍යාත්මක තොරතුරු</string>

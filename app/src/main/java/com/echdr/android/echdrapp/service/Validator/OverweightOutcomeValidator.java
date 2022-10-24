@@ -1,21 +1,15 @@
 package com.echdr.android.echdrapp.service.Validator;
 
+import static com.echdr.android.echdrapp.service.Constants.AGE_COMPLETED_FIVE_YEARS_OVERWEIGHT;
+
 import android.content.Context;
 import android.widget.Spinner;
 import android.widget.TextView;
-
-import androidx.annotation.GuardedBy;
 
 import com.echdr.android.echdrapp.R;
 
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValue;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class OverweightOutcomeValidator extends Validator{
     private String TAG = "OverweightOutcomeValidator";
@@ -58,23 +52,8 @@ public class OverweightOutcomeValidator extends Validator{
             return false;
         }
 
-        if (spinner_Enrollment.getSelectedItemPosition() == 3){
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-            Date dob = null;
-            try {
-                dob = formatter.parse(birthday.value());
-                Calendar c = Calendar.getInstance();
-                c.setTime(dob);
-                long minimum_value =  System.currentTimeMillis() - c.getTimeInMillis();
-
-                if (minimum_value < 157784630000L){
-                    CreateAlertDialog("The Child is not 5 years old");
-                    return false;
-                }
-
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
+        if (spinner_Enrollment.getSelectedItemPosition() == AGE_COMPLETED_FIVE_YEARS_OVERWEIGHT){
+            return checkIfAgeIsFive(textView_Date, birthday);
         }
 
         return true;

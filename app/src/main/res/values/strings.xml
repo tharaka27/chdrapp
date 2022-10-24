@@ -125,6 +125,7 @@
     <string name="anthro_weight">Weight value should be between 100-40000gram</string>
     <string name="anthro_gn">GN Area is not filled</string>
     <string name="anthro_immune">Birth and Immunization Number is not filled</string>
+    <string name="anthro_immune_not_matching">Birth and Immunization Number is not in correct format</string>
     <string name="anthro_name">Name of the child is not filled</string>
     <string name="anthro_dob">Date of Birth is not filled</string>
     <string name="anthro_address">Address is not filled</string>
@@ -136,9 +137,11 @@
     <string name="anthro_not_mot">If caregiver is not mother, caregiver name is mandatory</string>
     <string name="anthro_regis_length">Length in Centimeters is allowed 10-99</string>
     <string name="anthro_regis_weight">Weight in Grams is allowed 500-9999</string>
-    <string name="anthro_chirdren">Number of Children is allowed up to 20</string>
-    <string name="anthro_regis_land">Land Number is not filled or less/more characters</string>
-    <string name="anthro_regis_mobile">Mobile Number is not filled or less/more characters</string>
+    <string name="anthro_chirdren">Number of Children allowed is 1-20</string>
+    <string name="anthro_regis_land_empty">Land Number is not filled</string>
+    <string name="anthro_regis_land">Land Number has less/more characters</string>
+    <string name="anthro_regis_mobile_empty">Mobile Number is not filled</string>
+    <string name="anthro_regis_mobile">Mobile Number has less/more characters</string>
 
     <!--    demographic info-->
     <string name="demo_info_title">Demographic information</string>
