@@ -20,7 +20,7 @@ android:layout_height="match_parent">
         android:layout_margin="0dp"
         android:layout_weight="0.8"
         android:scaleType="fitXY"
-        android:src="@drawable/maskgroup62" />
+        android:src="@drawable/group16676" />
 
     <TextView
         android:id="@+id/title"
