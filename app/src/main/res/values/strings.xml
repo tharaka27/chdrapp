@@ -213,6 +213,7 @@
     <string name="unenroll_supplimentory">This action will Un-enroll the child \n from the supplementary feeding program</string>
     <string name="unenroll_thera">This action will Un-enroll the child \n from the therapeutic feeding program</string>
 
+    <string name="age_less_than_5">"The Child is not 5 years old"</string>
 
     <!-- other - reason for enrollment -->
     <string name="oth_reason_title">Stage 1: Reason for enrollment</string>

@@ -213,6 +213,8 @@
     <string name="unenroll_supplimentory">මෙම ක්‍රියාවෙන් අතිරේක ආහාර ලබාදීම \n වැඩසටහනෙන් ඉවත් කරනු ඇත</string>
     <string name="unenroll_thera">මෙම ක්‍රියාවෙන් ඖෂධීය ආහාර ලබාදීම \n වැඩසටහනෙන් ඉවත් කරනු ඇත</string>
 
+    <string name="age_less_than_5">"දරුවාට වයස අවුරුදු 5 ක් නොවේ"</string>
+
     <!-- other - reason for enrollment -->
     <string name="oth_reason_title">ලියාපදිංචි වීමට හේතුව</string>
     <string name="oth_reason_date">දිනය</string>
