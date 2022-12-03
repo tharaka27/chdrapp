@@ -4,7 +4,7 @@
     <string name="selected_language">English</string>
     <string name="language">English</string>
 
-    <string name="app_name">MSGP/U5 Monitoring System for Growth Problems in Under 5 Children</string>
+    <string name="app_name">Growth &amp; Nutrition Monitoring System</string>
     <!-- Strings related to login -->
     <string name="title_activity_login">Log in</string>
     <string name="prompt_server_url">Server url</string>
