@@ -18,8 +18,9 @@
             android:id="@+id/top"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.33"
+            android:layout_weight="0.1"
             android:scaleType="fitXY"
+            android:visibility="invisible"
             android:src="@drawable/group18970" />
 
         <ScrollView
@@ -27,7 +28,7 @@
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_marginHorizontal="2dp"
-            android:layout_weight="0.67"
+            android:layout_weight="0.8"
             app:layout_constraintEnd_toEndOf="parent">
 
             <RelativeLayout
@@ -43,14 +44,14 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="80dp"
                         android:orientation="horizontal"
                         android:weightSum="2">
 
                         <LinearLayout
                             android:id="@+id/all_reg"
                             android:layout_width="0dp"
-                            android:layout_height="100dp"
+                            android:layout_height="match_parent"
                             android:layout_marginVertical="5dp"
                             android:layout_weight="2"
                             android:orientation="horizontal"
@@ -94,7 +95,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
+                        android:layout_height="80dp"
                         android:orientation="horizontal"
                         android:weightSum="2">
 
@@ -143,7 +144,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
+                        android:layout_height="80dp"
                         android:orientation="horizontal"
                         android:weightSum="2">
 
@@ -194,7 +195,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
+                        android:layout_height="80dp"
                         android:orientation="horizontal"
                         android:weightSum="2">
 
@@ -243,7 +244,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
+                        android:layout_height="80dp"
                         android:orientation="horizontal"
                         android:weightSum="2">
 
@@ -293,7 +294,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
+                        android:layout_height="80dp"
                         android:orientation="horizontal"
                         android:weightSum="2">
 
@@ -421,7 +422,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="76dp"
+            android:layout_height="0dp"
             android:layout_weight="0.1"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent">
