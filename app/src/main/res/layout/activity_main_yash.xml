@@ -76,14 +76,14 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
-                                    android:layout_weight="0.8"
+                                    android:layout_weight="1"
                                     android:text="@string/all_reg" />
 
                                 <TextView
                                     android:id="@+id/numAll"
                                     android:layout_width="wrap_content"
                                     android:layout_height="0dp"
-                                    android:layout_weight="1.2"
+                                    android:layout_weight="1"
                                     android:text="32"
                                     android:textSize="30sp"
                                     android:textStyle="bold" />
@@ -127,14 +127,14 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
-                                    android:layout_weight="0.8"
+                                    android:layout_weight="1"
                                     android:text="@string/sup_prog" />
 
                                 <TextView
                                     android:id="@+id/numSup"
                                     android:layout_width="wrap_content"
                                     android:layout_height="0dp"
-                                    android:layout_weight="1.2"
+                                    android:layout_weight="1"
                                     android:text="32"
                                     android:textSize="28sp"
                                     android:textStyle="bold" />
@@ -176,14 +176,14 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
-                                    android:layout_weight="0.8"
+                                    android:layout_weight="1"
                                     android:text="@string/thera_prog" />
 
                                 <TextView
                                     android:id="@+id/numTherapeutical"
                                     android:layout_width="wrap_content"
                                     android:layout_height="0dp"
-                                    android:layout_weight="1.2"
+                                    android:layout_weight="1"
                                     android:text="16"
                                     android:textSize="28sp"
                                     android:textStyle="bold" />
@@ -227,14 +227,14 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
-                                    android:layout_weight="0.8"
+                                    android:layout_weight="1"
                                     android:text="@string/overw_prog" />
 
                                 <TextView
                                     android:id="@+id/numOverweight"
                                     android:layout_width="wrap_content"
                                     android:layout_height="0dp"
-                                    android:layout_weight="1.2"
+                                    android:layout_weight="1"
                                     android:text="17"
                                     android:textSize="28sp"
                                     android:textStyle="bold" />
@@ -275,14 +275,14 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
-                                    android:layout_weight="0.8"
+                                    android:layout_weight="1"
                                     android:text="@string/stunt_prog" />
 
                                 <TextView
                                     android:id="@+id/numStunting"
                                     android:layout_width="wrap_content"
                                     android:layout_height="0dp"
-                                    android:layout_weight="1.2"
+                                    android:layout_weight="1"
                                     android:text="21"
                                     android:textSize="28sp"
                                     android:textStyle="bold" />
@@ -326,14 +326,14 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
-                                    android:layout_weight="0.8"
+                                    android:layout_weight="1.1"
                                     android:text="@string/other_prog" />
 
                                 <TextView
                                     android:id="@+id/numOther"
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
-                                    android:layout_weight="1.2"
+                                    android:layout_weight="0.9"
                                     android:text="21"
                                     android:textSize="28sp"
                                     android:textStyle="bold" />
