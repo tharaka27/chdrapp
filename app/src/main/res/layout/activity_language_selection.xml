@@ -24,7 +24,7 @@ android:layout_height="match_parent">
             android:layout_marginBottom="0dp"
             android:layout_weight="0.8"
             android:scaleType="fitXY"
-            android:src="@drawable/maskgroup62" />
+            android:src="@drawable/background_image_cropped__1_" />
 
         <TextView
             android:id="@+id/title"
