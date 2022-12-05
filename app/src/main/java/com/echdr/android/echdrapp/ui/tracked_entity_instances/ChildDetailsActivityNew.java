@@ -337,12 +337,14 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
         util.setTEITextview(caregiver, "hxCXbI5J2YS", teiUid);
         util.setTEITextview(weight, "Fs89NLB2FrA", teiUid);
         util.setTEITextview(length, "LpvdWM4YuRq", teiUid);
-        sex.setSelection(util.getTEISpinnerSelection("lmtzQrlHMYF", sexArray, teiUid));
-        ethnicity.setSelection(util.getTEISpinnerSelection("b9CoAneYYys", ethinicityArray, teiUid));
-        sector.setSelection(util.getTEISpinnerSelection("igjlkmMF81X", sectorArray, teiUid));
-        eduLevel.setSelection(util.getTEISpinnerSelection("GMNSaaq4xST", eduLevelArray, teiUid));
-        occupation.setSelection(util.getTEISpinnerSelection("Srxv0vniOnf", occupationArray, teiUid));
-        relationship.setSelection(util.getTEISpinnerSelection("ghN8XfnlU5V", relationshipArray, teiUid));
+
+        sex.setSelection(util.getTEISpinnerSelection("lmtzQrlHMYF", sex_english_only , teiUid));
+        ethnicity.setSelection(util.getTEISpinnerSelection("b9CoAneYYys", ethinicity_english_only, teiUid));
+        sector.setSelection(util.getTEISpinnerSelection("igjlkmMF81X", sector_english_only, teiUid));
+        eduLevel.setSelection(util.getTEISpinnerSelection("GMNSaaq4xST", eduLevel_english_only, teiUid));
+        occupation.setSelection(util.getTEISpinnerSelection("Srxv0vniOnf", occupation_english_only, teiUid));
+        relationship.setSelection(util.getTEISpinnerSelection("ghN8XfnlU5V", relationship_english_only, teiUid));
+
 
         //make spinners not clickable on startup
         sex.setClickable(false);
@@ -419,18 +421,19 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
             weight.setEnabled(true);
             length.setEnabled(true);
 
-            sex.setClickable(true);
-            ethnicity.setClickable(true);
-            sector.setClickable(true);
-            eduLevel.setClickable(true);
-            occupation.setClickable(true);
-            relationship.setClickable(true);
             sex.setEnabled(true);
             ethnicity.setEnabled(true);
             sector.setEnabled(true);
             eduLevel.setEnabled(true);
             occupation.setEnabled(true);
             relationship.setEnabled(true);
+            sex.setClickable(true);
+            ethnicity.setClickable(true);
+            sector.setClickable(true);
+            eduLevel.setClickable(true);
+            occupation.setClickable(true);
+            relationship.setClickable(true);
+
 
             //submitButton.setClickable(true);
             submitButton.setEnabled(true);
