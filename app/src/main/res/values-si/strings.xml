@@ -501,7 +501,7 @@
 
     <!--    Supplementary intervention spinner-->
     <string-array name="supp_intervention_type">
-        <item>නව බඳවාගැනීම /පළමු හඳුනාගැනීම</item>
+        <item>නව බඳවා ගැනීම /පළමු හඳුනා ගැනීම</item>
         <item>නැවත බඳවා ගැනීම</item>
     </string-array>
 
@@ -511,7 +511,7 @@
     </string-array>
 
     <string-array name="other_management_type">
-        <item>නව බඳවාගැනීම /පළමු හඳුනාගැනීම</item>
+        <item>නව බඳවා ගැනීම /පළමු හඳුනා ගැනීම</item>
         <item>නැවත බඳවා ගැනීම</item>
     </string-array>
 
@@ -521,7 +521,7 @@
     </string-array>
 
     <string-array name="therapeutical_management_type">
-        <item>නව බඳවාගැනීම /පළමු හඳුනාගැනීම</item>
+        <item>නව බඳවා ගැනීම /පළමු හඳුනා ගැනීම</item>
         <item>නැවත බඳවා ගැනීම</item>
     </string-array>
 
@@ -531,16 +531,16 @@
     </string-array>
 
     <string-array name="stunting_management_type">
-        <item>නව බඳවාගැනීම /පළමු හඳුනාගැනීම</item>
+        <item>නව බඳවා ගැනීම /පළමු හඳුනා ගැනීම</item>
         <item>නැවත බඳවා ගැනීම</item>
     </string-array>
 
     <string-array name="overweight_outcome_type">
         <item>යථා තත්ත්වයට පත් විය</item>
-        <item>ප්‍රතිකාරය පැහැරහරින ලදී</item>
+        <item>ප්‍රතිකාරය පැහැර හරින ලදී</item>
         <item>ප‍්‍ර‍්‍රදේශය හැර යන ලදී</item>
-        <item>වයස අවුරුදු 5 සම්පුර්ණ වීම නිසා මුදාහරින ලදි</item>
-        <item>මියයන ලදී</item>
+        <item>වයස අවුරුදු 5 සම්පුර්ණ වීම නිසා මුදා හරින ලදි</item>
+        <item>මිය යන ලදී</item>
     </string-array>
 
     <string-array name="overweight_outcome_type_english">
@@ -552,19 +552,19 @@
     </string-array>
     <string-array name="stunting_outcome_type">
         <item>යථා තත්ත්වයට පත් විය</item>
-        <item>ප‍්‍ර‍රතිකාරය පැහැරහරින ලදී</item>
+        <item>ප‍්‍ර‍රතිකාරය පැහැර හරින ලදී</item>
         <item>ප‍්‍ර‍්‍රදේශය හැර යන ලදී</item>
         <item>වයස අවුරුදු 5 සම්පුර්ණ වීම නිසා මුදාහරින ලදි</item>
-        <item>මියයන ලදී</item>
+        <item>මිය යන ලදී</item>
     </string-array>
 
     <string-array name="supp_outcome_type">
         <item>යථා තත්ත්වයට පත් විය</item>
-        <item>ඖෂධීය ආහාර ලබාදීමෙ වැඩසටහන සඳහා යොමු කරන ලදී</item>
-        <item>ප‍්‍ර‍තිකාරය පැහැරහරින ලදී</item>
+        <item>ඖෂධීය ආහාර ලබා දීමෙ වැඩසටහන සඳහා යොමු කරන ලදී</item>
+        <item>ප‍්‍ර‍තිකාරය පැහැර හරින ලදී</item>
         <item>ප‍්‍ර‍්‍රදේශය හැර යන ලදී</item>
         <item>වයස අවුරුදු 5 සම්පුර්ණ වීම නිසා මුදාහරින ලදි</item>
-        <item>මියයන ලදී</item>
+        <item>මිය යන ලදී</item>
     </string-array>
 
     <string-array name="supp_outcome_type_english">
@@ -578,10 +578,10 @@
     <string-array name="tera_outcome_type">
         <item>යථා තත්ත්වයට පත් විය</item>
         <item>අතිරේක ආහාර ලබාදීමෙ වැඩසටහන සඳහා යොමු කරන ලදී</item>
-        <item>ප‍්‍ර‍‍රතිකාරය පැහැරහරින ලදී</item>
+        <item>ප‍්‍ර‍‍රතිකාරය පැහැර හරින ලදී</item>
         <item>ප‍්‍ර‍්‍රදේශය හැර යන ලදී</item>
-        <item>වයස අවුරුදු 5 සම්පුර්ණ වීම නිසා මුදාහරින ලදි</item>
-        <item>මියයන ලදී</item>
+        <item>වයස අවුරුදු 5 සම්පුර්ණ වීම නිසා මුදා හරින ලදි</item>
+        <item>මිය යන ලදී</item>
     </string-array>
 
     <string-array name="tera_outcome_type_english">
