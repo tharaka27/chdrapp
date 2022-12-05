@@ -147,14 +147,14 @@
     <!--    demographic info-->
     <string name="demo_info_title">ජනවිද්‍යාත්මක තොරතුරු</string>
     <string name="date_of_reg"><font size="14">ලියාපදිංචි වූ දිනය</font></string>
-    <string name="gn_area"><font size="14">ග‍්‍රාම නිලධාරී කොට්ඨාශය *</font></string>
+    <string name="gn_area"><font size="14">ග‍්‍රාම නිලධාරී කොට්ඨාසය *</font></string>
     <string name="birth_num"><font size="12">උපත් හා ප‍්‍රතිශක්තිකරණ ලේඛන අංකය *</font></string>
     <string name="name"><font size="12">දරුවාගේ නම *</font></string>
     <string name="sex"><font size="12">ස්ත‍්‍රී/ පුරුෂ භාවය *</font></string>
     <string name="date_of_birth"><font size="12">උපන් දිනය *</font></string>
     <string name="ethnicity"><font size="12">ජාතිය *</font></string>
     <string name="addr"><font size="12">ලිපිනය *</font></string>
-    <string name="sector"><font size="12">ග‍්‍රාමීීය/ නාගරික/ වතු අංශය *</font></string>
+    <string name="sector"><font size="12">ග‍්‍රාමීය/ නාගරික/ වතු අංශය *</font></string>
     <string name="ll_num"><font size="12">ස්ථාවර දුරකතන අංකය</font></string>
     <string name="mob_num"><font size="12">ජංගම දුරකතන අංකය</font></string>
 
@@ -246,7 +246,7 @@
     <!-- other - risk factor evaluation -->
     <string name="oth_risk_title">2 වන අදියර :අවදානම් සාධක තක්සේරු කිරීම</string>
     <string name="oth_risk_date">බඳවාගත්  දිනය</string>
-    <string name="oth_risk_poverty">දරිද්‍ර‍්‍රතාවය හා ආදායම් කළමණාකරනයේ දුර්වලතා</string>
+    <string name="oth_risk_poverty">දරිද්‍ර‍තාවය හා ආදායම් කළමණාකරනයේ දුර්වලතා</string>
     <string name="oth_risk_food">ආහාර අනාරක්ෂිත භාවය</string>
     <string name="oth_risk_water">ජල සනීපාරක්ෂාව ප‍්‍රමාණවත් නොවීම</string>
     <string name="oth_risk_child">ළමා රැකවරණය ප‍්‍රමාණවත් නොවීම</string>
@@ -292,7 +292,7 @@
     <string name="over_mana_date">දිනය</string>
     <string name="over_mana_enrol_type">බඳවාගැනීමෙ ස්වභාවය</string>
     <string name="over_mana_hospital">රෝහලට යොමු කිරීම</string>
-    <string name="over_mana_seen">ළමා රෝග විශේෂඥ වෛද්‍ය වරයකු විසින් / රෝහල් පෝෂණ වෛද්‍ය සායනයේදී පරීක්ෂා කිරීම (ඔව්/ නැත)</string>
+    <string name="over_mana_seen">ළමා රෝග විශේෂඥ වෛද්‍ය වරයකු විසින් / රෝහල් පෝෂණ වෛද්‍ය සායනයේදී පරීක්ෂා කිරීම</string>
 
     <!-- overweight - outcome -->
     <string name="over_out_title">3 වන අදියර : අවසන් ප‍්‍රතිඵලය</string>
@@ -309,7 +309,7 @@
     <string name="stunt_mana_date">දිනය</string>
     <string name="stunt_mana_enrol_type">බඳවාගැනීමෙ ස්වභාවය</string>
     <string name="stunt_mana_hospital">රෝහලට යොමු කිරීම</string>
-    <string name="stunt_mana_seen">ළමා රෝග විශේෂඥ වෛද්‍ය වරයකු විසින් / රෝහල් පෝෂණ වෛද්‍ය සායනයේදී පරීක්ෂා කිරීම (ඔව්/ නැත)</string>
+    <string name="stunt_mana_seen">ළමා රෝග විශේෂඥ වෛද්‍ය වරයකු විසින් / රෝහල් පෝෂණ වෛද්‍ය සායනයේදී පරීක්ෂා කිරීම</string>
 
 
     <!-- stunting - outcome -->
@@ -319,7 +319,7 @@
 
 
     <!-- supplementory - indication -->
-    <string name="supp_indication_title">1 වන අදියර ත්‍රිපෝෂ ඇරඹීීම සඳහා හේතුව (එක් වරක් පමණි)</string>
+    <string name="supp_indication_title">1 වන අදියර ත්‍රිපෝෂ ඇරඹීම සඳහා හේතුව (එක් වරක් පමණි)</string>
     <string name="supp_indication_date">දිනය</string>
     <string name="supp_indication_mam">මධ්‍යස්ථ තීව‍්‍ර මන්දපෝෂණය(මධ්‍යස්ථ කෘශ බව - "MAM")</string>
     <string name="supp_indication_underweight">අඩු බර</string>
@@ -355,7 +355,7 @@
     <string name="tera_management_date">දිනය</string>
     <string name="tera_management_enrollment">බඳවාගැනීමෙ ස්වභාවය</string>
     <string name="tera_management_hospital">රෝහලට යොමු කිරීම</string>
-    <string name="tera_management_seen">ළමා රෝග විශේෂඥ වෛද්‍ය වරයකු විසින් / රෝහල් පෝෂණ වෛද්‍ය සායනයේදී පරීක්ෂා කිරීම (ඔව්/ නැත)</string>
+    <string name="tera_management_seen">ළමා රෝග විශේෂඥ වෛද්‍ය වරයකු විසින් / රෝහල් පෝෂණ වෛද්‍ය සායනයේදී පරීක්ෂා කිරීම</string>
     <string name="tera_management_bp100">BP 100 ලබා දේ/ දීම</string>
 
     <!-- tera - outcome -->
@@ -368,7 +368,7 @@
     <string name="cd_title">දරුවාගේ විස්තර</string>
     <string name="cd_edit">සංස්කරණය කරන්න</string>
     <string name="cd_name"><font size="12">දරුවාගේ නම</font></string>
-    <string name="cd_no"><font size="12">උපත් සහ ප්‍රතිශක්තිකරණය \nලියාපදිංච් අංකය</font></string>
+    <string name="cd_no"><font size="12">උපත් සහ ප‍්‍‍රතිශක්තිකරණය \nලියාපදිංච් අංකය</font></string>
     <string name="cd_dob"><font size="12">උපන්දිනය</font></string>
     <string name="cd_gender"><font size="12">ස්ත්රී පුරුෂ භාවය</font></string>
     <string name="cd_aep">දැනටමත් ලියාපදිංචි කර ඇති වැඩසටහන්</string>
@@ -391,7 +391,7 @@
     <string name="therapeutic">අතිරේක ආහාර ලබාදීම</string>
     <string name="stunt">මිටි බව සදහා මැදිහත්වීම</string>
     <string name="other">වෙනත් සෞඛ්‍ය / සෞඛ්‍ය නොවන වැඩසටහන් </string>
-    <string name="subsection_title">නවජන්මයාගේ තොරතුරු</string>
+    <string name="subsection_title">උපත් තොරතුරු</string>
     <string name="mother_details">මවගේ තොරතරු</string>
     <string name="caregiver_details">රැකබලාගන්නාගේ තොරතූරු</string>
 
@@ -552,7 +552,7 @@
     </string-array>
     <string-array name="stunting_outcome_type">
         <item>යථා තත්ත්වයට පත් විය</item>
-        <item>ප්‍රතිකාරය පැහැරහරින ලදී</item>
+        <item>ප‍්‍ර‍රතිකාරය පැහැරහරින ලදී</item>
         <item>ප‍්‍ර‍්‍රදේශය හැර යන ලදී</item>
         <item>වයස අවුරුදු 5 සම්පුර්ණ වීම නිසා මුදාහරින ලදි</item>
         <item>මියයන ලදී</item>
@@ -561,7 +561,7 @@
     <string-array name="supp_outcome_type">
         <item>යථා තත්ත්වයට පත් විය</item>
         <item>ඖෂධීය ආහාර ලබාදීමෙ වැඩසටහන සඳහා යොමු කරන ලදී</item>
-        <item>ප්‍රතිකාරය පැහැරහරින ලදී</item>
+        <item>ප‍්‍ර‍තිකාරය පැහැරහරින ලදී</item>
         <item>ප‍්‍ර‍්‍රදේශය හැර යන ලදී</item>
         <item>වයස අවුරුදු 5 සම්පුර්ණ වීම නිසා මුදාහරින ලදි</item>
         <item>මියයන ලදී</item>
@@ -578,7 +578,7 @@
     <string-array name="tera_outcome_type">
         <item>යථා තත්ත්වයට පත් විය</item>
         <item>අතිරේක ආහාර ලබාදීමෙ වැඩසටහන සඳහා යොමු කරන ලදී</item>
-        <item>ප්‍රතිකාරය පැහැරහරින ලදී</item>
+        <item>ප‍්‍ර‍‍රතිකාරය පැහැරහරින ලදී</item>
         <item>ප‍්‍ර‍්‍රදේශය හැර යන ලදී</item>
         <item>වයස අවුරුදු 5 සම්පුර්ණ වීම නිසා මුදාහරින ලදි</item>
         <item>මියයන ලදී</item>
