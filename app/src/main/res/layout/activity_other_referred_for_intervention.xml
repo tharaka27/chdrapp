@@ -54,7 +54,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.4"
                             android:background="@null"
-                            android:text="Assessment date"
+                            android:text="@string/refered_inter_date"
                             android:textColorHint="@color/desc" />
 
                         <TextView
@@ -79,7 +79,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="80dp"
                         android:layout_marginHorizontal="5dp"
                         android:layout_marginVertical="5dp"
                         android:layout_weight="1"
@@ -93,9 +93,9 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
-                            android:layout_weight="0.5"
+                            android:layout_weight="0.55"
                             android:background="@null"
-                            android:text="Poverty and poor income management"
+                            android:text="@string/refered_inter_poverty"
                             android:textColorHint="@color/desc" />
 
                         <CheckBox
@@ -103,9 +103,9 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
-                            android:layout_weight="0.5"
+                            android:layout_weight="0.45"
                             android:background="@null"
-                            android:text="Yes"
+                            android:text="@string/refered_inter_yes"
                             android:textColorHint="@color/desc"
                             android:clickable="false"/>
 
@@ -127,9 +127,9 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
-                            android:layout_weight="0.5"
+                            android:layout_weight="0.55"
                             android:background="@null"
-                            android:text="Food insecurity"
+                            android:text="@string/refered_inter_food"
                             android:textColorHint="@color/desc" />
 
                         <CheckBox
@@ -137,9 +137,9 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
-                            android:layout_weight="0.5"
+                            android:layout_weight="0.45"
                             android:background="@null"
-                            android:text="Yes"
+                            android:text="@string/refered_inter_yes"
                             android:textColorHint="@color/desc"
                             android:clickable="false"/>
 
@@ -161,9 +161,9 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
-                            android:layout_weight="0.5"
+                            android:layout_weight="0.55"
                             android:background="@null"
-                            android:text="Inadequate water sanitation"
+                            android:text="@string/refered_inter_water"
                             android:textColorHint="@color/desc" />
 
                         <CheckBox
@@ -171,9 +171,9 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
-                            android:layout_weight="0.5"
+                            android:layout_weight="0.45"
                             android:background="@null"
-                            android:text="Yes"
+                            android:text="@string/refered_inter_yes"
                             android:textColorHint="@color/desc"
                             android:clickable="false"/>
 

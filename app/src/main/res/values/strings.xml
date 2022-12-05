@@ -397,6 +397,12 @@
     <string name="mother_details">Mother\'s Information</string>
     <string name="caregiver_details">Care giver\'s Information</string>
 
+    <!-- Referred for intervention -->
+    <string name="refered_inter_poverty">Poverty and poor income management</string>
+    <string name="refered_inter_food">Food insecurity</string>
+    <string name="refered_inter_water">Inadequate water sanitation</string>
+    <string name="refered_inter_date">Assessment date</string>
+    <string name="refered_inter_yes">Yes</string>
 
 
     <!--    Supplementary intervention spinner-->
