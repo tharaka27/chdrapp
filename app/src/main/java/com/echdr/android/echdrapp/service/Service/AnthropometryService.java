@@ -108,10 +108,11 @@ public class AnthropometryService {
                 int m, year, week, day;
                 year = diffInDays / 365;
                 diffInDays = diffInDays % 365;
+                double month = Math.round((float) diffInDays / 30);
                 week = diffInDays / 7;
                 diffInDays = diffInDays % 7;
                 day = diffInDays;
-                AgeInMonthsTxt.setText( year + " years " + week +  " weeks " + day + " days");
+                AgeInMonthsTxt.setText( year + " years " + month +  " months " + day + " days");
 
             } catch (Exception error) {
                 Log.e(TAG, String.format("Error parsing the date filed %s", birthday.value()));

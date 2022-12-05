@@ -156,7 +156,7 @@
     <string name="addr"><font size="12">முகவரி *</font></string>
     <string name="sector"><font size="12">துறை *</font></string>
     <string name="ll_num"><font size="12">தொலைபேசி இல</font></string>
-    <string name="mob_num"><font size="12">கையடக்கத்தொலைபேசி இல</font></string>
+    <string name="mob_num"><font size="12">கையடக்க தொலைபேசி இல</font></string>
 
     <!--    mother info-->
     <string name="mother_info_title">தாயின் தகவல்</string>
@@ -215,6 +215,7 @@
     <string name="unenroll_supplimentory">இந்த செயல் நிரலில் இருந்து கூடுதல் ஊட்டத்தை \nஅகற்றும்</string>
     <string name="unenroll_thera">இந்த செயல் திட்டத்தில் இருந்து \nமருந்து ஊட்டத்தை அகற்றும்</string>
 
+    <string name="age_less_than_5">"குழந்தைக்கு 5 வயது ஆகவில்லை"</string>
 
     <!-- other - reason for enrollment -->
     <string name="oth_reason_title"> வைத்தியசாலைக்கு அனுப்புதல் (ஆம்/இல்லை) </string>
@@ -225,6 +226,10 @@
     <string name="oth_reason_under">நிறைகுறைவு</string>
     <string name="oth_reason_overweight">அதிக நிறை/ அதீத நிறை</string>
     <string name="oth_reason_stuning">குள்ளமாதல்</string>
+    <string name="oth_reason_combinations">தேர்வு சேர்க்கை தவறானது. சாத்தியமான சேர்க்கைகள் \n1. குள்ளமாதல் + மத்திமமான குறுகிய காலப் போஷாக்கின்மை + நிறைகுறைவு
+        \n2. குள்ளமாதல் + >தீவிர குறுகிய காலப் போஷாக்கின்மை + நிறைகுறைவு
+        \n3. குள்ளமாதல் + அதிக நிறை/ அதீத நிறை + நிறைகுறைவு
+                    \n4. குள்ளமாதல் + பச்சை மண்டலத்தில் வளர்ச்சி குன்றி நீண்ட காலமாக உள்ளமை</string>
 
     <!-- other - intervention-poverty -->
     <string name="oth_inter_poverty_title">தலையீடு- வறுமையும் குறைந்த வருமான முகாமையும் </string>
@@ -287,8 +292,8 @@
     <string name="over_mana_title">நிலை 1: முகாமை \n(மீண்டும் செய்ய முடியாதது) </string>
     <string name="over_mana_date">திகதி</string>
     <string name="over_mana_enrol_type">சேர்ந்த வகை</string>
-    <string name="over_mana_hospital"> வைத்தியசாலைக்கு அனுப்புதல் (ஆம்/இல்லை) </string>
-    <string name="over_mana_seen">சிறுவர் வைத்திய நிபுணர் பார்வையிட்டது  (ஆம்/இல்லை)</string>
+    <string name="over_mana_hospital"> வைத்தியசாலைக்கு அனுப்புதல்</string>
+    <string name="over_mana_seen">சிறுவர் வைத்திய நிபுணர் பார்வையிட்டது</string>
 
     <!-- overweight - outcome -->
     <string name="over_out_title">நிலை 3 : விளைவு (மீண்டும் செய்ய முடியாதது) </string>
@@ -306,8 +311,8 @@
     <string name="stunt_mana_title">நிலை 1: முகாமை</string>
     <string name="stunt_mana_date">திகதி</string>
     <string name="stunt_mana_enrol_type">சேர்ந்த வகை</string>
-    <string name="stunt_mana_hospital"> வைத்தியசாலைக்கு அனுப்புதல் (ஆம்/இல்லை) </string>
-    <string name="stunt_mana_seen">சிறுவர் வைத்திய நிபுணர் பார்வையிட்டது  (ஆம்/இல்லை)</string>
+    <string name="stunt_mana_hospital"> வைத்தியசாலைக்கு அனுப்புதல்</string>
+    <string name="stunt_mana_seen">சிறுவர் வைத்திய நிபுணர் பார்வையிட்டது</string>
 
 
     <!-- stunting - outcome -->
@@ -326,11 +331,12 @@
     <string name="supp_indication_combinations">தேர்வு சேர்க்கை தவறானது. சாத்தியமான சேர்க்கைகள்\n1. MAM\n2. எடை குறைவு \n3.  நீண்டகால வளர்ச்சி தடுமாறிய மண்டலம்
                     \n4. MAM + எடை குறைவு\n5. MAM + நீண்டகால வளர்ச்சி தடுமாறிய மண்டலம்</string>
 
+
     <!-- supplementory - intervention -->
     <string name="supp_intervention_title">நிலை 2: தலையீடுகள்</string>
     <string name="supp_intervention_date">திகதி</string>
-    <string name="supp_intervention_on_triposha">திரிபோஷாவில் உள்ளார் (ஆம்/ இல்லை)</string>
-    <string name="supp_intervention_packets">திரிபோஷாவில் உள்ளார் (ஆம்/ இல்லை)</string>
+    <string name="supp_intervention_on_triposha">திரிபோஷாவில் உள்ளார்</string>
+    <string name="supp_intervention_packets">கொடுக்கப்பட்ட திரிபோஷா பொதிகளின் எண்ணிக்கை</string>
     <string name="supp_intervention_counselling">IYCF/ போஷணை உளவளத்துணை கொடுத்தது (ஆம் / இல்லை)</string>
     <string name="supp_intervention_alert">திரிபோஷ பாக்கெட்டுகளின் எண்ணிக்கையை 1 முதல் 4 வரை மட்டுமே கொடுக்க முடியும்</string>
 
@@ -344,16 +350,16 @@
     <!-- tera - intervention -->
     <string name="tera_intervention_title">நிலை 2:  தலையீடுகள்</string>
     <string name="tera_intervention_date">திகதி</string>
-    <string name="tera_intervention_bp100">BP 100 இல் உள்ளார் (ஆம்/இல்லை)</string>
-    <string name="tera_intervention_counselling">IYCF/ போஷணை உளவளத்துணை கொடுத்தது (ஆம்/இல்லை)</string>
+    <string name="tera_intervention_bp100">BP 100 இல் உள்ளார்</string>
+    <string name="tera_intervention_counselling">IYCF/ போஷணை உளவளத்துணை கொடுத்தது</string>
 
 
     <!-- tera - management -->
     <string name="tera_management_title">நிலை 1: முகாமை</string>
     <string name="tera_management_date">திகதி</string>
     <string name="tera_management_enrollment">சேர்ந்த வகை</string>
-    <string name="tera_management_hospital">வைத்தியசாலைக்கு அனுப்புதல் (ஆம்/இல்லை)</string>
-    <string name="tera_management_seen">சிறுவர் வைத்திய நிபுணர்/ போஷணை வைத்தியர் பார்வையிட்டது  (ஆம்/இல்லை)</string>
+    <string name="tera_management_hospital">வைத்தியசாலைக்கு அனுப்புதல்</string>
+    <string name="tera_management_seen">சிறுவர் வைத்திய நிபுணர்/ போஷணை வைத்தியர் பார்வையிட்டது</string>
     <string name="tera_management_bp100">BP 100  தொடங்கியது (ஆம்/இல்லை)</string>
 
     <!-- tera - outcome -->

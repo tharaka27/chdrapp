@@ -1029,17 +1029,18 @@
                 android:layout_marginVertical="5dp"
                 android:orientation="horizontal">
 
+                <!--android:text="@string/cd_edit" /-->
+
                 <Button
                     android:id="@+id/edit_btn"
-                    android:layout_width="100sp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/button_edit_child_details"
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:layout_marginBottom="0dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/edit_button_1_"
                     android:clickable="true"
                     android:focusable="true"
-                    android:padding="5dp"
-                    android:text="@string/cd_edit" />
+                    android:padding="0dp" />
 
                 <TextView
                     android:id="@+id/title"

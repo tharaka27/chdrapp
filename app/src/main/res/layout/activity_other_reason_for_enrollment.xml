@@ -101,7 +101,7 @@
                         <CheckBox
                             android:id="@+id/Moderate_acute_Checkbox"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
@@ -134,7 +134,7 @@
                         <CheckBox
                             android:id="@+id/Long_standing_Checkbox"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"

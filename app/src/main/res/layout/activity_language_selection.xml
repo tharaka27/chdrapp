@@ -24,13 +24,13 @@ android:layout_height="match_parent">
             android:layout_marginBottom="0dp"
             android:layout_weight="0.8"
             android:scaleType="fitXY"
-            android:src="@drawable/maskgroup62" />
+            android:src="@drawable/background_image_cropped__1_" />
 
         <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="MSGP/U5 Monitoring System\nfor Growth Problems \nin Under 5 Children"
+            android:text="Growth &amp; Nutrition Monitoring System"
             android:textAlignment="center"
             android:textColor="@color/title"
             android:textSize="20sp"

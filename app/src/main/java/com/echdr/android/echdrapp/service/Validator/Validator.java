@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 
+import com.echdr.android.echdrapp.R;
+
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValue;
 
 import java.text.ParseException;
@@ -57,7 +59,8 @@ public class Validator {
             td.setTime(event_date);
             long minimum_value =  td.getTimeInMillis() - c.getTimeInMillis();
             if (minimum_value < 157784630000L){
-                CreateAlertDialog("The Child is not 5 years old");
+                //CreateAlertDialog("The Child is not 5 years old");
+                CreateAlertDialog(context.getString(R.string.age_less_than_5));
                 return false;
             }
 

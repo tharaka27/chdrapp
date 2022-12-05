@@ -344,6 +344,19 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
         occupation.setSelection(util.getTEISpinnerSelection("Srxv0vniOnf", occupationArray, teiUid));
         relationship.setSelection(util.getTEISpinnerSelection("ghN8XfnlU5V", relationshipArray, teiUid));
 
+        //make spinners not clickable on startup
+        sex.setClickable(false);
+        sex.setEnabled(false);
+        ethnicity.setClickable(false);
+        ethnicity.setEnabled(false);
+        sector.setClickable(false);
+        sector.setEnabled(false);
+        eduLevel.setClickable(false);
+        eduLevel.setEnabled(false);
+        occupation.setClickable(false);
+        occupation.setEnabled(false);
+        relationship.setClickable(false);
+        relationship.setEnabled(false);
 
         getEnrollment();
 
@@ -405,6 +418,19 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
             caregiver.setEnabled(true);
             weight.setEnabled(true);
             length.setEnabled(true);
+
+            sex.setClickable(true);
+            ethnicity.setClickable(true);
+            sector.setClickable(true);
+            eduLevel.setClickable(true);
+            occupation.setClickable(true);
+            relationship.setClickable(true);
+            sex.setEnabled(true);
+            ethnicity.setEnabled(true);
+            sector.setEnabled(true);
+            eduLevel.setEnabled(true);
+            occupation.setEnabled(true);
+            relationship.setEnabled(true);
 
             //submitButton.setClickable(true);
             submitButton.setEnabled(true);
