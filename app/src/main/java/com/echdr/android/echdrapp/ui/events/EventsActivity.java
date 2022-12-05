@@ -22,6 +22,8 @@ import com.echdr.android.echdrapp.ui.base.ListActivity;
 import com.echdr.android.echdrapp.ui.event_form.AnthropometryActivity;
 import com.echdr.android.echdrapp.ui.event_form.EventFormActivity;
 import com.echdr.android.echdrapp.ui.event_form.OtherEvaluationActivity;
+import com.echdr.android.echdrapp.ui.event_form.OtherFoodInsecurityActivity;
+import com.echdr.android.echdrapp.ui.event_form.OtherInadequateWaterActivity;
 import com.echdr.android.echdrapp.ui.event_form.OtherInterventionPoverty;
 import com.echdr.android.echdrapp.ui.event_form.OtherReasonForActivity;
 import com.echdr.android.echdrapp.ui.event_form.OtherReferredForInterventionActivity;
@@ -253,11 +255,11 @@ public class EventsActivity extends ListActivity {
                             .blockingGet();
                     if(selectedProgram.equals("iUgzznPsePB"))
                     {
-                        // remove EHn8MUIERRM, m7IDhrn3y22, bXWTWS8lkbv
+                        // remove EHn8MUIERRM, m7IDhrn3y22, bXWTWS8lkbv, y2imfIjE4zt
                         stages_pre = removeIfPresent(stages_pre, "EHn8MUIERRM");
                         stages_pre = removeIfPresent(stages_pre, "m7IDhrn3y22");
                         stages_pre = removeIfPresent(stages_pre, "bXWTWS8lkbv");
-
+                        stages_pre = removeIfPresent(stages_pre, "y2imfIjE4zt");
                     }
 
                     List<ProgramStage> stages = stages_pre;
@@ -582,7 +584,20 @@ public class EventsActivity extends ListActivity {
                                                                     SupplementaryIndicationActivity.FormType.CREATE,
                                                                     selectedChild);
                                                         }
-                                                        else if(stageSelected.equals("O9FEeIYqGRH")) // other - evaluation
+
+                                                        else if(stageSelected.equals("iWycCg6C2gd")) // other - reason for enrollment 1
+                                                        {
+                                                            return OtherReasonForActivity.getFormActivityIntent(
+                                                                    EventsActivity.this,
+                                                                    eventUid,
+                                                                    selectedProgram,
+                                                                    Sdk.d2().organisationUnitModule().organisationUnits()
+                                                                            .one().blockingGet().uid(),
+                                                                    OtherReasonForActivity.FormType.CREATE,
+                                                                    selectedChild);
+                                                        }
+
+                                                        else if(stageSelected.equals("O9FEeIYqGRH")) // other - risk factor evaluation 2
                                                         {
                                                             return OtherEvaluationActivity.getFormActivityIntent(
                                                                     EventsActivity.this,
@@ -593,31 +608,8 @@ public class EventsActivity extends ListActivity {
                                                                     OtherEvaluationActivity.FormType.CREATE,
                                                                     selectedChild);
                                                         }
-                                                        else if(stageSelected.equals("iWycCg6C2gd")) // other - reason for enrollment
-                                                        {
-                                                            return OtherReasonForActivity.getFormActivityIntent(
-                                                                    EventsActivity.this,
-                                                                    eventUid,
-                                                                    selectedProgram,
-                                                                    Sdk.d2().organisationUnitModule().organisationUnits()
-                                                                            .one().blockingGet().uid(),
-                                                                    OtherReasonForActivity.FormType.CREATE,
-                                                                    selectedChild);
-                                                        }
 
-                                                        else if(stageSelected.equals("m7IDhrn3y22")) // other - reason for enrollment
-                                                        {
-                                                            return OtherReasonForActivity.getFormActivityIntent(
-                                                                    EventsActivity.this,
-                                                                    eventUid,
-                                                                    selectedProgram,
-                                                                    Sdk.d2().organisationUnitModule().organisationUnits()
-                                                                            .one().blockingGet().uid(),
-                                                                    OtherReasonForActivity.FormType.CREATE,
-                                                                    selectedChild);
-                                                        }
-
-                                                        else if(stageSelected.equals("y2imfIjE4zt")) // other - referred for intervention
+                                                        else if(stageSelected.equals("y2imfIjE4zt")) // other - referred for intervention 3
                                                         {
                                                             return OtherReferredForInterventionActivity.getFormActivityIntent(
                                                                     EventsActivity.this,
@@ -629,8 +621,7 @@ public class EventsActivity extends ListActivity {
                                                                     selectedChild);
                                                         }
 
-
-                                                        else if(stageSelected.equals("bXWTWS8lkbv")) // other - intervention - Poverty & Poor Income Management
+                                                        else if(stageSelected.equals("bXWTWS8lkbv")) // other - intervention - Poverty & Poor Income Management 4
                                                         {
                                                             return OtherInterventionPoverty.getFormActivityIntent(
                                                                     EventsActivity.this,
@@ -643,6 +634,30 @@ public class EventsActivity extends ListActivity {
                                                         }
 
 
+
+                                                        else if(stageSelected.equals("m7IDhrn3y22")) // other - food insecurity 5
+                                                        {
+                                                            return OtherFoodInsecurityActivity.getFormActivityIntent(
+                                                                    EventsActivity.this,
+                                                                    eventUid,
+                                                                    selectedProgram,
+                                                                    Sdk.d2().organisationUnitModule().organisationUnits()
+                                                                            .one().blockingGet().uid(),
+                                                                    OtherFoodInsecurityActivity.FormType.CREATE,
+                                                                    selectedChild);
+                                                        }
+
+                                                        else if(stageSelected.equals("EHn8MUIERRM")) // other - intervention - Inadquate water, sanitation 6
+                                                        {
+                                                            return OtherInadequateWaterActivity.getFormActivityIntent(
+                                                                    EventsActivity.this,
+                                                                    eventUid,
+                                                                    selectedProgram,
+                                                                    Sdk.d2().organisationUnitModule().organisationUnits()
+                                                                            .one().blockingGet().uid(),
+                                                                    OtherInadequateWaterActivity.FormType.CREATE,
+                                                                    selectedChild);
+                                                        }
 
                                                         else if(stageSelected.equals("TC7YSoNEUag")) // overweight - management
                                                         {
