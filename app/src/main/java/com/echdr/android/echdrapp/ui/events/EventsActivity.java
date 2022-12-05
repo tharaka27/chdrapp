@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
@@ -102,6 +103,19 @@ public class EventsActivity extends ListActivity {
         return intent;
     }
 
+    List<ProgramStage> removeIfPresent(List<ProgramStage> stages, String name ){
+        int i = -1;
+        for(int j=0; j< stages.size(); j++){
+            if(stages.get(j).uid().equals(name)) {
+                i = j;
+                break;
+            }
+        }
+        if(i!=-1){
+            stages.remove(i);
+        }
+        return stages;
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -234,9 +248,23 @@ public class EventsActivity extends ListActivity {
         findViewById(R.id.eventButton).setOnClickListener(view ->
                 {
                     // first create a alert dialog box to select program stage
-                    List<ProgramStage> stages = Sdk.d2().programModule().programStages()
+                    List<ProgramStage> stages_pre = Sdk.d2().programModule().programStages()
                             .byProgramUid().eq(selectedProgram)
                             .blockingGet();
+                    if(selectedProgram.equals("iUgzznPsePB"))
+                    {
+                        // remove EHn8MUIERRM, m7IDhrn3y22, bXWTWS8lkbv
+                        stages_pre = removeIfPresent(stages_pre, "EHn8MUIERRM");
+                        stages_pre = removeIfPresent(stages_pre, "m7IDhrn3y22");
+                        stages_pre = removeIfPresent(stages_pre, "bXWTWS8lkbv");
+
+                    }
+
+                    List<ProgramStage> stages = stages_pre;
+                    System.out.println("Hello " + selectedProgram);
+                    for(ProgramStage stage: stages){
+                        System.out.println(stage.uid());
+                    }
 
                     ArrayAdapter<String> stages_names = new ArrayAdapter<String>
                             (this, android.R.layout.select_dialog_singlechoice);
@@ -832,6 +860,7 @@ public class EventsActivity extends ListActivity {
         super.onResume();
         observeEvents();
     }
+
 
 
 }

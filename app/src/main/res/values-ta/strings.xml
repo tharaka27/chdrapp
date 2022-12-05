@@ -400,6 +400,13 @@
     <string name="mother_details">தாயின் தகவல்</string>
     <string name="caregiver_details">கவனிப்பு வழங்குபவரின் தகவல்</string>
 
+    <!-- Referred for intervention -->
+    <string name="refered_inter_poverty">வறுமை மற்றும் மோசமான வருமான மேலாண்மை</string>
+    <string name="refered_inter_food">உணவுப் பாதுகாப்பின்மை</string>
+    <string name="refered_inter_water">போதிய தண்ணீர் சுகாதாரமின்மை</string>
+    <string name="refered_inter_date">மதிப்பீட்டு தேதி</string>
+    <string name="refered_inter_yes">ஆம்</string>
+
     <!--    Supplementary intervention spinner-->
     <string-array name="supp_intervention_type">
         <item>இந்த பிரிவில் முதல் முறையாக பதிவு செய்தல்</item>

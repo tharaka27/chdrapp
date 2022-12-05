@@ -380,8 +380,8 @@
 
     <!--    area details-->
     <string name="ad_title">මගේ ප්‍රදේශයේ විස්තර බලන්න</string>
-    <string name="ad_area"><font size="12">වින්නඹු මාතාව ප්රදේශය</font></string>
-    <string name="ad_search"><font size="12">වින්නඹු මාතාව ප්රදේශය</font></string>
+    <string name="ad_area"><font size="12">වින්නඹු මාතාව ප‍්‍රදේශය</font></string>
+    <string name="ad_search"><font size="12">වින්නඹු මාතාව ප‍්‍රදේශය</font></string>
     <string name="ad_sort"><font size="13">අනුව තෝරන්න</font></string>
     <string name="ad_search_result">මෙහි සොයන්න</string>
 
@@ -395,7 +395,12 @@
     <string name="mother_details">මවගේ තොරතරු</string>
     <string name="caregiver_details">රැකබලාගන්නාගේ තොරතූරු</string>
 
-
+    <!-- Referred for intervention -->
+    <string name="refered_inter_poverty">දුප්පත්කම සහ දුර්වල ආදායම් කළමනාකරණය</string>
+    <string name="refered_inter_food">ආහාර අනාරක්ෂිත බව</string>
+    <string name="refered_inter_water">ප‍්‍රමාණවත් ජල සනීපාරක්ෂාවක් නැත</string>
+    <string name="refered_inter_date">දිනය</string>
+    <string name="refered_inter_yes">ඔව්</string>
 
     <!--    Child registration arrays starts here-->
 
