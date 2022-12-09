@@ -1,10 +1,12 @@
 package com.echdr.android.echdrapp.service.Service;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.echdr.android.echdrapp.R;
 import com.echdr.android.echdrapp.ui.event_form.DataValuesWHO;
 
 import org.hisp.dhis.android.core.trackedentity.TrackedEntityAttributeValue;
@@ -15,14 +17,18 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class AnthropometryService {
-
+    private Context context;
     private static final String TAG = "AnthropometryService";
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
 
     public void ChangeColor(EditText text, String s, Map<Integer, double[]> data,
                             boolean height, TextView AgeInWeeksTxt) {
         int currentAge = 0;
         if(!(AgeInWeeksTxt.getText().toString().isEmpty() ||
-                AgeInWeeksTxt.getText().toString().equals("Age in Weeks"))) {
+                AgeInWeeksTxt.getText().toString().equals(context.getString(R.string.an_age_weeks)))) {
             currentAge = Integer.parseInt(AgeInWeeksTxt.getText().toString());
         }
 
@@ -42,10 +48,16 @@ public class AnthropometryService {
         int category = 0;
         try {
             // divide by 4 to covert to months
-            double[] array = data.get( currentAge/4 );
+            int currentAgeInMonths = currentAge/4;
+            if(currentAgeInMonths > 60){
+                currentAgeInMonths = 60;
+            }
+
+            double[] array = data.get( currentAgeInMonths );
+            System.out.println(array);
 
             for (category = 0; category < 4; ) {
-
+                System.out.println("curent " + Integer.toString(currentAge));
                 assert array != null;
                 if (array[category] < currentValue) {
                     category++;

@@ -129,6 +129,7 @@ public class AnthropometryActivity extends AppCompatActivity {
 
             AnthropometryService anthropometryService = new AnthropometryService();
 
+
             // Get the birthday of the child
             birthday = Sdk.d2().trackedEntityModule().trackedEntityAttributeValues()
                     .byTrackedEntityInstance().eq(selectedChild)
@@ -149,6 +150,7 @@ public class AnthropometryActivity extends AppCompatActivity {
 
             sex = sex_d.value();
             context = this;
+            anthropometryService.setContext(context);
 
             heightValues = new HashMap<>();
             weightValues = new HashMap<>();
