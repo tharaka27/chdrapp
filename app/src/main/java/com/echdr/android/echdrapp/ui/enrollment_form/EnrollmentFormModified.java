@@ -320,7 +320,7 @@ public class EnrollmentFormModified extends AppCompatActivity {
         }
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        String message = String.format("Please confirm BI number %s is correct",
+        String message = String.format(context.getString(R.string.enr_form_bi),
                 immuneNum.getText().toString());
         builder.setMessage(message);
         builder.setCancelable(true);

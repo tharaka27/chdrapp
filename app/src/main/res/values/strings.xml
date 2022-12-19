@@ -604,4 +604,22 @@
         <item>Died</item>
     </string-array>
 
+
+    <!-- Program Enrollment Validator -->
+    <string name="validator_overweight">Already enrolled to either one or more programs of Therapeutical, Supplementary</string>
+    <string name="validator_therapeutical">Already enrolled to either one or more programs of Therapeutical, Overweight/Obesity</string>
+    <string name="validator_supp">Already enrolled to either one or more programs of Supplementary, Overweight/Obesity</string>
+
+    <!--   Program Enrollment Service -->
+    <string name="confirm_overweight">Please confirm overweight program enrollment</string>
+    <string name="confirm_other">Please confirm other health/non health program enrollment</string>
+    <string name="confirm_stunting">Please confirm stunting program enrollment</string>
+    <string name="confirm_supplementary">Please confirm supplementary program enrollment</string>
+    <string name="confirm_therapeutical">Please confirm therapeutical feeding program enrollment</string>
+
+
+    <!-- Enrollment form validator -->
+    <string name="enr_form_bi">Please confirm BI number %s is correct</string>
+
+
 </resources>
