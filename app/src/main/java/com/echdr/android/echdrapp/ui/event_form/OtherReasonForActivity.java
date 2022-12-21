@@ -339,7 +339,7 @@ public class OtherReasonForActivity extends AppCompatActivity {
             alert11.show();
             return;
         }
-        if((checkbox_Stunting.isChecked() && checkbox_Moderate_Acute.isChecked() && checkbox_Underweight.isChecked() ||
+        if(!(checkbox_Stunting.isChecked() && checkbox_Moderate_Acute.isChecked() && checkbox_Underweight.isChecked() ||
         checkbox_Stunting.isChecked() && checkbox_Severe_Acute.isChecked() && checkbox_Underweight.isChecked() ||
         checkbox_Stunting.isChecked() && checkbox_Overweight.isChecked() && checkbox_Underweight.isChecked() ||
         checkbox_Stunting.isChecked() && checkbox_Long_standing.isChecked())) {
@@ -362,14 +362,36 @@ public class OtherReasonForActivity extends AppCompatActivity {
             }
         }
 
-        System.out.println(getDataElement("Dpw5YPM1CFj")); // reason for enrollment date
-        System.out.println(getDataElement("AOKp3oQPyYP")); // SAM
-        System.out.println(getDataElement("QNV3Qb2kjx8")); // MAM
-        System.out.println(getDataElement("Sw98c8KAEmr")); // long standing growth
-        System.out.println(getDataElement("xkhQxmJ8X24")); // underweight
-        System.out.println(getDataElement("dnLak5wmEzT")); // overweight
-        System.out.println(getDataElement("paM0QZaZMTO")); // stunting
 
+        if(!(   checkbox_Stunting.isChecked() && checkbox_Underweight.isChecked() && !checkbox_Long_standing.isChecked() &&
+                        !checkbox_Moderate_Acute.isChecked() && checkbox_Severe_Acute.isChecked() && !checkbox_Overweight.isChecked() ||
+                checkbox_Stunting.isChecked() && checkbox_Underweight.isChecked() && !checkbox_Long_standing.isChecked() &&
+                        checkbox_Moderate_Acute.isChecked() && !checkbox_Severe_Acute.isChecked() && !checkbox_Overweight.isChecked() ||
+                checkbox_Stunting.isChecked() && checkbox_Underweight.isChecked() && !checkbox_Long_standing.isChecked() &&
+                        !checkbox_Moderate_Acute.isChecked() && !checkbox_Severe_Acute.isChecked() && checkbox_Overweight.isChecked() ||
+                checkbox_Stunting.isChecked() && !checkbox_Underweight.isChecked() && checkbox_Long_standing.isChecked() &&
+                        !checkbox_Moderate_Acute.isChecked() && !checkbox_Severe_Acute.isChecked() && !checkbox_Overweight.isChecked()
+                )) {
+            {
+                AlertDialog.Builder builder2 = new AlertDialog.Builder(context);
+                builder2.setMessage(R.string.oth_reason_combinations);
+                builder2.setCancelable(true);
+
+                builder2.setNegativeButton(
+                        "Close",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alert12 = builder2.create();
+                alert12.show();
+                return;
+            }
+        }
+
+        /*
         if(checkbox_Long_standing.isChecked() && checkbox_Moderate_Acute.isChecked()
                 && checkbox_Underweight.isChecked() || checkbox_Underweight.isChecked() &&
                 checkbox_Long_standing.isChecked())
@@ -390,6 +412,7 @@ public class OtherReasonForActivity extends AppCompatActivity {
             alert11.show();
             return;
         }
+        */
 
 
         saveDataElement("Dpw5YPM1CFj", textView_Date.getText().toString());
