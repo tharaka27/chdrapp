@@ -346,7 +346,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:background="?android:attr/selectableItemBackground"
                         android:clickable="true"
                         android:orientation="horizontal">
 
@@ -382,7 +381,6 @@
                         android:id="@+id/new_child"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="?android:attr/selectableItemBackground"
                         android:clickable="true"
                         android:orientation="horizontal">
 

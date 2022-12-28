@@ -74,8 +74,8 @@
                             android:layout_gravity="center_vertical"
                             android:layout_weight="0.2"
                             android:background="@drawable/background_popup_card"
-                            android:src="@drawable/calendar"
-                            android:enabled="false"/>
+                            android:enabled="false"
+                            android:src="@drawable/calendar" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -106,10 +106,10 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
+                            android:enabled="false"
                             android:hint="Enter here"
                             android:textColorHint="@color/desc"
-                            android:textSize="15dp"
-                            android:enabled="false"/>
+                            android:textSize="15dp" />
 
                     </LinearLayout>
 
@@ -141,8 +141,8 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:hint="Enter here"
                             android:enabled="false"
+                            android:hint="Enter here"
                             android:textColorHint="@color/desc" />
 
                     </LinearLayout>
@@ -175,10 +175,10 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
+                            android:enabled="false"
                             android:hint="Enter here"
                             android:textColorHint="@color/desc"
-                            android:textSize="15dp"
-                            android:enabled="false"/>
+                            android:textSize="15dp" />
 
                     </LinearLayout>
 
@@ -208,8 +208,8 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="0.5"
-                            android:enabled="false"
-                            android:clickable="false">
+                            android:clickable="false"
+                            android:enabled="false">
 
                         </Spinner>
 
@@ -243,9 +243,9 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.4"
                             android:background="@null"
+                            android:clickable="false"
                             android:enabled="false"
-                            android:textColorHint="@color/desc"
-                            android:clickable="false"/>
+                            android:textColorHint="@color/desc" />
 
                         <ImageView
                             android:id="@+id/date_pick_birth"
@@ -254,9 +254,9 @@
                             android:layout_gravity="center_vertical"
                             android:layout_weight="0.2"
                             android:background="@drawable/background_popup_card"
+                            android:clickable="false"
                             android:enabled="false"
-                            android:src="@drawable/calendar"
-                            android:clickable="false"/>
+                            android:src="@drawable/calendar" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -387,11 +387,11 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
+                            android:enabled="false"
                             android:hint="Enter here"
                             android:inputType="number"
                             android:textColorHint="@color/desc"
-                            android:textSize="15dp"
-                            android:enabled="false"/>
+                            android:textSize="15dp" />
 
                     </LinearLayout>
 
@@ -423,11 +423,11 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
+                            android:enabled="false"
                             android:hint="Enter here"
                             android:inputType="number"
                             android:textColorHint="@color/desc"
-                            android:textSize="15dp"
-                            android:enabled="false"/>
+                            android:textSize="15dp" />
 
                     </LinearLayout>
 
@@ -459,10 +459,10 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
+                            android:enabled="false"
                             android:hint="Enter here"
                             android:textColorHint="@color/desc"
-                            android:textSize="15dp"
-                            android:enabled="false"/>
+                            android:textSize="15dp" />
 
                     </LinearLayout>
 
@@ -494,10 +494,10 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
+                            android:enabled="false"
                             android:hint="Enter here"
                             android:textColorHint="@color/desc"
-                            android:textSize="15dp"
-                            android:enabled="false"/>
+                            android:textSize="15dp" />
 
                     </LinearLayout>
 
@@ -538,8 +538,8 @@
                             android:layout_height="20dp"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="0.2"
-                            android:enabled="false"
                             android:background="@drawable/background_popup_card"
+                            android:enabled="false"
                             android:src="@drawable/calendar" />
                     </LinearLayout>
 
@@ -571,10 +571,10 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
+                            android:enabled="false"
                             android:hint="Enter here"
                             android:inputType="number"
-                            android:enabled="false"
-                            android:textColorHint="@color/desc"/>
+                            android:textColorHint="@color/desc" />
 
                     </LinearLayout>
 
@@ -661,7 +661,7 @@
                             android:layout_weight="0.5"
                             android:background="@null"
                             android:text="@string/occu_specifcation"
-                            android:textColorHint="@color/desc"/>
+                            android:textColorHint="@color/desc" />
 
                         <EditText
                             android:id="@+id/occu_specifcation"
@@ -670,10 +670,10 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
+                            android:enabled="false"
                             android:hint="Enter here"
                             android:textColorHint="@color/desc"
-                            android:textSize="15dp"
-                            android:enabled="false"/>
+                            android:textSize="15dp" />
 
                     </LinearLayout>
 
@@ -737,8 +737,8 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
-                            android:hint="Enter here"
                             android:enabled="false"
+                            android:hint="Enter here"
                             android:textColorHint="@color/desc"
                             android:textSize="15dp" />
 
@@ -747,12 +747,13 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="60dp">
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:gravity="center_vertical"
                             android:text="@string/subsection_title"
                             android:textAlignment="center"
-                            android:gravity="center_vertical"
                             android:textColorHint="@color/desc">
 
                         </TextView>
@@ -787,9 +788,9 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
+                            android:enabled="false"
                             android:hint="Enter here"
                             android:inputType="number"
-                            android:enabled="false"
                             android:textColorHint="@color/desc" />
 
                     </LinearLayout>
@@ -822,9 +823,9 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
                             android:background="@null"
+                            android:enabled="false"
                             android:hint="Enter here"
                             android:inputType="number"
-                            android:enabled="false"
                             android:textColorHint="@color/desc" />
 
                     </LinearLayout>

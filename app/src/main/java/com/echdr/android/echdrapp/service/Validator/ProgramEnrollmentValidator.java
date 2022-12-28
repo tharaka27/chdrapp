@@ -56,24 +56,21 @@ public class ProgramEnrollmentValidator extends Validator{
         if(programID.equals("OVERWEIGHT"))
         {
             if(IsSupplementaryEnrolled || IsTherapeuticalEnrolled){
-                CreateAlertDialog("Already enrolled to either one or more programs of " +
-                        "\nTherapeutical, Supplementary");
+                CreateAlertDialog(context.getString(R.string.validator_overweight));
                 return false;
             }
         }
         if(programID.equals("SUPPLEMENTARY"))
         {
             if(IsTherapeuticalEnrolled || IsOverweightEnrolled){
-                CreateAlertDialog("Already enrolled to either one or more programs of " +
-                        "\nTherapeutical, Overweight/Obesity");
+                CreateAlertDialog(context.getString(R.string.validator_supp));
                 return false;
             }
         }
         if(programID.equals("THERAPEUTICAL"))
         {
             if(IsSupplementaryEnrolled || IsOverweightEnrolled){
-                CreateAlertDialog("Already enrolled to either one or more programs of " +
-                        "\nSupplementary, Overweight/Obesity");
+                CreateAlertDialog(context.getString(R.string.validator_therapeutical));
                 return false;
             }
         }

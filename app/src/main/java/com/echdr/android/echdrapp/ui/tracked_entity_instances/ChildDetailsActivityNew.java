@@ -281,6 +281,13 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
             }
         };
 
+        datePicker_dob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectDate(year, month, day);
+            }
+        });
+
         setListenerMotherDob = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -290,6 +297,12 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
             }
         };
 
+        datePicker_mother_dob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectDateMotherDOB(year, month, day);
+            }
+        });
 
 
         // setting date of registration
@@ -388,7 +401,8 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
         editAccessValidator.setEnrollmentID(anthropometryEnrollmentID);
 
         edit_button.setOnClickListener(view ->{
-            edit_button.setBackgroundResource(R.drawable.button_edit_child_details_editing);
+            //edit_button.setBackgroundResource(R.drawable.button_edit_child_details_editing);
+            edit_button.setVisibility(View.GONE);
 
             if(editAccessValidator.validate()){
                 sex.setEnabled(true);
@@ -520,6 +534,26 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
         );
     }
 
+    private void selectDate(int year, int month, int day)
+    {
+        Calendar c2 = Calendar.getInstance();
+        c2.add(Calendar.DATE, -365*5); // subtract 5 years from now
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                context, android.R.style.Theme_Holo_Light_Dialog, setListenerDob, year, month, day);
+        datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        datePickerDialog.getDatePicker().setMinDate(c2.getTimeInMillis());
+        datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+        datePickerDialog.show();
+    }
+
+    private void selectDateMotherDOB(int year, int month, int day)
+    {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                context, android.R.style.Theme_Holo_Light_Dialog, setListenerMotherDob, year, month, day);
+        datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+        datePickerDialog.show();
+    }
 
     private ReturnPair setProgramEnrollment(String programID, ImageView enrolled, ImageView notEnrolled){
         List<Enrollment> programStatus = Sdk.d2().enrollmentModule().enrollments()

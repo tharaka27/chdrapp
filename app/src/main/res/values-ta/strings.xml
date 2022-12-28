@@ -607,4 +607,20 @@
         <item>Died</item>
     </string-array>
 
+    <!-- Program Enrollment Validator -->
+    <string name="validator_overweight">ஏற்கனவே ஒன்று அல்லது அதற்கு மேற்பட்ட சிகிச்சை, துணை நிரல்களில் பதிவு செய்துள்ளீர்கள்</string>
+    <string name="validator_therapeutical">ஒன்று அல்லது அதற்கு மேற்பட்ட சிகிச்சை, அதிக எடை/உடல் பருமன் ஆகியவற்றில் ஏற்கனவே சேர்ந்துள்ளது</string>
+    <string name="validator_supp">ஒன்று அல்லது அதற்கு மேற்பட்ட துணை, அதிக எடை/உடல் பருமன் திட்டங்களில் ஏற்கனவே சேர்ந்துள்ளது</string>
+
+    <!--   Program Enrollment Service -->
+    <string name="confirm_overweight">அதிக எடையுள்ள திட்டப் பதிவை உறுதிப்படுத்தவும்</string>
+    <string name="confirm_other">மற்ற சுகாதார/சுகாதாரம் அல்லாத திட்டப் பதிவை உறுதிப்படுத்தவும்</string>
+    <string name="confirm_stunting">ஸ்டண்டிங் நிரல் பதிவை உறுதிப்படுத்தவும்</string>
+    <string name="confirm_supplementary">துணை நிரல் சேர்க்கையை உறுதிப்படுத்தவும்</string>
+    <string name="confirm_therapeutical">சிகிச்சை உணவுத் திட்டப் பதிவை உறுதிப்படுத்தவும்</string>
+
+    <!-- Enrollment form validator -->
+    <string name="enr_form_bi">BI எண் %s சரியானதா என்பதை உறுதிப்படுத்தவும்</string>
+
+
 </resources>

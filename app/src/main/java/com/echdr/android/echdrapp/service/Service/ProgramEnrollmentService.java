@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
+import com.echdr.android.echdrapp.R;
 import com.echdr.android.echdrapp.data.Sdk;
 import com.echdr.android.echdrapp.service.Validator.ProgramEnrollmentValidator;
 import com.echdr.android.echdrapp.ui.enrollment_form.EnrollmentFormActivity;
@@ -112,7 +113,7 @@ public class ProgramEnrollmentService {
                 if(!programEnrollmentValidator.validate("OVERWEIGHT")){
                     return ;
                 }
-                CreateConfirmationDialog("Please confirm overweight program enrollment", "JsfNVX0hdq9");
+                CreateConfirmationDialog(context.getString(R.string.confirm_overweight), "JsfNVX0hdq9");
             }
         });
 
@@ -175,7 +176,7 @@ public class ProgramEnrollmentService {
             @Override
             public void onClick(View view) {
                 CreateConfirmationDialog(
-                        "Please confirm other health/non health program enrollment",
+                        context.getString(R.string.confirm_other),
                         "iUgzznPsePB");
             }
         });
@@ -190,7 +191,7 @@ public class ProgramEnrollmentService {
         stuntingNotEnrolled.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CreateConfirmationDialog("Please confirm stunting program enrollment", "lSSNwBMiwrK");
+                CreateConfirmationDialog(context.getString(R.string.confirm_stunting), "lSSNwBMiwrK");
             }
         });
 
@@ -208,7 +209,7 @@ public class ProgramEnrollmentService {
                 if(!programEnrollmentValidator.validate("SUPPLEMENTARY")){
                     return ;
                 }
-                CreateConfirmationDialog("Please confirm supplementary program enrollment", "tc6RsYbgGzm");
+                CreateConfirmationDialog(context.getString(R.string.confirm_supplementary), "tc6RsYbgGzm");
             }
         });
 
@@ -226,7 +227,7 @@ public class ProgramEnrollmentService {
                     return ;
                 }
 
-                CreateConfirmationDialog("Please confirm therapeutical feeding program enrollment", "CoGsKgEG4O0");
+                CreateConfirmationDialog(context.getString(R.string.confirm_therapeutical), "CoGsKgEG4O0");
             }
         });
 

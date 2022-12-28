@@ -456,7 +456,7 @@
     </string-array>
 
     <string-array name="sector">
-        <item>ග‍්‍රාමීීය</item>
+        <item>ග‍්‍රාමීය</item>
         <item>නාගරික</item>
         <item>වතු</item>
     </string-array>
@@ -597,5 +597,21 @@
         <item>Left due to completion of age 5</item>
         <item>Died</item>
     </string-array>
+
+    <!-- Program Enrollment Validator -->
+    <string name="validator_overweight">දැනටමත් ඖෂධීය ආහාර ලබාදීමෙ වැඩසටහන්, අතිරේක වැඩසටහන් එකකට හෝ වැඩි ගණනකට ලියාපදිංචි වී ඇත</string>
+    <string name="validator_therapeutical">දැනටමත් අධික බර වැඩසටහන්, අතිරේක වැඩසටහන් එකකට හෝ වැඩි ගණනකට ලියාපදිංචි වී ඇත</string>
+    <string name="validator_supp">දැනටමත් අධික බර වැඩසටහන්, අතිරේක වැඩසටහන් එකකට හෝ වැඩි ගණනකට ලියාපදිංචි වී ඇත</string>
+
+
+    <!--   Program Enrollment Service -->
+    <string name="confirm_overweight">කරුණාකර අධික බර වැඩසටහනට ඇතුළත් වීම තහවුරු කරන්න</string>
+    <string name="confirm_other">කරුණාකර වෙනත් සෞඛ්‍ය/ සෞඛ්‍ය නොවන වැඩසටහනට ඇතුළත් වීම තහවුරු කරන්න</string>
+    <string name="confirm_stunting">කරුණාකර මිටි බව සදහා මැදිහත්වීම වැඩසටහනට ඇතුළත් වීම තහවුරු කරන්න</string>
+    <string name="confirm_supplementary">කරුණාකර අතිරේක ආහාර ලබාදීමෙ වැඩසටහනට ඇතුළත් වීම තහවුරු කරන්න</string>
+    <string name="confirm_therapeutical">කරුණාකර ඖෂධීය ආහාර ලබාදීමෙ වැඩසටහනට ඇතුළත් වීම තහවුරු කරන්න</string>
+
+    <!-- Enrollment form validator -->
+    <string name="enr_form_bi">කරුණාකර BI අංකය %s නිවැරදි බව තහවුරු කරන්න</string>
 
 </resources>
