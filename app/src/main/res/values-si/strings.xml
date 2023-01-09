@@ -10,7 +10,7 @@
     <string name="prompt_username">පරිශීලක නාමය</string>
     <string name="prompt_password">රහස් පදය</string>
     <string name="action_sign_in_short">ලියාපදිංචි කරන්න</string>
-    <string name="invalid_server_url">වලංගු සේවාදායක ලිංකුවක් එකක් නොවේ</string>
+    <string name="invalid_server_url">වලංගු සේවාදායක ලිංකුවක් නොවේ</string>
     <string name="invalid_username">වලංගු පරිශීලක නාමයක් නොවේ</string>
     <string name="invalid_password">මුරපදයේ අක්ෂර 5කට වඩා තිබිය යුතුය</string>
     <string name="login_failed">"ඇතුළු වීම අසාර්ථක විය"</string>
@@ -109,10 +109,10 @@
     <!--    home-->
     <string name="title_activity_home">home</string>
     <string name="wish">ආයුබෝවන්,</string>
-    <string name="sup_prog"><font size="16">අතිරේක ආහාර ලබාදීම</font></string>
-    <string name="thera_prog"><font size="16">ඖෂධීය ආහාර ලබාදීම</font></string>
-    <string name="overw_prog"><font size="16">අධි බර / ස්ථූලතාවය සඳහා මැදිහත්වීම</font></string>
-    <string name="stunt_prog"><font size="16">මිටි බව සදහා මැදිහත්වීම</font></string>
+    <string name="sup_prog"><font size="16">අතිරේක ආහාර ලබා දීම</font></string>
+    <string name="thera_prog"><font size="16">ඖෂධීය ආහාර ලබා දීම</font></string>
+    <string name="overw_prog"><font size="16">අධි බර / ස්ථූලතාවය සඳහා මැදිහත් වීම</font></string>
+    <string name="stunt_prog"><font size="16">මිටි බව සඳහා මැදිහත් වීම</font></string>
     <string name="other_prog"><font size="16">වෙනත් සෞඛ්‍ය/ සෞඛ්‍ය නොවන වැඩසටහන</font></string>
     <string name="area_details">මගේ ප්‍රදේශයේ විස්තර බලන්න</string>
     <string name="area_details_desc">ඔබේ ප්‍රදේශයේ සියලුම ළමා ලැයිස්තුව බැලීමට මෙතැන ක්ලික් කරන්න</string>
@@ -143,6 +143,7 @@
     <string name="anthro_regis_land">ස්ථාවර දුරකථන අංකය අඩු/වැඩි අක්ෂර ඇත</string>
     <string name="anthro_regis_mobile_empty">ජංගම දුරකථන අංකය පුරවා නැත</string>
     <string name="anthro_regis_mobile">ජංගම දුරකථන අංකය අඩු/වැඩි අක්ෂර ඇත</string>
+    <string name="anthro_regis_same_BI">ප්‍රතිශක්තිකරණ අංකය සහිත දරුවා දැනටමත් PHM ප්‍රදේශයේ සිටී</string>
 
     <!--    demographic info-->
     <string name="demo_info_title">ජනවිද්‍යාත්මක තොරතුරු</string>
@@ -209,9 +210,9 @@
     <string name="unenroll">ලියාපදිංචියෙන් ඉවත් වීමට ඉදිරියට යන්නද?</string>
     <string name="unenroll_antopo">මෙම ක්‍රියාවෙන් \n දරුවා මානවමිතික වැඩසටහනෙන් ඉවත් කරනු ඇත</string>
     <string name="unenroll_overWeight">මෙම ක්‍රියාව මගින් දරුවා \n වැඩි බර වැඩසටහනෙන් ඉවත් කරනු ඇත</string>
-    <string name="unenroll_stunting">මෙම ක්‍රියාවෙන් මිටි බව \nසදහා මැදිහත්වීම වැඩසටහනෙන් ඉවත් කරනු ඇත</string>
-    <string name="unenroll_supplimentory">මෙම ක්‍රියාවෙන් අතිරේක ආහාර ලබාදීම \n වැඩසටහනෙන් ඉවත් කරනු ඇත</string>
-    <string name="unenroll_thera">මෙම ක්‍රියාවෙන් ඖෂධීය ආහාර ලබාදීම \n වැඩසටහනෙන් ඉවත් කරනු ඇත</string>
+    <string name="unenroll_stunting">මෙම ක්‍රියාවෙන් මිටි බව \nසඳහා මැදිහත් වීම වැඩසටහනෙන් ඉවත් කරනු ඇත</string>
+    <string name="unenroll_supplimentory">මෙම ක්‍රියාවෙන් අතිරේක ආහාර ලබා දීම \n වැඩසටහනෙන් ඉවත් කරනු ඇත</string>
+    <string name="unenroll_thera">මෙම ක්‍රියාවෙන් ඖෂධීය ආහාර ලබා දීම \n වැඩසටහනෙන් ඉවත් කරනු ඇත</string>
 
     <string name="age_less_than_5">"දරුවාට වයස අවුරුදු 5 ක් නොවේ"</string>
 
@@ -257,9 +258,9 @@
     <string name="oth_food_insecurity_title">ආහාර අනාරක්ෂිතතාවය</string>
     <string name="oth_food_insecurity_date">මැදිහත්වීමේ දිනය</string>
     <string name="oth_food_insecurity_agri_training">කෘෂිකර්මික නිපුණතා පුහුණුව / තාක්ෂණික සහය</string>
-    <string name="oth_food_insecurity_live_stock">පශු සම්පත් සහ කුකුළු ගොවිපල ව්‍යාපෘති සඳහා නිවාස ඒකක සදහා ආධාර කිරීම</string>
+    <string name="oth_food_insecurity_live_stock">පශු සම්පත් සහ කුකුළු ගොවිපල ව්‍යාපෘති සඳහා නිවාස ඒකක සඳහා ආධාර කිරීම</string>
     <string name="oth_food_insecurity_support_gardening">ගෙවතු වගාවට ආධාර කිරීම (පැල/අමුද්‍රව්‍ය/පුහුණුව)</string>
-    <string name="oth_food_insecurity_support_water"> ගෘහස්ථ ජල එක්රැස් කිරීමේ ව්‍යපෘති/වගා ජල පද්ධති සදහා ආධාර කිරීම</string>
+    <string name="oth_food_insecurity_support_water"> ගෘහස්ථ ජල එක්රැස් කිරීමේ ව්‍යපෘති/වගා ජල පද්ධති සඳහා ආධාර කිරීම</string>
     <string name="oth_food_insecurity_training">පසු අස්වැනු හානිය අහිමි වීම් අඩු කරගැනීමට පුහුණු වැඩසටහන් </string>
 
 
@@ -386,10 +387,10 @@
     <string name="ad_search_result">මෙහි සොයන්න</string>
 
     <string name="anthropometry">වර්ධන තත්වය මැනීම</string>
-    <string name="supplementary">ඔ‍ය්ෂධීය ආහාර ලබාදීම</string>
-    <string name="overweight">අධික බර/ ස්ථුලතාය සදහා මැදිහත්වීම</string>
-    <string name="therapeutic">අතිරේක ආහාර ලබාදීම</string>
-    <string name="stunt">මිටි බව සදහා මැදිහත්වීම</string>
+    <string name="supplementary">ඔ‍ය්ෂධීය ආහාර ලබා දීම</string>
+    <string name="overweight">අධික බර/ ස්ථුලතාය සඳහා මැදිහත් වීම</string>
+    <string name="therapeutic">අතිරේක ආහාර ලබා දීම</string>
+    <string name="stunt">මිටි බව සඳහා මැදිහත් වීම</string> ess
     <string name="other">වෙනත් සෞඛ්‍ය / සෞඛ්‍ය නොවන වැඩසටහන් </string>
     <string name="subsection_title">උපත් තොරතුරු</string>
     <string name="mother_details">මවගේ තොරතරු</string>
@@ -473,7 +474,7 @@
         <item>රැකියාවක් බලාපොරොත්තුවෙන්/සොයමින්</item>
         <item>ස්වයං රැකියාව</item>
         <item>වැටුප් සහිත රැකියාව</item>
-        <item>විශ්‍රාමිකයි</item>
+        <item>විශ්‍රාමික</item>
     </string-array>
 
     <string-array name="occupation_english_only">
@@ -607,9 +608,9 @@
     <!--   Program Enrollment Service -->
     <string name="confirm_overweight">කරුණාකර අධික බර වැඩසටහනට ඇතුළත් වීම තහවුරු කරන්න</string>
     <string name="confirm_other">කරුණාකර වෙනත් සෞඛ්‍ය/ සෞඛ්‍ය නොවන වැඩසටහනට ඇතුළත් වීම තහවුරු කරන්න</string>
-    <string name="confirm_stunting">කරුණාකර මිටි බව සදහා මැදිහත්වීම වැඩසටහනට ඇතුළත් වීම තහවුරු කරන්න</string>
-    <string name="confirm_supplementary">කරුණාකර අතිරේක ආහාර ලබාදීමෙ වැඩසටහනට ඇතුළත් වීම තහවුරු කරන්න</string>
-    <string name="confirm_therapeutical">කරුණාකර ඖෂධීය ආහාර ලබාදීමෙ වැඩසටහනට ඇතුළත් වීම තහවුරු කරන්න</string>
+    <string name="confirm_stunting">කරුණාකර මිටි බව සදහා මැදිහත්වීම වැඩසටහනට ඇතුළත් වීම තහවුරු කරන්න</string> ess
+    <string name="confirm_supplementary">කරුණාකර අතිරේක ආහාර ලබා දීමෙ වැඩසටහනට ඇතුළත් වීම තහවුරු කරන්න</string>
+    <string name="confirm_therapeutical">කරුණාකර ඖෂධීය ආහාර ලබා දීමෙ වැඩසටහනට ඇතුළත් වීම තහවුරු කරන්න</string>
 
     <!-- Enrollment form validator -->
     <string name="enr_form_bi">කරුණාකර BI අංකය %s නිවැරදි බව තහවුරු කරන්න</string>

@@ -142,6 +142,7 @@
     <string name="anthro_regis_land">Land Number has less/more characters</string>
     <string name="anthro_regis_mobile_empty">Mobile Number is not filled</string>
     <string name="anthro_regis_mobile">Mobile Number has less/more characters</string>
+    <string name="anthro_regis_same_BI">Child with same Immunization number already exists in PHM area</string>
 
     <!--    demographic info-->
     <string name="demo_info_title">Demographic information</string>

@@ -142,7 +142,8 @@
     <string name="anthro_regis_land_empty">நில எண் நிரப்பப்படவில்லை</string>
     <string name="anthro_regis_land">நில எண்ணில் குறைவான/அதிக எழுத்துகள் உள்ளன</string>
     <string name="anthro_regis_mobile_empty">மொபைல் எண் நிரப்பப்படவில்லை</string>
-    <string name="anthro_regis_mobile">Mobile Number has less/more characters</string>
+    <string name="anthro_regis_mobile">மொபைல் எண்ணில் குறைவான/அதிக எழுத்துகள் உள்ளன</string>
+    <string name="anthro_regis_same_BI">அதே நோய்த்தடுப்பு எண்ணைக் கொண்ட குழந்தை ஏற்கனவே PHM பகுதியில் உள்ளது</string>
 
     <!--    demographic info-->
     <string name="demo_info_title">மக்கள் தொகை  தரவு</string>
