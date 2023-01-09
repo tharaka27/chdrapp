@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 
+import com.echdr.android.echdrapp.LocaleHelper;
 import com.echdr.android.echdrapp.R;
 import com.echdr.android.echdrapp.data.Sdk;
 import com.echdr.android.echdrapp.data.service.ActivityStarter;
@@ -39,6 +40,7 @@ import com.echdr.android.echdrapp.ui.event_form.SupplementaryOutcomeActivity;
 import com.echdr.android.echdrapp.ui.event_form.TherapeuticInterventionActivity;
 import com.echdr.android.echdrapp.ui.event_form.TherapeuticManagementActivity;
 import com.echdr.android.echdrapp.ui.event_form.TherapeuticOutcomeActivity;
+import com.echdr.android.echdrapp.ui.splash.LanguageContext;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.hisp.dhis.android.core.arch.repositories.scope.RepositoryScope;
@@ -100,6 +102,7 @@ public class EventsActivity extends ListActivity {
             bundle.putString(IntentExtra.TEI_ID.name(), teiUid);
         if(!isEmpty(enrollmentID))
             bundle.putString(IntentExtra.ENROLLMENT_ID.name(), enrollmentID);
+        context = LocaleHelper.setLocale(context, LanguageContext.getLanguageContext().getLanguage());
         Intent intent = new Intent(context, EventsActivity.class);
         intent.putExtras(bundle);
         return intent;

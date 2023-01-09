@@ -90,7 +90,7 @@
     <!-- Strings related to enrollment forms -->
     <string name="title_activity_enrollment_form">பதிவு படிவம்</string>
     <string name="title_activity_event_form">நிகழ்வு வடிவம்</string>
-    <string name="date_button_text">தேதியைத் தேர்ந்தெடுக்க கிளிக் செய்யவும்</string>
+    <string name="date_button_text">திகதியை தேர்ந்தெடுக்க கிளிக் செய்யவும்</string>
     <string name="enter_here">இங்கே தட்டச்சு செய்யவும் </string>
 
     <string name="yes">ஆம்</string>
@@ -113,7 +113,7 @@
     <string name="thera_prog"><font size="16">சிகிச்சை ஊட்டல் திட்டம்</font></string>
     <string name="overw_prog"><font size="16">அதிக நிறை/ அதீத நிறைத்திட்டம் </font></string>
     <string name="stunt_prog"><font size="16">குள்ளமானவர்களுக்கான திட்டம் </font></string>
-    <string name="other_prog"><font size="16">ஏனைய சுகாதார /சுகாதாரம் சமபந்தமற்ற திட்டங்கள் </font></string>
+    <string name="other_prog"><font size="16">ஏனைய சுகாதார /சுகாதாரம் சம்பந்தமற்ற திட்டங்கள் </font></string>
     <string name="area_details">எனது பகுதி விபரங்களை பார்க்க</string>
     <string name="area_details_desc">உங்கள் பகுதியில் உள்ள அனைத்து குழந்தைகளின் பட்டியலைப் பார்க்க இங்கே அழுத்தவும்</string>
     <string name="new_child">குழந்தை பதிவு </string>
@@ -142,7 +142,8 @@
     <string name="anthro_regis_land_empty">நில எண் நிரப்பப்படவில்லை</string>
     <string name="anthro_regis_land">நில எண்ணில் குறைவான/அதிக எழுத்துகள் உள்ளன</string>
     <string name="anthro_regis_mobile_empty">மொபைல் எண் நிரப்பப்படவில்லை</string>
-    <string name="anthro_regis_mobile">Mobile Number has less/more characters</string>
+    <string name="anthro_regis_mobile">மொபைல் எண்ணில் குறைவான/அதிக எழுத்துகள் உள்ளன</string>
+    <string name="anthro_regis_same_BI">அதே நோய்த்தடுப்பு எண்ணைக் கொண்ட குழந்தை ஏற்கனவே PHM பகுதியில் உள்ளது</string>
 
     <!--    demographic info-->
     <string name="demo_info_title">மக்கள் தொகை  தரவு</string>
@@ -461,7 +462,7 @@
         <item>இடைநிலைக் கல்வி (6ம் வகுப்பு முதல் 10ம் வகுப்பு வரை)</item>
         <item>க.பொ.த சாதாரண தரம் (O/L) அல்லது அதற்கு சமம்</item>
         <item>க.பொ.த உயர்தரம் (உ/த) அல்லது அதற்கு சமம்</item>
-        <item>உயர் கல்வி (டிப்ளமோ, பட்டம் போன்றவை)</item>
+        <item>உயர் கல்வி (டிப்ளோமா, பட்டம் போன்றவை)</item>
     </string-array>
 
     <string-array name="eduLevel_english_only">
@@ -615,7 +616,7 @@
     <!--   Program Enrollment Service -->
     <string name="confirm_overweight">அதிக எடையுள்ள திட்டப் பதிவை உறுதிப்படுத்தவும்</string>
     <string name="confirm_other">மற்ற சுகாதார/சுகாதாரம் அல்லாத திட்டப் பதிவை உறுதிப்படுத்தவும்</string>
-    <string name="confirm_stunting">ஸ்டண்டிங் நிரல் பதிவை உறுதிப்படுத்தவும்</string>
+    <string name="confirm_stunting">குள்ளமாதல் நிரல் பதிவை உறுதிப்படுத்தவும்</string>
     <string name="confirm_supplementary">துணை நிரல் சேர்க்கையை உறுதிப்படுத்தவும்</string>
     <string name="confirm_therapeutical">சிகிச்சை உணவுத் திட்டப் பதிவை உறுதிப்படுத்தவும்</string>
 

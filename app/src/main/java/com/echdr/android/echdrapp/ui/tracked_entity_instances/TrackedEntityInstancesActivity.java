@@ -16,10 +16,12 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.LiveData;
 import androidx.paging.PagedList;
 
+import com.echdr.android.echdrapp.LocaleHelper;
 import com.echdr.android.echdrapp.R;
 import com.echdr.android.echdrapp.data.Sdk;
 import com.echdr.android.echdrapp.databinding.ActivityTrackedEntityInstanceSearchBinding;
 import com.echdr.android.echdrapp.ui.base.ListActivity;
+import com.echdr.android.echdrapp.ui.splash.LanguageContext;
 import com.echdr.android.echdrapp.ui.tracked_entity_instances.search.SearchFormAdapter;
 import com.google.android.material.internal.TextWatcherAdapter;
 import com.google.android.material.textfield.TextInputEditText;
@@ -64,6 +66,7 @@ public class TrackedEntityInstancesActivity extends ListActivity {
     }
 
     public static Intent getTrackedEntityInstancesActivityIntent(Context context, String trackedEntityInstanceUid) {
+        context = LocaleHelper.setLocale(context, LanguageContext.getLanguageContext().getLanguage());
         Intent intent = new Intent(context, TrackedEntityInstancesActivity.class);
         intent.putExtra(IntentExtra.TRACKED_ENTITY_INSTANCE.name(), trackedEntityInstanceUid);
         return intent;

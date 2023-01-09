@@ -26,6 +26,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.echdr.android.echdrapp.LocaleHelper;
 import com.echdr.android.echdrapp.R;
 import com.echdr.android.echdrapp.data.Sdk;
 import com.echdr.android.echdrapp.data.service.ActivityStarter;
@@ -37,6 +38,7 @@ import com.echdr.android.echdrapp.service.Validator.ProgramEnrollmentValidator;
 import com.echdr.android.echdrapp.service.util;
 import com.echdr.android.echdrapp.ui.enrollment_form.EnrollmentFormActivity;
 import com.echdr.android.echdrapp.ui.events.EventsActivity;
+import com.echdr.android.echdrapp.ui.splash.LanguageContext;
 
 import org.hisp.dhis.android.core.arch.repositories.scope.RepositoryScope;
 import org.hisp.dhis.android.core.enrollment.Enrollment;
@@ -166,6 +168,7 @@ public class ChildDetailsActivityNew extends AppCompatActivity {
     }
 
     public static Intent getTrackedEntityInstancesActivityIntent(Context context, String uid) {
+        context = LocaleHelper.setLocale(context, LanguageContext.getLanguageContext().getLanguage());
         Intent intent = new Intent(context, ChildDetailsActivityNew.class);
         intent.putExtra(ChildDetailsActivityNew.IntentExtra.TEI_UID.name(), uid);
         return intent;

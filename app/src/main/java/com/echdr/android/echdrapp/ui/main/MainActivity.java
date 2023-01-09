@@ -21,6 +21,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.echdr.android.echdrapp.LocaleHelper;
 import com.echdr.android.echdrapp.R;
 import com.echdr.android.echdrapp.data.Sdk;
 import com.echdr.android.echdrapp.data.service.ActivityStarter;
@@ -35,6 +36,7 @@ import com.echdr.android.echdrapp.ui.enrollment_form.EnrollmentFormModified;
 import com.echdr.android.echdrapp.ui.events.EventsActivity;
 import com.echdr.android.echdrapp.ui.foreign_key_violations.ForeignKeyViolationsActivity;
 import com.echdr.android.echdrapp.ui.programs.ProgramsActivity;
+import com.echdr.android.echdrapp.ui.splash.LanguageContext;
 import com.echdr.android.echdrapp.ui.splash.LanguageSelection;
 import com.echdr.android.echdrapp.ui.tracked_entity_instances.TrackedEntityInstancesActivity;
 import com.echdr.android.echdrapp.ui.tracked_entity_instances.search.TrackedEntityInstanceSearchActivity;
@@ -84,6 +86,7 @@ public class MainActivity extends AppCompatActivity{
     private boolean isSyncing = false;
 
     public static Intent getMainActivityIntent(Context context) {
+        context = LocaleHelper.setLocale(context, LanguageContext.getLanguageContext().getLanguage());
         return new Intent(context, MainActivity.class);
     }
 
@@ -94,6 +97,8 @@ public class MainActivity extends AppCompatActivity{
 
         compositeDisposable = new CompositeDisposable();
         context = this;
+
+        System.out.println(LanguageContext.getLanguageContext().getLanguage());
  
         inflateMainView();
     }
@@ -204,7 +209,8 @@ public class MainActivity extends AppCompatActivity{
         languageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ActivityStarter.startActivity(MainActivity.this, LanguageSelection.getLanguageSelectionActivityIntent(context),true);
+                ActivityStarter.startActivity(MainActivity.this,
+                        LanguageSelection.getLanguageSelectionActivityIntent(context),true);
             }
         });
 

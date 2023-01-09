@@ -370,6 +370,30 @@ public class OtherReasonForActivity extends AppCompatActivity {
                 checkbox_Stunting.isChecked() && checkbox_Underweight.isChecked() && !checkbox_Long_standing.isChecked() &&
                         !checkbox_Moderate_Acute.isChecked() && !checkbox_Severe_Acute.isChecked() && checkbox_Overweight.isChecked() ||
                 checkbox_Stunting.isChecked() && !checkbox_Underweight.isChecked() && checkbox_Long_standing.isChecked() &&
+                        !checkbox_Moderate_Acute.isChecked() && !checkbox_Severe_Acute.isChecked() && !checkbox_Overweight.isChecked() ||
+
+                checkbox_Stunting.isChecked() && !checkbox_Underweight.isChecked() && !checkbox_Long_standing.isChecked() &&
+                        !checkbox_Moderate_Acute.isChecked() && !checkbox_Severe_Acute.isChecked() && !checkbox_Overweight.isChecked() ||
+
+                checkbox_Stunting.isChecked() && checkbox_Underweight.isChecked() && !checkbox_Long_standing.isChecked() &&
+                        !checkbox_Moderate_Acute.isChecked() && !checkbox_Severe_Acute.isChecked() && !checkbox_Overweight.isChecked() ||
+                !checkbox_Stunting.isChecked() && checkbox_Underweight.isChecked() && !checkbox_Long_standing.isChecked() &&
+                        checkbox_Moderate_Acute.isChecked() && !checkbox_Severe_Acute.isChecked() && !checkbox_Overweight.isChecked() ||
+                !checkbox_Stunting.isChecked() && checkbox_Underweight.isChecked() && !checkbox_Long_standing.isChecked() &&
+                        !checkbox_Moderate_Acute.isChecked() && !checkbox_Severe_Acute.isChecked() && checkbox_Overweight.isChecked() ||
+                !checkbox_Stunting.isChecked() && !checkbox_Underweight.isChecked() && checkbox_Long_standing.isChecked() &&
+                        !checkbox_Moderate_Acute.isChecked() && !checkbox_Severe_Acute.isChecked() && !checkbox_Overweight.isChecked() ||
+
+                !checkbox_Stunting.isChecked() && !checkbox_Underweight.isChecked() && !checkbox_Long_standing.isChecked() &&
+                        !checkbox_Moderate_Acute.isChecked() && checkbox_Severe_Acute.isChecked() && !checkbox_Overweight.isChecked() ||
+                !checkbox_Stunting.isChecked() && !checkbox_Underweight.isChecked() && !checkbox_Long_standing.isChecked() &&
+                        checkbox_Moderate_Acute.isChecked() && !checkbox_Severe_Acute.isChecked() && !checkbox_Overweight.isChecked() ||
+                !checkbox_Stunting.isChecked() && !checkbox_Underweight.isChecked() && !checkbox_Long_standing.isChecked() &&
+                        !checkbox_Moderate_Acute.isChecked() && !checkbox_Severe_Acute.isChecked() && checkbox_Overweight.isChecked() ||
+
+                !checkbox_Stunting.isChecked() && checkbox_Underweight.isChecked() && !checkbox_Long_standing.isChecked() &&
+                        !checkbox_Moderate_Acute.isChecked() && !checkbox_Severe_Acute.isChecked() && !checkbox_Overweight.isChecked() ||
+                !checkbox_Stunting.isChecked() && !checkbox_Underweight.isChecked() && checkbox_Long_standing.isChecked() &&
                         !checkbox_Moderate_Acute.isChecked() && !checkbox_Severe_Acute.isChecked() && !checkbox_Overweight.isChecked()
                 )) {
             {
