@@ -339,6 +339,7 @@ public class OtherReasonForActivity extends AppCompatActivity {
             alert11.show();
             return;
         }
+        /*
         if(!(checkbox_Stunting.isChecked() && checkbox_Moderate_Acute.isChecked() && checkbox_Underweight.isChecked() ||
         checkbox_Stunting.isChecked() && checkbox_Severe_Acute.isChecked() && checkbox_Underweight.isChecked() ||
         checkbox_Stunting.isChecked() && checkbox_Overweight.isChecked() && checkbox_Underweight.isChecked() ||
@@ -360,7 +361,7 @@ public class OtherReasonForActivity extends AppCompatActivity {
                 alert12.show();
                 return;
             }
-        }
+        }*/
 
 
         if(!(   checkbox_Stunting.isChecked() && checkbox_Underweight.isChecked() && !checkbox_Long_standing.isChecked() &&
@@ -375,8 +376,8 @@ public class OtherReasonForActivity extends AppCompatActivity {
                 checkbox_Stunting.isChecked() && !checkbox_Underweight.isChecked() && !checkbox_Long_standing.isChecked() &&
                         !checkbox_Moderate_Acute.isChecked() && !checkbox_Severe_Acute.isChecked() && !checkbox_Overweight.isChecked() ||
 
-                checkbox_Stunting.isChecked() && checkbox_Underweight.isChecked() && !checkbox_Long_standing.isChecked() &&
-                        !checkbox_Moderate_Acute.isChecked() && !checkbox_Severe_Acute.isChecked() && !checkbox_Overweight.isChecked() ||
+                !checkbox_Stunting.isChecked() && checkbox_Underweight.isChecked() && !checkbox_Long_standing.isChecked() &&
+                        !checkbox_Moderate_Acute.isChecked() && checkbox_Severe_Acute.isChecked() && !checkbox_Overweight.isChecked() ||
                 !checkbox_Stunting.isChecked() && checkbox_Underweight.isChecked() && !checkbox_Long_standing.isChecked() &&
                         checkbox_Moderate_Acute.isChecked() && !checkbox_Severe_Acute.isChecked() && !checkbox_Overweight.isChecked() ||
                 !checkbox_Stunting.isChecked() && checkbox_Underweight.isChecked() && !checkbox_Long_standing.isChecked() &&

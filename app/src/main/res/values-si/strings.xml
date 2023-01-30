@@ -186,7 +186,7 @@
     <string name="st_mana">අදියර 1: කළමනාකරණ තත්ත්වය</string>
     <string name="st_inter">මැදිහත් වීම</string>
     <string name="st_out">ප‍්‍රතිඵලය</string>
-    <string name="st_indication">ත්‍රිපෝෂ ලබාදීම ඇරබීම</string>
+    <string name="st_indication">ත්‍රිපෝෂ ලබාදීම ඇරඹීම</string>
 
     <!--    anthropometry programme-->
     <string name="an_title">1 වන අදියර (වර්ධන තත්ත්වය මැනීම)</string>
@@ -225,10 +225,20 @@
     <string name="oth_reason_under">අඩු බර</string>
     <string name="oth_reason_overweight">අධි බර / ස්ථූලතාවය</string>
     <string name="oth_reason_stuning">මිටි බව</string>
-    <string name="oth_reason_combinations">තෝරා ඇති සං‍යෝජන වලංගු නොවේ. තේරිය හැකි සං‍යෝජන වන්නේ \n1. මිටි බව + මධ්‍යස්ථ තීව‍්‍ර මන්දපෝෂණය (මධ්‍යස්ථ කෘශ බව (MAM)) + අඩු බර
+    <string name="oth_reason_combinations">තෝරා ඇති සං‍යෝජන වලංගු නොවේ. තේරිය හැකි සං‍යෝජන වන්නේ
+        \n1. මිටි බව + මධ්‍යස්ථ තීව‍්‍ර මන්දපෝෂණය (මධ්‍යස්ථ කෘශ බව (MAM)) + අඩු බර
         \n2. මිටි බව + උග්‍ර තීව‍්‍ර මන්දපෝෂණය (SAM) + අඩු බර
         \n3. මිටි බව + අධි බර / ස්ථූලතාවය + අඩු බර
-                    \n4. මිටි බව + හරිත කලාපයේ දිගුකාලීන වර්ධනය අඩාල වේ</string>
+        \n4. මිටි බව + හරිත කලාපයේ දිගුකාලීන වර්ධනය අඩාල වේ
+        \n5. මිටි බව
+        \n6. උග්‍ර තීව‍්‍ර මන්දපෝෂණය (SAM) + අඩු බර
+        \n7. මධ්‍යස්ථ තීව‍්‍ර මන්දපෝෂණය (මධ්‍යස්ථ කෘශ බව (MAM)) + අඩු බර
+        \n8. අධි බර / ස්ථූලතාවය + අඩු බර
+        \n9. හරිත කලාපයේ දිගුකාලීන වර්ධනය අඩාල වේ
+        \n10. උග්‍ර තීව‍්‍ර මන්දපෝෂණය (SAM)
+        \n11. මධ්‍යස්ථ තීව‍්‍ර මන්දපෝෂණය (මධ්‍යස්ථ කෘශ බව (MAM))
+        \n12. අඩු බර
+    </string>
 
     <!-- other - intervention-poverty -->
     <string name="oth_inter_poverty_title">මැදිහත්වීම - දරිද්‍ර‍්‍රතාවය හා ආදායම් කළමණාකරනයේ දුර්වලතා</string>
