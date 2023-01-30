@@ -142,6 +142,7 @@
     <string name="anthro_regis_land">Land Number has less/more characters</string>
     <string name="anthro_regis_mobile_empty">Mobile Number is not filled</string>
     <string name="anthro_regis_mobile">Mobile Number has less/more characters</string>
+    <string name="anthro_regis_same_BI">Child with same Immunization number already exists in PHM area</string>
 
     <!--    demographic info-->
     <string name="demo_info_title">Demographic information</string>
@@ -224,9 +225,20 @@
     <string name="oth_reason_under">Underweight (checkbox)</string>
     <string name="oth_reason_overweight">Overweight/obesity (checkbox)</string>
     <string name="oth_reason_stuning">Stunting (checkbox)</string>
-    <string name="oth_reason_combinations">The selection combination is invalid. Possible combinations are \n1. Stunting + MAM + Underweight \n2. Stunting + SAM + Underweight
+    <string name="oth_reason_combinations">The selection combination is invalid. Possible combinations are
+        \n1. Stunting + MAM + Underweight
+        \n2. Stunting + SAM + Underweight
         \n3. Stunting + Overweight + Underweight
-                    \n4. Stunting + Longstanding Growth Faltering Zone</string>
+        \n4. Stunting + Longstanding Growth Faltering Zone
+        \n5. Stunting
+        \n6. SAM + Underweight
+        \n7. MAM + Underweight
+        \n8. Overweight + Underweight
+        \n9. Longstanding Growth Faltering Zone
+        \n10. SAM
+        \n11. MAM
+        \n12. Underweight
+    </string>
 
     <!-- other - intervention-poverty -->
     <string name="oth_inter_poverty_title">Intervention - Poverty and Poor Income Management</string>

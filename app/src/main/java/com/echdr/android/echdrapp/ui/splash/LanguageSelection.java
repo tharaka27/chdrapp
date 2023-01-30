@@ -13,12 +13,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.Objects;
+
 
 public class LanguageSelection extends AppCompatActivity {
     private Context context;
     private Button btnSinhala, btnEnglish, btnTamil;
 
     public static Intent getLanguageSelectionActivityIntent(Context context) {
+        context = LocaleHelper.setLocale(context, LanguageContext.getLanguageContext().getLanguage());
         Intent intent = new Intent(context, LanguageSelection.class);
         return intent;
     }
@@ -43,6 +46,14 @@ public class LanguageSelection extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 context = LocaleHelper.setLocale(LanguageSelection.this, Language);
+                if(Objects.equals(Language, "si")){
+                    LanguageContext.getLanguageContext().setLanguageSinhala();
+                }else if(Objects.equals(Language, "ta"))
+                {
+                    LanguageContext.getLanguageContext().setLanguageTamil();
+                }else{
+                    LanguageContext.getLanguageContext().setLanguageEnglish();
+                }
                 ActivityStarter.startActivity(LanguageSelection.this, MainActivity.getMainActivityIntent(context),true);
             }
         });

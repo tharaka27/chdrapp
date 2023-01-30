@@ -190,8 +190,7 @@ public class  EnrollmentFormValidator extends Validator {
                                     .trackedEntityAttributeValues().byValue()
                                     .eq(immun).blockingGet();
                     if(!values.isEmpty()){
-                        CreateAlertDialog("Child with same Immunization number" +
-                                "already exists in PHM area");
+                        CreateAlertDialog(context.getString(R.string.anthro_regis_same_BI));
                         return false;
                     }
                 }catch (Exception e)
